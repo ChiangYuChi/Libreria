@@ -345,7 +345,8 @@
     <Folder Include="App_Data\" />
     <Folder Include="Asset\Css\" />
     <Folder Include="Asset\Image\" />
-    <Folder Include="Asset\Js\" />
+    <Folder Include="Asset\Js\common\" />
+    <Folder Include="Asset\Js\index\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
