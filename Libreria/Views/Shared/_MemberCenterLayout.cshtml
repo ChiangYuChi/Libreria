@@ -1,0 +1,533 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - 我的 ASP.NET 應用程式</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+<link href="~/Content/fontawesome-all.min.css" rel="stylesheet" />
+</head>
+<body class="pt-0">
+    <div class="search_form collapse " id="search_from">
+        <form class="form-inline">
+            <div class="input-group w-100">
+                <input type="search" placeholder="輸入您想搜尋的" class="form-control">
+                <class class="input-group-append">
+                    <button type="submit" class="btn btn-outline-secondary"><i class="fas fa-search"></i></button>
+                    <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="sr-only">Toggle Dropdown</span>
+                    </button>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="#">搜尋書籍</a>
+                        <a class="dropdown-item" href="#">搜尋展覽</a>
+                        <div role="separator" class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Separated link</a>
+                    </div>
+                </class>
+            </div>
+        </form>
+    </div>
+    <nav class="navbar navbar-expand-lg navbar-dark" id="nav">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler"
+                aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation" id="nav-button">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" min-width:100px" id="navbarToggler">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li class="nav-item" id="literial_brand">
+                    <a href="#" class="nav-link  d-lg-none">
+                        <img src="~/Asset/Image/smlogo_v2.png" alt="">
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">線上購買書籍<span class="sr-only">線上購買書籍(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">展演</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">場地租借</a>
+                </li>
+                <li>
+                    <nav class="nav-iconbox  d-lg-none" id="nav-iconbox">
+                        <ul class="navbar justify-content-center" id="nav-iconlist">
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">
+                                    <i class="fas fa-user-alt "></i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">
+                                    <i class="fas fa-shopping-cart"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item" id="search-button">
+                                <button class="btn btn-outline-warning my-2 my-sm-0" type="button"
+                                        data-toggle="collapse" data-target="#search_from">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                            </li>
+                        </ul>
+                    </nav>
+                </li>
+            </ul>
+        </div>
+        <a class="navbar-brand" href="#" id="brand">
+            <img id="navbar-absolute"
+                 src="~/Asset/Image/Logo-grey.png" alt="">
+        </a>
+        <nav class="my-2 my-lg-0" id="nav-iconbox">
+            <ul class="navbar nav-justified nav mt-2 mr-lg-5" id="nav-iconlist">
+                <li class="nav-item" id="1">
+                    <a href="#" class="nav-link d-none d-sm-block">
+                        <i class="fas fa-user-alt "></i>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link d-none d-sm-block">
+                        <i class="fas fa-shopping-cart"></i>
+                    </a>
+                </li>
+                <li class="nav-item" id="search-button">
+                    <button class="btn btn-outline-warning my-2 my-sm-0" type="button" data-toggle="collapse"
+                            data-target="#search_from">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </li>
+            </ul>
+        </nav>
+    </nav>
+    <div class="container body-content d-flex">
+        @RenderBody()
+
+        <div class="dashboard mt-5 p-5" >
+
+            <div class="member-amount">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12 col-sm-6">
+                            <div class="box">
+                                <a href="">
+                                    <div class="item">
+                                        <div>
+                                            <p class="discount-point">
+                                                <i class="fas fa-tags"></i>
+                                                優惠點 <span> 0 </span> 點
+                                            </p>
+                                        </div>
+                                        <div class="right-icon">
+                                            <i class="fas fa-chevron-right"></i>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6">
+                            <div class="box">
+                                <a href="">
+                                    <div class="item">
+                                        <div>
+                                            <p class="favorite-product">
+                                                <i class="fas fa-star"></i>
+                                                收藏商品 <span> 0 </span> 項
+                                            </p>
+                                        </div>
+                                        <div class="right-icon">
+                                            <i class="fas fa-chevron-right"></i>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6">
+                            <div class="box">
+                                <a href="">
+                                    <div class="item">
+                                        <div>
+                                            <p class="coupon">
+                                                <i class="fas fa-percentage"></i>
+                                                優惠券 <span> 0 </span> 張
+                                            </p>
+                                        </div>
+                                        <div class="right-icon">
+                                            <i class="fas fa-chevron-right"></i>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6">
+                            <div class="box">
+                                <a href="">
+                                    <div class="item">
+                                        <div>
+                                            <p class="delivery-notice">
+                                                <i class="fas fa-truck-moving"></i>
+                                                貨到通知 <span> 0 </span> 張
+                                            </p>
+                                        </div>
+                                        <div class="right-icon">
+                                            <i class="fas fa-chevron-right"></i>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="member-dash">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-6 col-sm-4">
+                            <div class="box">
+                                <div class="item">
+                                    <a href="">
+                                        <i class="fab fa-wpforms fa-3x"></i>
+                                        <p>我的訂單</p>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 col-sm-4">
+                            <div class="box">
+                                <div class="item">
+                                    <a href="">
+                                        <i class="fas fa-user fa-3x"></i>
+                                        <p>我的帳戶</p>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 col-sm-4">
+                            <div class="box">
+                                <div class="item">
+                                    <a href="">
+                                        <i class="fas fa-calendar fa-3x"></i>
+                                        <p>會員資料</p>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 col-sm-4">
+                            <div class="box">
+                                <div class="item">
+                                    <a href="">
+                                        <i class="fas fa-ad fa-3x"></i>
+                                        <p>電子報訂閱</p>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 col-sm-4">
+                            <div class="box">
+                                <div class="item">
+                                    <a href="">
+                                        <i class="fas fa-address-book fa-3x"></i>
+                                        <p>會員權益</p>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 col-sm-4">
+                            <div class="box">
+                                <div class="item">
+                                    <a href="">
+                                        <i class="fas fa-headphones fa-3x"></i>
+                                        <p>客服專區</p>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+
+    </div>
+   
+
+    <section class="footer px-5">
+        <div class="container">
+            <div class="row d-flex pt-5">
+                <div class="col-sm-12 col-md-2 order-sm-2 footer-company">
+                    <div class="row d-flex flex-column">
+                        <h5>Company</h5>
+                        <a href="#">About</a>
+                        <a href="#">Blog</a>
+                        <a href="#">Contact Us</a>
+                    </div>
+
+                </div>
+                <div class="col-sm-12 col-md-2  order-sm-3 footer-account ">
+                    <div class="row d-flex flex-column">
+                        <h5>Account</h5>
+                        <a href="#">Payment</a>
+                        <a href="#">Subscriptions</a>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-2  order-sm-4 footer-help ">
+                    <div class="row d-flex flex-column">
+                        <h5>Help</h5>
+                        <a href="#">Support</a>
+                    </div>
+
+                </div>
+                <div class="d-none d-md-block col-sm-6 col-md-6 order-sm-1 order-md-4 footer-logo pt-3 pb-3 px-0">
+                    <div class="pic"><img src="~/Asset/Image/smlogo_v2.png" alt=""></div>
+                </div>
+
+                <div class="col-sm-12 order-sm-5 footer-phone">
+                    <p>
+                        <span><i class="fas fa-phone-square-alt"></i>02-26343434</span><span>
+                            <i class="fas fa-phone-square-alt"></i>liberia@gmail.com
+                        </span> <span>
+                            <i class="fab fa-facebook-f"></i><i class="fab fa-twitter"></i><i class="fab fa-instagram"></i>
+                        </span>
+                    </p>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
+
+<style>
+
+
+
+    body {
+        background-color: #f0e1b8;
+       
+    }
+
+    ul {
+        list-style: none;
+    }
+
+
+
+    /* Logo */
+    #brand {
+        position: absolute;
+        top: 55%;
+        left: 50%;
+        transform: translateX(-100px);
+    }
+
+        #brand img {
+            width: 200px;
+        }
+    /* Logoæ¼¢å ¡æ‰“é–‹ç‰ˆ */
+    .navbar-brand-hamburger img {
+        width: 100px;
+    }
+
+    #literial_brand img {
+        max-width: 250px;
+        padding: 30px 0px;
+
+    }
+
+    /* navbarä¸»è¦–è¦ºè‰²å½© */
+    #nav-iconlist,
+    #nav {
+        background-color: #2a2c27;
+    }
+
+    #search_from {
+        background-color: #2a2c27;
+    }
+
+    .nav-item i {
+        color: #7e8186;
+    }
+
+    .nav {
+        position: relative;
+        position: sticky;
+    }
+    /* navbarå…§éƒ¨æŽ’ç‰ˆèª¿æ•´ */
+    #navbarToggler .nav-item {
+        padding: 20px;
+        text-align: center;
+    }
+    /* æ”¶åˆé¡¯ç¤ºçŸ¯æ­£ */
+    .collapse.show + #brand, .collapsing + #brand, .collapse.show + #search-button, .collapsing + #search-button, .collapsing ~ #nav-iconbox, .collapse.show ~ #nav-iconbox {
+        display: none;
+    }
+
+    /* æ”¶åˆå‹•ç•«ä¿®æ­£ã€è“‹æ¿é¡¯ç¤ºä¿®æ­£ */
+    .collapsing {
+        -webkit-transition: all 0.3s linear;
+        transition: all 0.3s linear;
+        display: -moz-popup;
+    }
+
+    .navbar-collapse.collapse.show {
+        height: 100vh;
+        -webkit-transition: all 0.3s linear;
+        transition: all 0.3s linear;
+        display: -moz-popup;
+    }
+
+
+    .footer {
+        background-color: #2a2c27;
+        font-family: 'Montserrat', sans-serif;
+      
+        left: 0;
+        bottom: 0;
+        width: 100%;
+    }
+
+    .footer-company h5,
+    .footer-account h5,
+    .footer-help h5 {
+        color: white;
+        font-weight: bold;
+    }
+
+    .footer-company a,
+    .footer-account a,
+    .footer-help a {
+        color: white;
+        font-size: 14px;
+        text-decoration: none;
+    }
+
+    .footer a:hover {
+        color: white;
+        transition: ease-in .5s;
+    }
+
+    .footer .pic {
+        text-align: center;
+    }
+
+        .footer .pic img {
+            width: 50%;
+            right: -180%;
+        }
+
+    .footer-phone {
+        color: white;
+        border-top: 1px solid black;
+        margin-top: 15px;
+        padding: 15px 0;
+        font-size: 14px;
+        letter-spacing: 1px
+    }
+
+        .footer-phone p span {
+            margin-right: 10px;
+        }
+
+        .footer-phone .fas,
+        .footer-phone .fab {
+            padding-right: 10px;
+            font-size: 20px;
+        }
+
+            .footer-phone .fab:hover {
+                color: 1px solid black;
+                cursor: pointer;
+                transition: ease-in .5s;
+            }
+
+    body {
+        font-family: 'Montserrat', sans-serif;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 16px;
+        background-color: #ffffff;
+    }
+
+    .box {
+        margin: 10px;
+    }
+
+    .item {
+        margin: 10px;
+    }
+
+    a {
+        color: black;
+        text-decoration: none;
+    }
+
+        a:hover {
+            color: black;
+            text-decoration: none;
+        }
+
+    p {
+        margin: 0;
+    }
+
+    .fas,
+    .fab {
+        color: #8a6927;
+    }
+
+    .member-amount .box {
+        border-bottom: 1px solid #ccc;
+        background-color: #ffffff;
+    }
+
+    .member-amount .item {
+        margin-bottom: 0px;
+        display: flex;
+        position: relative;
+    }
+
+    .member-amount p {
+        display: inline;
+    }
+
+    .member-amount span {
+        font-size: 22px;
+        color: #8a6927;
+    }
+
+    .fa-chevron-right {
+        color: #999999;
+        position: absolute;
+        bottom: 6px;
+        right: 0px;
+    }
+
+    .member-dash .item {
+        /* justify-content: center;
+            vertical-align: center;
+            display: inline; */
+        text-align: center;
+        margin: 20px;
+    }
+
+    .member-dash .box {
+        border: 2px solid #eee;
+        border-radius: 2.1px;
+        background-color: #fff;
+    }
+
+    .box:hover {
+        background-color: #ddd;
+    }
+
+    .box:active {
+        background-color: #ccc;
+    }
+
+
+
+</style>
