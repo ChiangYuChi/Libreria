@@ -1,0 +1,356 @@
+﻿@media (min-width: 430px) {
+    .banner-text {
+        font-size: 26px;
+    }
+
+    .sellertitle h4 {
+        font-size: 48px;
+    }
+
+    .fp-controlArrow {
+        top: 85%;
+    }
+
+        .fp-controlArrow.fp-prev {
+            border-width: 40px 30px 40px 0;
+            left: 26%;
+        }
+
+        .fp-controlArrow.fp-next {
+            border-width: 40px 0 40px 30px;
+            right: 26%;
+        }
+
+    .fp-slidesNav {
+        top: 45%;
+        left: 95% !important;
+    }
+
+    .exhibition-pic {
+        padding: 10% 10% 2% 10%;
+        box-sizing: border-box;
+    }
+
+    .exhibition-title {
+        font-size: 48px;
+    }
+
+    .exhibition-text p {
+        font-size: 24px;
+        margin-top: 2%;
+    }
+
+    .exhibition .fp-controlArrow {
+        top: 86%;
+    }
+
+        .exhibition .fp-controlArrow.fp-prev {
+            border-width: 26px 24px 26px 0;
+            left: 30%;
+        }
+
+        .exhibition .fp-controlArrow.fp-next {
+            border-width: 26px 0 26px 24px;
+            right: 30%;
+        }
+}
+
+@media (min-width: 769px) {
+    .banner-text {
+        font-size: 26px;
+    }
+
+    .exhibition-pic {
+        padding: 9% 2% 2% 7%;
+    }
+
+    .exhibition-text {
+        padding: 9% 7% 2% 2%;
+    }
+
+        .exhibition-text p {
+            padding-top: 15%;
+        }
+
+    .exhibition-title {
+        font-size: 60px;
+        padding: 5%;
+    }
+
+    .exhibition .fp-controlArrow {
+        top: 88%;
+    }
+
+        .exhibition .fp-controlArrow.fp-prev {
+            border-width: 40px 30px 40px 0;
+            left: 30%;
+        }
+
+        .exhibition .fp-controlArrow.fp-next {
+            border-width: 40px 0 40px 30px;
+            right: 30%;
+        }
+
+    .exhibition-item .fp-tableCell {
+        display: flex;
+    }
+}
+
+@media (min-width: 1025px) {
+    .sellertitle h4 {
+        font-size: 48px;
+    }
+
+    .fp-controlArrow {
+        top: 80%;
+    }
+
+        .fp-controlArrow.fp-prev {
+            border-width: 40px 30px 40px 0;
+            left: 20%;
+        }
+
+        .fp-controlArrow.fp-next {
+            border-width: 40px 0 40px 30px;
+            right: 20%;
+        }
+
+    .fp-slidesNav {
+        top: 45%;
+        left: 98% !important;
+    }
+
+    .sellertitle {
+        margin-top: 4%;
+    }
+
+    .slick-prev,
+    .slick-next {
+        top: 103%;
+        z-index: 5;
+        width: 40px;
+        height: 40px;
+        font-size: 40px;
+    }
+
+    .slick-prev {
+        left: 40%;
+    }
+
+        .slick-prev::before {
+            font-size: 40px;
+        }
+
+    .slick-next {
+        right: 40%;
+    }
+
+        .slick-next::before {
+            font-size: 40px;
+        }
+
+    .exhibition .fp-controlArrow {
+        top: 94%;
+    }
+
+    .exhibition-pic {
+        padding: 5% 5% 20% 7%;
+    }
+
+        .exhibition-pic img {
+            padding-bottom: 9%;
+            box-sizing: border-box;
+        }
+}
+.head {
+    position: fixed;
+    display: block;
+    width: 100%;
+    background: #333;
+    z-index: 9;
+    text-align: center;
+    color: #f2f2f2;
+}
+
+ul {
+    list-style: none;
+}
+
+
+
+/* Logo */
+#brand {
+    position: absolute;
+    top: 5%;
+    left: 50%;
+    transform: translateX(-100px);
+}
+
+    #brand img {
+        width: 200px;
+    }
+
+/* Logo瞍Ｗ嵗��㯄�讠�� */
+.navbar-brand-hamburger img {
+    width: 100px;
+}
+
+#literial_brand img {
+    max-width: 250px;
+    padding: 30px 0px;
+}
+
+/* navbar銝餉�𤥁死�𠧧敶� */
+#nav-iconlist,
+#nav {
+    background-color: #2a2c27;
+}
+
+#search_from {
+    background-color: #2a2c27;
+}
+
+.nav-item i {
+    color: #7e8186;
+}
+
+.nav {
+    position: relative;
+    position: sticky;
+}
+
+/* navbar�折�冽�垍��矽�㟲 */
+#navbarToggler .nav-item {
+    padding: 20px;
+    text-align: center;
+}
+
+/* �𤣰���＊蝷箇隁甇� */
+.collapse.show + #brand,
+.collapsing + #brand,
+.collapse.show + #search-button,
+.collapsing + #search-button,
+.collapsing ~ #nav-iconbox,
+.collapse.show ~ #nav-iconbox {
+    display: none;
+}
+
+/* �𤣰����閧𧞄靽格迤����𧢲踎憿舐內靽格迤 */
+.collapsing {
+    -webkit-transition: all 0.3s linear;
+    transition: all 0.3s linear;
+    display: -moz-popup;
+}
+
+.navbar-collapse.collapse.show {
+    height: 100vh;
+    -webkit-transition: all 0.3s linear;
+    transition: all 0.3s linear;
+    display: -moz-popup;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    font-family: 'Montserrat', sans-serif;
+    background-color: #f0e1b8;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+.banner {
+    background-image: url('../../Image/Index/Mainpage (1).jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+.banner-text {
+    font-size: 20px;
+    color: #f0e1b8;
+    border: #f0e1b8 2px solid;
+    position: absolute;
+    top: 70%;
+    left: 35%;
+    right: 35%;
+}
+
+.section {
+    text-align: center;
+}
+
+.fp-controlArrow {
+    top: 90%;
+}
+
+    .fp-controlArrow.fp-prev {
+        border-width: 26px 24px 26px 0;
+        left: 15%;
+    }
+
+    .fp-controlArrow.fp-next {
+        border-width: 26px 0 26px 24px;
+        right: 15%;
+    }
+
+.fp-slidesNav {
+    top: 45%;
+    left: 93% !important;
+}
+
+    .fp-slidesNav .fp-bottom ul {
+        display: flex;
+        flex-direction: column;
+    }
+
+.slick-dots {
+}
+
+.sellertitle {
+    margin-top: 60px;
+}
+
+    .sellertitle h4 {
+        font-weight: bold;
+        font-size: 36px;
+        letter-spacing: 5px;
+    }
+
+.seller-pic {
+    padding: 10%;
+    box-sizing: border-box;
+}
+
+.exhibition-pic {
+    padding: 10% 10% 6% 10%;
+    box-sizing: border-box;
+}
+
+.exhibition-title {
+    font-size: 36px;
+    font-weight: bold;
+    letter-spacing: 5px;
+}
+
+.exhibition-text p {
+    font-size: 16px;
+    margin-top: 6%;
+}
+
+.exhibition .fp-controlArrow {
+    top: 77%;
+}
+
+    .exhibition .fp-controlArrow.fp-prev {
+        border-width: 26px 24px 26px 0;
+        left: 15%;
+    }
+
+    .exhibition .fp-controlArrow.fp-next {
+        border-width: 26px 0 26px 24px;
+        right: 15%;
+    }
+
+#fp-nav.fp-right {
+    right: 8px;
+}

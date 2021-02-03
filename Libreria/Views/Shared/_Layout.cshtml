@@ -1,17 +1,23 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - 我的 ASP.NET 應用程式</title>
+    <link href="~/Asset/Css/Layout/Nav_bar.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
+          integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
+          crossorigin="anonymous" />
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    @RenderSection("topCss", required: false)
+    @RenderSection("topJs", required: false)
+
 <link href="~/Content/fontawesome-all.min.css" rel="stylesheet" />
 </head>
-<body class="pt-0">
-
-    <div class="search_form collapse " id="search_from">
+<body>
+    <div class="search_form collapse" id="search_from">
         <form class="form-inline">
             <div class="input-group w-100">
                 <input type="search" placeholder="輸入您想搜尋的" class="form-control">
@@ -40,7 +46,7 @@
             <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                 <li class="nav-item" id="literial_brand">
                     <a href="#" class="nav-link  d-lg-none">
-                        <img src="~/Asset/Image/smlogo_v2.png" alt="">
+                        <img src="~/Asset/Image/Layout/smlogo.png" alt="">
                     </a>
                 </li>
                 <li class="nav-item">
@@ -78,7 +84,7 @@
         </div>
         <a class="navbar-brand" href="#" id="brand">
             <img id="navbar-absolute"
-                 src="~/Asset/Image/Logo-grey.png" alt="">
+                 src="~/Asset/Image/Layout/Logo-grey.png" alt="">
         </a>
         <nav class="my-2 my-lg-0" id="nav-iconbox">
             <ul class="navbar nav-justified nav mt-2 mr-lg-5" id="nav-iconlist">
@@ -93,7 +99,7 @@
                     </a>
                 </li>
                 <li class="nav-item" id="search-button">
-                    <button class="btn btn-outline-warning my-2 my-sm-0" type="button" data-toggle="collapse"
+                    <button class="btn btn-outline-warning  my-2 my-sm-0" type="button" data-toggle="collapse"
                             data-target="#search_from">
                         <i class="fas fa-search"></i>
                     </button>
@@ -101,7 +107,6 @@
             </ul>
         </nav>
     </nav>
-
     <div class="container body-content">
         @RenderBody()
        
@@ -150,155 +155,30 @@
             </div>
         </div>
     </section>
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - 我的 ASP.NET 應用程式</p>
+        </footer>
+    </div>
+    <script>
+
+        //排除漢堡被打開後，RWD沒漢堡的情況下會自動收合
+        let mediaQueryList = window.matchMedia("(min-width:992px)");
+        function screenTest(x) {
+            if (x.matches) {
+                document.getElementById("navbarToggler").classList.remove("show");
+            }
+        }
+        mediaQueryList.addListener(screenTest);
+
+    </script>
+
+
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+    @RenderSection("botCss", required: false)
+    @RenderSection("botJs", required: false)
 </body>
 </html>
-
-<style>
-
-
-
-    body {
-        background-color: #f0e1b8;
-       
-    }
-
-    ul {
-        list-style: none;
-    }
-
-
-
-    /* Logo */
-    #brand {
-        position: absolute;
-        top: 55%;
-        left: 50%;
-        transform: translateX(-100px);
-    }
-
-        #brand img {
-            width: 200px;
-        }
-    /* Logoæ¼¢å ¡æ‰“é–‹ç‰ˆ */
-    .navbar-brand-hamburger img {
-        width: 100px;
-    }
-
-    #literial_brand img {
-        max-width: 250px;
-        padding: 30px 0px;
-
-    }
-
-    /* navbarä¸»è¦–è¦ºè‰²å½© */
-    #nav-iconlist,
-    #nav {
-        background-color: #2a2c27;
-    }
-
-    #search_from {
-        background-color: #2a2c27;
-    }
-
-    .nav-item i {
-        color: #7e8186;
-    }
-
-    .nav {
-        position: relative;
-        position: sticky;
-    }
-    /* navbarå…§éƒ¨æŽ’ç‰ˆèª¿æ•´ */
-    #navbarToggler .nav-item {
-        padding: 20px;
-        text-align: center;
-    }
-    /* æ”¶åˆé¡¯ç¤ºçŸ¯æ­£ */
-    .collapse.show + #brand, .collapsing + #brand, .collapse.show + #search-button, .collapsing + #search-button, .collapsing ~ #nav-iconbox, .collapse.show ~ #nav-iconbox {
-        display: none;
-    }
-
-    /* æ”¶åˆå‹•ç•«ä¿®æ­£ã€è“‹æ¿é¡¯ç¤ºä¿®æ­£ */
-    .collapsing {
-        -webkit-transition: all 0.3s linear;
-        transition: all 0.3s linear;
-        display: -moz-popup;
-    }
-
-    .navbar-collapse.collapse.show {
-        height: 100vh;
-        -webkit-transition: all 0.3s linear;
-        transition: all 0.3s linear;
-        display: -moz-popup;
-    }
-
-
-    .footer {
-        background-color: #2a2c27;
-        font-family: 'Montserrat', sans-serif;
-        position: fixed;
-        left: 0;
-        bottom: 0;
-        width: 100%;
-    }
-
-    .footer-company h5,
-    .footer-account h5,
-    .footer-help h5 {
-        color: white;
-        font-weight: bold;
-    }
-
-    .footer-company a,
-    .footer-account a,
-    .footer-help a {
-        color: white;
-        font-size: 14px;
-        text-decoration: none;
-    }
-
-    .footer a:hover {
-        color: white;
-        transition: ease-in .5s;
-    }
-
-    .footer .pic {
-        text-align: center;
-    }
-
-        .footer .pic img {
-            width: 50%;
-            right: -180%;
-        }
-
-    .footer-phone {
-        color: white;
-        border-top: 1px solid black;
-        margin-top: 15px;
-        padding: 15px 0;
-        font-size: 14px;
-        letter-spacing: 1px
-    }
-
-        .footer-phone p span {
-            margin-right: 10px;
-        }
-
-        .footer-phone .fas,
-        .footer-phone .fab {
-            padding-right: 10px;
-            font-size: 20px;
-        }
-
-            .footer-phone .fab:hover {
-                color: 1px solid black;
-                cursor: pointer;
-                transition: ease-in .5s;
-            }
-
-
-</style>
