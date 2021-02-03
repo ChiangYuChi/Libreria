@@ -7,9 +7,9 @@
     <title>@ViewBag.Title - 我的 ASP.NET 應用程式</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-    @RenderSection("topCss", required: false)
-    @RenderSection("topJs", required: false)
 
+    @RenderSection("topCSS", required: false)
+    @RenderSection("topJS", required: false)
 
 </head>
 <body>
@@ -44,7 +44,8 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
-    @RenderSection("botCss", required: false)
-    @RenderSection("botJs", required: false)
+
+    @RenderSection("endCSS", required: false)
+    @RenderSection("endJS", required: false)
 </body>
 </html>
