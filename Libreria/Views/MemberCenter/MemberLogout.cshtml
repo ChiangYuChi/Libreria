@@ -1,0 +1,114 @@
+﻿
+@{
+    ViewBag.Title = "MemberLogout";
+}
+
+<section class="member-logout">
+    <div class="container-fluid pt-5">
+        <div class="row   justify-content-center align-items-center col-sm-12 col-md-10 col-lg-9 m-auto p-0">
+            <div class="breadcrumb-member w-100 ">
+                <a href="#">首頁</a>
+                <i class="fas fa-chevron-right"></i>
+                <a href="#">登入會員</a>
+            </div>
+        </div>
+
+        <div class="row col-sm-11 col-md-10 col-lg-9 m-auto p-0 ">
+            <div class="member-login-request d-none d-lg-block ">
+                <div class="warning ">
+                    <div class="warning-wording pt-5">
+                        <p>您好，請先登入</p>
+                        <p>若您尚未成為會員</p>
+                        <p>請先註冊</p>
+                    </div>
+                    <div class="input-group">
+                        <input type="submit" id="login" value="會員登入">
+                        <input type="submit" id="register" value="註冊會員">
+                    </div>
+                </div>
+
+            </div>
+            <div class="member-login-request-sm col-12 d-md-block d-lg-none">
+                <div class="warning">
+                    <div class="warning-wording pt-2">
+                        <p>您好，請先登入</p>
+                        <p>若您尚未成為會員</p>
+                        <p>請先註冊</p>
+                    </div>
+                    <div class="input-group">
+                        <input type="submit" id="login" value="會員登入">
+                        <input type="submit" id="register" value="註冊會員">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+
+    .member-logout .row .breadcrumb-member {
+        padding: 0 0 25px 0px;
+    }
+
+        .member-logout .row .breadcrumb-member a {
+            color: #b0b0b0;
+            font-family: 'Noto Sans TC', sans-serif;
+            font-size: 16px;
+            line-height: 31px;
+        }
+
+        .member-logout .row .breadcrumb-member .fas {
+            font-size: 12px;
+            padding-bottom: 5px;
+            color: #b0b0b0;
+            margin-bottom: 5px;
+        }
+
+        .member-logout .row .breadcrumb-member .fas,
+        .member-logout .row .breadcrumb-member a + a {
+            padding: 0 15px;
+        }
+
+    .member-logout .row .member-login-request {
+        background-image: url(../../Asset/Image/member-card.png);
+        height: 400px;
+        width: 300px;
+    }
+
+    .member-logout .row .member-login-request-sm {
+        height: 250px;
+        background-image: url(../../Asset/Image/member-card.png);
+    }
+
+    .member-logout .row .warning {
+        font-family: 'Noto Sans TC', sans-serif;
+        font-size: 18px;
+        text-align: center;
+        width: 100%;
+        font-weight: 400;
+    }
+
+        .member-logout .row .warning p {
+            width: 80%;
+            margin: auto;
+        }
+
+        .member-logout .row .warning .input-group input {
+            width: 80%;
+            margin: 13px auto;
+            padding: 12px;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .member-logout .row .warning .input-group #login {
+            background-color: #8a6926;
+            color: white;
+            border: none;
+        }
+
+        .member-logout .row .warning .input-group #register {
+            border: 1px solid #8a6926;
+        }
+</style>

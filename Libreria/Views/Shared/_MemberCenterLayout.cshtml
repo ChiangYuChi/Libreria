@@ -10,7 +10,6 @@
 <link href="~/Content/fontawesome-all.min.css" rel="stylesheet" />
 </head>
 <body class="pt-0">
-
     <div class="search_form collapse " id="search_from">
         <form class="form-inline">
             <div class="input-group w-100">
@@ -101,12 +100,158 @@
             </ul>
         </nav>
     </nav>
-
-    <div class="container body-content">
+    <div class="container body-content d-flex">
         @RenderBody()
-       
+
+        <div class="dashboard mt-5 p-5" >
+
+            <div class="member-amount">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12 col-sm-6">
+                            <div class="box">
+                                <a href="">
+                                    <div class="item">
+                                        <div>
+                                            <p class="discount-point">
+                                                <i class="fas fa-tags"></i>
+                                                優惠點 <span> 0 </span> 點
+                                            </p>
+                                        </div>
+                                        <div class="right-icon">
+                                            <i class="fas fa-chevron-right"></i>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6">
+                            <div class="box">
+                                <a href="">
+                                    <div class="item">
+                                        <div>
+                                            <p class="favorite-product">
+                                                <i class="fas fa-star"></i>
+                                                收藏商品 <span> 0 </span> 項
+                                            </p>
+                                        </div>
+                                        <div class="right-icon">
+                                            <i class="fas fa-chevron-right"></i>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6">
+                            <div class="box">
+                                <a href="">
+                                    <div class="item">
+                                        <div>
+                                            <p class="coupon">
+                                                <i class="fas fa-percentage"></i>
+                                                優惠券 <span> 0 </span> 張
+                                            </p>
+                                        </div>
+                                        <div class="right-icon">
+                                            <i class="fas fa-chevron-right"></i>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6">
+                            <div class="box">
+                                <a href="">
+                                    <div class="item">
+                                        <div>
+                                            <p class="delivery-notice">
+                                                <i class="fas fa-truck-moving"></i>
+                                                貨到通知 <span> 0 </span> 張
+                                            </p>
+                                        </div>
+                                        <div class="right-icon">
+                                            <i class="fas fa-chevron-right"></i>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="member-dash">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-6 col-sm-4">
+                            <div class="box">
+                                <div class="item">
+                                    <a href="">
+                                        <i class="fab fa-wpforms fa-3x"></i>
+                                        <p>我的訂單</p>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 col-sm-4">
+                            <div class="box">
+                                <div class="item">
+                                    <a href="">
+                                        <i class="fas fa-user fa-3x"></i>
+                                        <p>我的帳戶</p>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 col-sm-4">
+                            <div class="box">
+                                <div class="item">
+                                    <a href="">
+                                        <i class="fas fa-calendar fa-3x"></i>
+                                        <p>會員資料</p>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 col-sm-4">
+                            <div class="box">
+                                <div class="item">
+                                    <a href="">
+                                        <i class="fas fa-ad fa-3x"></i>
+                                        <p>電子報訂閱</p>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 col-sm-4">
+                            <div class="box">
+                                <div class="item">
+                                    <a href="">
+                                        <i class="fas fa-address-book fa-3x"></i>
+                                        <p>會員權益</p>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 col-sm-4">
+                            <div class="box">
+                                <div class="item">
+                                    <a href="">
+                                        <i class="fas fa-headphones fa-3x"></i>
+                                        <p>客服專區</p>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
 
     </div>
+   
+
     <section class="footer px-5">
         <div class="container">
             <div class="row d-flex pt-5">
@@ -240,7 +385,7 @@
     .footer {
         background-color: #2a2c27;
         font-family: 'Montserrat', sans-serif;
-        position: fixed;
+      
         left: 0;
         bottom: 0;
         width: 100%;
@@ -299,6 +444,90 @@
                 cursor: pointer;
                 transition: ease-in .5s;
             }
+
+    body {
+        font-family: 'Montserrat', sans-serif;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 16px;
+        background-color: #ffffff;
+    }
+
+    .box {
+        margin: 10px;
+    }
+
+    .item {
+        margin: 10px;
+    }
+
+    a {
+        color: black;
+        text-decoration: none;
+    }
+
+        a:hover {
+            color: black;
+            text-decoration: none;
+        }
+
+    p {
+        margin: 0;
+    }
+
+    .fas,
+    .fab {
+        color: #8a6927;
+    }
+
+    .member-amount .box {
+        border-bottom: 1px solid #ccc;
+        background-color: #ffffff;
+    }
+
+    .member-amount .item {
+        margin-bottom: 0px;
+        display: flex;
+        position: relative;
+    }
+
+    .member-amount p {
+        display: inline;
+    }
+
+    .member-amount span {
+        font-size: 22px;
+        color: #8a6927;
+    }
+
+    .fa-chevron-right {
+        color: #999999;
+        position: absolute;
+        bottom: 6px;
+        right: 0px;
+    }
+
+    .member-dash .item {
+        /* justify-content: center;
+            vertical-align: center;
+            display: inline; */
+        text-align: center;
+        margin: 20px;
+    }
+
+    .member-dash .box {
+        border: 2px solid #eee;
+        border-radius: 2.1px;
+        background-color: #fff;
+    }
+
+    .box:hover {
+        background-color: #ddd;
+    }
+
+    .box:active {
+        background-color: #ccc;
+    }
+
 
 
 </style>
