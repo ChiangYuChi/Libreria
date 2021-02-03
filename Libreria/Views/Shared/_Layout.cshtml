@@ -5,32 +5,107 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - 我的 ASP.NET 應用程式</title>
+    <link href="~/Asset/Css/Layout/Nav_bar.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
+          integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
+          crossorigin="anonymous" />
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-    @RenderSection("topCSS", required: false)
-    @RenderSection("topJS", required: false)
+    @RenderSection("topCss", required: false)
+    @RenderSection("topJs", required: false)
+
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("應用程式名稱", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+    <div class="search_form collapse" id="search_from">
+        <form class="form-inline">
+            <div class="input-group w-100">
+                <input type="search" placeholder="輸入您想搜尋的" class="form-control">
+                <class class="input-group-append">
+                    <button type="submit" class="btn btn-outline-secondary"><i class="fas fa-search"></i></button>
+                    <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="sr-only">Toggle Dropdown</span>
+                    </button>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="#">搜尋書籍</a>
+                        <a class="dropdown-item" href="#">搜尋展覽</a>
+                        <div role="separator" class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Separated link</a>
+                    </div>
+                </class>
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("首頁", "Index", "Home")</li>
-                    <li>@Html.ActionLink("關於", "About", "Home")</li>
-                    <li>@Html.ActionLink("連絡人", "Contact", "Home")</li>
-                </ul>
-                @Html.Partial("_LoginPartial")
-            </div>
-        </div>
+        </form>
     </div>
+    <nav class="navbar navbar-expand-lg navbar-dark" id="nav">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler"
+                aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation" id="nav-button">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" min-width:100px" id="navbarToggler">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li class="nav-item" id="literial_brand">
+                    <a href="#" class="nav-link  d-lg-none">
+                        <img src="~/Asset/Image/Layout/smlogo.png" alt="">
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">線上購買書籍<span class="sr-only">線上購買書籍(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">展演</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">場地租借</a>
+                </li>
+                <li>
+                    <nav class="nav-iconbox  d-lg-none" id="nav-iconbox">
+                        <ul class="navbar justify-content-center" id="nav-iconlist">
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">
+                                    <i class="fas fa-user-alt "></i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">
+                                    <i class="fas fa-shopping-cart"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item" id="search-button">
+                                <button class="btn btn-outline-warning my-2 my-sm-0" type="button"
+                                        data-toggle="collapse" data-target="#search_from">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                            </li>
+                        </ul>
+                    </nav>
+                </li>
+            </ul>
+        </div>
+        <a class="navbar-brand" href="#" id="brand">
+            <img id="navbar-absolute"
+                 src="~/Asset/Image/Layout/Logo-grey.png" alt="">
+        </a>
+        <nav class="my-2 my-lg-0" id="nav-iconbox">
+            <ul class="navbar nav-justified nav mt-2 mr-lg-5" id="nav-iconlist">
+                <li class="nav-item" id="1">
+                    <a href="#" class="nav-link d-none d-sm-block">
+                        <i class="fas fa-user-alt "></i>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link d-none d-sm-block">
+                        <i class="fas fa-shopping-cart"></i>
+                    </a>
+                </li>
+                <li class="nav-item" id="search-button">
+                    <button class="btn btn-outline-warning  my-2 my-sm-0" type="button" data-toggle="collapse"
+                            data-target="#search_from">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </li>
+            </ul>
+        </nav>
+    </nav>
     <div class="container body-content">
         @RenderBody()
         <hr />
@@ -38,12 +113,25 @@
             <p>&copy; @DateTime.Now.Year - 我的 ASP.NET 應用程式</p>
         </footer>
     </div>
+    <script>
+
+        //排除漢堡被打開後，RWD沒漢堡的情況下會自動收合
+        let mediaQueryList = window.matchMedia("(min-width:992px)");
+        function screenTest(x) {
+            if (x.matches) {
+                document.getElementById("navbarToggler").classList.remove("show");
+            }
+        }
+        mediaQueryList.addListener(screenTest);
+
+    </script>
+
+
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
-
-    @RenderSection("endCSS", required: false)
-    @RenderSection("endJS", required: false)
+    @RenderSection("botCss", required: false)
+    @RenderSection("botJs", required: false)
 </body>
 </html>

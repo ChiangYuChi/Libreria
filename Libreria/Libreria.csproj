@@ -183,6 +183,12 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Asset\Css\Index\Index.css" />
+    <Content Include="Asset\Css\Layout\Nav_bar.css" />
+    <Content Include="Asset\Image\Index\Mainpage %281%29.jpg" />
+    <Content Include="Asset\Image\Layout\Logo-grey.png" />
+    <Content Include="Asset\Image\Layout\smlogo.png" />
+    <Content Include="Asset\Js\Index\Index.js" />
     <Content Include="Asset\Css\Product\Index.css" />
     <Content Include="Asset\Css\Product\reset.css" />
     <Content Include="Asset\Js\Product\Index.js" />
@@ -313,7 +319,6 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />
     <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
@@ -344,13 +349,15 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="Views\Shared\IndexLayout.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\_Layout - Copy.cshtml" />
     <Content Include="Views\Product\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Asset\Image\" />
     <Folder Include="Asset\Js\common\" />
-    <Folder Include="Asset\Js\index\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
