@@ -172,6 +172,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\order_checkoutController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -182,6 +183,10 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Asset\Css\order_checkout\Index.css" />
+    <Content Include="Asset\Css\SignUp\Index.css" />
+    <Content Include="Asset\Js\order_checkout\Index.js" />
+    <Content Include="Asset\Js\SignUp\Index.js" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-reboot.css" />
@@ -343,10 +348,10 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Asset\Css\" />
     <Folder Include="Asset\Image\" />
     <Folder Include="Asset\Js\common\" />
     <Folder Include="Asset\Js\index\" />
+    <Folder Include="Views\order_checkout\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
