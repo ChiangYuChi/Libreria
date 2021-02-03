@@ -1,0 +1,252 @@
+﻿
+@{
+    ViewBag.Title = "MemberLogin";
+}
+
+
+<section class="member-center">
+    <div class="container-fluid pt-5">
+        <div class="row   justify-content-center align-items-center col-sm-12 col-md-10 col-lg-9 m-auto p-0">
+            <div class="breadcrumb-member w-100 ">
+                <a href="#">首頁</a>
+                <i class="fas fa-chevron-right"></i>
+                <a href="#">登入會員</a>
+            </div>
+        </div>
+
+        <div class="row col-sm-11 col-md-10 col-lg-9 m-auto p-0 ">
+            <div class="member-login-request d-none d-lg-block col-3">
+                <div class="warning">
+                    <div class="warning-wording pt-5 ">
+                        <div class="pic"><img src="../project-bookstore/img/smlogo_v2.png" alt=""></div>
+                        <div class="bg-color"></div>
+                        <p>Books and Everything in Between</p>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-12 col-lg-9 member-level d-flex flex-wrap ">
+                <div class="name w-75">Member Name</div>
+
+                <div class="level-info d-flex col-12">
+                    <div class="pic"> <i class="fal fa-cubes"></i></div>
+
+                    <div class="level-detail d-flex flex-row flex-wrap">
+                        <div class="cardlevel w-100">
+                            白卡會員(台灣)
+                        </div>
+
+                        <div class="point">Liberia 點數 <span>102</span> </div>
+                        <div class="amount">消費金額 <span> 945元</span></div>
+                        <div class="times">消費次數 <span>2 次</span></div>
+                        <span class="w-100">消費達6,000即可升等金卡會員</span>
+
+                    </div>
+                    <div class="member-account-link ">
+                        <a href="">我的會員帳戶<i class="fal fa-chevron-right"></i> </a>
+                    </div>
+                </div>
+
+            </div>
+            <div class="member-login-request-sm col-12 d-md-block d-lg-none">
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .body-content{
+        display:flex;
+        flex-direction:column;
+        border: 1px solid red;
+    }
+    .member-center .row .breadcrumb-member {
+        padding: 0 0 25px 0px;
+    }
+
+        .member-center .row .breadcrumb-member a {
+            color: #b0b0b0;
+            font-family: 'Noto Sans TC', sans-serif;
+            font-size: 16px;
+            line-height: 31px;
+        }
+
+        .member-center .row .breadcrumb-member .fas {
+            font-size: 12px;
+            padding-bottom: 5px;
+            color: #b0b0b0;
+            margin-bottom: 5px;
+        }
+
+        .member-center .row .breadcrumb-member .fas,
+        .member-center .row .breadcrumb-member a + a {
+            padding: 0 15px;
+        }
+
+    .member-center .row .member-login-request {
+        background-image: url(../../Asset/Image/member-card.png);
+        height: 300px;
+        width: 300px;
+        position: relative;
+        border-radius: 14px;
+    }
+
+    .member-center .row .member-login-request-sm {
+        height: 150px;
+    }
+
+    .member-center .row .warning {
+        font-family: 'Noto Sans TC', sans-serif;
+        font-size: 18px;
+        text-align: center;
+        width: 100%;
+        font-weight: 400;
+    }
+
+        .member-center .row .warning .pic {
+            margin-top: 40px;
+        }
+
+            .member-center .row .warning .pic img {
+                width: 70%;
+                margin-bottom: auto;
+            }
+
+        .member-center .row .warning .bg-color {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.1);
+            border-radius: 14px;
+        }
+
+        .member-center .row .warning p {
+            font-family: 'EB Garamond', serif;
+            font-weight: bold;
+            font-size: 16px;
+            margin-top: 50px;
+        }
+
+    .member-center .row .member-level {
+        padding: 30px;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+
+        .member-center .row .member-level .name {
+            font-size: 30px;
+            font-family: 'Noto Sans TC', sans-serif;
+            font-weight: 700;
+            padding-bottom: 40px;
+        }
+
+        .member-center .row .member-level .level-info {
+            border-bottom: 1px solid #e3e3e3;
+            position: relative;
+        }
+
+            .member-center .row .member-level .level-info .pic {
+                width: 100px;
+                display: -webkit-box;
+                display: -ms-flexbox;
+                display: flex;
+                -webkit-box-pack: center;
+                -ms-flex-pack: center;
+                justify-content: center;
+                -webkit-box-align: center;
+                -ms-flex-align: center;
+                align-items: center;
+            }
+
+                .member-center .row .member-level .level-info .pic .fal {
+                    font-size: 3em;
+                    width: 1.6em;
+                    text-align: center;
+                    line-height: 1.6em;
+                    background: #666;
+                    color: #fff;
+                    border-radius: 0.8em;
+                    -webkit-transform: rotate(45deg);
+                    transform: rotate(45deg);
+                }
+
+            .member-center .row .member-level .level-info .level-detail {
+                padding: 13px;
+            }
+
+                .member-center .row .member-level .level-info .level-detail .cardlevel {
+                    font-family: 'Noto Sans TC', sans-serif;
+                    font-size: 20px;
+                    font-weight: 500;
+                }
+
+                .member-center .row .member-level .level-info .level-detail .point, .member-center .row .member-level .level-info .level-detail .amount, .member-center .row .member-level .level-info .level-detail .times {
+                    font-size: 16px;
+                    font-family: 'Noto Sans TC', sans-serif;
+                    font-weight: 300;
+                    letter-spacing: 1px;
+                    padding: 3px 0;
+                }
+
+                    .member-center .row .member-level .level-info .level-detail .point span, .member-center .row .member-level .level-info .level-detail .amount span, .member-center .row .member-level .level-info .level-detail .times span {
+                        font-family: 'Montserrat', sans-serif;
+                        font-weight: 600;
+                    }
+
+                    .member-center .row .member-level .level-info .level-detail .point:after, .member-center .row .member-level .level-info .level-detail .amount:after {
+                        padding: 5px;
+                        content: "|";
+                        width: 1px;
+                        font-weight: lighter;
+                        color: #b0b0b0;
+                    }
+
+                .member-center .row .member-level .level-info .level-detail:last-child {
+                    font-size: 13px;
+                }
+
+        .member-center .row .member-level .member-account-link {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+            -webkit-box-align: start;
+            -ms-flex-align: start;
+            align-items: flex-start;
+            position: absolute;
+            bottom: -35%;
+            right: 0;
+        }
+
+            .member-center .row .member-level .member-account-link a {
+                background-color: #707070;
+                color: white;
+                font-family: 'Noto Sans TC', sans-serif;
+                font-size: 16px;
+                padding: 5px;
+                -webkit-box-sizing: border-box;
+                box-sizing: border-box;
+                border-radius: 40px;
+                width: 147px;
+                text-align: center;
+                text-decoration: none;
+                -webkit-transition: all 1s;
+                transition: all 1s;
+            }
+
+                .member-center .row .member-level .member-account-link a:hover {
+                    background-color: white;
+                    color: #707070;
+                    border: 1px solid #707070;
+                }
+
+                .member-center .row .member-level .member-account-link a .fal {
+                    padding-left: 15px;
+                }
+</style>
