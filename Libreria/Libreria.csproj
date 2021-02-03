@@ -183,7 +183,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Asset\Css\Index\Index.css" />
+    <Content Include="Asset\Css\Layout\Nav_bar.css" />
     <Content Include="Asset\Image\Index\Mainpage %281%29.jpg" />
+    <Content Include="Asset\Image\Layout\Logo-grey.png" />
+    <Content Include="Asset\Image\Layout\smlogo.png" />
     <Content Include="Asset\Js\Index\Index.js" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
@@ -344,6 +347,7 @@
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Shared\IndexLayout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\_Layout - Copy.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
