@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Libreria.Service;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,15 +9,21 @@ namespace Libreria.Controllers
 {
     public class ProductController : Controller
     {
-        // GET: Product
-        public ActionResult Index()
+        private readonly ProductService _productService;
+
+        public ProductController()
         {
-            return View();
+            _productService = new ProductService();
         }
 
-        public ActionResult Detail()
+        /// <summary>
+        /// 商品列表頁
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult Index()
         {
-            return View();
+            var result = _productService.GetAll();
+            return View(result);
         }
     }
 }
