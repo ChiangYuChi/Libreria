@@ -51,6 +51,8 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -173,25 +175,40 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MemberCenterController.cs" />
+    <Compile Include="Controllers\OrderController.cs" />
+    <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="Controllers\SalesManController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\EntityModel\Product.cs" />
+    <Compile Include="Models\EntityModel\SalesMan.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\DBContext\BizDbContext.cs" />
+    <Compile Include="Repository\DBRepository.cs" />
+    <Compile Include="Service\ProductService.cs" />
+    <Compile Include="Service\SalesManService.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\ProductViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Asset\Css\Index\fullpage.min.css" />
     <Content Include="Asset\Css\Index\Index.css" />
+    <Content Include="Asset\Css\Index\slick-theme.min.css" />
+    <Content Include="Asset\Css\Index\slick.css" />
     <Content Include="Asset\Css\Layout\Nav_bar.css" />
     <Content Include="Asset\Image\Index\Mainpage %281%29.jpg" />
     <Content Include="Asset\Image\Layout\Logo-grey.png" />
     <Content Include="Asset\Image\Layout\smlogo.png" />
+    <Content Include="Asset\Js\Index\fullpage.min.js" />
     <Content Include="Asset\Js\Index\Index.js" />
     <Content Include="Asset\Image\Logo-grey.png" />
     <Content Include="Asset\Image\member-card.png" />
     <Content Include="Asset\Image\smlogo_v2.png" />
+    <Content Include="Asset\Js\Index\slick.min.js" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-reboot.css" />
@@ -399,11 +416,13 @@
     <Content Include="Views\Shared\IndexLayout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_Layout - Copy.cshtml" />
+    <Content Include="Views\Product\Index.cshtml" />
+    <Content Include="Views\SalesMan\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Asset\Css\" />
     <Folder Include="Asset\Js\common\" />
+    <Folder Include="Views\Order\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
