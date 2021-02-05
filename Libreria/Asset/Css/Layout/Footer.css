@@ -1,0 +1,137 @@
+﻿
+body {
+    background-color: #f0e1b8;
+}
+
+ul {
+    list-style: none;
+}
+
+
+
+/* Logo */
+#brand {
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translateX(-100px);
+}
+
+    #brand img {
+        width: 200px;
+    }
+/* Logoæ¼¢å ¡æ‰“é–‹ç‰ˆ */
+.navbar-brand-hamburger img {
+    width: 100px;
+}
+
+#literial_brand img {
+    max-width: 250px;
+    padding: 30px 0px;
+}
+
+/* navbarä¸»è¦–è¦ºè‰²å½© */
+#nav-iconlist,
+#nav {
+    background-color: #2a2c27;
+}
+
+#search_from {
+    background-color: #2a2c27;
+}
+
+.nav-item i {
+    color: #7e8186;
+}
+
+.nav {
+    position: relative;
+    position: sticky;
+}
+/* navbarå…§éƒ¨æŽ’ç‰ˆèª¿æ•´ */
+#navbarToggler .nav-item {
+    padding: 20px;
+    text-align: center;
+}
+/* æ”¶åˆé¡¯ç¤ºçŸ¯æ­£ */
+.collapse.show + #brand, .collapsing + #brand, .collapse.show + #search-button, .collapsing + #search-button, .collapsing ~ #nav-iconbox, .collapse.show ~ #nav-iconbox {
+    display: none;
+}
+
+/* æ”¶åˆå‹•ç•«ä¿®æ­£ã€è“‹æ¿é¡¯ç¤ºä¿®æ­£ */
+.collapsing {
+    -webkit-transition: all 0.3s linear;
+    transition: all 0.3s linear;
+    display: -moz-popup;
+}
+
+.navbar-collapse.collapse.show {
+    height: 100vh;
+    -webkit-transition: all 0.3s linear;
+    transition: all 0.3s linear;
+    display: -moz-popup;
+}
+
+
+.footer {
+    background-color: #2a2c27;
+    font-family: 'Montserrat', sans-serif;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}
+
+.footer-company h5,
+.footer-account h5,
+.footer-help h5 {
+    color: white;
+    font-weight: bold;
+}
+
+.footer-company a,
+.footer-account a,
+.footer-help a {
+    color: white;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+.footer a:hover {
+    color: white;
+    transition: ease-in .5s;
+}
+
+.footer .pic {
+    text-align: center;
+}
+
+    .footer .pic img {
+        width: 50%;
+        right: -180%;
+    }
+
+.footer-phone {
+    color: white;
+    border-top: 1px solid black;
+    margin-top: 15px;
+    padding: 15px 0;
+    font-size: 14px;
+    letter-spacing: 1px
+}
+
+    .footer-phone p span {
+        margin-right: 10px;
+    }
+
+    .footer-phone .fas,
+    .footer-phone .fab {
+        padding-right: 10px;
+        font-size: 20px;
+    }
+
+        .footer-phone .fab:hover {
+            color: 1px solid black;
+            cursor: pointer;
+            transition: ease-in .5s;
+        }

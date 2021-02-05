@@ -199,6 +199,7 @@
     <Content Include="Asset\Css\Index\Index.css" />
     <Content Include="Asset\Css\Index\slick-theme.min.css" />
     <Content Include="Asset\Css\Index\slick.css" />
+    <Content Include="Asset\Css\Layout\Footer.css" />
     <Content Include="Asset\Css\Layout\Nav_bar.css" />
     <Content Include="Asset\Image\Index\Mainpage %281%29.jpg" />
     <Content Include="Asset\Image\Layout\Logo-grey.png" />
@@ -420,12 +421,10 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_Layout - Copy.cshtml" />
     <Content Include="Views\Product\Index.cshtml" />
-    <Content Include="Views\Product\Index.cshtml" />
     <Content Include="Views\SalesMan\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Asset\Image\" />
     <Folder Include="Asset\Js\common\" />
     <Folder Include="Views\Order\" />
   </ItemGroup>
