@@ -189,6 +189,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\DBContext\BizDbContext.cs" />
     <Compile Include="Repository\DBRepository.cs" />
+    <Compile Include="Service\OrderService.cs" />
     <Compile Include="Service\ProductService.cs" />
     <Compile Include="Service\SalesManService.cs" />
     <Compile Include="Startup.cs" />
@@ -200,6 +201,8 @@
     <Content Include="Asset\Css\Index\slick-theme.min.css" />
     <Content Include="Asset\Css\Index\slick.css" />
     <Content Include="Asset\Css\Layout\Nav_bar.css" />
+    <Content Include="Asset\Css\ShoppingCart\Normalize.css" />
+    <Content Include="Asset\Css\ShoppingCart\ShoppingCart.css" />
     <Content Include="Asset\Image\Index\Mainpage %281%29.jpg" />
     <Content Include="Asset\Image\Layout\Logo-grey.png" />
     <Content Include="Asset\Image\Layout\smlogo.png" />
@@ -418,11 +421,13 @@
     <Content Include="Views\Shared\_Layout - Copy.cshtml" />
     <Content Include="Views\Product\Index.cshtml" />
     <Content Include="Views\SalesMan\Index.cshtml" />
+    <Content Include="Views\Order\Index.cshtml" />
+    <Content Include="Views\Order\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\_OrderLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Asset\Js\common\" />
-    <Folder Include="Views\Order\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
