@@ -5,11 +5,11 @@
     background-color: #ffffff;
 }
 
-a {
+.information a, .contact-block a {
     color: inherit;
 }
 
-    a:hover {
+    .information a:hover, .contact-block a:hover {
         color: inherit;
         text-decoration: inherit;
     }
