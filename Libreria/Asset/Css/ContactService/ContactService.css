@@ -16,7 +16,6 @@ a {
 
 .starcolor {
     color: #d0011b;
-    ;
 }
 
 .contact-service {
@@ -30,6 +29,10 @@ a {
 
 p {
     margin: 0;
+}
+
+.navbar-fix-block {
+    height: 100px;
 }
 
 .customer-service-block {
