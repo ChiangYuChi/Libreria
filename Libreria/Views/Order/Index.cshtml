@@ -1,0 +1,246 @@
+﻿
+@{
+    ViewBag.Title = "ShoppingCart";
+}
+
+@section topCss{
+
+    @*Normalize CSS*@
+    <link href="~/Asset/Css/ShoppingCart/Normalize.css" rel="stylesheet" />
+
+    @*ShoppingCart CSS*@
+    <link href="~/Asset/Css/ShoppingCart/ShoppingCart.css" rel="stylesheet" />
+
+    @*Chinese Font CSS*@
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+
+    @*English/Numbers Font CSS*@
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+}
+
+
+<div class="bodycolor">
+    <div class="container bottom-padding">
+        <div class="product-info outerborder chinese">
+            <div class="product-info_banner row px-0 mx-0 head-block">
+                <h3 class="product-info_banner_title pr-0 m-0 col-12 col-lg-6">商品资讯</h3>
+                <h3 class="col-1 d-none d-lg-flex m-0 px-0 justify-content-center">优惠价</h3>
+                <h3 class="col-2 d-none d-lg-flex m-0 px-0 justify-content-center">数量</h3>
+                <h3 class="col-1 d-none d-lg-flex m-0 px-0 justify-content-center">总计</h3>
+                <div class="col-2 d-none d-lg-flex"></div>
+            </div>
+
+            <div class="product-info_information bg-white p-3">
+                <div class="info-container row">
+                    <div class="col-12 col-lg-6 px-2 px-lg-3 d-flex">
+                        <div class="info-image">
+                            <a href="#">
+                                <img src="https://picsum.photos/110/110/?random=1">
+                            </a>
+                        </div>
+                        <div class="info-description pl-3">
+                            <a href="#">
+                                <span class="product-name font-weight-bold">书名在这里</span>
+                            </a>
+                            <div class="product-activities mt-1">
+                                <a href="#" class="d-flex">
+                                    <div class="icon-content"></div>
+                                    <div class="activity-content">
+                                        <span class="gold-text ml-1">最近书的活动最近书的活动最近书的活动</span>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="product-activities mt-1">
+                                <a href="#" class="d-flex">
+                                    <div class="icon-content"></div>
+                                    <div class="activity-content">
+                                        <span class="gold-text ml-1">最近书的活动最近书的活动最近书的活动</span>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="product-activities mt-1">
+                                <a href="#" class="d-flex">
+                                    <div class="icon-content"></div>
+                                    <div class="activity-content">
+                                        <span class="gold-text ml-1">最近书的活动最近书的活动最近书的活动</span>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="offset-8 offset-lg-0 col-4 col-lg-1 p-0 text-lg-center text-right my-auto pr-3 pr-lg-0 pt-2 pt-lg-0">
+                        <span class="info-unitprice english">$300</span>
+                    </div>
+
+                    <div class="align-self-center col-8 col-lg-2 mt-1 pl-lg-4 pr-lg-0">
+                        <div class="info-item-count">
+                            <button type="button" class="count-minus">
+                                <i class="icon icon-mius"></i>
+                            </button>
+                            <input type="number" maxlength="3" class="count-view">
+                            <button type="button" class="count-plus">
+                                <i class="icon icon-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="col-4 col-lg-1 pr-3 text-right my-auto">
+                        <span class="info-totalprice english">$900</span>
+                    </div>
+
+                    <div class="operation col-12 col-lg-2 p-0 mt-2 pr-2">
+                        <div class="operation-delete py-lg-0">
+                            <span>删除商品</span>
+                        </div>
+                        <div class="split-line"></div>
+                        <div class="operation-favorite py-lg-0">
+                            <span>加入收藏</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="d-flex row align-items-center pt-2">
+                    <div class="col-12 col-lg-7"></div>
+                    <div class="product-subtotal col-8 col-lg-2 d-flex justify-content-end justify-content-lg-center">
+                        <span>商品小计</span>
+                    </div>
+                    <div class="subtotal-price col-4 col-lg-3">
+                        <span class="subtotal-number english">$900</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="promotions outerborder mt-4">
+            <div class="promotions_banner chinese px-0 mx-0 head-block row">
+                <h3 class="promotions_banner_title m-0 col-12 col-lg-9 left">优惠活动</h3>
+                <h3 class="promotions_banner_discount right m-0 d-none d-lg-flex col-lg-3">折抵</h3>
+            </div>
+
+            <div class="promotions_information bg-white py-3">
+                <div class="promotions-info-row row mb-3">
+                    <div class="discount-row col-12 col-lg-10 d-flex mb-3 chinese">
+                        <div class="discount-condition mr-2 px-3 py-1">
+                            <span class="discount-condition-label">已符合</span>
+                        </div>
+                        <div class="discount-wording justify-content-lg-between">
+                            <div class="discount-name">
+                                <span>【2021線上國際書展】圖書滿$888折$100</span>
+                            </div>
+                            <div class="discount-price d-none d-lg-block">
+                                <span>-$100</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-sm-7 pr-0">
+                        <span class="promotions-description chinese">※ 商品若符合多個滿額滿件折扣活動，系統將自動選取「已符合」且「最優惠」的折扣，作為購物車優惠活動計算</span>
+                    </div>
+                    <div class="col-8 col-sm-2 d-flex justify-content-end justify-content-lg-center">
+                        <span class="chinese">优惠活动</span>
+                    </div>
+                    <div class="col-4 col-sm-3 number-color">
+                        <span class="promotions-subtotal-sign">-</span>
+                        <span class="promotions-subtotal english">$100</span>
+                    </div>
+                </div>
+            </div>
+            <div class="promotions-divider col-12 pt-4"></div>
+        </div>
+
+        <div class="coupons outerborder mt-4">
+            <div class="coupons_banner chinese px-0 mx-0 head-block col-12">
+                <h3 class="coupons_banner_title m-0">优惠卷</h3>
+            </div>
+
+            <div class="coupons_information bg-white py-3 px-4">
+                <div>
+                    <div class="row mb-3">
+                        <div class="col-12 pr-0 pr-md-3 chinese">
+                            <span>您有</span>
+                            <span class="coupons-length english number-color">1</span>
+                            <span>張優惠券符合本次訂單可使用條件：</span>
+                            <span class="coupons-rule">(若有尚未領取的序號及通關密語優惠券，請先在「 會員中心>優惠券」領取)</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 px-2 pr-md-3 d-flex justify-content-bewteen">
+                            <div class="coupons-ticket d-lg-flex">
+                                <div class="coupons-ticket-image">
+                                    <div class="mr-2">
+                                        <span class="icon-circle"></span>
+                                    </div>
+                                    <div>
+                                        <div class="coupons-title chinese">
+                                            <span class="d-block">新會員網路入會禮_202101</span>
+                                            <span class="d-block">單筆滿$500即可抵用</span>
+                                        </div>
+                                        <div class="coupons-discount number-color">
+                                            <span>现抵</span>
+                                            <span class="coupons-discount-amount mx-1 english">50</span>
+                                            <span>元</span>
+                                        </div>
+                                        <div class="coupons-date">
+                                            <span>使用期限 2021/1/1-2021/2/28</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="coupons-more-button p-3 d-none d-md-block">
+                                <div class="text-center">
+                                    <div>展开全部</div>
+                                    <div>优惠卷</div>
+                                    <div class="pt-0 m-0 h1">+</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="coupons_subtotal-row bg-white py-3 px-4">
+                <div class="row d-flex align-items-center flex-row-reverse">
+                    <div class="col-4 col-sm-3">
+                        <span class="coupons-subtotal-sign number-color">-</span>
+                        <span class="coupons-subtotal number-color english">$0</span>
+                    </div>
+                    <div class="col-8 col-sm-2 d-flex justify-content-end justify-content-lg-center">
+                        <span>优惠卷</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="amount-summary bg-white mt-4 py-2">
+            <div class="amount-equation px-0 m-0 chinese">
+                <p class="m-0 py-2">
+                    商品小计
+                    <span class="english number-color font-weight-bold"> $900 </span>
+                    <span class="english number-color font-weight-bold">- </span>
+                    优惠活动
+                    <span class="english number-color font-weight-bold"> $100 </span>
+                    <span class="english number-color font-weight-bold">- </span>
+                    优惠卷
+                    <span class="english number-color font-weight-bold"> $0</span>
+                </p>
+            </div>
+
+            <div class="amount-total d-flex chinese">
+                <div class="amount-total_display p-0 m-0 d-flex justify-content-center">
+                    <p class="m-0">
+                        商品总金额
+                        <span class="english number-color font-weight-bold total-price-size"> $ 800</span>
+                    </p>
+                </div>
+                <div class="amount-total_button p-0">
+                    <button>结账</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
