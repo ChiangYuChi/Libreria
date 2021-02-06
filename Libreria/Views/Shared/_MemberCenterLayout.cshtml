@@ -1,13 +1,15 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - 我的 ASP.NET 應用程式</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-<link href="~/Content/fontawesome-all.min.css" rel="stylesheet" />
+    @RenderSection("topCss", required: false)
+    @RenderSection("topJs", required: false)
+    <link href="~/Content/fontawesome-all.min.css" rel="stylesheet" />
 </head>
 <body class="pt-0">
     <div class="search_form collapse " id="search_from">
@@ -103,7 +105,7 @@
     <div class="container body-content d-flex">
         @RenderBody()
 
-        <div class="dashboard mt-5 p-5" >
+        <div class="dashboard mt-5 p-5">
 
             <div class="member-amount">
                 <div class="container">
@@ -247,10 +249,10 @@
                 </div>
             </div>
         </div>
-        
+
 
     </div>
-   
+
 
     <section class="footer px-5">
         <div class="container">
@@ -299,6 +301,9 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+    @RenderSection("botCss", required: false)
+    @RenderSection("botJs", required: false)
+</body>
 </body>
 </html>
 

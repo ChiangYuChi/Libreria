@@ -21,5 +21,13 @@ namespace Libreria.Controllers
         {
             return View();
         }
+        /// <summary>
+        /// 購物車明細
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult OrderDetail()
+        {
+            return View();
+        }
     }
 }

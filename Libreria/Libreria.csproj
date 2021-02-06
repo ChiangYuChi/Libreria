@@ -201,7 +201,10 @@
     <Content Include="Asset\Css\Index\slick-theme.min.css" />
     <Content Include="Asset\Css\Index\slick.css" />
     <Content Include="Asset\Css\Layout\Nav_bar.css" />
+    <Content Include="Asset\Css\MemberInfo\member_info.css" />
+    <Content Include="Asset\Css\Passward\Passward.css" />
     <Content Include="Asset\Css\ShoppingCart\Normalize.css" />
+    <Content Include="Asset\Css\ShoppingCart\OrderDetail.css" />
     <Content Include="Asset\Css\ShoppingCart\ShoppingCart.css" />
     <Content Include="Asset\Image\Index\Mainpage %281%29.jpg" />
     <Content Include="Asset\Image\Layout\Logo-grey.png" />
@@ -212,6 +215,7 @@
     <Content Include="Asset\Image\member-card.png" />
     <Content Include="Asset\Image\smlogo_v2.png" />
     <Content Include="Asset\Js\Index\slick.min.js" />
+    <Content Include="Asset\Js\ShoppingCart\OrderDetail.js" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-reboot.css" />
@@ -424,6 +428,8 @@
     <Content Include="Views\Order\Index.cshtml" />
     <Content Include="Views\Order\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_OrderLayout.cshtml" />
+    <Content Include="Views\Order\OrderDetail.cshtml" />
+    <Content Include="Views\MemberCenter\MemberInfo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
