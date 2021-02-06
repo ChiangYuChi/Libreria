@@ -8,6 +8,13 @@ namespace Libreria.Controllers
 {
     public class OrderController : Controller
     {
+        private readonly OrderService _orderService;
+
+        public OrderController()
+        {
+            _orderService = new OrderService();
+        }
+
         // GET: Order
         public ActionResult Index()
         {
