@@ -4,63 +4,82 @@
 }
 
 
-<section class="member-center">
+<section class="member-center pb-5">
     <div class="container-fluid pt-5">
-        <div class="row   justify-content-center align-items-center col-sm-12 col-md-10 col-lg-9 m-auto p-0">
-            <div class="breadcrumb-member w-100 ">
-                <a href="#">首頁</a>
-                <i class="fas fa-chevron-right"></i>
-                <a href="#">登入會員</a>
-            </div>
-        </div>
-
-        <div class="row col-sm-11 col-md-10 col-lg-9 m-auto p-0 ">
-            <div class="member-login-request d-none d-lg-block col-3">
-                <div class="warning">
-                    <div class="warning-wording pt-5 ">
-                        <div class="pic"><img src="../project-bookstore/img/smlogo_v2.png" alt=""></div>
-                        <div class="bg-color"></div>
-                        <p>Books and Everything in Between</p>
-                    </div>
+        <div class="row col-lg-10 m-auto">
+            <div class="row   justify-content-center align-items-center col-sm-12 col-md-10 col-lg-12 m-auto p-0 ">
+                <div class="breadcrumb-member w-100 ">
+                    <a href="#">首頁</a>
+                    <i class="fas fa-chevron-right"></i>
+                    <a href="#">登入會員</a>
                 </div>
-
             </div>
-            <div class="col-12 col-lg-9 member-level d-flex flex-wrap ">
-                <div class="name w-75">Member Name</div>
 
-                <div class="level-info d-flex col-12">
-                    <div class="pic"> <i class="fal fa-cubes"></i></div>
+            <div class="row col-sm-11 col-md-10 col-lg-12 m-auto p-0 d-flex">
 
-                    <div class="level-detail d-flex flex-row flex-wrap">
-                        <div class="cardlevel w-100">
-                            白卡會員(台灣)
+                <div class=" member-level d-flex flex-wrap ">
+                    <div class="member-login-request d-none d-lg-block col-3 mt-5">
+                        <div class="warning">
+                            <div class="warning-wording pt-5 ">
+                                <div class="pic"><img src="../project-bookstore/img/smlogo_v2.png" alt=""></div>
+                                <div class="bg-color"></div>
+                                <p>Books and Everything in Between</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="level-info d-flex col-9  pt-3 m-auto" ">
+                        <div class="row ">
+
+                            <div class="level-detail  col-lg-12">
+                                <div class="row  d-flex flex-row flex-wrap " >
+                                    <div class="pic col-3 "> <i class="fas fa-cubes"></i></div>
+                                    <div class="cardlevel col-9 d-flex flex-wrap">
+
+                                        <div class="name w-100">
+                                            白卡會員(台灣) Member Name
+                                        </div>
+                                        <div class="point">Liberia 點數 <span>102</span> </div>
+                                        <div class="amount">消費金額 <span> 945元</span></div>
+                                        <div class="times">消費次數 <span>2 次</span></div>
+
+
+                                        <span class="w-100">消費達6,000即可升等金卡會員</span>
+                                        @*<div class="member-account-link ">
+                                        <a href="">我的會員帳戶<i class="fal fa-chevron-right"></i> </a>
+                                    </div>*@
+                                    </div>
+
+
+                                </div>
+
+                            </div>
+
+                            <div>
+                                @Html.Partial("_MemberCenterPartial")<div>
+
+
+                            </div>
+
                         </div>
 
-                        <div class="point">Liberia 點數 <span>102</span> </div>
-                        <div class="amount">消費金額 <span> 945元</span></div>
-                        <div class="times">消費次數 <span>2 次</span></div>
-                        <span class="w-100">消費達6,000即可升等金卡會員</span>
 
                     </div>
-                    <div class="member-account-link ">
-                        <a href="">我的會員帳戶<i class="fal fa-chevron-right"></i> </a>
-                    </div>
+
+
                 </div>
-
             </div>
-            <div class="member-login-request-sm col-12 d-md-block d-lg-none">
 
-            </div>
         </div>
-    </div>
+
 </section>
 
 <style>
-    .body-content{
-        display:flex;
-        flex-direction:column;
-        border: 1px solid red;
+
+    .member-center{
+        padding-bottom: 100px;
     }
+
+
     .member-center .row .breadcrumb-member {
         padding: 0 0 25px 0px;
     }
@@ -84,13 +103,14 @@
             padding: 0 15px;
         }
 
-    .member-center .row .member-login-request {
-        background-image: url(../../Asset/Image/member-card.png);
-        height: 300px;
-        width: 300px;
-        position: relative;
-        border-radius: 14px;
-    }
+        .member-center .row .member-login-request {
+            background-image: url(../../Asset/Image/member-card.png);
+           height: 400px;
+            
+            width: 300px;
+            position: relative;
+            border-radius: 14px;
+        }
 
     .member-center .row .member-login-request-sm {
         height: 150px;
@@ -132,7 +152,7 @@
         }
 
     .member-center .row .member-level {
-        padding: 30px;
+     ;
         -webkit-box-sizing: border-box;
         box-sizing: border-box;
     }
@@ -141,11 +161,11 @@
             font-size: 30px;
             font-family: 'Noto Sans TC', sans-serif;
             font-weight: 700;
-            padding-bottom: 40px;
+            padding-bottom: 5px;
         }
 
         .member-center .row .member-level .level-info {
-            border-bottom: 1px solid #e3e3e3;
+           
             position: relative;
         }
 
@@ -162,7 +182,7 @@
                 align-items: center;
             }
 
-                .member-center .row .member-level .level-info .pic .fal {
+                .member-center .row .member-level .level-info .pic .fas {
                     font-size: 3em;
                     width: 1.6em;
                     text-align: center;
@@ -178,19 +198,25 @@
                 padding: 13px;
             }
 
+   
+
                 .member-center .row .member-level .level-info .level-detail .cardlevel {
                     font-family: 'Noto Sans TC', sans-serif;
                     font-size: 20px;
                     font-weight: 500;
+                  
                 }
+                    .member-center .row .member-level .level-info .level-detail .cardlevel span{
+                        font-size: 16px;
+                    }
 
-                .member-center .row .member-level .level-info .level-detail .point, .member-center .row .member-level .level-info .level-detail .amount, .member-center .row .member-level .level-info .level-detail .times {
-                    font-size: 16px;
-                    font-family: 'Noto Sans TC', sans-serif;
-                    font-weight: 300;
-                    letter-spacing: 1px;
-                    padding: 3px 0;
-                }
+                    .member-center .row .member-level .level-info .level-detail .point, .member-center .row .member-level .level-info .level-detail .amount, .member-center .row .member-level .level-info .level-detail .times {
+                        font-size: 16px;
+                        font-family: 'Noto Sans TC', sans-serif;
+                        font-weight: 300;
+                        letter-spacing: 1px;
+                        padding: 3px 0;
+                    }
 
                     .member-center .row .member-level .level-info .level-detail .point span, .member-center .row .member-level .level-info .level-detail .amount span, .member-center .row .member-level .level-info .level-detail .times span {
                         font-family: 'Montserrat', sans-serif;
@@ -249,4 +275,84 @@
                 .member-center .row .member-level .member-account-link a .fal {
                     padding-left: 15px;
                 }
-</style>
+
+
+
+
+
+    .box {
+        margin: 10px;
+    }
+
+    .item {
+        margin: 10px;
+    }
+
+    a {
+        color: black;
+        text-decoration: none;
+    }
+
+        a:hover {
+            color: black;
+            text-decoration: none;
+        }
+
+    p {
+        margin: 0;
+    }
+
+    .fas,
+    .fab {
+        color: #8a6927;
+    }
+
+    .member-amount .box {
+        border-bottom: 1px solid #ccc;
+        background-color: #ffffff;
+    }
+
+    .member-amount .item {
+        margin-bottom: 0px;
+        display: flex;
+        position: relative;
+    }
+
+    .member-amount p {
+        display: inline;
+    }
+
+    .member-amount span {
+        font-size: 22px;
+        color: #8a6927;
+    }
+
+    .right-icon .fa-chevron-right {
+        color: #999999;
+        position: absolute;
+        bottom: 6px;
+        right: 0px;
+    }
+
+    .member-dash .item {
+        /* justify-content: center;
+            vertical-align: center;
+            display: inline; */
+        text-align: center;
+        margin: 20px;
+    }
+
+    .member-dash .box {
+        border: 2px solid #eee;
+        border-radius: 2.1px;
+        background-color: #fff;
+    }
+
+    .box:hover {
+        background-color: #ddd;
+    }
+
+    .box:active {
+        background-color: #ccc;
+    }
+    </style>
