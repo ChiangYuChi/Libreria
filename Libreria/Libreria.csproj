@@ -200,6 +200,7 @@
     <Content Include="Asset\Css\Index\Index.css" />
     <Content Include="Asset\Css\Index\slick-theme.min.css" />
     <Content Include="Asset\Css\Index\slick.css" />
+    <Content Include="Asset\Css\Layout\Footer.css" />
     <Content Include="Asset\Css\Layout\Nav_bar.css" />
     <Content Include="Asset\Css\ShoppingCart\Normalize.css" />
     <Content Include="Asset\Css\ShoppingCart\ShoppingCart.css" />
@@ -413,8 +414,7 @@
     <Content Include="webfonts\fa-brands-400.ttf" />
     <Content Include="webfonts\fa-brands-400.eot" />
     <Content Include="Views\MemberCenter\MemberLogin.cshtml" />
-    <Content Include="Views\MemberCenter\_ViewStart.cshtml" />
-    <Content Include="Views\Shared\_MemberCenterLayout.cshtml" />
+    <Content Include="Views\Shared\Wait4Delete_MemberCenterLayout.cshtml" />
     <Content Include="Views\MemberCenter\MemberLogout.cshtml" />
     <Content Include="Views\Shared\IndexLayout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
@@ -424,6 +424,9 @@
     <Content Include="Views\Order\Index.cshtml" />
     <Content Include="Views\Order\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_OrderLayout.cshtml" />
+    <Content Include="Views\Shared\_MemberCenterPartial.cshtml" />
+    <Content Include="Views\MemberCenter\MemberOrderInquery.cshtml" />
+    <Content Include="Views\MemberCenter\MemberPasswordConfirm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
