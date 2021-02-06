@@ -71,3 +71,7 @@ ul {
     transition: all 0.3s linear;
     display: -moz-popup;
 }
+
+.body-content {
+    padding-top: 80px
+}
