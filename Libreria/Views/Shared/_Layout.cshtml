@@ -13,10 +13,11 @@
           crossorigin="anonymous" />
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-    @RenderSection("topCss", required: false)
-    @RenderSection("topJs", required: false)
 
 <link href="~/Content/fontawesome-all.min.css" rel="stylesheet" />
+    @RenderSection("topCSS", required: false)
+    @RenderSection("topJS", required: false)
+
 </head>
 <body class="p-0">
     <div class="search_form collapse" id="search_from">

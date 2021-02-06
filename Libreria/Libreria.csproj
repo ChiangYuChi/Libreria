@@ -167,17 +167,20 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\BundleConfig2.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ContactServiceController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MemberCenterController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\SalesManController.cs" />
+    <Compile Include="Controllers\MemberController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -220,6 +223,9 @@
     <Content Include="Asset\Image\member-card.png" />
     <Content Include="Asset\Image\smlogo_v2.png" />
     <Content Include="Asset\Js\Index\slick.min.js" />
+    <Content Include="Asset\Css\ContactService\ContactService.css" />
+    <Content Include="Asset\Css\Member\Member.css" />
+    <Content Include="Asset\Js\ContactService\ContactService.js" />
     <Content Include="Asset\Js\ShoppingCart\OrderDetail.js" />
     <Content Include="Asset\Js\Home-Index\slick.min.js" />
     <Content Include="Content\bootstrap-grid.css" />
@@ -429,6 +435,8 @@
     <Content Include="Views\Shared\_Layout - Copy.cshtml" />
     <Content Include="Views\Product\Index.cshtml" />
     <Content Include="Views\SalesMan\Index.cshtml" />
+    <Content Include="Views\Member\Index.cshtml" />
+    <Content Include="Views\ContactService\Index.cshtml" />
     <Content Include="Views\Order\Index.cshtml" />
     <Content Include="Views\Order\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_OrderLayout.cshtml" />
@@ -440,7 +448,12 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Asset\Css\" />
+    <Folder Include="Asset\Image\" />
     <Folder Include="Asset\Js\common\" />
+    <Folder Include="Views\Order\" />
+    <Folder Include="Asset\Js\index\" />
+    <Folder Include="Data\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
