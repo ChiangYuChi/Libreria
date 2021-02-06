@@ -418,7 +418,6 @@
     <Content Include="webfonts\fa-brands-400.ttf" />
     <Content Include="webfonts\fa-brands-400.eot" />
     <Content Include="Views\MemberCenter\MemberLogin.cshtml" />
-    <Content Include="Views\Shared\Wait4Delete_MemberCenterLayout.cshtml" />
     <Content Include="Views\MemberCenter\MemberLogout.cshtml" />
     <Content Include="Views\Shared\IndexLayout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
