@@ -1,0 +1,48 @@
+﻿@section topCSS {
+    <link rel="stylesheet" href="~/Asset/Css/MemberLogin/member-login.css">
+}
+
+<section class="member">
+    <div class="container-fluid pt-5">
+        <div class="row   justify-content-center align-items-center col-sm-12 col-md-10 col-lg-9 m-auto p-0">
+            <div class="breadcrumb-member w-100 ">
+                <a href="#">首頁</a>
+                <i class="fas fa-chevron-right"></i>
+                <a href="#">登入會員</a>
+            </div>
+        </div>
+        <div class="row justify-content-center align-items-center col-sm-11 col-md-10 col-lg-9 m-auto ">
+            <div class=" member-login  col-sm-12 col-lg-6">
+                <div class="login-head">
+                    <div class="title">
+                        <span>▍</span>
+                        <span>登入會員</span>
+                    </div>
+                    <div class="register">
+                        <span>還不是我們的會員嗎? <a href="#">註冊會員</a></span>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <label>
+                        <span>帳號</span> <br />
+                        <input type="text" name="name" id="name" placeholder="證件號碼/台灣手機/會員卡號/自訂帳號"> <br />
+                        <span>帳號為必填</span>
+                    </label>
+                    <label>
+
+                        <div class="mvc-fix">
+                            <span>密碼</span> <span class="forget-password-span"><a href="#">忘記密碼</a></span> <br />
+                        </div>
+
+                        <input type="text" name="password" id="password" placeholder="請輸入密碼">
+
+                    </label>
+                    <span class="password-wording">※ 申辦會員首次登入預設密碼為西元生日 ex:19880505</span>
+                    <input type="submit" id="login" value="登入">
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+

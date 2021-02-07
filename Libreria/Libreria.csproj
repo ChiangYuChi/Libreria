@@ -177,6 +177,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MemberCenterController.cs" />
+    <Compile Include="Controllers\MemberLoginController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\SalesManController.cs" />
@@ -204,6 +205,7 @@
     <Content Include="Asset\Css\Index\slick-theme.min.css" />
     <Content Include="Asset\Css\Index\slick.css" />
     <Content Include="Asset\Css\Layout\Nav_bar.css" />
+    <Content Include="Asset\Css\MemberLogin\member-login.css" />
     <Content Include="Asset\Css\ShoppingCart\Normalize.css" />
     <Content Include="Asset\Css\ShoppingCart\ShoppingCart.css" />
     <Content Include="Asset\Image\Index\Mainpage %281%29.jpg" />
@@ -432,14 +434,11 @@
     <Content Include="Views\Shared\_OrderLayout.cshtml" />
     <Content Include="Views\Member\Index.cshtml" />
     <Content Include="Views\ContactService\Index.cshtml" />
+    <Content Include="Views\MemberLogin\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Asset\Css\" />
-    <Folder Include="Asset\Image\" />
     <Folder Include="Asset\Js\common\" />
-    <Folder Include="Views\Order\" />
-    <Folder Include="Asset\Js\index\" />
     <Folder Include="Data\" />
   </ItemGroup>
   <ItemGroup>
