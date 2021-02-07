@@ -445,14 +445,12 @@
     <Content Include="Views\Shared\_MemberCenterPartial.cshtml" />
     <Content Include="Views\MemberCenter\MemberOrderInquery.cshtml" />
     <Content Include="Views\MemberCenter\MemberPasswordConfirm.cshtml" />
+    <Content Include="Views\MemberCenter\ChangePassward.cshtml" />
+    <Content Include="Views\MemberCenter\_ViewStart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Asset\Css\" />
-    <Folder Include="Asset\Image\" />
     <Folder Include="Asset\Js\common\" />
-    <Folder Include="Views\Order\" />
-    <Folder Include="Asset\Js\index\" />
     <Folder Include="Data\" />
   </ItemGroup>
   <ItemGroup>

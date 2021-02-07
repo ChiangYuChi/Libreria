@@ -1,3 +1,17 @@
 .container{
     padding-top: 200px;
 }
+
+.inputbox{
+    padding-bottom: 50px;
+    display: flex;
+}
+
+.form-input{
+    padding-top: 100px
+}
+
+.inputbox p{
+    padding-top: 5px;
+    padding-right: 15px;
+}
