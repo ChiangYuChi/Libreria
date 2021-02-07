@@ -27,6 +27,74 @@
     color: #a82130;
 }
 
+
+/*123*/
+.header {
+    display: flex;
+    margin-top: 100px;
+}
+
+.header_step {
+    margin: auto;
+    margin-top: 50px;
+    margin-bottom: 30px;
+}
+
+.header_step_icon {
+    display: flex;
+    margin: 0px 20px 0px 10px;
+    margin-top: 20px;
+}
+
+.header_step_txt {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+    .header_step_txt p {
+        font-size: .9375rem;
+    }
+
+.header_step_icon_num {
+    width: 1.6rem;
+    height: 1.6rem;
+    border-radius: 50%;
+    background-color: black;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.header_step_icon span {
+    color: white;
+    padding: 5px;
+    vertical-align: baseline;
+    font-size: 20px;
+}
+
+.header_step_line {
+    width: 100px;
+    margin: 0 .5rem;
+    border-top: 1px solid black;
+    position: relative;
+    top: 13px;
+}
+
+.header_step_txt_words span {
+    color: rgb(151, 148, 148);
+}
+
+.header_step_txt_words h1 {
+    font-size: 15px;
+    padding-top: 5px;
+}
+
+.num2, .num3 {
+    background-color: rgb(151, 148, 148);
+}
+
 /* 标头设定 */
 .head-block {
     background-color: black;
