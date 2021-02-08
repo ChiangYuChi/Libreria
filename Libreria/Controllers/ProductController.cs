@@ -22,8 +22,9 @@ namespace Libreria.Controllers
         /// <returns></returns>
         public ActionResult Index()
         {
-            var result = _productService.GetAll();
-            return View(result);
+            //var result = _productService.GetAll();
+            //return View(result);
+            return View();
         }
     }
 }
