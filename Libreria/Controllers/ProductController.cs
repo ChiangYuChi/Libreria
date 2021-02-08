@@ -9,11 +9,11 @@ namespace Libreria.Controllers
 {
     public class ProductController : Controller
     {
-        private readonly ProductService _productService;
+
 
         public ProductController()
         {
-            _productService = new ProductService();
+
         }
 
         /// <summary>
@@ -22,8 +22,14 @@ namespace Libreria.Controllers
         /// <returns></returns>
         public ActionResult Index()
         {
-            var result = _productService.GetAll();
-            return View(result);
+            //var result = _productService.GetAll();
+            //return View(result);
+            return View();
+            
+        }
+        public ActionResult ProductIndex()
+        {
+            return View();
         }
     }
 }
