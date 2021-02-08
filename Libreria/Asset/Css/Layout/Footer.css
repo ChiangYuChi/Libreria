@@ -76,9 +76,6 @@ ul {
 .footer {
     background-color: #2a2c27;
     font-family: 'Montserrat', sans-serif;
-    position: fixed;
-    left: 0;
-    bottom: 0;
     width: 100%;
 }
 
