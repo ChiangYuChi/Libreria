@@ -3,69 +3,69 @@ body {
     background-color: #f0e1b8;
 }
 
-#Nav_bar ul {
+ul {
     list-style: none;
 }
 
 
 
 /* Logo */
-#Nav_bar #brand {
+#brand {
     position: absolute;
     top: 55%;
     left: 50%;
     transform: translateX(-75px);
 }
 
-    #Nav_bar #brand img {
+    #brand img {
         width: 150px;
     }
 /* Logo漢堡打開版 */
-#Nav_bar .navbar-brand-hamburger img {
+.navbar-brand-hamburger img {
     width: 100px;
 }
 
-#Nav_bar #literial_brand img {
+#literial_brand img {
     max-width: 250px;
     padding: 30px 0px;
 }
 
 /* navbar主視覺色彩 */
-#Nav_bar #nav-iconlist,
-#Nav_bar #nav {
+#nav-iconlist,
+#nav {
     background-color: #2a2c27;
 }
 
-#Nav_bar #search_from {
+#search_from {
     background-color: #2a2c27;
 }
 
-#Nav_bar .nav-item i {
+.nav-item i {
     color: #7e8186;
 }
 
-#Nav_bar .nav {
+.nav {
     position: relative;
     position: sticky;
 }
 /* navbar內部排版調整 */
-#Nav_bar #navbarToggler .nav-item {
+#navbarToggler .nav-item {
     padding: 20px;
     text-align: center;
 }
 /* 收合顯示矯正 */
-#Nav_bar .collapse.show + #brand, #Nav_bar .collapsing + #brand, #Nav_bar .collapse.show + #search-button, #Nav_bar .collapsing + #search-button, #Nav_bar .collapsing ~ #nav-iconbox, #Nav_bar .collapse.show ~ #nav-iconbox {
+.collapse.show + #brand, .collapsing + #brand, .collapse.show + #search-button, .collapsing + #search-button, .collapsing ~ #nav-iconbox, .collapse.show ~ #nav-iconbox {
     display: none;
 }
 
 /* 收合動畫修正、蓋板顯示修正 */
-#Nav_bar .collapsing {
+.collapsing {
     -webkit-transition: all 0.3s linear;
     transition: all 0.3s linear;
     display: -moz-popup;
 }
 
-#Nav_bar .navbar-collapse .collapse.show {
+.navbar-collapse.collapse.show {
     height: 100vh;
     -webkit-transition: all 0.3s linear;
     transition: all 0.3s linear;
