@@ -557,6 +557,8 @@
     <Content Include="Views\Shared\_MemberCenterPartial.cshtml" />
     <Content Include="Views\MemberCenter\MemberOrderInquery.cshtml" />
     <Content Include="Views\MemberCenter\MemberPasswordConfirm.cshtml" />
+    <Content Include="Views\MemberCenter\ChangePassward.cshtml" />
+    <Content Include="Views\MemberCenter\_ViewStart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
