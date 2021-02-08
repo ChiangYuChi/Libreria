@@ -19,5 +19,19 @@ namespace Libreria.Controllers
             return View();
         }
         
+        public ActionResult MemberOrderInquery()
+        {
+            return View();
+        }
+
+        public ActionResult MemberPasswordConfirm()
+        {
+            return View();
+        }
+
+        public ActionResult PartialViewTest()
+        {
+            return View();
+        }
     }
 }

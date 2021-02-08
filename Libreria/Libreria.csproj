@@ -204,6 +204,11 @@
     <Content Include="Asset\Css\Index\Index.css" />
     <Content Include="Asset\Css\Index\slick-theme.min.css" />
     <Content Include="Asset\Css\Index\slick.css" />
+    <Content Include="Asset\Css\Layout\Footer.css" />
+    <Content Include="Asset\Css\Home-Index\fullpage.min.css" />
+    <Content Include="Asset\Css\Home-Index\Index.css" />
+    <Content Include="Asset\Css\Home-Index\slick-theme.min.css" />
+    <Content Include="Asset\Css\Home-Index\slick.css" />
     <Content Include="Asset\Css\Layout\Nav_bar.css" />
     <Content Include="Asset\Css\MemberLogin\member-login.css" />
     <Content Include="Asset\Css\ShoppingCart\Normalize.css" />
@@ -211,11 +216,12 @@
     <Content Include="Asset\Image\Index\Mainpage %281%29.jpg" />
     <Content Include="Asset\Image\Layout\Logo-grey.png" />
     <Content Include="Asset\Image\Layout\smlogo.png" />
-    <Content Include="Asset\Js\Index\fullpage.min.js" />
-    <Content Include="Asset\Js\Index\Index.js" />
+    <Content Include="Asset\Js\Home-Index\fullpage.min.js" />
+    <Content Include="Asset\Js\Home-Index\Index.js" />
     <Content Include="Asset\Image\Logo-grey.png" />
     <Content Include="Asset\Image\member-card.png" />
     <Content Include="Asset\Image\smlogo_v2.png" />
+    <Content Include="Asset\Js\Home-Index\slick.min.js" />
     <Content Include="Asset\Js\Index\slick.min.js" />
     <Content Include="Asset\Css\ContactService\ContactService.css" />
     <Content Include="Asset\Css\Member\Member.css" />
@@ -421,8 +427,7 @@
     <Content Include="webfonts\fa-brands-400.ttf" />
     <Content Include="webfonts\fa-brands-400.eot" />
     <Content Include="Views\MemberCenter\MemberLogin.cshtml" />
-    <Content Include="Views\MemberCenter\_ViewStart.cshtml" />
-    <Content Include="Views\Shared\_MemberCenterLayout.cshtml" />
+    <Content Include="Views\Shared\Wait4Delete_MemberCenterLayout.cshtml" />
     <Content Include="Views\MemberCenter\MemberLogout.cshtml" />
     <Content Include="Views\Shared\IndexLayout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
@@ -432,6 +437,9 @@
     <Content Include="Views\Order\Index.cshtml" />
     <Content Include="Views\Order\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_OrderLayout.cshtml" />
+    <Content Include="Views\Shared\_MemberCenterPartial.cshtml" />
+    <Content Include="Views\MemberCenter\MemberOrderInquery.cshtml" />
+    <Content Include="Views\MemberCenter\MemberPasswordConfirm.cshtml" />
     <Content Include="Views\Member\Index.cshtml" />
     <Content Include="Views\ContactService\Index.cshtml" />
     <Content Include="Views\MemberLogin\Index.cshtml" />
