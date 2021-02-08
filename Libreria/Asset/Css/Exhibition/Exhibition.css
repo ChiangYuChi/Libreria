@@ -1,0 +1,48 @@
+.container-fluid {
+    padding: 40px;
+}
+.row {
+    margin: auto;
+}
+
+.card{
+    border:none;
+}
+.card-body{
+    text-align:center;
+}
+.modal-text {
+    padding: 20px 20px 20px 80px;
+    
+}
+.Add-calender{
+    border: grey 1px solid;
+    border-radius:20px;
+}
+.modal-img {
+    padding: 20px;
+}
+.media-icon i{
+    color:grey;
+}
+
+
+@media screen and (min-width: 992px) {
+    .modal-content {
+        display: flex;
+        width: 250%;
+        left: -75%;
+        transform:translateY(100px);        
+    }
+
+    .modal-body {
+        display: flex;
+        flex-direction: row-reverse;
+    }
+
+    .modal-img img {
+        width: 100%;
+    }
+
+}
+

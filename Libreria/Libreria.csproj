@@ -172,6 +172,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ExhibitionController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MemberCenterController.cs" />
@@ -182,6 +183,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\EntityModel\Exhibition.cs" />
     <Compile Include="Models\EntityModel\Product.cs" />
     <Compile Include="Models\EntityModel\SalesMan.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -189,13 +191,16 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\DBContext\BizDbContext.cs" />
     <Compile Include="Repository\DBRepository.cs" />
+    <Compile Include="Service\ExhibitionService.cs" />
     <Compile Include="Service\OrderService.cs" />
     <Compile Include="Service\ProductService.cs" />
     <Compile Include="Service\SalesManService.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\ExhibitionVIewModel.cs" />
     <Compile Include="ViewModels\ProductViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Asset\Css\Exhibition\Exhibition.css" />
     <Content Include="Asset\Css\Index\fullpage.min.css" />
     <Content Include="Asset\Css\Index\Index.css" />
     <Content Include="Asset\Css\Index\slick-theme.min.css" />
@@ -431,10 +436,12 @@
     <Content Include="Views\Shared\_MemberCenterPartial.cshtml" />
     <Content Include="Views\MemberCenter\MemberOrderInquery.cshtml" />
     <Content Include="Views\MemberCenter\MemberPasswordConfirm.cshtml" />
+    <Content Include="Views\Exhibition\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Asset\Js\common\" />
+    <Folder Include="Views\Register\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
