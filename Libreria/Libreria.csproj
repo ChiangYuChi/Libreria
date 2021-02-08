@@ -196,19 +196,21 @@
     <Compile Include="ViewModels\ProductViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Asset\Css\Index\fullpage.min.css" />
-    <Content Include="Asset\Css\Index\Index.css" />
-    <Content Include="Asset\Css\Index\slick-theme.min.css" />
-    <Content Include="Asset\Css\Index\slick.css" />
     <Content Include="Asset\Css\Home-Index\fullpage.min.css" />
-    <Content Include="Asset\Css\Home-Index\Index.css" />
+    <Content Include="Asset\Css\Home-Index\Home.css" />
     <Content Include="Asset\Css\Home-Index\slick-theme.min.css" />
     <Content Include="Asset\Css\Home-Index\slick.css" />
     <Content Include="Asset\Css\Layout\Footer.css" />
     <Content Include="Asset\Css\Layout\Nav_bar.css" />
     <Content Include="Asset\Css\ShoppingCart\Normalize.css" />
     <Content Include="Asset\Css\ShoppingCart\ShoppingCart.css" />
-    <Content Include="Asset\Image\Index\Mainpage %281%29.jpg" />
+    <Content Include="Asset\Image\Home\0vvet556xwdbjdmchaggwfya1g34yw9u_1400x800.jpg" />
+    <Content Include="Asset\Image\Home\Libreria-SCA-8287_Iwan-Baan_Web.jpg" />
+    <Content Include="Asset\Image\Home\Libreria-SCA-8599-credit-Iwan-Baan-scaled.jpg" />
+    <Content Include="Asset\Image\Home\Libreria-SCA-8694_Web.jpg" />
+    <Content Include="Asset\Image\Home\Libreria-SCA-8716_credit-Iwan-Baan_Web.jpg" />
+    <Content Include="Asset\Image\Home\Mainpage %281%29.jpg" />
+    <Content Include="Asset\Image\Home\Product.jpeg" />
     <Content Include="Asset\Image\Layout\Logo-grey.png" />
     <Content Include="Asset\Image\Layout\smlogo.png" />
     <Content Include="Asset\Image\PorductImages\和路邊的野鳥做朋友：超萌四格漫畫，帶你亂入很有戲的鳥類世界-1.jpg" />
@@ -317,8 +319,7 @@
     <Content Include="Asset\Image\PorductImages\身土不二，從吃開始：尋找善待人與土地的好食物-6.jpg" />
     <Content Include="Asset\Image\PorductImages\身土不二，從吃開始：尋找善待人與土地的好食物-7.jpg" />
     <Content Include="Asset\Image\PorductImages\身土不二，從吃開始：尋找善待人與土地的好食物-Main.jpg" />
-    <Content Include="Asset\Js\Home-Index\fullpage.min.js" />
-    <Content Include="Asset\Js\Home-Index\Index.js" />
+    <Content Include="Asset\Js\Home-Index\home.js" />
     <Content Include="Asset\Image\Logo-grey.png" />
     <Content Include="Asset\Image\member-card.png" />
     <Content Include="Asset\Image\smlogo_v2.png" />
