@@ -349,8 +349,65 @@
 </div>
 
 @section endJs{
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.js"
-            integrity="sha256-DrT5NfxfbHvMHux31Lkhxg42LY6of8TaYyK50jnxRnM=" crossorigin="anonymous"></script>
-    <script src="~/Asset/Js/Home-Index/slick.min.js"></script>
-    <script src="~/Asset/Js/Home-Index/home.js"></script>
+   
+<script src="~/Asset/Js/Home-Index/slick.min.js"></script>
+    <script>
+        //slick slider 效果設定
+        $(".slider").slick({
+            centerMode: true,
+            centerPadding: '0px',
+            slidesToShow: 3,
+            speed: 1000,
+            autoplay: true,
+            arrows: false,
+            dots: true,
+            responsive: [
+                {
+                    breakpoint: 1100,
+                    settings: {
+                        arrows: false,
+                        centerMode: true,
+                        centerPadding: '100px',
+                        slidesToShow: 2,
+                        speed: 1000,
+                        autoplay: true,
+                    }
+                },
+                {
+                    breakpoint: 1024,
+                    settings: {
+                        arrows: false,
+                        centerMode: true,
+                        centerPadding: '0px',
+                        slidesToShow: 2,
+                        speed: 1000,
+                        autoplay: true,
+                    }
+                },
+                {
+                    breakpoint: 480,
+                    settings: {
+                        arrows: false,
+                        centerMode: true,
+                        centerPadding: '0px',
+                        slidesToShow: 1,
+                        speed: 1000,
+                        autoplay: true,
+                        dots: true
+                    }
+                }
+            ]
+        });
+    </script>
+    <script>
+
+        let mediaQueryList = window.matchMedia("(min-width:992px)");
+        function screenTest(x) {
+            if (x.matches) {
+                document.getElementById("navbarToggler").classList.remove("show");
+            }
+        }
+        mediaQueryList.addListener(screenTest);
+
+    </script>
 }

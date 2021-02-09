@@ -210,12 +210,6 @@
     <Compile Include="ViewModels\ProductViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Asset\Css\Index\fullpage.min.css" />
-    <Content Include="Asset\Css\Index\Index.css" />
-    <Content Include="Asset\Css\Index\slick-theme.min.css" />
-    <Content Include="Asset\Css\Index\slick.css" />
-    <Content Include="Asset\Css\Layout\Footer.css" />
-    <Content Include="Asset\Css\Home-Index\fullpage.min.css" />
     <Content Include="Asset\Css\Home-Index\Home.css" />
     <Content Include="Asset\Css\Home-Index\slick-theme.min.css" />
     <Content Include="Asset\Css\Home-Index\slick.css" />
@@ -347,13 +341,10 @@
     <Content Include="Asset\Image\PorductImages\身土不二，從吃開始：尋找善待人與土地的好食物-7.jpg" />
     <Content Include="Asset\Image\PorductImages\身土不二，從吃開始：尋找善待人與土地的好食物-Main.jpg" />
     <Content Include="Asset\Image\MemberCenter\1.jpg" />
-    <Content Include="Asset\Js\Home-Index\fullpage.min.js" />
     <Content Include="Asset\Js\Home-Index\Index.js" />
-    <Content Include="Asset\Js\Home-Index\home.js" />
     <Content Include="Asset\Image\Logo-grey.png" />
     <Content Include="Asset\Image\member-card.png" />
     <Content Include="Asset\Image\smlogo_v2.png" />
-    <Content Include="Asset\Js\Index\slick.min.js" />
     <Content Include="Asset\Css\ContactService\ContactService.css" />
     <Content Include="Asset\Css\Member\Member.css" />
     <Content Include="Asset\Js\ContactService\ContactService.js" />
