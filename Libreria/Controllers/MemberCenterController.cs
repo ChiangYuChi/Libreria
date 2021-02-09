@@ -18,6 +18,17 @@ namespace Libreria.Controllers
         {
             return View();
         }
+
+        public ActionResult MemberInfo()
+        {
+            return View();
+        }
+
+        public ActionResult ChangePassward()
+        {
+            return View();
+        }
+
         
         public ActionResult MemberOrderInquery()
         {

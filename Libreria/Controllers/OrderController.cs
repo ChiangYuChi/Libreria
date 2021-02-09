@@ -17,13 +17,23 @@ namespace Libreria.Controllers
         }
 
         // GET: Order
-        /// <summary>
-        /// 购物流程主页（购物车页面）
-        /// </summary>
-        /// <returns></returns>
         public ActionResult Index()
         {
             return View();
+        }
+        /// <summary>
+        /// 購物車明細
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult OrderDetail()
+        {
+            return View();
+        }
+
+        public ActionResult Test()
+        {
+            var result = _orderService.GetAll();
+            return View(result);
         }
     }
 }

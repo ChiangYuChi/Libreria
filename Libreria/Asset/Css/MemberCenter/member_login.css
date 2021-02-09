@@ -1,0 +1,278 @@
+﻿.member-center {
+    padding-bottom: 100px;
+}
+
+
+    .member-center .row .breadcrumb-member {
+        padding: 0 0 25px 0px;
+    }
+
+        .member-center .row .breadcrumb-member a {
+            color: #b0b0b0;
+            font-family: 'Noto Sans TC', sans-serif;
+            font-size: 16px;
+            line-height: 31px;
+        }
+
+        .member-center .row .breadcrumb-member .fas {
+            font-size: 12px;
+            padding-bottom: 5px;
+            color: #b0b0b0;
+            margin-bottom: 5px;
+        }
+
+        .member-center .row .breadcrumb-member .fas,
+        .member-center .row .breadcrumb-member a + a {
+            padding: 0 15px;
+        }
+
+    .member-center .row .member-login-request {
+        background-image: url(../../Asset/Image/member-card.png);
+        height: 400px;
+        width: 300px;
+        position: relative;
+        border-radius: 14px;
+    }
+
+    .member-center .row .member-login-request-sm {
+        height: 150px;
+    }
+
+    .member-center .row .warning {
+        font-family: 'Noto Sans TC', sans-serif;
+        font-size: 18px;
+        text-align: center;
+        width: 100%;
+        font-weight: 400;
+    }
+
+        .member-center .row .warning .pic {
+            margin-top: 40px;
+        }
+
+            .member-center .row .warning .pic img {
+                width: 70%;
+                margin-bottom: auto;
+            }
+
+        .member-center .row .warning .bg-color {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.1);
+            border-radius: 14px;
+        }
+
+        .member-center .row .warning p {
+            font-family: 'EB Garamond', serif;
+            font-weight: bold;
+            font-size: 16px;
+            margin-top: 50px;
+        }
+
+    .member-center .row .member-level {
+        ;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+
+        .member-center .row .member-level .name {
+            font-size: 30px;
+            font-family: 'Noto Sans TC', sans-serif;
+            font-weight: 700;
+            padding-bottom: 5px;
+        }
+
+        .member-center .row .member-level .level-info {
+            position: relative;
+        }
+
+            .member-center .row .member-level .level-info .pic {
+                width: 100px;
+                display: -webkit-box;
+                display: -ms-flexbox;
+                display: flex;
+                -webkit-box-pack: center;
+                -ms-flex-pack: center;
+                justify-content: center;
+                -webkit-box-align: center;
+                -ms-flex-align: center;
+                align-items: center;
+            }
+
+                .member-center .row .member-level .level-info .pic .fas {
+                    font-size: 3em;
+                    width: 1.6em;
+                    text-align: center;
+                    line-height: 1.6em;
+                    background: #666;
+                    color: #fff;
+                    border-radius: 0.8em;
+                    -webkit-transform: rotate(45deg);
+                    transform: rotate(45deg);
+                }
+
+            .member-center .row .member-level .level-info .level-detail {
+                padding: 13px;
+            }
+
+
+
+                .member-center .row .member-level .level-info .level-detail .cardlevel {
+                    font-family: 'Noto Sans TC', sans-serif;
+                    font-size: 20px;
+                    font-weight: 500;
+                }
+
+                    .member-center .row .member-level .level-info .level-detail .cardlevel span {
+                        font-size: 16px;
+                    }
+
+                .member-center .row .member-level .level-info .level-detail .point, .member-center .row .member-level .level-info .level-detail .amount, .member-center .row .member-level .level-info .level-detail .times {
+                    font-size: 16px;
+                    font-family: 'Noto Sans TC', sans-serif;
+                    font-weight: 300;
+                    letter-spacing: 1px;
+                    padding: 3px 0;
+                }
+
+                    .member-center .row .member-level .level-info .level-detail .point span, .member-center .row .member-level .level-info .level-detail .amount span, .member-center .row .member-level .level-info .level-detail .times span {
+                        font-family: 'Montserrat', sans-serif;
+                        font-weight: 600;
+                    }
+
+                    .member-center .row .member-level .level-info .level-detail .point:after, .member-center .row .member-level .level-info .level-detail .amount:after {
+                        padding: 5px;
+                        content: "|";
+                        width: 1px;
+                        font-weight: lighter;
+                        color: #b0b0b0;
+                    }
+
+                .member-center .row .member-level .level-info .level-detail:last-child {
+                    font-size: 13px;
+                }
+
+        .member-center .row .member-level .member-account-link {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+            -webkit-box-align: start;
+            -ms-flex-align: start;
+            align-items: flex-start;
+            position: absolute;
+            bottom: -35%;
+            right: 0;
+        }
+
+            .member-center .row .member-level .member-account-link a {
+                background-color: #707070;
+                color: white;
+                font-family: 'Noto Sans TC', sans-serif;
+                font-size: 16px;
+                padding: 5px;
+                -webkit-box-sizing: border-box;
+                box-sizing: border-box;
+                border-radius: 40px;
+                width: 147px;
+                text-align: center;
+                text-decoration: none;
+                -webkit-transition: all 1s;
+                transition: all 1s;
+            }
+
+                .member-center .row .member-level .member-account-link a:hover {
+                    background-color: white;
+                    color: #707070;
+                    border: 1px solid #707070;
+                }
+
+                .member-center .row .member-level .member-account-link a .fal {
+                    padding-left: 15px;
+                }
+
+
+
+
+
+.box {
+    margin: 10px;
+}
+
+.item {
+    margin: 10px;
+}
+
+a {
+    color: black;
+    text-decoration: none;
+}
+
+    a:hover {
+        color: black;
+        text-decoration: none;
+    }
+
+p {
+    margin: 0;
+}
+
+.fas,
+.fab {
+    color: #8a6927;
+}
+
+.member-amount .box {
+    border-bottom: 1px solid #ccc;
+    background-color: #ffffff;
+}
+
+.member-amount .item {
+    margin-bottom: 0px;
+    display: flex;
+    position: relative;
+}
+
+.member-amount p {
+    display: inline;
+}
+
+.member-amount span {
+    font-size: 22px;
+    color: #8a6927;
+}
+
+.right-icon .fa-chevron-right {
+    color: #999999;
+    position: absolute;
+    bottom: 6px;
+    right: 0px;
+}
+
+.member-dash .item {
+    /* justify-content: center;
+            vertical-align: center;
+            display: inline; */
+    text-align: center;
+    margin: 20px;
+}
+
+.member-dash .box {
+    border: 2px solid #eee;
+    border-radius: 2.1px;
+    background-color: #fff;
+}
+
+.box:hover {
+    background-color: #ddd;
+}
+
+.box:active {
+    background-color: #ccc;
+}
