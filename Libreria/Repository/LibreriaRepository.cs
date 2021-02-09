@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Libreria.Models.EntityModel;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -6,12 +7,12 @@ using System.Web;
 
 namespace Libreria.Repository
 {
-    public class DBRepository
+    public class LibreriaRepository
     {
         private readonly DbContext _dbContext;
-        public DBRepository()
+        public LibreriaRepository()
         {
-            _dbContext = new BizDbContext();
+            _dbContext = new LibreriaDataModel();
         }
 
         public void Create<T>(T entity) where T : class

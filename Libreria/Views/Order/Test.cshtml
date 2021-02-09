@@ -1,0 +1,15 @@
+﻿@model List<Libreria.ViewModels.OrderViewModel>
+
+@{
+    ViewBag.Title = "Test";
+}
+
+<h2>Test</h2>
+
+@foreach (var item in Model)
+{
+    @item.Id  @item.Name;
+    <br />
+}
+
+

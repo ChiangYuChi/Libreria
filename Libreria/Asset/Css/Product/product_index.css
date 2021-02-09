@@ -1,0 +1,44 @@
+﻿
+.container-fluid{
+    padding:0;
+}
+
+.menu-bar {
+    background-color: #eeeeee;
+    font-family:'Noto Sans TC', sans-serif;
+}
+
+
+.subcategories {
+    float: left;
+    position: relative;
+}
+
+    .subcategories div,
+   {
+        width: 100%;
+        position: absolute;
+        display: none;
+        border-left: 1px solid black;
+        border-bottom: 1px solid black;
+        border-right: 1px solid black;
+    }
+
+
+.cat-link a{
+    text-decoration:none;
+    color:black;
+    font-size: 15px;
+    
+}
+
+.product-index .product-breadcrumb a,
+.product-index .product-breadcrumb fas {
+    font-size: 14px;
+    text-decoration: none;
+    color: black;
+}
+
+.product-index .product-breadcrumb .fas {
+   padding: 0 20px;
+}
