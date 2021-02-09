@@ -13,7 +13,7 @@ body {
     padding-left:0px;
     padding-right:0px;
 }
-.container-fluid, .body-content{
+.container-fluid, .body-content,.pt-5{
     padding-top:0px;
 }
 .First-sight {
