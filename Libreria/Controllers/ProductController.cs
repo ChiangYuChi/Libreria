@@ -20,13 +20,10 @@ namespace Libreria.Controllers
         /// 商品列表頁
         /// </summary>
         /// <returns></returns>
-        public ActionResult Index()
-        {
-            //var result = _productService.GetAll();
-            //return View(result);
-            return View();
-            
-        }
+      
+        
+
+
         public ActionResult ProductIndex()
         {
             return View();

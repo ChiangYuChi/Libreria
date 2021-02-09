@@ -180,7 +180,6 @@
     <Compile Include="Controllers\MemberLoginController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
-    <Compile Include="Controllers\MemberController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -232,6 +231,10 @@
     <Content Include="Asset\Image\Home\Product.jpeg" />
     <Content Include="Asset\Image\Layout\Logo-grey.png" />
     <Content Include="Asset\Image\Layout\smlogo.png" />
+    <Content Include="Asset\Image\PorductImages\main-promotion-1.jpg" />
+    <Content Include="Asset\Image\PorductImages\main-promotion-10.jpg" />
+    <Content Include="Asset\Image\PorductImages\main-promotion-11.jpg" />
+    <Content Include="Asset\Image\PorductImages\main-promotion-2.jpg" />
     <Content Include="Asset\Image\PorductImages\和路邊的野鳥做朋友：超萌四格漫畫，帶你亂入很有戲的鳥類世界-1.jpg" />
     <Content Include="Asset\Image\PorductImages\和路邊的野鳥做朋友：超萌四格漫畫，帶你亂入很有戲的鳥類世界-2.jpg" />
     <Content Include="Asset\Image\PorductImages\和路邊的野鳥做朋友：超萌四格漫畫，帶你亂入很有戲的鳥類世界-3.jpg" />
@@ -339,7 +342,6 @@
     <Content Include="Asset\Image\PorductImages\身土不二，從吃開始：尋找善待人與土地的好食物-7.jpg" />
     <Content Include="Asset\Image\PorductImages\身土不二，從吃開始：尋找善待人與土地的好食物-Main.jpg" />
     <Content Include="Asset\Image\MemberCenter\1.jpg" />
-    <Content Include="Asset\Js\Home-Index\Index.js" />
     <Content Include="Asset\Image\Logo-grey.png" />
     <Content Include="Asset\Image\member-card.png" />
     <Content Include="Asset\Image\smlogo_v2.png" />
@@ -555,10 +557,6 @@
     <Content Include="Views\Shared\IndexLayout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_Layout - Copy.cshtml" />
-    <Content Include="Views\Product\Index.cshtml" />
-    <Content Include="Views\Product\Index.cshtml" />
-    <Content Include="Views\SalesMan\Index.cshtml" />
-    <Content Include="Views\Member\Index.cshtml" />
     <Content Include="Views\ContactService\Index.cshtml" />
     <Content Include="Views\Order\Index.cshtml" />
     <Content Include="Views\Order\_ViewStart.cshtml" />
@@ -574,6 +572,8 @@
     <Content Include="Views\MemberCenter\_ViewStart.cshtml" />
     <Content Include="Views\Product\ProductIndex.cshtml" />
     <Content Include="Views\Order\Test.cshtml" />
+    <Content Include="Views\Shared\_ProductSidebarPartial.cshtml" />
+    <Content Include="Views\Shared\_Layout-Home.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

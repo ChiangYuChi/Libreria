@@ -1,44 +1,280 @@
 ﻿
-.container-fluid{
-    padding:0;
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,300;0,400;0,500;0,600;0,700;1,200&family=Noto+Sans+TC:wght@100;300;400;500;700&display=swap");
+
+
+
+.container-fluid {
+    padding: 0;
 }
 
 .menu-bar {
-    background-color: #eeeeee;
-    font-family:'Noto Sans TC', sans-serif;
+    background-color: #1A1A1a;
+    font-family: 'Noto Sans TC', sans-serif;
 }
 
-
-.subcategories {
-    float: left;
-    position: relative;
-}
-
-    .subcategories div,
-   {
-        width: 100%;
-        position: absolute;
-        display: none;
-        border-left: 1px solid black;
-        border-bottom: 1px solid black;
-        border-right: 1px solid black;
+    .menu-bar .cat-link a {
+        color: white;
+        font-size: 15px;
+        padding: 8px;
     }
 
-
-.cat-link a{
-    text-decoration:none;
-    color:black;
-    font-size: 15px;
-    
+.main .product-breadcrumb {
+    padding: 20px 0;
 }
 
-.product-index .product-breadcrumb a,
-.product-index .product-breadcrumb fas {
-    font-size: 14px;
-    text-decoration: none;
-    color: black;
+    .main .product-breadcrumb a,
+    .main .product-breadcrumb .fas {
+        color: #b0b0b0;
+        font-size: 14px;
+    }
+
+    .main .product-breadcrumb .fas {
+        padding: 0 15px;
+    }
+
+.main .sidenav {
+    height: 100%;
+    /* Full-height: remove this if you want "auto" height */
+    /* Set the width of the sidebar */
+    /* Stay on top */
 }
 
-.product-index .product-breadcrumb .fas {
-   padding: 0 20px;
+    .main .sidenav h2 {
+        background-color: #1a1a1a;
+        color: white;
+        font-size: 16px;
+    }
+
+    .main .sidenav a {
+        width: 100%;
+        display: block;
+        color: black;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
+        padding: 12px 18px;
+        border-right: 1px solid #d6d6d6;
+        border-left: 1px solid #d6d6d6;
+        border-bottom: 1px dotted #d6d6d6;
+        text-decoration: none;
+    }
+
+        .main .sidenav .type-select {
+            background-color: #1a1a1a;
+            color: white;
+            padding: 8px;
+        }
+
+        .main .sidenav a:last-child {
+            border-bottom: 1px solid #d6d6d6;
+        }
+
+.main .main-promotion {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
 }
+
+.main .main-promotion-slider,
+.main .main-promotion-topic,
+.main .carousel-inner {
+    height: 250px;
+}
+
+.main .main-promotion-topic {
+    background-color: #ebe9ea;
+    border: 1px solid #d6d6d6;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    padding-bottom: 10px;
+}
+
+    .main .main-promotion-topic h4 {
+        font-size: 19px;
+        text-align: center;
+        margin-top: 15px;
+    }
+
+        .main .main-promotion-topic h4 span {
+            color: #8a6926;
+        }
+
+    .main .main-promotion-topic .pic {
+        width: 70%;
+        height: 70%;
+        background-image: url(./../img/main-promotion-4.jpg);
+        margin: 0 auto;
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+
+        .main .main-promotion-topic .pic img {
+            width: 100%;
+            height: 100%;
+        }
+
+    .main .main-promotion-topic .promotion-discount {
+        color: #aa3744;
+        font-size: 14px;
+        font-weight: bold;
+        font-family: 'Noto Sans TC', sans-serif;
+        line-height: 2px;
+        margin-top: 10px;
+    }
+
+        .main .main-promotion-topic .promotion-discount span {
+            color: black;
+            font-size: 16px;
+        }
+
+    .main .main-promotion-topic .indicate {
+        padding: 3px;
+    }
+
+    .main .main-promotion-topic .dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background-color: #8a6926;
+        margin: 5px;
+    }
+
+.main .new-product {
+    padding: 30px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+
+    .main .new-product h3 {
+        width: 100%;
+        border-bottom: 1px solid black;
+        padding-bottom: 10px;
+        font-size: 18px;
+    }
+
+    .main .new-product .pic {
+        padding-top: 10px;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
+        text-align: center;
+    }
+
+        .main .new-product .pic img {
+            width: 100%;
+        }
+
+        .main .new-product .pic .promotion-discount {
+            color: #aa3744;
+            font-size: 19px;
+            font-family: 'Noto Sans TC', sans-serif;
+            font-weight: bold;
+        }
+
+            .main .new-product .pic .promotion-discount .title {
+                color: black;
+                font-weight: 400;
+            }
+
+            .main .new-product .pic .promotion-discount span {
+                font-size: 15px;
+                color: black;
+            }
+
+    .main .new-product .major {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+        flex-direction: row;
+    }
+
+        .main .new-product .major img {
+            width: 50%;
+            padding-right: 20px;
+        }
+
+        .main .new-product .major .promotion-discount {
+            color: #aa3744;
+            font-size: 25px;
+            font-family: 'Noto Sans TC', sans-serif;
+            font-weight: bold;
+        }
+
+            .main .new-product .major .promotion-discount .title {
+                color: black;
+                font-weight: 400;
+                font-size: 20px;
+            }
+
+            .main .new-product .major .promotion-discount span {
+                font-size: 15px;
+                color: black;
+            }
+
+.main .hot-issue {
+    padding: 30px;
+    height: 500px;
+}
+
+    .main .hot-issue h3 {
+        width: 100%;
+        font-size: 18px;
+        font-family: 'Noto Sans TC', sans-serif;
+        width: 100%;
+        border-bottom: 1px solid black;
+        padding-bottom: 10px;
+    }
+
+    .main .hot-issue ul {
+        padding: 0;
+    }
+
+    .main .hot-issue ul li {
+            list-style: none;
+            font-size: 20px;
+            font-family: 'Noto Sans TC', sans-serif;
+            color: #5b6252;
+            padding: 5px 0;
+            border-bottom: 1px dotted black;
+        }
+
+    .main .hot-issue .pic {
+        width: 100%;
+    }
+
+        .main .hot-issue .pic img {
+            width: 110%;
+            margin-top: 20px;
+        }
