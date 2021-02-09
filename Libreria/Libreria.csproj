@@ -569,7 +569,6 @@
     <Content Include="Views\MemberCenter\MemberOrderInquery.cshtml" />
     <Content Include="Views\MemberCenter\MemberPasswordConfirm.cshtml" />
     <Content Include="Views\Member\Index.cshtml" />
-    <Content Include="Views\ContactService\Index.cshtml" />
     <Content Include="Views\MemberLogin\Index.cshtml" />
     <Content Include="Views\MemberCenter\ChangePassward.cshtml" />
     <Content Include="Views\MemberCenter\_ViewStart.cshtml" />
