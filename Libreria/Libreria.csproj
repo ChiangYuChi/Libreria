@@ -172,6 +172,7 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Controllers\AboutUsController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ContactServiceController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -206,6 +207,7 @@
     <Compile Include="ViewModels\ProductViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Asset\Css\AboutUs\AboutUs.css" />
     <Content Include="Asset\Css\Home-Index\Home.css" />
     <Content Include="Asset\Css\Home-Index\slick-theme.min.css" />
     <Content Include="Asset\Css\Home-Index\slick.css" />
@@ -222,6 +224,7 @@
     <Content Include="Asset\Css\ShoppingCart\Normalize.css" />
     <Content Include="Asset\Css\ShoppingCart\OrderDetail.css" />
     <Content Include="Asset\Css\ShoppingCart\ShoppingCart.css" />
+    <Content Include="Asset\Image\AboutUs\TopImage.jpg" />
     <Content Include="Asset\Image\Home\0vvet556xwdbjdmchaggwfya1g34yw9u_1400x800.jpg" />
     <Content Include="Asset\Image\Home\Libreria-SCA-8287_Iwan-Baan_Web.jpg" />
     <Content Include="Asset\Image\Home\Libreria-SCA-8599-credit-Iwan-Baan-scaled.jpg" />
@@ -574,6 +577,7 @@
     <Content Include="Views\Order\Test.cshtml" />
     <Content Include="Views\Shared\_ProductSidebarPartial.cshtml" />
     <Content Include="Views\Shared\_Layout-Home.cshtml" />
+    <Content Include="Views\AboutUs\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
