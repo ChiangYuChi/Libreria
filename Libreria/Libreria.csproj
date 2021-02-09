@@ -202,8 +202,6 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\LibreriaRepository.cs" />
-    <Compile Include="Repository\DBContext\BizDbContext.cs" />
-    <Compile Include="Repository\DBRepository.cs" />
     <Compile Include="Service\ExhibitionService.cs" />
     <Compile Include="Service\OrderService.cs" />
     <Compile Include="Startup.cs" />
