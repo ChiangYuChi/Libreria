@@ -206,7 +206,6 @@
     <Compile Include="ViewModels\ProductViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Asset\Css\Home-Index\fullpage.min.css" />
     <Content Include="Asset\Css\Home-Index\Home.css" />
     <Content Include="Asset\Css\Home-Index\slick-theme.min.css" />
     <Content Include="Asset\Css\Home-Index\slick.css" />
