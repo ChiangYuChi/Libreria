@@ -172,17 +172,21 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Controllers\AboutUsController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ExhibitionController.cs" />
     <Compile Include="Controllers\ContactServiceController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MemberCenterController.cs" />
+    <Compile Include="Controllers\MemberLoginController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\EntityModel\Exhibition.cs" />
     <Compile Include="Models\EntityModel\Category.cs" />
     <Compile Include="Models\EntityModel\Favorite.cs" />
     <Compile Include="Models\EntityModel\Invoice.cs" />
@@ -199,12 +203,15 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\LibreriaRepository.cs" />
+    <Compile Include="Service\ExhibitionService.cs" />
     <Compile Include="Service\OrderService.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\OrderViewModel.cs" />
+    <Compile Include="ViewModels\ExhibitionVIewModel.cs" />
     <Compile Include="ViewModels\ProductViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Asset\Css\AboutUs\AboutUs.css" />
     <Content Include="Asset\Css\Home-Index\Home.css" />
     <Content Include="Asset\Css\Home-Index\slick-theme.min.css" />
     <Content Include="Asset\Css\Home-Index\slick.css" />
@@ -217,9 +224,11 @@
     <Content Include="Asset\Css\MemberCenter\member_password_confirm.css" />
     <Content Include="Asset\Css\Passward\Passward.css" />
     <Content Include="Asset\Css\Product\product_index.css" />
+    <Content Include="Asset\Css\MemberLogin\member-login.css" />
     <Content Include="Asset\Css\ShoppingCart\Normalize.css" />
     <Content Include="Asset\Css\ShoppingCart\OrderDetail.css" />
     <Content Include="Asset\Css\ShoppingCart\ShoppingCart.css" />
+    <Content Include="Asset\Image\AboutUs\TopImage.jpg" />
     <Content Include="Asset\Image\Home\0vvet556xwdbjdmchaggwfya1g34yw9u_1400x800.jpg" />
     <Content Include="Asset\Image\Home\Libreria-SCA-8287_Iwan-Baan_Web.jpg" />
     <Content Include="Asset\Image\Home\Libreria-SCA-8599-credit-Iwan-Baan-scaled.jpg" />
@@ -343,6 +352,8 @@
     <Content Include="Asset\Image\Logo-grey.png" />
     <Content Include="Asset\Image\member-card.png" />
     <Content Include="Asset\Image\smlogo_v2.png" />
+    <Content Include="Asset\Js\Home-Index\slick.min.js" />
+    <Content Include="Asset\Js\Index\slick.min.js" />
     <Content Include="Asset\Css\ContactService\ContactService.css" />
     <Content Include="Asset\Css\Member\Member.css" />
     <Content Include="Asset\Js\ContactService\ContactService.js" />
@@ -562,12 +573,16 @@
     <Content Include="Views\Shared\_MemberCenterPartial.cshtml" />
     <Content Include="Views\MemberCenter\MemberOrderInquery.cshtml" />
     <Content Include="Views\MemberCenter\MemberPasswordConfirm.cshtml" />
+    <Content Include="Views\Member\Index.cshtml" />
+    <Content Include="Views\MemberLogin\Index.cshtml" />
     <Content Include="Views\MemberCenter\ChangePassward.cshtml" />
     <Content Include="Views\MemberCenter\_ViewStart.cshtml" />
     <Content Include="Views\Product\ProductIndex.cshtml" />
     <Content Include="Views\Order\Test.cshtml" />
     <Content Include="Views\Shared\_ProductSidebarPartial.cshtml" />
     <Content Include="Views\Shared\_Layout-Home.cshtml" />
+    <Content Include="Views\AboutUs\Index.cshtml" />
+    <Content Include="Views\Exhibition\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

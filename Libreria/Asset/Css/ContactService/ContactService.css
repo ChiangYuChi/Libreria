@@ -98,7 +98,7 @@ p {
         transition: 0.5s;
     }
 
-.contact-block form {
+.contact-block div {
     margin: 10px 0px;
 }
 
@@ -110,7 +110,7 @@ p {
     margin-bottom: 10px;
 }
 
-.contact-block form:not(.location) label,
+.contact-block div:not(.location) label,
 .location-label {
     width: 23%;
 }
