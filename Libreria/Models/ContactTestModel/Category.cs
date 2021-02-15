@@ -1,4 +1,4 @@
-namespace Libreria.Models.EntityModel
+namespace Libreria.Models.ContactTestModel
 {
     using System;
     using System.Collections.Generic;
@@ -6,29 +6,27 @@ namespace Libreria.Models.EntityModel
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("Supplier")]
-    public partial class Supplier
+    [Table("Category")]
+    public partial class Category
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Supplier()
+        public Category()
         {
             Products = new HashSet<Product>();
         }
 
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int SupplierId { get; set; }
+        public int CategoryId { get; set; }
 
         [Required]
         [StringLength(50)]
         public string Name { get; set; }
 
-        [StringLength(50)]
-        public string Phone { get; set; }
+        public int Sort { get; set; }
 
-        [StringLength(50)]
-        public string Address { get; set; }
+        public DateTime CreateTime { get; set; }
 
-        public int? Sort { get; set; }
+        public DateTime? Updatetime { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Product> Products { get; set; }

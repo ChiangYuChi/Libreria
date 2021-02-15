@@ -1,5 +1,4 @@
-﻿using Libreria.Service;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -9,12 +8,7 @@ namespace Libreria.Controllers
 {
     public class OrderController : Controller
     {
-        private readonly OrderService _orderService;
 
-        public OrderController()
-        {
-            _orderService = new OrderService();
-        }
 
         // GET: Order
         public ActionResult Index()
@@ -32,8 +26,7 @@ namespace Libreria.Controllers
 
         public ActionResult Test()
         {
-            var result = _orderService.GetAll();
-            return View(result);
+            return View();
         }
     }
 }

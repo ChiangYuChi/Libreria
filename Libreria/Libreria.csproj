@@ -177,6 +177,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AboutUsController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ContactTestViewModelsController.cs" />
     <Compile Include="Controllers\ExhibitionController.cs" />
     <Compile Include="Controllers\ContactServiceController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -185,30 +186,20 @@
     <Compile Include="Controllers\MemberLoginController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="Controllers\ProductstestController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\EntityModel\Exhibition.cs" />
-    <Compile Include="Models\EntityModel\Category.cs" />
-    <Compile Include="Models\EntityModel\Favorite.cs" />
-    <Compile Include="Models\EntityModel\Invoice.cs" />
-    <Compile Include="Repository\DBContext\LibreriaDataModel.cs" />
-    <Compile Include="Models\EntityModel\member.cs" />
-    <Compile Include="Models\EntityModel\Order.cs" />
-    <Compile Include="Models\EntityModel\OrderDetail.cs" />
-    <Compile Include="Models\EntityModel\Preview.cs" />
-    <Compile Include="Models\EntityModel\Product.cs" />
-    <Compile Include="Models\EntityModel\Rent.cs" />
-    <Compile Include="Models\EntityModel\Supplier.cs" />
-    <Compile Include="Models\EntityModel\sysdiagram.cs" />
+    <Compile Include="Models\ContactTestModel\Category.cs" />
+    <Compile Include="Models\ContactTestModel\ContactTestDataModel.cs" />
+    <Compile Include="Models\ContactTestModel\Product.cs" />
+    <Compile Include="Models\ContactTestModel\Supplier.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repository\LibreriaRepository.cs" />
-    <Compile Include="Service\ExhibitionService.cs" />
-    <Compile Include="Service\OrderService.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\ContactTestViewModel.cs" />
     <Compile Include="ViewModels\OrderViewModel.cs" />
     <Compile Include="ViewModels\ExhibitionVIewModel.cs" />
     <Compile Include="ViewModels\ProductViewModel.cs" />
@@ -586,6 +577,17 @@
     <Content Include="Views\Shared\_Layout-Home.cshtml" />
     <Content Include="Views\AboutUs\Index.cshtml" />
     <Content Include="Views\Exhibition\Index.cshtml" />
+    <Content Include="Views\ContactTestViewModels\Create.cshtml" />
+    <Content Include="Views\ContactTestViewModels\Delete.cshtml" />
+    <Content Include="Views\ContactTestViewModels\Details.cshtml" />
+    <Content Include="Views\ContactTestViewModels\Edit.cshtml" />
+    <Content Include="Views\ContactTestViewModels\Index.cshtml" />
+    <Content Include="Views\Productstest\Create.cshtml" />
+    <Content Include="Views\Productstest\Delete.cshtml" />
+    <Content Include="Views\Productstest\Details.cshtml" />
+    <Content Include="Views\Productstest\Edit.cshtml" />
+    <Content Include="Views\Productstest\Index.cshtml" />
+    <Content Include="Views\ContactTestViewModels\Indexdelte.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
