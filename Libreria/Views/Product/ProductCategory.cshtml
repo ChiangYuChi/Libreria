@@ -1,0 +1,76 @@
+﻿@model List<Libreria.ViewModels.ProductViewModel>
+@section topCss{
+    <link href="~/Asset/Css/Product/ProductCategory.css" rel="stylesheet" />
+}
+
+@section endJs{
+  
+    <script src="~/Asset/Js/Product/ProductCategory.js"></script>
+}
+
+<div class="container-fluid">
+    <section class="product-index">
+
+        <div class="main ">
+            <div class="container-fluid col-10">
+                <div class="product-breadcrumb">
+                    <a href="#">首頁</a>
+                    <i class="fas fa-chevron-right"></i>
+                    <a href="#">中文書</a>
+                </div>
+                <div class="row">
+                    <div class="sidenav d-none d-md-block col-md-2 col-lg-2">
+                        <a href="#">@Html.Action("CategoryPartial", "Category")</a>
+
+                    </div>
+                    <div class="main-result col-lg-10 flex-wrap">
+
+
+                        <div class="render-section">
+
+                            <div id="cbp-vm" class="cbp-vm-switcher cbp-vm-view-grid">
+                                <div class="cbp-vm-options d-flex">
+                                    <div class="search-result-status ">
+                                        <div class="search-result-num d-flex">
+                                            <div class="search-result-category"><span>"美術"</span></div>
+                                            <div>共有<span class="search-result-total">4222</span>筆符合商品</div>
+                                        </div>
+                                    </div>
+                                    <a href="#" class="cbp-vm-icon cbp-vm-grid cbp-vm-selected"
+                                       data-view="cbp-vm-view-grid"><i class="fas fa-th"></i></a>
+                                    <a href="#" class="cbp-vm-icon cbp-vm-list" data-view="cbp-vm-view-list">
+                                        <i class="fas fa-list"></i>
+                                    </a>
+
+                                </div>
+                                <div class="sort-box">
+                                    <span col-lg-1>排序</span>
+                                    <button class="col-lg-2 sort-btn">最相關</button>
+                                    <button class="col-lg-2 sort-btn-price sort-btn" data-type="price">
+                                     @Html.ActionLink("價格排序", "ProductCategory",new {Sorting_Order= ViewBag.SortingPrice})
+                                    </button>
+                                    <button class="col-lg-2 sort-btn">@Html.ActionLink("上市日期排序", "ProductCategory", new { Sorting_Order = ViewBag.SortingPublishTime })</button>
+                                    <button class="col-lg-2 sort-btn">折扣高到低</button>
+
+
+                                </div>
+                                <ul>
+
+                                        @Html.Action("ProductPartial")
+                                </ul>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                </div>
+
+
+            </div>
+        </div>
+    </section>
+</div>
+
+
+

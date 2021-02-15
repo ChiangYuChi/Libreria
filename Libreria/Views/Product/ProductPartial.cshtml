@@ -1,0 +1,26 @@
+﻿@model List<Libreria.ViewModels.ProductViewModel>
+
+
+@foreach (var item in Model)
+{
+
+<li class="book-list">
+
+    <a class="cbp-vm-image" href="#"><img src="~/Asset/Image/PorductImages/@item.Name-Main.jpg"></a>
+    <h3 class="cbp-vm-title">@item.Name</h3>
+    <div class="cbp-vm-price">NT$ <span>@item.UnitPrice</span></div>
+    <div class="cbp-vm-details">
+        @item.Author
+    </div>
+    <a class="cbp-vm-icon cbp-vm-add" href="#">加入購物車</a>
+    <a class="wish-list " href="#"><i class="fas fa-heart"></i></a>
+</li>
+
+
+
+
+
+
+
+}
+
