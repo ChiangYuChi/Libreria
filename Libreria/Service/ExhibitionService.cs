@@ -11,10 +11,10 @@ namespace Libreria.Service
 {
     public class ExhibitionService
     {
-        public readonly DBRepository _dBRepository;
+        public readonly LibreriaRepository _dBRepository;
         public ExhibitionService()
         {
-            _dBRepository = new DBRepository();
+            _dBRepository = new LibreriaRepository();
         }
         //List<ExhibitionVIewModel> GetAll()
         //{

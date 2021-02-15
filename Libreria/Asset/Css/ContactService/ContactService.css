@@ -1,0 +1,221 @@
+﻿body {
+    font-family: 'Montserrat', sans-serif;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+    background-color: #ffffff;
+}
+
+.information a, .contact-block a {
+    color: inherit;
+}
+
+    .information a:hover, .contact-block a:hover {
+        color: inherit;
+        text-decoration: inherit;
+    }
+
+.starcolor {
+    color: #d0011b;
+}
+
+.contact-service {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.block {
+    margin: 20px;
+}
+
+p {
+    margin: 0;
+}
+
+.navbar-fix-block {
+    height: 100px;
+}
+
+.customer-service-block {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.information-col {
+    padding-left: 0;
+}
+
+.information-location-block select {
+    width: 100%;
+}
+
+.title-block {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.information .title {
+    font-weight: bold;
+}
+
+.information .context {
+    color: #9b9b9b;
+}
+
+.information .blocks {
+    margin-left: 15px;
+}
+
+.service-phone-context .context {
+    color: #7E7672;
+}
+
+.service-email-context .context {
+    color: #7E7672;
+}
+
+.tags {
+    text-align: center;
+    font-weight: bold;
+    font-size: 18px;
+    margin: 30px 0px;
+}
+
+    .tags .col-4 {
+        padding: 0;
+    }
+
+.tag {
+    height: 40px;
+    box-sizing: border-box;
+    border-bottom: 1px solid #d8d8d8;
+    color: #cccccc;
+    cursor: pointer;
+}
+
+    .tag:hover {
+        color: #212529;
+        border-bottom: 6px solid #e4e0d2;
+        transition: 0.5s;
+    }
+
+.contact-block div {
+    margin: 10px 0px;
+}
+
+.contact-block p {
+    padding-bottom: 10px;
+}
+
+.contact-block .txt {
+    margin-bottom: 10px;
+}
+
+.contact-block div:not(.location) label,
+.location-label {
+    width: 23%;
+}
+
+.location input[type="radio"] {
+    display: none;
+}
+
+.location label:not(.location-label) {
+    border: 1px solid #7E7672;
+    background-color: #fff;
+    width: 100px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    cursor: pointer;
+}
+
+.location input[type="radio"]:checked + label {
+    background-color: #7E7672;
+    color: #FFFFFF;
+}
+
+.contact-block select {
+    width: 188px;
+    height: 30px;
+}
+
+.deleted {
+    display: none;
+}
+
+.telephone input {
+    margin-bottom: 10px;
+}
+
+.submit-form {
+    display: flex;
+    justify-content: center;
+}
+
+    .submit-form input {
+        margin: 20px;
+    }
+
+.submit-button {
+    background-color: #3e3a39;
+    color: #fff;
+}
+
+.submit-form input {
+    width: 160px;
+    height: 44px;
+}
+
+.context-textarea {
+    width: 70%;
+    height: 120px;
+}
+
+.upload-input {
+    display: none;
+}
+
+.upload-button {
+    border: 1px solid #3F3B3A;
+    max-width: 118px;
+    height: 32px;
+    cursor: pointer;
+    text-align: center;
+    line-height: 32px;
+}
+
+.phone-fix-label {
+    display: inline-block;
+}
+
+.tablet-fix-label {
+    display: inline-block;
+}
+
+.desktop-fix-label {
+    display: none;
+}
+
+@media (min-width: 992px) {
+    .tablet-fix-label {
+        display: none;
+    }
+
+    .tablet-fix-br {
+        display: none;
+    }
+
+    .desktop-fix-label {
+        display: inline-block;
+    }
+}
+
+@media (min-width: 1200px) {
+    .phone-fix-label {
+        display: none;
+    }
+
+    .desktop-fix-br {
+        display: none;
+    }
+}
