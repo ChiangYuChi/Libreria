@@ -50,7 +50,7 @@
         margin: auto;
     }
 
-    .member-logout .row .warning .input-group input {
+    .member-logout .row .warning .input-group a {
         width: 80%;
         margin: 13px auto;
         padding: 12px;
