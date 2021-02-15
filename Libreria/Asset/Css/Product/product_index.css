@@ -1,25 +1,4 @@
-﻿
-@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,300;0,400;0,500;0,600;0,700;1,200&family=Noto+Sans+TC:wght@100;300;400;500;700&display=swap");
-
-
-
-.container-fluid {
-    padding: 0;
-}
-
-.menu-bar {
-    background-color: #1A1A1a;
-    font-family: 'Noto Sans TC', sans-serif;
-}
-
-    .menu-bar .cat-link a {
-        color: white;
-        font-size: 15px;
-        padding: 8px;
-    }
-
-.main .product-breadcrumb {
+﻿.main .product-breadcrumb {
     padding: 20px 0;
 }
 
@@ -35,9 +14,6 @@
 
 .main .sidenav {
     height: 100%;
-    /* Full-height: remove this if you want "auto" height */
-    /* Set the width of the sidebar */
-    /* Stay on top */
 }
 
     .main .sidenav h2 {
@@ -63,7 +39,7 @@
         text-decoration: none;
     }
 
-        .main .sidenav .type-select {
+        .main .sidenav a:nth-of-type(1) {
             background-color: #1a1a1a;
             color: white;
             padding: 8px;
@@ -77,13 +53,25 @@
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
+    position: relative;
 }
 
-.main .main-promotion-slider,
-.main .main-promotion-topic,
-.main .carousel-inner {
-    height: 250px;
-}
+    .main .main-promotion .carousel-control-prev-icon,
+    .main .main-promotion .carousel-control-next-icon {
+        width: 30px;
+        height: 40px;
+        background-color: #1a1a1a;
+    }
+
+    .main .main-promotion .carousel-control-prev-icon {
+        position: absolute;
+        left: 0;
+    }
+
+    .main .main-promotion .carousel-control-next-icon {
+        position: absolute;
+        right: 0;
+    }
 
 .main .main-promotion-topic {
     background-color: #ebe9ea;
@@ -101,7 +89,7 @@
     -webkit-box-direction: normal;
     -ms-flex-direction: column;
     flex-direction: column;
-    padding-bottom: 10px;
+    position: relative;
 }
 
     .main .main-promotion-topic h4 {
@@ -114,27 +102,11 @@
             color: #8a6926;
         }
 
-    .main .main-promotion-topic .pic {
-        width: 70%;
-        height: 70%;
-        background-image: url(./../img/main-promotion-4.jpg);
-        margin: 0 auto;
-        background-size: contain;
-        background-repeat: no-repeat;
-    }
-
-        .main .main-promotion-topic .pic img {
-            width: 100%;
-            height: 100%;
-        }
-
     .main .main-promotion-topic .promotion-discount {
         color: #aa3744;
-        font-size: 14px;
+        font-size: 25px;
         font-weight: bold;
         font-family: 'Noto Sans TC', sans-serif;
-        line-height: 2px;
-        margin-top: 10px;
     }
 
         .main .main-promotion-topic .promotion-discount span {
@@ -142,17 +114,39 @@
             font-size: 16px;
         }
 
-    .main .main-promotion-topic .indicate {
-        padding: 3px;
+    .main .main-promotion-topic .swiper-container {
+        width: 100%;
     }
 
-    .main .main-promotion-topic .dot {
-        width: 10px;
-        height: 10px;
-        border-radius: 50%;
-        background-color: #8a6926;
-        margin: 5px;
+    .main .main-promotion-topic .swiper-slide {
+        text-align: center;
+        font-size: 18px;
+        background: #fff;
+        /* Center slide text vertically */
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
     }
+
+        .main .main-promotion-topic .swiper-slide img {
+            width: 60%;
+        }
+
+    .main .main-promotion-topic .swiper-pagination {
+        position: absolute;
+        bottom: 0;
+    }
+
+        .main .main-promotion-topic .swiper-pagination .swiper-pagination-bullet {
+            padding: 2px;
+            margin: 2px;
+        }
 
 .main .new-product {
     padding: 30px;
@@ -261,7 +255,7 @@
         padding: 0;
     }
 
-    .main .hot-issue ul li {
+        .main .hot-issue ul li {
             list-style: none;
             font-size: 20px;
             font-family: 'Noto Sans TC', sans-serif;

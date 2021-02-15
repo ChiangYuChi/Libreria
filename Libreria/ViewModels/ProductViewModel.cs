@@ -7,9 +7,14 @@ namespace Libreria.ViewModels
 {
     public class ProductViewModel
     {
-        public string Id { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
         public decimal UnitPrice { get; set; }
+        public int CategoryId { get; set; }
+        public string Author { get; set; }
+        public DateTime CreateTime { get; set; }
+
+        public string Introduction { get; set; }
         
     }
 }

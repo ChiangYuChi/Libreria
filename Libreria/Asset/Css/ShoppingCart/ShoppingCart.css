@@ -1,8 +1,11 @@
 ﻿/* 主体通用配置 */
-.bodycolor {
-    background-color: #f0e1b8;
-}
 
+.bodycolor {
+    background-color: #eee;
+}
+.body-content {
+    background-color: #eee;
+}
 .chinese {
     font-family: 'Open Sans', sans-serif;
 }
@@ -461,9 +464,15 @@
     justify-content: space-evenly;
 }
 
-.amount-total_display {
-    align-items: center;
+.amount-total a{
+    text-decoration: none;
+    color: white;
 }
+
+
+.amount-total_display {
+        align-items: center;
+    }
 
 .total-price-size {
     font-size: 28px;
@@ -474,9 +483,15 @@
 
     .amount-total_button button {
         padding: 6px 50px;
-        background-color: rgb(163, 4, 4);
+        background-color: floralwhite;
+        border:solid black 1px;
         color: white;
     }
+.amount-total_button button a{
+    color:black;
+}
+
+
 
 
 
