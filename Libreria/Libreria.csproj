@@ -583,6 +583,7 @@
     <Content Include="Views\Shared\_Layout-Home.cshtml" />
     <Content Include="Views\AboutUs\Index.cshtml" />
     <Content Include="Views\Exhibition\Index.cshtml" />
+    <Content Include="Views\Test\TestPartialView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
