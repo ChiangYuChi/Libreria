@@ -359,7 +359,6 @@
     <Content Include="Asset\Image\member-card.png" />
     <Content Include="Asset\Image\smlogo_v2.png" />
     <Content Include="Asset\Js\Home-Index\slick.min.js" />
-    <Content Include="Asset\Js\Index\slick.min.js" />
     <Content Include="Asset\Css\ContactService\ContactService.css" />
     <Content Include="Asset\Css\Member\Member.css" />
     <Content Include="Asset\Js\ContactService\ContactService.js" />
@@ -599,6 +598,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Asset\Js\common\" />
+    <Folder Include="Asset\Js\Index\" />
     <Folder Include="Data\" />
   </ItemGroup>
   <ItemGroup>
