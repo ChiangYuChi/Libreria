@@ -1,5 +1,5 @@
 ﻿body {
-    background-color: #f0e1b8;
+    background-color: #eee;
 }
 
 .LOGO {
@@ -428,6 +428,7 @@ input {
         box-shadow: 0 10px 10px 5px #000;
         background-color: white;
         padding: 10px 0px 0px 25px;
+        z-index: 1;
     }
 
     .cart_details_none {
