@@ -28,8 +28,8 @@ namespace Libreria.Service
                 UnitPrice = x.UnitPrice,
                 Author = x.Author,
                 CreateTime = x.CreateTime,
-                CategoryId = x.CategoryId
-
+                CategoryId = x.CategoryId,
+                Introduction = x.Introduction
             }).ToList();
         }
 
