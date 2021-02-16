@@ -35,7 +35,7 @@ namespace Libreria.Controllers
             {
                 case "Price_Description":
 
-                   products= products.OrderBy(p => p.UnitPrice);
+                   products= products.OrderByDescending(p => p.UnitPrice);
                     break;
                 case "PublishTime_Description":
                     products = products.OrderBy(p => p.CreateTime);
