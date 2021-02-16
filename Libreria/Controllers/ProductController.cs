@@ -11,11 +11,17 @@ namespace Libreria.Controllers
     public class ProductController : Controller
     {
         private readonly ProductService _productService;
+        private readonly PreviewService _previewService;
+
 
         public ProductController()
         {
             _productService = new ProductService();
+            _previewService = new PreviewService();
         }
+
+       
+
 
         public ActionResult Index()
         {
@@ -78,6 +84,11 @@ namespace Libreria.Controllers
             return PartialView();
         }
 
+        public ActionResult Test()
+        {
+            var result = _previewService.GetAll();
+            return View(result);
+        }
 
     }
 }
