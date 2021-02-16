@@ -65,6 +65,11 @@ namespace Libreria.Controllers
             }
            
         }
+
+        public PartialViewResult ProductDetail()
+        {
+            return PartialView();
+        }
         
     }
 }
