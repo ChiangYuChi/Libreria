@@ -10,8 +10,10 @@
 <li class="book-list">
 
     <a class="cbp-vm-image" href="#"><img src="~/Asset/Image/PorductImages/@item.Name-Main.jpg"></a>
-    <h3 class="cbp-vm-title">@item.Name</h3>
-    <div class="cbp-vm-price">NT$ <span>@item.UnitPrice</span></div>
+
+  
+    <h3 class="cbp-vm-title">  @Html.ActionLink(@item.Name, "ProductDetail", "Product", new { id = item.Id }, null)</h3>
+    <div class="cbp-vm-price">NT$ <span>@(String.Format("{0:N0}",item.UnitPrice))</span></div>
     <div class="cbp-vm-details">
         @item.Author
     </div>

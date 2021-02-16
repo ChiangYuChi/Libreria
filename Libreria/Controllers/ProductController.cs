@@ -72,9 +72,11 @@ namespace Libreria.Controllers
            
         }
 
-        public ActionResult ProductDetail()
+        public ActionResult ProductDetail(int? id)
         {
-            return View();
+            var products = _productService.GetAll();
+            var product = products.Where((x) => x.Id == id);
+            return View(product.ToList());
         }
 
 
