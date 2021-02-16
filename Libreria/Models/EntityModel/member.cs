@@ -23,9 +23,13 @@ namespace Libreria.Models.EntityModel
         [StringLength(50)]
         public string memberName { get; set; }
 
-        public int MobileNumber { get; set; }
+        [Required]
+        [StringLength(50)]
+        public string MobileNumber { get; set; }
 
-        public int HomeNumber { get; set; }
+
+        [StringLength(50)]
+        public string HomeNumber { get; set; }
 
         [Required]
         [StringLength(100)]
@@ -42,6 +46,15 @@ namespace Libreria.Models.EntityModel
         [Required]
         [StringLength(50)]
         public string memberPassword { get; set; }
+
+        [Column(TypeName = "date")]
+        public DateTime birthday { get; set; }
+
+        public int Gender { get; set; }
+
+        [Required]
+        [StringLength(10)]
+        public string IDnumber { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Favorite> Favorites { get; set; }
