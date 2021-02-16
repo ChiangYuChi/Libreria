@@ -66,10 +66,18 @@ namespace Libreria.Controllers
            
         }
 
-        public PartialViewResult ProductDetail()
+        public ActionResult ProductDetail()
         {
+            return View();
+        }
+
+
+        public PartialViewResult ProductDetailPartial()
+        {
+
             return PartialView();
         }
-        
+
+
     }
 }

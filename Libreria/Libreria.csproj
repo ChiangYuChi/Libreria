@@ -244,6 +244,7 @@
     <Content Include="Asset\Css\MemberCenter\member_password_confirm.css" />
     <Content Include="Asset\Css\Passward\Passward.css" />
     <Content Include="Asset\Css\Product\ProductCategory.css" />
+    <Content Include="Asset\Css\Product\ProductDetail.css" />
     <Content Include="Asset\Css\Product\product_index.css" />
     <Content Include="Asset\Css\MemberLogin\member-login.css" />
     <Content Include="Asset\Css\Product\swiper.css" />
@@ -614,6 +615,8 @@
     <Content Include="Views\Category\Index.cshtml" />
     <Content Include="Views\Category\CategoryPartial.cshtml" />
     <Content Include="Views\Product\ProductPartial.cshtml" />
+    <Content Include="Views\Product\ProductDetail.cshtml" />
+    <Content Include="Views\Product\ProductDetailPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
