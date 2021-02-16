@@ -14,10 +14,6 @@ namespace Libreria.Controllers
             return View();
         }
 
-        public ActionResult MemberLogout()
-        {
-            return View();
-        }
 
         public ActionResult MemberInfo()
         {
