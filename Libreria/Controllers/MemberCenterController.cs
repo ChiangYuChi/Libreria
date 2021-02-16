@@ -40,5 +40,9 @@ namespace Libreria.Controllers
         {
             return View();
         }
+        public ActionResult MemberContact()
+        {
+            return View();
+        }
     }
 }

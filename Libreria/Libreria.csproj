@@ -176,13 +176,13 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\ExhibitionController.cs" />
-    <Compile Include="Controllers\ContactServiceController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MemberCenterController.cs" />
     <Compile Include="Controllers\MemberLoginController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="Controllers\RentalController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -225,6 +225,7 @@
     <Compile Include="Service\OrderService.cs" />
     <Compile Include="Service\PreviewService.cs" />
     <Compile Include="Service\ProductService.cs" />
+    <Compile Include="Service\RentalService.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\CategoryViewModel.cs" />
     <Compile Include="ViewModels\OrderViewModel.cs" />
@@ -998,7 +999,6 @@
     <Content Include="Views\Shared\IndexLayout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_Layout-Product.cshtml" />
-    <Content Include="Views\ContactService\Index.cshtml" />
     <Content Include="Views\Order\Index.cshtml" />
     <Content Include="Views\Order\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_OrderLayout.cshtml" />
@@ -1022,6 +1022,8 @@
     <Content Include="Views\Product\ProductDetail.cshtml" />
     <Content Include="Views\Product\ProductDetailPartial.cshtml" />
     <Content Include="Views\Product\Test.cshtml" />
+    <Content Include="Views\MemberCenter\MemberContact.cshtml" />
+    <Content Include="Views\Rental\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
