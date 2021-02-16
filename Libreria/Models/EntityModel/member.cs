@@ -27,7 +27,6 @@ namespace Libreria.Models.EntityModel
         [StringLength(50)]
         public string MobileNumber { get; set; }
 
-
         [StringLength(50)]
         public string HomeNumber { get; set; }
 
