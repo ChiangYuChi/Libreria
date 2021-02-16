@@ -44,5 +44,10 @@ namespace Libreria.Controllers
         {
             return View();
         }
+
+        public ActionResult MemberRegisterPage()
+        {
+            return View();
+        }
     }
 }

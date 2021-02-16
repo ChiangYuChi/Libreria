@@ -1,0 +1,71 @@
+﻿
+@section topCSS{
+    <link rel="stylesheet" href="~/Asset/Css/MemberCenter/MemberRegisterPage.css">
+}
+
+@{
+    ViewBag.Title = "註冊頁面";
+}
+
+<div class="breadcrumb">
+    <div class="container">
+        <div class="row">
+            <div class="justify-content-center align-items-center col-sm-12 col-md-10 col-lg-9 m-auto p-0">
+                <a href="#">首頁</a>
+                <i class="fas fa-chevron-right"></i>
+                <a href="#">註冊會員</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="register-block">
+    <div class="container">
+        <div class="row">
+            <div class="justify-content-center align-items-center col-sm-11 col-md-10 col-lg-9 m-auto">
+                <div class="register-border">
+                    <div class="register-form">
+                        <p class="title">
+                            <span>▍</span>
+                            <span>註冊會員</span>
+                        </p>
+                        <form>
+                            <label>帳號</label> <br />
+                            <input type="text" name="account" /> <br />
+                            <label>密碼</label> <br />
+                            <input type="text" name="password" /> <br />
+                            <label>確認密碼</label> <br />
+                            <input type="text" name="checkpassword" /> <br />
+                            <label>姓名</label> <br />
+                            <input type="text" name="name" /> <br />
+                            <label>生日</label> <br />
+                            <input type="text" name="birthday" /> <br />
+                            <label>身分證字號</label> <br />
+                            <input type="text" name="IDnumber" /> <br />
+                            <label>性別</label>
+                            <input type="radio" name="gender" value="male" />男
+                            <input type="radio" name="gender" value="female" />女
+                            <input type="radio" name="gender" value="unknown" /> 未知 <br />
+                            <label>電子郵件</label> <br />
+                            <input type="text" name="email" /> <br />
+                            <label>手機</label> <br />
+                            <input type="text" name="cellphone" /> <br />
+                            <label>電話</label> <br />
+                            <input type="text" name="telephone" /> <br />
+                            <label>居住地</label>
+                            <input type="radio" name="location" value="Taiwan" />台灣
+                            <input type="radio" name="location" value="HongKong" />香港
+                            <input type="radio" name="location" value="China" />大陸 <br />
+                            <label>地址</label> <br />
+                            <input type="text" name="address" /> <br />
+                            <input type="submit" name="submit" /> <br />
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
