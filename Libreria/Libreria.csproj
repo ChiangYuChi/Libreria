@@ -212,6 +212,7 @@
     <Compile Include="Repository\LibreriaRepository.cs" />
     <Compile Include="Service\CategoryService.cs" />
     <Compile Include="Service\ExhibitionService.cs" />
+    <Compile Include="Service\OperationResult.cs" />
     <Compile Include="Service\OrderService.cs" />
     <Compile Include="Service\PreviewService.cs" />
     <Compile Include="Service\ProductService.cs" />
