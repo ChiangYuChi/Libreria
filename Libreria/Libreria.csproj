@@ -242,6 +242,9 @@
     <Content Include="Asset\Css\MemberCenter\member_logout.css" />
     <Content Include="Asset\Css\MemberCenter\member_order_inquery.css" />
     <Content Include="Asset\Css\MemberCenter\member_password_confirm.css" />
+    <Content Include="Asset\Css\MemberCenter\member_subscribe.css" />
+    <Content Include="Asset\Css\MemberCenter\sub_cancel.css" />
+    <Content Include="Asset\Css\MemberCenter\sub_info.css" />
     <Content Include="Asset\Css\Passward\Passward.css" />
     <Content Include="Asset\Css\Product\ProductCategory.css" />
     <Content Include="Asset\Css\Product\ProductDetail.css" />
@@ -261,6 +264,7 @@
     <Content Include="Asset\Image\Home\Product.jpeg" />
     <Content Include="Asset\Image\Layout\Logo-grey.png" />
     <Content Include="Asset\Image\Layout\smlogo.png" />
+    <Content Include="Asset\Image\MemberCenter\card.png" />
     <Content Include="Asset\Image\PorductImages\main-promotion-1.jpg" />
     <Content Include="Asset\Image\PorductImages\main-promotion-10.jpg" />
     <Content Include="Asset\Image\PorductImages\main-promotion-11.jpg" />
@@ -383,6 +387,7 @@
     <Content Include="Asset\Css\ContactService\ContactService.css" />
     <Content Include="Asset\Css\Member\Member.css" />
     <Content Include="Asset\Js\ContactService\ContactService.js" />
+    <Content Include="Asset\Js\MemberCenter\subscribe.js" />
     <Content Include="Asset\Js\Product\book-reviewer.js" />
     <Content Include="Asset\Js\Product\ProductCategory.js" />
     <Content Include="Asset\Js\Product\ProductIndex.js" />
@@ -617,6 +622,9 @@
     <Content Include="Views\Product\ProductPartial.cshtml" />
     <Content Include="Views\Product\ProductDetail.cshtml" />
     <Content Include="Views\Product\ProductDetailPartial.cshtml" />
+    <Content Include="Views\MemberCenter\Subscribe.cshtml" />
+    <Content Include="Views\MemberCenter\Subscribe_info.cshtml" />
+    <Content Include="Views\MemberCenter\Subscribe_cancel.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
