@@ -223,15 +223,18 @@
     <Compile Include="Service\CategoryService.cs" />
     <Compile Include="Service\ExhibitionService.cs" />
     <Compile Include="Service\OrderService.cs" />
+    <Compile Include="Service\PreviewService.cs" />
     <Compile Include="Service\ProductService.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\CategoryViewModel.cs" />
     <Compile Include="ViewModels\OrderViewModel.cs" />
     <Compile Include="ViewModels\ExhibitionVIewModel.cs" />
+    <Compile Include="ViewModels\PreviewViewModel.cs" />
     <Compile Include="ViewModels\ProductViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Asset\Css\AboutUs\AboutUs.css" />
+    <Content Include="Asset\Css\PartialView\category-sidenav.css" />
     <Content Include="Asset\Css\Home-Index\Home.css" />
     <Content Include="Asset\Css\Home-Index\slick-theme.min.css" />
     <Content Include="Asset\Css\Home-Index\slick.css" />
@@ -261,6 +264,10 @@
     <Content Include="Asset\Image\Home\Product.jpeg" />
     <Content Include="Asset\Image\Layout\Logo-grey.png" />
     <Content Include="Asset\Image\Layout\smlogo.png" />
+    <Content Include="Asset\Image\main-promotion-1.jpg" />
+    <Content Include="Asset\Image\main-promotion-10.jpg" />
+    <Content Include="Asset\Image\main-promotion-11.jpg" />
+    <Content Include="Asset\Image\main-promotion-2.jpg" />
     <Content Include="Asset\Image\PorductImages\3ds Max 2017建模技巧與動畫設計實務-1.jpg" />
     <Content Include="Asset\Image\PorductImages\3ds Max 2017建模技巧與動畫設計實務-2.jpg" />
     <Content Include="Asset\Image\PorductImages\3ds Max 2017建模技巧與動畫設計實務-3.jpg" />
@@ -990,7 +997,7 @@
     <Content Include="Views\MemberCenter\MemberLogin.cshtml" />
     <Content Include="Views\Shared\IndexLayout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Shared\_Layout - Copy.cshtml" />
+    <Content Include="Views\Shared\_Layout-Product.cshtml" />
     <Content Include="Views\ContactService\Index.cshtml" />
     <Content Include="Views\Order\Index.cshtml" />
     <Content Include="Views\Order\_ViewStart.cshtml" />
@@ -1005,7 +1012,6 @@
     <Content Include="Views\MemberCenter\_ViewStart.cshtml" />
     <Content Include="Views\Product\Index.cshtml" />
     <Content Include="Views\Order\Test.cshtml" />
-    <Content Include="Views\Shared\_ProductSidebarPartial.cshtml" />
     <Content Include="Views\Shared\_Layout-Home.cshtml" />
     <Content Include="Views\AboutUs\Index.cshtml" />
     <Content Include="Views\Exhibition\Index.cshtml" />
@@ -1015,6 +1021,7 @@
     <Content Include="Views\Product\ProductPartial.cshtml" />
     <Content Include="Views\Product\ProductDetail.cshtml" />
     <Content Include="Views\Product\ProductDetailPartial.cshtml" />
+    <Content Include="Views\Product\Test.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
