@@ -1,0 +1,52 @@
+﻿body {
+    background-color: #F3F3F3;
+    
+}
+
+.wrap {
+    max-width: 500px;
+    margin: auto;
+    padding-top: 50px;
+}
+
+h1 {
+    font-size: 30px;
+    padding-bottom: 20px;
+}
+
+h2 {
+    font-size: 15px;
+    padding-bottom: 20px;
+}
+
+.cancel_card {
+    border: 1px solid #CCCCCC;
+    padding: 20px;
+    background-color: white;
+}
+
+.cancel_btn {
+    width: 80%;
+    margin: auto;
+}
+
+.btn1 {
+    width: 45%;
+    height: 40px;
+    background-color: #027BF5;
+    border: none;
+    border-radius: 6px;
+    color: white;
+}
+
+.btn2 {
+    width: 45%;
+    height: 40px;
+    background-color: #E1E1E1;
+    border: none;
+    border-radius: 6px;
+}
+
+li {
+    margin-bottom: 15px;
+}

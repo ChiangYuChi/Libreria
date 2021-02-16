@@ -6,9 +6,9 @@ using System.Web.Mvc;
 
 namespace Libreria.Controllers
 {
-    public class ContactServiceController : Controller
+    public class RentalController : Controller
     {
-        // GET: ContactService
+        // GET: Rental
         public ActionResult Index()
         {
             return View();
