@@ -11,11 +11,17 @@ namespace Libreria.Controllers
     public class ProductController : Controller
     {
         private readonly ProductService _productService;
+        private readonly PreviewService _previewService;
+
 
         public ProductController()
         {
             _productService = new ProductService();
+            _previewService = new PreviewService();
         }
+
+       
+
 
         public ActionResult Index()
         {
@@ -35,7 +41,7 @@ namespace Libreria.Controllers
             {
                 case "Price_Description":
 
-                   products= products.OrderBy(p => p.UnitPrice);
+                   products= products.OrderByDescending(p => p.UnitPrice);
                     break;
                 case "PublishTime_Description":
                     products = products.OrderBy(p => p.CreateTime);
@@ -65,6 +71,24 @@ namespace Libreria.Controllers
             }
            
         }
-        
+
+        public ActionResult ProductDetail()
+        {
+            return View();
+        }
+
+
+        public PartialViewResult ProductDetailPartial()
+        {
+
+            return PartialView();
+        }
+
+        public ActionResult Test()
+        {
+            var result = _previewService.GetAll();
+            return View(result);
+        }
+
     }
 }

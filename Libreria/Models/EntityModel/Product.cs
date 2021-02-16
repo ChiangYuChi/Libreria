@@ -49,6 +49,8 @@ namespace Libreria.Models.EntityModel
 
         public DateTime? UpdateTime { get; set; }
 
+        public string Introduction { get; set; }
+
         public virtual Category Category { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

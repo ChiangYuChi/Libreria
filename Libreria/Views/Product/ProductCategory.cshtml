@@ -1,18 +1,20 @@
-﻿@model List<Libreria.ViewModels.ProductViewModel>
+﻿
 @section topCss{
     <link href="~/Asset/Css/Product/ProductCategory.css" rel="stylesheet" />
+    <link href="~/Asset/Css/PartialView/category-sidenav.css" rel="stylesheet" />
+
+
 }
 
 @section endJs{
-  
+
     <script src="~/Asset/Js/Product/ProductCategory.js"></script>
 }
 
-<div class="container-fluid">
+<div class="container-fluid col-10">
     <section class="product-index">
-
         <div class="main ">
-            <div class="container-fluid col-10">
+            <div class="container-fluid" >
                 <div class="product-breadcrumb">
                     <a href="#">首頁</a>
                     <i class="fas fa-chevron-right"></i>
@@ -21,7 +23,6 @@
                 <div class="row">
                     <div class="sidenav d-none d-md-block col-md-2 col-lg-2">
                         <a href="#">@Html.Action("CategoryPartial", "Category")</a>
-
                     </div>
                     <div class="main-result col-lg-10 flex-wrap">
 
@@ -47,7 +48,7 @@
                                     <span col-lg-1>排序</span>
                                     <button class="col-lg-2 sort-btn">最相關</button>
                                     <button class="col-lg-2 sort-btn-price sort-btn" data-type="price">
-                                     @Html.ActionLink("價格排序", "ProductCategory",new {Sorting_Order= ViewBag.SortingPrice})
+                                        @Html.ActionLink("價格排序", "ProductCategory", new { Sorting_Order = ViewBag.SortingPrice })
                                     </button>
                                     <button class="col-lg-2 sort-btn">@Html.ActionLink("上市日期排序", "ProductCategory", new { Sorting_Order = ViewBag.SortingPublishTime })</button>
                                     <button class="col-lg-2 sort-btn">折扣高到低</button>
@@ -56,7 +57,7 @@
                                 </div>
                                 <ul>
 
-                                        @Html.Action("ProductPartial")
+                                    @Html.Action("ProductPartial")
                                 </ul>
                             </div>
 

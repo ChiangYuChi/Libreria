@@ -11,7 +11,6 @@ namespace Libreria.Models.EntityModel
             : base("name=LibreriaContext")
         {
         }
-
         public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<Favorite> Favorites { get; set; }
         public virtual DbSet<Invoice> Invoices { get; set; }
