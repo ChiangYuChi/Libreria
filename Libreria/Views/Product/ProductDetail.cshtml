@@ -14,7 +14,7 @@
 @foreach (var item in Model)
 {
     <section class="book-detail">
-        <div class="container">
+        <div class="container col-11">
             <div class="row ">
                 <div class="col-sm-12 breadcrumb d-none d-md-block">
                     <a href="#">首頁</a>
@@ -41,27 +41,13 @@
                             <div class="detail-title">
                                 <h1>@item.Name</h1>
                                 <h2>細微改變帶來巨大成就的實證法則</h2>
-                                <h3><span>作者</span>詹姆斯．克利爾</h3>
+                                <h3><span>作者</span>@item.Author</h3>
                                 <hr>
                                 <h5>簡介</h5>
                                 <p>
-                                    每天都進步1%，一年後，你會進步37倍；<br>
-                                    每天都退步1%，一年後，你會弱化到趨近於0！
+                                    @item.Introduction
                                 </p>
-                                <p>
-                                    你的一點小改變、一個好習慣，將會產生複利效應，<br>
-                                    如滾雪球般，為你帶來豐碩的人生成果！
-                                </p>
-                                <p>
-                                    一出版立刻風行全球，<br>
-                                    企業界、運動界、教育界、瘦身界都在用的習慣養成實作指南！
-                                </p>
-                                <p class="hype">
-                                    <strong>★Amazon、《紐約時報》《華爾街日報》《今日美國報》《出版人週刊》暢銷書</strong>
-                                    <br>
-                                    善用「複利」效應，讓小小的原子習慣利滾利，滾出生命的大不同！
-                                    天天細微改變，會累積成巨大差異，這就是原子習慣的驚人力量！
-                                </p>
+                               
                             </div>
                         </div>
                         <div class="col-lg-4 detail-pricing px-5">
