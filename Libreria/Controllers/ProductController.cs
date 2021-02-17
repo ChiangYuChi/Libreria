@@ -11,13 +11,11 @@ namespace Libreria.Controllers
     public class ProductController : Controller
     {
         private readonly ProductService _productService;
-        private readonly PreviewService _previewService;
 
 
         public ProductController()
         {
             _productService = new ProductService();
-            _previewService = new PreviewService();
         }
 
        
@@ -25,8 +23,7 @@ namespace Libreria.Controllers
 
         public ActionResult Index()
         {
-            return View();
-                
+            return View();   
         }
 
 
@@ -55,36 +52,26 @@ namespace Libreria.Controllers
 
         }
 
-         public PartialViewResult ProductPartial(int?category)
+         public PartialViewResult ProductPartial(int? category)
         {
             if (category != null)
             {
-                ViewBag.category = category;
-                var products = _productService.GetAll();
-                var productList = products.Where((x) => x.CategoryId == category);
-                return PartialView(productList.ToList());
+                var result = _productService.GetByCategory(Convert.ToInt32(category));
+                return PartialView(result);
             }
             else
             {
                 var result = _productService.GetAll();
                 return PartialView(result);
             }
-           
         }
 
-        public ActionResult ProductDetail(int? id)
+        public ActionResult ProductDetail(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(System.Net.HttpStatusCode.BadRequest);
-            }
-            var product = _productService.GetAll().Where(x => x.Id == id);
 
-            var preview = _previewService.GetAll().Where(x => x.ProductId == id).OrderBy(x => x.Sort).ToList();
-
-            ViewBag.Preview = preview;
-
-            return View(product.ToList());
+            var product = _productService.GetById(id);
+            
+            return View(product);
         }
 
 

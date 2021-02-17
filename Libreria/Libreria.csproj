@@ -219,14 +219,12 @@
     <Compile Include="Service\ExhibitionService.cs" />
     <Compile Include="Service\OperationResult.cs" />
     <Compile Include="Service\OrderService.cs" />
-    <Compile Include="Service\PreviewService.cs" />
     <Compile Include="Service\ProductService.cs" />
     <Compile Include="Service\RentalService.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\CategoryViewModel.cs" />
     <Compile Include="ViewModels\OrderViewModel.cs" />
     <Compile Include="ViewModels\ExhibitionVIewModel.cs" />
-    <Compile Include="ViewModels\PreviewViewModel.cs" />
     <Compile Include="ViewModels\ProductViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
