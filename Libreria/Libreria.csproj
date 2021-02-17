@@ -231,6 +231,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Asset\Css\AboutUs\AboutUs.css" />
+    <Content Include="Asset\Css\MemberCenter\Favorate.css" />
     <Content Include="Asset\Css\PartialView\category-sidenav.css" />
     <Content Include="Asset\Css\Home-Index\Home.css" />
     <Content Include="Asset\Css\Home-Index\slick-theme.min.css" />
@@ -252,6 +253,7 @@
     <Content Include="Asset\Css\Product\product_index.css" />
     <Content Include="Asset\Css\MemberLogin\member-login.css" />
     <Content Include="Asset\Css\Product\swiper.css" />
+    <Content Include="Asset\Css\Rental\Rental_index.css" />
     <Content Include="Asset\Css\ShoppingCart\Normalize.css" />
     <Content Include="Asset\Css\ShoppingCart\OrderDetail.css" />
     <Content Include="Asset\Css\ShoppingCart\ShoppingCart.css" />
@@ -805,18 +807,32 @@
     <Content Include="Asset\Image\PorductImages\鬼滅超讀解：在討人厭的世界中，將惡鬼滅殺的生存法。-3.jpg" />
     <Content Include="Asset\Image\PorductImages\鬼滅超讀解：在討人厭的世界中，將惡鬼滅殺的生存法。-4.jpg" />
     <Content Include="Asset\Image\PorductImages\鬼滅超讀解：在討人厭的世界中，將惡鬼滅殺的生存法。-Main.jpg" />
+    <Content Include="Asset\Image\Rental\20-Seated_Update.jpg" />
+    <Content Include="Asset\Image\Rental\area.svg" />
+    <Content Include="Asset\Image\Rental\check.svg" />
+    <Content Include="Asset\Image\Rental\cross.svg" />
+    <Content Include="Asset\Image\Rental\datepicker-icon.svg" />
+    <Content Include="Asset\Image\Rental\icon-line.svg" />
+    <Content Include="Asset\Image\Rental\leftArrow.svg" />
+    <Content Include="Asset\Image\Rental\Main-image_Web_B-Tint_02.jpg" />
+    <Content Include="Asset\Image\Rental\people.svg" />
+    <Content Include="Asset\Image\Rental\rightArrow.svg" />
+    <Content Include="Asset\Image\Rental\Screening-Image.jpg" />
+    <Content Include="Asset\Image\Rental\timepicker-icon.svg" />
     <Content Include="Asset\Image\AboutUs\quote-icon.png" />
     <Content Include="Asset\Image\smlogo_v2.png" />
     <Content Include="Asset\Js\Home-Index\slick.min.js" />
     <Content Include="Asset\Css\ContactService\ContactService.css" />
     <Content Include="Asset\Css\Member\Member.css" />
     <Content Include="Asset\Js\ContactService\ContactService.js" />
+    <Content Include="Asset\Js\MemberCenter\Favorate.js" />
     <Content Include="Asset\Js\MemberCenter\subscribe.js" />
     <Content Include="Asset\Js\Product\book-reviewer.js" />
     <Content Include="Asset\Js\MemberCenter\MemberRegisterPage.js" />
     <Content Include="Asset\Js\Product\ProductCategory.js" />
     <Content Include="Asset\Js\Product\ProductIndex.js" />
     <Content Include="Asset\Js\Product\swiper.js" />
+    <Content Include="Asset\Js\Rental\Rental_index.js" />
     <Content Include="Asset\Js\ShoppingCart\OrderDetail.js" />
     <Content Include="Asset\Js\Home-Index\slick.min.js" />
     <Content Include="Content\bootstrap-grid.css" />
@@ -1049,6 +1065,7 @@
     <Content Include="Views\MemberCenter\Subscribe_cancel.cshtml" />
     <Content Include="Views\MemberCenter\MemberContact.cshtml" />
     <Content Include="Views\Rental\Index.cshtml" />
+    <Content Include="Views\MemberCenter\Favorate.cshtml" />
     <Content Include="Views\Product\ProductDetailPartial.cshtml" />
     <Content Include="Views\Product\Test.cshtml" />
     <Content Include="Views\MemberCenter\MemberRegisterPage.cshtml" />

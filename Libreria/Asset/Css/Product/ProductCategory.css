@@ -1,4 +1,4 @@
-﻿<a href="#" > @Html.Action("CategoryPartial", "Category")</a >
+﻿
 
 
 
@@ -162,7 +162,7 @@
         color: #c0c0c0;
     }
 
- .render-section .cbp-vm-add {
+    .render-section .cbp-vm-add {
         color: #fff;
         background: #aa3744;
         padding: 10px 20px;
@@ -172,6 +172,9 @@
         -webkit-transition: background 0.2s;
         transition: background 0.2s;
         text-decoration: none;
+        position: absolute;
+        bottom: 3%;
+        
     }
 
       .render-section .cbp-vm-add:hover {
@@ -197,15 +200,16 @@
         text-align: left;
     }
 
-       .render-section .cbp-vm-view-grid ul li {
-            width: 24%;
-            text-align: left;
-            padding: 25px;
-            margin: 20px 0 0;
-            display: inline-block;
-            min-height: 420px;
-            vertical-align: top;
-        }
+    .render-section .cbp-vm-view-grid ul li {
+        width: 24%;
+        text-align: left;
+        padding: 25px;
+        margin: 20px 0 0;
+        display: inline-block;
+        height: 650px;
+        vertical-align: top;
+        position: relative;
+    }
 
           .render-section .cbp-vm-view-grid ul li .fa-heart {
                 position: absolute;
@@ -213,6 +217,8 @@
                 right: 15%;
                 bottom: 5%;
                 font-size: 20px;
+                
+                
             }
 
                .render-section .cbp-vm-view-grid ul li .fa-heart:hover {
@@ -221,6 +227,17 @@
 
             .render-section .cbp-vm-view-grid ul li:hover {
                 background-color: #f4f4f4;
+            }
+
+    .render-section .cbp-vm-view-list ul li .fa-heart {
+        position: absolute;
+        right:0;
+        bottom: 10%;
+        color: #901d2a;
+    }
+
+            .render-section .cbp-vm-view-grid ul li .fa-heart:hover {
+                color: #901d2a;
             }
 
      .render-section .cbp-vm-view-grid .cbp-vm-title {
@@ -286,7 +303,9 @@
     }
 
   .render-section .cbp-vm-view-list .cbp-vm-add {
+        
         margin: 0;
+       
     }
 
 @media screen and (max-width: 66.7em) {
