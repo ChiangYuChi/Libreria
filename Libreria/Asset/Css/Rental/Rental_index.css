@@ -1,0 +1,574 @@
+﻿body {
+font-family: 'Open Sans', sans-serif;
+font-family: 'Montserrat', sans-serif;
+}
+
+.spaceLease ul {
+margin: 0;
+}
+
+.spaceLease .col-12 {
+padding: 0;
+}
+
+.spaceLease h5 {
+font-weight: 600;
+margin-bottom: 20px;
+}
+
+.space__section-block {
+padding: 30px 0;
+border-bottom: 1px solid rgba(176, 176, 176, 1);
+}
+
+.space__section-block:last-child {
+border: none;
+}
+
+/*不能預約-日曆部份*/
+.no-appointment {
+pointer-events: none;
+border: none !important;
+color: rgba(176, 176, 176, 1);
+}
+
+/*不能選取-時間部份*/
+.cannot-select {
+    color: rgba(176, 176, 176, 1);
+    pointer-events: none;
+}
+
+
+.space__pic {
+    margin: 50px 0 20px;
+    width: 100%;
+}
+
+.space__pic img {
+    width: 100%;
+    object-fit: cover;
+}
+
+.space__pic--enlarge-only {
+display: none;
+}
+
+.space__content--title h2 {
+font-weight: 900;
+margin-bottom: 15px;
+font-size:30px;
+}
+
+.space__content--path {
+border-bottom: 1px solid rgba(176, 176, 176, 1);
+padding-bottom: 15px;
+}
+
+.space__content--path ul {
+display: flex;
+}
+
+.space__content--path a {
+color: black;
+text-decoration: none;
+}
+
+.space__content--path li:hover a {
+color: rgba(138, 105, 38, 1);
+transition: .5s;
+}
+
+.space__content--path li + li::before {
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    content: '\f054';
+    padding: 0 5px;
+}
+
+.spaceLease .place-info--item {
+display: flex;
+}
+
+.spaceLease .place-info--item + .place-info--item {
+padding-top: 20px;
+}
+
+.spaceLease .place-info--item p {
+padding-left: 20px;
+}
+
+.spaceLease .service--item {
+padding-bottom: 10px;
+}
+
+.spaceLease .service--item li {
+padding-bottom: 10px;
+}
+
+.spaceLease .service--item li::before {
+    content: url('../../Image/Rental/check.svg');
+    padding-right: 10px;
+}
+
+.spaceLease .service--modal .btn {
+border-radius: 20px;
+}
+
+.spaceLease .service--modal .btn-primary {
+background-color: white;
+color: black;
+border-color: black;
+}
+
+.spaceLease .service--modal .btn-primary:hover {
+background-color: rgba(138, 105, 38, 1);
+border-color: rgba(138, 105, 38, 1);
+color: white;
+}
+
+.spaceLease .service--modal .btn-primary:focus {
+box-shadow: none;
+}
+
+.spaceLease .service--modal .btn-primary:active:hover {
+background-color: rgba(119, 90, 31);
+border-color: rgb(119, 90, 31);
+box-shadow: 0 0 0 0.2rem rgb(119 90 31 / 50%) !important;
+}
+
+.spaceLease .modal-dialog-scrollable {
+display: block;
+font-size: 16px;
+margin: 0;
+padding: 20px;
+}
+
+.spaceLease .modal-dialog-scrollable li {
+padding-bottom: 10px;
+}
+
+.spaceLease .modal-header {
+border-bottom: none;
+}
+
+.provided-device {
+border-bottom: 1px solid rgba(176, 176, 176, 1);
+padding-bottom: 10px;
+}
+
+.provided-device li + li::before {
+    content: url('../../Image/Rental/check.svg');
+    padding-right: 10px;
+}
+
+.not-provided-device {
+padding-top: 20px;
+}
+
+.space__ratio--item {
+display: flex;
+justify-content: space-between;
+}
+
+.space__ratio--item + .space__ratio--item {
+padding-top: 10px;
+}
+
+.ratio__bar {
+display: flex;
+align-items: center;
+}
+
+.ratio__bar--progress {
+background-color: rgba(227,227,227, 1);
+width: 100px;
+height: 10px;
+margin-right: 10px;
+border-radius: 20px;
+}
+
+.ratio__bar--progress span {
+display: block;
+background-color: rgba(138, 105, 38, 1);
+height: 10px;
+border-radius: 20px;
+}
+
+.ratio__bar--progress .exhibition {
+width: 78%;
+}
+
+.ratio__bar--progress .meeting {
+width: 20%;
+}
+
+.calendar__title {
+display: flex;
+align-items: center;
+justify-content: space-between;
+padding-bottom: 15px;
+}
+
+.calendar__title button {
+width: 30px;
+height: 30px;
+padding: 0;
+border: none;
+border-radius: 50%;
+background-color: white;
+position: relative;
+}
+
+.calendar__title .back:hover {
+left: -3px;
+transition: .5s;
+cursor: pointer;
+}
+
+.calendar__title .next:hover {
+right: -3px;
+transition: .5s;
+cursor: pointer;
+}
+
+.calendar__title p {
+font-size: 20px;
+}
+
+.space__calendar--item {
+margin: auto;
+}
+
+.space__calendar table {
+margin: auto;
+margin-bottom: 20px;
+border-collapse: separate;
+-webkit-border-vertical-spacing: 5px;
+-webkit-border-horizontal-spacing: 5px;
+width: 90%;
+}
+
+.space__calendar tr {
+text-align: center;
+}
+
+.space__calendar th {
+font-size: 16px;
+}
+
+.space__calendar td {
+font-size: 16px;
+border: 1px solid rgba(227,227,227, 1);
+padding: 10px 5px;
+border-radius: 5px;
+}
+
+.space__calendar td:hover {
+background-color: rgba(138, 105, 38, 1);
+color: white;
+transition: .5s;
+cursor: pointer;
+}
+
+.space__calendar span {
+margin-top: 50px;
+}
+
+.space__calendar span::before {
+content: '';
+display: inline-block;
+width: 20px;
+height: 20px;
+margin-right: 5px;
+border-radius: 2px;
+vertical-align: text-top;
+background-color: rgba(138, 105, 38, 1);
+}
+
+.space__rule li {
+list-style-type: square;
+margin-left: 20px;
+line-height:30px;
+}
+
+.space__rule li + li {
+padding-top: 10px;
+}
+
+.space__location--text {
+padding-bottom: 30px;
+line-height:25px;
+}
+
+.space__location--map iframe {
+width: 100%;
+}
+
+.space__pay p,li{
+    line-height:25px;
+}
+.space__pay--item + .space__pay--item {
+    padding-top: 30px;
+}
+
+.space__pay--item li + li {
+padding-top: 10px;
+}
+
+.space__pay--item li {
+list-style-type: square;
+margin-left: 20px;
+}
+
+.space__check-out {
+border: 1px solid rgba(176, 176, 176, 1);
+}
+
+.space__check-out > div + div {
+padding-top: 20px;
+}
+
+.space__check-out--data {
+    display: flex;
+    font-size:20px;
+}
+.space__check-out--data div::before {
+    content: url('../../Image/Rental/datepicker-icon.svg');
+    padding-right: 15px;
+}
+.space__check-out--data div{
+    margin-left:10px;
+    padding:6px 0;
+}
+
+.space__check-out--money, .space__check-out--data{
+    border-bottom: 1px solid rgba(176, 176, 176, 1);
+    padding: 20px;
+}
+.space__check-out--time {
+    border-bottom: 1px solid rgba(176, 176, 176, 1);
+    padding: 20px 0;
+}
+
+.start-data::after {
+    content: '—';
+    padding: 0 10px;
+}
+
+.space__check-out--money {
+    line-height: 25px;
+}
+
+.space__check-out--money p {
+    font-size: 17px;
+}
+
+.space__check-out--money p + p {
+    font-weight: 900;
+}
+.space__check-out--time .custom-select {
+    background:url('../../Image/Rental/timepicker-icon.svg') 1% 50% /12% 50% no-repeat;
+    border: none;
+    width: 50%;
+    padding-left:25px;
+    margin-left:30px;
+    font-size:20px;
+}
+.space__check-out--time::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 1px;
+    background-color: black;
+    top: 205px;
+    left: 150px;
+}
+.space__check-out--time {
+    display: flex;
+}
+
+
+
+.space__check-out--btn a {
+    text-decoration: none;
+    display: inline-block;
+    width: 100px;
+    height: 40px;
+    border-radius: 15px;
+    letter-spacing: 2px;
+    line-height: 40px;
+    text-align: center;
+    background-color: rgba(138, 105, 38, 1);
+    color: white;
+}
+
+.space__check-out {
+display: none;
+}
+
+@media screen and (min-width:768px) {
+    .space__calendar--item {
+    width: 80%;
+    }
+}
+
+@media screen and (max-width:991px) {
+    .space__check-out--fixed-modal .modal-content {
+        height: 100vh;
+    }
+    .space__check-out--fixed-modal .modal-body{
+        padding : 0 30px;
+    }
+
+    .start-data div{
+        font-size: 20px;
+    }
+
+    .icon-qa::before {
+        font-family: "Font Awesome 5 Free";
+        font-weight: 900;
+        content: "\f025";
+        padding-right: 10px;
+        color: rgba(138, 105, 38, 1);
+    }
+
+    .space__check-out--money p {
+        font-size: 20px;
+    }
+    .space__check-out--data div{
+        margin-left:0;
+    }
+    .space__check-out--time::after {
+        top: 205px;
+        left: 200px;
+    }
+    .start-data::after{
+        padding: 0 40px;
+    }
+    .space__check-out--time .custom-select {
+        margin-left: 20px;
+        padding-left: 30px;
+    }
+    .space__check-out--btn {
+        display: flex;
+        justify-content: flex-end;
+    }
+    .space__check-out--btn a{
+        margin-top:20px;
+    }
+    .space__check-out--btn button {
+        border: none;
+        width: 100px;
+        height: 40px;
+        border-radius: 15px;
+        letter-spacing: 2px;
+        background-color: rgba(138, 105, 38, 1);
+        color: white;
+    }
+}
+
+@media screen and (min-width:992px) {
+    .space__pic {
+    max-width: 960px;
+    margin: 60px auto 0;
+    padding: 0 15px 20px;
+    }
+    
+    .spaceLease .container {
+    display: flex;
+    }
+
+    .btn-narrow-only {
+    display: none;
+    }
+
+    .space__check-out {
+    position: sticky;
+    display: block;
+    top: 0;
+    margin-left: 40px;
+    }
+
+    .space__content--place-info {
+    display: flex;
+    align-items: center;
+    }
+
+    .spaceLease .place-info--item + .place-info--item {
+    padding: 0;
+    }
+
+    .spaceLease .place-info--item {
+    display: block;
+    text-align: center;
+    padding-right: 20px;
+    }
+
+    .place-info--item img {
+    padding-bottom: 10px;
+    }
+
+    .spaceLease .place-info--item p {
+    padding-left: 0;
+    }
+
+    .spaceLease .service--item ul {
+    display: flex;
+    flex-wrap: wrap;
+    }
+
+    .spaceLease .service--item li {
+    width: 30%;
+    }
+
+    .space__ratio--list {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    }
+
+    .space__ratio--item + .space__ratio--item {
+    padding-top: 0;
+    }
+
+    .ratio__text {
+    padding-right: 30px;
+    }
+
+    .ratio__bar--progress {
+    width: 150px;
+    }
+
+
+    .space__check-out--btn {
+    padding: 20px;
+    }
+
+    .space__check-out--btn a {
+    width: 100%;
+    }
+}
+
+@media screen and (min-width:1200px) {
+    .space__pic--enlarge-only {
+    display: block;
+    }
+
+    .space__pic {
+    max-width: 1140px;
+    display: flex;
+    box-sizing: border-box;
+    }
+
+    .space__pic .col-xl-8:first-of-type {
+    padding-right: 20px;
+    }
+
+    .space__pic .col-xl-8:first-of-type img {
+        height: 100%;
+    }
+
+    .space__pic--enlarge-only img + img {
+    padding-top: 20px;
+    }
+}
