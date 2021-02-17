@@ -56,7 +56,7 @@
                                 <div class="pricing-figures">
                                     <div class="active-price">
                                         您的價格<div class="pricing-wrapper">
-                                            <span class="price">NT$182</span><span class="price currency">&nbsp;TWD</span>
+                                            <span class="price">NT$@string.Format("{0:N0}",item.UnitPrice)</span><span class="price currency">&nbsp;TWD</span>
                                         </div>
                                     </div>
                                     <button class="purchase-action add-to-cart">新增至購物車</button>
@@ -67,14 +67,14 @@
                             <div class="col-8 col-sm-8 col-lg-12 detail-cover px-5 mx-auto my-4">
                                 <div class="pic">
                                     <div class="pic-content preview-btn">
-                                        <img src="~/Asset/Image/PorductImages/和路邊的野鳥做朋友：超萌四格漫畫，帶你亂入很有戲的鳥類世界-Main.jpg" alt="" class="preview-img book-img">
+                                        <img src="@ViewBag.Preview[0].ImgUrl" alt="" class="preview-img book-img">
                                         <div class="overlay"></div>
                                     </div>
                                 </div>
                                 <div class="preview-img-container">
-                                    <img src="~/Asset/Image/PorductImages/和路邊的野鳥做朋友：超萌四格漫畫，帶你亂入很有戲的鳥類世界-1.jpg" class="book-img">
-                                    <img src="~/Asset/Image/PorductImages/和路邊的野鳥做朋友：超萌四格漫畫，帶你亂入很有戲的鳥類世界-2.jpg" class="book-img">
-                                    <img src="~/Asset/Image/PorductImages/和路邊的野鳥做朋友：超萌四格漫畫，帶你亂入很有戲的鳥類世界-3.jpg" class="book-img">
+                                    <img src="@ViewBag.Preview[1].ImgUrl" class="book-img">
+                                    <img src="@ViewBag.Preview[2].ImgUrl" class="book-img">
+                                    <img src="@ViewBag.Preview[3].ImgUrl" class="book-img">
                                 </div>
                                 <div class="container-fluid ">
                                     <div class="row lightbox-container align-items-center">
