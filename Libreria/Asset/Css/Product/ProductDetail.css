@@ -51,9 +51,9 @@
         cursor: pointer;
         text-align: center;
         position: relative;
-        border-top: 1px solid rgb(87, 104, 155, .1);
-        border-left: 1px solid rgb(87, 104, 155, .1);
-        border-right: 1px solid rgb(87, 104, 155, .1);
+        border-top: 1px solid rgba(87, 104, 155, .1);
+        border-left: 1px solid rgba(87, 104, 155, .1);
+        border-right: 1px solid rgba(87, 104, 155, .1);
     }
 
     .detail-cover .pic:after {
@@ -252,6 +252,18 @@
     position: absolute;
 }
 
+.detail-cover{
+    position:relative;
+   
+}
+.lightbox{
+    position:absolute;
+    
+    top:0;
+    lefe:0;
+    
+}
+
 .lightbox-container {
     position: fixed;
     top: 0;
@@ -309,3 +321,4 @@
 .preview-img-container {
     display: none;
 }
+
