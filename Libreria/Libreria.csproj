@@ -225,6 +225,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Asset\Css\AboutUs\AboutUs.css" />
+    <Content Include="Asset\Css\MemberCenter\Favorate.css" />
     <Content Include="Asset\Css\PartialView\category-sidenav.css" />
     <Content Include="Asset\Css\Home-Index\Home.css" />
     <Content Include="Asset\Css\Home-Index\slick-theme.min.css" />
@@ -1020,6 +1021,7 @@
     <Content Include="Views\MemberCenter\Subscribe_cancel.cshtml" />
     <Content Include="Views\MemberCenter\MemberContact.cshtml" />
     <Content Include="Views\Rental\Index.cshtml" />
+    <Content Include="Views\MemberCenter\Favorate.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
