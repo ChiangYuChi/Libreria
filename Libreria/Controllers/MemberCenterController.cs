@@ -59,6 +59,11 @@ namespace Libreria.Controllers
         {
             return View();
         }
+
+        public ActionResult MemberRegisterPage()
+        {
+            return View();
+        }
         public ActionResult Favorate()
         {
             return View();
