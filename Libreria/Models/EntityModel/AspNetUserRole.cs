@@ -6,16 +6,14 @@ namespace Libreria.Models.EntityModel
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("Rent")]
-    public partial class Rent
+    public partial class AspNetUserRole
     {
         [Key]
         [Column(Order = 0)]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int RentId { get; set; }
+        public string UserId { get; set; }
 
         [Key]
         [Column(Order = 1)]
-        public DateTime ReservationDate { get; set; }
+        public string RoleId { get; set; }
     }
 }

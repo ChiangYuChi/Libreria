@@ -176,35 +176,31 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\ExhibitionController.cs" />
-    <Compile Include="Controllers\ContactServiceController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MemberCenterController.cs" />
     <Compile Include="Controllers\MemberLoginController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="Controllers\RentalController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202102160350565_InitialDB.cs" />
-    <Compile Include="Migrations\202102160350565_InitialDB.Designer.cs">
-      <DependentUpon>202102160350565_InitialDB.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202102160353507_test.cs" />
-    <Compile Include="Migrations\202102160353507_test.Designer.cs">
-      <DependentUpon>202102160353507_test.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202102160356056_deletetest.cs" />
-    <Compile Include="Migrations\202102160356056_deletetest.Designer.cs">
-      <DependentUpon>202102160356056_deletetest.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202102160408512_MemberChange.cs" />
-    <Compile Include="Migrations\202102160408512_MemberChange.Designer.cs">
-      <DependentUpon>202102160408512_MemberChange.cs</DependentUpon>
+    <Compile Include="Migrations\202102170420563_InitialDB.cs" />
+    <Compile Include="Migrations\202102170420563_InitialDB.Designer.cs">
+      <DependentUpon>202102170420563_InitialDB.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\EntityModel\AspNetRole.cs" />
+    <Compile Include="Models\EntityModel\AspNetUser.cs" />
+    <Compile Include="Models\EntityModel\AspNetUserClaim.cs" />
+    <Compile Include="Models\EntityModel\AspNetUserLogin.cs" />
+    <Compile Include="Models\EntityModel\AspNetUserRole.cs" />
     <Compile Include="Models\EntityModel\Category.cs" />
+    <Compile Include="Models\EntityModel\Exhibition.cs" />
+    <Compile Include="Models\EntityModel\ExhibitionCustomer.cs" />
+    <Compile Include="Models\EntityModel\ExhibitionOrder.cs" />
     <Compile Include="Models\EntityModel\Favorite.cs" />
     <Compile Include="Models\EntityModel\Invoice.cs" />
     <Compile Include="Repository\DBContext\LibreriaDataModel.cs" />
@@ -213,7 +209,6 @@
     <Compile Include="Models\EntityModel\OrderDetail.cs" />
     <Compile Include="Models\EntityModel\Preview.cs" />
     <Compile Include="Models\EntityModel\Product.cs" />
-    <Compile Include="Models\EntityModel\Rent.cs" />
     <Compile Include="Models\EntityModel\Supplier.cs" />
     <Compile Include="Models\EntityModel\sysdiagram.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -222,9 +217,11 @@
     <Compile Include="Repository\LibreriaRepository.cs" />
     <Compile Include="Service\CategoryService.cs" />
     <Compile Include="Service\ExhibitionService.cs" />
+    <Compile Include="Service\OperationResult.cs" />
     <Compile Include="Service\OrderService.cs" />
     <Compile Include="Service\PreviewService.cs" />
     <Compile Include="Service\ProductService.cs" />
+    <Compile Include="Service\RentalService.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\CategoryViewModel.cs" />
     <Compile Include="ViewModels\OrderViewModel.cs" />
@@ -246,6 +243,9 @@
     <Content Include="Asset\Css\MemberCenter\member_logout.css" />
     <Content Include="Asset\Css\MemberCenter\member_order_inquery.css" />
     <Content Include="Asset\Css\MemberCenter\member_password_confirm.css" />
+    <Content Include="Asset\Css\MemberCenter\member_subscribe.css" />
+    <Content Include="Asset\Css\MemberCenter\sub_cancel.css" />
+    <Content Include="Asset\Css\MemberCenter\sub_info.css" />
     <Content Include="Asset\Css\Passward\Passward.css" />
     <Content Include="Asset\Css\Product\ProductCategory.css" />
     <Content Include="Asset\Css\Product\ProductDetail.css" />
@@ -368,6 +368,7 @@
     <Content Include="Asset\Image\PorductImages\Mac活用萬事通：High Sierra一本就學會！-6.jpg" />
     <Content Include="Asset\Image\PorductImages\Mac活用萬事通：High Sierra一本就學會！-7.jpg" />
     <Content Include="Asset\Image\PorductImages\Mac活用萬事通：High Sierra一本就學會！-Main.jpg" />
+    <Content Include="Asset\Image\MemberCenter\card.png" />
     <Content Include="Asset\Image\PorductImages\main-promotion-1.jpg" />
     <Content Include="Asset\Image\PorductImages\main-promotion-10.jpg" />
     <Content Include="Asset\Image\PorductImages\main-promotion-11.jpg" />
@@ -810,6 +811,7 @@
     <Content Include="Asset\Css\ContactService\ContactService.css" />
     <Content Include="Asset\Css\Member\Member.css" />
     <Content Include="Asset\Js\ContactService\ContactService.js" />
+    <Content Include="Asset\Js\MemberCenter\subscribe.js" />
     <Content Include="Asset\Js\Product\book-reviewer.js" />
     <Content Include="Asset\Js\MemberCenter\MemberRegisterPage.js" />
     <Content Include="Asset\Js\Product\ProductCategory.js" />
@@ -1021,7 +1023,6 @@
     <Content Include="Views\Shared\IndexLayout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_Layout-Product.cshtml" />
-    <Content Include="Views\ContactService\Index.cshtml" />
     <Content Include="Views\Order\Index.cshtml" />
     <Content Include="Views\Order\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_OrderLayout.cshtml" />
@@ -1043,6 +1044,11 @@
     <Content Include="Views\Category\CategoryPartial.cshtml" />
     <Content Include="Views\Product\ProductPartial.cshtml" />
     <Content Include="Views\Product\ProductDetail.cshtml" />
+    <Content Include="Views\MemberCenter\Subscribe.cshtml" />
+    <Content Include="Views\MemberCenter\Subscribe_info.cshtml" />
+    <Content Include="Views\MemberCenter\Subscribe_cancel.cshtml" />
+    <Content Include="Views\MemberCenter\MemberContact.cshtml" />
+    <Content Include="Views\Rental\Index.cshtml" />
     <Content Include="Views\Product\ProductDetailPartial.cshtml" />
     <Content Include="Views\Product\Test.cshtml" />
     <Content Include="Views\MemberCenter\MemberRegisterPage.cshtml" />
@@ -1065,17 +1071,8 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202102160350565_InitialDB.resx">
-      <DependentUpon>202102160350565_InitialDB.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202102160353507_test.resx">
-      <DependentUpon>202102160353507_test.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202102160356056_deletetest.resx">
-      <DependentUpon>202102160356056_deletetest.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202102160408512_MemberChange.resx">
-      <DependentUpon>202102160408512_MemberChange.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202102170420563_InitialDB.resx">
+      <DependentUpon>202102170420563_InitialDB.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

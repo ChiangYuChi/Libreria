@@ -41,6 +41,25 @@ namespace Libreria.Controllers
             return View();
         }
 
+        public ActionResult Subscribe()
+        {
+            return View();
+        }
+
+        public ActionResult Subscribe_info()
+        {
+            return View();
+        }
+
+        public ActionResult Subscribe_cancel()
+        {
+            return View();
+        }
+        public ActionResult MemberContact()
+        {
+            return View();
+        }
+
         public ActionResult MemberRegisterPage()
         {
             return View();

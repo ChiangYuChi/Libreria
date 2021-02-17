@@ -2,17 +2,17 @@ namespace Libreria.Migrations
 {
     using System;
     using System.Data.Entity.Migrations;
-    
-    public partial class test : DbMigration
+
+    public partial class InitialDB : DbMigration
     {
         public override void Up()
         {
-            AddColumn("dbo.Product", "test", c => c.Int(nullable: false));
+
         }
-        
+
         public override void Down()
         {
-            DropColumn("dbo.Product", "test");
+
         }
     }
 }
