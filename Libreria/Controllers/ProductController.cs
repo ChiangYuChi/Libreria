@@ -72,23 +72,24 @@ namespace Libreria.Controllers
            
         }
 
-        public ActionResult ProductDetail()
+        public ActionResult ProductDetail(int? id)
         {
-            return View();
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(System.Net.HttpStatusCode.BadRequest);
+            }
+            var product = _productService.GetAll().Where(x => x.Id == id);
+
+            var preview = _previewService.GetAll().Where(x => x.ProductId == id).OrderBy(x => x.Sort).ToList();
+
+            ViewBag.Preview = preview;
+
+            return View(product.ToList());
         }
 
 
-        public PartialViewResult ProductDetailPartial()
-        {
-
-            return PartialView();
-        }
-
-        public ActionResult Test()
-        {
-            var result = _previewService.GetAll();
-            return View(result);
-        }
+      
+       
 
     }
 }
