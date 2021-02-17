@@ -67,14 +67,14 @@
                             <div class="col-8 col-sm-8 col-lg-12 detail-cover px-5 mx-auto my-4">
                                 <div class="pic">
                                     <div class="pic-content preview-btn">
-                                        <img src="~/Asset/Image/PorductImages/@item.Name-Main.jpg" alt="" class="preview-img book-img">
+                                        <img src="@ViewBag.Preview[0].ImgUrl" alt="" class="preview-img book-img">
                                         <div class="overlay"></div>
                                     </div>
                                 </div>
                                 <div class="preview-img-container">
-                                    <img src="~/Asset/Image/PorductImages/@item.Name-1.jpg" class="book-img">
-                                    <img src="~/Asset/Image/PorductImages/@item.Name-2.jpg" class="book-img">
-                                    <img src="~/Asset/Image/PorductImages/@item.Name-3.jpg" class="book-img">
+                                    <img src="@ViewBag.Preview[1].ImgUrl" class="book-img">
+                                    <img src="@ViewBag.Preview[2].ImgUrl" class="book-img">
+                                    <img src="@ViewBag.Preview[3].ImgUrl" class="book-img">
                                 </div>
                                 <div class="container-fluid ">
                                     <div class="row lightbox-container align-items-center">

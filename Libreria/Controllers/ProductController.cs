@@ -80,6 +80,10 @@ namespace Libreria.Controllers
             }
             var product = _productService.GetAll().Where(x => x.Id == id);
 
+            var preview = _previewService.GetAll().Where(x => x.ProductId == id).OrderBy(x => x.Sort).ToList();
+
+            ViewBag.Preview = preview;
+
             return View(product.ToList());
         }
 
