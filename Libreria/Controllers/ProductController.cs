@@ -78,12 +78,8 @@ namespace Libreria.Controllers
             {
                 return new HttpStatusCodeResult(System.Net.HttpStatusCode.BadRequest);
             }
-            var products = _productService.GetAll();
-            var product = products.Where((x) => x.Id == id);
-            if (product == null)
-            {
-                return HttpNotFound();
-            }
+            var product = _productService.GetAll().Where(x => x.Id == id);
+
             return View(product.ToList());
         }
 
