@@ -250,6 +250,7 @@
     <Content Include="Asset\Css\Home-Index\slick.css" />
     <Content Include="Asset\Css\Layout\Footer.css" />
     <Content Include="Asset\Css\Layout\Nav_bar.css" />
+    <Content Include="Asset\Css\MemberCenter\MemberRegisterPage.css" />
     <Content Include="Asset\Css\MemberCenter\member_info.css" />
     <Content Include="Asset\Css\MemberCenter\member_login.css" />
     <Content Include="Asset\Css\MemberCenter\member_logout.css" />
@@ -268,6 +269,26 @@
     <Content Include="Asset\Css\ShoppingCart\Normalize.css" />
     <Content Include="Asset\Css\ShoppingCart\OrderDetail.css" />
     <Content Include="Asset\Css\ShoppingCart\ShoppingCart.css" />
+    <Content Include="Asset\Image\AboutUs\AboutUs01.jpg" />
+    <Content Include="Asset\Image\AboutUs\AboutUs02.jpg" />
+    <Content Include="Asset\Image\AboutUs\AboutUs03.jpg" />
+    <Content Include="Asset\Image\AboutUs\AboutUs04.jpg" />
+    <Content Include="Asset\Image\AboutUs\AboutUs05.jpg" />
+    <Content Include="Asset\Image\AboutUs\AboutUs06.jpg" />
+    <Content Include="Asset\Image\AboutUs\AboutUs07.jpg" />
+    <Content Include="Asset\Image\AboutUs\AboutUs08.jpg" />
+    <Content Include="Asset\Image\AboutUs\AboutUs09.jpg" />
+    <Content Include="Asset\Image\AboutUs\AboutUs10.jpg" />
+    <Content Include="Asset\Image\AboutUs\icon_01.png" />
+    <Content Include="Asset\Image\AboutUs\icon_02.png" />
+    <Content Include="Asset\Image\AboutUs\icon_03.png" />
+    <Content Include="Asset\Image\AboutUs\icon_04.png" />
+    <Content Include="Asset\Image\AboutUs\icon_05.png" />
+    <Content Include="Asset\Image\AboutUs\icon_06.png" />
+    <Content Include="Asset\Image\AboutUs\icon_07.png" />
+    <Content Include="Asset\Image\AboutUs\icon_08.png" />
+    <Content Include="Asset\Image\AboutUs\icon_09.png" />
+    <Content Include="Asset\Image\AboutUs\icon_10.png" />
     <Content Include="Asset\Image\AboutUs\TopImage.jpg" />
     <Content Include="Asset\Image\Home\0vvet556xwdbjdmchaggwfya1g34yw9u_1400x800.jpg" />
     <Content Include="Asset\Image\Home\Libreria-SCA-8287_Iwan-Baan_Web.jpg" />
@@ -810,13 +831,16 @@
     <Content Include="Asset\Image\Rental\rightArrow.svg" />
     <Content Include="Asset\Image\Rental\Screening-Image.jpg" />
     <Content Include="Asset\Image\Rental\timepicker-icon.svg" />
+    <Content Include="Asset\Image\AboutUs\quote-icon.png" />
     <Content Include="Asset\Image\smlogo_v2.png" />
     <Content Include="Asset\Js\Home-Index\slick.min.js" />
     <Content Include="Asset\Css\ContactService\ContactService.css" />
     <Content Include="Asset\Css\Member\Member.css" />
     <Content Include="Asset\Js\ContactService\ContactService.js" />
+    <Content Include="Asset\Js\MemberCenter\Favorate.js" />
     <Content Include="Asset\Js\MemberCenter\subscribe.js" />
     <Content Include="Asset\Js\Product\book-reviewer.js" />
+    <Content Include="Asset\Js\MemberCenter\MemberRegisterPage.js" />
     <Content Include="Asset\Js\Product\ProductCategory.js" />
     <Content Include="Asset\Js\Product\ProductIndex.js" />
     <Content Include="Asset\Js\Product\swiper.js" />
@@ -1055,6 +1079,9 @@
     <Content Include="Views\Rental\Index.cshtml" />
     <Content Include="Views\MemberCenter\Favorate.cshtml" />
     <Content Include="Views\Product\ProductLayoutPartial.cshtml" />
+    <Content Include="Views\Product\ProductDetailPartial.cshtml" />
+    <Content Include="Views\Product\Test.cshtml" />
+    <Content Include="Views\MemberCenter\MemberRegisterPage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
