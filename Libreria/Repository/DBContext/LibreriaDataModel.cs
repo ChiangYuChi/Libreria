@@ -28,6 +28,7 @@ namespace Libreria.Models.EntityModel
         public virtual DbSet<Order> Orders { get; set; }
         public virtual DbSet<Preview> Previews { get; set; }
         public virtual DbSet<Product> Products { get; set; }
+        public virtual DbSet<Role> Roles { get; set; }
         public virtual DbSet<Supplier> Suppliers { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
 
