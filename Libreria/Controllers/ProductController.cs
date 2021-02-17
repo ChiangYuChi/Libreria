@@ -80,10 +80,6 @@ namespace Libreria.Controllers
             }
             var products = _productService.GetAll();
             var product = products.Where((x) => x.Id == id);
-            if (product == null)
-            {
-                return HttpNotFound();
-            }
             return View(product.ToList());
         }
 

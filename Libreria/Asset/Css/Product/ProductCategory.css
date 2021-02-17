@@ -1,4 +1,4 @@
-﻿<a href="#" > @Html.Action("CategoryPartial", "Category")</a >
+﻿
 
 
 
@@ -203,8 +203,9 @@
             padding: 25px;
             margin: 20px 0 0;
             display: inline-block;
-            min-height: 420px;
+            height: 420px;
             vertical-align: top;
+            border: 1px solid red;
         }
 
           .render-section .cbp-vm-view-grid ul li .fa-heart {
@@ -213,6 +214,7 @@
                 right: 15%;
                 bottom: 5%;
                 font-size: 20px;
+                
             }
 
                .render-section .cbp-vm-view-grid ul li .fa-heart:hover {
