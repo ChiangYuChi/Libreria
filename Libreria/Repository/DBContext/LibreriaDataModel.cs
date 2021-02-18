@@ -25,58 +25,6 @@ namespace Libreria.Models.EntityModel
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Category>()
-                .HasMany(e => e.Products)
-                .WithRequired(e => e.Category)
-                .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<member>()
-                .HasMany(e => e.Favorites)
-                .WithRequired(e => e.member)
-                .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<member>()
-                .HasMany(e => e.Orders)
-                .WithRequired(e => e.member)
-                .HasForeignKey(e => e.CustomerId)
-                .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<OrderDetail>()
-                .Property(e => e.UnitPrice)
-                .HasPrecision(19, 4);
-
-            modelBuilder.Entity<Order>()
-                .Property(e => e.InvoiceInfo)
-                .IsFixedLength();
-
-            modelBuilder.Entity<Order>()
-                .HasMany(e => e.OrderDetails)
-                .WithRequired(e => e.Order)
-                .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<Product>()
-                .Property(e => e.UnitPrice)
-                .HasPrecision(19, 4);
-
-            modelBuilder.Entity<Product>()
-                .HasMany(e => e.Favorites)
-                .WithRequired(e => e.Product)
-                .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<Product>()
-                .HasMany(e => e.OrderDetails)
-                .WithRequired(e => e.Product)
-                .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<Product>()
-                .HasMany(e => e.Previews)
-                .WithRequired(e => e.Product)
-                .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<Supplier>()
-                .HasMany(e => e.Products)
-                .WithRequired(e => e.Supplier)
-                .WillCascadeOnDelete(false);
         }
     }
 }
