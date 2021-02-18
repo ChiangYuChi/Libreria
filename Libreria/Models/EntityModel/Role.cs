@@ -12,7 +12,7 @@ namespace Libreria.Models.EntityModel
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Role()
         {
-            member = new HashSet<member>();
+            members = new HashSet<member>();
         }
 
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
@@ -23,6 +23,6 @@ namespace Libreria.Models.EntityModel
         public string RoleName { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<member> member { get; set; }
+        public virtual ICollection<member> members { get; set; }
     }
 }

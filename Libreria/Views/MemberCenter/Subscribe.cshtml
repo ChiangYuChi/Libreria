@@ -1,0 +1,68 @@
+﻿@section topcss{
+
+    @*subscribe CSS*@
+    <link href="~/Asset/Css/MemberCenter/member_subscribe.css" rel="stylesheet" />
+
+
+    @*Chinese Font CSS*@
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+
+    @*English/Numbers Font CSS*@
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+}
+@section topJS{
+    <script src="https://kit.fontawesome.com/d22f4b5afc.js" crossorigin="anonymous"></script>
+}
+
+@section endJs{
+    @*subscribe JS*@
+    <script src="~/Asset/Js/MemberCenter/subscribe.js"></script>
+}
+
+
+
+<div class="container">
+    <div class="subus_txt">
+        <h1>訂閱我們</h1>
+        <h2>成為本站會員，即可立即享有以下權益</h2>
+    </div>
+    <div class="subs">
+        <div class="sub_description">
+            <div class="sub_description_title">
+                <p>訂閱說明</p>
+            </div>
+            <div class="sub_description">
+                <p>* 每個月只需300元，即可訂閱。</p>
+                <p>* 需先註冊為會員，才能進行訂閱。</p>
+                <p>* .....</p>
+                <p>* .....</p>
+            </div>
+        </div>
+        <div class="sub_benefits">
+            <div class="sub_benefits_title">
+                <p>訂閱優惠</p>
+            </div>
+            <div class="sub_benefit">
+                <p>* 訂閱可免費享有訂閱專屬權利，不定期享有本網站提供之會員活動、商品優惠等相關訊息。</p>
+                <p>* 訂閱後，每個月即可免費拿到一本書，我們會透過該會員的居住地址來進行發送。</p>
+                <p>* .....</p>
+                <p>* .....</p>
+            </div>
+        </div>
+        <div class="input">
+            <input id="input" type="radio"> 我已閱讀
+        </div>
+    </div>
+</div>
+<div class="container2">
+    <div class="button">
+        <div class="btn_yes">
+            <button disabled="true" id="btn_yes">訂閱</button>
+        </div>
+        <div class="btn_no">
+            <button>不訂閱</button>
+        </div>
+    </div>
+</div>
