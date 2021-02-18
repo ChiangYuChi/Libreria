@@ -7,16 +7,13 @@ namespace Libreria.ViewModels
 {
     public class ExhibitionVIewModel
     {
-        public string Id { get; set; }
-        public string SKU { get; set; }
-        public string Name { get; set; }
-        public decimal UnitPrice { get; set; }
-        public DateTime StartTime { get; set; }
-        public DateTime EndTime { get; set; }
-        public string masterUnit { get; set; }
-        public string performer { get; set; }
-        public string img { get; set; }
-
-
+        public int ExhibitionID { get; set; }
+        public decimal ExhibitionPrice { get; set; }
+        public DateTime ExhibitionStartTime { get; set; }
+        public DateTime ExhibitionEndTime { get; set; }
+        public DateTime EditModifyDate { get; set; }
+        public string ExPhoto { get; set; }
+        public int ExCustomerId { get; set; }
+        public string ExName { get; set; }
     }
 }
