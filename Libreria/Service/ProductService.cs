@@ -21,16 +21,23 @@ namespace Libreria.Service
 
         public List<ProductViewModel> GetAll()
         {
-            return _DbRepository.GetAll<Product>().Select(x => new ProductViewModel()
-            {
-                Id = x.ProductId,
-                Name = x.ProductName,
-                UnitPrice = x.UnitPrice,
-                Author = x.Author,
-                CreateTime = x.CreateTime,
-                CategoryId = x.CategoryId,
-                Introduction = x.Introduction
-            }).ToList();
+            var result = (from p in _DbRepository.GetAll<Product>()
+                         join v in _DbRepository.GetAll<Preview>()
+                         on p.ProductId equals v.ProductId
+                         where v.Sort == 0
+                         select new ProductViewModel()
+                         {
+                             Id = p.ProductId,
+                             Name = p.ProductName,
+                             UnitPrice = p.UnitPrice,
+                             CategoryId = p.CategoryId,
+                             Author = p.Author,
+                             CreateTime = p.CreateTime,
+                             Introduction = p.Introduction,
+                             MainUrl = v.ImgUrl
+                         }).ToList();
+
+            return result;
         }
 
         public ProductViewModel GetById(int id)
@@ -74,22 +81,21 @@ namespace Libreria.Service
 
         public List<ProductViewModel> GetByCategory(int CategoryId)
         {
-            var joindb = from p in _DbRepository.GetAll<Product>()
-                         join v in _DbRepository.GetAll<Preview>()
-                         on p.ProductId equals v.ProductId
-                         where p.CategoryId == CategoryId && v.Sort == 0
-                         select new ProductViewModel()
-                         {
-                             Id = p.ProductId,
-                             Name = p.ProductName,
-                             UnitPrice = p.UnitPrice,
-                             CategoryId = p.CategoryId,
-                             Author = p.Author,
-                             CreateTime = p.CreateTime,
-                             Introduction = p.Introduction,
-                             MainUrl = v.ImgUrl
-                         };
-            var result = joindb.ToList();
+            var result = (from p in _DbRepository.GetAll<Product>()
+                          join v in _DbRepository.GetAll<Preview>()
+                          on p.ProductId equals v.ProductId
+                          where p.CategoryId == CategoryId && v.Sort == 0
+                          select new ProductViewModel()
+                          {
+                              Id = p.ProductId,
+                              Name = p.ProductName,
+                              UnitPrice = p.UnitPrice,
+                              CategoryId = p.CategoryId,
+                              Author = p.Author,
+                              CreateTime = p.CreateTime,
+                              Introduction = p.Introduction,
+                              MainUrl = v.ImgUrl
+                          }).ToList();
 
             return result;
         }
