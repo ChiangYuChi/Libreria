@@ -15,10 +15,10 @@
     <div class="container col-11">
         <div class="row ">
             <div class="col-sm-12 breadcrumb d-none d-md-block">
-                <a href="#">首頁</a>
-                <a href="#">電子書</a>
+                <a href="@Url.Action("Index", "Home")">首頁</a>
+                <a href="">電子書</a>
                 <a href="#">企業與金融</a>
-                <a href="#">原子習慣</a>
+                <a href="#">@Model.Name</a>
             </div>
             <div class="breadcrumb breadcrumb-sm d-sm-block d-md-none"><a href="#">回到企業與金融</a> </div>
             <div class="detail-main ">
@@ -38,7 +38,7 @@
                         </div>
                         <div class="detail-title">
                             <h1>@Model.Name</h1>
-                            <h2>細微改變帶來巨大成就的實證法則</h2>
+                            <h2></h2>
                             <h3><span>作者</span>@Model.Author</h3>
                             <hr>
                             <h5>簡介</h5>
