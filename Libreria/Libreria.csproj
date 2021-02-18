@@ -194,12 +194,22 @@
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\RentalController.cs" />
     <Compile Include="Controllers\TestController.cs" />
+    <Compile Include="Filters\CustomAuthenticationFilter.cs" />
+    <Compile Include="Filters\CustomAuthorizeAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Migrations\202102171056252_InitialDB.cs" />
     <Compile Include="Migrations\202102171056252_InitialDB.Designer.cs">
       <DependentUpon>202102171056252_InitialDB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202102180239525_CreatePassword.cs" />
+    <Compile Include="Migrations\202102180239525_CreatePassword.Designer.cs">
+      <DependentUpon>202102180239525_CreatePassword.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202102180643279_AddASeedForMember.cs" />
+    <Compile Include="Migrations\202102180643279_AddASeedForMember.Designer.cs">
+      <DependentUpon>202102180643279_AddASeedForMember.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -1102,6 +1112,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202102171056252_InitialDB.resx">
       <DependentUpon>202102171056252_InitialDB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102180239525_CreatePassword.resx">
+      <DependentUpon>202102180239525_CreatePassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102180643279_AddASeedForMember.resx">
+      <DependentUpon>202102180643279_AddASeedForMember.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

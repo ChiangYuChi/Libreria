@@ -38,11 +38,31 @@
 
                     </label>
                     <span class="password-wording">※ 申辦會員首次登入預設密碼為西元生日 ex:19880505</span>
-                    <input type="submit" id="login" value="登入">
+                    @*<input type="submit" id="login" value="登入">*@
+                    @Html.ActionLink("Log in", "Index", "MemberLogin", routeValues: null, htmlAttributes: new { id = "loginLink" })
                 </div>
-
             </div>
         </div>
     </div>
 </section>
 
+@section endJS{
+    @if (!string.IsNullOrEmpty(Convert.ToString(Session["MamberName"])))
+    {
+        using (Html.BeginForm("LogOff", "MemberLogin", FormMethod.Post, new { id = "name"}))
+        {
+            @Html.AntiForgeryToken()
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#">嗨! @Session["MamberName"]</a></li>
+                <li><a href="javascript:document.getElementById('name').submit()">Log off</a></li>
+            </ul>
+        }
+    }
+    else
+    {
+        <ul class="nav navbar-nav navbar-right">
+            <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+        </ul>
+    }
+
+}

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Libreria.Filters;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -6,6 +7,8 @@ using System.Web.Mvc;
 
 namespace Libreria.Controllers
 {
+    [CustomAuthenticationFilter]
+
     public class HomeController : Controller
     {
         public ActionResult Index()
@@ -25,6 +28,13 @@ namespace Libreria.Controllers
             ViewBag.Message = "Your contact page.";
 
             return View();
+        }
+        public ActionResult UnAuthorized()
+        {
+            ViewBag.Message = "Un Authorized Page!";
+
+            return View();
+
         }
     }
 }
