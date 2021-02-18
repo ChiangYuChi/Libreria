@@ -15,6 +15,9 @@ namespace Libreria.ViewModels
         public DateTime CreateTime { get; set; }
 
         public string Introduction { get; set; }
-        
+        public string MainUrl { get; set; }
+
+        public List<string> PreviewUrls { get; set; }
+
     }
 }
