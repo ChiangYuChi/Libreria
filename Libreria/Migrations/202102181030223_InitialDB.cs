@@ -12,7 +12,7 @@ namespace Libreria.Migrations
         
         public override void Down()
         {
-            
+
         }
     }
 }
