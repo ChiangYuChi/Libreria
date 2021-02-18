@@ -29,7 +29,6 @@ namespace Libreria.Controllers
 
         public ActionResult ProductCategory(string Sorting_Order)
         {
-
             ViewBag.SortingPrice = string.IsNullOrEmpty(Sorting_Order) ? "Price_Description" : "";
             ViewBag.SortingPublishTime = string.IsNullOrEmpty(Sorting_Order) ? "PublishTime_Description" : "";
             var products = from product in _productService.GetAll()
@@ -47,10 +46,11 @@ namespace Libreria.Controllers
                     products = products.OrderBy(product => product.Name);
                     break;
             }
-
             return View(products.ToList());
-
         }
+
+
+
 
          public PartialViewResult ProductPartial(int? category)
         {
@@ -68,12 +68,15 @@ namespace Libreria.Controllers
 
         public ActionResult ProductDetail(int id)
         {
-
-            var product = _productService.GetById(id);
-            
+            var product = _productService.GetById(id);   
             return View(product);
         }
 
+        public ActionResult ProductPromotion()
+        {
+            var product = _productService.GetBySalesAmount();
+            return View(product);
+        }
 
       
        
