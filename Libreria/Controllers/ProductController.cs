@@ -11,11 +11,13 @@ namespace Libreria.Controllers
     public class ProductController : Controller
     {
         private readonly ProductService _productService;
+        private readonly CategoryService _categoryService;
 
 
         public ProductController()
         {
             _productService = new ProductService();
+            _categoryService = new CategoryService();
         }
 
        
@@ -31,22 +33,11 @@ namespace Libreria.Controllers
         {
             ViewBag.SortingPrice = string.IsNullOrEmpty(Sorting_Order) ? "Price_Description" : "";
             ViewBag.SortingPublishTime = string.IsNullOrEmpty(Sorting_Order) ? "PublishTime_Description" : "";
-            var products = from product in _productService.GetAll()
-                           select product;
-            switch (Sorting_Order)
-            {
-                case "Price_Description":
+            var products = _productService.GetAll();
 
-                   products= products.OrderByDescending(p => p.UnitPrice);
-                    break;
-                case "PublishTime_Description":
-                    products = products.OrderBy(p => p.CreateTime);
-                    break;
-                default:
-                    products = products.OrderBy(product => product.Name);
-                    break;
-            }
-            return View(products.ToList());
+
+            return View(products);
+
         }
 
 
@@ -69,17 +60,10 @@ namespace Libreria.Controllers
         public ActionResult ProductDetail(int id)
         {
             var product = _productService.GetById(id);   
+
+
+            
             return View(product);
         }
-
-        public ActionResult ProductPromotion()
-        {
-            var product = _productService.GetBySalesAmount();
-            return View(product);
-        }
-
-      
-       
-
     }
 }
