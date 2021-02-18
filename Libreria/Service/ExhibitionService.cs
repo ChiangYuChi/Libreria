@@ -31,10 +31,21 @@ namespace Libreria.Service
                 ExCustomerId=x.ExCustomerId
             }).ToList();
         }
-        //public List<ExhibitionVIewModel> GetExhibitioning()
-        //{
-        //    DateTime Nowdate = DateTime.Now;
-            
-        //}
+        public List<ExhibitionVIewModel> GetExhibitioning()
+        {
+            DateTime Nowdate = DateTime.Now;
+            _dBRepository.GetAll<Exhibition>().Select(x => new ExhibitionVIewModel()
+            {
+                ExhibitionID = x.ExhibitionID,
+                ExName = x.ExName,
+                ExhibitionStartTime = x.ExhibitionStartTime,
+                ExhibitionEndTime = x.ExhibitionEndTime,
+                EditModifyDate = x.EditModifyDate,
+                ExhibitionPrice = x.ExhibitionPrice,
+                ExPhoto = x.ExPhoto,
+                ExCustomerId = x.ExCustomerId
+            });
+            if(DateTime.Compare(Nowdate, ExhibitionStartTime))
+        }
     }
 }
