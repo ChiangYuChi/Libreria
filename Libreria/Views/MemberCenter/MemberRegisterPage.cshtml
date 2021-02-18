@@ -1,0 +1,75 @@
+﻿
+@section topCSS{
+    <link rel="stylesheet" href="~/Asset/Css/MemberCenter/MemberRegisterPage.css">
+}
+
+@{
+    ViewBag.Title = "註冊頁面";
+}
+
+<div class="breadcrumb">
+    <div class="container">
+        <div class="row">
+            <div class="justify-content-center align-items-center col-sm-12 col-md-10 col-lg-9 m-auto p-0">
+                <a href="#">首頁</a>
+                <i class="fas fa-chevron-right"></i>
+                <a href="#">註冊會員</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="register-block">
+    <div class="container">
+        <div class="row">
+            <div class="justify-content-center align-items-center col-sm-12 col-md-10 col-lg-9 m-auto p-0">
+                <div class="register-border">
+                    <div class="register-form-div">
+                        <p class="title">
+                            <span>▍</span>
+                            <span>註冊會員</span>
+                        </p>
+                        <form id="register-form-id" method="post">
+                            <label>帳號</label> <br />
+                            <input type="text" name="account" pattern="\w{3,}" placeholder="最少三個字母或數字" required /> <br />
+                            <label>密碼</label> <br />
+                            <input type="password" name="password" id="passwordInput" required /> <br />
+                            <label>確認密碼</label> <br />
+                            <input type="password" name="checkPassword" id="checkPasswordInput" placeholder="再輸入一次密碼" required /> <br />
+                            <label>姓名</label> <br />
+                            <input type="text" name="name" required /> <br />
+                            <label>生日</label> <br />
+                            <input type="date" name="birthday" required /> <br />
+                            <label>身分證字號</label> <br />
+                            <input type="text" name="IDnumber" required /> <br />
+                            <label>性別</label>
+                            <input type="radio" name="gender" value="male" />男
+                            <input type="radio" name="gender" value="female" />女
+                            <input type="radio" name="gender" value="unknown" required /> 未知 <br />
+                            <label>電子郵件</label> <br />
+                            <input type="email" name="email" required /> <br />
+                            <label>手機</label> <br />
+                            <input type="text" name="cellphone" required /> <br />
+                            <label>電話</label> <br />
+                            <input type="text" name="telephone" /> <br />
+                            <label>地址</label> <br />
+                            <input type="text" name="address" required /> <br />
+
+                            <div class="button-block">
+                                <input class="button" type="reset" name="reset" value="清除" />
+                                <input class="button" type="submit" name="submit" id="submitInput" value="送出" /> <br />
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section endJS{
+    <script src="~/Asset/Js/MemberCenter/MemberRegisterPage.js" crossorigin="anonymous"></script>
+}
+
+

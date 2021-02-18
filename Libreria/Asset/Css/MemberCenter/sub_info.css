@@ -1,0 +1,57 @@
+﻿.membership {
+    display: flex;
+    border-top: 1px solid #999999;
+    padding-top: 20px;
+}
+
+.membership_txt {
+    width: 30%;
+}
+
+.membership_info {
+    width: 70%;
+    display: flex;
+    border-bottom: 1px solid #999999;
+}
+
+.membership_pay {
+    padding-top: 10px;
+    margin-left: 30%;
+    width: 70%;
+    border-bottom: 1px solid #999999;
+}
+
+.membership_info_info {
+    width: 50%;
+}
+
+.membership_info_change {
+    text-align: end;
+    width: 50%;
+    margin-top: 20px;
+}
+
+.membership_txt button {
+    width: 140px;
+    height: 40px;
+    border: none;
+    border-radius: 5px;
+}
+
+.pay_img {
+    display: flex;
+}
+
+    .pay_img img {
+        margin-top: -20px;
+        width: 10%;
+    }
+
+.membership_info_info span {
+    color: #757589;
+}
+
+.pay_img p{
+    padding-top: 5px;
+    padding-left: 5px;
+}

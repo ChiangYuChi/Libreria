@@ -1,0 +1,310 @@
+﻿@model List<Libreria.Models.EntityModel.Exhibition>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section topCss{
+    <link href="~/Asset/Css/Product/reset.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/d22f4b5afc.js" crossorigin="anonymous"></script>
+    <link href="~/Asset/Css/Rental/Rental_index.css" rel="stylesheet" />
+}
+@section endJs{
+
+    <script src="~/Asset/Js/Rental/Rental_index.js"></script>
+}
+
+<div class="spaceLease">
+    <div class="space__pic">
+        <div class="col-12 col-xl-8">
+            <img src="~/Asset/Image/Rental/20-Seated_Update.jpg" />
+        </div>
+        <div class="col-12 col-xl-4 space__pic--enlarge-only">
+            <img src="~/Asset/Image/Rental/Main-image_Web_B-Tint_02.jpg" />
+            <img src="~/Asset/Image/Rental/Screening-Image.jpg" />
+        </div>
+    </div>
+    <div class="container">
+        <div class="col-12 col-lg-8">
+            <main class="space__content">
+                <div class="space__content--title">
+                    <h2>Liberia場地</h2>
+                </div>
+                <div class="space__content--path">
+                    <ul>
+                        <li><a href="/Home/Index">首頁</a></li>
+                        <li><a href="#">場地租借</a></li>
+                    </ul>
+                </div>
+                <div class="space__content--place-info space__section-block">
+                    <div class="place-info--item">
+                        <img src="~/Asset/Image/Rental/people.svg" />
+                        <p>可容納100人</p>
+                    </div>
+                    <div class="place-info--item">
+                        <img src="~/Asset/Image/Rental/area.svg" />
+                        <p>面積80坪</p>
+                    </div>
+                </div>
+                <div class="space__service space__section-block">
+                    <h5>設備與服務</h5>
+                    <div class="service--item">
+                        <ul>
+                            <li>桌子</li>
+                            <li>椅子</li>
+                            <li>冷氣</li>
+                            <li>廁所</li>
+                            <li>無線網路</li>
+                            <li>音響設備</li>
+                        </ul>
+                    </div>
+                    <div class="service--modal">
+                        <button type="button" class="btn btn-primary" data-toggle="modal"
+                                data-target="#exampleModal">
+                            顯示全部設備與服務
+                        </button>
+                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                             aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <img src="~/Asset/Image/Rental/cross.svg" />
+                                        </button>
+                                    </div>
+                                    <div class="modal-dialog modal-dialog-scrollable">
+                                        <ul class="provided-device">
+                                            <li>
+                                                <h5>設備</h5>
+                                            </li>
+                                            <li>桌子(3)</li>
+                                            <li>椅子(15)</li>
+                                            <li>冷氣(1)</li>
+                                            <li>廁所(1)</li>
+                                            <li>無線網路(1)</li>
+                                            <li>白板(1)</li>
+                                            <li>白板筆(3)</li>
+                                            <li>投影機(1)</li>
+                                            <li>螢幕(1)</li>
+                                            <li>音響設備(1)</li>
+                                            <li>麥克風(2)</li>
+                                        </ul>
+                                        <ul class="not-provided-device">
+                                            <li>
+                                                <h5>不提供設備</h5>
+                                            </li>
+                                            <li><s>電腦設備</s></li>
+                                            <li><s>攝影機</s></li>
+                                            <li><s>舞台</s></li>
+                                            <li><s>包廂</s></li>
+                                            <li><s>餐點提供</s></li>
+                                            <li><s>飲品</s></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="space__ratio space__section-block">
+                    <h5>適合的活動</h5>
+                    <div class="space__ratio--list">
+                        <div class="space__ratio--item">
+                            <div class="ratio__text">
+                                <p>展覽</p>
+                            </div>
+                            <div class="ratio__bar">
+                                <div class="ratio__bar--progress">
+                                    <span class="exhibition"> </span>
+                                </div>
+                                <div class="number">
+                                    <p>78%</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="space__ratio--item">
+                            <div class="ratio__text">
+                                <p>會議</p>
+                            </div>
+                            <div class="ratio__bar">
+                                <div class="ratio__bar--progress">
+                                    <span class="meeting"> </span>
+                                </div>
+                                <div class="number">
+                                    <p>20%</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="space__calendar space__section-block">
+                    <h5>預定日期</h5>
+                    <div class="space__calendar--item">
+                        <div class="calendar__title">
+                            <div class="btn-group">
+                                <button class="back">
+                                    <img src="~/Asset/Image/Rental/leftArrow.svg" />
+                                </button>
+                            </div>
+                            <p>2021年02月</p>
+                            <div class="btn-group">
+                                <button class="next">
+                                    <img src="~/Asset/Image/Rental/rightArrow.svg" />
+                                </button>
+                            </div>
+                        </div>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>日</th>
+                                    <th>一</th>
+                                    <th>二</th>
+                                    <th>三</th>
+                                    <th>四</th>
+                                    <th>五</th>
+                                    <th>六</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                    <span>已預定</span>
+                    <div class="space__check-out--btn btn-narrow-only">
+                        <button data-toggle="modal" data-target="#exampleModal2">確定</button>
+                    </div>
+                    <div class="space__check-out--fixed-modal">
+                        <div class="modal fade" tabindex="-1" aria-labelledby="exampleModalLabel2"
+                             id="exampleModal2">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <img src="~/Asset/Image/Rental/cross.svg" />
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="space__check-out--money">
+                                            <p>每天</p>
+                                            <p>$525-525</p>
+                                        </div>
+                                        <div class="space__check-out--data">
+                                            <div class="start-data">開始日期</div>
+                                            <div class="end-data">結束日期</div>
+                                        </div>
+
+                                        @{
+                                            var startDateTime = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 9, 0, 0);
+                                            var timeRange = Enumerable.Range(0, 20).Select(s => new
+                                            {
+                                                index = s,
+                                                HHmm = startDateTime.AddMinutes(s * 30).ToString("HH:mm")
+                                            });
+                                        }
+
+                                        <div class="space__check-out--time">
+                                            <select name="start-time" class="custom-select">
+                                                <option value="" selected>開始時間</option>
+                                                @foreach (var item in timeRange)
+                                                {
+                                                    <option value="@(item.index + 1)">@item.HHmm</option>
+                                                }
+                                            </select>
+                                            <select name="end-time" class="custom-select">
+                                                <option value="" selected>結束時間</option>
+                                                @foreach (var item in timeRange)
+                                                {
+                                                    <option value="@(item.index + 1)">@item.HHmm</option>
+                                                }
+                                            </select>
+                                        </div>
+                                        <div class="space__check-out--btn ">
+                                            <a href="#">線上預訂</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="space__rule space__section-block">
+                    <h5>場地規範</h5>
+                    <ul>
+                        <li>用畢後請將場地空間及桌椅復原，垃圾丟棄於分類垃圾桶內，留給下一位使用者乾淨的空間。</li>
+                        <li>若空間使用者留下髒亂的垃圾、環境或造成設備損壞，將視情況收取$1,000~$5,000元不等的費用。</li>
+                        <li>
+                            禁止烹飪、點燃明火、攜帶寵物（導盲犬不在此限）、危險物品、吸菸、毒品，以及賭博等違反法令規定、公共秩序或善良風俗的行為。違者將直接取消使用權利，如有任何法律責任，須由空間使用者自行負責。
+                        </li>
+                        <li>由於空間使用者的故意或過失，導致場地遭受損害時，Liberia將向該使用者要求賠償。</li>
+                        <li>空間使用者於租用開始之前、中、後，任何放置於Liberia場地內之物品，Liberia將不負責任何保管及賠償責任。</li>
+                        <li>Liberia辦保留主動刪除空間使用者預訂之權利。</li>
+                    </ul>
+                </div>
+                <div class="space__location space__section-block">
+                    <div class="space__location--text">
+                        <h5>位置資訊</h5>
+                        <p>台北市忠孝東路三段96號11F-1 </p>
+                        <p>(台北科大對面/忠孝新生站3號出口)</p>
+                    </div>
+                    <div class="space__location--map">
+                        <h5>交通資訊</h5>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d890.7403031752281!2d121.53603899044947!3d25.04134055574692!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442a97d70008dbd%3A0xaca6581f337c7417!2zMTA25Y-w5YyX5biC5aSn5a6J5Y2A5b-g5a2d5p2x6Lev5LiJ5q61OTYtMeiZnw!5e0!3m2!1szh-TW!2stw!4v1613122939193!5m2!1szh-TW!2stw"
+                                width="600" height="450" frameborder="0" style="border:0;" allowfullscreen=""
+                                aria-hidden="false" tabindex="0"></iframe>
+                    </div>
+                </div>
+                <div class="space__pay space__section-block">
+                    <div class="space__pay--item">
+                        <h5>付款方式</h5>
+                        <p>信用卡付款</p>
+                        <p>由第三方支付「綠界金流」提供</p>
+                    </div>
+                    <div class="space__pay--item">
+                        <h5>退訂政策</h5>
+                        <ul>
+                            <li>提供48小時前無條件更改訂單服務，更改訂單包含「取消退費」、「改期」、「延長縮短時間」、「更改空間」等。</li>
+                            <li>更改訂單時，請聯繫店家。</li>
+                        </ul>
+                    </div>
+                </div>
+            </main>
+        </div>
+        <div class="col-12 col-lg-4">
+            <div class="space__check-out">
+                <div class="space__check-out--money">
+                    <p>每天</p>
+                    <p>$525-525</p>
+                </div>
+                <div class="space__check-out--data">
+                    <div class="start-data">開始日期</div>
+                    <div class="end-data">結束日期</div>
+                </div>
+                <div class="space__check-out--time">
+                    <select name="start-time" class="custom-select">
+                        <option value="" selected>開始時間</option>
+                        @foreach (var item in timeRange)
+                        {
+                            <option value="@(item.index + 1)">@item.HHmm</option>
+                        }
+                    </select>
+                    <select name="end-time" class="custom-select">
+                        <option  value="" selected>結束時間</option>
+                        @foreach (var item in timeRange)
+                        {
+                            <option value="@(item.index + 1)">@item.HHmm</option>
+                        }
+                    </select>
+                </div>
+                <div class="space__check-out--btn">
+                    <a href="#">線上預訂</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+

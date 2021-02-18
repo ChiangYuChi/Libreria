@@ -1,0 +1,122 @@
+﻿@model ProductViewModel
+
+
+
+@section topCss{
+    <link href="~/Asset/Css/Product/ProductDetail.css" rel="stylesheet" />
+    <link href="~/Asset/Css/PartialView/category-sidenav.css" rel="stylesheet" />
+}
+
+@{
+    ViewBag.Title = "ProductDetail";
+}
+
+<section class="book-detail">
+    <div class="container col-11">
+        <div class="row ">
+            <div class="col-sm-12 breadcrumb d-none d-md-block">
+                <a href="#">首頁</a>
+                <a href="#">電子書</a>
+                <a href="#">企業與金融</a>
+                <a href="#">原子習慣</a>
+            </div>
+            <div class="breadcrumb breadcrumb-sm d-sm-block d-md-none"><a href="#">回到企業與金融</a> </div>
+            <div class="detail-main ">
+                <!-- 商品區塊 -->
+                <!-- 預覽圖區塊 -->
+                <div class="row">
+                    <div class="sidenav d-none d-md-block col-md-2 col-lg-2">
+                        <a href="#">@Html.Action("CategoryPartial", "Category")</a>
+
+                    </div>
+
+                    <div class="col-lg-6 detail-product px-5">
+                        <div class="special-deal">
+                            <!-- <div class="fa-tag" ></div> -->
+                            <i class="fas fa-tag"></i>
+                            <p>此項目適用於&nbsp;<a href="#">2020年度百大暢銷榜，單本79折起，三本再折99元，至1/31止（部分書籍不參展）</a></p>
+                        </div>
+                        <div class="detail-title">
+                            <h1>@Model.Name</h1>
+                            <h2>細微改變帶來巨大成就的實證法則</h2>
+                            <h3><span>作者</span>@Model.Author</h3>
+                            <hr>
+                            <h5>簡介</h5>
+                            <p>
+                                @Model.Introduction;
+                            </p>
+
+                        </div>
+                    </div>
+                    <div class="col-lg-4 detail-pricing px-5">
+                        <div class="col-lg-12 box">
+                            <h2 class="pricing-title">購買書籍</h2>
+                            <div class="pricing-figures">
+                                <div class="active-price">
+                                    您的價格<div class="pricing-wrapper">
+                                        <span class="price">NT$100</span><span class="price currency">&nbsp;TWD</span>
+                                    </div>
+                                </div>
+                                <button class="purchase-action add-to-cart">新增至購物車</button>
+                                <button class="purchase-action buy-now">立即購買</button>
+                                <button class="purchase-action add-to-wishlist">新增至我的願望清單</button>
+                            </div>
+                        </div>
+                        <div class="col-8 col-sm-8 col-lg-12 detail-cover px-5 mx-auto my-4">
+                            <div class="pic">
+                                <div class="pic-content preview-btn">
+                                    <img src="@Model.MainUrl" alt="" class="preview-img book-img">
+                                    <div class="overlay"></div>
+                                </div>
+                            </div>
+                            <div class="preview-img-container">
+                                @foreach (var item in Model.PreviewUrls)
+                                {
+                                    <img src="@item" class="book-img">
+                                }
+                            </div>
+                            <div class="container-fluid ">
+                                <div class="row lightbox-container align-items-center">
+                                    <div class="col-11 col-md-8  mx-auto text-right lightbox-holder">
+                                        <span class="lightbox-close"><i class="fas fa-window-close"></i></span>
+                                        <div class="lightbox-item col-10 col-md-11 m-auto"></div>
+                                        <span class="lightbox-control btnLeft"><i class="fas fa-chevron-left"></i></span>
+                                        <span class="lightbox-control btnRight"><i class="fas fa-chevron-right"></i></span>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="content d-flex flex-wrap">
+                                <div class="detail-preview  col-6 col-sm-6 col-md-6 col-lg-12 border-0 preview-btn">
+                                    <a href="#"><i class="fas fa-search"></i>立即預覽</a>
+                                </div>
+                                <hr class="d-none d-lg-block">
+                                <div class="detail-save  col-6 col-sm-6 col-md-6 col-lg-12">
+                                    <a href="#">
+                                        <i class="fas fa-arrow-to-bottom"></i>儲存預覽
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="total-rating d-none d-lg-block">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half"></i><span class="rating-num">(442)</span>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+@section EndJs{
+    <script src="~/Asset/Js/Product/book-reviewer.js"></script>
+
+}

@@ -84,20 +84,20 @@ ul {
 .footer-company h5,
 .footer-account h5,
 .footer-help h5 {
-    color: white;
+    color: rgba(255, 255, 255, 0.5);
     font-weight: bold;
 }
 
 .footer-company a,
 .footer-account a,
 .footer-help a {
-    color: white;
+    color: rgba(255, 255, 255, 0.5);
     font-size: 14px;
     text-decoration: none;
 }
 
 .footer a:hover {
-    color: white;
+    color: rgba(255, 255, 255, 0.5);
     transition: ease-in .5s;
 }
 
@@ -111,7 +111,7 @@ ul {
     }
 
 .footer-phone {
-    color: white;
+    color: rgba(255, 255, 255, 0.5);
     border-top: 1px solid black;
     margin-top: 15px;
     padding: 15px 0;
