@@ -68,15 +68,8 @@ namespace Libreria.Controllers
 
         public ActionResult ProductDetail(int id)
         {
-
-            var product = _productService.GetById(id);
-            
+            var product = _productService.GetById(id);   
             return View(product);
         }
-
-
-      
-       
-
     }
 }
