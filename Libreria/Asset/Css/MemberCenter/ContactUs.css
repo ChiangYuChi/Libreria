@@ -3,9 +3,9 @@
 }
 
 .contact-us-block {
-    margin-top: 100px;
+    margin-top: 50px;
     margin-left: 10%;
-    margin-bottom: 100px;
+    margin-bottom: 50px;
 }
 
 .contact-us-block .title {
@@ -25,7 +25,7 @@
 
 .map {
     width: 100%;
-    margin-bottom: 100px;
+    margin-bottom: 50px;
 }
 
 .contact-us-block .fa-headphones {
