@@ -1,8 +1,51 @@
 ﻿@section topCSS {
     <link rel="stylesheet" href="~/Asset/Css/MemberLogin/member-login.css">
 }
+@model Libreria.Models.EntityModel.member
 
-<section class="member">
+
+@{
+    ViewBag.Title = "Login";
+}
+<h2>Login</h2>
+@using (Html.BeginForm("Index","MemberLogin"))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.memberName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.memberName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.memberName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.memberPassword, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.memberPassword, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.memberPassword, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="登入" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+<div>
+    @Html.ActionLink("重新載入", "Index")
+</div>
+
+
+
+
+
+
+<!--<section class="member">
     <div class="container-fluid pt-5 mb-5">
         <div class="row   justify-content-center align-items-center col-sm-12 col-md-10 col-lg-9 m-auto p-0">
             <div class="breadcrumb-member w-100 ">
@@ -22,7 +65,7 @@
                         <span>還不是我們的會員嗎? <a href="#">註冊會員</a></span>
                     </div>
                 </div>
-                <div class="input-group">
+                <form action="/MemberLogin/Index" method="post" class="input-group">
                     <label>
                         <span>帳號</span> <br />
                         <input type="text" name="name" id="name" placeholder="證件號碼/台灣手機/會員卡號/自訂帳號"> <br />
@@ -38,18 +81,18 @@
 
                     </label>
                     <span class="password-wording">※ 申辦會員首次登入預設密碼為西元生日 ex:19880505</span>
-                    @*<input type="submit" id="login" value="登入">*@
-                    @Html.ActionLink("Log in", "Index", "MemberLogin", routeValues: null, htmlAttributes: new { id = "loginLink" })
-                </div>
+                    <input type="submit" id="login" value="登入">-->
+@*@Html.ActionLink("Log in", "Index", "MemberLogin", routeValues: null, htmlAttributes: new { id = "login" })*@
+<!--</form>
             </div>
         </div>
     </div>
-</section>
+</section>-->
 
 @section endJS{
     @if (!string.IsNullOrEmpty(Convert.ToString(Session["MamberName"])))
     {
-        using (Html.BeginForm("LogOff", "MemberLogin", FormMethod.Post, new { id = "name"}))
+        using (Html.BeginForm("LogOff", "MemberLogin", FormMethod.Post, new { id = "name" }))
         {
             @Html.AntiForgeryToken()
             <ul class="nav navbar-nav navbar-right">

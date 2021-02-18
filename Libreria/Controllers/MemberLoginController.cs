@@ -9,25 +9,32 @@ namespace Libreria.Controllers
 {
     public class MemberLoginController : Controller
     {
+        private readonly LibreriaDataModel _libreriaDataModel;
+        public MemberLoginController()
+        {
+            _libreriaDataModel = new LibreriaDataModel();
+        }
         // GET: MemberLogin
+        [HttpGet]
         public ActionResult Index()
         {
             return View();
         }
+
         [HttpPost]
         public ActionResult Index(member model)
         {
-            if (ModelState.IsValid)
-            {
-                using (var context = new LibreriaDataModel())
-                {
-                    member member = context.members
-                                       .Where(u => u.memberId == model.memberId && u.memberPassword == model.memberPassword)
+            //if (ModelState.IsValid)
+            //{
+                //using (var context = new LibreriaDataModel())
+                //{
+                    member member = _libreriaDataModel.members
+                                       .Where(u => u.memberName == model.memberName && u.memberPassword == model.memberPassword)
                                        .FirstOrDefault();
                     if (User != null)
                     {
                         Session["MemberName"] = member.memberName;
-                        Session["MemberId"] = member.memberId;
+                        Session["MemberPassword"] = member.memberPassword;
                         return RedirectToAction("Index", "Home");
                     }
                     else
@@ -35,13 +42,12 @@ namespace Libreria.Controllers
                         ModelState.AddModelError("", "帳號或密碼輸入錯誤");
                         return View(model);
                     }
-
-                }
-            }
-            else
-            {
-                return View(model);
-            }
+                    //}
+            //}
+            //else
+            //{
+                //return View(model);
+            //}
 
         }
         [HttpPost]
@@ -49,7 +55,7 @@ namespace Libreria.Controllers
         public ActionResult LogOff()
         {
             Session["MemberName"] = string.Empty;
-            Session["MemberId"] = string.Empty;
+            Session["MemberPassword"] = string.Empty;
             return RedirectToAction("Index", "Home");
         }
 
