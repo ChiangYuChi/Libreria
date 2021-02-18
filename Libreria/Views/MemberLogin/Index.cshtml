@@ -45,7 +45,7 @@
 
 
 
-<!--<section class="member">
+@*<section class="member">
     <div class="container-fluid pt-5 mb-5">
         <div class="row   justify-content-center align-items-center col-sm-12 col-md-10 col-lg-9 m-auto p-0">
             <div class="breadcrumb-member w-100 ">
@@ -82,12 +82,11 @@
                     </label>
                     <span class="password-wording">※ 申辦會員首次登入預設密碼為西元生日 ex:19880505</span>
                     <input type="submit" id="login" value="登入">-->
-@*@Html.ActionLink("Log in", "Index", "MemberLogin", routeValues: null, htmlAttributes: new { id = "login" })*@
-<!--</form>
+                </form>
             </div>
         </div>
     </div>
-</section>-->
+</section>*@
 
 @section endJS{
     @if (!string.IsNullOrEmpty(Convert.ToString(Session["MamberName"])))
