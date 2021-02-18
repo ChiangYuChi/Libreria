@@ -1,0 +1,29 @@
+﻿body {
+    font-family: 'Open Sans', sans-serif;
+}
+
+.contact-us-block {
+    margin-top: 100px;
+    margin-left: 10%;
+    margin-bottom: 100px;
+}
+
+.contact-us-block .title {
+    font-size: 30px;
+}
+
+.contact-us-block .text li {
+    list-style: disc;
+    background-color: #FFFFFF;
+    font-size: 22px;
+}
+
+.map-block {
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.map {
+    width: 100%;
+    margin-bottom: 100px;
+}

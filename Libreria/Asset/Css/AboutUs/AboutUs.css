@@ -20,21 +20,31 @@
     z-index: -1;
 }
 
-.top-block h2 {
-    color: white;
-    font-size: 50px;
-    position: absolute;
-    top: 60%;
-    left: 10%;
-    font-weight: bold;
-}
+    .top-block h2 {
+        color: white;
+        font-size: 50px;
+        position: absolute;
+        top: 20%;
+        left: 10%;
+        font-weight: bold;
+        color: white;
+        background-color: rgba(0,0,0,0.8);
+        padding: 10px;
+        border-radius: 5px;
+    }
 
-.text-block {
-    margin: 100px 10%;
-    position: relative;
-}
+    .top-block .text-block {
+        /*margin: 100px 10%;*/
+        position: absolute;
+        top: 50%;
+        left: 10%;
+        right: 10%;
+        background-color: rgba(0,0,0,0.8);
+        padding: 10px;
+        border-radius: 5px;
+    }
 
-.text-block::before {
+/*.text-block::before {
     content: '';
     background-image: url("../../Image/AboutUs/quote-icon.png");
     width: 30px;
@@ -43,16 +53,19 @@
     position: absolute;
     top: 0;
     left: 0;
-}
+}*/
 
-.text-block .title {
-    font-size: 24px;
-}
+    .top-block .text-block .title {
+        font-size: 24px;
+    }
 
-.text-block .text-box {
-    font-size: 20px;
-    padding: 50px 0px 0px 75px;
-}
+    .top-block .text-block .text-box {
+        font-size: 20px;
+        color: white;
+    }
+
+
+
 
 .about-us-block {
     margin: 7%;

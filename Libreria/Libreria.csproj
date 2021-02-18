@@ -231,6 +231,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Asset\Css\AboutUs\AboutUs.css" />
+    <Content Include="Asset\Css\MemberCenter\ContactUs.css" />
     <Content Include="Asset\Css\MemberCenter\Favorate.css" />
     <Content Include="Asset\Css\PartialView\category-sidenav.css" />
     <Content Include="Asset\Css\Home-Index\Home.css" />
@@ -1069,6 +1070,7 @@
     <Content Include="Views\Product\ProductDetailPartial.cshtml" />
     <Content Include="Views\Product\Test.cshtml" />
     <Content Include="Views\MemberCenter\MemberRegisterPage.cshtml" />
+    <Content Include="Views\MemberCenter\ContactUs.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

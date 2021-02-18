@@ -68,5 +68,10 @@ namespace Libreria.Controllers
         {
             return View();
         }
+
+        public ActionResult ContactUs()
+        {
+            return View();
+        }
     }
 }
