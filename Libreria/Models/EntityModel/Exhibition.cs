@@ -32,6 +32,10 @@ namespace Libreria.Models.EntityModel
 
         [Required]
         public string ExPhoto { get; set; }
+        [Required]
+        [StringLength(50)]
+        public string ExName { get; set; }
+
 
         public virtual ExhibitionCustomer ExhibitionCustomer { get; set; }
     }
