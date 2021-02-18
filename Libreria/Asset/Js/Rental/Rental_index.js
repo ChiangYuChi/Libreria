@@ -8,23 +8,21 @@ window.onload = () => {
 }
 
 //選擇展覽時間
-let startTime = document.querySelectorAll('[name = "start-time"]');
-let endTime = document.querySelectorAll('[name = "end-time"]');
-let startValue, endValue;
-startTime.forEach(x => {
-    x.addEventListener("change", function () {
-        startValue = x.value;
-    })
-});
-endTime.forEach(y => {
-    y.addEventListener("change", function () {
-        endValue = y.value;
-        if (endValue <= startValue) {
-            y[endValue].setAttribute('disabled', true)
-            y[endValue].className = 'cannot-select';
-        }
-    })
-});
+function generateEndTime() {
+    let startValue = parseInt(this.value);
+    let endSelect = $(this).next('select')[0];
+    $('option:eq(0)', endSelect).nextAll().remove();
+    for (let i = startValue + 1; i < this.length; i++) {
+        let option = document.createElement("option");
+        option.value = i;
+        option.innerText = this[i].innerText;
+        endSelect.appendChild(option);
+    }
+}
+document.getElementById('start').addEventListener("change", generateEndTime);
+document.getElementById('start-modal').addEventListener("change", generateEndTime);
+
+
 
 
 
@@ -60,6 +58,7 @@ function Calendar() {
             let tr = document.createElement('tr');
             // 補第一天之前空的td 
             let prevDaysOfWeek = currentDate.getDay();
+            console.log(prevDaysOfWeek)
             while (weekIndex == 0 && prevDaysOfWeek > 0) {
                 var td = document.createElement('td');
                 td.innerHtml = '&emsp;';

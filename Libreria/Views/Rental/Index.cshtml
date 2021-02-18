@@ -207,19 +207,15 @@
                                         }
 
                                         <div class="space__check-out--time">
-                                            <select name="start-time" class="custom-select">
+                                            <select id="start-modal" name="start-time" class="custom-select">
                                                 <option value="" selected>開始時間</option>
                                                 @foreach (var item in timeRange)
                                                 {
                                                     <option value="@(item.index + 1)">@item.HHmm</option>
                                                 }
                                             </select>
-                                            <select name="end-time" class="custom-select">
+                                            <select id="end-modal" name="end-time" class="custom-select">
                                                 <option value="" selected>結束時間</option>
-                                                @foreach (var item in timeRange)
-                                                {
-                                                    <option value="@(item.index + 1)">@item.HHmm</option>
-                                                }
                                             </select>
                                         </div>
                                         <div class="space__check-out--btn ">
@@ -284,19 +280,15 @@
                     <div class="end-data">結束日期</div>
                 </div>
                 <div class="space__check-out--time">
-                    <select name="start-time" class="custom-select">
+                    <select id="start" name="start-time" class="custom-select">
                         <option value="" selected>開始時間</option>
                         @foreach (var item in timeRange)
                         {
                             <option value="@(item.index + 1)">@item.HHmm</option>
                         }
                     </select>
-                    <select name="end-time" class="custom-select">
+                    <select id="end" name="end-time" class="custom-select">
                         <option  value="" selected>結束時間</option>
-                        @foreach (var item in timeRange)
-                        {
-                            <option value="@(item.index + 1)">@item.HHmm</option>
-                        }
                     </select>
                 </div>
                 <div class="space__check-out--btn">
