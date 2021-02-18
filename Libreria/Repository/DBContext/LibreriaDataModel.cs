@@ -11,7 +11,16 @@ namespace Libreria.Models.EntityModel
             : base("name=LibreriaContext")
         {
         }
+
+        public virtual DbSet<AspNetRole> AspNetRoles { get; set; }
+        public virtual DbSet<AspNetUserClaim> AspNetUserClaims { get; set; }
+        public virtual DbSet<AspNetUserLogin> AspNetUserLogins { get; set; }
+        public virtual DbSet<AspNetUserRole> AspNetUserRoles { get; set; }
+        public virtual DbSet<AspNetUser> AspNetUsers { get; set; }
         public virtual DbSet<Category> Categories { get; set; }
+        public virtual DbSet<Exhibition> Exhibitions { get; set; }
+        public virtual DbSet<ExhibitionCustomer> ExhibitionCustomers { get; set; }
+        public virtual DbSet<ExhibitionOrder> ExhibitionOrders { get; set; }
         public virtual DbSet<Favorite> Favorites { get; set; }
         public virtual DbSet<Invoice> Invoices { get; set; }
         public virtual DbSet<member> members { get; set; }
@@ -19,9 +28,9 @@ namespace Libreria.Models.EntityModel
         public virtual DbSet<Order> Orders { get; set; }
         public virtual DbSet<Preview> Previews { get; set; }
         public virtual DbSet<Product> Products { get; set; }
+        public virtual DbSet<Role> Roles { get; set; }
         public virtual DbSet<Supplier> Suppliers { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
-        public virtual DbSet<Rent> Rents { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -29,6 +38,24 @@ namespace Libreria.Models.EntityModel
                 .HasMany(e => e.Products)
                 .WithRequired(e => e.Category)
                 .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Exhibition>()
+                .Property(e => e.ExhibitionPrice)
+                .HasPrecision(19, 4);
+
+            modelBuilder.Entity<ExhibitionCustomer>()
+                .HasMany(e => e.Exhibitions)
+                .WithRequired(e => e.ExhibitionCustomer)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<ExhibitionCustomer>()
+                .HasMany(e => e.ExhibitionOrders)
+                .WithRequired(e => e.ExhibitionCustomer)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<ExhibitionOrder>()
+                .Property(e => e.Price)
+                .HasPrecision(19, 4);
 
             modelBuilder.Entity<member>()
                 .HasMany(e => e.Favorites)
@@ -38,7 +65,6 @@ namespace Libreria.Models.EntityModel
             modelBuilder.Entity<member>()
                 .HasMany(e => e.Orders)
                 .WithRequired(e => e.member)
-                .HasForeignKey(e => e.CustomerId)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<OrderDetail>()

@@ -21,7 +21,7 @@ namespace Libreria.Models.EntityModel
 
         public DateTime OrderDate { get; set; }
 
-        public int CustomerId { get; set; }
+        public int memberId { get; set; }
 
         [Required]
         [StringLength(50)]

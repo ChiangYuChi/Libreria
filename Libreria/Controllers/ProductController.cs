@@ -12,15 +12,18 @@ namespace Libreria.Controllers
     {
         private readonly ProductService _productService;
 
+
         public ProductController()
         {
             _productService = new ProductService();
         }
 
+       
+
+
         public ActionResult Index()
         {
-            return View();
-                
+            return View();   
         }
 
 
@@ -35,7 +38,7 @@ namespace Libreria.Controllers
             {
                 case "Price_Description":
 
-                   products= products.OrderBy(p => p.UnitPrice);
+                   products= products.OrderByDescending(p => p.UnitPrice);
                     break;
                 case "PublishTime_Description":
                     products = products.OrderBy(p => p.CreateTime);
@@ -49,22 +52,31 @@ namespace Libreria.Controllers
 
         }
 
-         public PartialViewResult ProductPartial(int?category)
+         public PartialViewResult ProductPartial(int? category)
         {
             if (category != null)
             {
-                ViewBag.category = category;
-                var products = _productService.GetAll();
-                var productList = products.Where((x) => x.CategoryId == category);
-                return PartialView(productList.ToList());
+                var result = _productService.GetByCategory(Convert.ToInt32(category));
+                return PartialView(result);
             }
             else
             {
                 var result = _productService.GetAll();
                 return PartialView(result);
             }
-           
         }
-        
+
+        public ActionResult ProductDetail(int id)
+        {
+
+            var product = _productService.GetById(id);
+            
+            return View(product);
+        }
+
+
+      
+       
+
     }
 }

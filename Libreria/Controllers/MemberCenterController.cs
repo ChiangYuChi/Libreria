@@ -14,10 +14,6 @@ namespace Libreria.Controllers
             return View();
         }
 
-        public ActionResult MemberLogout()
-        {
-            return View();
-        }
 
         public ActionResult MemberInfo()
         {
@@ -41,6 +37,34 @@ namespace Libreria.Controllers
         }
 
         public ActionResult PartialViewTest()
+        {
+            return View();
+        }
+
+        public ActionResult Subscribe()
+        {
+            return View();
+        }
+
+        public ActionResult Subscribe_info()
+        {
+            return View();
+        }
+
+        public ActionResult Subscribe_cancel()
+        {
+            return View();
+        }
+        public ActionResult MemberContact()
+        {
+            return View();
+        }
+
+        public ActionResult MemberRegisterPage()
+        {
+            return View();
+        }
+        public ActionResult Favorate()
         {
             return View();
         }

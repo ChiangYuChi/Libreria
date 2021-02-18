@@ -15,7 +15,6 @@ namespace Libreria.Models.EntityModel
         public int ProductId { get; set; }
 
         [Required]
-        [StringLength(100)]
         public string ImgUrl { get; set; }
 
         public int Sort { get; set; }
