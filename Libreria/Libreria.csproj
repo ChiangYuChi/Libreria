@@ -243,7 +243,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Asset\Css\AboutUs\AboutUs.css" />
-    <Content Include="Asset\Css\MemberCenter\Favorate.css" />
+    <Content Include="Asset\Css\MemberCenter\Favorite.css" />
     <Content Include="Asset\Css\PartialView\category-sidenav.css" />
     <Content Include="Asset\Css\Home-Index\Home.css" />
     <Content Include="Asset\Css\Home-Index\slick-theme.min.css" />
@@ -837,7 +837,7 @@
     <Content Include="Asset\Css\ContactService\ContactService.css" />
     <Content Include="Asset\Css\Member\Member.css" />
     <Content Include="Asset\Js\ContactService\ContactService.js" />
-    <Content Include="Asset\Js\MemberCenter\Favorate.js" />
+    <Content Include="Asset\Js\MemberCenter\Favorite.js" />
     <Content Include="Asset\Js\MemberCenter\subscribe.js" />
     <Content Include="Asset\Js\Product\book-reviewer.js" />
     <Content Include="Asset\Js\MemberCenter\MemberRegisterPage.js" />
@@ -1077,7 +1077,7 @@
     <Content Include="Views\MemberCenter\Subscribe_cancel.cshtml" />
     <Content Include="Views\MemberCenter\MemberContact.cshtml" />
     <Content Include="Views\Rental\Index.cshtml" />
-    <Content Include="Views\MemberCenter\Favorate.cshtml" />
+    <Content Include="Views\MemberCenter\Favorite.cshtml" />
     <Content Include="Views\Product\ProductLayoutPartial.cshtml" />
     <Content Include="Views\Product\ProductDetailPartial.cshtml" />
     <Content Include="Views\Product\Test.cshtml" />
