@@ -1,0 +1,14 @@
+﻿@model  IEnumerable <ProductViewModel>
+
+
+@foreach(var item in Model){
+<div class="col-lg-3 pic">
+    <a class="promote-image" href=" @Url.Action("ProductDetail", "Product", new { id = item.Id }, null)"><img src="@item.MainUrl" alt=""></a>
+   
+    <div class="promotion-discount">
+        <div class="title">@item.Name</div>
+        <p>79折,<span>NT$</span>@item.UnitPrice</p>
+    </div>
+</div>
+}
+

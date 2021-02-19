@@ -66,35 +66,9 @@
                     </div>
                     <div class="new-product col-lg-12 d-flex">
                         <h3>新品推薦</h3>
-                        <div class="col-lg-3 pic">
-                            <img src="~/Asset/Image/PorductImages/查拉圖斯特拉如是說-Main.jpg" alt="">
-                            <div class="promotion-discount">
-                                <div class="title">藝術史的一千零一夜 (精美插畫版/誠品獨家書封版)</div>
-                                <p>79折,<span>NT$</span>537</p>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 pic">
-                            <img src="~/Asset/Image/PorductImages/查拉圖斯特拉如是說-Main.jpg" alt="">
-                            <div class="promotion-discount">
-                                <div class="title">藝術史的一千零一夜 (精美插畫版/誠品獨家書封版)</div>
-                                <p>79折,<span>NT$</span>537</p>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 pic">
-                            <img src="~/Asset/Image/PorductImages/查拉圖斯特拉如是說-Main.jpg" alt="">
-                            <div class="promotion-discount">
-                                <div class="title">藝術史的一千零一夜 (精美插畫版/誠品獨家書封版)</div>
-                                <p>79折,<span>NT$</span>537</p>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 pic">
-                            <img src="~/Asset/Image/PorductImages/查拉圖斯特拉如是說-Main.jpg" alt="">
-                            <div class="promotion-discount">
-                                <div class="title">藝術史的一千零一夜 (精美插畫版/誠品獨家書封版)</div>
-                                <p>79折,<span>NT$</span>537</p>
-                            </div>
-                        </div>
-
+                        
+                        @Html.Action("PromoteByPublishDatePartial")
+                        
                     </div>
                     <div class="new-product col-lg-12 d-flex">
                         <h3>編輯推薦</h3>
@@ -153,12 +127,7 @@
                         <h3>熱門話題</h3>
 
                         <ul>
-                            <li class="col-lg-12">手機攝影必學Book: 用OX帶你學會拍人物、食物、風景等情境照片</li>
-                            <li class="col-lg-12">版面研究所: 45個設計訣竅, 讓提案一次通過!</li>
-                            <li class="col-lg-12">手機攝影必學Book: 用OX帶你學會拍人物、食物、風景等情境照片</li>
-                            <li class="col-lg-12">版面研究所: 45個設計訣竅, 讓提案一次通過!</li>
-                            <li class="col-lg-12">手機攝影必學Book: 用OX帶你學會拍人物、食物、風景等情境照片</li>
-                            <li class="col-lg-12">版面研究所: 45個設計訣竅, 讓提案一次通過!</li>
+                            @Html.Action("PromoteByTotalSalesPartial")
                         </ul>
 
 
