@@ -108,5 +108,26 @@ namespace Libreria.Service
             
             return result;
         }
+
+        public List<ProductViewModel> GetBySalesAmount()
+        {
+            var products = from p in _DbRepository.GetAll<Product>()
+                         .OrderBy(p=>p.PublishDate)
+                         .Take(5)
+                         select new ProductViewModel()
+                         {
+                             Id = p.ProductId,
+                             Name = p.ProductName,
+                             UnitPrice = p.UnitPrice,
+                             CategoryId = p.CategoryId,
+                             Author = p.Author,
+                             CreateTime = p.CreateTime,
+                             Introduction = p.Introduction,
+                             
+                         };
+            var result = products.ToList();
+            return result;
+
+        }
     }
 }

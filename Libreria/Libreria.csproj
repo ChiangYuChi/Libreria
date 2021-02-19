@@ -293,6 +293,7 @@
     <Content Include="Asset\Image\AboutUs\icon_09.png" />
     <Content Include="Asset\Image\AboutUs\icon_10.png" />
     <Content Include="Asset\Image\AboutUs\TopImage.jpg" />
+    <Content Include="Asset\Image\detail-cover.png" />
     <Content Include="Asset\Image\Home\0vvet556xwdbjdmchaggwfya1g34yw9u_1400x800.jpg" />
     <Content Include="Asset\Image\Home\Libreria-SCA-8287_Iwan-Baan_Web.jpg" />
     <Content Include="Asset\Image\Home\Libreria-SCA-8599-credit-Iwan-Baan-scaled.jpg" />
@@ -1085,6 +1086,7 @@
     <Content Include="Views\Product\ProductDetailPartial.cshtml" />
     <Content Include="Views\Product\Test.cshtml" />
     <Content Include="Views\MemberCenter\MemberRegisterPage.cshtml" />
+    <Content Include="Views\Product\ProductPromotion.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

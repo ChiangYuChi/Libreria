@@ -1,7 +1,13 @@
 ﻿@model List<ProductViewModel>
 
+@{ 
+    
+
+}
+
 @foreach (var item in Model)
 {
+
 
 <li class="book-list">
     <a class="cbp-vm-image" href="@Url.Action("ProductDetail", "Product", new { id = item.Id }, null)"><img src="@item.MainUrl"></a>
@@ -11,6 +17,7 @@
         @item.Author
     </div>
     <a class="cbp-vm-icon cbp-vm-add" href="#">加入購物車</a>
+   
     <a class="wish-list " href="#"><i class="fas fa-heart"></i></a>
 </li>
 

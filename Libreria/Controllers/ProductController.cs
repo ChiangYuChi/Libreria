@@ -31,7 +31,6 @@ namespace Libreria.Controllers
 
         public ActionResult ProductCategory(string Sorting_Order)
         {
-
             ViewBag.SortingPrice = string.IsNullOrEmpty(Sorting_Order) ? "Price_Description" : "";
             ViewBag.SortingPublishTime = string.IsNullOrEmpty(Sorting_Order) ? "PublishTime_Description" : "";
             var products = _productService.GetAll();
@@ -40,6 +39,9 @@ namespace Libreria.Controllers
             return View(products);
 
         }
+
+
+
 
          public PartialViewResult ProductPartial(int? category)
         {
