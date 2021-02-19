@@ -199,6 +199,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\Utility.cs" />
     <Compile Include="Migrations\202102181030223_InitialDB.cs" />
     <Compile Include="Migrations\202102181030223_InitialDB.Designer.cs">
       <DependentUpon>202102181030223_InitialDB.cs</DependentUpon>

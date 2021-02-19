@@ -24,31 +24,21 @@ namespace Libreria.Controllers
         [HttpPost]
         public ActionResult Index(member model)
         {
-            //if (ModelState.IsValid)
-            //{
-                //using (var context = new LibreriaDataModel())
-                //{
-                    member member = _libreriaDataModel.members
-                                       .Where(u => u.memberName == model.memberName && u.memberPassword == model.memberPassword)
-                                       .FirstOrDefault();
-                    if (User != null)
-                    {
-                        Session["MemberName"] = member.memberName;
-                        Session["MemberPassword"] = member.memberPassword;
-                        return RedirectToAction("Index", "Home");
-                    }
-                    else
-                    {
-                        ModelState.AddModelError("", "帳號或密碼輸入錯誤");
-                        return View(model);
-                    }
-                    //}
-            //}
-            //else
-            //{
-                //return View(model);
-            //}
-
+            member member = _libreriaDataModel.members
+                                               .Where(u => u.memberName == model.memberName && u.memberPassword == model.memberPassword)
+                                               .FirstOrDefault();
+            
+            if (User != null)
+            {
+                Session["MemberName"] = member.memberName;
+                Session["MemberPassword"] = member.memberPassword;
+                return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+                 ModelState.AddModelError("", "帳號或密碼輸入錯誤");
+                 return View(model);
+            }
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
