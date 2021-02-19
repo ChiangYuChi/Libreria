@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Libreria.Models;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace Libreria.Controllers
 {
@@ -167,6 +168,7 @@ namespace Libreria.Controllers
                 }
                 AddErrors(result);
             }
+
 
             // 如果執行到這裡，發生某項失敗，則重新顯示表單
             return View(model);

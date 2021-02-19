@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Libreria.Filters;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -22,6 +23,27 @@ namespace Libreria.Controllers
         {
             var result = _exhibitionService.GetExhibitioning();
             return View(result);
+        }
+
+        public ActionResult About()
+        {
+            ViewBag.Message = "Your application description page.";
+
+            return View();
+        }
+
+        public ActionResult Contact()
+        {
+            ViewBag.Message = "Your contact page.";
+
+            return View();
+        }
+        public ActionResult UnAuthorized()
+        {
+            ViewBag.Message = "Un Authorized Page!";
+
+            return View();
+
         }
     }
 }
