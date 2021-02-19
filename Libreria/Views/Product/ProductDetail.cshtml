@@ -49,31 +49,43 @@
                             </p>
                         </div>
                     </div>
-                </div>
-                <div class="col-4 detail-pricing px-5">
-
-                    <div class=" detail-cover px-5 mx-auto my-4">
-                        <div class="pic">
-                            <div class="pic-content preview-btn">
-                                <img src="@Model.MainUrl" alt="" class="preview-img book-img">
-                                <div class="overlay"></div>
+                    <div class="col-lg-4 detail-pricing px-5">
+                        <div class="col-lg-12 box">
+                            <h2 class="pricing-title">購買書籍</h2>
+                            <div class="pricing-figures">
+                                <div class="active-price">
+                                    您的價格<div class="pricing-wrapper">
+                                        <span class="price">NT$@(String.Format("{0:N0}",Model.UnitPrice))</span><span class="price currency">&nbsp;TWD</span>
+                                    </div>
+                                </div>
+                                <button class="purchase-action add-to-cart">新增至購物車</button>
+                                <button class="purchase-action buy-now">立即購買</button>
+                                <button class="purchase-action add-to-wishlist">新增至我的願望清單</button>
                             </div>
                         </div>
-                        <div class="preview-img-container">
-                            @foreach (var item in Model.PreviewUrls)
-                            {
-                                <img src="@item" class="book-img">
-                            }
-                        </div>
-
-                        <div class="row lightbox-container align-items-center">
-                            <div class="col-11 col-md-8  mx-auto text-right lightbox-holder">
-                                <span class="lightbox-close"><i class="fas fa-window-close"></i></span>
-                                <div class="lightbox-item col-10 col-md-11 m-auto"></div>
-                                <span class="lightbox-control btnLeft"><i class="fas fa-chevron-left"></i></span>
-                                <span class="lightbox-control btnRight"><i class="fas fa-chevron-right"></i></span>
+                        <div class="col-8 col-sm-8 col-lg-12 detail-cover px-5 mx-auto my-4">
+                            <div class="pic">
+                                <div class="pic-content preview-btn">
+                                    <img src="@Model.MainUrl" alt="" class="preview-img book-img">
+                                    <div class="overlay"></div>
+                                </div>
                             </div>
-                        </div>
+                            <div class="preview-img-container">
+                                @foreach (var item in Model.PreviewUrls)
+                                {
+                                    <img src="@item" class="book-img">
+                                }
+                            </div>
+                            <div class="container-fluid ">
+                                <div class="row lightbox-container align-items-center">
+                                    <div class="col-11 col-md-8  mx-auto text-right lightbox-holder">
+                                        <span class="lightbox-close"><i class="fas fa-window-close"></i></span>
+                                        <div class="lightbox-item col-10 col-md-11 m-auto"></div>
+                                        <span class="lightbox-control btnLeft"><i class="fas fa-chevron-left"></i></span>
+                                        <span class="lightbox-control btnRight"><i class="fas fa-chevron-right"></i></span>
+                                    </div>
+                                </div>
+                            </div>
 
 
                         <div class="content d-flex flex-wrap">

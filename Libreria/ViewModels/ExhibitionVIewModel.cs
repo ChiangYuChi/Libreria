@@ -15,5 +15,6 @@ namespace Libreria.ViewModels
         public string ExPhoto { get; set; }
         public int ExCustomerId { get; set; }
         public string ExName { get; set; }
+        public string ExHibitionIntro { get; set; }
     }
 }

@@ -1,4 +1,5 @@
-﻿
+﻿@model Libreria.ViewModels.ExhibitionVIewModel
+    
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout-Home.cshtml";
@@ -276,13 +277,12 @@
 <div class="Midfield">
     <div class="Midfield-block row">
         <div class="Midfield-pic col-sm-12 col-md-12 col-lg-6 col-xl-6 ">
-            <img src="~/Asset/Image/Home/0vvet556xwdbjdmchaggwfya1g34yw9u_1400x800.jpg" />
+            <img src="@Model.ExPhoto" />
         </div>
         <div class="Midfield-text col-sm-12 col-md-12 col-lg-6 col-xl-6 ">
-            <p class="Midfield-title"> 【不適者生存】</p>
+            <p class="Midfield-title"> 【@Model.ExName】</p>
             <p class="Midfield-content">
-                生命會自己找出路—《侏羅紀公園》（1993）
-                「不適者生存？」一展的關鍵字，來自「適者生存」這個演化論的誤譯。在不同的情境下，人人都有可能是適者與不適者。面對社會文化的演化，倘若以藝術之名來審視，而非用天擇結果來歸納，又可以看見什麼？藝術史的風格演化？社會運動的推動與實踐？還是大眾文化的流行、過氣與復古？社會文化的演化與選擇，因適者而有所保存，但往往又由不適者所引發響應與關注。
+                @Model.ExHibitionIntro
             </p>
             <div class="Midfield-but">
                 <a href="/Exhibition/Index">

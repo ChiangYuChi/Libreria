@@ -29,32 +29,31 @@ namespace Libreria.Controllers
         }
 
 
-        public ActionResult ProductCategory(string Sorting_Order)
+        public ActionResult ProductCategory(int? CategoryId, int? Order)
         {
-            ViewBag.SortingPrice = string.IsNullOrEmpty(Sorting_Order) ? "Price_Description" : "";
-            ViewBag.SortingPublishTime = string.IsNullOrEmpty(Sorting_Order) ? "PublishTime_Description" : "";
-            var products = _productService.GetAll();
+            List<ProductViewModel> result;
 
-
-            return View(products);
-
-        }
-
-
-
-
-         public PartialViewResult ProductPartial(int? category)
-        {
-            if (category != null)
+            if (CategoryId != null)
             {
-                var result = _productService.GetByCategory(Convert.ToInt32(category));
-                return PartialView(result);
+                result = _productService.GetByCategory(Convert.ToInt32(CategoryId));
+                ViewBag.CategoryId = CategoryId;
             }
             else
             {
-                var result = _productService.GetAll();
-                return PartialView(result);
+                result = _productService.GetAll();
             }
+
+            if (Order == 1)
+            {
+                result = result.OrderBy(x => x.UnitPrice).ToList();
+            }
+            else if (Order == 2)
+            {
+                result = result.OrderBy(x => x.CreateTime).ToList();
+            }
+
+            return View(result);
+
         }
 
         public ActionResult ProductDetail(int id)
