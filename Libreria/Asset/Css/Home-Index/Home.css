@@ -304,6 +304,7 @@ p {
 
 .Midfield-but {
     width: 100%;
+    margin:auto;
 }
 
     .Midfield-but a:hover {
@@ -450,7 +451,7 @@ p {
     }
 
     .Midfield-but a {
-        margin: 0px 170px;
+        margin: 0px 20%;
     }
 
     .Midfield-pic img {
