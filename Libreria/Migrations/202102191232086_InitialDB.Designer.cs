@@ -7,13 +7,13 @@ namespace Libreria.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class CreatePassword : IMigrationMetadata
+    public sealed partial class InitialDB : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(CreatePassword));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(InitialDB));
         
         string IMigrationMetadata.Id
         {
-            get { return "202102180239525_CreatePassword"; }
+            get { return "202102191232086_InitialDB"; }
         }
         
         string IMigrationMetadata.Source

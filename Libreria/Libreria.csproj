@@ -200,21 +200,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\Utility.cs" />
-    <Compile Include="Migrations\202102181030223_InitialDB.cs" />
-    <Compile Include="Migrations\202102181030223_InitialDB.Designer.cs">
-      <DependentUpon>202102181030223_InitialDB.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202102181212415_1.cs" />
-    <Compile Include="Migrations\202102181212415_1.Designer.cs">
-      <DependentUpon>202102181212415_1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202102180239525_CreatePassword.cs" />
-    <Compile Include="Migrations\202102180239525_CreatePassword.Designer.cs">
-      <DependentUpon>202102180239525_CreatePassword.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202102180643279_AddASeedForMember.cs" />
-    <Compile Include="Migrations\202102180643279_AddASeedForMember.Designer.cs">
-      <DependentUpon>202102180643279_AddASeedForMember.cs</DependentUpon>
+    <Compile Include="Migrations\202102191232086_InitialDB.cs" />
+    <Compile Include="Migrations\202102191232086_InitialDB.Designer.cs">
+      <DependentUpon>202102191232086_InitialDB.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -236,6 +224,7 @@
     <Compile Include="Models\EntityModel\Preview.cs" />
     <Compile Include="Models\EntityModel\Product.cs" />
     <Compile Include="Models\EntityModel\Role.cs" />
+    <Compile Include="Models\EntityModel\ShoppingCart.cs" />
     <Compile Include="Models\EntityModel\Supplier.cs" />
     <Compile Include="Models\EntityModel\sysdiagram.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -1114,17 +1103,8 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202102181030223_InitialDB.resx">
-      <DependentUpon>202102181030223_InitialDB.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202102181212415_1.resx">
-      <DependentUpon>202102181212415_1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202102180239525_CreatePassword.resx">
-      <DependentUpon>202102180239525_CreatePassword.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202102180643279_AddASeedForMember.resx">
-      <DependentUpon>202102180643279_AddASeedForMember.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202102191232086_InitialDB.resx">
+      <DependentUpon>202102191232086_InitialDB.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

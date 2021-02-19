@@ -12,7 +12,6 @@ namespace Libreria.Models.EntityModel
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public ExhibitionCustomer()
         {
-            Exhibitions = new HashSet<Exhibition>();
             ExhibitionOrders = new HashSet<ExhibitionOrder>();
         }
 
@@ -31,9 +30,6 @@ namespace Libreria.Models.EntityModel
         [Required]
         [StringLength(50)]
         public string ExCustomerEmail { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Exhibition> Exhibitions { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ExhibitionOrder> ExhibitionOrders { get; set; }
