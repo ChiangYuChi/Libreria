@@ -1,4 +1,6 @@
-﻿@section topcss{
+﻿
+
+@section topcss{
 
     @*Favorate CSS*@
     <link href="~/Asset/Css/MemberCenter/Favorite.css" rel="stylesheet" />
@@ -33,8 +35,6 @@
         <h2>(共有<span>2</span>筆商品)</h2>
     </div>
 
-    @foreach (var item in Model)
-    {
      <div class="product">
         <div class="pro_pic col-3">
             <img src="https://picsum.photos/200/200/?random=4">
@@ -52,7 +52,7 @@
             <button class="del">刪除</button>
         </div>
      </div>
-    }
+   
     
 
 
