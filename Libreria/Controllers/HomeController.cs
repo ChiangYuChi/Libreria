@@ -10,8 +10,6 @@ using Libreria.Service;
 
 namespace Libreria.Controllers
 {
-    [CustomAuthenticationFilter]
-
     public class HomeController : Controller
     {
         public ActionResult Index()

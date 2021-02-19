@@ -1,4 +1,5 @@
-﻿using Libreria.Models.EntityModel;
+﻿using Libreria.Filters;
+using Libreria.Models.EntityModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,10 +8,12 @@ using System.Web.Mvc;
 
 namespace Libreria.Controllers
 {
+    [CustomAuthenticationFilter]
     public class MemberCenterController : Controller
     {
 
         // GET: MemberCenter
+
         public ActionResult MemberLogin()
         {
             return View();
@@ -60,7 +63,6 @@ namespace Libreria.Controllers
         {
             return View();
         }
-
         public ActionResult ChangePassward()
         {
             return View();
