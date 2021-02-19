@@ -136,7 +136,7 @@
                     <div class="recipient_profile_address">
                         <p>地址</p>
                         <div class="recipient_profile_select">
-                            <select id="recipient_option recipient_option_counties Region" required>
+                            <select name="addressCitySelect" id="recipient_option recipient_option_counties Region" required>
                                 <option id="taiwanAddressNew" value="">請選擇</option>
                                 <option value="臺北市">臺北市</option> <!--1-->
                                 <option value="新北市">新北市</option> <!--2-->
@@ -161,7 +161,7 @@
                                 <option value="金門縣">金門縣</option> <!--21-->
                                 <option value="連江縣">連江縣</option> <!--22-->
                             </select>
-                            <select id="recipient_option_district Town" required>
+                            <select name="addressRegionSelect" id="recipient_option_district Town" required>
                                 <option value="">請選擇</option>
                             </select>
                         </div>
@@ -243,7 +243,7 @@
                         <p>※ 您的發票預設為電子發票託管，若中獎我們將於月底發出E-mail通知並以掛號方式把中獎發票寄給您</p>
                     </div>
                     <div class="invoice_profile_select">
-                        <select id="select">
+                        <select id="select" name="invoice">
                             <option value="1">二聯式電子發票(存入會員帳號)</option>
                             <option value="2">二聯式電子發票(手機條碼載具)</option>
                             <option value="3">二聯式電子發票(自然人憑證載具)</option>
