@@ -304,6 +304,7 @@ p {
 
 .Midfield-but {
     width: 100%;
+    margin:auto;
 }
 
     .Midfield-but a:hover {

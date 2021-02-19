@@ -1,4 +1,4 @@
-﻿@model List<Libreria.ViewModels.CategoryViewModel>
+﻿@model List<CategoryViewModel>
 @{
     ViewBag.Title = "Index";
 }
@@ -8,5 +8,5 @@
 @foreach (var item in Model)
 {
 
-    @Html.ActionLink(@item.Name, "ProductCategory", "Product", new { page = 1, category = @item.CategoryId }, null)
+    @Html.ActionLink(@item.Name, "ProductCategory", "Product", new { CategoryId = @item.CategoryId}, null)
 }
