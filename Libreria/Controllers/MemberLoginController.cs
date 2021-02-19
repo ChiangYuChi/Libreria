@@ -27,18 +27,21 @@ namespace Libreria.Controllers
             member member = _libreriaDataModel.members
                                                .Where(u => u.memberName == model.memberName && u.memberPassword == model.memberPassword)
                                                .FirstOrDefault();
+           
+                if (User != null)
+                {
+                    Session["MemberName"] = member.memberName;
+                    Session["MemberPassword"] = member.memberPassword;
+                    return RedirectToAction("Index", "Home");
+                }
+                else
+                {
+                    ModelState.AddModelError("", "帳號或密碼輸入錯誤");
+                    return View(model);
+                }
             
-            if (User != null)
-            {
-                Session["MemberName"] = member.memberName;
-                Session["MemberPassword"] = member.memberPassword;
-                return RedirectToAction("Index", "Home");
-            }
-            else
-            {
-                 ModelState.AddModelError("", "帳號或密碼輸入錯誤");
-                 return View(model);
-            }
+            
+            
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
