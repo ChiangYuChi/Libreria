@@ -1082,7 +1082,6 @@
     <Content Include="Views\Rental\Index.cshtml" />
     <Content Include="Views\MemberCenter\Favorate.cshtml" />
     <Content Include="Views\Product\ProductLayoutPartial.cshtml" />
-    <Content Include="Views\Product\ProductDetailPartial.cshtml" />
     <Content Include="Views\Product\Test.cshtml" />
     <Content Include="Views\MemberCenter\MemberRegisterPage.cshtml" />
   </ItemGroup>

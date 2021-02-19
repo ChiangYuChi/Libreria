@@ -16,10 +16,12 @@
         <div class="row ">
             <div class="col-sm-12 breadcrumb d-none d-md-block">
                 <a href="@Url.Action("Index", "Home")">首頁</a>
-                <a href="#">@Model.CategoryName</a>
+                <a href="@Url.Action("ProductCategory", "Product", new { CategoryId = Model.CategoryId })">@Model.CategoryName</a>
                 <a href="#">@Model.Name</a>
             </div>
-            <div class="breadcrumb breadcrumb-sm d-sm-block d-md-none"><a href="#">回到企業與金融</a> </div>
+            <div class="breadcrumb breadcrumb-sm d-sm-block d-md-none">
+                <a href="@Url.Action("ProductCategory", "Product", new { CategoryId = Model.CategoryId })">回到 @Model.CategoryName</a>
+            </div>
             <div class="detail-main ">
                 <!-- 商品區塊 -->
                 <!-- 預覽圖區塊 -->
@@ -53,7 +55,7 @@
                             <div class="pricing-figures">
                                 <div class="active-price">
                                     您的價格<div class="pricing-wrapper">
-                                        <span class="price">NT$100</span><span class="price currency">&nbsp;TWD</span>
+                                        <span class="price">NT$@(String.Format("{0:N0}",Model.UnitPrice))</span><span class="price currency">&nbsp;TWD</span>
                                     </div>
                                 </div>
                                 <button class="purchase-action add-to-cart">新增至購物車</button>
