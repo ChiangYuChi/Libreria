@@ -32,7 +32,7 @@ namespace Libreria.Service
 
             try
             {
-                Favorite entity = new Favorite() { ProductId = ProductVM.Id, memberId = 1 }; //memberID后面需要修改成真实资料
+                Favorite entity = new Favorite() { ProductId = ProductVM.Id, memberId = 1 };
                 _DbRepository.Create<Favorite>(entity);
                 result.IsSuccessful = true;
             }

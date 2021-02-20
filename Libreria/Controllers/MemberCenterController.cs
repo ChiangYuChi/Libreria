@@ -118,16 +118,23 @@ namespace Libreria.Controllers
 
         public ActionResult Favorite()
         {
-            List<FavoriteViewModel> fav = (List<FavoriteViewModel>)Session["Favorite"];
-            return View(fav);
+            
+            return View();
         }
 
         [HttpPost]
-        public int AddToFavorite(ProductViewModel productVM)
+        public string AddToFavorite(ProductViewModel productVM)
         {
-            var result = _favoriteService.Create(ProductVM);
+            var result = _favoriteService.Create(productVM);
 
-            return "Success";
+            if (result.IsSuccessful)
+            {
+                return "加入成功!";
+            }
+            else
+            {
+                return "加入失败";
+            }
         }
     }
 }
