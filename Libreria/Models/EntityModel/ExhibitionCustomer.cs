@@ -16,7 +16,6 @@ namespace Libreria.Models.EntityModel
         }
 
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int ExCustomerId { get; set; }
 
         [Required]

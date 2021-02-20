@@ -15,7 +15,6 @@ namespace Libreria.Models.EntityModel
             members = new HashSet<member>();
         }
 
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int RoleID { get; set; }
 
         [Required]
