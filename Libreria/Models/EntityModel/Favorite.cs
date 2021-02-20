@@ -9,7 +9,6 @@ namespace Libreria.Models.EntityModel
     [Table("Favorite")]
     public partial class Favorite
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int FavoriteId { get; set; }
 
         public int ProductId { get; set; }

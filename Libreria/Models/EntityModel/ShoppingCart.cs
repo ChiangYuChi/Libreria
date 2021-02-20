@@ -9,7 +9,6 @@ namespace Libreria.Models.EntityModel
     [Table("ShoppingCart")]
     public partial class ShoppingCart
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int ShoppingCartId { get; set; }
 
         public int ProductId { get; set; }

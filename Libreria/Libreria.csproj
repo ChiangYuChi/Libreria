@@ -200,9 +200,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\Utility.cs" />
-    <Compile Include="Migrations\202102191232086_InitialDB.cs" />
-    <Compile Include="Migrations\202102191232086_InitialDB.Designer.cs">
-      <DependentUpon>202102191232086_InitialDB.cs</DependentUpon>
+    <Compile Include="Migrations\202102200730418_InitialDB.cs" />
+    <Compile Include="Migrations\202102200730418_InitialDB.Designer.cs">
+      <DependentUpon>202102200730418_InitialDB.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -217,7 +217,7 @@
     <Compile Include="Models\EntityModel\ExhibitionOrder.cs" />
     <Compile Include="Models\EntityModel\Favorite.cs" />
     <Compile Include="Models\EntityModel\Invoice.cs" />
-    <Compile Include="Repository\DBContext\LibreriaDataModel.cs" />
+    <Compile Include="Models\EntityModel\LibreriaDataModel.cs" />
     <Compile Include="Models\EntityModel\member.cs" />
     <Compile Include="Models\EntityModel\Order.cs" />
     <Compile Include="Models\EntityModel\OrderDetail.cs" />
@@ -237,6 +237,7 @@
     <Compile Include="Service\OrderService.cs" />
     <Compile Include="Service\ProductService.cs" />
     <Compile Include="Service\RentalService.cs" />
+    <Compile Include="Service\ShoppingService.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\apibase\ApiResult.cs" />
     <Compile Include="ViewModels\CategoryViewModel.cs" />
@@ -1091,6 +1092,7 @@
     <Folder Include="Asset\Js\common\" />
     <Folder Include="Asset\Js\Index\" />
     <Folder Include="Data\" />
+    <Folder Include="Repository\DBContext\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -1104,8 +1106,8 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202102191232086_InitialDB.resx">
-      <DependentUpon>202102191232086_InitialDB.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202102200730418_InitialDB.resx">
+      <DependentUpon>202102200730418_InitialDB.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
