@@ -122,19 +122,6 @@ namespace Libreria.Controllers
             return View();
         }
 
-        [HttpPost]
-        public string AddToFavorite(ProductViewModel productVM)
-        {
-            var result = _favoriteService.Create(productVM);
-
-            if (result.IsSuccessful)
-            {
-                return "加入成功!";
-            }
-            else
-            {
-                return "加入失败";
-            }
-        }
+        
     }
 }
