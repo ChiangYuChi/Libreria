@@ -13,9 +13,12 @@ namespace Libreria.Service
     public class ExhibitionService
     {
         private readonly LibreriaRepository _dBRepository;
+        DateTime Nowdate = DateTime.Now;
+        
         public ExhibitionService()
         {
             _dBRepository = new LibreriaRepository();
+            
         }
        public List<ExhibitionVIewModel> GetAll()
         {
@@ -34,9 +37,8 @@ namespace Libreria.Service
         }
         public ExhibitionVIewModel GetExhibitioning()
         {
-            DateTime Nowdate = DateTime.Now;
             var GetEx = GetAll();
-            if(GetEx.FirstOrDefault(x => x.ExhibitionEndTime >= Nowdate)!=null)
+            if (GetEx.FirstOrDefault(x => x.ExhibitionEndTime >= Nowdate)!=null)
             {
                 return GetEx.FirstOrDefault(x => x.ExhibitionEndTime >= Nowdate);
             }
@@ -44,6 +46,21 @@ namespace Libreria.Service
             {
                 return GetEx.FirstOrDefault(x => x.ExhibitionEndTime <= Nowdate);
             }
+        }
+        public List<ExhibitionVIewModel> OverdueExhibitioning()
+        {
+            var GetEx = GetAll();
+            return GetEx.Where(x => x.ExhibitionEndTime < Nowdate)
+                        .OrderByDescending(x => x.ExhibitionEndTime)
+                        .ToList();
+        }
+
+        public List<ExhibitionVIewModel> NotYetExhibitioning()
+        {
+            var GetEx = GetAll();
+            return GetEx.Where(x => x.ExhibitionStartTime > Nowdate)
+                        .OrderBy(x => x.ExhibitionStartTime)
+                        .ToList();
         }
     }
 }
