@@ -68,10 +68,6 @@ namespace Libreria.Models.EntityModel
                 .WithRequired(e => e.member)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<OrderDetail>()
-                .Property(e => e.UnitPrice)
-                .HasPrecision(19, 4);
-
             modelBuilder.Entity<Order>()
                 .Property(e => e.InvoiceInfo)
                 .IsFixedLength();

@@ -11,13 +11,11 @@ namespace Libreria.Controllers
     public class ProductController : Controller
     {
         private readonly ProductService _productService;
-        private readonly CategoryService _categoryService;
 
 
         public ProductController()
         {
             _productService = new ProductService();
-            _categoryService = new CategoryService();
         }
 
        
@@ -64,10 +62,5 @@ namespace Libreria.Controllers
             
             return View(product);
         }
-
-
-      
-       
-
     }
 }
