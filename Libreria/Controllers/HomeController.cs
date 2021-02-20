@@ -27,7 +27,7 @@ namespace Libreria.Controllers
 
             ViewBag.TotalSales = result2;
 
-            ViewBag.GetByPublishDate = result3;
+            ViewBag.GetByPublishDateHome = result3;
 
 
 
