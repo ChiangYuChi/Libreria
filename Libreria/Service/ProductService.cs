@@ -132,7 +132,52 @@ namespace Libreria.Service
             return result;
 
         }
+        public List<ProductViewModel> GetByPublishDateHome()
+        {
+            var products = (from p in _DbRepository.GetAll<Product>()
+                           .OrderByDescending(p => p.PublishDate)
+                           .Take(5)
+                            join v in _DbRepository.GetAll<Preview>()
+                            on p.ProductId equals v.ProductId
+                            where v.Sort == 0
+                            select new ProductViewModel()
+                            {
+                                Id = p.ProductId,
+                                Name = p.ProductName,
+                                UnitPrice = p.UnitPrice,
+                                CategoryId = p.CategoryId,
+                                Author = p.Author,
+                                CreateTime = p.CreateTime,
+                                Introduction = p.Introduction,
+                                MainUrl = v.ImgUrl,
+                            });
+            var result = products.ToList();
+            return result;
 
+        }
+        public List<ProductViewModel> GetByTotalSalesHome()
+        {
+            var products = (from p in _DbRepository.GetAll<Product>()
+                           .OrderByDescending(p => p.TotalSales)
+                           .Take(5)
+                            join v in _DbRepository.GetAll<Preview>()
+                            on p.ProductId equals v.ProductId
+                            where v.Sort == 0
+                            select new ProductViewModel()
+                            {
+                                Id = p.ProductId,
+                                Name = p.ProductName,
+                                UnitPrice = p.UnitPrice,
+                                CategoryId = p.CategoryId,
+                                Author = p.Author,
+                                CreateTime = p.CreateTime,
+                                Introduction = p.Introduction,
+                                MainUrl = v.ImgUrl,
+                            });
+            var result = products.ToList();
+            return result;
+
+        }
         public List<ProductViewModel> GetByTotalSales()
         {
             var products = (from p in _DbRepository.GetAll<Product>()
@@ -174,27 +219,6 @@ namespace Libreria.Service
             var result = products.ToList();
             return result;
         }
-        public List<ProductViewModel> PromoteTodayHome()
-        {
-            var products = (from p in _DbRepository.GetAll<Product>()
-                          .Where(p => p.CategoryId == 7)
-                           .OrderBy(p => p.PublishDate)
-                           .Take(5)
-                            join v in _DbRepository.GetAll<Preview>()
-                            on p.ProductId equals v.ProductId
-                            select new ProductViewModel()
-                            {
-                                Id = p.ProductId,
-                                Name = p.ProductName,
-                                UnitPrice = p.UnitPrice,
-                                CategoryId = p.CategoryId,
-                                Author = p.Author,
-                                CreateTime = p.CreateTime,
-                                Introduction = p.Introduction,
-                            });
-
-            var result = products.ToList();
-            return result;
-        }
+        
     }
 }

@@ -22,12 +22,12 @@ namespace Libreria.Controllers
         public ActionResult Index()
         {
             var result = _exhibitionService.GetExhibitioning();
-            var result2 = _productService.GetByTotalSales();
-            var result3 = _productService.PromoteTodayHome();
+            var result2 = _productService.GetByTotalSalesHome();
+            var result3 = _productService.GetByPublishDateHome();
 
             ViewBag.TotalSales = result2;
 
-            ViewBag.PromoteToday = result3;
+            ViewBag.GetByPublishDate = result3;
 
 
 

@@ -41,7 +41,7 @@
                             <div class="bestseller-item seller-item">
                                 <div class="bestseller-text seller-text">
                                     <div class="bestseller-pic seller-pic">
-                                        <img src="@item.">
+                                        <img src="@item.MainUrl">
                                     </div>
                                     <p>
                                         @item.Name<br>
@@ -68,13 +68,13 @@
                         <h4><span>最新</span>上市</h4>
                     </div>
                     <div class="newseller-block seller-block slider col-sm-12">
-                        @foreach (var item in ViewBag.PromoteToday)
+                        @foreach (var item in ViewBag.GetByPublishDate)
                         {
                             <a href="">
                                 <div class="bestseller-item seller-item">
                                     <div class="bestseller-text seller-text">
                                         <div class="bestseller-pic seller-pic">
-                                            <img src="@item.">
+                                            <img src="@item.MainUrl">
                                         </div>
                                         <p>
                                             @item.Name<br>
