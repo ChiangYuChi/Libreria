@@ -6,15 +6,45 @@
 {
 
 
-<li class="book-list">
-    <a class="cbp-vm-image" href="@Url.Action("ProductDetail", "Product", new { id = item.Id })"><img src="@item.MainUrl"></a>
-    <h3 class="cbp-vm-title">  @Html.ActionLink(@item.Name, "ProductDetail", "Product", new { id = item.Id }, null)</h3>
-    <div class="cbp-vm-price">NT$ <span>@(String.Format("{0:N0}",item.UnitPrice))</span></div>
-    <div class="cbp-vm-details">
-        @item.Author
-    </div>
-    <a class="cbp-vm-icon cbp-vm-add" href="#">加入購物車</a>
-    <a class="wish-list " href="#"><i class="fas fa-heart"></i></a>
-</li>
+    <li class="book-list">
+        <a class="cbp-vm-image" href="@Url.Action("ProductDetail", "Product", new { id = item.Id })"><img src="@item.MainUrl"></a>
+        <h3 class="cbp-vm-title">  @Html.ActionLink(@item.Name, "ProductDetail", "Product", new { id = item.Id }, null)</h3>
+        <div class="cbp-vm-price">NT$ <span>@(String.Format("{0:N0}",item.UnitPrice))</span></div>
+        <div class="cbp-vm-details">
+            @item.Author
+        </div>
+        <a class="cbp-vm-icon cbp-vm-add" href="#">加入購物車</a>
+        <a onclick="postValue()" class="wish-list"><i class="fas fa-heart"></i></a>
+    </li>
 }
+@*@section endJS{
+        <script>
+            function postValue() {
+                let productId = $("#ProductId").text();
+                let productName = $("#ProductName").text();
+                let price = $("#Price").text();
+                let count = $("#Count").text();
 
+
+                $.ajax({
+                    type: "POST",
+                    url: "/Shopping/AddToCart",
+                    data: { ProductId: productId, ProductName: productName, Price: price, Count: count },
+                    dataType: "text",
+                    success: function (response) {
+                        alert(response);
+                        $("#MyCart").text("購物車(" + response + ")");
+                    }
+                });
+
+                //$.post({
+                //    url: "https://localhost:44343/Home/CardApi",
+                //    data: { name: "John" }
+                //})
+                //.done(function(responseData){
+                //    alert(responseData);
+                //    $("#title").text(responseData);
+                //});
+            }
+        </script>
+    }*@
