@@ -1,5 +1,7 @@
 ﻿
-
+*{
+    text-decoration:none;
+}
 
 
 .container-fluid {
@@ -145,11 +147,17 @@
      .render-section .cbp-vm-image {
         display: block;
         margin: 0 auto;
+        
+        width: 100%;
+        height:70%;
+        display:flex;
+        justify-content:center;
+        align-items:center;
     }
 
        .render-section .cbp-vm-image img {
             display: inline-block;
-            max-width: 100%;
+            width:80%;
             border: none;
         }
 
@@ -173,7 +181,7 @@
         transition: background 0.2s;
         text-decoration: none;
         position: absolute;
-        bottom: 3%;
+        bottom: 0;
         
     }
 
@@ -206,7 +214,7 @@
         padding: 25px;
         margin: 20px 0 0;
         display: inline-block;
-        height: 650px;
+        height: 700px;
         vertical-align: top;
         position: relative;
     }

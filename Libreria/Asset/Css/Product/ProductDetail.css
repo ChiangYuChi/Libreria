@@ -1,12 +1,14 @@
-﻿:root {
+﻿
+
+:root {
     --crimson-color: #bf0000;
-    
+    ;
 }
 
 
 .book-detail {
     font-family: 'Noto Sans TC', sans-serif;
-    padding-top:100px;
+    padding: 50px 0;
 }
 
 .breadcrumb {
@@ -51,15 +53,15 @@
         cursor: pointer;
         text-align: center;
         position: relative;
-        border-top: 1px solid rgba(87, 104, 155, .1);
-        border-left: 1px solid rgba(87, 104, 155, .1);
-        border-right: 1px solid rgba(87, 104, 155, .1);
+        border-top: 1px solid rgb(87, 104, 155, .1);
+        border-left: 1px solid rgb(87, 104, 155, .1);
+        border-right: 1px solid rgb(87, 104, 155, .1);
     }
 
     .detail-cover .pic:after {
         content: '';
         display: block;
-        background-image: url(./img/detail-cover.png);
+        background-image: url(../../Image/detail-cover.png);
         padding-bottom: 14%;
         background-repeat: no-repeat;
         background-position: top;
@@ -69,8 +71,9 @@
     }
 
     .detail-cover .pic img {
-        width: 100%;
+        width: 60%;
     }
+    
 
     .detail-cover .pic .pic-content .overlay {
         position: absolute;
@@ -117,9 +120,11 @@
         color: var(--crimson-color)
     }
 
-.total-rating .fas {
-    color: var(--crimson-color)
-}
+    .preview-btn{
+        padding:0;
+    }
+
+
 
 .special-deal {
     display: flex;
@@ -192,6 +197,8 @@
     height: auto;
     padding: 20px 15px;
     box-sizing: border-box;
+    width:70%;
+    margin: 0 auto;
 }
 
 .detail-pricing .pricing-title {
@@ -242,6 +249,8 @@
 }
 
 
+
+
 .detail-main {
     position: relative;
 }
@@ -250,18 +259,6 @@
     background-image: url(./img/sm-book-bg.jpg);
     height: 100px;
     position: absolute;
-}
-
-.detail-cover{
-    position:relative;
-   
-}
-.lightbox{
-    position:absolute;
-    
-    top:0;
-    lefe:0;
-    
 }
 
 .lightbox-container {
@@ -321,4 +318,3 @@
 .preview-img-container {
     display: none;
 }
-

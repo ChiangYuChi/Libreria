@@ -1,0 +1,16 @@
+﻿@model  IEnumerable<ProductViewModel>
+
+@foreach (var item in Model)
+{
+
+    <div class="col-lg-6 pic major">
+        <img src="@item.MainUrl" alt="">
+        <div class="promotion-discount" >
+            <div class="title">@item.Name</div>
+            <p>79折,<span>NT$</span>@item.UnitPrice</p>
+        </div>
+    </div>
+
+   
+    
+}

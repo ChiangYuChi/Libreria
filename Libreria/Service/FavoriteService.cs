@@ -16,35 +16,38 @@ namespace Libreria.Service
         {
             _DbRepository = new LibreriaRepository();
         }
-        public List<FavoriteViewModel> GetAll()
+
+        public FavoriteViewModel GetById(int id)
         {
-            return _DbRepository.GetAll<Favorite>().Select(x => new FavoriteViewModel()
-            {
-                FavoriteId = x.FavoriteId.ToString(),
-                ProductId = x.ProductId,
-                memberId = x.memberId,
-            }).ToList();
-        }
+            var result = (from p in _DbRepository.GetAll<Product>()
+                          join s in _DbRepository.GetAll<Supplier>()                          
+                          on p.SupplierId equals s.SupplierId
+                          join w in _DbRepository.GetAll<Preview>()
+                          on p.ProductId equals w.ProductId
+                          where p.ProductId == id
+                          select new FavoriteViewModel()
+                          {
+                              Id = p.ProductId,
+                              Name = p.ProductName,
+                              Author = p.Author,
+                              SupName = s.Name,
+                              PublishDate  = p.PublishDate
+                          }).FirstOrDefault();
 
-        public OperationResult Create(ProductViewModel ProductVM)
-        {
-            var result = new OperationResult();
+            var PreviewList = _DbRepository.GetAll<Preview>()
+                .Where(x => x.ProductId == id)
+                .OrderBy(x => x.Sort)
+                .ToList();
 
-            try
+            foreach (var item in PreviewList)
             {
-                Favorite entity = new Favorite() { ProductId = ProductVM.Id, memberId = 1 };
-                _DbRepository.Create<Favorite>(entity);
-                result.IsSuccessful = true;
+                if (item.Sort == 0)
+                {
+                    result.Pic = item.ImgUrl;
+                }
+               
             }
-            catch
-            {
-                result.IsSuccessful = false;
-            }
-
-            return result;
+                return result;
         }
-
-
-
     }
 }
