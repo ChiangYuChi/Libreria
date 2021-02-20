@@ -1,0 +1,65 @@
+﻿body {
+    font-size: 16px;
+    font-family: 'Noto Sans TC', sans-serif;
+}
+
+.breadcrumb{
+    margin-top: 100px;
+    background-color: #FFFFFF;
+}
+
+.register-border {
+    border: 2px solid #e3e3e3;
+    margin-bottom: 100px;
+    display: flex;
+    justify-content: center;
+}
+
+.breadcrumb a,i {
+    color: #B0B0B0;
+}
+
+.breadcrumb i {
+    padding: 0px 15px;
+}
+
+.register-form-div {
+    margin-top: 25px;
+    margin-bottom: 25px;
+    width: 50%;
+}
+
+.register-form-div .title {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.register-form-div label {
+    margin: 0;
+    margin-top: 15px;
+}
+
+    .register-form-div input[type="text"],
+    .register-form-div input[type="password"],
+    .register-form-div input[type="date"],
+    .register-form-div input[type="email"] {
+        min-width: 100%;
+    }
+
+    .register-form-div .button {
+        background-color: #8A6926;
+        width: 40%;
+        color: white;
+        border: 0px none #FFFFFF;
+        border-radius: 5px;
+        height: 40px;
+        margin-right: 15px;
+        margin-top: 15px;
+    }
+
+    .button-block {
+        display: flex;
+        justify-content: space-between;
+    }
+
+   

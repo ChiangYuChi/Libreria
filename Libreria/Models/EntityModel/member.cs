@@ -14,9 +14,9 @@ namespace Libreria.Models.EntityModel
         {
             Favorites = new HashSet<Favorite>();
             Orders = new HashSet<Order>();
+            ShoppingCarts = new HashSet<ShoppingCart>();
         }
 
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int memberId { get; set; }
 
         [Required]
@@ -55,10 +55,19 @@ namespace Libreria.Models.EntityModel
         [StringLength(10)]
         public string IDnumber { get; set; }
 
+        public int? RoleId { get; set; }
+
+        public string password { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Favorite> Favorites { get; set; }
 
+        public virtual Role Role { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Order> Orders { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ShoppingCart> ShoppingCarts { get; set; }
     }
 }

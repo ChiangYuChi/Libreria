@@ -11,13 +11,11 @@ namespace Libreria.Controllers
     public class ProductController : Controller
     {
         private readonly ProductService _productService;
-        private readonly PreviewService _previewService;
 
 
         public ProductController()
         {
             _productService = new ProductService();
-            _previewService = new PreviewService();
         }
 
        
@@ -25,71 +23,44 @@ namespace Libreria.Controllers
 
         public ActionResult Index()
         {
-            return View();
-                
+            return View();   
         }
 
 
-        public ActionResult ProductCategory(string Sorting_Order)
+        public ActionResult ProductCategory(int? CategoryId, int? Order)
         {
+            List<ProductViewModel> result;
 
-            ViewBag.SortingPrice = string.IsNullOrEmpty(Sorting_Order) ? "Price_Description" : "";
-            ViewBag.SortingPublishTime = string.IsNullOrEmpty(Sorting_Order) ? "PublishTime_Description" : "";
-            var products = from product in _productService.GetAll()
-                           select product;
-            switch (Sorting_Order)
+            if (CategoryId != null)
             {
-                case "Price_Description":
-
-                   products= products.OrderByDescending(p => p.UnitPrice);
-                    break;
-                case "PublishTime_Description":
-                    products = products.OrderBy(p => p.CreateTime);
-                    break;
-                default:
-                    products = products.OrderBy(product => product.Name);
-                    break;
-            }
-
-            return View(products.ToList());
-
-        }
-
-         public PartialViewResult ProductPartial(int?category)
-        {
-            if (category != null)
-            {
-                ViewBag.category = category;
-                var products = _productService.GetAll();
-                var productList = products.Where((x) => x.CategoryId == category);
-                return PartialView(productList.ToList());
+                result = _productService.GetByCategory(Convert.ToInt32(CategoryId));
+                ViewBag.CategoryId = CategoryId;
             }
             else
             {
-                var result = _productService.GetAll();
-                return PartialView(result);
+                result = _productService.GetAll();
             }
-           
-        }
 
-        public ActionResult ProductDetail(int? id)
-        {
-            if (id == null)
+            if (Order == 1)
             {
-                return new HttpStatusCodeResult(System.Net.HttpStatusCode.BadRequest);
+                result = result.OrderBy(x => x.UnitPrice).ToList();
             }
-            var product = _productService.GetAll().Where(x => x.Id == id);
+            else if (Order == 2)
+            {
+                result = result.OrderBy(x => x.CreateTime).ToList();
+            }
 
-            var preview = _previewService.GetAll().Where(x => x.ProductId == id).OrderBy(x => x.Sort).ToList();
+            return View(result);
 
-            ViewBag.Preview = preview;
-
-            return View(product.ToList());
         }
 
+        public ActionResult ProductDetail(int id)
+        {
 
-      
-       
+            var product = _productService.GetById(id);
 
+            
+            return View(product);
+        }
     }
 }

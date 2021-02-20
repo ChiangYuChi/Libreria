@@ -11,10 +11,14 @@ namespace Libreria.ViewModels
         public string Name { get; set; }
         public decimal UnitPrice { get; set; }
         public int CategoryId { get; set; }
+        public string CategoryName { get; set; }
         public string Author { get; set; }
         public DateTime CreateTime { get; set; }
 
         public string Introduction { get; set; }
-        
+        public string MainUrl { get; set; }
+
+        public List<string> PreviewUrls { get; set; }
+
     }
 }

@@ -1,407 +1,353 @@
 ﻿
 @{
     ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <link href="~/Asset/Css/Exhibition/Exhibition.css" rel="stylesheet" />
 
 
-<h2>Exhibtion</h2>
+@section topCss{
 
-<div class="container-fluid">
-   
-    <div class="row">
-        <div class="col-lg-12">
-            <div class="row">
-                <!-- <template id="exhibition"> -->
-                <div class="card col-xl-3 col-lg-4 col-md-6 col-sm-12 col-12" style="width: 18rem;">
-                    <div class="card-body">
-                        <button type="button" class="btn" data-toggle="modal" data-target="#exhibitionModal">
-                            <img src="https://picsum.photos/300/300/?random=1" class="card-img-top" alt="...">
-                        </button>
-                        <h4 class="card-text">The Title of exhibition</h4>
-                    </div>
-                </div>
-                <div class="modal fade" id="exhibitionModal" tabindex="-1" aria-labelledby="exhibitionModalLabel"
-                     aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h4 class="modal-title" id="exhibitionModalLabel">Modal title of exhibition</h4>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <div class="modal-img">
-                                    <img src="https://picsum.photos/1000/1000/?random=1" class="card-img-top" alt="...">
-                                </div>
-                                <div class="modal-text">
-                                    <div class="media-icon">
-                                        <i class="fab fa-instagram fa-2x"></i>
-                                    </div>
-                                    <button class="Add-calender">加入行事曆</button>
-                                    <p class="content">
-                                        有限責任面議，相同作者喜歡共享版竟然太麻里，平時複雜不詳清楚給他天下要去軟體尤其是，國內外發表簽名相信促進人間危險女友加油電視即將故意都會，睡覺套件擁有損失格式報名銀行現實位置暴力網頁班，汽車一聲回去上路當地宣佈必須公園我來，推薦使用幹部目標人口，進入零。
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- </template> -->
-                @*Following items only for the layout preview, need to be deteled when use repository/template*@
-                <div class="card col-xl-3 col-lg-4 col-md-6 col-sm-12 col-12" style="width: 18rem;">
-                    <div class="card-body">
-                        <button type="button" class="btn" data-toggle="modal" data-target="#exhibitionModal">
-                            <img src="https://picsum.photos/300/300/?random=1" class="card-img-top" alt="...">
-                        </button>
-                        <h4 class="card-text">The Title of exhibition</h4>
-                    </div>
-                </div>
-                <div class="modal fade" id="exhibitionModal" tabindex="-1" aria-labelledby="exhibitionModalLabel"
-                     aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h4 class="modal-title" id="exhibitionModalLabel">Modal title of exhibition</h4>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <div class="modal-img">
-                                    <img src="https://picsum.photos/1000/1000/?random=1" class="card-img-top" alt="...">
-                                </div>
-                                <div class="modal-text">
-                                    <div class="media-icon">
-                                        <i class="fab fa-instagram fa-2x"></i>
-                                    </div>
-                                    <button class="Add-calender">加入行事曆</button>
-                                    <p class="content">
-                                        有限責任面議，相同作者喜歡共享版竟然太麻里，平時複雜不詳清楚給他天下要去軟體尤其是，國內外發表簽名相信促進人間危險女友加油電視即將故意都會，睡覺套件擁有損失格式報名銀行現實位置暴力網頁班，汽車一聲回去上路當地宣佈必須公園我來，推薦使用幹部目標人口，進入零。
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card col-xl-3 col-lg-4 col-md-6 col-sm-12 col-12" style="width: 18rem;">
-                    <div class="card-body">
-                        <button type="button" class="btn" data-toggle="modal" data-target="#exhibitionModal">
-                            <img src="https://picsum.photos/300/300/?random=1" class="card-img-top" alt="...">
-                        </button>
-                        <h4 class="card-text">The Title of exhibition</h4>
-                    </div>
-                </div>
-                <div class="modal fade" id="exhibitionModal" tabindex="-1" aria-labelledby="exhibitionModalLabel"
-                     aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h4 class="modal-title" id="exhibitionModalLabel">Modal title of exhibition</h4>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <div class="modal-img">
-                                    <img src="https://picsum.photos/1000/1000/?random=1" class="card-img-top" alt="...">
-                                </div>
-                                <div class="modal-text">
-                                    <div class="media-icon">
-                                        <i class="fab fa-instagram fa-2x"></i>
-                                    </div>
-                                    <button class="Add-calender">加入行事曆</button>
-                                    <p class="content">
-                                        有限責任面議，相同作者喜歡共享版竟然太麻里，平時複雜不詳清楚給他天下要去軟體尤其是，國內外發表簽名相信促進人間危險女友加油電視即將故意都會，睡覺套件擁有損失格式報名銀行現實位置暴力網頁班，汽車一聲回去上路當地宣佈必須公園我來，推薦使用幹部目標人口，進入零。
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card col-xl-3 col-lg-4 col-md-6 col-sm-12 col-12" style="width: 18rem;">
-                    <div class="card-body">
-                        <button type="button" class="btn" data-toggle="modal" data-target="#exhibitionModal">
-                            <img src="https://picsum.photos/300/300/?random=1" class="card-img-top" alt="...">
-                        </button>
-                        <h4 class="card-text">The Title of exhibition</h4>
-                    </div>
-                </div>
-                <div class="modal fade" id="exhibitionModal" tabindex="-1" aria-labelledby="exhibitionModalLabel"
-                     aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h4 class="modal-title" id="exhibitionModalLabel">Modal title of exhibition</h4>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <div class="modal-img">
-                                    <img src="https://picsum.photos/1000/1000/?random=1" class="card-img-top" alt="...">
-                                </div>
-                                <div class="modal-text">
-                                    <div class="media-icon">
-                                        <i class="fab fa-instagram fa-2x"></i>
-                                    </div>
-                                    <button class="Add-calender">加入行事曆</button>
-                                    <p class="content">
-                                        有限責任面議，相同作者喜歡共享版竟然太麻里，平時複雜不詳清楚給他天下要去軟體尤其是，國內外發表簽名相信促進人間危險女友加油電視即將故意都會，睡覺套件擁有損失格式報名銀行現實位置暴力網頁班，汽車一聲回去上路當地宣佈必須公園我來，推薦使用幹部目標人口，進入零。
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card col-xl-3 col-lg-4 col-md-6 col-sm-12 col-12" style="width: 18rem;">
-                    <div class="card-body">
-                        <button type="button" class="btn" data-toggle="modal" data-target="#exhibitionModal">
-                            <img src="https://picsum.photos/300/300/?random=1" class="card-img-top" alt="...">
-                        </button>
-                        <h4 class="card-text">The Title of exhibition</h4>
-                    </div>
-                </div>
-                <div class="modal fade" id="exhibitionModal" tabindex="-1" aria-labelledby="exhibitionModalLabel"
-                     aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h4 class="modal-title" id="exhibitionModalLabel">Modal title of exhibition</h4>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <div class="modal-img">
-                                    <img src="https://picsum.photos/1000/1000/?random=1" class="card-img-top" alt="...">
-                                </div>
-                                <div class="modal-text">
-                                    <div class="media-icon">
-                                        <i class="fab fa-instagram fa-2x"></i>
-                                    </div>
-                                    <button class="Add-calender">加入行事曆</button>
-                                    <p class="content">
-                                        有限責任面議，相同作者喜歡共享版竟然太麻里，平時複雜不詳清楚給他天下要去軟體尤其是，國內外發表簽名相信促進人間危險女友加油電視即將故意都會，睡覺套件擁有損失格式報名銀行現實位置暴力網頁班，汽車一聲回去上路當地宣佈必須公園我來，推薦使用幹部目標人口，進入零。
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card col-xl-3 col-lg-4 col-md-6 col-sm-12 col-12" style="width: 18rem;">
-                    <div class="card-body">
-                        <button type="button" class="btn" data-toggle="modal" data-target="#exhibitionModal">
-                            <img src="https://picsum.photos/300/300/?random=1" class="card-img-top" alt="...">
-                        </button>
-                        <h4 class="card-text">The Title of exhibition</h4>
-                    </div>
-                </div>
-                <div class="modal fade" id="exhibitionModal" tabindex="-1" aria-labelledby="exhibitionModalLabel"
-                     aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h4 class="modal-title" id="exhibitionModalLabel">Modal title of exhibition</h4>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <div class="modal-img">
-                                    <img src="https://picsum.photos/1000/1000/?random=1" class="card-img-top" alt="...">
-                                </div>
-                                <div class="modal-text">
-                                    <div class="media-icon">
-                                        <i class="fab fa-instagram fa-2x"></i>
-                                    </div>
-                                    <button class="Add-calender">加入行事曆</button>
-                                    <p class="content">
-                                        有限責任面議，相同作者喜歡共享版竟然太麻里，平時複雜不詳清楚給他天下要去軟體尤其是，國內外發表簽名相信促進人間危險女友加油電視即將故意都會，睡覺套件擁有損失格式報名銀行現實位置暴力網頁班，汽車一聲回去上路當地宣佈必須公園我來，推薦使用幹部目標人口，進入零。
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card col-xl-3 col-lg-4 col-md-6 col-sm-12 col-12" style="width: 18rem;">
-                    <div class="card-body">
-                        <button type="button" class="btn" data-toggle="modal" data-target="#exhibitionModal">
-                            <img src="https://picsum.photos/300/300/?random=1" class="card-img-top" alt="...">
-                        </button>
-                        <h4 class="card-text">The Title of exhibition</h4>
-                    </div>
-                </div>
-                <div class="modal fade" id="exhibitionModal" tabindex="-1" aria-labelledby="exhibitionModalLabel"
-                     aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h4 class="modal-title" id="exhibitionModalLabel">Modal title of exhibition</h4>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <div class="modal-img">
-                                    <img src="https://picsum.photos/1000/1000/?random=1" class="card-img-top" alt="...">
-                                </div>
-                                <div class="modal-text">
-                                    <div class="media-icon">
-                                        <i class="fab fa-instagram fa-2x"></i>
-                                    </div>
-                                    <button class="Add-calender">加入行事曆</button>
-                                    <p class="content">
-                                        有限責任面議，相同作者喜歡共享版竟然太麻里，平時複雜不詳清楚給他天下要去軟體尤其是，國內外發表簽名相信促進人間危險女友加油電視即將故意都會，睡覺套件擁有損失格式報名銀行現實位置暴力網頁班，汽車一聲回去上路當地宣佈必須公園我來，推薦使用幹部目標人口，進入零。
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card col-xl-3 col-lg-4 col-md-6 col-sm-12 col-12" style="width: 18rem;">
-                    <div class="card-body">
-                        <button type="button" class="btn" data-toggle="modal" data-target="#exhibitionModal">
-                            <img src="https://picsum.photos/300/300/?random=1" class="card-img-top" alt="...">
-                        </button>
-                        <h4 class="card-text">The Title of exhibition</h4>
-                    </div>
-                </div>
-                <div class="modal fade" id="exhibitionModal" tabindex="-1" aria-labelledby="exhibitionModalLabel"
-                     aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h4 class="modal-title" id="exhibitionModalLabel">Modal title of exhibition</h4>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <div class="modal-img">
-                                    <img src="https://picsum.photos/1000/1000/?random=1" class="card-img-top" alt="...">
-                                </div>
-                                <div class="modal-text">
-                                    <div class="media-icon">
-                                        <i class="fab fa-instagram fa-2x"></i>
-                                    </div>
-                                    <button class="Add-calender">加入行事曆</button>
-                                    <p class="content">
-                                        有限責任面議，相同作者喜歡共享版竟然太麻里，平時複雜不詳清楚給他天下要去軟體尤其是，國內外發表簽名相信促進人間危險女友加油電視即將故意都會，睡覺套件擁有損失格式報名銀行現實位置暴力網頁班，汽車一聲回去上路當地宣佈必須公園我來，推薦使用幹部目標人口，進入零。
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card col-xl-3 col-lg-4 col-md-6 col-sm-12 col-12" style="width: 18rem;">
-                    <div class="card-body">
-                        <button type="button" class="btn" data-toggle="modal" data-target="#exhibitionModal">
-                            <img src="https://picsum.photos/300/300/?random=1" class="card-img-top" alt="...">
-                        </button>
-                        <h4 class="card-text">The Title of exhibition</h4>
-                    </div>
-                </div>
-                <div class="modal fade" id="exhibitionModal" tabindex="-1" aria-labelledby="exhibitionModalLabel"
-                     aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h4 class="modal-title" id="exhibitionModalLabel">Modal title of exhibition</h4>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <div class="modal-img">
-                                    <img src="https://picsum.photos/1000/1000/?random=1" class="card-img-top" alt="...">
-                                </div>
-                                <div class="modal-text">
-                                    <div class="media-icon">
-                                        <i class="fab fa-instagram fa-2x"></i>
-                                    </div>
-                                    <button class="Add-calender">加入行事曆</button>
-                                    <p class="content">
-                                        有限責任面議，相同作者喜歡共享版竟然太麻里，平時複雜不詳清楚給他天下要去軟體尤其是，國內外發表簽名相信促進人間危險女友加油電視即將故意都會，睡覺套件擁有損失格式報名銀行現實位置暴力網頁班，汽車一聲回去上路當地宣佈必須公園我來，推薦使用幹部目標人口，進入零。
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card col-xl-3 col-lg-4 col-md-6 col-sm-12 col-12" style="width: 18rem;">
-                    <div class="card-body">
-                        <button type="button" class="btn" data-toggle="modal" data-target="#exhibitionModal">
-                            <img src="https://picsum.photos/300/300/?random=1" class="card-img-top" alt="...">
-                        </button>
-                        <h4 class="card-text">The Title of exhibition</h4>
-                    </div>
-                </div>
-                <div class="modal fade" id="exhibitionModal" tabindex="-1" aria-labelledby="exhibitionModalLabel"
-                     aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h4 class="modal-title" id="exhibitionModalLabel">Modal title of exhibition</h4>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <div class="modal-img">
-                                    <img src="https://picsum.photos/1000/1000/?random=1" class="card-img-top" alt="...">
-                                </div>
-                                <div class="modal-text">
-                                    <div class="media-icon">
-                                        <i class="fab fa-instagram fa-2x"></i>
-                                    </div>
-                                    <button class="Add-calender">加入行事曆</button>
-                                    <p class="content">
-                                        有限責任面議，相同作者喜歡共享版竟然太麻里，平時複雜不詳清楚給他天下要去軟體尤其是，國內外發表簽名相信促進人間危險女友加油電視即將故意都會，睡覺套件擁有損失格式報名銀行現實位置暴力網頁班，汽車一聲回去上路當地宣佈必須公園我來，推薦使用幹部目標人口，進入零。
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card col-xl-3 col-lg-4 col-md-6 col-sm-12 col-12" style="width: 18rem;">
-                    <div class="card-body">
-                        <button type="button" class="btn" data-toggle="modal" data-target="#exhibitionModal">
-                            <img src="https://picsum.photos/300/300/?random=1" class="card-img-top" alt="...">
-                        </button>
-                        <h4 class="card-text">The Title of exhibition</h4>
-                    </div>
-                </div>
-                <div class="modal fade" id="exhibitionModal" tabindex="-1" aria-labelledby="exhibitionModalLabel"
-                     aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h4 class="modal-title" id="exhibitionModalLabel">Modal title of exhibition</h4>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <div class="modal-img">
-                                    <img src="https://picsum.photos/1000/1000/?random=1" class="card-img-top" alt="...">
-                                </div>
-                                <div class="modal-text">
-                                    <div class="media-icon">
-                                        <i class="fab fa-instagram fa-2x"></i>
-                                    </div>
-                                    <button class="Add-calender">加入行事曆</button>
-                                    <p class="content">
-                                        有限責任面議，相同作者喜歡共享版竟然太麻里，平時複雜不詳清楚給他天下要去軟體尤其是，國內外發表簽名相信促進人間危險女友加油電視即將故意都會，睡覺套件擁有損失格式報名銀行現實位置暴力網頁班，汽車一聲回去上路當地宣佈必須公園我來，推薦使用幹部目標人口，進入零。
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+    <link href="~/Asset/Css/Exhibition/Exhibition.css" rel="stylesheet" />
+}
+<div class="main-Exhibition container">
+    <!-- Button trigger modal -->
+    <button type="button" class="btn main-btn col-12" data-toggle="modal" data-target="#exampleModal">
 
+        <div class="main-Exhibition-pic col-12 ">
+            <img src="https://picsum.photos/600/300/?random=1" class="w-100">
+        </div>
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">展覽TITLE</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="ex-Main-pic">
+                    <img src="https://picsum.photos/300/300/?random=1" class="col-12">
+                </div>
+                <div class="modal-body">
+                    展覽資訊...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
             </div>
         </div>
     </div>
+    <div class="midsolid container">
+    </div>
 </div>
+
+
+
+
+
+<div class="container other-exhibition">
+    <div class="ex-block-text">
+        <p>
+            未來展覽
+        </p>
+    </div>
+    <div class="future-exhibition row col-12">
+        <button type="button" class="btn col-sm-12 col-md-6 col-lg-4" data-toggle="modal" data-target="#ex2">
+            <div class="card" style="width: 18rem;">
+                <img src="..." class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">展覽Title</h5>
+                    <p class="card-text">展覽簡介...</p>
+                </div>
+            </div>
+        </button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="ex2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        ...
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button type="button" class="btn col-sm-12 col-md-6 col-lg-4" data-toggle="modal" data-target="#ex3">
+            <div class="card" style="width: 18rem;">
+                <img src="..." class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">展覽Title</h5>
+                    <p class="card-text">展覽簡介...</p>
+                </div>
+            </div>
+        </button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="ex3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        ...
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button type="button" class="btn col-sm-12 col-md-6 col-lg-4" data-toggle="modal" data-target="#ex4">
+            <div class="card" style="width: 18rem;">
+                <img src="..." class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">展覽Title</h5>
+                    <p class="card-text">展覽簡介...</p>
+                </div>
+            </div>
+        </button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="ex4" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        ...
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div><button type="button" class="btn col-sm-12 col-md-6 col-lg-4" data-toggle="modal" data-target="#ex5">
+            <div class="card" style="width: 18rem;">
+                <img src="..." class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">展覽Title</h5>
+                    <p class="card-text">展覽簡介...</p>
+                </div>
+            </div>
+        </button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="ex5" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        ...
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <div class="midsolid">
+    </div>
+
+
+
+    <div class="ex-block-text">
+        <p>
+            過去展覽
+        </p>
+    </div>
+    <div class="ex-exhibition row col-12">
+        <button type="button" class="btn col-sm-12 col-md-6 col-lg-4" data-toggle="modal" data-target="#ex6">
+            <div class="card" style="width: 18rem;">
+                <img src="..." class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">展覽Title</h5>
+                    <p class="card-text">展覽簡介...</p>
+                </div>
+            </div>
+        </button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="ex6" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        ...
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div><button type="button" class="btn col-sm-12 col-md-6 col-lg-4" data-toggle="modal" data-target="#ex7">
+            <div class="card" style="width: 18rem;">
+                <img src="..." class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">展覽Title</h5>
+                    <p class="card-text">展覽簡介...</p>
+                </div>
+            </div>
+        </button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="ex7" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        ...
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div><button type="button" class="btn col-sm-12 col-md-6 col-lg-4" data-toggle="modal" data-target="#ex8">
+            <div class="card" style="width: 18rem;">
+                <img src="..." class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">展覽Title</h5>
+                    <p class="card-text">展覽簡介...</p>
+                </div>
+            </div>
+        </button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="ex8" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        ...
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div><button type="button" class="btn col-sm-12 col-md-6 col-lg-4" data-toggle="modal" data-target="#ex9">
+            <div class="card" style="width: 18rem;">
+                <img src="..." class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">展覽Title</h5>
+                    <p class="card-text">展覽簡介...</p>
+                </div>
+            </div>
+        </button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="ex9" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        ...
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div><button type="button" class="btn col-sm-12 col-md-6 col-lg-4" data-toggle="modal" data-target="#ex10">
+            <div class="card" style="width: 18rem;">
+                <img src="..." class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">展覽Title</h5>
+                    <p class="card-text">展覽簡介...</p>
+                </div>
+            </div>
+        </button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="ex10" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        ...
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+</div>
+
+
+
+
+
+
+
+

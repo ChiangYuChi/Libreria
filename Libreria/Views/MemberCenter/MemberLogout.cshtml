@@ -1,0 +1,57 @@
+﻿
+@section topCss{
+    <link href="~/Asset/Css/MemberCenter/member_logout.css" rel="stylesheet" />
+    
+    }
+
+
+<section class="member-logout ">
+    <div class="container-fluid pt-5  d-flex flex-lg-row flex-wrap">
+        <div class="row col-lg-10  m-auto">
+            <div class="row   justify-content-center align-items-center col-sm-12 col-md-10 col-lg-11 m-auto p-0">
+                <div class="breadcrumb-member w-100 ">
+                    <a href="#">首頁</a>
+                    <i class="fas fa-chevron-right"></i>
+                    <a href="Account/Index">登入會員</a>
+                </div>
+            </div>
+
+
+
+            <div class="row col-sm-11 col-md-10 col-lg-3 m-auto p-0 ">
+                <div class="member-login-request d-none d-lg-block ">
+                    <div class="warning ">
+                        <div class="warning-wording pt-5">
+                            <p>您好，請先登入</p>
+                            <p>若您尚未成為會員</p>
+                            <p>請先註冊</p>
+                        </div>
+                        <div class="input-group">
+                            <a href="#" id="login">會員登入</a>
+                            <a href="#" id="register">註冊會員</a>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="member-login-request-sm col-12 d-md-block d-lg-none">
+                    <div class="warning">
+                        <div class="warning-wording pt-2">
+                            <p>您好，請先登入</p>
+                            <p>若您尚未成為會員</p>
+                            <p>請先註冊</p>
+                        </div>
+                        <div class="input-group">
+                            <input type="submit" id="login" value="會員登入">
+                            <input type="submit" id="register" value="註冊會員">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="memberLogout-dashboard col-lg-8"> @Html.Partial("_MemberCenterPartial");</div>
+
+        </div>
+
+    </div>
+
+</section>
+

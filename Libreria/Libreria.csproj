@@ -51,6 +51,9 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.7\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
@@ -59,6 +62,12 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Http, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.7\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.7\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
@@ -172,6 +181,7 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AboutUsController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
@@ -183,12 +193,16 @@
     <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\RentalController.cs" />
+    <Compile Include="Controllers\TestController.cs" />
+    <Compile Include="Filters\CustomAuthenticationFilter.cs" />
+    <Compile Include="Filters\CustomAuthorizeAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202102170420563_InitialDB.cs" />
-    <Compile Include="Migrations\202102170420563_InitialDB.Designer.cs">
-      <DependentUpon>202102170420563_InitialDB.cs</DependentUpon>
+    <Compile Include="Helpers\Utility.cs" />
+    <Compile Include="Migrations\202102200730418_InitialDB.cs" />
+    <Compile Include="Migrations\202102200730418_InitialDB.Designer.cs">
+      <DependentUpon>202102200730418_InitialDB.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -203,12 +217,14 @@
     <Compile Include="Models\EntityModel\ExhibitionOrder.cs" />
     <Compile Include="Models\EntityModel\Favorite.cs" />
     <Compile Include="Models\EntityModel\Invoice.cs" />
-    <Compile Include="Repository\DBContext\LibreriaDataModel.cs" />
+    <Compile Include="Models\EntityModel\LibreriaDataModel.cs" />
     <Compile Include="Models\EntityModel\member.cs" />
     <Compile Include="Models\EntityModel\Order.cs" />
     <Compile Include="Models\EntityModel\OrderDetail.cs" />
     <Compile Include="Models\EntityModel\Preview.cs" />
     <Compile Include="Models\EntityModel\Product.cs" />
+    <Compile Include="Models\EntityModel\Role.cs" />
+    <Compile Include="Models\EntityModel\ShoppingCart.cs" />
     <Compile Include="Models\EntityModel\Supplier.cs" />
     <Compile Include="Models\EntityModel\sysdiagram.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -219,25 +235,28 @@
     <Compile Include="Service\ExhibitionService.cs" />
     <Compile Include="Service\OperationResult.cs" />
     <Compile Include="Service\OrderService.cs" />
-    <Compile Include="Service\PreviewService.cs" />
     <Compile Include="Service\ProductService.cs" />
     <Compile Include="Service\RentalService.cs" />
+    <Compile Include="Service\ShoppingService.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\apibase\ApiResult.cs" />
     <Compile Include="ViewModels\CategoryViewModel.cs" />
     <Compile Include="ViewModels\OrderViewModel.cs" />
     <Compile Include="ViewModels\ExhibitionVIewModel.cs" />
-    <Compile Include="ViewModels\PreviewViewModel.cs" />
     <Compile Include="ViewModels\ProductViewModel.cs" />
     <Compile Include="ViewModels\RentalConfirmViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Asset\Css\AboutUs\AboutUs.css" />
+    <Content Include="Asset\Css\Exhibition\Exhibition.css" />
+    <Content Include="Asset\Css\MemberCenter\Favorate.css" />
     <Content Include="Asset\Css\PartialView\category-sidenav.css" />
     <Content Include="Asset\Css\Home-Index\Home.css" />
     <Content Include="Asset\Css\Home-Index\slick-theme.min.css" />
     <Content Include="Asset\Css\Home-Index\slick.css" />
     <Content Include="Asset\Css\Layout\Footer.css" />
     <Content Include="Asset\Css\Layout\Nav_bar.css" />
+    <Content Include="Asset\Css\MemberCenter\MemberRegisterPage.css" />
     <Content Include="Asset\Css\MemberCenter\member_info.css" />
     <Content Include="Asset\Css\MemberCenter\member_login.css" />
     <Content Include="Asset\Css\MemberCenter\member_logout.css" />
@@ -257,6 +276,26 @@
     <Content Include="Asset\Css\ShoppingCart\Normalize.css" />
     <Content Include="Asset\Css\ShoppingCart\OrderDetail.css" />
     <Content Include="Asset\Css\ShoppingCart\ShoppingCart.css" />
+    <Content Include="Asset\Image\AboutUs\AboutUs01.jpg" />
+    <Content Include="Asset\Image\AboutUs\AboutUs02.jpg" />
+    <Content Include="Asset\Image\AboutUs\AboutUs03.jpg" />
+    <Content Include="Asset\Image\AboutUs\AboutUs04.jpg" />
+    <Content Include="Asset\Image\AboutUs\AboutUs05.jpg" />
+    <Content Include="Asset\Image\AboutUs\AboutUs06.jpg" />
+    <Content Include="Asset\Image\AboutUs\AboutUs07.jpg" />
+    <Content Include="Asset\Image\AboutUs\AboutUs08.jpg" />
+    <Content Include="Asset\Image\AboutUs\AboutUs09.jpg" />
+    <Content Include="Asset\Image\AboutUs\AboutUs10.jpg" />
+    <Content Include="Asset\Image\AboutUs\icon_01.png" />
+    <Content Include="Asset\Image\AboutUs\icon_02.png" />
+    <Content Include="Asset\Image\AboutUs\icon_03.png" />
+    <Content Include="Asset\Image\AboutUs\icon_04.png" />
+    <Content Include="Asset\Image\AboutUs\icon_05.png" />
+    <Content Include="Asset\Image\AboutUs\icon_06.png" />
+    <Content Include="Asset\Image\AboutUs\icon_07.png" />
+    <Content Include="Asset\Image\AboutUs\icon_08.png" />
+    <Content Include="Asset\Image\AboutUs\icon_09.png" />
+    <Content Include="Asset\Image\AboutUs\icon_10.png" />
     <Content Include="Asset\Image\AboutUs\TopImage.jpg" />
     <Content Include="Asset\Image\Home\0vvet556xwdbjdmchaggwfya1g34yw9u_1400x800.jpg" />
     <Content Include="Asset\Image\Home\Libreria-SCA-8287_Iwan-Baan_Web.jpg" />
@@ -799,13 +838,16 @@
     <Content Include="Asset\Image\Rental\rightArrow.svg" />
     <Content Include="Asset\Image\Rental\Screening-Image.jpg" />
     <Content Include="Asset\Image\Rental\timepicker-icon.svg" />
+    <Content Include="Asset\Image\AboutUs\quote-icon.png" />
     <Content Include="Asset\Image\smlogo_v2.png" />
     <Content Include="Asset\Js\Home-Index\slick.min.js" />
     <Content Include="Asset\Css\ContactService\ContactService.css" />
     <Content Include="Asset\Css\Member\Member.css" />
     <Content Include="Asset\Js\ContactService\ContactService.js" />
+    <Content Include="Asset\Js\MemberCenter\Favorate.js" />
     <Content Include="Asset\Js\MemberCenter\subscribe.js" />
     <Content Include="Asset\Js\Product\book-reviewer.js" />
+    <Content Include="Asset\Js\MemberCenter\MemberRegisterPage.js" />
     <Content Include="Asset\Js\Product\ProductCategory.js" />
     <Content Include="Asset\Js\Product\ProductIndex.js" />
     <Content Include="Asset\Js\Product\swiper.js" />
@@ -1043,6 +1085,10 @@
     <Content Include="Views\MemberCenter\Subscribe_cancel.cshtml" />
     <Content Include="Views\MemberCenter\MemberContact.cshtml" />
     <Content Include="Views\Rental\Index.cshtml" />
+    <Content Include="Views\MemberCenter\Favorate.cshtml" />
+    <Content Include="Views\Product\ProductLayoutPartial.cshtml" />
+    <Content Include="Views\Product\Test.cshtml" />
+    <Content Include="Views\MemberCenter\MemberRegisterPage.cshtml" />
     <Content Include="Views\Rental\Confirm.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -1050,6 +1096,7 @@
     <Folder Include="Asset\Js\common\" />
     <Folder Include="Asset\Js\Index\" />
     <Folder Include="Data\" />
+    <Folder Include="Repository\DBContext\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -1063,8 +1110,8 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202102170420563_InitialDB.resx">
-      <DependentUpon>202102170420563_InitialDB.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202102200730418_InitialDB.resx">
+      <DependentUpon>202102200730418_InitialDB.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

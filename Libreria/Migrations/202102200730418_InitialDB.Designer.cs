@@ -13,7 +13,7 @@ namespace Libreria.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "202102170420563_InitialDB"; }
+            get { return "202102200730418_InitialDB"; }
         }
         
         string IMigrationMetadata.Source
