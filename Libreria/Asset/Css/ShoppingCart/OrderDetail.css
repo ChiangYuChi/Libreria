@@ -150,6 +150,11 @@ h2 {
     margin: 10px 0px 5px 62px;
 }
 
+.recipient_profile_postalCode {
+    display: flex;
+    margin: 10px 0px 20px 30px;
+}
+
 .recipient_profile_name p {
     margin: 7px 10px 0px 0px;
 }
@@ -163,6 +168,10 @@ h2 {
 }
 
 .recipient_profile_address p {
+    margin: 3px 10px 0px 0px;
+}
+
+.recipient_profile_postalCode p {
     margin: 3px 10px 0px 0px;
 }
 
