@@ -72,14 +72,14 @@ namespace Libreria.Controllers
             var product = _productService.GetByTotalSales();
             return PartialView(product);
         }
-        
-      //public PartialViewResult PromoteTodayPartial()
-      //  {
-      //      var product = _productService.PromoteToday();
-      //      return PartialView(product);
-      //  }
-        
 
-        
+        public PartialViewResult PromoteTodayPartial()
+        {
+            var product = _productService.PromoteToday();
+            return PartialView(product);
+        }
+
+
+
     }
 }

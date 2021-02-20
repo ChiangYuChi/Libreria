@@ -3,6 +3,13 @@
     <link href="~/Asset/Css/Product/product_index.css" rel="stylesheet" />
     <link href="~/Asset/Css/PartialView/category-sidenav.css" rel="stylesheet" />
 }
+
+<style>
+
+
+</style>
+
+
 <div class="container-fluid col-12 pt-5">
     <section class="product-index">
         <div class="main ">
@@ -46,15 +53,11 @@
                             <div class="swiper-container">
                                 <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
                                     <div class="carousel-inner">
-                                        <div class="carousel-item active">
-                                            <img class="d-block w-100" src="..." alt="First slide">
+                                        <div class="carousel-item ">
+                                            
+                             
                                         </div>
-                                        <div class="carousel-item">
-                                            <img class="d-block w-100" src="..." alt="Second slide">
-                                        </div>
-                                        <div class="carousel-item">
-                                            <img class="d-block w-100" src="..." alt="Third slide">
-                                        </div>
+                                     
                                     </div>
                                 </div>
 
@@ -104,35 +107,19 @@
                         </div>
 
                     </div>
-                    <div class="new-product col-lg-12 d-flex">
+                    <div class="new-product col-lg-12 d-flex main-hit" >
                         <h3>主打選品</h3>
-                        <div class="col-lg-6 pic major">
-                            <img src="./img/main-promotion-9.jpg" alt="">
-                            <div class="promotion-discount">
-                                <div class="title">藝術史的一千零一夜 (精美插畫版/誠品獨家書封版)</div>
-                                <p>79折,<span>NT$</span>537</p>
-
-                            </div>
-                        </div>
-                        <div class="col-lg-6 pic major">
-
-                            <img src="./img/main-promotion-6.jpg" alt="">
-                            <div class="promotion-discount">
-                                <div class="title">藝術史的一千零一夜 (精美插畫版/誠品獨家書封版)</div>
-                                <p>79折,<span>NT$</span>537</p>
-                            </div>
-                        </div>
+                        
+                            @Html.Action("PromoteTodayPartial")
+                       
+                        
 
 
                     </div>
                     <div class="hot-issue col-lg-6">
                         <h3>熱門話題</h3>
-
-                        <ul>
-                            @Html.Action("PromoteByTotalSalesPartial")
-                        </ul>
-
-
+                        @Html.Action("PromoteByTotalSalesPartial")
+                      
                     </div>
                     <div class="hot-issue col-lg-6">
                         <div class="pic col-lg-12">

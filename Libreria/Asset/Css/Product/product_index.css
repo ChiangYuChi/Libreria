@@ -1,4 +1,4 @@
-﻿.main .product-breadcrumb {
+﻿@import <link rel="preconnect" href="https://fonts.gstatic.com"> <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital@1&display=swap" rel="stylesheet"> .main .product-breadcrumb {
     padding: 20px 0;
 }
 
@@ -184,23 +184,7 @@
             padding-right: 20px;
         }
 
-        .main .new-product .major .promotion-discount {
-            color: #aa3744;
-            font-size: 25px;
-            font-family: 'Noto Sans TC', sans-serif;
-            font-weight: bold;
-        }
-
-            .main .new-product .major .promotion-discount .title {
-                color: black;
-                font-weight: 400;
-                font-size: 20px;
-            }
-
-            .main .new-product .major .promotion-discount span {
-                font-size: 15px;
-                color: black;
-            }
+        .
 
 .main .hot-issue {
     padding: 30px;
@@ -218,6 +202,7 @@
 
     .main .hot-issue ul {
         padding: 0;
+        display:none;
     }
 
         .main .hot-issue ul li {
@@ -237,3 +222,65 @@
             width: 110%;
             margin-top: 20px;
         }
+
+.main-hit .major {
+    position: relative;
+}
+
+    .main-hit .major:nth-of-type(1):before {
+        content: "1";
+        font-style: italic;
+        width: 40px;
+        height: 40px;
+        font-size: 95px;
+        font-family: 'Merriweather', serif;
+        color: #bf0000;
+        position: absolute;
+        right: 40%;
+        top: -5%;
+    }
+
+    .main-hit .major:nth-of-type(2):before {
+        content: "2";
+        font-style: italic;
+        width: 40px;
+        height: 40px;
+        font-size: 95px;
+        font-family: 'Merriweather', serif;
+        color: #bf0000;
+        position: absolute;
+        right: 40%;
+        top: -5%;
+        
+    }
+
+    .main-hit .major .promotion-discount {
+        display: flex;
+        justify-content:flex-start;
+        align-items: flex-start;
+        flex-direction: column;
+        margin-top: 30px;
+        border-top: 1px solid grey;
+        height: 50%;
+        position: absolute;
+        bottom: 5%;
+        right: 0%;
+        text-align: left;
+        width:50%;
+        display: flex;
+        font-size: 20px;
+    }
+
+.promotion-discount .title {
+ width: 100%;
+display:flex;
+justify-content:flex-start;
+font-size: 16px;
+
+}
+
+.promotion-discount p{
+    margin:0;
+    text-align:left;
+    width: 100%;
+}

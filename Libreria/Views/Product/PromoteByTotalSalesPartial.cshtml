@@ -3,6 +3,9 @@
 @foreach (var item in Model)
 {
 
-<li class="col-lg-12">@Html.ActionLink(item.Name,"ProductDetail","Product",new {id=item.Id},null)</li>
+    @item.Name
+
+
+@*<li class="col-lg-12">@Html.ActionLink(item.Name,"ProductDetail","Product",new {id=item.Id},null)</li>*@
    
 }
