@@ -1,5 +1,7 @@
 ﻿using Libreria.Filters;
 using Libreria.Models.EntityModel;
+using Libreria.Service;
+using Libreria.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +13,12 @@ namespace Libreria.Controllers
     [CustomAuthenticationFilter]
     public class MemberCenterController : Controller
     {
+        private readonly FavoriteService _favoriteService;
+
+        MemberCenterController()
+        {
+            _favoriteService = new FavoriteService();
+        }
 
         // GET: MemberCenter
 
@@ -108,5 +116,50 @@ namespace Libreria.Controllers
             return View();
         }
 
+        public ActionResult Favorite()
+        {
+            List<FavoriteViewModel> fav = (List<FavoriteViewModel>)Session["Favorite"];
+            return View(fav);
+        }
+
+        [HttpPost]
+        public int AddToFavorite(ProductViewModel productVM)
+        {
+            List<FavoriteViewModel> FavoriteVM = new List<FavoriteViewModel>();
+
+            if (Session["Favorite"] == null)
+            {
+                FavoriteViewModel fav = new FavoriteViewModel
+                {
+                    RecordId = 1,
+                    FavoriteId = Guid.NewGuid().ToString(),
+                    ProductId = productVM.Id,
+                    Name = productVM.Name,
+                    Author = productVM.Author,
+                    CreatedDate = DateTime.Now
+                };
+
+                FavoriteVM.Add(fav);
+                Session["Favorite"] = FavoriteVM;
+            }
+            else
+            {
+                FavoriteVM = (List<FavoriteViewModel>)Session["Favorite"];
+
+                FavoriteViewModel fav = new FavoriteViewModel
+                {
+                    RecordId = FavoriteVM.Count() + 1,
+                    FavoriteId = Guid.NewGuid().ToString(),
+                    Name = productVM.Name,
+                    ProductId = productVM.Id,
+                    Author = productVM.Author,
+                    CreatedDate = DateTime.Now
+                };
+
+                FavoriteVM.Add(fav);
+                Session["Favorite"] = FavoriteVM;
+            }
+            return FavoriteVM.Count;
+        }
     }
 }
