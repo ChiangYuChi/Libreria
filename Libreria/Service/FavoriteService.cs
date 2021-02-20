@@ -8,13 +8,22 @@ using System.Web;
 
 namespace Libreria.Service
 {
-    public class ShoppingService
+    public class FavoriteService
     {
         private readonly LibreriaRepository _DbRepository;
 
-        public ShoppingService()
+        public FavoriteService()
         {
             _DbRepository = new LibreriaRepository();
+        }
+        public List<FavoriteViewModel> GetAll()
+        {
+            return _DbRepository.GetAll<Favorite>().Select(x => new FavoriteViewModel()
+            {
+                FavoriteId = x.FavoriteId.ToString(),
+                ProductId = x.ProductId,
+                memberId = x.memberId,
+            }).ToList();
         }
 
         public OperationResult Create(ProductViewModel ProductVM)
@@ -23,8 +32,8 @@ namespace Libreria.Service
 
             try
             {
-                ShoppingCart entity = new ShoppingCart() { ProductId = ProductVM.Id, memberId = 1 }; //memberID后面需要修改成真实资料
-                _DbRepository.Create<ShoppingCart>(entity);
+                Favorite entity = new Favorite() { ProductId = ProductVM.Id, memberId = 1 };
+                _DbRepository.Create<Favorite>(entity);
                 result.IsSuccessful = true;
             }
             catch
@@ -34,6 +43,8 @@ namespace Libreria.Service
 
             return result;
         }
+
+
 
     }
 }
