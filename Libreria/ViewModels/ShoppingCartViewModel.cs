@@ -1,0 +1,19 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+
+namespace Libreria.ViewModels
+{
+    public class ShoppingCartViewModel
+    {
+        public int ProductId { get; set; }
+        public string ProductName { get; set; }
+
+        public int Count { get; set; }
+
+        public decimal Price { get; set; }
+
+        public string PicUrl { get; set; }
+    }
+}
