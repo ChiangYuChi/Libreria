@@ -1,4 +1,5 @@
 ﻿using Libreria.Service;
+using Libreria.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,6 +23,10 @@ namespace Libreria.Controllers
             return View();
         }
 
-
+        
+        public ActionResult Confirm()
+        {
+            return View();
+        }
     }
 }

@@ -1,11 +1,18 @@
-﻿$('#myModal').on('shown.bs.modal', function () {
+﻿
+
+$('#myModal').on('shown.bs.modal', function () {
     $('#myInput').trigger('focus')
 })
 
+
+let calender;
 window.onload = () => {
-    let calender = new Calendar();
+    calender = new Calendar();
     calender.generateDaysOfWeek();
 }
+
+//選擇展覽日期
+
 
 //選擇展覽時間
 function generateEndTime() {
@@ -22,7 +29,7 @@ function generateEndTime() {
 document.getElementById('start').addEventListener("change", generateEndTime);
 document.getElementById('start-modal').addEventListener("change", generateEndTime);
 
-
+// 線上預訂
 
 
 
@@ -54,11 +61,10 @@ function Calendar() {
         tbody.innerHTML = '';
         ymText.innerText = `${currentDate.getFullYear()}年${currentDate.getMonth() + 1}月`;
 
-        for (let weekIndex = 0; weekIndex < 6; weekIndex++) {
+        for (let weekIndex = 0; weekIndex < 5; weekIndex++) {
             let tr = document.createElement('tr');
             // 補第一天之前空的td 
             let prevDaysOfWeek = currentDate.getDay();
-            console.log(prevDaysOfWeek)
             while (weekIndex == 0 && prevDaysOfWeek > 0) {
                 var td = document.createElement('td');
                 td.innerHtml = '&emsp;';
@@ -78,14 +84,46 @@ function Calendar() {
                 }
                 td.innerHTML = currentDate.getDate();
                 tr.appendChild(td);
+
+                //選取租借時間
+                $(td).data('data', new Date(currentDate.getTime()));
+                $(td).click(function () {
+                    if (pickStartDate != null && pickEndDate != null && pickStartDate != pickEndDate) {
+                        pickStartDate = null;
+                        pickEndDate = null;
+                        $('td', tbody).each(function () {
+                            $('td').removeClass('pick-date');
+                        })
+                    }
+
+                    pickStartDate = (pickStartDate) ?? $(this).data('data');
+                     if(pickStartDate != null) {
+                        pickEndDate = $(this).data('data');
+                    }
+                    if (pickStartDate != null && pickEndDate != null) {
+                        $('td', tbody).each(function () {
+                            let indexDate = $(this).data('data');
+                            if (pickStartDate <= indexDate && indexDate <= pickEndDate) {
+                                $(this).addClass('pick-date');
+                            }
+                        })
+                    }
+                })
+                
                 currentDate.setDate(currentDate.getDate() + 1);
             }
             tbody.appendChild(tr);
         }
+        
         currentDate.setMonth(currentDate.getMonth() - 1);
         currentDate.setDate(0);
         currentDate.setDate(currentDate.getDate() + 1);
     }
+    function getPickDateRange() {
+        return { pickStartDate, pickEndDate };
+    }
+
     this.generateDaysOfWeek = generateDaysOfWeek;
+    this.getPickDateRange = getPickDateRange;
 }
 

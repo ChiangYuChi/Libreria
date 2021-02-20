@@ -228,6 +228,7 @@
     <Compile Include="ViewModels\ExhibitionVIewModel.cs" />
     <Compile Include="ViewModels\PreviewViewModel.cs" />
     <Compile Include="ViewModels\ProductViewModel.cs" />
+    <Compile Include="ViewModels\RentalConfirmViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Asset\Css\AboutUs\AboutUs.css" />
@@ -251,6 +252,7 @@
     <Content Include="Asset\Css\Product\product_index.css" />
     <Content Include="Asset\Css\MemberLogin\member-login.css" />
     <Content Include="Asset\Css\Product\swiper.css" />
+    <Content Include="Asset\Css\Rental\Rental_Confirm.css" />
     <Content Include="Asset\Css\Rental\Rental_index.css" />
     <Content Include="Asset\Css\ShoppingCart\Normalize.css" />
     <Content Include="Asset\Css\ShoppingCart\OrderDetail.css" />
@@ -807,6 +809,7 @@
     <Content Include="Asset\Js\Product\ProductCategory.js" />
     <Content Include="Asset\Js\Product\ProductIndex.js" />
     <Content Include="Asset\Js\Product\swiper.js" />
+    <Content Include="Asset\Js\Rental\Renral_confirm.js" />
     <Content Include="Asset\Js\Rental\Rental_index.js" />
     <Content Include="Asset\Js\ShoppingCart\OrderDetail.js" />
     <Content Include="Asset\Js\Home-Index\slick.min.js" />
@@ -1040,6 +1043,7 @@
     <Content Include="Views\MemberCenter\Subscribe_cancel.cshtml" />
     <Content Include="Views\MemberCenter\MemberContact.cshtml" />
     <Content Include="Views\Rental\Index.cshtml" />
+    <Content Include="Views\Rental\Confirm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

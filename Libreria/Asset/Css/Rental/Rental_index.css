@@ -31,6 +31,11 @@ pointer-events: none;
 border: none !important;
 color: rgba(176, 176, 176, 1);
 }
+/*選取日期*/
+.pick-date {
+    background-color:rgba(138, 105, 38, 1);
+    color:white;
+}
 
 
 
@@ -126,9 +131,9 @@ box-shadow: none;
 }
 
 .spaceLease .service--modal .btn-primary:active:hover {
-background-color: rgba(119, 90, 31);
+background-color: rgb(119, 90, 31);
 border-color: rgb(119, 90, 31);
-box-shadow: 0 0 0 0.2rem rgb(119 90 31 / 50%) !important;
+box-shadow: 0 0 0 0.2rem rgba(119, 90, 31, 0.5) !important;
 }
 
 .spaceLease .modal-dialog-scrollable {
@@ -325,20 +330,17 @@ padding-top: 20px;
 
 .space__check-out--data {
     display: flex;
-    font-size:20px;
+    font-size:17px;
 }
 .space__check-out--data div::before {
     content: url('../../Image/Rental/datepicker-icon.svg');
     padding-right: 15px;
 }
-.space__check-out--data div{
-    margin-left:10px;
-    padding:6px 0;
-}
+
 
 .space__check-out--money, .space__check-out--data{
     border-bottom: 1px solid rgba(176, 176, 176, 1);
-    padding: 20px;
+    padding: 20px 0;
 }
 .space__check-out--time {
     border-bottom: 1px solid rgba(176, 176, 176, 1);
@@ -402,8 +404,15 @@ display: none;
 }
 
 @media screen and (min-width:768px) {
+    .start-data::after{
+        display:none;
+    }
+    .space__check-out--data {
+        display: inline;
+        font-size: 17px;
+    }
     .space__calendar--item {
-    width: 80%;
+        width: 80%;
     }
 }
 
@@ -429,9 +438,6 @@ display: none;
 
     .space__check-out--money p {
         font-size: 20px;
-    }
-    .space__check-out--data div{
-        margin-left:0;
     }
     .space__check-out--time::after {
         top: 205px;
