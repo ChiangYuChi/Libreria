@@ -21,7 +21,7 @@ namespace Libreria.Controllers
         {
             return View();
         }
-
+        
         [HttpPost]
         public ActionResult Index(MemberLoginViewModel model)
         {
@@ -36,6 +36,7 @@ namespace Libreria.Controllers
                 {
                     Session["MemberName"] = member.memberName;
                     Session["MemberPassword"] = member.memberPassword;
+                 
 
                     return RedirectToAction("Index", "Home");
                 }
@@ -58,6 +59,8 @@ namespace Libreria.Controllers
             Session["MemberPassword"] = string.Empty;
             return RedirectToAction("Index", "Home");
         }
+
+
 
     }
 }

@@ -1,4 +1,5 @@
-﻿using Libreria.Service;
+﻿using Libreria.Filters;
+using Libreria.Service;
 using Libreria.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -26,6 +27,7 @@ namespace Libreria.Controllers
             return View();   
         }
 
+        [CustomAuthenticationFilter]
 
         public ActionResult ProductCategory(int? CategoryId, int? Order)
         {

@@ -7,15 +7,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using static Libreria.Filters.CustomAuthenticationFilter;
 
 namespace Libreria.Controllers
 {
-    //[CustomAuthenticationFilter]
+    [CustomAuthenticationFilter]
     public class MemberCenterController : Controller
     {
         private readonly FavoriteService _favoriteService;
 
-        MemberCenterController()
+        public MemberCenterController()
         {
             _favoriteService = new FavoriteService();
         }
@@ -24,6 +25,7 @@ namespace Libreria.Controllers
 
         public ActionResult MemberLogin()
         {
+
             return View();
         }
 
@@ -51,7 +53,7 @@ namespace Libreria.Controllers
         {
             return View();
         }
-
+        [CustomAllowAnonymous]
         public ActionResult Subscribe()
         {
             return View();
@@ -70,21 +72,24 @@ namespace Libreria.Controllers
         {
             return View();
         }
-        [AllowAnonymous]
+        [CustomAllowAnonymous]
         public ActionResult MemberRegisterPage()
         {
             return View();
         }
-
+        [CustomAllowAnonymous]
         public ActionResult Favorite()
         {
             
             return View();
         }
 
+
+
         [HttpPost]
         public string AddToFavorite(ProductViewModel productVM)
         {
+            var CanTakeMemberNameFromThisVariable = System.Web.HttpContext.Current.Session["MemberID"];
             var result = _favoriteService.Create(productVM);
 
             if (result.IsSuccessful)

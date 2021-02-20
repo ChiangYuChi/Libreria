@@ -29,12 +29,26 @@ namespace Libreria.Filters
                         {"action","Index"}
                     }
                     );
+                
                 string controllerName = filterContext.RouteData.Values["controller"].ToString();
                 string actionName = filterContext.RouteData.Values["action"].ToString();
+                //var a = HttpContext.Current.Session["MemberID"]; 測試用
             }
 
         }
-    
+        //ovverride CustomAuthenticationFilter to implement AllowAnonymous
+        public class CustomAllowAnonymous : FilterAttribute, IOverrideFilter
+        {
+            public Type FiltersToOverride
+            {
+                get
+                {
+                    return typeof(IAuthenticationFilter);
+                }
+
+            }
+        }
+
     }
 
 }
