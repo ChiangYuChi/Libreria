@@ -246,6 +246,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Asset\Css\AboutUs\AboutUs.css" />
+    <Content Include="Asset\Css\Exhibition\Exhibition.css" />
     <Content Include="Asset\Css\MemberCenter\Favorate.css" />
     <Content Include="Asset\Css\PartialView\category-sidenav.css" />
     <Content Include="Asset\Css\Home-Index\Home.css" />
