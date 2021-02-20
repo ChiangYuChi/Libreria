@@ -233,6 +233,7 @@
     <Compile Include="Repository\LibreriaRepository.cs" />
     <Compile Include="Service\CategoryService.cs" />
     <Compile Include="Service\ExhibitionService.cs" />
+    <Compile Include="Service\MemberLoginService.cs" />
     <Compile Include="Service\OperationResult.cs" />
     <Compile Include="Service\OrderService.cs" />
     <Compile Include="Service\ProductService.cs" />
@@ -240,6 +241,7 @@
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\apibase\ApiResult.cs" />
     <Compile Include="ViewModels\CategoryViewModel.cs" />
+    <Compile Include="ViewModels\MemberLoginViewModel.cs" />
     <Compile Include="ViewModels\OrderViewModel.cs" />
     <Compile Include="ViewModels\ExhibitionVIewModel.cs" />
     <Compile Include="ViewModels\ProductViewModel.cs" />

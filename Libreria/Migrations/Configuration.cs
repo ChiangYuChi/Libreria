@@ -1,5 +1,6 @@
 namespace Libreria.Migrations
 {
+    using Libreria.Models.EntityModel;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
