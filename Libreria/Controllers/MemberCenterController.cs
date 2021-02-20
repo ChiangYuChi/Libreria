@@ -1,5 +1,7 @@
 ﻿using Libreria.Filters;
 using Libreria.Models.EntityModel;
+using Libreria.Service;
+using Libreria.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +13,12 @@ namespace Libreria.Controllers
     //[CustomAuthenticationFilter]
     public class MemberCenterController : Controller
     {
+        private readonly FavoriteService _favoriteService;
+
+        MemberCenterController()
+        {
+            _favoriteService = new FavoriteService();
+        }
 
         // GET: MemberCenter
 
@@ -67,11 +75,26 @@ namespace Libreria.Controllers
         {
             return View();
         }
-        [AllowAnonymous]
-        [HttpPost]
-        public ActionResult MemberRegisterPage(int x)
+
+        public ActionResult Favorite()
         {
+            
             return View();
+        }
+
+        [HttpPost]
+        public string AddToFavorite(ProductViewModel productVM)
+        {
+            var result = _favoriteService.Create(productVM);
+
+            if (result.IsSuccessful)
+            {
+                return "加入成功!";
+            }
+            else
+            {
+                return "加入失败";
+            }
         }
     }
 }

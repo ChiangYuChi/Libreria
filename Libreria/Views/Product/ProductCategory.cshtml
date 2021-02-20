@@ -7,10 +7,8 @@
 
 }
 
-@section endJs{
 
-    <script src="~/Asset/Js/Product/ProductCategory.js"></script>
-}
+
 
 <div class="container-fluid col-11">
     <section class="product-index">
@@ -69,7 +67,7 @@
                                             <div class="cbp-vm-details">
                                                 @item.Author
                                             </div>
-                                            <a class="cbp-vm-icon cbp-vm-add" href="#">加入購物車</a>
+                                            <button class="cbp-vm-icon cbp-vm-add" onclick="AddCart(@item.Id)">加入購物車</button>
                                             <a class="wish-list " href="#"><i class="fas fa-heart"></i></a>
                                         </li>
 
@@ -91,3 +89,25 @@
 
 
 
+
+@section EndJs{
+    <script src="~/Asset/Js/Product/ProductCategory.js"></script>
+
+    <script>
+        function AddCart(id) {
+            let productId = id;
+
+            $.ajax({
+                type: "POST",
+                url: "/Order/AddToCart",
+                data: { Id: productId },
+                dataType: "text",
+                success: function (response) {
+                    alert(response);
+                    $("#MyCart").text("購物車(" + response + ")");
+                }
+            });
+        }
+    </script>
+
+}
