@@ -26,315 +26,321 @@
 @section endJs{
     @*OrderDetail JS*@
     <script src="~/Asset/Js/ShoppingCart/OrderDetail.js"></script>
+    <script src="~/Asset/Js/Order/OrderDetail.js" crossorigin="anonymous"></script>
 }
 
 
 
-
-<div class="container">
-    <div class="header">
-        <div class="header_step">
-            <div class="header_step_icon">
-                <div class="header_step_icon_num">
-                    <span>1</span>
-                </div>
-                <div class="header_step_line"></div>
-                <div class="header_step_icon_num">
-                    <span>2</span>
-                </div>
-                <div class="header_step_line"></div>
-                <div class="header_step_icon_num num3">
-                    <span>3</span>
-                </div>
-            </div>
-            <div class="header_step_txt">
-                <div class="header_step_txt_words">
-                    <p>購物車</p>
-                </div>
-                <div class="header_step_txt_words">
-                    <h1>選擇配送與付款資訊</h1>
-                </div>
-                <div class="header_step_txt_words">
-                    <span>完成訂單</span>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="step2">
-
-        <!-- 配送方式 -->
-        <div class="delivery_option">
-            <div class="cart_title">
-                <div class="delivery_option_title cart_titles">
-                    <h2>選擇配送方式</h2>
-                </div>
-            </div>
-            <div class="delivery_option_fee">
-                <p>超商取貨未滿350元，酌收訂單處理費50元</p>
-            </div>
-            <div class="delivery_option_body">
-                <div class="col-md-3 delivery_option_7-11 delivery_options click_options" id="options">
-                    <span class="col-md-1 circle" value="0">
-                        <i class="far fa-circle"></i>
-                    </span>
-                    <span id="option_txt" class="col-md-10">台灣7-ELEVEN取貨</span>
-                </div>
-
-                <div class="col-md-3 delivery_option_OK delivery_options click_options" id="options2">
-                    <span class="col-md-1 circle" value="0">
-                        <i class="far fa-circle"></i>
-                    </span>
-                    <span id="option_txt" class="col-md-11">台灣全家/OK/萊爾富 取貨</span>
-                </div>
-                <div class="col-md-3 delivery_option_delivery delivery_options click_options" id="options3">
-                    <span class="col-md-1 circle" value="0">
-                        <i class="far fa-circle"></i>
-                    </span>
-                    <span id="option_txt" class="col-md-11">台灣-宅配(台灣地區)</span>
-                </div>
-                <div class="col-md-3 delivery_option_pickup delivery_options click_options" id="options4">
-                    <span class="col-md-1 circle" value="0">
-                        <i class="far fa-circle"></i>
-                    </span>
-                    <span id="option_txt" class="col-md-11">誠品門市取貨</span>
-                </div>
-            </div>
-
-        </div>
-        <!-- 收件人資料 -->
-        <div class="recipient_profile">
-            <div class="cart_title">
-                <div class="recipient_profile_title cart_titles">
-                    <h2>收件人資料</h2>
-                </div>
-            </div>
-            <div class="recipient_profile_body">
-                <div class="recipient_profile_name">
-                    <p>姓名</p>
-                    <div class="recipient_profile_name_input">
-                        <input type="text" placeholder="姓名" id="recipient_input">
+<form method="post">
+    <div class="container">
+        <div class="header">
+            <div class="header_step">
+                <div class="header_step_icon">
+                    <div class="header_step_icon_num">
+                        <span>1</span>
+                    </div>
+                    <div class="header_step_line"></div>
+                    <div class="header_step_icon_num">
+                        <span>2</span>
+                    </div>
+                    <div class="header_step_line"></div>
+                    <div class="header_step_icon_num num3">
+                        <span>3</span>
                     </div>
                 </div>
-                <div class="recipient_profile_phone_tel">
-                    <div class="recipient_profile_phone">
-                        <p>行動電話</p>
-                        <div class="recipient_profile_name_select">
-                            <select class="recipient_profile_select">
-                                <option>+886(台灣)</option>
+                <div class="header_step_txt">
+                    <div class="header_step_txt_words">
+                        <p>購物車</p>
+                    </div>
+                    <div class="header_step_txt_words">
+                        <h1>選擇配送與付款資訊</h1>
+                    </div>
+                    <div class="header_step_txt_words">
+                        <span>完成訂單</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="step2">
+
+            <!-- 配送方式 -->
+            <div class="delivery_option">
+                <div class="cart_title">
+                    <div class="delivery_option_title cart_titles">
+                        <h2>選擇配送方式</h2>
+                    </div>
+                </div>
+                <div class="delivery_option_fee">
+                    <p>超商取貨未滿350元，酌收訂單處理費50元</p>
+                </div>
+                <div class="delivery_option_body">
+                    @*<label class="col-md-3 delivery_option_7-11 delivery_options click_options" id="options for="7Eleven">
+                            <span class="col-md-1 circle" value="0">
+                                <input type="radio" name="deliveryMethod" id="7Eleven" value="7Eleven">
+                            </span>
+                            <span id="option_txt" class="col-md-10">台灣7-ELEVEN取貨</span>
+                        </label>*@
+
+                    @*<label class="col-md-3 delivery_option_OK delivery_options click_options" id="options2" for="FamilyOKLairfu">
+                            <span class="col-md-1 circle" value="0">
+                                <input type="radio" name="deliveryMethod" id="FamilyOKLairfu" value="FamilyOKLairfu">
+                            </span>
+                            <span id="option_txt" class="col-md-11">台灣全家/OK/萊爾富 取貨</span>
+                        </label>*@
+                    <label class="col-md-3 delivery_option_delivery delivery_options click_options" id="options3" for="homeDelivery">
+                        <span class="col-md-1 circle" value="0">
+                            <input type="radio" name="deliveryMethod" id="homeDelivery" value="homeDelivery" required>
+                        </span>
+                        <span id="option_txt" class="col-md-11">台灣-宅配(台灣地區)</span>
+                    </label>
+                    <label class="col-md-3 delivery_option_pickup delivery_options click_options" id="options4" for="store">
+                        <span class="col-md-1 circle" value="0">
+                            <input type="radio" name="deliveryMethod" id="store" value="store">
+                        </span>
+                        <span id="option_txt" class="col-md-11">Libreria門市取貨</span>
+                    </label>
+                </div>
+
+            </div>
+            <!-- 收件人資料 -->
+            <div class="recipient_profile">
+                <div class="cart_title">
+                    <div class="recipient_profile_title cart_titles">
+                        <h2>收件人資料</h2>
+                    </div>
+                </div>
+                <div class="recipient_profile_body">
+                    <div class="recipient_profile_name">
+                        <p>姓名</p>
+                        <div class="recipient_profile_name_input">
+                            <input type="text" placeholder="姓名" id="recipient_input" name="recipientName" required>
+                        </div>
+                    </div>
+                    <div class="recipient_profile_phone_tel">
+                        <div class="recipient_profile_phone">
+                            <p>行動電話</p>
+                            <div class="recipient_profile_name_select">
+                                <select class="recipient_profile_select">
+                                    <option>+886(台灣)</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="recipient_profile_name_tel">
+                            <input type="tel" placeholder="號碼" name="recipientCellphone" id="recipientCellphone" required pattern="\d{10}">
+                        </div>
+                    </div>
+                    <div class="recipient_profile_homePhone">
+                        <p>連絡電話</p>
+                        <input type="tel" placeholder="市話" name="recipientTelephone" id="recipientTelephone" required pattern="\d*">
+                    </div>
+                    <div class="recipient_profile_address">
+                        <p>地址</p>
+                        <div class="recipient_profile_select">
+                            <select name="addressCitySelect" id="recipient_option recipient_option_counties Region" required>
+                                <option id="taiwanAddressNew" value="">請選擇</option>
+                                <option value="臺北市">臺北市</option> <!--1-->
+                                <option value="新北市">新北市</option> <!--2-->
+                                <option value="桃園市">桃園市</option> <!--3-->
+                                <option value="臺中市">臺中市</option> <!--4-->
+                                <option value="臺南市">臺南市</option> <!--5-->
+                                <option value="高雄市">高雄市</option> <!--6-->
+                                <option value="基隆市">基隆市</option> <!--7-->
+                                <option value="新竹市">新竹市</option> <!--8-->
+                                <option value="嘉義市">嘉義市</option> <!--9-->
+                                <option value="新竹縣">新竹縣</option> <!--10-->
+                                <option value="苗栗縣">苗栗縣</option> <!--11-->
+                                <option value="彰化縣">彰化縣</option> <!--12-->
+                                <option value="南投縣">南投縣</option> <!--13-->
+                                <option value="雲林縣">雲林縣</option> <!--14-->
+                                <option value="嘉義縣">嘉義縣</option> <!--15-->
+                                <option value="屏東縣">屏東縣</option> <!--16-->
+                                <option value="宜蘭縣">宜蘭縣</option> <!--17-->
+                                <option value="花蓮縣">花蓮縣</option> <!--18-->
+                                <option value="臺東縣">臺東縣</option> <!--19-->
+                                <option value="澎湖縣">澎湖縣</option> <!--20-->
+                                <option value="金門縣">金門縣</option> <!--21-->
+                                <option value="連江縣">連江縣</option> <!--22-->
+                            </select>
+                            <select name="addressRegionSelect" id="recipient_option_district Town" required>
+                                <option value="">請選擇</option>
                             </select>
                         </div>
                     </div>
-                    <div class="recipient_profile_name_tel">
-                        <input type="tel" placeholder="號碼">
+                    <div class="recipient_profile_address_txt">
+                        <input type="text" placeholder="詳細地址" name="recipientAddress" required>
+                    </div>
+                    <div class="recipient_profile_postalCode">
+                        <p>郵遞區號</p>
+                        <input type="text" placeholder="郵遞區號" name="recipientPostalCode" id="recipientPostalCode" required pattern="\d*">
                     </div>
                 </div>
-                <div class="recipient_profile_homePhone">
-                    <p>連絡電話</p>
-                    <input type="tel" placeholder="市話">
+            </div>
+            <!-- 訂購人資料 -->
+            <div class="subscriber_profile">
+                <div class="cart_title">
+                    <div class="subscriber_profile_title cart_titles">
+                        <h2>訂購人資料</h2>
+                    </div>
                 </div>
-                <div class="recipient_profile_address">
-                    <p>地址</p>
-                    <div class="recipient_profile_select">
-                        <select id="recipient_option recipient_option_counties Region">
-                            <option id="taiwanAddressNew">請選擇</option>
-                            <option value="臺北市">臺北市</option>
-                            <option value="新北市">新北市</option>
-                            <option value="桃園市">桃園市</option>
-                            <option value="臺中市">臺中市</option>
-                            <option value="臺南市">臺南市</option>
-                            <option value="高雄市">高雄市</option>
-                            <option value="基隆市">基隆市</option>
-                            <option value="新竹市">新竹市</option>
-                            <option value="嘉義市">嘉義市</option>
-                            <option value="新竹縣">新竹縣</option>
-                            <option value="苗栗縣">苗栗縣</option>
-                            <option value="彰化縣">彰化縣</option>
-                            <option value="南投縣">南投縣</option>
-                            <option value="雲林縣">雲林縣</option>
-                            <option value="嘉義縣">嘉義縣</option>
-                            <option value="屏東縣">屏東縣</option>
-                            <option value="宜蘭縣">宜蘭縣</option>
-                            <option value="花蓮縣">花蓮縣</option>
-                            <option value="臺東縣">臺東縣</option>
-                            <option value="澎湖縣">澎湖縣</option>
-                            <option value="金門縣">金門縣</option>
-                            <option value="連江縣">連江縣</option>
+                <div class="subscriber_profile_body">
+                    <div class="recipient_profile_name">
+                        <p>姓名</p>
+                        <input type="text" placeholder="姓名" name="subscriberName" required>
+                    </div>
+                    <div class="recipient_profile_phone">
+                        <p>行動電話</p>
+                        <input type="tel" placeholder="號碼" name="subscriberCellphone" id="subscriberCellphone" required pattern="\d{10}">
+                    </div>
+                    <div class="recipient_profile_homePhone">
+                        <p>連絡電話</p>
+                        <input type="tel" placeholder="市話" name="subscriberTelephone" id="subscriberTelephone" required pattern="\d*">
+                    </div>
+                    <div class="recipient_profile_address">
+                        <p>地址</p>
+                        <input type="text" placeholder="詳細地址" name="subscriberAddress" required>
+                    </div>
+                </div>
+            </div>
+            <!-- 付款方式 -->
+            <div class="payment_options">
+                <div class="cart_title">
+                    <div class="payment_options_title cart_titles">
+                        <h2>付款方式</h2>
+                    </div>
+                    <div class="payment_options_body">
+                        <label class="col-md-3 payment_optionss click_options2" id="options5" for="pickUp">
+                            <span class="col-md-1 circle" value="0">
+                                <input type="radio" name="paymentMethod" id="pickUp" value="1" required>
+                            </span>
+                            <span id="option_txt" class="col-md-11 col-md-11">取貨付款</span>
+                        </label>
+                        @*<label class="col-md-3 payment_options_ATM payment_optionss click_options2" id="options6" for="ATMTransfer">
+                                <span class="col-md-1 circle" value="0">
+                                    <input type="radio" name="paymentMethod" id="ATMTransfer" value="2">
+                                </span>
+                                <span id="option_txt" class="col-md-11">ATM轉帳付款</span>
+                            </label>*@
+                        <label class="col-md-3 payment_options_cradit payment_optionss click_options2" id="options7" for="creditCard">
+                            <span class="col-md-1 circle" value="0">
+                                <input type="radio" name="paymentMethod" id="creditCard" value="3">
+                            </span>
+                            <span id="option_txt" class="col-md-11">信用卡一次付清</span>
+                        </label>
+                        @*<label class="col-md-3 payment_options_discount payment_optionss click_options2" id="options8" for="discount">
+                                <span class="col-md-1 circle" value="0">
+                                    <input type="radio" name="paymentMethod" id="discount" value="4">
+                                </span>
+                                <span id="option_txt" class="col-md-11">Libreria點折扣</span>
+                            </label>*@
+                    </div>
+                </div>
+            </div>
+            <!-- 發票資訊 -->
+            <div class="invoice_profile">
+                <div class="cart_title">
+                    <div class="invoice_profile_title cart_titles">
+                        <h2>發票資訊</h2>
+                    </div>
+                </div>
+                <div class="invoice_profile_body">
+                    <div class="invoice_profile_txt" id="invoice_profile_title">
+                        <p>※ 您的發票預設為電子發票託管，若中獎我們將於月底發出E-mail通知並以掛號方式把中獎發票寄給您</p>
+                    </div>
+                    <div class="invoice_profile_select">
+                        <select id="select" name="invoice">
+                            <option value="1">二聯式電子發票(存入會員帳號)</option>
+                            <option value="2">二聯式電子發票(手機條碼載具)</option>
+                            <option value="3">二聯式電子發票(自然人憑證載具)</option>
+                            <option value="4">二聯式電子發票(紙本證明聯)</option>
+                            <option value="5">三聯式電子發票</option>
+                            <option value="6">發票捐贈</option>
                         </select>
-                        <select id="recipient_option_district Town">
-                            <option>請選擇</option>
-                        </select>
                     </div>
-                </div>
-                <div class="recipient_profile_address_txt">
-                    <input type="text" placeholder="詳細地址">
-                </div>
-            </div>
-        </div>
-        <!-- 訂購人資料 -->
-        <div class="subscriber_profile">
-            <div class="cart_title">
-                <div class="subscriber_profile_title cart_titles">
-                    <h2>訂購人資料</h2>
-                </div>
-            </div>
-            <div class="subscriber_profile_body">
-                <div class="recipient_profile_name">
-                    <p>姓名</p>
-                    <input type="text" placeholder="姓名">
-                </div>
-                <div class="recipient_profile_phone">
-                    <p>行動電話</p>
-                    <input type="tel" placeholder="號碼">
-                </div>
-                <div class="recipient_profile_homePhone">
-                    <p>連絡電話</p>
-                    <input type="tel" placeholder="市話">
-                </div>
-                <div class="recipient_profile_address">
-                    <p>地址</p>
-                    <input type="text" placeholder="詳細地址">
-                </div>
-            </div>
-        </div>
-        <!-- 付款方式 -->
-        <div class="payment_options">
-            <div class="cart_title">
-                <div class="payment_options_title cart_titles">
-                    <h2>付款方式</h2>
-                </div>
-                <div class="payment_options_body">
-                    <div class="col-md-3 payment_optionss click_options2" id="options5">
-                        <span class="col-md-1 circle" value="0">
-                            <i class="far fa-circle"></i>
-                        </span>
-                        <span id="option_txt" class="col-md-11 col-md-11">7-ELEVEN超商取貨付款</span>
-                    </div>
-                    <div class="col-md-3 payment_options_ATM payment_optionss click_options2" id="options6">
-                        <span class="col-md-1 circle" value="0">
-                            <i class="far fa-circle"></i>
-                        </span>
-                        <span id="option_txt" class="col-md-11">ATM轉帳付款</span>
-                    </div>
-                    <div class="col-md-3 payment_options_cradit payment_optionss click_options2" id="options7">
-                        <span class="col-md-1 circle" value="0">
-                            <i class="far fa-circle"></i>
-                        </span>
-                        <span id="option_txt" class="col-md-11">信用卡一次付清</span>
-                    </div>
-                    <div class="col-md-3 payment_options_discount payment_optionss click_options2" id="options8">
-                        <span class="col-md-1 circle" value="0">
-                            <i class="far fa-circle"></i>
-                        </span>
-                        <span id="option_txt" class="col-md-11">誠品點折扣</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- 發票資訊 -->
-        <div class="invoice_profile">
-            <div class="cart_title">
-                <div class="invoice_profile_title cart_titles">
-                    <h2>發票資訊</h2>
-                </div>
-            </div>
-            <div class="invoice_profile_body">
-                <div class="invoice_profile_txt" id="invoice_profile_title">
-                    <p>※ 您的發票預設為電子發票託管，若中獎我們將於月底發出E-mail通知並以掛號方式把中獎發票寄給您</p>
-                </div>
-                <div class="invoice_profile_select">
-                    <select id="select">
-                        <option value="1">二聯式電子發票(存入會員帳號)</option>
-                        <option value="2">二聯式電子發票(手機條碼載具)</option>
-                        <option value="3">二聯式電子發票(自然人憑證載具)</option>
-                        <option value="4">二聯式電子發票(紙本證明聯))</option>
-                        <option value="5">三聯式電子發票</option>
-                        <option value="6">發票捐贈</option>
-                    </select>
-                </div>
-                <div class="invoice_profile_active">
-                    <div class="active_title_input">
-                        <div class="active_title">
+                    <div class="invoice_profile_active">
+                        <div class="active_title_input">
+                            <div class="active_title">
+                            </div>
+                            <div class="active_input">
+                            </div>
                         </div>
-                        <div class="active_input">
+                        <div class="active_txt">
                         </div>
                     </div>
-                    <div class="active_txt">
+                </div>
+            </div>
+            <!-- 購物車明細 -->
+
+            <div class="cart_details">
+                <div class="cart_title cart_detail_title">
+                    <div class="cart_details_title cart_titles">
+                        <h2>商品資訊</h2>
                     </div>
+                    <div class="cart_details_Discount  cart_details_none">
+                        <p>優惠價</p>
+                    </div>
+                    <div class="cart_details_quantity cart_details_none">
+                        <p>數量</p>
+                    </div>
+                    <div class="cart_details_amount cart_details_none">
+                        <p>總計</p>
+                    </div>
+                </div>
+                <div class="cart_details_body_detail">
+                    <div class="cart_details_body">
+                        <div class="cart_details_pic">
+                            <img src="https://picsum.photos/110/110/?random=1">
+                        </div>
+                        <div class="cart_details_txt">
+                            <p>沙茶：戰後潮汕移民與臺灣飲食變遷</p>
+                        </div>
+                        <div class="cart_details_price">
+                            <p>$380</p>
+                        </div>
+                    </div>
+                    <div class="cart_detail_quantity">
+                        <p>2</p>
+                        <span>$760</span>
+                    </div>
+                </div>
+                <div class="cart_details_total">
+                    <p>商品金額小計</p>
+                    <span>$760</span>
+                </div>
+
+            </div>
+        </div>
+        <!-- 商品折扣 -->
+        <div class="commodity">
+            <div class="commodity_discount">
+                <div class="commodity_discount_txt">
+                    <p>商品小計</p>
+                    <span>$760</span>
+                    <span>-</span>
+                    <p>優惠活動</p>
+                    <span>$0</span>
+                    <span>-</span>
+                    <p>優惠券</p>
+                    <span>$0</span>
+                    <span>+</span>
+                </div>
+                <div class="commodity_discount_txt commodity_discount_txt2">
+                    <p>訂單處理費</p>
+                    <span>$50</span>
+                </div>
+            </div>
+            <!-- 商品總計 -->
+            <div class="commodity_total">
+                <div class="commodity_total_txt">
+                    <p>商品總金額</p>
+                    <span>$810</span>
+                    <button type="submit" id="submit">確認結帳</button>
                 </div>
             </div>
         </div>
-        <!-- 購物車明細 -->
 
-        <div class="cart_details">
-            <div class="cart_title cart_detail_title">
-                <div class="cart_details_title cart_titles">
-                    <h2>商品資訊</h2>
-                </div>
-                <div class="cart_details_Discount  cart_details_none">
-                    <p>優惠價</p>
-                </div>
-                <div class="cart_details_quantity cart_details_none">
-                    <p>數量</p>
-                </div>
-                <div class="cart_details_amount cart_details_none">
-                    <p>總計</p>
-                </div>
-            </div>
-            <div class="cart_details_body_detail">
-                <div class="cart_details_body">
-                    <div class="cart_details_pic">
-                        <img src="https://picsum.photos/110/110/?random=1">
-                    </div>
-                    <div class="cart_details_txt">
-                        <p>幸福之書: 擺脫煩惱, 如何度過生活不順遂的指南 (誠品獨家版)</p>
-                    </div>
-                    <div class="cart_details_price">
-                        <p>$253</p>
-                    </div>
-                </div>
-                <div class="cart_detail_quantity">
-                    <p>2</p>
-                    <span>$506</span>
-                </div>
-            </div>
-            <div class="cart_details_total">
-                <p>商品金額小計</p>
-                <span>$506</span>
-            </div>
 
-        </div>
+
     </div>
-    <!-- 商品折扣 -->
-    <div class="commodity">
-        <div class="commodity_discount">
-            <div class="commodity_discount_txt">
-                <p>商品小計</p>
-                <span>$300</span>
-                <span>-</span>
-                <p>優惠活動</p>
-                <span>$0</span>
-                <span>-</span>
-                <p>優惠券</p>
-                <span>$0</span>
-                <span>+</span>
-            </div>
-            <div class="commodity_discount_txt commodity_discount_txt2">
-                <p>訂單處理費</p>
-                <span>$50</span>
-            </div>
-        </div>
-        <!-- 商品總計 -->
-        <div class="commodity_total">
-            <div class="commodity_total_txt">
-                <p>商品總金額</p>
-                <span>$350</span>
-                <button>確認結帳</button>
-            </div>
-        </div>
-    </div>
-
-
-
-</div>
+</form>
 
 

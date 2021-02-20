@@ -844,6 +844,7 @@
     <Content Include="Asset\Js\ContactService\ContactService.js" />
     <Content Include="Asset\Js\MemberCenter\Favorate.js" />
     <Content Include="Asset\Js\MemberCenter\subscribe.js" />
+    <Content Include="Asset\Js\Order\OrderDetail.js" />
     <Content Include="Asset\Js\Product\book-reviewer.js" />
     <Content Include="Asset\Js\MemberCenter\MemberRegisterPage.js" />
     <Content Include="Asset\Js\Product\ProductCategory.js" />
@@ -1086,6 +1087,7 @@
     <Content Include="Views\Product\ProductLayoutPartial.cshtml" />
     <Content Include="Views\Product\Test.cshtml" />
     <Content Include="Views\MemberCenter\MemberRegisterPage.cshtml" />
+    <Content Include="Views\MemberCenter\ContactUs.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

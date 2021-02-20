@@ -53,6 +53,27 @@ namespace Libreria.Controllers
             return View();
         }
 
+        [HttpPost]
+        public ActionResult OrderDetail(OrderViewModel orderVM)
+        {
+            if (orderVM != null)
+            {
+                OrderService orderService = new OrderService();
+                OperationResult result = orderService.Create(orderVM);
+
+                if(result.IsSuccessful)
+                {
+
+                }
+                else
+                {
+
+                }
+            }
+
+            return View(orderVM);
+        }
+
         public ActionResult Test()
         {
             var result = _orderService.GetAll();
