@@ -1,0 +1,70 @@
+﻿@model IEnumerable<FavoriteViewModel>
+
+@section topcss{
+
+    @*Favorate CSS*@
+    <link href="~/Asset/Css/MemberCenter/Favorate.css" rel="stylesheet" />
+
+
+    @*Chinese Font CSS*@
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+
+    @*English/Numbers Font CSS*@
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+}
+@section topJS{
+    <script src="https://kit.fontawesome.com/d22f4b5afc.js" crossorigin="anonymous"></script>
+}
+@section endJs{
+    @*Favorate JS*@
+    <script src="~/Asset/Js/ShoppingCart/OrderDetail.js"></script>
+}
+
+<div class="container">
+    <div class="crumbs">
+        <p class="crumb">首頁</p>
+        <i class="fas fa-chevron-right"></i>
+        <p class="crumb">會員中心</p>
+        <i class="fas fa-chevron-right"></i>
+        <p class="crumb">收藏商品</p>
+    </div>
+    <div class="favorites">
+        <h1>收藏商品</h1>
+        <h2>(共有<span>2</span>筆商品)</h2>
+    </div>
+
+@foreach ( var item in Model) {
+    <div class="product">
+        <div class="pro_pic col-3">
+            <img src="">
+        </div>
+        <div class="pro_txt col-6">
+            <h3>@item.Name</h3>
+            <p class="pro_txt_authers">作者 : @item.Author</p>
+            <p>出版社 : </p>
+            </p>
+
+            <p>出版日期 : 2018/08/17</p>
+        </div>
+        <div class="pro_btn col-3">
+            <button class="add">加入購物車</button>
+            <button class="del">刪除</button>
+        </div>
+
+    </div>
+}
+
+    <div class="page mb-5">
+        <div class="btn_left">
+            <button class="fas fa-chevron-left"></button>
+        </div>
+        <div class="page_num">
+            <a href="#">1</a>
+        </div>
+        <div class="btn_left">
+            <button class="fas fa-chevron-right"></button>
+        </div>
+    </div>
+</div>
