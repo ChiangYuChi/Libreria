@@ -36,6 +36,7 @@ namespace Libreria.Controllers
                 {
                     Session["MemberName"] = member.memberName;
                     Session["MemberPassword"] = member.memberPassword;
+
                     return RedirectToAction("Index", "Home");
                 }
                 else
@@ -48,9 +49,6 @@ namespace Libreria.Controllers
             {
                 return View(model);
             }
-
-
-
         }
         [HttpPost]
         [ValidateAntiForgeryToken]

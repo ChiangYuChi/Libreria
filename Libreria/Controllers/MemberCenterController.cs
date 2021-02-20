@@ -8,7 +8,7 @@ using System.Web.Mvc;
 
 namespace Libreria.Controllers
 {
-    [CustomAuthenticationFilter]
+    //[CustomAuthenticationFilter]
     public class MemberCenterController : Controller
     {
 
@@ -62,11 +62,12 @@ namespace Libreria.Controllers
         {
             return View();
         }
-
+        [AllowAnonymous]
         public ActionResult MemberRegisterPage()
         {
             return View();
         }
+        [AllowAnonymous]
         [HttpPost]
         public ActionResult MemberRegisterPage(int x)
         {

@@ -18,18 +18,21 @@ namespace Libreria.Filters
                 filterContext.Result = new HttpUnauthorizedResult();
             }
         }
-        public void OnAuthenticationChallenge(AuthenticationChallengeContext filterConxt)
+        public void OnAuthenticationChallenge(AuthenticationChallengeContext filterContext)
         {
-            if(filterConxt.Result == null || filterConxt.Result is HttpUnauthorizedResult)
+            if(filterContext.Result == null || filterContext.Result is HttpUnauthorizedResult)
             {
-                filterConxt.Result = new RedirectToRouteResult(
+                filterContext.Result = new RedirectToRouteResult(
                     new RouteValueDictionary
                     {
                         {"controller","MemberLogin" },
                         {"action","Index"}
                     }
                     );
+                string controllerName = filterContext.RouteData.Values["controller"].ToString();
+                string actionName = filterContext.RouteData.Values["action"].ToString();
             }
+
         }
     
     }
