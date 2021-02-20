@@ -75,11 +75,11 @@ namespace Libreria.Controllers
             return PartialView(product);
         }
         
-        public ActionResult testLayout()
-        {
-            return View();
-        }
-
+      //public PartialViewResult PromoteTodayPartial()
+      //  {
+      //      var product = _productService.PromoteToday();
+      //      return PartialView(product);
+      //  }
         
 
         

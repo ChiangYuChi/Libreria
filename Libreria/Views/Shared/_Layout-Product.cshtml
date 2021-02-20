@@ -6,17 +6,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - 我的 ASP.NET 應用程式</title>
     <link href="~/Asset/Css/Layout/Nav_bar.css" rel="stylesheet" />
+    <link href="~/Asset/Css/Layout/Nav_bar.css" rel="stylesheet" />
     <link href="~/Asset/Css/Layout/Footer.css" rel="stylesheet" />
-    <link href="~/Asset/Css/PartialView/category-sidenav.css" rel="stylesheet" />
-    
-   
 
+    @*@Styles.Render("~/Content/css")*@
+    <link href="~/Asset/Css/Product/reset.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
+          integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
+          crossorigin="anonymous" />
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-    @RenderSection("topCss", required: false)
-    @RenderSection("topJs", required: false)
 
-<link href="~/Content/fontawesome-all.min.css" rel="stylesheet" />
+    <link href="~/Content/fontawesome-all.min.css" rel="stylesheet" />
+    <link href="~/Asset/Css/Layout/Sidebar.css" rel="stylesheet" />
+    @RenderSection("topCSS", required: false)
+    @RenderSection("topJS", required: false)
+
+    <link href="~/Content/fontawesome-all.min.css" rel="stylesheet" />
+   
 </head>
 <body class="p-0">
     <div class="search_form collapse" id="search_from">
@@ -47,7 +54,7 @@
         <div class="navbar-collapse collapse" min-width:100px" id="navbarToggler">
             <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                 <li class="nav-item" id="literial_brand">
-                    <a href="/Home/Index" class="nav-link  d-lg-none">
+                    <a href="#" class="nav-link  d-lg-none">
                         <img src="~/Asset/Image/Layout/smlogo.png" alt="">
                     </a>
                 </li>
@@ -64,8 +71,8 @@
                     <nav class="nav-iconbox  d-lg-none" id="nav-iconbox">
                         <ul class="navbar justify-content-center" id="nav-iconlist">
                             <li class="nav-item">
-                                <a href="/MemberCenter/MemberLogin" class="nav-link">
-                                    <i class="fas fa-user-alt ">123</i>
+                                <a href="#" class="nav-link">
+                                    <i class="fas fa-user-alt "></i>
                                 </a>
                             </li>
                             <li class="nav-item">
@@ -109,34 +116,54 @@
             </ul>
         </nav>
     </nav>
-    <div class="container-fluid body-content pt-5">
-        <div class="container-fluid col-11">
-            <section class="product-index">
-                <div class="main ">
-                    <div class="container-fluid ">
-                        <div class="product-breadcrumb">
-                            <a href="/Home/Index">首頁</a>
-                            <i class="fas fa-chevron-right"></i>
-                            <a href="#">中文書</a>
-                        </div>
-                        <div class="row">
-                            <div class="sidenav d-none d-md-block col-md-2 col-lg-2">
-                                <a href="#">@Html.Action("CategoryPartial", "Category")</a>
+    
+    <div class="container-fluid body-content col-11 pt-5" >
+        
+        
+        
+        <div class="row" >
+            
+            <div id="productPage" class="col-lg-2" >
+                
+                    <div class="column-padding__class w-100">
+                        <div class="class__title">
+                            <div id="class" class="class-btn button-group">
+                                <h2>書籍分類</h2>
+                                <i class="fas fa-angle-down"></i>
                             </div>
-
-                            @RenderBody()
                         </div>
+                        <div class="class__list class-btn item-group ">
+                           
+                            <a href="#"> @Html.Action("CategoryPartial", "Category")</a>
+                             
 
-
+                            
+                        </div>
                     </div>
+                    <div class="column-padding__class--xl " >
+                        <div class="class__title--xl class-btn button-group">
+                            <h2>書籍分類</h2>
+                        </div>
+                        <div class="class__list--xl class-btn item-group ">
+                            
+                                <a href="#">@Html.Action("CategoryPartial", "Category")</a>
 
-
-                </div>
-            </section>
+                            
+                        </div>
+                    </div>
+                
+                
+            </div>
+            <div class="col-lg-10">
+                @RenderBody()
+            </div>
+          
         </div>
 
 
 
+
+        
 
 
     </div>
