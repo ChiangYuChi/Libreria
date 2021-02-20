@@ -859,6 +859,7 @@
     <Content Include="Asset\Js\MemberCenter\MemberRegisterPage.js" />
     <Content Include="Asset\Js\Product\ProductCategory.js" />
     <Content Include="Asset\Js\Product\ProductIndex.js" />
+    <Content Include="Asset\Js\Product\sidenav-toggle.js" />
     <Content Include="Asset\Js\Product\swiper.js" />
     <Content Include="Asset\Js\Rental\Rental_index.js" />
     <Content Include="Asset\Js\ShoppingCart\OrderDetail.js" />
