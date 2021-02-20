@@ -38,9 +38,8 @@
                             <p>此項目適用於&nbsp;<a href="#">2020年度百大暢銷榜，單本79折起，三本再折99元，至1/31止（部分書籍不參展）</a></p>
                         </div>
                         <div class="detail-title">
-                            <h1 id="ProductName">@Model.Name</h1>
-                            <h3 id="Author"><span>作者</span>@Model.Author</h3>
-                            <h2 class="d-none" id="ProductId">@Model.Id</h2>
+                            <h1>@Model.Name</h1>
+                            <h3><span>作者</span>@Model.Author</h3>
                             <hr>
                             <h5>簡介</h5>
                             <p>
@@ -58,11 +57,9 @@
                                         <span class="price">NT$@(String.Format("{0:N0}",Model.UnitPrice))</span><span class="price currency">&nbsp;TWD</span>
                                     </div>
                                 </div>
-
-                                
-                                <button class="purchase-action add-to-cart" onclick="postValue2()">加入購物車</button>
-                                <button class="purchase-action buy-now">@Html.ActionLink("立即購買", "Index", "Order", new { memberId = 1, productId = Model.Id, }, null)</button>
-                                <button onclick="postValue1()" class="purchase-action add-to-wishlist">新增至我的願望清單</button>
+                                <button class="purchase-action add-to-cart" onclick="AddCart(@Model.Id)">加入購物車</button>
+                                <button class="purchase-action buy-now" onclick="AddCart(@Model.Id)">@Html.ActionLink("立即購買", "Index", "Order")</button>
+                                <button class="purchase-action add-to-wishlist">新增至我的願望清單</button>
                             </div>
                         </div>
                         <div class="col-8 col-sm-8 col-lg-12 detail-cover px-5 mx-auto my-4">
@@ -119,30 +116,15 @@
 
 @section EndJs{ 
     <script src="~/Asset/Js/Product/book-reviewer.js"></script>
+
     <script>
-        function postValue1() {
-            let productName = $("#ProductName").text();
-            let author = $("#Author").text();
-        
-
-            $.ajax({
-                type: "POST",
-                url: "/MemberCenter/AddToFavorite",
-                data: { Name: productName, Author: author },
-                dataType: "text",
-                success: function (response) {
-                    alert(response);
-                }
-            });
-        }
-
-        function postValue2() {
-            let productId = $("#ProductId").text();
+        function AddCart(id) {
+            let productId = id;
 
             $.ajax({
                 type: "POST",
                 url: "/Order/AddToCart",
-                data: { ProductId: productId },
+                data: { Id: productId },
                 dataType: "text",
                 success: function (response) {
                     alert(response);
