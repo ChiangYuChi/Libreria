@@ -34,7 +34,14 @@ namespace Libreria.Controllers
         {
             var result = _shoppingService.Create(ProductVM);
 
-            return "Success";
+            if (result.IsSuccessful)
+            {
+                return "加入成功!";
+            }
+            else
+            {
+                return "加入失败";
+            }
         }
 
         /// <summary>
@@ -44,6 +51,27 @@ namespace Libreria.Controllers
         public ActionResult OrderDetail()
         {
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult OrderDetail(OrderViewModel orderVM)
+        {
+            if (orderVM != null)
+            {
+                OrderService orderService = new OrderService();
+                OperationResult result = orderService.Create(orderVM);
+
+                if(result.IsSuccessful)
+                {
+
+                }
+                else
+                {
+
+                }
+            }
+
+            return View(orderVM);
         }
 
         public ActionResult Test()

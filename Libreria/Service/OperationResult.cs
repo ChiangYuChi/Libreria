@@ -8,6 +8,8 @@ namespace Libreria.Service
     public class OperationResult
     {
         public bool IsSuccessful { get; set; }
+
+        public Exception exception { get; set; }
     }
 
 
