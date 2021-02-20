@@ -294,6 +294,7 @@
     <Compile Include="ViewModels\CategoryViewModel.cs" />
     <Compile Include="ViewModels\FavoriteViewModel.cs" />
     <Compile Include="ViewModels\MemberLoginViewModel.cs" />
+    <Compile Include="ViewModels\MemberViewModel.cs" />
     <Compile Include="ViewModels\OrderViewModel.cs" />
     <Compile Include="ViewModels\ExhibitionVIewModel.cs" />
     <Compile Include="ViewModels\ProductViewModel.cs" />

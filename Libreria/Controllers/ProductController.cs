@@ -27,7 +27,6 @@ namespace Libreria.Controllers
             return View();   
         }
 
-        [CustomAuthenticationFilter]
 
         public ActionResult ProductCategory(int? CategoryId, int? Order)
         {
