@@ -58,7 +58,9 @@
                                     </div>
                                 </div>
                                 <button class="purchase-action add-to-cart" onclick="AddCart(@Model.Id)">加入購物車</button>
-                                <button class="purchase-action buy-now" onclick="@Model.Id">@Html.ActionLink("立即購買", "Index", "Order")</button>
+                                <button class="purchase-action buy-now" onclick="AddCart(@Model.Id)">
+                                    <a href="@Url.Action("Index", "Order")">立即购买</a>
+                                </button>
                                 <button class="purchase-action add-to-wishlist" onclick="AddToFavorite(@Model.Id)">新增至我的願望清單</button>
                             </div>
                         </div>
