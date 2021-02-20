@@ -9,7 +9,6 @@ namespace Libreria.Models.EntityModel
     [Table("Exhibition")]
     public partial class Exhibition
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int ExhibitionID { get; set; }
 
         public DateTime ExhibitionStartTime { get; set; }

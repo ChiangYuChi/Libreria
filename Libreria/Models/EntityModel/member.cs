@@ -17,7 +17,6 @@ namespace Libreria.Models.EntityModel
             ShoppingCarts = new HashSet<ShoppingCart>();
         }
 
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int memberId { get; set; }
 
         [Required]

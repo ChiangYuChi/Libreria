@@ -9,7 +9,6 @@ namespace Libreria.Models.EntityModel
     [Table("Preview")]
     public partial class Preview
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int PreviewId { get; set; }
 
         public int ProductId { get; set; }

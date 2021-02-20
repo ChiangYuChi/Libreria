@@ -1,48 +1,103 @@
-.container-fluid {
-    padding: 40px;
-}
-.row {
-    margin: auto;
+.tabbox {
+    margin: 0 auto;
+    min-width: 320px;
+    max-width: 1000px;
+    text-align: center;
+    padding: 60px 0 60px;
 }
 
-.card{
-    border:none;
+
+.content > div {
+    display: none;
+    padding: 20px 25px 5px;
 }
-.card-body{
-    text-align:center;
+
+input {
+    display: none;
 }
-.modal-text {
-    padding: 20px 20px 20px 80px;
-    
+
+.tp {
+    display: inline-block;
+    padding: 5px 10px;
+    font-weight: 600;
+    text-align: center;
+    font-size: 34px;
 }
-.Add-calender{
-    border: grey 1px solid;
-    border-radius:20px;
+
+    .tp:hover {
+        color: #eee;
+        cursor: pointer;
+    }
+
+input:checked + .tp {
+    color: #111;
+    background-color: #eee;
 }
-.modal-img {
+
+#tab1:checked ~ .content #content1,
+#tab2:checked ~ .content #content2,
+#tab3:checked ~ .content #content3,
+#tab4:checked ~ .content #content4,
+#tab5:checked ~ .content #content5 {
+    display: block;
+    text-align: left;
+}
+
+.content {
+    border-top: solid #333 2px;
+    padding-top: 1%;
+    box-sizing: border-box;
+}
+
+#content1,
+#content2 {
+    margin: 0 0 20px;
+    height: 100%;
+    border: 1px solid #666;
+    border-radius: 3px;
+    background-color: #eee;
+}
+
+.main-btn {
+    margin: auto;
+    margin-bottom: 3%;
+}
+
+p {
+    line-height: 25px;
+    text-align: justify;
+    font-family: "Montserrat", sans-serif;
+}
+
+.Ex-EXhibition,
+.future-EXhibition {
+    margin: 0px;
+}
+
+.row {
+    margin-right: 0px;
+    margin-left: 0px;
+}
+
+.card {
+    margin: auto;
+    box-sizing: border-box;
+}
+
+.midsolid {
+    border: #666 solid 2px;
+}
+
+.ex-block-text p {
+    text-align: center;
+    margin: auto;
+    width: 100%;
+    font-size: 40px;
     padding: 20px;
 }
-.media-icon i{
-    color:grey;
+.main-Exhibition{
+    margin-top:3%;
 }
-
-
-@media screen and (min-width: 992px) {
-    .modal-content {
-        display: flex;
-        width: 250%;
-        left: -75%;
-        transform:translateY(100px);        
-    }
-
-    .modal-body {
-        display: flex;
-        flex-direction: row-reverse;
-    }
-
-    .modal-img img {
-        width: 100%;
-    }
-
+.ex-exhibition{
+    margin-bottom:3%;
 }
-

@@ -9,7 +9,6 @@ namespace Libreria.Models.EntityModel
     [Table("Invoice")]
     public partial class Invoice
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int InvoiceId { get; set; }
 
         [Required]
