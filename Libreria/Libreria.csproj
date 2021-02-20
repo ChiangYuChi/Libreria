@@ -248,6 +248,10 @@
     <Compile Include="Migrations\202102200730418_InitialDB.Designer.cs">
       <DependentUpon>202102200730418_InitialDB.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202102200942209_ShoppingCart_add_Count.cs" />
+    <Compile Include="Migrations\202102200942209_ShoppingCart_add_Count.Designer.cs">
+      <DependentUpon>202102200942209_ShoppingCart_add_Count.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\EntityModel\AspNetRole.cs" />
@@ -1155,6 +1159,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202102200730418_InitialDB.resx">
       <DependentUpon>202102200730418_InitialDB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102200942209_ShoppingCart_add_Count.resx">
+      <DependentUpon>202102200942209_ShoppingCart_add_Count.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
