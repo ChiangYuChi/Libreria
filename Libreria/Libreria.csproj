@@ -200,13 +200,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\Utility.cs" />
-    <Compile Include="Migrations\202102200730418_InitialDB.cs" />
-    <Compile Include="Migrations\202102200730418_InitialDB.Designer.cs">
-      <DependentUpon>202102200730418_InitialDB.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202102200942209_ShoppingCart_add_Count.cs" />
-    <Compile Include="Migrations\202102200942209_ShoppingCart_add_Count.Designer.cs">
-      <DependentUpon>202102200942209_ShoppingCart_add_Count.cs</DependentUpon>
+    <Compile Include="Migrations\202102201028530_InitialDB.cs" />
+    <Compile Include="Migrations\202102201028530_InitialDB.Designer.cs">
+      <DependentUpon>202102201028530_InitialDB.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -221,7 +217,7 @@
     <Compile Include="Models\EntityModel\ExhibitionOrder.cs" />
     <Compile Include="Models\EntityModel\Favorite.cs" />
     <Compile Include="Models\EntityModel\Invoice.cs" />
-    <Compile Include="Models\EntityModel\LibreriaDataModel.cs" />
+    <Compile Include="Repository\DbContext\LibreriaDataModel.cs" />
     <Compile Include="Models\EntityModel\member.cs" />
     <Compile Include="Models\EntityModel\Order.cs" />
     <Compile Include="Models\EntityModel\OrderDetail.cs" />
@@ -248,6 +244,7 @@
     <Compile Include="ViewModels\OrderViewModel.cs" />
     <Compile Include="ViewModels\ExhibitionVIewModel.cs" />
     <Compile Include="ViewModels\ProductViewModel.cs" />
+    <Compile Include="ViewModels\ShoppingCartViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Asset\Css\AboutUs\AboutUs.css" />
@@ -1098,7 +1095,6 @@
     <Folder Include="Asset\Js\common\" />
     <Folder Include="Asset\Js\Index\" />
     <Folder Include="Data\" />
-    <Folder Include="Repository\DBContext\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -1112,11 +1108,8 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202102200730418_InitialDB.resx">
-      <DependentUpon>202102200730418_InitialDB.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202102200942209_ShoppingCart_add_Count.resx">
-      <DependentUpon>202102200942209_ShoppingCart_add_Count.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202102201028530_InitialDB.resx">
+      <DependentUpon>202102201028530_InitialDB.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

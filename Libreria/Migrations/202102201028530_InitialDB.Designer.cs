@@ -7,13 +7,13 @@ namespace Libreria.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class ShoppingCart_add_Count : IMigrationMetadata
+    public sealed partial class InitialDB : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(ShoppingCart_add_Count));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(InitialDB));
         
         string IMigrationMetadata.Id
         {
-            get { return "202102200942209_ShoppingCart_add_Count"; }
+            get { return "202102201028530_InitialDB"; }
         }
         
         string IMigrationMetadata.Source
