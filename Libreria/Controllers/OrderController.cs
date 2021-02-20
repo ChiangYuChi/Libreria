@@ -1,4 +1,5 @@
 ﻿using Libreria.Service;
+using Libreria.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,6 +29,27 @@ namespace Libreria.Controllers
         public ActionResult OrderDetail()
         {
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult OrderDetail(OrderViewModel orderVM)
+        {
+            if (orderVM != null)
+            {
+                OrderService orderService = new OrderService();
+                OperationResult result = orderService.Create(orderVM);
+
+                if(result.IsSuccessful)
+                {
+
+                }
+                else
+                {
+
+                }
+            }
+
+            return View(orderVM);
         }
 
         public ActionResult Test()

@@ -1,5 +1,5 @@
 ﻿
-//縣市地區
+//縣市轄區
 let addressCitySelect = document.getElementById("recipient_option recipient_option_counties Region");
 let addressRegionSelect = document.getElementById("recipient_option_district Town");
 
@@ -185,6 +185,7 @@ function checkForm() {
     let recipientTelephone = document.getElementById("recipientTelephone")
     let subscriberCellphone = document.getElementById("subscriberCellphone")
     let subscriberTelephone = document.getElementById("subscriberTelephone")
+    let recipientPostalCode = document.getElementById("recipientPostalCode")
 
     if (recipientCellphone.validity.patternMismatch == true) {
         recipientCellphone.setCustomValidity("請輸入十個數字");
@@ -212,6 +213,13 @@ function checkForm() {
     }
     else {
         subscriberTelephone.setCustomValidity("");
+    }
+
+    if (recipientPostalCode.validity.patternMismatch == true) {
+        recipientPostalCode.setCustomValidity("請輸入數字");
+    }
+    else {
+        recipientPostalCode.setCustomValidity("");
     }
 }
 

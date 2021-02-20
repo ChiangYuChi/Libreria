@@ -169,6 +169,10 @@
                     <div class="recipient_profile_address_txt">
                         <input type="text" placeholder="詳細地址" name="recipientAddress" required>
                     </div>
+                    <div class="recipient_profile_postalCode">
+                        <p>郵遞區號</p>
+                        <input type="text" placeholder="郵遞區號" name="recipientPostalCode" id="recipientPostalCode" required pattern="\d*">
+                    </div>
                 </div>
             </div>
             <!-- 訂購人資料 -->
@@ -206,25 +210,25 @@
                     <div class="payment_options_body">
                         <label class="col-md-3 payment_optionss click_options2" id="options5" for="pickUp">
                             <span class="col-md-1 circle" value="0">
-                                <input type="radio" name="paymentMethod" id="pickUp" value="pickUp" required>
+                                <input type="radio" name="paymentMethod" id="pickUp" value="1" required>
                             </span>
                             <span id="option_txt" class="col-md-11 col-md-11">取貨付款</span>
                         </label>
                         @*<label class="col-md-3 payment_options_ATM payment_optionss click_options2" id="options6" for="ATMTransfer">
                                 <span class="col-md-1 circle" value="0">
-                                    <input type="radio" name="paymentMethod" id="ATMTransfer" value="ATMTransfer">
+                                    <input type="radio" name="paymentMethod" id="ATMTransfer" value="2">
                                 </span>
                                 <span id="option_txt" class="col-md-11">ATM轉帳付款</span>
                             </label>*@
                         <label class="col-md-3 payment_options_cradit payment_optionss click_options2" id="options7" for="creditCard">
                             <span class="col-md-1 circle" value="0">
-                                <input type="radio" name="paymentMethod" id="creditCard" value="creditCard">
+                                <input type="radio" name="paymentMethod" id="creditCard" value="3">
                             </span>
                             <span id="option_txt" class="col-md-11">信用卡一次付清</span>
                         </label>
                         @*<label class="col-md-3 payment_options_discount payment_optionss click_options2" id="options8" for="discount">
                                 <span class="col-md-1 circle" value="0">
-                                    <input type="radio" name="paymentMethod" id="discount" value="discount">
+                                    <input type="radio" name="paymentMethod" id="discount" value="4">
                                 </span>
                                 <span id="option_txt" class="col-md-11">Libreria點折扣</span>
                             </label>*@
@@ -247,7 +251,7 @@
                             <option value="1">二聯式電子發票(存入會員帳號)</option>
                             <option value="2">二聯式電子發票(手機條碼載具)</option>
                             <option value="3">二聯式電子發票(自然人憑證載具)</option>
-                            <option value="4">二聯式電子發票(紙本證明聯))</option>
+                            <option value="4">二聯式電子發票(紙本證明聯)</option>
                             <option value="5">三聯式電子發票</option>
                             <option value="6">發票捐贈</option>
                         </select>
@@ -328,7 +332,7 @@
             <div class="commodity_total">
                 <div class="commodity_total_txt">
                     <p>商品總金額</p>
-                    <span>$760</span>
+                    <span>$810</span>
                     <button type="submit" id="submit">確認結帳</button>
                 </div>
             </div>
