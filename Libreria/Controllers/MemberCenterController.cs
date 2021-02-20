@@ -125,41 +125,9 @@ namespace Libreria.Controllers
         [HttpPost]
         public int AddToFavorite(ProductViewModel productVM)
         {
-            List<FavoriteViewModel> FavoriteVM = new List<FavoriteViewModel>();
+            var result = _favoriteService.Create(ProductVM);
 
-            if (Session["Favorite"] == null)
-            {
-                FavoriteViewModel fav = new FavoriteViewModel
-                {
-                    RecordId = 1,
-                    FavoriteId = Guid.NewGuid().ToString(),
-                    ProductId = productVM.Id,
-                    Name = productVM.Name,
-                    Author = productVM.Author,
-                    CreatedDate = DateTime.Now
-                };
-
-                FavoriteVM.Add(fav);
-                Session["Favorite"] = FavoriteVM;
-            }
-            else
-            {
-                FavoriteVM = (List<FavoriteViewModel>)Session["Favorite"];
-
-                FavoriteViewModel fav = new FavoriteViewModel
-                {
-                    RecordId = FavoriteVM.Count() + 1,
-                    FavoriteId = Guid.NewGuid().ToString(),
-                    Name = productVM.Name,
-                    ProductId = productVM.Id,
-                    Author = productVM.Author,
-                    CreatedDate = DateTime.Now
-                };
-
-                FavoriteVM.Add(fav);
-                Session["Favorite"] = FavoriteVM;
-            }
-            return FavoriteVM.Count;
+            return "Success";
         }
     }
 }

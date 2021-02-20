@@ -60,9 +60,9 @@
                                 </div>
 
                                 
-                                <button class="purchase-action add-to-cart" onclick="postValue()1">加入購物車</button>
+                                <button class="purchase-action add-to-cart" onclick="postValue2()">加入購物車</button>
                                 <button class="purchase-action buy-now">@Html.ActionLink("立即購買", "Index", "Order", new { memberId = 1, productId = Model.Id, }, null)</button>
-                                <button onclick="postValue2()" class="purchase-action add-to-wishlist">新增至我的願望清單</button>
+                                <button onclick="postValue1()" class="purchase-action add-to-wishlist">新增至我的願望清單</button>
                             </div>
                         </div>
                         <div class="col-8 col-sm-8 col-lg-12 detail-cover px-5 mx-auto my-4">
@@ -117,7 +117,7 @@
 
 
 
-@section EndJs{
+@section EndJs{ 
     <script src="~/Asset/Js/Product/book-reviewer.js"></script>
     <script>
         function postValue1() {
@@ -136,8 +136,6 @@
             });
         }
 
-    </script>
-    <script>
         function postValue2() {
             let productId = $("#ProductId").text();
 
@@ -151,6 +149,7 @@
                     $("#MyCart").text("購物車(" + response + ")");
                 }
             });
+        }
     </script>
 
 }

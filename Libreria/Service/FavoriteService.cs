@@ -26,5 +26,25 @@ namespace Libreria.Service
             }).ToList();
         }
 
+        public OperationResult Create(ProductViewModel ProductVM)
+        {
+            var result = new OperationResult();
+
+            try
+            {
+                Favorite entity = new Favorite() { ProductId = ProductVM.Id, memberId = 1 }; //memberID后面需要修改成真实资料
+                _DbRepository.Create<Favorite>(entity);
+                result.IsSuccessful = true;
+            }
+            catch
+            {
+                result.IsSuccessful = false;
+            }
+
+            return result;
+        }
+
+
+
     }
 }
