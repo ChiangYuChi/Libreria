@@ -29,6 +29,7 @@ namespace Libreria.Models.EntityModel
         public virtual DbSet<Preview> Previews { get; set; }
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<Role> Roles { get; set; }
+        public virtual DbSet<ShoppingCart> ShoppingCarts { get; set; }
         public virtual DbSet<Supplier> Suppliers { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
 
@@ -42,11 +43,6 @@ namespace Libreria.Models.EntityModel
             modelBuilder.Entity<Exhibition>()
                 .Property(e => e.ExhibitionPrice)
                 .HasPrecision(19, 4);
-
-            modelBuilder.Entity<ExhibitionCustomer>()
-                .HasMany(e => e.Exhibitions)
-                .WithRequired(e => e.ExhibitionCustomer)
-                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<ExhibitionCustomer>()
                 .HasMany(e => e.ExhibitionOrders)
@@ -67,9 +63,10 @@ namespace Libreria.Models.EntityModel
                 .WithRequired(e => e.member)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<OrderDetail>()
-                .Property(e => e.UnitPrice)
-                .HasPrecision(19, 4);
+            modelBuilder.Entity<member>()
+                .HasMany(e => e.ShoppingCarts)
+                .WithRequired(e => e.member)
+                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Order>()
                 .Property(e => e.InvoiceInfo)
@@ -96,6 +93,11 @@ namespace Libreria.Models.EntityModel
 
             modelBuilder.Entity<Product>()
                 .HasMany(e => e.Previews)
+                .WithRequired(e => e.Product)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Product>()
+                .HasMany(e => e.ShoppingCarts)
                 .WithRequired(e => e.Product)
                 .WillCascadeOnDelete(false);
 

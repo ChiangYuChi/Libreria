@@ -15,9 +15,9 @@ namespace Libreria.Models.EntityModel
             Favorites = new HashSet<Favorite>();
             OrderDetails = new HashSet<OrderDetail>();
             Previews = new HashSet<Preview>();
+            ShoppingCarts = new HashSet<ShoppingCart>();
         }
 
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int ProductId { get; set; }
 
         [Required]
@@ -41,6 +41,7 @@ namespace Libreria.Models.EntityModel
 
         public int CategoryId { get; set; }
 
+        [Column(TypeName = "date")]
         public DateTime PublishDate { get; set; }
 
         public int Sort { get; set; }
@@ -65,5 +66,8 @@ namespace Libreria.Models.EntityModel
         public virtual ICollection<Preview> Previews { get; set; }
 
         public virtual Supplier Supplier { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ShoppingCart> ShoppingCarts { get; set; }
     }
 }

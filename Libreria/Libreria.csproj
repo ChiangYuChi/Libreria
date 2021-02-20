@@ -194,16 +194,15 @@
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\RentalController.cs" />
     <Compile Include="Controllers\TestController.cs" />
+    <Compile Include="Filters\CustomAuthenticationFilter.cs" />
+    <Compile Include="Filters\CustomAuthorizeAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202102181030223_InitialDB.cs" />
-    <Compile Include="Migrations\202102181030223_InitialDB.Designer.cs">
-      <DependentUpon>202102181030223_InitialDB.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202102181212415_1.cs" />
-    <Compile Include="Migrations\202102181212415_1.Designer.cs">
-      <DependentUpon>202102181212415_1.cs</DependentUpon>
+    <Compile Include="Helpers\Utility.cs" />
+    <Compile Include="Migrations\202102200730418_InitialDB.cs" />
+    <Compile Include="Migrations\202102200730418_InitialDB.Designer.cs">
+      <DependentUpon>202102200730418_InitialDB.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -218,13 +217,14 @@
     <Compile Include="Models\EntityModel\ExhibitionOrder.cs" />
     <Compile Include="Models\EntityModel\Favorite.cs" />
     <Compile Include="Models\EntityModel\Invoice.cs" />
-    <Compile Include="Repository\DBContext\LibreriaDataModel.cs" />
+    <Compile Include="Models\EntityModel\LibreriaDataModel.cs" />
     <Compile Include="Models\EntityModel\member.cs" />
     <Compile Include="Models\EntityModel\Order.cs" />
     <Compile Include="Models\EntityModel\OrderDetail.cs" />
     <Compile Include="Models\EntityModel\Preview.cs" />
     <Compile Include="Models\EntityModel\Product.cs" />
     <Compile Include="Models\EntityModel\Role.cs" />
+    <Compile Include="Models\EntityModel\ShoppingCart.cs" />
     <Compile Include="Models\EntityModel\Supplier.cs" />
     <Compile Include="Models\EntityModel\sysdiagram.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -237,6 +237,7 @@
     <Compile Include="Service\OrderService.cs" />
     <Compile Include="Service\ProductService.cs" />
     <Compile Include="Service\RentalService.cs" />
+    <Compile Include="Service\ShoppingService.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\apibase\ApiResult.cs" />
     <Compile Include="ViewModels\CategoryViewModel.cs" />
@@ -246,7 +247,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Asset\Css\AboutUs\AboutUs.css" />
-    <Content Include="Asset\Css\MemberCenter\ContactUs.css" />
+    <Content Include="Asset\Css\Exhibition\Exhibition.css" />
     <Content Include="Asset\Css\MemberCenter\Favorate.css" />
     <Content Include="Asset\Css\PartialView\category-sidenav.css" />
     <Content Include="Asset\Css\Home-Index\Home.css" />
@@ -1084,7 +1085,6 @@
     <Content Include="Views\Rental\Index.cshtml" />
     <Content Include="Views\MemberCenter\Favorate.cshtml" />
     <Content Include="Views\Product\ProductLayoutPartial.cshtml" />
-    <Content Include="Views\Product\ProductDetailPartial.cshtml" />
     <Content Include="Views\Product\Test.cshtml" />
     <Content Include="Views\MemberCenter\MemberRegisterPage.cshtml" />
     <Content Include="Views\MemberCenter\ContactUs.cshtml" />
@@ -1094,6 +1094,7 @@
     <Folder Include="Asset\Js\common\" />
     <Folder Include="Asset\Js\Index\" />
     <Folder Include="Data\" />
+    <Folder Include="Repository\DBContext\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -1107,11 +1108,8 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202102181030223_InitialDB.resx">
-      <DependentUpon>202102181030223_InitialDB.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202102181212415_1.resx">
-      <DependentUpon>202102181212415_1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202102200730418_InitialDB.resx">
+      <DependentUpon>202102200730418_InitialDB.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

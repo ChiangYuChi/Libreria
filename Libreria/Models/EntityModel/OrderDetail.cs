@@ -9,7 +9,6 @@ namespace Libreria.Models.EntityModel
     [Table("OrderDetail")]
     public partial class OrderDetail
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int OrderDetailId { get; set; }
 
         public int OrderId { get; set; }
@@ -17,9 +16,6 @@ namespace Libreria.Models.EntityModel
         public int ProductId { get; set; }
 
         public int Quantity { get; set; }
-
-        [Column(TypeName = "money")]
-        public decimal UnitPrice { get; set; }
 
         public virtual Order Order { get; set; }
 

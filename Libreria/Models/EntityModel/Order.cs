@@ -14,7 +14,6 @@ namespace Libreria.Models.EntityModel
             OrderDetails = new HashSet<OrderDetail>();
         }
 
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int OrderId { get; set; }
 
         public DateTime ShippingDate { get; set; }

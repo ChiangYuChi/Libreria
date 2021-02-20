@@ -9,7 +9,6 @@ namespace Libreria.Models.EntityModel
     [Table("Exhibition")]
     public partial class Exhibition
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int ExhibitionID { get; set; }
 
         public DateTime ExhibitionStartTime { get; set; }
@@ -32,11 +31,9 @@ namespace Libreria.Models.EntityModel
 
         [Required]
         public string ExPhoto { get; set; }
+
         [Required]
         [StringLength(50)]
         public string ExName { get; set; }
-
-
-        public virtual ExhibitionCustomer ExhibitionCustomer { get; set; }
     }
 }
