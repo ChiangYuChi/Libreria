@@ -1,4 +1,6 @@
-﻿let addressCitySelect = document.getElementById("recipient_option recipient_option_counties Region");
+﻿
+//縣市地區
+let addressCitySelect = document.getElementById("recipient_option recipient_option_counties Region");
 let addressRegionSelect = document.getElementById("recipient_option_district Town");
 
 addressCitySelect.onchange = changeAddressRegion;
@@ -170,3 +172,50 @@ function changeAddressRegion() {
         })
     }
 }
+
+
+
+
+//表單驗證
+let submit = document.getElementById("submit");
+submit.addEventListener("click", checkForm);
+
+function checkForm() {
+    let recipientCellphone = document.getElementById("recipientCellphone")
+    let recipientTelephone = document.getElementById("recipientTelephone")
+    let subscriberCellphone = document.getElementById("subscriberCellphone")
+    let subscriberTelephone = document.getElementById("subscriberTelephone")
+
+    if (recipientCellphone.validity.patternMismatch == true) {
+        recipientCellphone.setCustomValidity("請輸入十個數字");
+    }
+    else {
+        recipientCellphone.setCustomValidity("");
+    }
+
+    if (recipientTelephone.validity.patternMismatch == true) {
+        recipientTelephone.setCustomValidity("請輸入數字");
+    }
+    else {
+        recipientTelephone.setCustomValidity("");
+    }
+
+    if (subscriberCellphone.validity.patternMismatch == true) {
+        subscriberCellphone.setCustomValidity("請輸入十個數字");
+    }
+    else {
+        subscriberCellphone.setCustomValidity("");
+    }
+
+    if (subscriberTelephone.validity.patternMismatch == true) {
+        subscriberTelephone.setCustomValidity("請輸入數字");
+    }
+    else {
+        subscriberTelephone.setCustomValidity("");
+    }
+}
+
+
+
+
+

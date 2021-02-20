@@ -126,12 +126,12 @@
                             </div>
                         </div>
                         <div class="recipient_profile_name_tel">
-                            <input type="tel" placeholder="號碼" name="recipientCellphone" required>
+                            <input type="tel" placeholder="號碼" name="recipientCellphone" id="recipientCellphone" required pattern="\d{10}">
                         </div>
                     </div>
                     <div class="recipient_profile_homePhone">
                         <p>連絡電話</p>
-                        <input type="tel" placeholder="市話" name="recipientTelephone" required>
+                        <input type="tel" placeholder="市話" name="recipientTelephone" id="recipientTelephone" required pattern="\d*">
                     </div>
                     <div class="recipient_profile_address">
                         <p>地址</p>
@@ -185,11 +185,11 @@
                     </div>
                     <div class="recipient_profile_phone">
                         <p>行動電話</p>
-                        <input type="tel" placeholder="號碼" name="subscriberCellphone" required>
+                        <input type="tel" placeholder="號碼" name="subscriberCellphone" id="subscriberCellphone" required pattern="\d{10}">
                     </div>
                     <div class="recipient_profile_homePhone">
                         <p>連絡電話</p>
-                        <input type="tel" placeholder="市話" name="subscriberTelephone" required>
+                        <input type="tel" placeholder="市話" name="subscriberTelephone" id="subscriberTelephone" required pattern="\d*">
                     </div>
                     <div class="recipient_profile_address">
                         <p>地址</p>
@@ -329,7 +329,7 @@
                 <div class="commodity_total_txt">
                     <p>商品總金額</p>
                     <span>$760</span>
-                    <button type="submit">確認結帳</button>
+                    <button type="submit" id="submit">確認結帳</button>
                 </div>
             </div>
         </div>
