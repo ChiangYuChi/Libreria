@@ -39,7 +39,6 @@
                         </div>
                         <div class="detail-title">
                             <h1>@Model.Name</h1>
-                            <h2 class="d-none" id="ProductId">@Model.Id</h2>
                             <h3><span>作者</span>@Model.Author</h3>
                             <hr>
                             <h5>簡介</h5>
@@ -58,8 +57,8 @@
                                         <span class="price">NT$@(String.Format("{0:N0}",Model.UnitPrice))</span><span class="price currency">&nbsp;TWD</span>
                                     </div>
                                 </div>
-                                <button class="purchase-action add-to-cart" onclick="postValue()">加入購物車</button>
-                                <button class="purchase-action buy-now">@Html.ActionLink("立即購買", "Index", "Order", new { memberId = 1, productId = Model.Id, }, null)</button>
+                                <button class="purchase-action add-to-cart" onclick="AddCart(@Model.Id)">加入購物車</button>
+                                <button class="purchase-action buy-now" onclick="AddCart(@Model.Id)">@Html.ActionLink("立即購買", "Index", "Order")</button>
                                 <button class="purchase-action add-to-wishlist">新增至我的願望清單</button>
                             </div>
                         </div>
@@ -121,19 +120,20 @@
     <script src="~/Asset/Js/Product/book-reviewer.js"></script>
 
     <script>
-        function postValue() {
-            let productId = $("#ProductId").text();
+        function AddCart(id) {
+            let productId = id;
 
             $.ajax({
                 type: "POST",
                 url: "/Order/AddToCart",
-                data: { ProductId: productId },
+                data: { Id: productId },
                 dataType: "text",
                 success: function (response) {
                     alert(response);
                     $("#MyCart").text("購物車(" + response + ")");
                 }
             });
+        }
     </script>
 
 }
