@@ -28,17 +28,11 @@ namespace Libreria.Controllers
 
         public ActionResult MemberLogin()
         {
-            return View()
+            return View();
         }
 
 
         // GET: MemberCenter
-
-        public ActionResult MemberLogin()
-        {
-
-            return View();
-        }
 
         public ActionResult MemberInfo()
         {
@@ -182,7 +176,10 @@ namespace Libreria.Controllers
             }
         }
 
-        
+        public ActionResult ContactUs()
+        {
+            return View();
+        }
        
     }
 }
