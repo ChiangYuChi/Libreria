@@ -14,9 +14,12 @@
 <section class="book-detail">
     <div class="container col-11">
         <div class="row ">
-            <div class="col-sm-12 breadcrumb d-none d-md-block">
-                <a href="@Url.Action("Index", "Home")">首頁</a> 
+            
+            <div class="col-sm-12 detail-breadcrumb d-none d-md-block">
+                <a href="@Url.Action("Index", "Home")">首頁</a>
+                <i class="fas fa-chevron-right"></i>
                 <a href="@Url.Action("ProductCategory", "Product", new { CategoryId = Model.CategoryId })">@Model.CategoryName</a>
+                <i class="fas fa-chevron-right"></i>
                 <a href="#">@Model.Name</a>
             </div>
             <div class="breadcrumb breadcrumb-sm d-sm-block d-md-none">
@@ -25,87 +28,88 @@
             <div class="detail-main ">
                 <!-- 商品區塊 -->
                 <!-- 預覽圖區塊 -->
-                <div class="row">
-                    <div class="sidenav d-none d-md-block col-md-2 col-lg-2">
-                        <a href="#">@Html.Action("CategoryPartial", "Category")</a>
 
-                    </div>
+                <div class="row" >
 
-                    <div class="col-lg-6 detail-product px-5">
-                        <div class="special-deal">
+                    <div class="col-lg-9 detail-product " >
+                        <!--<div class="special-deal mb-3 my-2">-->
                             <!-- <div class="fa-tag" ></div> -->
-                            <i class="fas fa-tag"></i>
+                            <!--<i class="fas fa-tag"></i>
                             <p>此項目適用於&nbsp;<a href="#">2020年度百大暢銷榜，單本79折起，三本再折99元，至1/31止（部分書籍不參展）</a></p>
+                        </div>-->
+
+                        
+                            <div class="intro col-lg-12 d-flex">
+                                <div class="col-8 col-sm-8 col-lg-6 detail-cover">
+                                    <div class="pic">
+                                        <div class="pic-content preview-btn">
+                                            <img src="@Model.MainUrl" alt="" class="preview-img book-img">
+                                            <div class="overlay"></div>
+                                        </div>
+                                    </div>
+                                    <div class="preview-img-container">
+                                        @foreach (var item in Model.PreviewUrls)
+                                        {
+                                            <img src="@item" class="book-img">
+                                        }
+                                    </div>
+
+                                    <div class="row lightbox-container align-items-center">
+                                        <div class="col-11 col-md-8  mx-auto text-right lightbox-holder">
+                                            <span class="lightbox-close"><i class="fas fa-window-close"></i></span>
+                                            <div class="lightbox-item col-10 col-md-11 m-auto"></div>
+                                            <span class="lightbox-control btnLeft"><i class="fas fa-chevron-left"></i></span>
+                                            <span class="lightbox-control btnRight"><i class="fas fa-chevron-right"></i></span>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="content d-flex flex-wrap">
+                                        <div class="detail-preview  col-6 col-sm-6 col-md-6 col-lg-12 border-0 preview-btn mt-4">
+                                            <a href="#"><i class="fas fa-search"></i>立即預覽</a>
+                                        </div>
+
+                                    </div>
+
+
+                                </div>
+                                <div class="publisher col-lg-6" >
+                                    <h1>@Model.Name</h1>
+                                    <h3><span>作者</span>@Model.Author</h3>
+                                    <hr>
+
+                                </div>
+
+                            </div>
+
                         </div>
-                        <div class="detail-title">
-                            <h1>@Model.Name</h1>
-                            <h3><span>作者</span>@Model.Author</h3>
-                            <hr>
+                        <div class="col-lg-3 detail-pricing" >
+                            <div class="box" >
+                                <h2 class="pricing-title">購買書籍</h2>
+                                <div class="pricing-figures">
+                                    <div class="active-price">
+                                        您的價格<div class="pricing-wrapper">
+                                            <span class="price">NT$@(String.Format("{0:N0}",Model.UnitPrice))</span><span class="price currency">&nbsp;TWD</span>
+                                        </div>
+                                    </div>
+                                    <button class="purchase-action add-to-cart" onclick="AddCart(@Model.Id)">加入購物車</button>
+                                    <button class="purchase-action buy-now" onclick="AddCart(@Model.Id)">
+                                        <a href="@Url.Action("Index", "Order")">立即購買</a>
+                                    </button>
+                                    <button class="purchase-action add-to-wishlist" onclick="AddFavorite(@Model.Id)">新增至我的願望清單</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="detail-title col-12">
+
                             <h5>簡介</h5>
                             <p>
-                                @Model.Introduction;
+                                @Model.Introduction
                             </p>
 
                         </div>
                     </div>
-                    <div class="col-lg-4 detail-pricing px-5">
-                        <div class="col-lg-12 box">
-                            <h2 class="pricing-title">購買書籍</h2>
-                            <div class="pricing-figures">
-                                <div class="active-price">
-                                    您的價格<div class="pricing-wrapper">
-                                        <span class="price">NT$@(String.Format("{0:N0}",Model.UnitPrice))</span><span class="price currency">&nbsp;TWD</span>
-                                    </div>
-                                </div>
-                                <button class="purchase-action add-to-cart" onclick="AddCart(@Model.Id)">加入購物車</button>
-                                <button class="purchase-action buy-now" onclick="AddCart(@Model.Id)">
-                                    <a href="@Url.Action("Index", "Order")">立即购买</a>
-                                </button>
-                                <button class="purchase-action add-to-wishlist" onclick="AddToFavorite(@Model.Id)">新增至我的願望清單</button>
-                            </div>
-                        </div>
-                        <div class="col-8 col-sm-8 col-lg-12 detail-cover px-5 mx-auto my-4">
-                            <div class="pic">
-                                <div class="pic-content preview-btn">
-                                    <img src="@Model.MainUrl" alt="" class="preview-img book-img">
-                                    <div class="overlay"></div>
-                                </div>
-                            </div>
-                            <div class="preview-img-container">
-                                @foreach (var item in Model.PreviewUrls)
-                                {
-                                    <img src="@item" class="book-img">
-                                }
-                            </div>
-                            <div class="container-fluid ">
-                                <div class="row lightbox-container align-items-center">
-                                    <div class="col-11 col-md-8  mx-auto text-right lightbox-holder">
-                                        <span class="lightbox-close"><i class="fas fa-window-close"></i></span>
-                                        <div class="lightbox-item col-10 col-md-11 m-auto"></div>
-                                        <span class="lightbox-control btnLeft"><i class="fas fa-chevron-left"></i></span>
-                                        <span class="lightbox-control btnRight"><i class="fas fa-chevron-right"></i></span>
-                                    </div>
-                                </div>
-                            </div>
 
-
-                            <div class="content d-flex flex-wrap">
-                                <div class="detail-preview  col-6 col-sm-6 col-md-6 col-lg-12 border-0 preview-btn">
-                                    <a href="#"><i class="fas fa-search"></i>立即預覽</a>
-                                </div>
-                                <hr class="d-none d-lg-block">
-                                <div class="detail-save  col-6 col-sm-6 col-md-6 col-lg-12">
-                                    <a href="#">
-                                        <i class="fas fa-arrow-to-bottom"></i>儲存預覽
-                                    </a>
-                                </div>
-                            </div>
-
-                            <div class="total-rating d-none d-lg-block">
-                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half"></i><span class="rating-num">(442)</span>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -116,7 +120,7 @@
 
 
 
-@section EndJs{ 
+@section EndJs{
     <script src="~/Asset/Js/Product/book-reviewer.js"></script>
 
     <script>
@@ -135,16 +139,17 @@
             });
         }
 
-        function AddToFavorite(id) {
-            let productId = id;
+        function AddFavorite(f) {
+            let ids = f;
 
             $.ajax({
                 type: "POST",
                 url: "/MemberCenter/AddToFavorite",
-                data: { Id: productId },
+                data: { Id: ids },
                 dataType: "text",
                 success: function (response) {
                     alert(response);
+                    $("#MyCart").text("購物車(" + response + ")");
                 }
             });
         }

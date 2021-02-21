@@ -1,9 +1,10 @@
-﻿@model IEnumerable<FavoriteViewModel>
+﻿@model List<FavoriteViewModel>
+
 
 @section topcss{
 
     @*Favorate CSS*@
-    <link href="~/Asset/Css/MemberCenter/Favorate.css" rel="stylesheet" />
+    <link href="~/Asset/Css/MemberCenter/Favorite.css" rel="stylesheet" />
 
 
     @*Chinese Font CSS*@
@@ -16,10 +17,6 @@
 }
 @section topJS{
     <script src="https://kit.fontawesome.com/d22f4b5afc.js" crossorigin="anonymous"></script>
-}
-@section endJs{
-    @*Favorate JS*@
-    <script src="~/Asset/Js/ShoppingCart/OrderDetail.js"></script>
 }
 
 <div class="container">
@@ -35,26 +32,25 @@
         <h2>(共有<span>2</span>筆商品)</h2>
     </div>
 
-@foreach ( var item in Model) {
-    <div class="product">
-        <div class="pro_pic col-3">
-            <img src="">
-        </div>
-        <div class="pro_txt col-6">
-            <h3>@item.Name</h3>
-            <p class="pro_txt_authers">作者 : @item.Author</p>
-            <p>出版社 : </p>
-            </p>
+    @foreach (var item in Model)
+    {
+        <div class="product">
+            <div class="pro_pic col-3">
+                <img src="@item.Img">
+            </div>
+            <div class="pro_txt col-6">
+                <h3>@item.Name</h3>
+                <p class="pro_txt_authers">作者 : @item.Author</p>
+                <p>出版社 :@item.Supplier</p>
+                <p>出版日期 : @item.PublishDate</p>
+            </div>
+            <div class="pro_btn col-3">
+                <button class="add" onclick="AddCart(@item.ProductId)">加入購物車</button>
+                <button class="del" onclick="Delete(@item.ProductId)">刪除</button>
+            </div>
 
-            <p>出版日期 : 2018/08/17</p>
         </div>
-        <div class="pro_btn col-3">
-            <button class="add">加入購物車</button>
-            <button class="del">刪除</button>
-        </div>
-
-    </div>
-}
+    }
 
     <div class="page mb-5">
         <div class="btn_left">
@@ -68,3 +64,39 @@
         </div>
     </div>
 </div>
+
+@section EndJS{
+
+    @*Favorate JS*@
+    <script src="~/Asset/Js/ShoppingCart/OrderDetail.js"></script>
+
+    <script>
+        function AddCart(id) {
+            let productId = id;
+
+            $.ajax({
+                type: "POST",
+                url: "/MemberCenter/AddToCart",
+                data: { ProductId: productId },
+                dataType: "text",
+                success: function (response) {
+                    alert(response);
+                }
+            });
+        }
+
+        function Delete(id) {
+            let productId = id;
+
+            $.ajax({
+                type: "POST",
+                url: "/MemberCenter/DeleteFav",
+                data: { ProductId: productId },
+                dataType: "text",
+                success: function (response) {
+                    alert(response);
+                }
+            });
+        }
+    </script>
+}

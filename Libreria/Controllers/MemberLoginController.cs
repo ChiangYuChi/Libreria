@@ -1,4 +1,5 @@
 ﻿using Libreria.Models.EntityModel;
+using Libreria.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,18 +21,23 @@ namespace Libreria.Controllers
         {
             return View();
         }
-
+        
         [HttpPost]
-        public ActionResult Index(member model)
+        public ActionResult Index(MemberLoginViewModel model)
         {
-            member member = _libreriaDataModel.members
-                                               .Where(u => u.memberName == model.memberName && u.memberPassword == model.memberPassword)
+
+            if (ModelState.IsValid)
+            {
+                member member = _libreriaDataModel.members
+                                               .Where(u => u.memberName == model.MemberName && u.memberPassword == model.MemberPassword)
                                                .FirstOrDefault();
-           
-                if (User != null)
+
+                if (member != null)
                 {
                     Session["MemberName"] = member.memberName;
                     Session["MemberPassword"] = member.memberPassword;
+                 
+
                     return RedirectToAction("Index", "Home");
                 }
                 else
@@ -39,9 +45,11 @@ namespace Libreria.Controllers
                     ModelState.AddModelError("", "帳號或密碼輸入錯誤");
                     return View(model);
                 }
-            
-            
-            
+            }
+            else
+            {
+                return View(model);
+            }
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -51,6 +59,8 @@ namespace Libreria.Controllers
             Session["MemberPassword"] = string.Empty;
             return RedirectToAction("Index", "Home");
         }
+
+
 
     }
 }
