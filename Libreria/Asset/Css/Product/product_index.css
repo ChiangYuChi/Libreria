@@ -324,7 +324,7 @@
     height: 30%;
     
     overflow: hidden;
-    text-overflow: ellipsis;
+   
     white-space: nowrap;
     text-overflow: ellipsis;
     width: 100%;

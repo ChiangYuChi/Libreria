@@ -5,7 +5,6 @@
 @foreach (var item in Model)
 {
 
-
     <li class="book-list">
         <a class="cbp-vm-image" href="@Url.Action("ProductDetail", "Product", new { id = item.Id })"><img src="@item.MainUrl"></a>
         <h3 class="cbp-vm-title">  @Html.ActionLink(@item.Name, "ProductDetail", "Product", new { id = item.Id,style = "text-decoration:none" }, null)</h3>
