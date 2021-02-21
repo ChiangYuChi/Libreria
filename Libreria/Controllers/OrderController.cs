@@ -51,8 +51,7 @@ namespace Libreria.Controllers
         {
             if (orderVM != null)
             {
-                OrderService orderService = new OrderService();
-                OperationResult result = orderService.Create(orderVM);
+                OperationResult result = _orderService.Create(orderVM);
 
                 if(result.IsSuccessful)
                 {

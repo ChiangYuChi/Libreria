@@ -1,5 +1,7 @@
 ﻿using Libreria.Filters;
 using Libreria.Models.EntityModel;
+using Libreria.Service;
+using Libreria.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,8 +13,13 @@ namespace Libreria.Controllers
     [CustomAuthenticationFilter]
     public class MemberCenterController : Controller
     {
-
+        private readonly OrderService _orderService;
         // GET: MemberCenter
+
+        public MemberCenterController()
+        {
+            _orderService = new OrderService();
+        }
 
         public ActionResult MemberLogin()
         {
@@ -69,9 +76,16 @@ namespace Libreria.Controllers
         }
 
         
-        public ActionResult MemberOrderInquery()
+        public ActionResult MemberOrderInquery(string Inquire, int? TransactionId)
         {
-            return View();
+            List<OrderViewModel> result = null;
+            if (Inquire == "history")
+            {
+                int memberId = 1;
+                result = _orderService.GetBymemberId(memberId);
+            }
+
+            return View(result);
         }
 
         public ActionResult MemberPasswordConfirm()

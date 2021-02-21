@@ -22,26 +22,24 @@ namespace Libreria.Service
             var result = new OperationResult();
             try
             {
-                LibreriaRepository repository = new LibreriaRepository();
-                
                 Order order = new Order()
                 {
                     ShippingDate = DateTime.Now.AddDays(2),
                     OrderDate = DateTime.Now,
                     memberId = 1,
-                    ShipName = orderVM.recipientName,
-                    ShipCity = orderVM.addressCitySelect,
-                    ShipRegion = orderVM.addressRegionSelect,
-                    ShipAddress = orderVM.recipientAddress,
-                    ShipPostalCode = orderVM.recipientPostalCode,
-                    InvoiceType = orderVM.invoice,
+                    ShipName = orderVM.RecipientName,
+                    ShipCity = orderVM.AddressCitySelect,
+                    ShipRegion = orderVM.AddressRegionSelect,
+                    ShipAddress = orderVM.RecipientAddress,
+                    ShipPostalCode = orderVM.RecipientPostalCode,
+                    InvoiceType = orderVM.Invoice,
                     InvoiceInfo = null,
                     CreateTime = DateTime.Now,
                     UpdateTime = null,
-                    PaymentType = orderVM.paymentMethod,
+                    PaymentType = orderVM.PaymentMethod,
                 };
 
-                repository.Create(order);
+                _DbRepository.Create(order);
 
                 OrderDetail orderDetail = new OrderDetail()
                 {
@@ -50,7 +48,7 @@ namespace Libreria.Service
                     Quantity = 2,
                 };
 
-                repository.Create(orderDetail);
+                _DbRepository.Create(orderDetail);
 
                 result.IsSuccessful = true;
             }
@@ -69,11 +67,96 @@ namespace Libreria.Service
 
         public List<OrderViewModel> GetAll()
         {
-            return _DbRepository.GetAll<Product>().Select(x => new OrderViewModel()
-            {
-                Id = x.ProductId,
-                //Name = x.ProductName
-            }).ToList();
+            var result = (
+                from order in _DbRepository.GetAll<Order>()
+                select new OrderViewModel()
+                {
+                    OrderId = order.OrderId,
+                    ShippingDate = order.ShippingDate,
+                    PaymentMethod = order.PaymentType,
+                    RecipientName = order.ShipName,
+                    RecipientCellphone = null,
+                    RecipientTelephone = null,
+                    AddressCitySelect = order.ShipCity,
+                    AddressRegionSelect = order.ShipRegion,
+                    RecipientAddress = order.ShipAddress,
+                    RecipientPostalCode = order.ShipPostalCode,
+                    SubscriberName = null,
+                    SubscriberCellphone = null,
+                    SubscriberTelephone = null,
+                    SubscriberAddress = null,
+
+                    OrderDetailVMList = GetOrderDetailByOrderId(order.OrderId)
+                }
+            ).ToList();
+
+            return result;
+        }
+
+        public List<OrderViewModel> GetBymemberId(int memberId)
+        {
+            var result = (
+                from order in _DbRepository.GetAll<Order>()
+                where order.memberId == memberId
+                select new OrderViewModel()
+                {
+                    OrderId = order.OrderId,
+                    ShippingDate = order.ShippingDate,
+                    PaymentMethod = order.PaymentType,
+                    RecipientName = order.ShipName,
+                    RecipientCellphone = null,
+                    RecipientTelephone = null,
+                    AddressCitySelect = order.ShipCity,
+                    AddressRegionSelect = order.ShipRegion,
+                    RecipientAddress = order.ShipAddress,
+                    RecipientPostalCode = order.ShipPostalCode,
+                    SubscriberName = null,
+                    SubscriberCellphone = null,
+                    SubscriberTelephone = null,
+                    SubscriberAddress = null,
+
+                    OrderDetailVMList = GetOrderDetailByOrderId(order.OrderId),
+                }
+            ).ToList();
+
+            return result;
+        }
+
+        public List<OrderDetailViewModel> GetAllOrderDetail()
+        {
+            var result = (
+                from orderDetail in _DbRepository.GetAll<OrderDetail>()
+                join product in _DbRepository.GetAll<Product>()
+                on orderDetail.ProductId equals product.ProductId
+                select new OrderDetailViewModel()
+                {
+                    ProductName = product.ProductName,
+                    UnitPrice = product.UnitPrice,
+                    Quantity = orderDetail.Quantity,
+                    Progress = null
+                }
+            ).ToList();
+
+            return result;
+        }
+
+        public List<OrderDetailViewModel> GetOrderDetailByOrderId(int OrderId)
+        {
+            var result = (
+                from orderDetail in _DbRepository.GetAll<OrderDetail>()
+                join product in _DbRepository.GetAll<Product>()
+                on orderDetail.ProductId equals product.ProductId
+                where orderDetail.OrderId == OrderId
+                select new OrderDetailViewModel()
+                {
+                    ProductName = product.ProductName,
+                    UnitPrice = product.UnitPrice,
+                    Quantity = orderDetail.Quantity,
+                    Progress = null
+                }
+            ).ToList();
+
+            return result;
         }
 
     }

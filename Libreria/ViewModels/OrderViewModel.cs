@@ -7,76 +7,73 @@ namespace Libreria.ViewModels
 {
     public class OrderViewModel
     {
-        /// <summary>
-        /// ID
-        /// </summary>
-        public int Id { get; set; }
+        public int OrderId { get; set; }
 
         /// <summary>
         /// 配送方式
         /// </summary>
-        public string deliveryMethod { get; set; }
+        public string DeliveryMethod { get; set; }
 
         /// <summary>
         /// 收件人姓名
         /// </summary>
-        public string recipientName { get; set; }
+        public string RecipientName { get; set; }
 
         /// <summary>
         /// 收件人行動電話
         /// </summary>
-        public string recipientCellphone { get; set; }
+        public string RecipientCellphone { get; set; }
 
         /// <summary>
         /// 收件人市內電話
         /// </summary>
-        public string recipientTelephone { get; set; }
+        public string RecipientTelephone { get; set; }
 
         /// <summary>
         /// 收件人縣市
         /// </summary>
-        public string addressCitySelect { get; set; }
+        public string AddressCitySelect { get; set; }
 
         /// <summary>
         /// 收件人轄區
         /// </summary>
-        public string addressRegionSelect { get; set; }
+        public string AddressRegionSelect { get; set; }
 
         /// <summary>
         /// 收件人地址
         /// </summary>
-        public string recipientAddress {get;set;}
+        public string RecipientAddress { get; set; }
 
         /// <summary>
         /// 收件人郵遞區號
         /// </summary>
-        public string recipientPostalCode { get; set; }
+        public string RecipientPostalCode { get; set; }
 
         /// <summary>
         /// 訂購人姓名
         /// </summary>
-        public string subscriberName { get; set; }
+        public string SubscriberName { get; set; }
 
         /// <summary>
         /// 訂購人行動電話
         /// </summary>
-        public string subscriberCellphone { get; set; }
+        public string SubscriberCellphone { get; set; }
 
         /// <summary>
         /// 訂購人室內電話
         /// </summary>
-        public string subscriberTelephone { get; set; }
+        public string SubscriberTelephone { get; set; }
 
         /// <summary>
         /// 訂購人地址
         /// </summary>
-        public string subscriberAddress { get; set; }
+        public string SubscriberAddress { get; set; }
 
         /// <summary>
         /// 付款方式
         /// 1為取貨付款 2為ATM 3為信用卡
         /// </summary>
-        public int paymentMethod { get; set; }
+        public int PaymentMethod { get; set; }
 
         /// <summary>
         /// 發票開立方式
@@ -87,6 +84,16 @@ namespace Libreria.ViewModels
         /// 5為三聯式電子發票
         /// 6為發票捐贈
         /// </summary>
-        public int invoice { get; set; }
+        public int Invoice { get; set; }
+
+        /// <summary>
+        /// 訂購日期
+        /// </summary>
+        public DateTime ShippingDate { get; set; }
+
+        /// <summary>
+        /// 書
+        /// </summary>
+        public List<OrderDetailViewModel> OrderDetailVMList { get; set; }
     }
 }
