@@ -25,8 +25,9 @@ namespace Libreria.Controllers
         /// <returns></returns>
         public ActionResult Index()
         {
-            
-            return View();
+            var result = _shoppingService.GetAll();
+
+            return View(result);
         }
 
         [HttpPost]
@@ -42,6 +43,13 @@ namespace Libreria.Controllers
             {
                 return "加入失败";
             }
+        }
+
+        [HttpPost]
+        public void DeleteFromCart(ShoppingCartViewModel ShoppingCartVM)
+        {
+            _shoppingService.DeleteFromCart(ShoppingCartVM);
+
         }
 
         /// <summary>

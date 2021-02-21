@@ -19,8 +19,23 @@ namespace Libreria.Service
 
        public List<ShoppingCartViewModel> GetAll()
         {
+            var result = (from s in _DbRepository.GetAll<ShoppingCart>()
+                         join p in _DbRepository.GetAll<Product>()
+                         on s.ProductId equals p.ProductId
+                         where s.memberId == 1
+                         join v in _DbRepository.GetAll<Preview>()
+                         on s.ProductId equals v.ProductId
+                         where v.Sort == 0
+                         select new ShoppingCartViewModel()
+                         {
+                             ProductId = s.ProductId,
+                             ProductName = p.ProductName,
+                             Count = s.Count,
+                             Price = p.UnitPrice,
+                             PicUrl = v.ImgUrl
+                         }).ToList();
 
-            return null;
+            return result;
         }
 
         public OperationResult Create(ProductViewModel ProductVM)
@@ -41,9 +56,21 @@ namespace Libreria.Service
             return result;
         }
 
-        public OperationResult Delete(ProductViewModel ProductVM)
+        public OperationResult DeleteFromCart(ShoppingCartViewModel ShoppingCartVM)
         {
-            return null;
+            var result = new OperationResult();
+
+            try
+            {
+                _DbRepository.Delete<ShoppingCart>(_DbRepository.GetAll<ShoppingCart>().Where(x => x.ProductId == ShoppingCartVM.ProductId && x.memberId == 1).FirstOrDefault()); //memberID后面需要修改成真实资料
+                result.IsSuccessful = true;
+            }
+            catch
+            {
+                result.IsSuccessful = false;
+            }
+
+            return result;
         }
 
     }
