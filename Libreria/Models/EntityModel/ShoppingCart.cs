@@ -15,6 +15,8 @@ namespace Libreria.Models.EntityModel
 
         public int memberId { get; set; }
 
+        public int Count { get; set; }
+
         public virtual member member { get; set; }
 
         public virtual Product Product { get; set; }

@@ -25,7 +25,7 @@ namespace Libreria.Controllers
         /// <returns></returns>
         public ActionResult Index()
         {
-
+            
             return View();
         }
 
@@ -34,7 +34,14 @@ namespace Libreria.Controllers
         {
             var result = _shoppingService.Create(ProductVM);
 
-            return "Success";
+            if (result.IsSuccessful)
+            {
+                return "加入成功!";
+            }
+            else
+            {
+                return "加入失败";
+            }
         }
 
         /// <summary>
