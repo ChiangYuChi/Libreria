@@ -18,11 +18,7 @@ namespace Libreria.Controllers
         }
 
         // GET: Category
-        public ActionResult Index()
-        {
-            return View();
-        }
-
+       
         public PartialViewResult CategoryPartial()
         {
             var result = _categoryService.GetAll();

@@ -57,11 +57,39 @@ namespace Libreria.Controllers
 
         public ActionResult ProductDetail(int id)
         {
+            var product = _productService.GetById(id);   
 
-            var product = _productService.GetById(id);
-
-            
             return View(product);
         }
+
+        public PartialViewResult PromoteByPublishDatePartial()
+        {
+            var product = _productService.GetByPublishDate();
+            return PartialView(product);
+        }
+
+        public PartialViewResult PromoteByTotalSalesPartial()
+        {
+            var product = _productService.GetByTotalSales();
+            return PartialView(product);
+        }
+
+        public PartialViewResult PromoteTodayPartial()
+        {
+            var product = _productService.PromoteToday();
+            return PartialView(product);
+        }
+
+        public PartialViewResult PromoteByEditor()
+        {
+            var product = _productService.PromoteEditor();
+            return PartialView(product);
+        }
+        public PartialViewResult PromoteMajor()
+        {
+            var product = _productService.PromoteMajor();
+            return PartialView(product);
+        }
+
     }
 }

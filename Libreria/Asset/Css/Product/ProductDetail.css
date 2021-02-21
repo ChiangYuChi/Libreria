@@ -1,30 +1,34 @@
-﻿:root {
+﻿
+
+:root {
     --crimson-color: #bf0000;
-    
+    ;
 }
 
 
 .book-detail {
     font-family: 'Noto Sans TC', sans-serif;
-    padding-top:100px;
+    padding: 50px 0;
 }
 
-.breadcrumb {
-    margin-bottom: 30px;
-    width: 100%;
+
+
+
+
+.detail-breadcrumb {
+    padding: 20px 20px;
+    box-sizing: border-box;
 }
 
-    .breadcrumb a {
-        padding-right: 5px;
-        text-decoration: initial;
+    .detail-breadcrumb a,
+    .detail-breadcrumb .fas {
+        color: #b0b0b0;
+        font-size: 14px;
     }
 
-        .breadcrumb a + a:before {
-            content: '/';
-            color: black;
-            padding-right: 5px;
-        }
-
+    .detail-breadcrumb .fas {
+        padding: 15px;
+    }
 .breadcrumb-sm a:before {
     content: '<';
     color: black;
@@ -40,10 +44,14 @@
     position: relative;
 }
 
+
 .detail-cover .pic {
     cursor: pointer;
     text-align: center;
-    margin: 0 auto;
+   
+    max-width: 300px;
+    max-height: 250px;
+  
 }
 
 
@@ -51,15 +59,15 @@
         cursor: pointer;
         text-align: center;
         position: relative;
-        border-top: 1px solid rgba(87, 104, 155, .1);
-        border-left: 1px solid rgba(87, 104, 155, .1);
-        border-right: 1px solid rgba(87, 104, 155, .1);
+        border-top: 1px solid rgb(87, 104, 155, .1);
+        border-left: 1px solid rgb(87, 104, 155, .1);
+        border-right: 1px solid rgb(87, 104, 155, .1);
     }
 
     .detail-cover .pic:after {
         content: '';
         display: block;
-        background-image: url(./img/detail-cover.png);
+        background-image: url(../../Image/detail-cover.png);
         padding-bottom: 14%;
         background-repeat: no-repeat;
         background-position: top;
@@ -69,8 +77,9 @@
     }
 
     .detail-cover .pic img {
-        width: 100%;
+        width: 60%;
     }
+    
 
     .detail-cover .pic .pic-content .overlay {
         position: absolute;
@@ -117,9 +126,11 @@
         color: var(--crimson-color)
     }
 
-.total-rating .fas {
-    color: var(--crimson-color)
-}
+    .preview-btn{
+        padding:0;
+    }
+
+
 
 .special-deal {
     display: flex;
@@ -149,11 +160,18 @@
     }
 
 
-.detail-title h1 {
-    font-size: 26px;
+.publisher h1 {
+    font-size: 20px;
+    padding-top: 10px;
+}
+.publisher h3 {
+    font-size: 20px;
     padding-top: 10px;
 }
 
+.detail-title {
+   margin-top: 20px;
+}
 .detail-title h2 {
     font-size: 22px;
     color: #595959;
@@ -179,19 +197,21 @@
 .detail-title p {
     font-weight: 300;
     font-size: 15px;
+    text-align:left;
+}
+.detail-pricing{
+    padding: 0;
 }
 
-.detail-title .hype {
-    font-weight: 400;
-    line-height: 25px;
-}
 
 .detail-pricing .box {
     border: 1px solid #e6e6e6;
     box-shadow: 0 0 7px #e6e6e6;
-    height: auto;
-    padding: 20px 15px;
+   
+    padding: 10px;
     box-sizing: border-box;
+    width:100%;
+    
 }
 
 .detail-pricing .pricing-title {
@@ -250,6 +270,8 @@
 }
 
 
+
+
 .detail-main {
     position: relative;
 }
@@ -258,18 +280,6 @@
     background-image: url(./img/sm-book-bg.jpg);
     height: 100px;
     position: absolute;
-}
-
-.detail-cover{
-    position:relative;
-   
-}
-.lightbox{
-    position:absolute;
-    
-    top:0;
-    lefe:0;
-    
 }
 
 .lightbox-container {
