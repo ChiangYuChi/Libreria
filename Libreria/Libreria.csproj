@@ -1141,6 +1141,8 @@
     <Content Include="Views\Shared\_Layout-Product.cshtml" />
     <Content Include="Views\Product\_ViewStart.cshtml" />
     <Content Include="Views\Product\PromoteTodayPartial.cshtml" />
+    <Content Include="Views\Product\PromoteByEditor.cshtml" />
+    <Content Include="Views\Product\PromoteMajor.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -79,6 +79,16 @@ namespace Libreria.Controllers
             return PartialView(product);
         }
 
-       
+        public PartialViewResult PromoteByEditor()
+        {
+            var product = _productService.PromoteEditor();
+            return PartialView(product);
+        }
+        public PartialViewResult PromoteMajor()
+        {
+            var product = _productService.PromoteMajor();
+            return PartialView(product);
+        }
+
     }
 }

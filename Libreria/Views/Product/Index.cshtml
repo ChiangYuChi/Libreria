@@ -2,20 +2,58 @@
 @section topCss{
     <link href="~/Asset/Css/Product/product_index.css" rel="stylesheet" />
     <link href="~/Asset/Css/PartialView/category-sidenav.css" rel="stylesheet" />
+    <link href="~/Asset/Css/Product/swiper.css" rel="stylesheet" />
+    <style>
+        html,
+        body {
+            position: relative;
+            height: 100%;
+        }
+
+        body {
+            background: #eee;
+            font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+            font-size: 14px;
+            color: #000;
+            margin: 0;
+            padding: 0;
+        }
+
+        .swiper-container {
+            width: 100%;
+            height: 80%;
+        }
+
+        .swiper-slide {
+            text-align: center;
+            font-size: 18px;
+            background: #fff;
+            /* Center slide text vertically */
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            -webkit-justify-content: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            -webkit-align-items: center;
+            align-items: center;
+        }
+    </style>
 }
+
+
 
 
 <div class="container-fluid col-12 pt-5">
     <section class="product-index">
         <div class="main ">
-            <div class="container-fluid " >
-                <div class="product-breadcrumb">
-                    <a href="/Home/Index">首頁</a>
-                    <i class="fas fa-chevron-right"></i>
-                    <a href="#">中文書</a>
-                </div>
+            <div class="container-fluid ">
+
                 <div class="row">
-                  
                     <div class="main-promotion col-lg-12 flex-wrap">
                         <div class="main-promotion-slider col-lg-9">
                             <div id="carouselExampleControls" class="carousel slide " data-ride="carousel">
@@ -42,97 +80,59 @@
                                 </a>
                             </div>
                         </div>
-                    
+
                         <div class="main-promotion-topic d-none d-md-block col-lg-3">
                             <h4>今日<span>最推薦</span></h4>
                             <div class="swiper-container">
-                                <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
-                                    <div class="carousel-inner">
-                                        <div class="carousel-item ">
-                                            
-                             
-                                        </div>
-                                     
-                                    </div>
+                                <div class="swiper-wrapper">
+                                 @Html.Action("PromoteTodayPartial")
                                 </div>
-
+                                <div class="swiper-pagination"></div>
                             </div>
-
-
                         </div>
-
-
                         <div class="swiper-pagination"></div>
                     </div>
                     <div class="new-product col-lg-12 d-flex">
-                        <h3>新品推薦</h3>
-                        
                         @Html.Action("PromoteByPublishDatePartial")
-                        
                     </div>
                     <div class="new-product col-lg-12 d-flex">
                         <h3>編輯推薦</h3>
-                        <div class="col-lg-3 pic">
-                            <img src="./img/main-promotion-5.jpg" alt="">
-                            <div class="promotion-discount">
-                                <div class="title">藝術史的一千零一夜 (精美插畫版/誠品獨家書封版)</div>
-                                <p>79折,<span>NT$</span>537</p>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 pic">
-                            <img src="./img/main-promotion-6.jpg" alt="">
-                            <div class="promotion-discount">
-                                <div class="title">藝術史的一千零一夜 (精美插畫版/誠品獨家書封版)</div>
-                                <p>79折,<span>NT$</span>537</p>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 pic">
-                            <img src="./img/main-promotion-7.jpg" alt="">
-                            <div class="promotion-discount">
-                                <div class="title">藝術史的一千零一夜 (精美插畫版/誠品獨家書封版)</div>
-                                <p>79折,<span>NT$</span>537</p>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 pic">
-                            <img src="./img/main-promotion-8.jpg" alt="">
-                            <div class="promotion-discount">
-                                <div class="title">藝術史的一千零一夜 (精美插畫版/誠品獨家書封版)</div>
-                                <p>79折,<span>NT$</span>537</p>
-                            </div>
-                        </div>
+                        @Html.Action("PromoteByEditor")
 
                     </div>
-                    <div class="new-product col-lg-12 d-flex main-hit" >
+                    <div class="new-product col-lg-12 d-flex main-hit">
                         <h3>主打選品</h3>
-                        
-                            @Html.Action("PromoteTodayPartial")
-                       
-                        
-
-
+                        @Html.Action("PromoteMajor")
                     </div>
                     <div class="hot-issue col-lg-6">
                         <h3>熱門話題</h3>
-                        @Html.Action("PromoteByTotalSalesPartial")
-                      
+                            @Html.Action("PromoteByTotalSalesPartial")
                     </div>
                     <div class="hot-issue col-lg-6">
                         <div class="pic col-lg-12">
                             <img src="~/Asset/Image/main-promotion-10.jpg" alt="">
                             <img src="~/Asset/Image/main-promotion-11.jpg" alt="">
                         </div>
-
                     </div>
                 </div>
-
-
             </div>
 
 
         </div>
     </section>
 </div>
-    
 
+
+
+@section endJs{
+    <script src="~/Asset/Js/Product/swiper.js"></script>
+    <script>
+        var swiper = new Swiper('.swiper-container', {
+            pagination: {
+                el: '.swiper-pagination',
+            },
+        });
+    </script>
+}
 
 

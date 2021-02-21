@@ -3,9 +3,8 @@
 @foreach (var item in Model)
 {
 
-    @item.Name
+
+    <a href=" @Url.Action("ProductDetail", "Product", new { id = item.Id,style="text-decoration:none;" }, null)">@item.Name</a>
 
 
-@*<li class="col-lg-12">@Html.ActionLink(item.Name,"ProductDetail","Product",new {id=item.Id},null)</li>*@
-   
 }

@@ -1,17 +1,16 @@
-﻿@model  IEnumerable<ProductViewModel>
+﻿@model IEnumerable<ProductViewModel>
 
 
 @foreach (var item in Model)
 {
-
 <div class="product col-lg-3 pic">
     <div class="book-cover">
-        <a class="promote-image" href=" @Url.Action("ProductDetail", "Product", new { id = item.Id }, null)"><img src="@item.MainUrl" alt=""></a>
+        <a class="promote-image" href=" @Url.Action("ProductDetail", "Product", new { id = item.Id ,style="text-decoration:none;"}, null)"><img src="@item.MainUrl" alt=""></a>
 
         <div class="cart">
-
-            <button class="add-to-cart">加入購物車</button>
-            <button class="add-to-list">加入收藏</button>
+            
+                <button class="add-to-cart">加入購物車</button>
+                <button class="add-to-list">加入收藏</button>
         </div>
     </div>
 
@@ -22,5 +21,5 @@
 
 
 </div>
-}
 
+}

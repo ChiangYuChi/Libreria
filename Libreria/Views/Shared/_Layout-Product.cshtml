@@ -134,7 +134,7 @@
                         </div>
                         <div class="class__list class-btn item-group ">
                            
-                            <a href="#"> @Html.Action("CategoryPartial", "Category")</a>
+                           @Html.Action("CategoryPartial", "Category")
                              
 
                             
@@ -230,5 +230,6 @@
     @RenderSection("scripts", required: false)
     @RenderSection("endCss", required: false)
     @RenderSection("endJs", required: false)
+    @section endJs{<script src="~/Asset/Js/Product/sidenav-toggle.js"></script>}
 </body>
 </html>
