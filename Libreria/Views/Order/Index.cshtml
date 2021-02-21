@@ -1,13 +1,15 @@
-﻿
+﻿@model List<ShoppingCartViewModel>
+
 @{
     ViewBag.Title = "ShoppingCart";
+    var totalprice = string.Format("{0:N0}", Model.Select(x => x.Price * x.Count).Sum());
 }
 
 @section topCss{
 
     @*Normalize CSS*@
     <link href="~/Asset/Css/ShoppingCart/Normalize.css" rel="stylesheet" />
-    
+
 
     @*ShoppingCart CSS*@
     <link href="~/Asset/Css/ShoppingCart/ShoppingCart.css" rel="stylesheet" />
@@ -61,74 +63,81 @@
                 <div class="col-2 d-none d-lg-flex"></div>
             </div>
 
+
             <div class="product-info_information bg-white p-3">
                 <div class="info-container row">
-                    <div class="col-12 col-lg-6 px-2 px-lg-3 d-flex">
-                        <div class="info-image">
-                            <a href="#">
-                                <img src="https://picsum.photos/110/110/?random=1">
-                            </a>
-                        </div>
-                        <div class="info-description pl-3">
-                            <a href="#">
-                                <span class="product-name font-weight-bold">書名在這裡</span>
-                            </a>
-                            <div class="product-activities mt-1">
-                                <a href="#" class="d-flex">
-                                    <div class="icon-content"></div>
-                                    <div class="activity-content">
-                                        <span class="gold-text ml-1">最近書的活動在這邊</span>
-                                    </div>
+
+                    @foreach (var item in Model)
+                    {
+                        <div class="col-12 col-lg-6 px-2 px-lg-3 d-flex">
+                            <div class="info-image">
+                                <a href="@Url.Action("ProductDetail", "Product", new { id = item.ProductId })">
+                                    <img src="@item.PicUrl">
                                 </a>
                             </div>
-                            <div class="product-activities mt-1">
-                                <a href="#" class="d-flex">
-                                    <div class="icon-content"></div>
-                                    <div class="activity-content">
-                                        <span class="gold-text ml-1">最近書的活動在這邊</span>
-                                    </div>
+                            <div class="info-description pl-3">
+                                <a href="@Url.Action("ProductDetail", "Product", new { id = item.ProductId })">
+                                    <span class="product-name font-weight-bold">@item.ProductName</span>
                                 </a>
+                                <div class="product-activities mt-1">
+                                    <a href="#" class="d-flex">
+                                        <div class="icon-content"></div>
+                                        <div class="activity-content">
+                                            <span class="gold-text ml-1">書的活動在這邊</span>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="product-activities mt-1">
+                                    <a href="#" class="d-flex">
+                                        <div class="icon-content"></div>
+                                        <div class="activity-content">
+                                            <span class="gold-text ml-1">書的活動在這邊</span>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="product-activities mt-1">
+                                    <a href="#" class="d-flex">
+                                        <div class="icon-content"></div>
+                                        <div class="activity-content">
+                                            <span class="gold-text ml-1">書的活動在這邊</span>
+                                        </div>
+                                    </a>
+                                </div>
                             </div>
-                            <div class="product-activities mt-1">
-                                <a href="#" class="d-flex">
-                                    <div class="icon-content"></div>
-                                    <div class="activity-content">
-                                        <span class="gold-text ml-1">最近書的活動在這邊</span>
-                                    </div>
-                                </a>
+                        </div>
+
+                        <div class="offset-8 offset-lg-0 col-4 col-lg-1 p-0 text-lg-center text-right my-auto pr-3 pr-lg-0 pt-2 pt-lg-0">
+                            <span class="info-unitprice english">$@string.Format("{0:N0}", item.Price)</span>
+                        </div>
+
+                        <div class="align-self-center col-8 col-lg-2 mt-1 pl-lg-4 pr-lg-0">
+                            <div class="info-item-count">
+                                <button type="button" class="count-minus">
+                                    <i class="icon icon-mius"></i>
+                                </button>
+                                <input type="number" maxlength="3" class="count-view" value="@item.Count">
+                                <button type="button" class="count-plus">
+                                    <i class="icon icon-plus"></i>
+                                </button>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="offset-8 offset-lg-0 col-4 col-lg-1 p-0 text-lg-center text-right my-auto pr-3 pr-lg-0 pt-2 pt-lg-0">
-                        <span class="info-unitprice english">$300</span>
-                    </div>
-
-                    <div class="align-self-center col-8 col-lg-2 mt-1 pl-lg-4 pr-lg-0">
-                        <div class="info-item-count">
-                            <button type="button" class="count-minus">
-                                <i class="icon icon-mius"></i>
-                            </button>
-                            <input type="number" maxlength="3" class="count-view">
-                            <button type="button" class="count-plus">
-                                <i class="icon icon-plus"></i>
-                            </button>
+                        <div class="col-4 col-lg-1 pr-3 text-right my-auto">
+                            <span class="info-totalprice english">$@string.Format("{0:N0}", item.Price * item.Count)</span>
                         </div>
-                    </div>
 
-                    <div class="col-4 col-lg-1 pr-3 text-right my-auto">
-                        <span class="info-totalprice english">$900</span>
-                    </div>
+                        <div class="operation col-12 col-lg-2 p-0 mt-2 pr-2">
+                            <div class="operation-delete py-lg-0">
+                                <button onclick="DeleteCart(@item.ProductId)">删除商品</button>
+                            </div>
 
-                    <div class="operation col-12 col-lg-2 p-0 mt-2 pr-2">
-                        <div class="operation-delete py-lg-0">
-                            <span>删除商品</span>
+                            <div class="split-line"></div>
+                            <div class="operation-favorite py-lg-0">
+                                <span>加入收藏</span>
+                            </div>
                         </div>
-                        <div class="split-line"></div>
-                        <div class="operation-favorite py-lg-0">
-                            <span>加入收藏</span>
-                        </div>
-                    </div>
+                    }
+
                 </div>
 
                 <div class="d-flex row align-items-center pt-2">
@@ -137,10 +146,11 @@
                         <span>商品總計</span>
                     </div>
                     <div class="subtotal-price col-4 col-lg-3">
-                        <span class="subtotal-number english">$900</span>
+                        <span class="subtotal-number english">$@totalprice</span>
                     </div>
                 </div>
             </div>
+
         </div>
 
         <div class="promotions outerborder mt-4">
@@ -247,10 +257,10 @@
             <div class="amount-equation px-0 m-0 chinese">
                 <p class="m-0 py-2">
                     商品總計
-                    <span class="english number-color font-weight-bold"> $900 </span>
+                    <span class="english number-color font-weight-bold"> $@totalprice </span>
                     <span class="english number-color font-weight-bold">- </span>
                     優惠活動
-                    <span class="english number-color font-weight-bold"> $100 </span>
+                    <span class="english number-color font-weight-bold"> $0 </span>
                     <span class="english number-color font-weight-bold">- </span>
                     優惠券
                     <span class="english number-color font-weight-bold"> $0</span>
@@ -261,7 +271,7 @@
                 <div class="amount-total_display p-0 m-0 d-flex justify-content-center">
                     <p class="m-0">
                         商品總金額
-                        <span class="english number-color font-weight-bold total-price-size"> $ 800</span>
+                        <span class="english number-color font-weight-bold total-price-size"> $@totalprice</span>
                     </p>
                 </div>
                 <div class="amount-total_button p-0">
@@ -271,5 +281,26 @@
         </div>
     </div>
 </div>
+
+
+@section EndJs{
+    <script>
+        function DeleteCart(id) {
+            let productId = id;
+
+            $.ajax({
+                type: "POST",
+                url: "/Order/DeleteFromCart",
+                data: { ProductId: productId },
+                dataType: "text",
+                success: function () {
+                    location.reload();
+                }
+            });
+        }
+
+    </script>
+    
+}
 
 
