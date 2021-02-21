@@ -79,6 +79,23 @@ namespace Libreria.Service
             return result;
         }
 
+        public OperationResult CreateToCart(FavoriteViewModel favoriteVM)
+        {
+            var result = new OperationResult();
+
+            try
+            {
+                ShoppingCart entity = new ShoppingCart() { ProductId = favoriteVM.ProductId, memberId = 1, Count = 1 }; //memberID后面需要修改成真实资料
+                _DbRepository.Create<ShoppingCart>(entity);
+                result.IsSuccessful = true;
+            }
+            catch
+            {
+                result.IsSuccessful = false;
+            }
+
+            return result;
+        }
 
 
     }

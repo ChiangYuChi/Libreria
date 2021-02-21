@@ -17,7 +17,7 @@ namespace Libreria.Controllers
     {
         private readonly FavoriteService _favoriteService;
         private readonly LibreriaDataModel _libreriaDataModel;
-
+       
 
         public MemberCenterController()
         {
@@ -129,6 +129,23 @@ namespace Libreria.Controllers
         public string AddToFavorite(ProductViewModel ProductVM)
         {
             var result = _favoriteService.Create(ProductVM);
+
+            if (result.IsSuccessful)
+            {
+                return "加入成功!";
+            }
+            else
+            {
+                return "加入失败";
+            }
+        }
+
+
+        [HttpPost]
+        public string AddToCart(FavoriteViewModel favoriteVM)
+        {
+            var result = _favoriteService.CreateToCart(favoriteVM);
+            var CanTakeMemberNameFromThisVariable = System.Web.HttpContext.Current.Session["MemberID"];
 
             if (result.IsSuccessful)
             {
