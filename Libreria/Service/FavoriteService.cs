@@ -16,15 +16,6 @@ namespace Libreria.Service
         {
             _DbRepository = new LibreriaRepository();
         }
-        public List<FavoriteViewModel> GetAll()
-        {
-            return _DbRepository.GetAll<Favorite>().Select(x => new FavoriteViewModel()
-            {
-                FavoriteId = x.FavoriteId.ToString(),
-                ProductId = x.ProductId,
-                memberId = x.memberId,
-            }).ToList();
-        }
 
         public OperationResult Create(ProductViewModel ProductVM)
         {
@@ -32,7 +23,7 @@ namespace Libreria.Service
 
             try
             {
-                Favorite entity = new Favorite() { ProductId = ProductVM.Id, memberId = 1 };
+                Favorite entity = new Favorite() { ProductId = ProductVM.Id,memberId = 1 };
                 _DbRepository.Create<Favorite>(entity);
                 result.IsSuccessful = true;
             }
@@ -43,7 +34,29 @@ namespace Libreria.Service
 
             return result;
         }
+        
 
+        public List<FavoriteViewModel> GetAll()
+        {
+            var result = (from f in _DbRepository.GetAll<Favorite>()
+                          join p in _DbRepository.GetAll<Product>()
+                          on f.ProductId equals p.ProductId
+                          join s in _DbRepository.GetAll<Supplier>()
+                          on p.SupplierId equals s.SupplierId
+                          join v in _DbRepository.GetAll<Preview>()
+                          on p.ProductId equals v.ProductId
+                          where v.Sort == 0
+                          select new FavoriteViewModel()
+                          {
+                              Name = p.ProductName,
+                              Author = p.Author,
+                              Supplier = s.Name,
+                              PublishDate = p.PublishDate,
+                              Img = v.ImgUrl
+                          }).ToList();
+
+            return result;
+        }
 
 
     }

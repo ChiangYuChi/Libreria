@@ -10,12 +10,12 @@ using System.Web.Mvc;
 
 namespace Libreria.Controllers
 {
-    [CustomAuthenticationFilter]
+    //[CustomAuthenticationFilter]
     public class MemberCenterController : Controller
     {
         private readonly FavoriteService _favoriteService;
 
-        MemberCenterController()
+        public MemberCenterController()
         {
             _favoriteService = new FavoriteService();
         }
@@ -118,14 +118,14 @@ namespace Libreria.Controllers
 
         public ActionResult Favorite()
         {
-            
-            return View();
+            var result = _favoriteService.GetAll();
+            return View(result);
         }
 
         [HttpPost]
-        public string AddToFavorite(ProductViewModel productVM)
+        public string AddToFavorite(ProductViewModel ProductVM)
         {
-            var result = _favoriteService.Create(productVM);
+            var result = _favoriteService.Create(ProductVM);
 
             if (result.IsSuccessful)
             {
