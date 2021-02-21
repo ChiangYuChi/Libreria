@@ -89,20 +89,10 @@ namespace Libreria.Controllers
         {
             if (ModelState.IsValid)
             {
-                //string memberName = HttpUtility.HtmlEncode(model.memberName); //這是帳號
-                //string MobileNumber = HttpUtility.HtmlEncode(model.MobileNumber);
-                //string HomeNumber = HttpUtility.HtmlEncode(model.HomeNumber);
-                //string Address = HttpUtility.HtmlEncode(model.Address);
-                //string Email = HttpUtility.HtmlEncode(model.Email);
-                //string memberUserName = HttpUtility.HtmlEncode(model.memberUserName);
-                //string memberPassword = HttpUtility.HtmlEncode(model.memberPassword);
-                //string birthday = HttpUtility.HtmlEncode(model.birthday);
-                //string Gender = HttpUtility.HtmlEncode(model.Gender);
-                //string IDnumber = HttpUtility.HtmlEncode(model.IDnumber);
-
+                
                 member member = new member
                 {
-                    memberName = HttpUtility.HtmlEncode(model.memberName),//這是帳號
+                    memberName = HttpUtility.HtmlEncode(model.memberName),
                     MobileNumber = HttpUtility.HtmlEncode(model.MobileNumber),
                     HomeNumber = HttpUtility.HtmlEncode(model.HomeNumber),
                     Address = HttpUtility.HtmlEncode(model.Address),
@@ -110,7 +100,7 @@ namespace Libreria.Controllers
                     memberUserName = HttpUtility.HtmlEncode(model.memberUserName),
                     memberPassword = HttpUtility.HtmlEncode(model.memberPassword),
                     birthday = DateTime.Parse(HttpUtility.HtmlEncode(model.birthday)),
-                    Gender = Int32.Parse(HttpUtility.HtmlEncode(model.Gender)),
+                    Gender = int.Parse(HttpUtility.HtmlEncode(model.Gender)),
                     IDnumber = HttpUtility.HtmlEncode(model.IDnumber)
                 };
                 //EF
@@ -118,7 +108,7 @@ namespace Libreria.Controllers
                 {
                     _libreriaDataModel.members.Add(member);
                     _libreriaDataModel.SaveChanges();
-                    return View("歡迎光臨!");
+                    return Redirect("MemberLogin");
                 }
                 //下列部分需要再處裡
                 catch(Exception ex)

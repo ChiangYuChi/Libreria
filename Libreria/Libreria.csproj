@@ -1139,6 +1139,7 @@
     <Content Include="Views\MemberCenter\MemberRegisterPage.cshtml" />
     <Content Include="Views\MemberCenter\ContactUs.cshtml" />
     <Content Include="Views\MemberCenter\Favorite.cshtml" />
+    <Content Include="Views\MemberLogin\LoginPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Code\" />
