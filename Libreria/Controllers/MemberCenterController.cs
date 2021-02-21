@@ -157,7 +157,7 @@ namespace Libreria.Controllers
         {
             var result = _favoriteService.AddToCart(favoriteVM);
             var CanTakeMemberNameFromThisVariable = System.Web.HttpContext.Current.Session["MemberID"];
-            var result = _favoriteService.Create(productVM);
+            //var result = _favoriteService.Create(productVM);
 
             if (result.IsSuccessful)
             {
