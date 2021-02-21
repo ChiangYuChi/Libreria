@@ -48,6 +48,7 @@ namespace Libreria.Service
                           where v.Sort == 0
                           select new FavoriteViewModel()
                           {
+                              ProductId = p.ProductId,
                               Name = p.ProductName,
                               Author = p.Author,
                               Supplier = s.Name,
@@ -58,6 +59,25 @@ namespace Libreria.Service
             return result;
         }
 
+        public OperationResult AddToCart(FavoriteViewModel favoriteVM)
+        {
+            var result = new OperationResult();
+
+            try
+            {
+                ShoppingCart entity = new ShoppingCart() { ProductId = favoriteVM.ProductId, memberId = 1, Count = 1 }; //memberID后面需要修改成真实资料
+                _DbRepository.Create<ShoppingCart>(entity);
+                result.IsSuccessful = true;
+            }
+            catch
+            {
+                result.IsSuccessful = false;
+            }
+
+            return result;
+        }
+
+       
 
     }
 }

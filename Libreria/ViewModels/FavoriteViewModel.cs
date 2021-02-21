@@ -9,6 +9,7 @@ namespace Libreria.ViewModels
 {
     public class FavoriteViewModel
     {
+        public int ProductId { get; set; }
         public string Name { get; set; }
         public string Img { get; set; }
         public string Author { get; set; }

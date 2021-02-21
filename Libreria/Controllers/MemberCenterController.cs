@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Services.Description;
 
 namespace Libreria.Controllers
 {
@@ -136,5 +137,23 @@ namespace Libreria.Controllers
                 return "加入失败";
             }
         }
+
+        [HttpPost]
+        public string AddToCart(FavoriteViewModel favoriteVM)
+        {
+            var result = _favoriteService.AddToCart(favoriteVM);
+
+            if (result.IsSuccessful)
+            {
+                return "加入成功!";
+            }
+            else
+            {
+                return "加入失败";
+            }
+        }
+
+        
+       
     }
 }
