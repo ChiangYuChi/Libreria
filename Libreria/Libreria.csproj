@@ -1134,6 +1134,7 @@
     <Content Include="Views\Product\Test.cshtml" />
     <Content Include="Views\MemberCenter\MemberRegisterPage.cshtml" />
     <Content Include="Views\MemberCenter\ContactUs.cshtml" />
+    <Content Include="Views\MemberCenter\Favorite.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
