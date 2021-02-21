@@ -232,6 +232,7 @@
     <Compile Include="Controllers\ExhibitionController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MemberApiController.cs" />
     <Compile Include="Controllers\MemberCenterController.cs" />
     <Compile Include="Controllers\MemberLoginController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
@@ -277,6 +278,7 @@
     <Compile Include="Repository\LibreriaRepository.cs" />
     <Compile Include="Service\CategoryService.cs" />
     <Compile Include="Service\ExhibitionService.cs" />
+    <Compile Include="Service\MemberLoginService.cs" />
     <Compile Include="Service\FavoriteService.cs" />
     <Compile Include="Service\OperationResult.cs" />
     <Compile Include="Service\OrderService.cs" />
@@ -287,6 +289,8 @@
     <Compile Include="ViewModels\apibase\ApiResult.cs" />
     <Compile Include="ViewModels\CategoryViewModel.cs" />
     <Compile Include="ViewModels\FavoriteViewModel.cs" />
+    <Compile Include="ViewModels\MemberLoginViewModel.cs" />
+    <Compile Include="ViewModels\MemberViewModel.cs" />
     <Compile Include="ViewModels\OrderViewModel.cs" />
     <Compile Include="ViewModels\ExhibitionVIewModel.cs" />
     <Compile Include="ViewModels\ProductViewModel.cs" />
@@ -1143,8 +1147,11 @@
     <Content Include="Views\Product\PromoteTodayPartial.cshtml" />
     <Content Include="Views\Product\PromoteByEditor.cshtml" />
     <Content Include="Views\Product\PromoteMajor.cshtml" />
+    <Content Include="Views\MemberCenter\ContactUs.cshtml" />
+    <Content Include="Views\MemberCenter\Favorite.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="App_Code\" />
     <Folder Include="App_Data\" />
     <Folder Include="Asset\Js\common\" />
     <Folder Include="Asset\Js\Index\" />

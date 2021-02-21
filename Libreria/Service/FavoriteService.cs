@@ -17,37 +17,67 @@ namespace Libreria.Service
             _DbRepository = new LibreriaRepository();
         }
 
-        public FavoriteViewModel GetById(int id)
+        public OperationResult Create(ProductViewModel ProductVM)
         {
-            var result = (from p in _DbRepository.GetAll<Product>()
-                          join s in _DbRepository.GetAll<Supplier>()                          
+            var result = new OperationResult();
+
+            try
+            {
+                Favorite entity = new Favorite() { ProductId = ProductVM.Id,memberId = 1 };
+                _DbRepository.Create<Favorite>(entity);
+                result.IsSuccessful = true;
+            }
+            catch
+            {
+                result.IsSuccessful = false;
+            }
+
+            return result;
+        }
+        
+
+        public List<FavoriteViewModel> GetAll()
+        {
+            var result = (from f in _DbRepository.GetAll<Favorite>()
+                          join p in _DbRepository.GetAll<Product>()
+                          on f.ProductId equals p.ProductId
+                          join s in _DbRepository.GetAll<Supplier>()
                           on p.SupplierId equals s.SupplierId
-                          join w in _DbRepository.GetAll<Preview>()
-                          on p.ProductId equals w.ProductId
-                          where p.ProductId == id
+                          join v in _DbRepository.GetAll<Preview>()
+                          on p.ProductId equals v.ProductId
+                          where v.Sort == 0
                           select new FavoriteViewModel()
                           {
-                              Id = p.ProductId,
+                              ProductId = p.ProductId,
                               Name = p.ProductName,
                               Author = p.Author,
-                              SupName = s.Name,
-                              PublishDate  = p.PublishDate
-                          }).FirstOrDefault();
+                              Supplier = s.Name,
+                              PublishDate = p.PublishDate,
+                              Img = v.ImgUrl
+                          }).ToList();
 
-            var PreviewList = _DbRepository.GetAll<Preview>()
-                .Where(x => x.ProductId == id)
-                .OrderBy(x => x.Sort)
-                .ToList();
+            return result;
+        }
+
+        public OperationResult AddToCart(FavoriteViewModel favoriteVM)
+        {
+            var result = new OperationResult();
 
             foreach (var item in PreviewList)
             {
-                if (item.Sort == 0)
-                {
-                    result.Pic = item.ImgUrl;
-                }
-               
+                ShoppingCart entity = new ShoppingCart() { ProductId = favoriteVM.ProductId, memberId = 1, Count = 1 }; //memberID后面需要修改成真实资料
+                _DbRepository.Create<ShoppingCart>(entity);
+                result.IsSuccessful = true;
             }
-                return result;
+            catch
+            {
+                result.IsSuccessful = false;
+            }
+
+            return result;
         }
+
+       
+
     }
 }

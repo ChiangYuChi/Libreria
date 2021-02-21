@@ -66,7 +66,7 @@
                                                 @item.Author
                                             </div>
                                             <button class="cbp-vm-icon cbp-vm-add" onclick="AddCart(@item.Id)">加入購物車</button>
-                                            <a class="wish-list " href="#"><i class="fas fa-heart"></i></a>
+                                            <a class="wish-list " onclick="AddFavorite(@item.Id)"><i class="fas fa-heart"></i></a>
                                         </li>
 
                                     }
@@ -99,6 +99,21 @@
                 type: "POST",
                 url: "/Order/AddToCart",
                 data: { Id: productId },
+                dataType: "text",
+                success: function (response) {
+                    alert(response);
+                    $("#MyCart").text("購物車(" + response + ")");
+                }
+            });
+        }
+
+        function AddFavorite(f) {
+            let ids = f;
+
+            $.ajax({
+                type: "POST",
+                url: "/MemberCenter/AddToFavorite",
+                data: { Id: ids },
                 dataType: "text",
                 success: function (response) {
                     alert(response);

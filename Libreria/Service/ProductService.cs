@@ -104,6 +104,7 @@ namespace Libreria.Service
                               Introduction = p.Introduction,
                               MainUrl = v.ImgUrl,
                               CategoryName = c.Name
+
                           }).ToList();
             
             return result;

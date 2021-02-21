@@ -7,65 +7,32 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Services.Description;
+using static Libreria.Filters.CustomAuthenticationFilter;
 
 namespace Libreria.Controllers
 {
-    [CustomAuthenticationFilter]
+    //[CustomAuthenticationFilter]
     public class MemberCenterController : Controller
     {
         private readonly FavoriteService _favoriteService;
+        private readonly LibreriaDataModel _libreriaDataModel;
 
-        MemberCenterController()
+
+        public MemberCenterController()
         {
             _favoriteService = new FavoriteService();
+            _libreriaDataModel = new LibreriaDataModel();
         }
+
 
         // GET: MemberCenter
 
         public ActionResult MemberLogin()
         {
+
             return View();
         }
-
-        //[HttpPost]
-        //public ActionResult MemberLogin(member model)
-        //{
-        //    if(ModelState.IsValid)
-        //    {
-        //        using (var context = new LibreriaDataModel())
-        //        {
-        //            member member = context.members
-        //                               .Where(u => u.memberId == model.memberId && u.memberPassword== model.memberPassword)
-        //                               .FirstOrDefault();
-        //            if (User != null)
-        //            {
-        //                Session["MemberName"] = member.memberName;
-        //                Session["MemberId"] = member.memberId;
-        //                return RedirectToAction("Index", "Home");
-        //            }
-        //            else
-        //            {
-        //                ModelState.AddModelError("", "帳號或密碼輸入錯誤");
-        //                return View(model);
-        //            }
-
-        //        }
-        //    }
-        //    else
-        //    {
-        //        return View(model);
-        //    }
-
-        //}
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult LogOff()
-        //{
-        //    Session["MemberName"] = string.Empty;
-        //    Session["MemberId"] = string.Empty;
-        //    return RedirectToAction("Index", "Home");
-        //}
-
 
         public ActionResult MemberInfo()
         {
@@ -91,7 +58,7 @@ namespace Libreria.Controllers
         {
             return View();
         }
-
+        [CustomAllowAnonymous]
         public ActionResult Subscribe()
         {
             return View();
@@ -110,18 +77,99 @@ namespace Libreria.Controllers
         {
             return View();
         }
-
+        [HttpGet]
+        [CustomAllowAnonymous]
         public ActionResult MemberRegisterPage()
         {
             return View();
-        }
+        }        
+        [HttpPost]
+        [CustomAllowAnonymous]
+        public ActionResult MemberRegisterPage(MemberViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                //string memberName = HttpUtility.HtmlEncode(model.memberName); //這是帳號
+                //string MobileNumber = HttpUtility.HtmlEncode(model.MobileNumber);
+                //string HomeNumber = HttpUtility.HtmlEncode(model.HomeNumber);
+                //string Address = HttpUtility.HtmlEncode(model.Address);
+                //string Email = HttpUtility.HtmlEncode(model.Email);
+                //string memberUserName = HttpUtility.HtmlEncode(model.memberUserName);
+                //string memberPassword = HttpUtility.HtmlEncode(model.memberPassword);
+                //string birthday = HttpUtility.HtmlEncode(model.birthday);
+                //string Gender = HttpUtility.HtmlEncode(model.Gender);
+                //string IDnumber = HttpUtility.HtmlEncode(model.IDnumber);
 
+                member member = new member
+                {
+                    memberName = HttpUtility.HtmlEncode(model.memberName),//這是帳號
+                    MobileNumber = HttpUtility.HtmlEncode(model.MobileNumber),
+                    HomeNumber = HttpUtility.HtmlEncode(model.HomeNumber),
+                    Address = HttpUtility.HtmlEncode(model.Address),
+                    Email = HttpUtility.HtmlEncode(model.Email),
+                    memberUserName = HttpUtility.HtmlEncode(model.memberUserName),
+                    memberPassword = HttpUtility.HtmlEncode(model.memberPassword),
+                    birthday = DateTime.Parse(HttpUtility.HtmlEncode(model.birthday)),
+                    Gender = Int32.Parse(HttpUtility.HtmlEncode(model.Gender)),
+                    IDnumber = HttpUtility.HtmlEncode(model.IDnumber)
+                };
+                //EF
+                try
+                {
+                    _libreriaDataModel.members.Add(member);
+                    _libreriaDataModel.SaveChanges();
+                    return View("歡迎光臨!");
+                }
+                //下列部分需要再處裡
+                catch(Exception ex)
+                {
+                    return Content("新增帳號失敗:" + ex.ToString());
+                }
+            }
+            return View();
+        }
+        [CustomAllowAnonymous]
         public ActionResult Favorite()
         {
-            
-            return View();
+            var result = _favoriteService.GetAll();
+            return View(result);
+        }
+
+        [HttpPost]
+        public string AddToFavorite(ProductViewModel ProductVM)
+        {
+            var result = _favoriteService.Create(ProductVM);
+
+            if (result.IsSuccessful)
+            {
+                return "加入成功!";
+            }
+            else
+            {
+                return "加入失败";
+            }
+        }
+
+
+
+        [HttpPost]
+        public string AddToCart(FavoriteViewModel favoriteVM)
+        {
+            var result = _favoriteService.AddToCart(favoriteVM);
+            var CanTakeMemberNameFromThisVariable = System.Web.HttpContext.Current.Session["MemberID"];
+            //var result = _favoriteService.Create(productVM);
+
+            if (result.IsSuccessful)
+            {
+                return "加入成功!";
+            }
+            else
+            {
+                return "加入失败";
+            }
         }
 
         
+       
     }
 }

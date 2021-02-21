@@ -1,4 +1,5 @@
-﻿using Libreria.Service;
+﻿using Libreria.Filters;
+using Libreria.Service;
 using Libreria.ViewModels;
 using System;
 using System.Collections.Generic;
