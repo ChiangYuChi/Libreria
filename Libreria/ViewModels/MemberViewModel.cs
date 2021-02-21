@@ -52,9 +52,17 @@ namespace Libreria.ViewModels
         [StringLength(50)]
         public string memberPassword { get; set; }
         /// <summary>
+        /// 確認密碼專用欄位，不影響資料庫
+        /// </summary>
+        [NotMapped]
+        [Compare("memberPassword")]
+        public string confirmPassword { get; set; }
+
+        /// <summary>
         /// 生日
         /// </summary>
-        [Column(TypeName = "date")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)] 
         public DateTime birthday { get; set; }
         /// <summary>
         /// 姓名
