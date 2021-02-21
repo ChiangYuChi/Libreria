@@ -17,13 +17,19 @@ namespace Libreria.Service
             _DbRepository = new LibreriaRepository();
         }
 
+       public List<ShoppingCartViewModel> GetAll()
+        {
+
+            return null;
+        }
+
         public OperationResult Create(ProductViewModel ProductVM)
         {
             var result = new OperationResult();
 
             try
             {
-                ShoppingCart entity = new ShoppingCart() { ProductId = ProductVM.Id, memberId = 1 }; //memberID后面需要修改成真实资料
+                ShoppingCart entity = new ShoppingCart() { ProductId = ProductVM.Id, memberId = 1, Count = 1 }; //memberID后面需要修改成真实资料
                 _DbRepository.Create<ShoppingCart>(entity);
                 result.IsSuccessful = true;
             }
@@ -33,6 +39,11 @@ namespace Libreria.Service
             }
 
             return result;
+        }
+
+        public OperationResult Delete(ProductViewModel ProductVM)
+        {
+            return null;
         }
 
     }
