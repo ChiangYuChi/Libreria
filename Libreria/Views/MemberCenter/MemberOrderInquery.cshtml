@@ -1,4 +1,6 @@
-﻿@section topCss{
+﻿@model List<OrderViewModel>
+
+@section topCss{
     <link href="~/Asset/Css/MemberCenter/member_order_inquery.css" rel="stylesheet" />
     
     }
@@ -80,78 +82,65 @@
             <div class="content__list">
                 <table>
                     <thead>
-                    <th>訂單編號</th>
-                    <th>訂購時間</th>
-                    <th>付款方式</th>
-                    <th>訂單金額</th>
-                    <th>商品名稱</th>
-                    <th>數量</th>
-                    <th>處理狀況</th>
+                        <tr>
+                            <th>訂單編號</th>
+                            <th>訂購時間</th>
+                            <th>付款方式</th>
+                            <th>訂單金額</th>
+                            <th>商品名稱</th>
+                            <th>數量</th>
+                            <th>處理狀況</th>
+                        </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>
-                                <span class="narrow-only">訂單編號: </span>
-                                123-588-3223
-                            </td>
-                            <td>
-                                <span class="narrow-only">訂購時間: </span>
-                                2021-1-30
-                            </td>
-                            <td>
-                                <span class="narrow-only">付款方式: </span>
-                                信用卡
-                            </td>
-                            <td>
-                                <span class="narrow-only">訂單金額: </span>
-                                NT$100
-                            </td>
-                            <td>
-                                <span class="narrow-only">商品名稱: </span>
-                                沙茶：戰後潮汕移民與臺灣飲食變遷
-                                <br />
-                                <span class="narrow-only">商品名稱: </span>
-                                宮前町九十番地（紀念新版）
-                            </td>
-                            <td>
-                                <span class="narrow-only">數量: </span>
-                                1
-                            </td>
-                            <td>
-                                <span class="narrow-only">處理狀況: </span>
-                                準備出貨中
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <span class="narrow-only">訂單編號: </span>
-                                123-777-3889
-                            </td>
-                            <td>
-                                <span class="narrow-only">訂購時間: </span>
-                                2021-1-05
-                            </td>
-                            <td>
-                                <span class="narrow-only">付款方式: </span>
-                                信用卡
-                            </td>
-                            <td>
-                                <span class="narrow-only">訂單金額: </span>
-                                NT$600
-                            </td>
-                            <td>
-                                <span class="narrow-only">商品名稱: </span>
-                                C#
-                            </td>
-                            <td>
-                                <span class="narrow-only">數量: </span>
-                                1
-                            </td>
-                            <td>
-                                <span class="narrow-only">處理狀況: </span>
-                                已到指定商店
-                            </td>
-                        </tr>
+                        @if (Model != null)
+                        {
+                            foreach (var order in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        <!--訂單編號-->
+                                        @order.OrderId
+                                    </td>
+                                    <td>
+                                        <!--訂購時間-->
+                                        @order.ShippingDate
+                                    </td>
+                                    <td>
+                                        <!--付款方式-->
+                                        @order.PaymentMethod
+                                    </td>
+                                    <td>
+                                        <!--訂單金額-->
+                                        @{var sum = 0;}
+                                        @foreach (var orderDetail in order.OrderDetailList)
+                                        {
+                                            sum += (int)orderDetail.UnitPrice*orderDetail.Quantity;
+                                        }
+                                        @sum
+                                    </td>
+                                    <td>
+                                        <!--商品名稱-->
+                                        @foreach (var orderDetail in order.OrderDetailList)
+                                        {
+                                            @orderDetail.ProductName <br />
+                                        }
+                                    </td>
+                                    <td>
+                                        <!--數量-->
+                                        @foreach (var orderDetail in order.OrderDetailList)
+                                        {
+                                            @orderDetail.Quantity <br />
+                                        }
+                                    </td>
+                                    <td>
+                                        <!--處理狀況-->
+                                            @order.Progress
+                                    </td>
+                                </tr>
+                            }
+                        }
+
                     </tbody>
                 </table>
             </div>

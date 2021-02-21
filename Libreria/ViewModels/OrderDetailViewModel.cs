@@ -21,7 +21,5 @@ namespace Libreria.ViewModels
         /// 數量
         /// </summary>
         public int Quantity { get; set; }
-
-        public string Progress { get; set; }
     }
 }

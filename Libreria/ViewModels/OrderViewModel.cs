@@ -94,6 +94,11 @@ namespace Libreria.ViewModels
         /// <summary>
         /// 書
         /// </summary>
-        public List<OrderDetailViewModel> OrderDetailVMList { get; set; }
+        public List<OrderDetailViewModel> OrderDetailList { get; set; }
+
+        /// <summary>
+        /// 出貨進度
+        /// </summary>
+        public string Progress { get; set; }
     }
 }

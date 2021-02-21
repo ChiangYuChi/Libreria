@@ -85,10 +85,14 @@ namespace Libreria.Service
                     SubscriberCellphone = null,
                     SubscriberTelephone = null,
                     SubscriberAddress = null,
-
-                    OrderDetailVMList = GetOrderDetailByOrderId(order.OrderId)
+                    Progress = "準備出貨中",
                 }
             ).ToList();
+
+            foreach (var order in result)
+            {
+                order.OrderDetailList = GetOrderDetailByOrderId(order.OrderId);
+            }
 
             return result;
         }
@@ -114,10 +118,14 @@ namespace Libreria.Service
                     SubscriberCellphone = null,
                     SubscriberTelephone = null,
                     SubscriberAddress = null,
-
-                    OrderDetailVMList = GetOrderDetailByOrderId(order.OrderId),
+                    Progress = "準備出貨中",
                 }
             ).ToList();
+
+            foreach(var order in result)
+            {
+                order.OrderDetailList = GetOrderDetailByOrderId(order.OrderId);
+            }
 
             return result;
         }
@@ -133,7 +141,6 @@ namespace Libreria.Service
                     ProductName = product.ProductName,
                     UnitPrice = product.UnitPrice,
                     Quantity = orderDetail.Quantity,
-                    Progress = null
                 }
             ).ToList();
 
@@ -152,7 +159,6 @@ namespace Libreria.Service
                     ProductName = product.ProductName,
                     UnitPrice = product.UnitPrice,
                     Quantity = orderDetail.Quantity,
-                    Progress = null
                 }
             ).ToList();
 
