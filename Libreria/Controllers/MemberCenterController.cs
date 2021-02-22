@@ -106,7 +106,7 @@ namespace Libreria.Controllers
                 };
                  //var a = member = _libreriaDataModel.members
                  //                  .Where(u => u.memberName == model.memberName)
-                 //                  .FirstOrDefault();
+                 //                  .SingleOrDefault();
 
                 //EF
                 //if (a == null)
