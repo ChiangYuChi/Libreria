@@ -25,8 +25,9 @@ namespace Libreria.Controllers
         /// <returns></returns>
         public ActionResult Index()
         {
+            var result = _shoppingService.GetAll();
 
-            return View();
+            return View(result);
         }
 
         [HttpPost]
@@ -44,6 +45,13 @@ namespace Libreria.Controllers
             }
         }
 
+        [HttpPost]
+        public void DeleteFromCart(ShoppingCartViewModel ShoppingCartVM)
+        {
+            _shoppingService.DeleteFromCart(ShoppingCartVM);
+
+        }
+
         /// <summary>
         /// 購物車明細
         /// </summary>
@@ -58,8 +66,7 @@ namespace Libreria.Controllers
         {
             if (orderVM != null)
             {
-                OrderService orderService = new OrderService();
-                OperationResult result = orderService.Create(orderVM);
+                OperationResult result = _orderService.Create(orderVM);
 
                 if(result.IsSuccessful)
                 {

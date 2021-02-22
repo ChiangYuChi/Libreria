@@ -8,32 +8,33 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Services.Description;
 using System.Web.Mvc.Filters;
 using static Libreria.Filters.CustomAuthenticationFilter;
 
 namespace Libreria.Controllers
 {
-    [CustomAuthenticationFilter]
+    //[CustomAuthenticationFilter]
     public class MemberCenterController : Controller
     {
         private readonly FavoriteService _favoriteService;
         private readonly LibreriaDataModel _libreriaDataModel;
-        
-
+        private readonly OrderService _orderService;
 
         public MemberCenterController()
         {
+            _orderService = new OrderService();
             _favoriteService = new FavoriteService();
             _libreriaDataModel = new LibreriaDataModel();
         }
-
-
-        // GET: MemberCenter
 
         public ActionResult MemberLogin()
         {
             return View();
         }
+
+
+        // GET: MemberCenter
 
         public ActionResult MemberInfo()
         {
@@ -45,9 +46,40 @@ namespace Libreria.Controllers
         }
 
         
-        public ActionResult MemberOrderInquery()
+        public ActionResult MemberOrderInquery(string Inquire, int? TransactionId)
         {
-            return View();
+            int memberId = 1; //假資料
+
+            List<OrderViewModel> result = null;
+            if (Inquire == "history")
+            {
+                result = _orderService.GetBymemberId(memberId);
+            }
+            else if(Inquire == "oneMonth")
+            {
+                result = _orderService.GetBymemberId(memberId, TimeSpan.FromDays(30));
+            }
+            else if (Inquire == "sixMonths")
+            {
+                result = _orderService.GetBymemberId(memberId, TimeSpan.FromDays(30*6));
+            }
+            else if (Inquire == "notShipped")
+            {
+                // 未完成
+                result = _orderService.GetBymemberId(memberId);
+            }
+            else if(Inquire == "return")
+            {
+                //未完成
+                result = null;
+            }
+            else
+            {
+                //預設代入一個月
+                result = _orderService.GetBymemberId(memberId, TimeSpan.FromDays(30));
+            }
+
+            return View(result);
         }
 
         public ActionResult MemberPasswordConfirm()
@@ -135,17 +167,14 @@ namespace Libreria.Controllers
         [CustomAllowAnonymous]
         public ActionResult Favorite()
         {
-            
-            return View();
+            var result = _favoriteService.GetAll();
+            return View(result);
         }
 
-
-
         [HttpPost]
-        public string AddToFavorite(ProductViewModel productVM)
+        public string AddToFavorite(ProductViewModel ProductVM)
         {
-            var CanTakeMemberNameFromThisVariable = System.Web.HttpContext.Current.Session["MemberName"];
-            var result = _favoriteService.Create(productVM);
+            var result = _favoriteService.Create(ProductVM);
 
             if (result.IsSuccessful)
             {
@@ -156,5 +185,36 @@ namespace Libreria.Controllers
                 return "加入失败";
             }
         }
+
+
+        [HttpPost]
+        public string AddToCart(FavoriteViewModel favoriteVM)
+        {
+            var result = _favoriteService.CreateToCart(favoriteVM);
+            var CanTakeMemberNameFromThisVariable = System.Web.HttpContext.Current.Session["MemberID"];
+
+            if (result.IsSuccessful)
+            {
+                return "加入成功!";
+            }
+            else
+            {
+                return "加入失败";
+            }
+        }
+
+
+        public ActionResult ContactUs()
+        {
+            return View();
+        }
+       
+        [HttpPost]
+        public void DeleteFavorite(FavoriteViewModel favoriteVM)
+        {
+            _favoriteService.DeleteFromFavorite(favoriteVM);
+
+        }
+
     }
 }

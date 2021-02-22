@@ -10,7 +10,7 @@
 
 
 
-<div class="container-fluid col-11">
+<div class="container-fluid col-12" style="padding-top: 80px;">
     <section class="product-index">
         <div class="main ">
             <div class="container-fluid">
@@ -20,10 +20,8 @@
                     <a href="#">商品分類</a>
                 </div>
                 <div class="row">
-                    <div class="sidenav d-none d-md-block col-md-2 col-lg-2">
-                        <a href="#">@Html.Action("CategoryPartial", "Category")</a>
-                    </div>
-                    <div class="main-result col-lg-10 flex-wrap">
+               
+                    <div class="main-result col-lg-12 flex-wrap">
 
 
                         <div class="render-section">
@@ -33,7 +31,7 @@
                                     <div class="search-result-status ">
                                         <div class="search-result-num d-flex">
 
-                                            @*<div>共有<span class="search-result-total"></span>筆符合商品</div>*@
+                                            <div>共有<span class="search-result-total"></span>筆商品</div>
                                         </div>
                                     </div>
                                     <a href="#" class="cbp-vm-icon cbp-vm-grid cbp-vm-selected"
@@ -45,14 +43,10 @@
                                 </div>
                                 <div class="sort-box">
                                     <span col-lg-1>排序</span>
-                                    <button class="col-lg-2 sort-btn">最相關</button>
                                     <button class="col-lg-2 sort-btn-price sort-btn" data-type="price">
                                         @Html.ActionLink("價格排序", "ProductCategory", new { CategoryId = ViewBag.CategoryId, Order = 1 })
                                     </button>
                                     <button class="col-lg-2 sort-btn">@Html.ActionLink("上市日期排序", "ProductCategory", new { CategoryId = ViewBag.CategoryId, Order = 2 })</button>
-                                    <button class="col-lg-2 sort-btn">折扣高到低</button>
-
-
                                 </div>
                                 <ul>
                                     @*@Html.Action("ProductPartial")*@
@@ -68,7 +62,7 @@
                                                 @item.Author
                                             </div>
                                             <button class="cbp-vm-icon cbp-vm-add" onclick="AddCart(@item.Id)">加入購物車</button>
-                                            <a class="wish-list " href="#"><i class="fas fa-heart"></i></a>
+                                            <a class="wish-list " onclick="AddFavorite(@item.Id)"><i class="fas fa-heart"></i></a>
                                         </li>
 
                                     }
@@ -101,6 +95,21 @@
                 type: "POST",
                 url: "/Order/AddToCart",
                 data: { Id: productId },
+                dataType: "text",
+                success: function (response) {
+                    alert(response);
+                    $("#MyCart").text("購物車(" + response + ")");
+                }
+            });
+        }
+
+        function AddFavorite(f) {
+            let ids = f;
+
+            $.ajax({
+                type: "POST",
+                url: "/MemberCenter/AddToFavorite",
+                data: { Id: ids },
                 dataType: "text",
                 success: function (response) {
                     alert(response);

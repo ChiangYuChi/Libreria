@@ -1,4 +1,6 @@
-﻿@section topCss{
+﻿@model List<OrderViewModel>
+
+@section topCss{
     <link href="~/Asset/Css/MemberCenter/member_order_inquery.css" rel="stylesheet" />
     
     }
@@ -27,45 +29,48 @@
                     <p>已寄出: <span>0</span></p>
                 </div>
             </div>
-            
-            <div class="order__inquire section-block">
-                <table>
-                    <colgroup>
-                        <col width=15%>
-                        <col width=85%>
-                    </colgroup>
-                    <tbody>
-                        <tr>
-                            <th>查詢條件</th>
-                            <td>
-                                <input type="radio" name="inquire" value="one-month" id="one-month" checked>
-                                <label for="one-month">一個月內訂單</label>
-                                <input type="radio" name="inquire" value="not-Shipped" id="not-Shipped">
-                                <label for="not-Shipped">未出貨訂單</label>
-                                <input type="radio" name="inquire" value="return" id="return">
-                                <label for="return">退換貨訂單</label>
-                                <input type="radio" name="inquire" value="six-months" id="six-months">
-                                <label for="six-months">六個月內訂單(含出貨後)</label>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>訂單編號</th>
-                            <td>
-                                <input type="radio" name="inquire" value="transa-ctionid" id="transa-ctionid_radio">
-                                <label for="transa-ctionid_radio">&nbsp;</label>
-                                <input type="text" id="transa-ctionid" name="transa-ctionid" maxlength="" minlength="">
 
-                            </td>
-                            </td>
-                        </tr>
-                    </tbody>
+            <form method="get">
+                <div class="order__inquire section-block">
+                    <table>
+                        <colgroup>
+                            <col width=15%>
+                            <col width=85%>
+                        </colgroup>
+                        <tbody>
+                            <tr>
+                                <th>查詢條件</th>
+                                <td>
+                                    <input type="radio" name="Inquire" value="oneMonth" id="one-month" checked>
+                                    <label for="one-month">一個月內訂單</label>
+                                    <input type="radio" name="Inquire" value="notShipped" id="not-Shipped">
+                                    <label for="not-Shipped">未出貨訂單</label>
+                                    <input type="radio" name="Inquire" value="return" id="return">
+                                    <label for="return">退換貨訂單</label>
+                                    <input type="radio" name="Inquire" value="sixMonths" id="six-months">
+                                    <label for="six-months">六個月內訂單(含出貨後)</label>
+                                    <input type="radio" name="Inquire" value="history" id="history">
+                                    <label for="history">所有訂單</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>訂單編號</th>
+                                <td>
+                                    <input type="radio" name="Inquire" value="transactionId" id="transa-ctionid_radio" >
+                                    <label for="transa-ctionid_radio">&nbsp;</label>
+                                    <input type="number" id="transa-ctionid" name="TransactionId" maxlength="" minlength="">
 
-                </table>
-                <p>目前僅提供六個月內的交易資料，若您欲查詢六個月前的資料，請您與<a href="#">客服中心</a>聯繫</p>
-                <div class="inquire__btn">
-                    <button>查詢</button>
+                                </td>
+                            </tr>
+                        </tbody>
+
+                    </table>
+                    <p>目前僅提供六個月內的交易資料，若您欲查詢六個月前的資料，請您與<a href="#">客服中心</a>聯繫</p>
+                    <div class="inquire__btn">
+                        <button type="submit">查詢</button>
+                    </div>
                 </div>
-            </div>
+            </form>
         </div>
         <div class="order__content section-block">
             <div class="content__title decoration">
@@ -77,75 +82,65 @@
             <div class="content__list">
                 <table>
                     <thead>
-                    <th>訂單編號</th>
-                    <th>訂購時間</th>
-                    <th>付款方式</th>
-                    <th>訂單金額</th>
-                    <th>商品名稱</th>
-                    <th>數量</th>
-                    <th>處理狀況</th>
+                        <tr>
+                            <th>訂單編號</th>
+                            <th>訂購時間</th>
+                            <th>付款方式</th>
+                            <th>訂單金額</th>
+                            <th>商品名稱</th>
+                            <th>數量</th>
+                            <th>處理狀況</th>
+                        </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>
-                                <span class="narrow-only">訂單編號: </span>
-                                123-588-3223
-                            </td>
-                            <td>
-                                <span class="narrow-only">訂購時間: </span>
-                                2021-1-30
-                            </td>
-                            <td>
-                                <span class="narrow-only">付款方式: </span>
-                                信用卡
-                            </td>
-                            <td>
-                                <span class="narrow-only">訂單金額: </span>
-                                NT$100
-                            </td>
-                            <td>
-                                <span class="narrow-only">商品名稱: </span>
-                                深入淺出C#
-                            </td>
-                            <td>
-                                <span class="narrow-only">數量: </span>
-                                1
-                            </td>
-                            <td>
-                                <span class="narrow-only">處理狀況: </span>
-                                準備出貨中
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <span class="narrow-only">訂單編號: </span>
-                                123-777-3889
-                            </td>
-                            <td>
-                                <span class="narrow-only">訂購時間: </span>
-                                2021-1-05
-                            </td>
-                            <td>
-                                <span class="narrow-only">付款方式: </span>
-                                信用卡
-                            </td>
-                            <td>
-                                <span class="narrow-only">訂單金額: </span>
-                                NT$600
-                            </td>
-                            <td>
-                                <span class="narrow-only">商品名稱: </span>
-                                C#
-                            </td>
-                            <td>
-                                <span class="narrow-only">數量: </span>
-                                1
-                            </td>
-                            <td>
-                                <span class="narrow-only">處理狀況: </span>
-                                已到指定商店
-                            </td>
-                        </tr>
+                        @if (Model != null)
+                        {
+                            foreach (var order in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        <!--訂單編號-->
+                                        @order.OrderId
+                                    </td>
+                                    <td>
+                                        <!--訂購時間-->
+                                        @order.OrderDate
+                                    </td>
+                                    <td>
+                                        <!--付款方式-->
+                                        @order.PaymentMethod
+                                    </td>
+                                    <td>
+                                        <!--訂單金額-->
+                                        @{var sum = 0;}
+                                        @foreach (var orderDetail in order.OrderDetailList)
+                                        {
+                                            sum += (int)orderDetail.UnitPrice*orderDetail.Quantity;
+                                        }
+                                        @sum
+                                    </td>
+                                    <td>
+                                        <!--商品名稱-->
+                                        @foreach (var orderDetail in order.OrderDetailList)
+                                        {
+                                            @orderDetail.ProductName <br />
+                                        }
+                                    </td>
+                                    <td>
+                                        <!--數量-->
+                                        @foreach (var orderDetail in order.OrderDetailList)
+                                        {
+                                            @orderDetail.Quantity <br />
+                                        }
+                                    </td>
+                                    <td>
+                                        <!--處理狀況-->
+                                            @order.Progress
+                                    </td>
+                                </tr>
+                            }
+                        }
+
                     </tbody>
                 </table>
             </div>

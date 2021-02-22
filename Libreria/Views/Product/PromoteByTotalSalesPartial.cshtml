@@ -1,0 +1,10 @@
+﻿@model  IEnumerable<ProductViewModel>
+
+@foreach (var item in Model)
+{
+
+
+    <a href=" @Url.Action("ProductDetail", "Product", new { id = item.Id,style="text-decoration:none;" }, null)">@item.Name</a>
+
+
+}

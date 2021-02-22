@@ -245,13 +245,13 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\Utility.cs" />
-    <Compile Include="Migrations\202102200730418_InitialDB.cs" />
-    <Compile Include="Migrations\202102200730418_InitialDB.Designer.cs">
-      <DependentUpon>202102200730418_InitialDB.cs</DependentUpon>
+    <Compile Include="Migrations\202102201028530_InitialDB.cs" />
+    <Compile Include="Migrations\202102201028530_InitialDB.Designer.cs">
+      <DependentUpon>202102201028530_InitialDB.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202102200942209_ShoppingCart_add_Count.cs" />
-    <Compile Include="Migrations\202102200942209_ShoppingCart_add_Count.Designer.cs">
-      <DependentUpon>202102200942209_ShoppingCart_add_Count.cs</DependentUpon>
+    <Compile Include="Migrations\202102221105367_Modify_membertable.cs" />
+    <Compile Include="Migrations\202102221105367_Modify_membertable.Designer.cs">
+      <DependentUpon>202102221105367_Modify_membertable.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -266,7 +266,7 @@
     <Compile Include="Models\EntityModel\ExhibitionOrder.cs" />
     <Compile Include="Models\EntityModel\Favorite.cs" />
     <Compile Include="Models\EntityModel\Invoice.cs" />
-    <Compile Include="Models\EntityModel\LibreriaDataModel.cs" />
+    <Compile Include="Repository\DbContext\LibreriaDataModel.cs" />
     <Compile Include="Models\EntityModel\member.cs" />
     <Compile Include="Models\EntityModel\Order.cs" />
     <Compile Include="Models\EntityModel\OrderDetail.cs" />
@@ -295,14 +295,19 @@
     <Compile Include="ViewModels\FavoriteViewModel.cs" />
     <Compile Include="ViewModels\MemberLoginViewModel.cs" />
     <Compile Include="ViewModels\MemberViewModel.cs" />
+    <Compile Include="ViewModels\OrderDetailViewModel.cs" />
     <Compile Include="ViewModels\OrderViewModel.cs" />
     <Compile Include="ViewModels\ExhibitionVIewModel.cs" />
     <Compile Include="ViewModels\ProductViewModel.cs" />
+    <Compile Include="ViewModels\ShoppingCartViewModel.cs" />
+    <Compile Include="ViewModels\RentalConfirmViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Asset\Css\AboutUs\AboutUs.css" />
     <Content Include="Asset\Css\Exhibition\Exhibition.css" />
     <Content Include="Asset\Css\MemberCenter\Favorate.css" />
+    <Content Include="Asset\Css\Layout\Sidebar.css" />
+    <Content Include="Asset\Css\MemberCenter\Favorite.css" />
     <Content Include="Asset\Css\PartialView\category-sidenav.css" />
     <Content Include="Asset\Css\Home-Index\Home.css" />
     <Content Include="Asset\Css\Home-Index\slick-theme.min.css" />
@@ -324,6 +329,7 @@
     <Content Include="Asset\Css\Product\product_index.css" />
     <Content Include="Asset\Css\MemberLogin\member-login.css" />
     <Content Include="Asset\Css\Product\swiper.css" />
+    <Content Include="Asset\Css\Rental\Rental_Confirm.css" />
     <Content Include="Asset\Css\Rental\Rental_index.css" />
     <Content Include="Asset\Css\ShoppingCart\Normalize.css" />
     <Content Include="Asset\Css\ShoppingCart\OrderDetail.css" />
@@ -349,6 +355,7 @@
     <Content Include="Asset\Image\AboutUs\icon_09.png" />
     <Content Include="Asset\Image\AboutUs\icon_10.png" />
     <Content Include="Asset\Image\AboutUs\TopImage.jpg" />
+    <Content Include="Asset\Image\detail-cover.png" />
     <Content Include="Asset\Image\Home\0vvet556xwdbjdmchaggwfya1g34yw9u_1400x800.jpg" />
     <Content Include="Asset\Image\Home\Libreria-SCA-8287_Iwan-Baan_Web.jpg" />
     <Content Include="Asset\Image\Home\Libreria-SCA-8599-credit-Iwan-Baan-scaled.jpg" />
@@ -896,14 +903,16 @@
     <Content Include="Asset\Css\ContactService\ContactService.css" />
     <Content Include="Asset\Css\Member\Member.css" />
     <Content Include="Asset\Js\ContactService\ContactService.js" />
-    <Content Include="Asset\Js\MemberCenter\Favorate.js" />
+    <Content Include="Asset\Js\MemberCenter\Favorite.js" />
     <Content Include="Asset\Js\MemberCenter\subscribe.js" />
     <Content Include="Asset\Js\Order\OrderDetail.js" />
     <Content Include="Asset\Js\Product\book-reviewer.js" />
     <Content Include="Asset\Js\MemberCenter\MemberRegisterPage.js" />
     <Content Include="Asset\Js\Product\ProductCategory.js" />
     <Content Include="Asset\Js\Product\ProductIndex.js" />
+    <Content Include="Asset\Js\Product\sidenav-toggle.js" />
     <Content Include="Asset\Js\Product\swiper.js" />
+    <Content Include="Asset\Js\Rental\Renral_confirm.js" />
     <Content Include="Asset\Js\Rental\Rental_index.js" />
     <Content Include="Asset\Js\ShoppingCart\OrderDetail.js" />
     <Content Include="Asset\Js\Home-Index\slick.min.js" />
@@ -1110,7 +1119,6 @@
     <Content Include="Views\MemberCenter\MemberLogin.cshtml" />
     <Content Include="Views\Shared\IndexLayout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Shared\_Layout-Product.cshtml" />
     <Content Include="Views\Order\Index.cshtml" />
     <Content Include="Views\Order\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_OrderLayout.cshtml" />
@@ -1128,7 +1136,6 @@
     <Content Include="Views\AboutUs\Index.cshtml" />
     <Content Include="Views\Exhibition\Index.cshtml" />
     <Content Include="Views\Product\ProductCategory.cshtml" />
-    <Content Include="Views\Category\Index.cshtml" />
     <Content Include="Views\Category\CategoryPartial.cshtml" />
     <Content Include="Views\Product\ProductPartial.cshtml" />
     <Content Include="Views\Product\ProductDetail.cshtml" />
@@ -1137,11 +1144,21 @@
     <Content Include="Views\MemberCenter\Subscribe_cancel.cshtml" />
     <Content Include="Views\MemberCenter\MemberContact.cshtml" />
     <Content Include="Views\Rental\Index.cshtml" />
+    <Content Include="Views\MemberCenter\Favorite.cshtml" />
     <Content Include="Views\Product\ProductLayoutPartial.cshtml" />
     <Content Include="Views\Product\Test.cshtml" />
     <Content Include="Views\MemberCenter\MemberRegisterPage.cshtml" />
+    <Content Include="Views\Product\PromoteByPublishDatePartial.cshtml" />
+    <Content Include="Views\Product\PromoteByTotalSalesPartial.cshtml" />
+    <Content Include="Views\Shared\_Layout-Product.cshtml" />
+    <Content Include="Views\Product\_ViewStart.cshtml" />
+    <Content Include="Views\Product\PromoteTodayPartial.cshtml" />
+    <Content Include="Views\Product\PromoteByEditor.cshtml" />
+    <Content Include="Views\Product\PromoteMajor.cshtml" />
     <Content Include="Views\MemberCenter\ContactUs.cshtml" />
+    <Content Include="Views\MemberCenter\Favorite.cshtml" />
     <Content Include="Views\MemberLogin\LoginPartial.cshtml" />
+    <Content Include="Views\Rental\Confirm.cshtml" />
     <Content Include="Views\MemberLogin\LoginPartialHambuger.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -1150,7 +1167,6 @@
     <Folder Include="Asset\Js\common\" />
     <Folder Include="Asset\Js\Index\" />
     <Folder Include="Data\" />
-    <Folder Include="Repository\DBContext\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -1164,11 +1180,11 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202102200730418_InitialDB.resx">
-      <DependentUpon>202102200730418_InitialDB.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202102201028530_InitialDB.resx">
+      <DependentUpon>202102201028530_InitialDB.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202102200942209_ShoppingCart_add_Count.resx">
-      <DependentUpon>202102200942209_ShoppingCart_add_Count.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202102221105367_Modify_membertable.resx">
+      <DependentUpon>202102221105367_Modify_membertable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

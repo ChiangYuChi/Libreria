@@ -1,18 +1,11 @@
-﻿.main .product-breadcrumb {
+﻿/*@import <link rel="preconnect" href="https://fonts.gstatic.com"> <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital@1&display=swap" rel="stylesheet"> .main .product-breadcrumb {
     padding: 20px 0;
+}*/
+
+
+.product-index {
+    padding-top: 35px;
 }
-
-    .main .product-breadcrumb a,
-    .main .product-breadcrumb .fas {
-        color: #b0b0b0;
-        font-size: 14px;
-    }
-
-    .main .product-breadcrumb .fas {
-        padding: 0 15px;
-    }
-
-
 
 .main .main-promotion {
     display: -webkit-box;
@@ -79,39 +72,53 @@
             font-size: 16px;
         }
 
-    .main .main-promotion-topic .swiper-container {
-        width: 100%;
+.promotion-discount .title {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    font-size: 16px;
+}
+
+.promotion-discount p {
+    margin: 0;
+    text-align: left;
+    width: 100%;
+}
+
+
+.main .main-promotion-topic .swiper-container {
+    width: 100%;
+}
+
+.main .main-promotion-topic .swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+    /* Center slide text vertically */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+    .main .main-promotion-topic .swiper-slide img {
+        width: 60%;
     }
 
-    .main .main-promotion-topic .swiper-slide {
-        text-align: center;
-        font-size: 18px;
-        background: #fff;
-        /* Center slide text vertically */
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: flex;
-        -webkit-box-pack: center;
-        -ms-flex-pack: center;
-        justify-content: center;
-        -webkit-box-align: center;
-        -ms-flex-align: center;
-        align-items: center;
+.main .main-promotion-topic .swiper-pagination {
+    position: absolute;
+    bottom: 0;
+}
+
+    .main .main-promotion-topic .swiper-pagination .swiper-pagination-bullet {
+        padding: 2px;
+        margin: 2px;
     }
-
-        .main .main-promotion-topic .swiper-slide img {
-            width: 60%;
-        }
-
-    .main .main-promotion-topic .swiper-pagination {
-        position: absolute;
-        bottom: 0;
-    }
-
-        .main .main-promotion-topic .swiper-pagination .swiper-pagination-bullet {
-            padding: 2px;
-            margin: 2px;
-        }
 
 .main .new-product {
     padding: 30px;
@@ -134,7 +141,7 @@
     }
 
     .main .new-product .pic {
-        padding-top: 10px;
+        padding-top: 15px;
         display: -webkit-box;
         display: -ms-flexbox;
         display: flex;
@@ -148,59 +155,186 @@
         text-align: center;
     }
 
-        .main .new-product .pic img {
-            width: 100%;
-        }
+.main .pic .cart {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 100%;
+    transition: all 1s;
+    display: flex;
+    flex-direction: column;
+}
 
-        .main .new-product .pic .promotion-discount {
-            color: #aa3744;
-            font-size: 19px;
-            font-family: 'Noto Sans TC', sans-serif;
-            font-weight: bold;
-        }
-
-            .main .new-product .pic .promotion-discount .title {
-                color: black;
-                font-weight: 400;
-            }
-
-            .main .new-product .pic .promotion-discount span {
-                font-size: 15px;
-                color: black;
-            }
-
-    .main .new-product .major {
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: flex;
-        -webkit-box-orient: horizontal;
-        -webkit-box-direction: normal;
-        -ms-flex-direction: row;
-        flex-direction: row;
+    .main .pic .cart button {
+        width: 80%;
+        margin: 0 auto;
+        border: none;
+        margin-top: 5px;
+        border-radius: 3px;
     }
 
-        .main .new-product .major img {
-            width: 50%;
-            padding-right: 20px;
+    .main .pic .cart .add-to-cart {
+        background-color: #8a6926;
+        color: white;
+        transition: all .3s;
+    }
+
+        .main .pic .cart .add-to-cart:hover {
+            background-color: #b0b0b0;
+            color: white;
         }
 
-        .main .new-product .major .promotion-discount {
-            color: #aa3744;
-            font-size: 25px;
-            font-family: 'Noto Sans TC', sans-serif;
-            font-weight: bold;
+
+
+    .main .pic .cart .add-to-list {
+        background-color: #2a2c27;
+        color: white;
+        transition: all .3s;
+    }
+
+        .main .pic .cart .add-to-list:hover {
+            background-color: #b0b0b0;
+            color: white;
         }
 
-            .main .new-product .major .promotion-discount .title {
-                color: black;
-                font-weight: 400;
-                font-size: 20px;
-            }
+.product {
+    width: 248px;
+    text-align: center;
+    font-family: 'Open Sans', sans-serif;
+    letter-spacing: 1px;
+    -webkit-transition: all 0.1s;
+    -moz-transition: all 0.1s;
+    transition: all 0.1s;
+    border-right: 1px solid #f0f0f0;
+    border-bottom: 1px solid #f0f0f0;
+    cursor: pointer;
+}
 
-            .main .new-product .major .promotion-discount span {
-                font-size: 15px;
-                color: black;
-            }
+    .product:hover {
+        -ms-transform: scale(1.1,1.1); /* IE 9 */
+        -webkit-transform: scale(1.1,1.1); /* Safari */
+        transform: scale(1.1,1.1);
+        -webkit-box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034);
+        -moz-box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034);
+        box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034);
+        z-index: 9999;
+        border-right: 1px solid transparent;
+        border-bottom: 1px solid transparent;
+        cursor: pointer;
+    }
+
+.main .new-product .pic .book-cover {
+    height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+    .main .new-product .pic .book-cover:hover .cart {
+        top: 77%;
+    }
+
+    .main .new-product .pic .book-cover a img {
+        width: 80%;
+        max-width: 100%;
+    }
+
+.main .new-product .pic .promotion-discount {
+    color: #aa3744;
+    font-size: 16px;
+    font-family: 'Noto Sans TC', sans-serif;
+    font-weight: bold;
+}
+
+    .main .new-product .pic .promotion-discount .title {
+        color: black;
+        font-weight: 400;
+        height: 40px;
+        width: 100%;
+        padding-top: 15px;
+    }
+
+        .main .new-product .pic .promotion-discount .title a {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+
+
+
+    .main .new-product .pic .promotion-discount span {
+        font-size: 15px;
+        color: black;
+    }
+
+    .main .new-product .pic .promotion-discount p {
+        font-size: 20px;
+    }
+
+
+
+.main .new-product .major {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    position:relative;
+}
+    .main .new-product .major .pic {
+    
+        padding: 0;
+       
+    }
+
+    .main .new-product .major img {
+       vertical-align:central;
+    }
+
+
+
+.main .major .text {
+    height: 30%;
+  
+    overflow: hidden;
+    overflow: hidden;
+    position:absolute;
+    bottom:0;
+    right:0;
+    
+}
+
+.main .major .title {
+    font-size: 22px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-weight:bold;
+    text-decoration:none;
+}
+
+.main .major .text .description {
+    height: 30%;
+    
+    overflow: hidden;
+   
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 100%;
+    padding-top: 5px;
+}
+
+
+.main .major .text .price {
+    color: #AA3744;
+}
 
 .main .hot-issue {
     padding: 30px;
@@ -216,18 +350,19 @@
         padding-bottom: 10px;
     }
 
-    .main .hot-issue ul {
-        padding: 0;
-    }
 
-        .main .hot-issue ul li {
-            list-style: none;
-            font-size: 20px;
-            font-family: 'Noto Sans TC', sans-serif;
-            color: #5b6252;
-            padding: 5px 0;
-            border-bottom: 1px dotted black;
-        }
+
+    .main .hot-issue a {
+        list-style: none;
+        font-size: 17px;
+        font-family: 'Noto Sans TC', sans-serif;
+        color: #5b6252;
+        padding: 15px 0;
+        border-bottom: 1px dotted black;
+        width: 100%;
+        display: block;
+        text-decoration: none;
+    }
 
     .main .hot-issue .pic {
         width: 100%;

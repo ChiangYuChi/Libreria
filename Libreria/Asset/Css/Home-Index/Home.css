@@ -45,16 +45,17 @@ body {
 }
 
 .seller-pic {
-    width: 230px;
-    height: 250px;
+    width: 250px;
+    height: 280px;
     position: absolute;
-    top: -50px;
-    left: -30px;
+    top: -150px;
+    left: -50px;
     z-index: 5;
 }
 
 .seller-pic img {
     width: 100%;
+    height:100%;
     z-index: 5;
 }
 
@@ -64,15 +65,17 @@ body {
     width: 230px;
     height: 270px;
     margin: auto;
-    margin-top: 40px;
+    margin-top: 150px;
     margin-left: 60px;
+
 }
 
 .seller-text p {
     position: absolute;
     bottom: -10px;
-    padding-left: 20px;
+    padding:20px;
     font-size: 20px;
+    overflow:hidden;
 }
 
 .seller-text p .sale {
@@ -89,6 +92,7 @@ body {
     height: 80px;
     box-sizing: border-box;
     padding: 20px;
+    margin-bottom:20px;
 }
 
 .seller-title h4 {

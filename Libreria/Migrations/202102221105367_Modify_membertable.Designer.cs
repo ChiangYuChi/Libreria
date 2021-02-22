@@ -7,13 +7,13 @@ namespace Libreria.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class InitialDB : IMigrationMetadata
+    public sealed partial class Modify_membertable : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(InitialDB));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Modify_membertable));
         
         string IMigrationMetadata.Id
         {
-            get { return "202102200730418_InitialDB"; }
+            get { return "202102221105367_Modify_membertable"; }
         }
         
         string IMigrationMetadata.Source
