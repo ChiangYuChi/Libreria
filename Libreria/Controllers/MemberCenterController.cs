@@ -172,28 +172,34 @@ namespace Libreria.Controllers
         }
 
 
+        [HttpPost]
+        public string AddToCart(FavoriteViewModel favoriteVM)
+        {
+            var result = _favoriteService.CreateToCart(favoriteVM);
+            var CanTakeMemberNameFromThisVariable = System.Web.HttpContext.Current.Session["MemberID"];
 
-        //[HttpPost]
-        //public string AddToCart(FavoriteViewModel favoriteVM)
-        //{
-        //    var result = _favoriteService.AddToCart(favoriteVM);
-        //    var CanTakeMemberNameFromThisVariable = System.Web.HttpContext.Current.Session["MemberID"];
-        //    //var result = _favoriteService.Create(productVM);
+            if (result.IsSuccessful)
+            {
+                return "加入成功!";
+            }
+            else
+            {
+                return "加入失败";
+            }
+        }
 
-        //    if (result.IsSuccessful)
-        //    {
-        //        return "加入成功!";
-        //    }
-        //    else
-        //    {
-        //        return "加入失败";
-        //    }
-        //}
 
         public ActionResult ContactUs()
         {
             return View();
         }
        
+        [HttpPost]
+        public void DeleteFavorite(FavoriteViewModel favoriteVM)
+        {
+            _favoriteService.DeleteFromFavorite(favoriteVM);
+
+        }
+
     }
 }
