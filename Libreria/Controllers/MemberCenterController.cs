@@ -14,7 +14,7 @@ using static Libreria.Filters.CustomAuthenticationFilter;
 
 namespace Libreria.Controllers
 {
-    //[CustomAuthenticationFilter]
+    [CustomAuthenticationFilter]
     public class MemberCenterController : Controller
     {
         private readonly FavoriteService _favoriteService;
