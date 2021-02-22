@@ -45,7 +45,7 @@
                                     <label for="one-month">一個月內訂單</label>
                                     <input type="radio" name="Inquire" value="notShipped" id="not-Shipped">
                                     <label for="not-Shipped">未出貨訂單</label>
-                                    <input type="radio" name="Inquire" value="Return" id="return">
+                                    <input type="radio" name="Inquire" value="return" id="return">
                                     <label for="return">退換貨訂單</label>
                                     <input type="radio" name="Inquire" value="sixMonths" id="six-months">
                                     <label for="six-months">六個月內訂單(含出貨後)</label>
@@ -104,7 +104,7 @@
                                     </td>
                                     <td>
                                         <!--訂購時間-->
-                                        @order.ShippingDate
+                                        @order.OrderDate
                                     </td>
                                     <td>
                                         <!--付款方式-->

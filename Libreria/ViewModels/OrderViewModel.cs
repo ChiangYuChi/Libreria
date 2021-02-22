@@ -89,7 +89,7 @@ namespace Libreria.ViewModels
         /// <summary>
         /// 訂購日期
         /// </summary>
-        public DateTime ShippingDate { get; set; }
+        public DateTime OrderDate { get; set; }
 
         /// <summary>
         /// 書

@@ -72,7 +72,7 @@ namespace Libreria.Service
                 select new OrderViewModel()
                 {
                     OrderId = order.OrderId,
-                    ShippingDate = order.ShippingDate,
+                    OrderDate = order.OrderDate,
                     PaymentMethod = order.PaymentType,
                     RecipientName = order.ShipName,
                     RecipientCellphone = null,
@@ -105,7 +105,7 @@ namespace Libreria.Service
                 select new OrderViewModel()
                 {
                     OrderId = order.OrderId,
-                    ShippingDate = order.ShippingDate,
+                    OrderDate = order.OrderDate,
                     PaymentMethod = order.PaymentType,
                     RecipientName = order.ShipName,
                     RecipientCellphone = null,
@@ -123,6 +123,87 @@ namespace Libreria.Service
             ).ToList();
 
             foreach(var order in result)
+            {
+                order.OrderDetailList = GetOrderDetailByOrderId(order.OrderId);
+            }
+
+            return result;
+        }
+
+        public List<OrderViewModel> GetBymemberId(int memberId, TimeSpan timeSpan)
+        {
+            if (timeSpan == null)
+            {
+                timeSpan = TimeSpan.MaxValue;
+            }
+
+            DateTime requiredDate = DateTime.Now - timeSpan;
+
+            var result = (
+                from order in _DbRepository.GetAll<Order>()
+                where order.memberId == memberId &&
+                    order.OrderDate > requiredDate
+                select new OrderViewModel()
+                {
+                    OrderId = order.OrderId,
+                    OrderDate = order.OrderDate,
+                    PaymentMethod = order.PaymentType,
+                    RecipientName = order.ShipName,
+                    RecipientCellphone = null,
+                    RecipientTelephone = null,
+                    AddressCitySelect = order.ShipCity,
+                    AddressRegionSelect = order.ShipRegion,
+                    RecipientAddress = order.ShipAddress,
+                    RecipientPostalCode = order.ShipPostalCode,
+                    SubscriberName = null,
+                    SubscriberCellphone = null,
+                    SubscriberTelephone = null,
+                    SubscriberAddress = null,
+                    Progress = "準備出貨中",
+                }
+            ).ToList();
+
+            foreach (var order in result)
+            {
+                order.OrderDetailList = GetOrderDetailByOrderId(order.OrderId);
+            }
+
+            return result;
+        }
+
+        public List<OrderViewModel> GetByTimeSpan(TimeSpan timeSpan)
+        {
+            if (timeSpan == null)
+            {
+                timeSpan = TimeSpan.MaxValue;
+            }
+
+            DateTime requiredDate = DateTime.Now - timeSpan;
+
+            var result = (
+                from order in _DbRepository.GetAll<Order>()
+                where order.OrderDate > requiredDate
+                select new OrderViewModel()
+                {
+                    OrderId = order.OrderId,
+                    OrderDate = order.OrderDate,
+                    PaymentMethod = order.PaymentType,
+                    RecipientName = order.ShipName,
+                    RecipientCellphone = null,
+                    RecipientTelephone = null,
+                    AddressCitySelect = order.ShipCity,
+                    AddressRegionSelect = order.ShipRegion,
+                    RecipientAddress = order.ShipAddress,
+                    RecipientPostalCode = order.ShipPostalCode,
+                    SubscriberName = null,
+                    SubscriberCellphone = null,
+                    SubscriberTelephone = null,
+                    SubscriberAddress = null,
+                    Progress = "準備出貨中",
+                }
+            ).ToList();
+
+            foreach (var order in result)
             {
                 order.OrderDetailList = GetOrderDetailByOrderId(order.OrderId);
             }
