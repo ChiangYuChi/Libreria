@@ -12,7 +12,7 @@ using static Libreria.Filters.CustomAuthenticationFilter;
 
 namespace Libreria.Controllers
 {
-    //[CustomAuthenticationFilter]
+    [CustomAuthenticationFilter]
     public class MemberCenterController : Controller
     {
         private readonly FavoriteService _favoriteService;
@@ -171,22 +171,6 @@ namespace Libreria.Controllers
             }
         }
 
-
-        [HttpPost]
-        public string AddToCart(FavoriteViewModel favoriteVM)
-        {
-            var result = _favoriteService.CreateToCart(favoriteVM);
-            var CanTakeMemberNameFromThisVariable = System.Web.HttpContext.Current.Session["MemberID"];
-
-            if (result.IsSuccessful)
-            {
-                return "加入成功!";
-            }
-            else
-            {
-                return "加入失败";
-            }
-        }
 
 
         public ActionResult ContactUs()
