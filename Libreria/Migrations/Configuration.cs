@@ -1,5 +1,6 @@
 namespace Libreria.Migrations
 {
+    using Libreria.Helpers;
     using Libreria.Models.EntityModel;
     using System;
     using System.Data.Entity;
@@ -29,15 +30,15 @@ namespace Libreria.Migrations
             context.Roles.AddOrUpdate(x => x.RoleID,
                 new Role() { RoleID = 2, RoleName = "Libreria02" });
             context.members.AddOrUpdate(x => x.memberId,
-               new member() { memberId = 3, memberName = "Libreria03", MobileNumber = "0900000003", HomeNumber = "(00)00000003", Address = "3", Email = "Libreria03@gmail.com", memberUserName = "Libreria03", memberPassword = "@Libreria03", IDnumber = "C123456789", RoleId = 3 });
+               new member() { memberId = 3, memberName = "Libreria03", MobileNumber = "0900000003", HomeNumber = "(00)00000003", Address = "3", Email = "Libreria03@gmail.com", memberUserName = "Libreria03", memberPassword = Utility.GetSha512("@Libreria03"), IDnumber = "C123456789", RoleId = 3 });
             context.Roles.AddOrUpdate(x => x.RoleID,
                 new Role() { RoleID = 3, RoleName = "Libreria03" });
             context.members.AddOrUpdate(x => x.memberId,
-               new member() { memberId = 4, memberName = "Libreria04", MobileNumber = "0900000004", HomeNumber = "(00)00000000", Address = "4", Email = "Libreria04@gmail.com", memberUserName = "Libreria04", memberPassword = "@Libreria04", IDnumber = "D123456789", RoleId = 4 });
+               new member() { memberId = 4, memberName = "Libreria04", MobileNumber = "0900000004", HomeNumber = "(00)00000000", Address = "4", Email = "Libreria04@gmail.com", memberUserName = "Libreria04", memberPassword = Utility.GetSha512("@Libreria04"), IDnumber = "D123456789", RoleId = 4 });
             context.Roles.AddOrUpdate(x => x.RoleID,
                 new Role() { RoleID = 4, RoleName = "Libreria04" });
             context.members.AddOrUpdate(x => x.memberId,
-               new member() { memberId = 5, memberName = "Libreria05", MobileNumber = "0900000005", HomeNumber = "(00)00000000", Address = "5", Email = "Libreria05@gmail.com", memberUserName = "Libreria05", memberPassword = "@Libreria05", IDnumber = "E123456789", RoleId = 5 });
+               new member() { memberId = 5, memberName = "Libreria05", MobileNumber = "0900000005", HomeNumber = "(00)00000000", Address = "5", Email = "Libreria05@gmail.com", memberUserName = "Libreria05", memberPassword = Utility.GetSha512("@Libreria05"), IDnumber = "E123456789", RoleId = 5 });
             context.Roles.AddOrUpdate(x => x.RoleID,
                 new Role() { RoleID = 5, RoleName = "Libreria05" });
         }

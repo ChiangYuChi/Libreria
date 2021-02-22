@@ -1159,6 +1159,7 @@
     <Content Include="Views\MemberCenter\Favorite.cshtml" />
     <Content Include="Views\MemberLogin\LoginPartial.cshtml" />
     <Content Include="Views\Rental\Confirm.cshtml" />
+    <Content Include="Views\MemberLogin\LoginPartialHambuger.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Code\" />
