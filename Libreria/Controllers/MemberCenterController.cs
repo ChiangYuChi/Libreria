@@ -17,22 +17,22 @@ namespace Libreria.Controllers
     {
         private readonly FavoriteService _favoriteService;
         private readonly LibreriaDataModel _libreriaDataModel;
-
+        private readonly OrderService _orderService;
 
         public MemberCenterController()
         {
+            _orderService = new OrderService();
             _favoriteService = new FavoriteService();
             _libreriaDataModel = new LibreriaDataModel();
         }
 
-
-        // GET: MemberCenter
-
         public ActionResult MemberLogin()
         {
-
             return View();
         }
+
+
+        // GET: MemberCenter
 
         public ActionResult MemberInfo()
         {
@@ -44,9 +44,40 @@ namespace Libreria.Controllers
         }
 
         
-        public ActionResult MemberOrderInquery()
+        public ActionResult MemberOrderInquery(string Inquire, int? TransactionId)
         {
-            return View();
+            int memberId = 1; //假資料
+
+            List<OrderViewModel> result = null;
+            if (Inquire == "history")
+            {
+                result = _orderService.GetBymemberId(memberId);
+            }
+            else if(Inquire == "oneMonth")
+            {
+                result = _orderService.GetBymemberId(memberId, TimeSpan.FromDays(30));
+            }
+            else if (Inquire == "sixMonths")
+            {
+                result = _orderService.GetBymemberId(memberId, TimeSpan.FromDays(30*6));
+            }
+            else if (Inquire == "notShipped")
+            {
+                // 未完成
+                result = _orderService.GetBymemberId(memberId);
+            }
+            else if(Inquire == "return")
+            {
+                //未完成
+                result = null;
+            }
+            else
+            {
+                //預設代入一個月
+                result = _orderService.GetBymemberId(memberId, TimeSpan.FromDays(30));
+            }
+
+            return View(result);
         }
 
         public ActionResult MemberPasswordConfirm()
@@ -159,7 +190,10 @@ namespace Libreria.Controllers
         //    }
         //}
 
-        
+        public ActionResult ContactUs()
+        {
+            return View();
+        }
        
     }
 }
