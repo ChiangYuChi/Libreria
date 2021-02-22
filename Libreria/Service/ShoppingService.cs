@@ -44,8 +44,12 @@ namespace Libreria.Service
 
             try
             {
-                ShoppingCart entity = new ShoppingCart() { ProductId = ProductVM.Id, memberId = 1, Count = 1 }; //memberID后面需要修改成真实资料
-                _DbRepository.Create<ShoppingCart>(entity);
+                if (_DbRepository.GetAll<ShoppingCart>().Where(x => x.memberId == 1 && x.ProductId == ProductVM.Id).FirstOrDefault() == null)
+                {
+                    ShoppingCart entity = new ShoppingCart() { ProductId = ProductVM.Id, memberId = 1, Count = 1 }; //memberID后面需要修改成真实资料
+                    _DbRepository.Create<ShoppingCart>(entity);
+                }
+
                 result.IsSuccessful = true;
             }
             catch

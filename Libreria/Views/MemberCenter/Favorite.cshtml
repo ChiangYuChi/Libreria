@@ -46,7 +46,7 @@
             </div>
             <div class="pro_btn col-3">
                 <button class="add" onclick="AddCart(@item.ProductId)">加入購物車</button>
-                <button class="del" onclick="Delete(@item.ProductId)">刪除</button>
+                <button class="del" onclick="DeleteFavorite(@item.ProductId)">刪除</button>
             </div>
 
         </div>
@@ -85,16 +85,16 @@
             });
         }
 
-        function Delete(id) {
+        function DeleteFavorite(id) {
             let productId = id;
 
             $.ajax({
                 type: "POST",
-                url: "/MemberCenter/DeleteFav",
+                url: "/MemberCenter/DeleteFavorite",
                 data: { ProductId: productId },
                 dataType: "text",
-                success: function (response) {
-                    alert(response);
+                success: function () {
+                    location.reload();
                 }
             });
         }

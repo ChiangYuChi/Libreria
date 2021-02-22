@@ -1,7 +1,9 @@
-﻿
+﻿@model ExhibitionVIewModel
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    
+    
 }
 <link href="~/Asset/Css/Exhibition/Exhibition.css" rel="stylesheet" />
 
@@ -15,7 +17,7 @@
     <button type="button" class="btn main-btn col-12" data-toggle="modal" data-target="#exampleModal">
 
         <div class="main-Exhibition-pic col-12 ">
-            <img src="https://picsum.photos/600/300/?random=1" class="w-100">
+            <img src="@Model.ExPhoto" class="w-100">
         </div>
     </button>
 
@@ -24,16 +26,16 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">展覽TITLE</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">@Model.ExName</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="ex-Main-pic">
-                    <img src="https://picsum.photos/300/300/?random=1" class="col-12">
+                    <img src="@Model.ExPhoto" class="col-12">
                 </div>
                 <div class="modal-body">
-                    展覽資訊...
+                    @Model.ExHibitionIntro
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -52,15 +54,15 @@
 <div class="container other-exhibition">
     <div class="ex-block-text">
         <p>
-            未來展覽
+            未來展覽 
         </p>
     </div>
     <div class="future-exhibition row col-12">
         <button type="button" class="btn col-sm-12 col-md-6 col-lg-4" data-toggle="modal" data-target="#ex2">
             <div class="card" style="width: 18rem;">
-                <img src="..." class="card-img-top" alt="...">
+                <img src="" class="card-img-top" alt="...">
                 <div class="card-body">
-                    <h5 class="card-title">展覽Title</h5>
+                    <h5 class="card-title">@Model.ExName</h5>
                     <p class="card-text">展覽簡介...</p>
                 </div>
             </div>

@@ -291,10 +291,12 @@
     <Compile Include="ViewModels\FavoriteViewModel.cs" />
     <Compile Include="ViewModels\MemberLoginViewModel.cs" />
     <Compile Include="ViewModels\MemberViewModel.cs" />
+    <Compile Include="ViewModels\OrderDetailViewModel.cs" />
     <Compile Include="ViewModels\OrderViewModel.cs" />
     <Compile Include="ViewModels\ExhibitionVIewModel.cs" />
     <Compile Include="ViewModels\ProductViewModel.cs" />
     <Compile Include="ViewModels\ShoppingCartViewModel.cs" />
+    <Compile Include="ViewModels\RentalConfirmViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Asset\Css\AboutUs\AboutUs.css" />
@@ -323,6 +325,7 @@
     <Content Include="Asset\Css\Product\product_index.css" />
     <Content Include="Asset\Css\MemberLogin\member-login.css" />
     <Content Include="Asset\Css\Product\swiper.css" />
+    <Content Include="Asset\Css\Rental\Rental_Confirm.css" />
     <Content Include="Asset\Css\Rental\Rental_index.css" />
     <Content Include="Asset\Css\ShoppingCart\Normalize.css" />
     <Content Include="Asset\Css\ShoppingCart\OrderDetail.css" />
@@ -905,6 +908,7 @@
     <Content Include="Asset\Js\Product\ProductIndex.js" />
     <Content Include="Asset\Js\Product\sidenav-toggle.js" />
     <Content Include="Asset\Js\Product\swiper.js" />
+    <Content Include="Asset\Js\Rental\Renral_confirm.js" />
     <Content Include="Asset\Js\Rental\Rental_index.js" />
     <Content Include="Asset\Js\ShoppingCart\OrderDetail.js" />
     <Content Include="Asset\Js\Home-Index\slick.min.js" />
@@ -1151,6 +1155,7 @@
     <Content Include="Views\MemberCenter\Favorite.cshtml" />
     <Content Include="Views\MemberLogin\LoginPartial.cshtml" />
     <Content Include="Views\MemberCenter\Favorite.cshtml" />
+    <Content Include="Views\Rental\Confirm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Code\" />
