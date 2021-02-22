@@ -89,9 +89,7 @@ namespace Libreria.Controllers
         public ActionResult MemberRegisterPage(MemberViewModel model)
         {
             if (ModelState.IsValid)
-            {
-                //member membercheck = _libreriaDataModel.members
-             
+            {             
 
                 member member = new member
                 {
@@ -106,13 +104,13 @@ namespace Libreria.Controllers
                     Gender = int.Parse(HttpUtility.HtmlEncode(model.Gender)),
                     IDnumber = HttpUtility.HtmlEncode(model.IDnumber)
                 };
-                 var a = member = _libreriaDataModel.members
-                                   .Where(u => u.memberName == model.memberName)
-                                   .FirstOrDefault();
+                 //var a = member = _libreriaDataModel.members
+                 //                  .Where(u => u.memberName == model.memberName)
+                 //                  .FirstOrDefault();
 
                 //EF
-                if (a == null)
-                {
+                //if (a == null)
+                //{
                     try
                     {
                         _libreriaDataModel.members.Add(member);
@@ -124,12 +122,12 @@ namespace Libreria.Controllers
                     {
                         return Content("新增帳號失敗:" + ex.ToString());
                     }
-                }
-                else
-                {
-                    ModelState.AddModelError("", "*帳號已被使用");
-                    return View(model);
-                }
+                //}
+                //else
+                //{
+                //    ModelState.AddModelError("", "*帳號已被使用");
+                //    return View(model);
+                //}
                 
             }
             return View();

@@ -26,7 +26,7 @@ namespace Libreria.Migrations
             context.Roles.AddOrUpdate(x => x.RoleID,
                 new Role() { RoleID = 1, RoleName = "Libreria01"});
             context.members.AddOrUpdate(x => x.memberId,
-               new member() { memberId = 2, memberName = "Libreria02", MobileNumber = "0900000002", HomeNumber = "(00)00000002", Address = "2", Email = "Libreria02@gmail.com", memberUserName = "Libreria02", memberPassword = Utility.GetSha512("@Libreria02"), IDnumber = "B123456789", RoleId = 2 });
+               new member() { memberId = 2, memberName = "Libreria02", MobileNumber = "0900000002", HomeNumber = "(00)00000002", Address = "2", Email = "Libreria02@gmail.com", memberUserName = "Libreria02", memberPassword = "@Libreria02", IDnumber = "B123456789", RoleId = 2 });
             context.Roles.AddOrUpdate(x => x.RoleID,
                 new Role() { RoleID = 2, RoleName = "Libreria02" });
             context.members.AddOrUpdate(x => x.memberId,
