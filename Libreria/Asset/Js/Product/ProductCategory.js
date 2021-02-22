@@ -1,7 +1,7 @@
-﻿//var bookList = document.querySelectorAll(".book-list");
-//var searchResult = document.querySelector(".search-result-total");
-//searchResult.innerHTML = bookList.length;
-//var sortPriceBtn = document.querySelector(".sort-btn-price");
+﻿var bookList = document.querySelectorAll(".book-list");
+var searchResult = document.querySelector(".search-result-total");
+searchResult.innerHTML = bookList.length;
+var sortPriceBtn = document.querySelector(".sort-btn-price");
 
 
 (function (window) {

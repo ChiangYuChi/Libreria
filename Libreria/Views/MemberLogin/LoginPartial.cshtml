@@ -1,0 +1,18 @@
+﻿@if (!string.IsNullOrEmpty(Convert.ToString(Session["MemberName"])))
+{
+    using (Html.BeginForm("LogOff", "MemberLogin", FormMethod.Post, new { id="logoutForm",@class= "navbar-right nav-link" }))
+    {
+        @Html.AntiForgeryToken()
+            //<li>Hi:@Session["MemberName"]</li>
+            <a href="javascript:document.getElementById('logoutForm').submit()"><i class="fas fa-sign-in-alt"></i> </a>           
+    }
+}
+else
+{
+    <li>
+        <i class="fa-sign-out-alt">
+            @Html.ActionLink("Login", "Index", "MemberLogin", routeValues: null, htmlAttributes: new { id = "loginLink" })
+        </i>
+    </li>
+    
+}

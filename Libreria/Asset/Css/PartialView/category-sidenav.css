@@ -30,6 +30,7 @@
         .sidenav a:nth-of-type(1) {
             background-color: #1a1a1a;
             color: white;
+            display:none;
         }
 
         .sidenav a:last-child {

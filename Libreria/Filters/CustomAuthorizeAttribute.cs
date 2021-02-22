@@ -40,6 +40,7 @@ namespace Libreria.Filters
                 }
             return authorize; 
         }
+
         protected override void HandleUnauthorizedRequest(AuthorizationContext filterContext)
         {
             filterContext.Result = new RedirectToRouteResult(
@@ -50,7 +51,6 @@ namespace Libreria.Filters
                 }
 
              );
-
             
         }
 

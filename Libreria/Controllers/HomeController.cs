@@ -12,16 +12,25 @@ namespace Libreria.Controllers
 {
     public class HomeController : Controller
     {
-        //private readonly ProductService _productService;
+        private readonly ProductService _productService;
         private readonly ExhibitionService _exhibitionService;
         public HomeController()
         {
-            //_productService = new ProductService();
+            _productService = new ProductService();
             _exhibitionService = new ExhibitionService();
         }
         public ActionResult Index()
         {
             var result = _exhibitionService.GetExhibitioning();
+            var result2 = _productService.GetByTotalSalesHome();
+            var result3 = _productService.GetByPublishDateHome();
+
+            ViewBag.TotalSales = result2;
+
+            ViewBag.GetByPublishDateHome = result3;
+
+
+
             return View(result);
         }
 
