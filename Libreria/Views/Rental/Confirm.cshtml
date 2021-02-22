@@ -2,7 +2,7 @@
 @{
     ViewBag.Title = "Confirm";
     Layout = "~/Views/Shared/_Layout.cshtml";
-    
+
 }
 
 @section topCss{
@@ -26,7 +26,10 @@
     <script src="~/Asset/Js/Rental/Renral_confirm.js"></script>
 }
 
-
+@Html.Hidden("StartDate", Model.StartDate.ToString("yyyy/MM/dd"))
+@Html.Hidden("EndDate", Model.EndDate.ToString("yyyy/MM/dd"))
+@Html.Hidden("ExhibitionStartTime", Model.EndDate.ToString("yyyy/MM/dd"))
+@Html.Hidden("ExhibitionEndTime", Model.EndDate.ToString("yyyy/MM/dd"))
 <div class="container Rental mt-3 md-5">
     <div class="row">
         <div class="col-12 col-lg-6">
@@ -41,12 +44,15 @@
                 <form class="needs-validation" novalidate>
                     <div class="form-row">
                         <div class="col-md-5 mb-3">
-                            <label for="validationCustom01">聯絡人姓</label>
-                            <input type="text" class="form-control" id="validationCustom01" required>
+                            <label for="last-name">聯絡人姓</label>
+                            <input type="text" class="form-control" id="last-name" required>
+                            <div class="invalid-feedback">
+                                請輸入姓氏!
+                            </div>
                         </div>
                         <div class="col-md-7 mb-3">
-                            <label for="validationCustom02">名</label>
-                            <input type="text" class="form-control" id="validationCustom02" required>
+                            <label for="first-name">名</label>
+                            <input type="text" class="form-control" id="first-name" required>
                         </div>
                     </div>
                     <div class="form-row">
@@ -58,10 +64,17 @@
                             </div>
                         </div>
                         <div class="col-md-7 mb-3">
-                            <label for="Email">Email</label>
-                            <input type="email" class="form-control" id="Email" required>
+                            <label for="email">Email</label>
+                            <input type="email" class="form-control" id="email" name="Email" required>
                             <div class="invalid-feedback">
                                 請輸入電子郵件!
+                            </div>
+                        </div>
+                        <div class="col-md-12 mb-3">
+                            <label for="exName">展覽名稱</label>
+                            <input type="text" class="form-control" id="exName" required>
+                            <div class="invalid-feedback">
+                                請輸入主辦單位!
                             </div>
                         </div>
                         <div class="col-md-7 mb-3">
@@ -76,8 +89,8 @@
                             <input type="text" class="form-control" id="fare">
                         </div>
                         <div class="form-group col-md-12">
-                            <label for="Introduction">展演簡介</label>
-                            <textarea class="form-control" id="Introduction" rows="3"></textarea>
+                            <label for="introduction">展演簡介</label>
+                            <textarea class="form-control" id="introduction" rows="3"></textarea>
                         </div>
                     </div>
                     <div class="fixd-narrow-only">
@@ -92,7 +105,7 @@
                                 </div>
                             </div>
                         </div>
-                        <button class="btn btn-primary" type="submit">送出預定</button>
+                        <button id="confirm" class="btn btn-primary" type="submit">送出預定</button>
                     </div>
 
                 </form>
@@ -103,20 +116,20 @@
                 <form novalidate>
                     <div class="form-group" id="upload-image">
                         <label for="pic">請上傳展覽宣傳圖片 <span>(尺寸請用300 x 400)</span> </label>
-                        <input type="file" class="form-control-file" accept="image/*">
+                        <input type="file" class="form-control-file" id="pic" accept="image/*">
                     </div>
                 </form>
                 <hr />
                 <div class="Rental__reservation--data">
                     <div class="data-exhibition">
                         <h5>展覽日期</h5>
-                        <p>2021年3月1日—2021年3月2日</p>
-                        <p>時間:9:00-10:30</p>
+                        <p>@Model.ExhibitionStartTime.ToString("yyyy年MM月dd日")-@Model.ExhibitionEndTime.ToString("yyyy年MM月dd日")</p>
+                        <p>時間:@Model.StartTime — @Model.EndTime</p>
                     </div>
                     <hr />
                     <div class="data-lease">
                         <h5>租借日期</h5>
-                        <p>2021年3月1日-2021年3月2日</p>
+                        <p>@Model.StartDate.ToString("yyyy年MM月dd日")—@Model.EndDate.ToString("yyyy年MM月dd日")</p>
                     </div>
                 </div>
                 <hr />

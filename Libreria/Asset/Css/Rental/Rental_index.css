@@ -328,29 +328,29 @@ border: 1px solid rgba(176, 176, 176, 1);
 padding-top: 20px;
 }
 
-.space__check-out--data {
-    display: flex;
-    font-size:17px;
-}
+
 .space__check-out--data div::before {
     content: url('../../Image/Rental/datepicker-icon.svg');
     padding-right: 15px;
 }
 
+.space__check-out--data div {
+    text-align: center;
+    letter-spacing: 5px;
+    font-size: 17px;
+    padding: 10px 0;
+}
 
-.space__check-out--money, .space__check-out--data{
+.space__check-out--money, .space__check-out--data, space__check-out--exhibition-data {
     border-bottom: 1px solid rgba(176, 176, 176, 1);
     padding: 20px 0;
 }
-.space__check-out--time {
+.space__check-out--time, .space__check-out--exhibition-data {
     border-bottom: 1px solid rgba(176, 176, 176, 1);
     padding: 20px 0;
 }
 
-.start-data::after {
-    content: '—';
-    padding: 0 10px;
-}
+
 
 .space__check-out--money {
     line-height: 25px;
@@ -363,26 +363,23 @@ padding-top: 20px;
 .space__check-out--money p + p {
     font-weight: 900;
 }
-.space__check-out--time .custom-select {
-    background:url('../../Image/Rental/timepicker-icon.svg') 1% 50% /12% 50% no-repeat;
+
+.time-group .custom-select {
+    background: url('../../Image/Rental/timepicker-icon.svg') 1% 50% /12% 50% no-repeat;
     border: none;
-    width: 50%;
-    padding-left:25px;
-    margin-left:30px;
-    font-size:20px;
+    width: 100%;
+    padding-left: 40px;
+    margin-left: 30px;
+    font-size: 20px;
+    letter-spacing: 5px;
 }
-.space__check-out--time::after {
-    content: '';
-    position: absolute;
-    width: 20px;
-    height: 1px;
-    background-color: black;
-    top: 205px;
-    left: 150px;
+.time-group .custom-select:focus {
+    border-color: rgba(138, 105, 38, 1) !important;
+    -webkit-box-shadow: none;
+    box-shadow: none;
 }
-.space__check-out--time {
-    display: flex;
-}
+
+
 
 
 
@@ -406,10 +403,6 @@ display: none;
 @media screen and (min-width:768px) {
     .start-data::after{
         display:none;
-    }
-    .space__check-out--data {
-        display: inline;
-        font-size: 17px;
     }
     .space__calendar--item {
         width: 80%;
@@ -436,20 +429,21 @@ display: none;
         color: rgba(138, 105, 38, 1);
     }
 
+    .space__check-out--data div {    
+        font-size: 20px;
+    }
     .space__check-out--money p {
         font-size: 20px;
     }
-    .space__check-out--time::after {
+ /*   .space__check-out--time::after {
         top: 205px;
         left: 200px;
-    }
+    }*/
     .start-data::after{
         padding: 0 40px;
     }
-    .space__check-out--time .custom-select {
-        margin-left: 20px;
-        padding-left: 30px;
-    }
+
+
     .space__check-out--btn {
         display: flex;
         justify-content: flex-end;
@@ -465,6 +459,9 @@ display: none;
         letter-spacing: 2px;
         background-color: rgba(138, 105, 38, 1);
         color: white;
+    }
+    .time-group .custom-select{
+        margin-left:80px;
     }
 }
 
@@ -544,7 +541,13 @@ display: none;
     .space__check-out--btn {
     padding: 20px;
     }
-
+/*    .space__check-out--data {
+        font-size: 20px;
+    }*/
+    .start-data::after {
+        content: '—';
+        padding: 0 10px;
+    }
     .space__check-out--btn a {
     width: 100%;
     }
@@ -571,5 +574,9 @@ display: none;
 
     .space__pic--enlarge-only img + img {
     padding-top: 20px;
+    }
+    .time-group .custom-select{
+        margin-left:40px;
+
     }
 }
