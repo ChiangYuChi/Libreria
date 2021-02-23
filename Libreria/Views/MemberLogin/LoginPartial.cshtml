@@ -1,13 +1,13 @@
 ﻿@if (!string.IsNullOrEmpty(Convert.ToString(Session["MemberName"])))
 {
-    using (Html.BeginForm("LogOff", "MemberLogin", FormMethod.Post, new { id="logoutForm",@class= "navbar-right nav-link" }))
+    using (Html.BeginForm("LogOff", "MemberLogin", FormMethod.Post, new { id="logoutForm",@class= "nav-item" }))
     {
         @Html.AntiForgeryToken()
             //<li>Hi:@Session["MemberName"]</li>
-            <a href="javascript:document.getElementById('logoutForm').submit()"><i class="fas fa-sign-in-alt"></i> </a>           
+            <a href="javascript:document.getElementById('logoutForm').submit()" class="nav-link d-none d-sm-block"><i class="fas fa-sign-in-alt"></i> </a>           
     }
 }
-else
+@*else
 {
     <li>
         <i class="fa-sign-out-alt">
@@ -15,4 +15,4 @@ else
         </i>
     </li>
     
-}
+}*@
