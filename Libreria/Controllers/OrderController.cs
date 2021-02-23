@@ -62,7 +62,7 @@ namespace Libreria.Controllers
         }
 
         [HttpPost]
-        public ActionResult OrderDetail(OrderViewModel orderVM)
+        public ActionResult Checkout(OrderViewModel orderVM)
         {
             if (orderVM != null)
             {

@@ -31,7 +31,7 @@
 
 
 
-<form method="post">
+<form method="post" action="Checkout">
     <div class="container">
         <div class="header">
             <div class="header_step">
@@ -100,8 +100,71 @@
                         <span id="option_txt" class="col-md-11">Libreria門市取貨</span>
                     </label>
                 </div>
-
             </div>
+
+            <!-- 訂購人資料 -->
+            <div class="subscriber_profile">
+                <div class="cart_title">
+                    <div class="subscriber_profile_title cart_titles">
+                        <h2>訂購人資料</h2>
+                    </div>
+                </div>
+                <div class="subscriber_profile_body">
+                    <div class="recipient_profile_name">
+                        <p>姓名</p>
+                        <input type="text" placeholder="姓名" name="SubscriberName" required>
+                    </div>
+                    <div class="recipient_profile_phone">
+                        <p>行動電話</p>
+                        <input type="tel" placeholder="號碼" name="SubscriberCellphone" id="subscriberCellphone" required pattern="\d{10}">
+                    </div>
+                    <div class="recipient_profile_homePhone">
+                        <p>連絡電話</p>
+                        <input type="tel" placeholder="市話" name="SubscriberTelephone" id="subscriberTelephone" required pattern="\d*">
+                    </div>
+                    <div class="recipient_profile_address">
+                        <p>地址</p>
+                        <div class="recipient_profile_select">
+                            <select name="SubscriberAddressCitySelect" id="subscriber_option subscriber_option_counties Region" required>
+                                <option id="taiwanAddressNew" value="">請選擇</option>
+                                <option value="臺北市">臺北市</option> <!--1-->
+                                <option value="新北市">新北市</option> <!--2-->
+                                <option value="桃園市">桃園市</option> <!--3-->
+                                <option value="臺中市">臺中市</option> <!--4-->
+                                <option value="臺南市">臺南市</option> <!--5-->
+                                <option value="高雄市">高雄市</option> <!--6-->
+                                <option value="基隆市">基隆市</option> <!--7-->
+                                <option value="新竹市">新竹市</option> <!--8-->
+                                <option value="嘉義市">嘉義市</option> <!--9-->
+                                <option value="新竹縣">新竹縣</option> <!--10-->
+                                <option value="苗栗縣">苗栗縣</option> <!--11-->
+                                <option value="彰化縣">彰化縣</option> <!--12-->
+                                <option value="南投縣">南投縣</option> <!--13-->
+                                <option value="雲林縣">雲林縣</option> <!--14-->
+                                <option value="嘉義縣">嘉義縣</option> <!--15-->
+                                <option value="屏東縣">屏東縣</option> <!--16-->
+                                <option value="宜蘭縣">宜蘭縣</option> <!--17-->
+                                <option value="花蓮縣">花蓮縣</option> <!--18-->
+                                <option value="臺東縣">臺東縣</option> <!--19-->
+                                <option value="澎湖縣">澎湖縣</option> <!--20-->
+                                <option value="金門縣">金門縣</option> <!--21-->
+                                <option value="連江縣">連江縣</option> <!--22-->
+                            </select>
+                            <select name="SubscriberAddressRegionSelect" id="subscriber_option_district Town" required>
+                                <option value="">請選擇</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="recipient_profile_address_txt">
+                        <input type="text" placeholder="詳細地址" name="SubscriberAddress" required>
+                    </div>
+                    <div class="recipient_profile_postalCode">
+                        <p>郵遞區號</p>
+                        <input type="text" placeholder="郵遞區號" name="SubscriberPostalCode" id="recipientPostalCode" required pattern="\d*">
+                    </div>
+                </div>
+            </div>
+
             <!-- 收件人資料 -->
             <div class="recipient_profile">
                 <div class="cart_title">
@@ -119,13 +182,6 @@
                     <div class="recipient_profile_phone_tel">
                         <div class="recipient_profile_phone">
                             <p>行動電話</p>
-                            <div class="recipient_profile_name_select">
-                                <select class="recipient_profile_select">
-                                    <option>+886(台灣)</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="recipient_profile_name_tel">
                             <input type="tel" placeholder="號碼" name="RecipientCellphone" id="recipientCellphone" required pattern="\d{10}">
                         </div>
                     </div>
@@ -175,32 +231,7 @@
                     </div>
                 </div>
             </div>
-            <!-- 訂購人資料 -->
-            <div class="subscriber_profile">
-                <div class="cart_title">
-                    <div class="subscriber_profile_title cart_titles">
-                        <h2>訂購人資料</h2>
-                    </div>
-                </div>
-                <div class="subscriber_profile_body">
-                    <div class="recipient_profile_name">
-                        <p>姓名</p>
-                        <input type="text" placeholder="姓名" name="SubscriberName" required>
-                    </div>
-                    <div class="recipient_profile_phone">
-                        <p>行動電話</p>
-                        <input type="tel" placeholder="號碼" name="SubscriberCellphone" id="subscriberCellphone" required pattern="\d{10}">
-                    </div>
-                    <div class="recipient_profile_homePhone">
-                        <p>連絡電話</p>
-                        <input type="tel" placeholder="市話" name="SubscriberTelephone" id="subscriberTelephone" required pattern="\d*">
-                    </div>
-                    <div class="recipient_profile_address">
-                        <p>地址</p>
-                        <input type="text" placeholder="詳細地址" name="SubscriberAddress" required>
-                    </div>
-                </div>
-            </div>
+
             <!-- 付款方式 -->
             <div class="payment_options">
                 <div class="cart_title">
@@ -303,26 +334,26 @@
                     </div>
                 </div>
                 @*<div class="cart_details_body_detail">
-                    <div class="cart_details_body">
-                        <div class="cart_details_pic">
-                            <img src="https://i.imgur.com/QCNiHuCl.jpg">
+                        <div class="cart_details_body">
+                            <div class="cart_details_pic">
+                                <img src="https://i.imgur.com/QCNiHuCl.jpg">
+                            </div>
+                            <div class="cart_details_txt">
+                                <p>沙茶：宮前町九十番地（紀念新版）</p>
+                            </div>
+                            <div class="cart_details_price">
+                                <p>$400</p>
+                            </div>
                         </div>
-                        <div class="cart_details_txt">
-                            <p>沙茶：宮前町九十番地（紀念新版）</p>
+                        <div class="cart_detail_quantity">
+                            <p>1</p>
+                            <span>$400</span>
                         </div>
-                        <div class="cart_details_price">
-                            <p>$400</p>
+                        <div class="cart_details_total">
+                            <p>商品金額小計</p>
+                            <span>$1160</span>
                         </div>
-                    </div>
-                    <div class="cart_detail_quantity">
-                        <p>1</p>
-                        <span>$400</span>
-                    </div>
-                    <div class="cart_details_total">
-                        <p>商品金額小計</p>
-                        <span>$1160</span>
-                    </div>
-                </div>*@
+                    </div>*@
             </div>
         </div>
         <!-- 商品折扣 -->

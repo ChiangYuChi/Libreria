@@ -15,6 +15,41 @@ namespace Libreria.ViewModels
         public string DeliveryMethod { get; set; }
 
         /// <summary>
+        /// 訂購人姓名
+        /// </summary>
+        public string SubscriberName { get; set; }
+
+        /// <summary>
+        /// 訂購人行動電話
+        /// </summary>
+        public string SubscriberCellphone { get; set; }
+
+        /// <summary>
+        /// 訂購人室內電話
+        /// </summary>
+        public string SubscriberTelephone { get; set; }
+
+        /// <summary>
+        /// 訂購人縣市
+        /// </summary>
+        public string SubscriberAddressCitySelect { get; set; }
+
+        /// <summary>
+        /// 訂購人轄區
+        /// </summary>
+        public string SubscriberAddressRegionSelect { get; set; }
+
+        /// <summary>
+        /// 訂購人地址
+        /// </summary>
+        public string SubscriberAddress { get; set; }
+
+        /// <summary>
+        /// 訂購人郵遞區號
+        /// </summary>
+        public string SubscriberPostalCode { get; set; }
+
+        /// <summary>
         /// 收件人姓名
         /// </summary>
         public string RecipientName { get; set; }
@@ -49,25 +84,7 @@ namespace Libreria.ViewModels
         /// </summary>
         public string RecipientPostalCode { get; set; }
 
-        /// <summary>
-        /// 訂購人姓名
-        /// </summary>
-        public string SubscriberName { get; set; }
-
-        /// <summary>
-        /// 訂購人行動電話
-        /// </summary>
-        public string SubscriberCellphone { get; set; }
-
-        /// <summary>
-        /// 訂購人室內電話
-        /// </summary>
-        public string SubscriberTelephone { get; set; }
-
-        /// <summary>
-        /// 訂購人地址
-        /// </summary>
-        public string SubscriberAddress { get; set; }
+       
 
         /// <summary>
         /// 付款方式

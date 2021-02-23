@@ -900,6 +900,7 @@
     <Content Include="Asset\Css\Member\Member.css" />
     <Content Include="Asset\Js\ContactService\ContactService.js" />
     <Content Include="Asset\Js\MemberCenter\Favorite.js" />
+    <Content Include="Asset\Js\MemberCenter\member-MyOrder.js" />
     <Content Include="Asset\Js\MemberCenter\subscribe.js" />
     <Content Include="Asset\Js\Order\OrderDetail.js" />
     <Content Include="Asset\Js\Product\book-reviewer.js" />

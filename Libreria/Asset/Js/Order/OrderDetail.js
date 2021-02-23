@@ -1,11 +1,14 @@
 ﻿
 //縣市轄區
-let addressCitySelect = document.getElementById("recipient_option recipient_option_counties Region");
-let addressRegionSelect = document.getElementById("recipient_option_district Town");
+let AddressCitySelect = document.getElementById("recipient_option recipient_option_counties Region");
+let AddressRegionSelect = document.getElementById("recipient_option_district Town");
+let SubscriberAddressCitySelect = document.getElementById("subscriber_option subscriber_option_counties Region");
+let SubscriberAddressRegionSelect = document.getElementById("subscriber_option_district Town");
 
-addressCitySelect.onchange = changeAddressRegion;
+AddressCitySelect.addEventListener("change", function() { changeAddressRegion(AddressCitySelect, AddressRegionSelect) })
+SubscriberAddressCitySelect.addEventListener("change", function () { changeAddressRegion(SubscriberAddressCitySelect, SubscriberAddressRegionSelect) })
 
-function changeAddressRegion() {
+function changeAddressRegion(addressCitySelect, addressRegionSelect) {
     addressRegionSelect.options.length = 0;
     addressRegionSelect.add(new Option("請選擇", ""));
 
