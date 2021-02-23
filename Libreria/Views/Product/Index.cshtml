@@ -1,5 +1,6 @@
 ﻿
 @section topCss{
+    <link href="~/Asset/Css/Product/ShopCartIconPartial.css" rel="stylesheet" />
     <link href="~/Asset/Css/Product/product_index.css" rel="stylesheet" />
     <link href="~/Asset/Css/PartialView/category-sidenav.css" rel="stylesheet" />
     <link href="~/Asset/Css/Product/swiper.css" rel="stylesheet" />
@@ -85,7 +86,7 @@
                             <h4>今日<span>最推薦</span></h4>
                             <div class="swiper-container">
                                 <div class="swiper-wrapper">
-                                 @Html.Action("PromoteTodayPartial")
+                                    @Html.Action("PromoteTodayPartial")
                                 </div>
                                 <div class="swiper-pagination"></div>
                             </div>
@@ -106,7 +107,7 @@
                     </div>
                     <div class="hot-issue col-lg-6">
                         <h3>熱門話題</h3>
-                            @Html.Action("PromoteByTotalSalesPartial")
+                        @Html.Action("PromoteByTotalSalesPartial")
                     </div>
                     <div class="hot-issue col-lg-6">
                         <div class="pic col-lg-12">
@@ -125,6 +126,7 @@
 
 
 @section endJs{
+
     <script src="~/Asset/Js/Product/swiper.js"></script>
     <script>
         var swiper = new Swiper('.swiper-container', {
@@ -133,6 +135,8 @@
             },
         });
     </script>
+
+    <script src="~/Asset/Js/Product/ShopCartIconRartial.js"></script>
 }
 
 
