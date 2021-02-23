@@ -11,7 +11,7 @@ namespace Libreria.Helpers
     {
     
         //加密
-        public string GetSha512(string Sha512Password)
+        public static string GetSha512(string Sha512Password)
         {
             SHA512 sha512 = new SHA512CryptoServiceProvider();
             byte[] source = Encoding.Default.GetBytes(Sha512Password);

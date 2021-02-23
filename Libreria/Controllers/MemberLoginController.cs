@@ -1,4 +1,5 @@
-﻿using Libreria.Models.EntityModel;
+﻿using Libreria.Helpers;
+using Libreria.Models.EntityModel;
 using Libreria.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -25,17 +26,19 @@ namespace Libreria.Controllers
         [HttpPost]
         public ActionResult Index(MemberLoginViewModel model)
         {
-
+            string passwordSha512 = Utility.GetSha512(model.MemberPassword);
             if (ModelState.IsValid)
             {
+
                 member member = _libreriaDataModel.members
-                                               .Where(u => u.memberName == model.MemberName && u.memberPassword == model.MemberPassword)
+                                               .Where(u => u.memberName == model.MemberName && u.memberPassword == passwordSha512)
                                                .FirstOrDefault();
 
                 if (member != null)
                 {
                     Session["MemberName"] = member.memberName;
                     Session["MemberPassword"] = member.memberPassword;
+                    Session["MemberID"] = member.memberId;
                  
 
                     return RedirectToAction("Index", "Home");
@@ -57,6 +60,7 @@ namespace Libreria.Controllers
         {
             Session["MemberName"] = string.Empty;
             Session["MemberPassword"] = string.Empty;
+            Session["MemberID"] = string.Empty;
             return RedirectToAction("Index", "Home");
         }
 

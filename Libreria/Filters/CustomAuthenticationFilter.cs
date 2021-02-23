@@ -30,12 +30,13 @@ namespace Libreria.Filters
                     }
                     );
                 
-                string controllerName = filterContext.RouteData.Values["controller"].ToString();
-                string actionName = filterContext.RouteData.Values["action"].ToString();
+                //string controllerName = filterContext.RouteData.Values["controller"].ToString();
+                //string actionName = filterContext.RouteData.Values["action"].ToString();
                 //var a = HttpContext.Current.Session["MemberID"]; 測試用
             }
 
         }
+
         //ovverride CustomAuthenticationFilter to implement AllowAnonymous
         public class CustomAllowAnonymous : FilterAttribute, IOverrideFilter
         {
