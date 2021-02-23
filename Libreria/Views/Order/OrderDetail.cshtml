@@ -1,4 +1,5 @@
-﻿
+﻿@model List<ShoppingCartViewModel>
+
 @{
     ViewBag.Title = "OrderDetail";
 }
@@ -316,44 +317,26 @@
                         <p>總計</p>
                     </div>
                 </div>
-                <div class="cart_details_body_detail">
-                    <div class="cart_details_body">
-                        <div class="cart_details_pic">
-                            <img src="https://i.imgur.com/vYZ6nOul.jpg">
-                        </div>
-                        <div class="cart_details_txt">
-                            <p>沙茶：戰後潮汕移民與臺灣飲食變遷</p>
-                        </div>
-                        <div class="cart_details_price">
-                            <p>$380</p>
-                        </div>
-                    </div>
-                    <div class="cart_detail_quantity">
-                        <p>2</p>
-                        <span>$760</span>
-                    </div>
-                </div>
-                @*<div class="cart_details_body_detail">
+                @foreach (var shoppingCartVM in Model)
+                {
+                    <div class="cart_details_body_detail">
                         <div class="cart_details_body">
                             <div class="cart_details_pic">
-                                <img src="https://i.imgur.com/QCNiHuCl.jpg">
+                                <img src=@shoppingCartVM.PicUrl>
                             </div>
                             <div class="cart_details_txt">
-                                <p>沙茶：宮前町九十番地（紀念新版）</p>
+                                <p>@shoppingCartVM.ProductName</p>
                             </div>
                             <div class="cart_details_price">
-                                <p>$400</p>
+                                <p>@shoppingCartVM.Price</p>
                             </div>
                         </div>
                         <div class="cart_detail_quantity">
-                            <p>1</p>
-                            <span>$400</span>
+                            <p>@shoppingCartVM.Count</p>
+                            <span>@(shoppingCartVM.Price*shoppingCartVM.Count)</span>
                         </div>
-                        <div class="cart_details_total">
-                            <p>商品金額小計</p>
-                            <span>$1160</span>
-                        </div>
-                    </div>*@
+                    </div>
+                }
             </div>
         </div>
         <!-- 商品折扣 -->
@@ -361,8 +344,12 @@
             <div class="commodity_discount">
                 <div class="commodity_discount_txt">
                     <p>商品小計</p>
-                    @*<span>$1160</span>*@
-                    <span>760</span>
+                    @{decimal PriceSum = 0;}
+                    @foreach (var shoppingCartVM in Model)
+                    {
+                        PriceSum += shoppingCartVM.Price * shoppingCartVM.Count;
+                    }
+                    <span>@PriceSum</span>
                     <span>-</span>
                     <p>優惠活動</p>
                     <span>$0</span>
@@ -381,7 +368,7 @@
                 <div class="commodity_total_txt">
                     <p>商品總金額</p>
                     @*<span>$1210</span>*@
-                    <span>$810</span>
+                    <span>@(PriceSum+50)</span>
                     <button type="submit" id="submit">確認結帳</button>
                 </div>
             </div>

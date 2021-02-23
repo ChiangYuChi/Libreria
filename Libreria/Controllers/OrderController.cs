@@ -59,7 +59,9 @@ namespace Libreria.Controllers
         /// <returns></returns>
         public ActionResult OrderDetail()
         {
-            return View();
+            var result = _shoppingService.GetAll();
+
+            return View(result);
         }
 
         [HttpPost]
