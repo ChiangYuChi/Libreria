@@ -1,5 +1,6 @@
 ﻿using Libreria.Models.EntityModel;
 using Libreria.Repository;
+using Libreria.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +17,7 @@ namespace Libreria.Service
             _DbRepository = new LibreriaRepository();
         }
         
-        public OperationResult ConfirmBooling(Controllers.RentalController.ConfirmBoolingModel model)
+        public OperationResult ConfirmBooling(RentalConfirmViewModel model)
         {
             var result = new OperationResult();
 
@@ -43,7 +44,7 @@ namespace Libreria.Service
                     ExhibitionEndTime = model.ExhibitionEndTime,
                     ExhibitionIntro = model.ExhibitionIntro,
                     MasterUnit = model.MasterUnit,
-                    ExhibitionPrice = model.ExhibitionPrice,
+                    ExhibitionPrice = Convert.ToDecimal(model.ExhibitionPrice),
                     EditModifyDate = DateTime.Now,
                     ExCustomerId = exhibitionCustomer.ExCustomerId,
                     ExPhoto = model.ExPhoto,
@@ -59,6 +60,8 @@ namespace Libreria.Service
 
             return result;
         }
+
+      
     }
     
 }

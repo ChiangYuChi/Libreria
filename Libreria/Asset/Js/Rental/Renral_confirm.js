@@ -17,6 +17,23 @@
     }, false);
 })();
 
+
+
+
+$(document).ready(function () {
+
+    $.validator.addMethod("isChcek", function (value, element) {
+        return $(element).is(':checked');
+    }, '請勾選我同意');
+
+    $('#confirm').click(function () {
+        if ($('#confirmForm').valid()) {
+            $('#confirmForm').submit();
+        }
+    });
+
+})
+
 //上傳圖片顯示
 $('#upload-image input').change(function () {
     let file = $('#upload-image input')[0].files[0];
@@ -25,7 +42,7 @@ $('#upload-image input').change(function () {
         $('#upload-image label').html('');
         $('#upload-image').addClass('upload-image');
         $('#upload-image').css('text-align', 'center');
-        $('.fixd-narrow-only').css('bottom', '-890px');
+        $('.fixd-narrow-only').css('bottom', '-840px');
         $('#upload-image label').css('background-image', 'url("' + e.target.result + '")');
     };
     reader.readAsDataURL(file);
@@ -65,4 +82,4 @@ function ConfirmReservation() {
         alert("預定完成!"); 
     });
 }
-$('#confirm').click(ConfirmReservation)
+//$('#confirm').click(ConfirmReservation)

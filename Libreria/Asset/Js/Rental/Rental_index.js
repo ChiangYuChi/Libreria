@@ -21,7 +21,7 @@ window.onload = () => {
 
 
 
-//產出展覽開始日期
+//產出展覽開始及結束日期
 function generateStartDate(item) {
     let startDate = calender.getPickDateRange().pickStartDate;
     let endDate = calender.getPickDateRange().pickEndDate;
@@ -43,48 +43,34 @@ function generateStartDate(item) {
     });
 }   
 
-//產生展覽結束時間
-function generateEndTime() {
-    let startValue = parseInt(this.value);
-    let endSelect = $(this).closest('div').next('div').find('select[name^=end]')[0];
-    $('option:eq(0)', endSelect).nextAll().remove();
-    for (let i = startValue + 1; i < this.length; i++) {
-        let option = document.createElement("option");
-        option.value = i;
-        option.innerText = this[i].innerText;
-        endSelect.appendChild(option);
-    }
-}
-document.getElementById('start').addEventListener("change", generateEndTime);
-document.getElementById('start-modal').addEventListener("change", generateEndTime);
-
 // 線上預訂
 function bookingOnline() {
-    let pickDateRange = calender.getPickDateRange();
-    let checkOutTimeContainer = $(this).closest('div').prev();
-    let startTime = $('select[name=start-time]', checkOutTimeContainer).find('option:selected').text();
-    let endTime = $('select[name=end-time]', checkOutTimeContainer).find('option:selected').text();
-    let ExhibitionStartTime = $('select[name=start-data]', checkOutTimeContainer.prev()).find('option:selected').val();
-    let ExhibitionEndTime = $('select[name=end-data]', checkOutTimeContainer.prev()).find('option:selected').val();
+    if (calender.getPickDateRange().pickStartDate != null && calender.getPickDateRange().pickEndDate != null && $('#exhibition-startDate').val() != null && $('#exhibition-endDataModel').val() != null) {
+        let pickDateRange = calender.getPickDateRange();
+        let checkOutTimeContainer = $(this).closest('div').prev();
+        let ExhibitionStartTime = $('select[name=start-data]', checkOutTimeContainer).find('option:selected').val();
+        let ExhibitionEndTime = $('select[name=end-data]', checkOutTimeContainer).find('option:selected').val();
 
-    function getInput(name, value) {
-        return $(document.createElement('input')).attr({
-            'type': 'hidden',
-            'name': name,
-            'value': value,
-        });
+        function getInput(name, value) {
+            return $(document.createElement('input')).attr({
+                'type': 'hidden',
+                'name': name,
+                'value': value,
+            });
+        }
+        let form = $(document.createElement('form')).attr({
+            'action': '/Rental/Confirm',
+            'method': 'post',
+        }).append(getInput('ExhibitionStartTime', ExhibitionStartTime))
+            .append(getInput('ExhibitionEndTime', ExhibitionEndTime))
+            .append(getInput('StartDate', pickDateRange.pickStartDate.yyyymmdd()))
+            .append(getInput('EndDate', pickDateRange.pickEndDate.yyyymmdd()))
+        $('body').append(form);
+        form.submit();
+    } else {
+        alert("日期請選取!"); 
     }
-    let form = $(document.createElement('form')).attr({
-        'action': '/Rental/Confirm',
-        'method': 'post',
-    }).append(getInput('ExhibitionStartTime', ExhibitionStartTime))
-        .append(getInput('ExhibitionEndTime', ExhibitionEndTime))
-        .append(getInput('StartDate', pickDateRange.pickStartDate.yyyymmdd()))
-        .append(getInput('EndDate', pickDateRange.pickEndDate.yyyymmdd()))
-        .append(getInput('StartTime', startTime))
-        .append(getInput('EndTime', endTime))
-    $('body').append(form);
-    form.submit();
+    
 }
 $('a[name=bookingOnlineBtn]').click(bookingOnline);
 
@@ -98,11 +84,31 @@ function Calendar() {
     $('.back', container).click(function () {
         currentDate.setMonth(currentDate.getMonth() - 1);
         generateDaysOfWeek();
+
+        
+        $('td', tbody).each(function () {
+            let indexDate = $(this).data('data');
+            if (pickStartDate <= indexDate && indexDate <= pickEndDate) {
+                $(this).addClass('pick-date');
+            }
+        });
+        
+        
+
     });
     // 下個月 
     $('.next', container).click(function () {
         currentDate.setMonth(currentDate.getMonth() + 1);
         generateDaysOfWeek();
+
+       
+        $('td', tbody).each(function () {
+            let indexdate = $(this).data('data');
+            if (pickstartdate <= indexdate && indexdate <= pickenddate) {
+                $(this).addclass('pick-date');
+            }
+        });
+        
     });
     function getFirstDate() {
         // 本月份第一天 
@@ -116,7 +122,7 @@ function Calendar() {
         tbody.innerHTML = '';
         ymText.innerText = `${currentDate.getFullYear()}年${currentDate.getMonth() + 1}月`;
 
-        for (let weekIndex = 0; weekIndex < 5; weekIndex++) {
+        for (let weekIndex = 0; weekIndex < 6; weekIndex++) {
             let tr = document.createElement('tr');
             // 補第一天之前空的td 
             let prevDaysOfWeek = currentDate.getDay();
@@ -152,10 +158,10 @@ function Calendar() {
                     }
 
                     pickStartDate = (pickStartDate) ?? $(this).data('data');
-                     if(pickStartDate != null) {
+                    if (pickStartDate != null) {
                         pickEndDate = $(this).data('data');
                     }
-                    if (pickStartDate != null && pickEndDate != null) {
+                    if (pickStartDate != null && pickEndDate != null ) {
                         $('td', tbody).each(function () {
                             let indexDate = $(this).data('data');
                             if (pickStartDate <= indexDate && indexDate <= pickEndDate) {
@@ -166,8 +172,6 @@ function Calendar() {
                         if (pickStartDate != null && pickEndDate != null && pickStartDate != pickEndDate) {
                             generateStartDate('#exhibition-startDate');
                             generateStartDate('#exhibition-startDateModel');
-                            //document.getElementById('exhibition-startDate').addEventListener("change", generateEndTime);
-                            //document.getElementById('exhibition-startDateModel').addEventListener("change", generateEndTime);
                         }
                     }
                     $('.space__check-out--data .start-data').text(`${pickStartDate.getFullYear()}年${pickStartDate.getMonth() + 1}月${pickStartDate.getDate()}日`);
