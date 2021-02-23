@@ -180,7 +180,7 @@ namespace Libreria.Controllers
         //    {
         //        Favorite fav = new Favorite
         //        {
-        //            ProductId = 
+        //            ProductId =
         //        };
 
         //        favorites.Add(favorite);
