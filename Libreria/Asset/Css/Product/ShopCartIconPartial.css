@@ -148,7 +148,7 @@ body.open .cart {
     -webkit-transition: opacity 250ms ease-in-out, width 0ms ease-in-out 250ms;
     transition: opacity 250ms ease-in-out, width 0ms ease-in-out 250ms;
 }
-/*.shop-cartid-icon {
+.shop-cartid-icon {
     position: fixed;
     right: 60px;
     bottom: 50px;
@@ -157,4 +157,4 @@ body.open .cart {
     border: #ccc solid 1px;
     border-radius: 50%;
     padding: 10px;
-}*/
+}
