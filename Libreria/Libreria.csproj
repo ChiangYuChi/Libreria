@@ -245,13 +245,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\Utility.cs" />
-    <Compile Include="Migrations\202102201028530_InitialDB.cs" />
-    <Compile Include="Migrations\202102201028530_InitialDB.Designer.cs">
-      <DependentUpon>202102201028530_InitialDB.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202102221105367_Modify_membertable.cs" />
-    <Compile Include="Migrations\202102221105367_Modify_membertable.Designer.cs">
-      <DependentUpon>202102221105367_Modify_membertable.cs</DependentUpon>
+    <Compile Include="Migrations\202102230751289_InitialDB.cs" />
+    <Compile Include="Migrations\202102230751289_InitialDB.Designer.cs">
+      <DependentUpon>202102230751289_InitialDB.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -1181,11 +1177,8 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202102201028530_InitialDB.resx">
-      <DependentUpon>202102201028530_InitialDB.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202102221105367_Modify_membertable.resx">
-      <DependentUpon>202102221105367_Modify_membertable.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202102230751289_InitialDB.resx">
+      <DependentUpon>202102230751289_InitialDB.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

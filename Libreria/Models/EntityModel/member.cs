@@ -57,7 +57,6 @@ namespace Libreria.Models.EntityModel
 
         public int? RoleId { get; set; }
 
-
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Favorite> Favorites { get; set; }
 
