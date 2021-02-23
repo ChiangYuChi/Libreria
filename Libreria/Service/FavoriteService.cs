@@ -16,20 +16,13 @@ namespace Libreria.Service
         {
             _DbRepository = new LibreriaRepository();
         }
-
-        
-        
-
-        public List<FavoriteViewModel> GetAll()
+        public List<FavoriteViewModel> GetFavoriteInfo(IEnumerable<int> products)
         {
-            var result = (from f in _DbRepository.GetAll<Favorite>()
-                          join p in _DbRepository.GetAll<Product>()
-                          on f.ProductId equals p.ProductId
-                          join s in _DbRepository.GetAll<Supplier>()
-                          on p.SupplierId equals s.SupplierId
-                          join v in _DbRepository.GetAll<Preview>()
-                          on p.ProductId equals v.ProductId
-                          where v.Sort == 0
+            var result = (
+                          from p in _DbRepository.GetAll<Product>()
+                          join s in _DbRepository.GetAll<Supplier>() on p.SupplierId equals s.SupplierId
+                          join v in _DbRepository.GetAll<Preview>() on p.ProductId equals v.ProductId
+                          where v.Sort == 0 && products.Contains(p.ProductId)
                           select new FavoriteViewModel()
                           {
                               ProductId = p.ProductId,
@@ -50,8 +43,13 @@ namespace Libreria.Service
 
             try
             {
-                Favorite entity = new Favorite() { ProductId = ProductVM.Id, memberId = 1 };
-                _DbRepository.Create<Favorite>(entity);
+                if (_DbRepository.GetAll<Favorite>().Where(x => x.memberId == 1 && x.ProductId == ProductVM.Id).FirstOrDefault() == null)
+                {
+                    Favorite entity = new Favorite() { ProductId = ProductVM.Id, memberId = 1 };
+                    _DbRepository.Create<Favorite>(entity);
+                }
+                    
+
                 result.IsSuccessful = true;
             }
             catch

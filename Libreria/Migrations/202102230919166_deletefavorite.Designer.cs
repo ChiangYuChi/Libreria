@@ -7,13 +7,13 @@ namespace Libreria.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class Modify_membertable : IMigrationMetadata
+    public sealed partial class deletefavorite : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Modify_membertable));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(deletefavorite));
         
         string IMigrationMetadata.Id
         {
-            get { return "202102221105367_Modify_membertable"; }
+            get { return "202102230919166_deletefavorite"; }
         }
         
         string IMigrationMetadata.Source
