@@ -50,8 +50,13 @@ namespace Libreria.Service
 
             try
             {
-                Favorite entity = new Favorite() { ProductId = ProductVM.Id, memberId = 1 };
-                _DbRepository.Create<Favorite>(entity);
+                if (_DbRepository.GetAll<Favorite>().Where(x => x.memberId == 1 && x.ProductId == ProductVM.Id).FirstOrDefault() == null)
+                {
+                    Favorite entity = new Favorite() { ProductId = ProductVM.Id, memberId = 1 };
+                    _DbRepository.Create<Favorite>(entity);
+                }
+                    
+
                 result.IsSuccessful = true;
             }
             catch
