@@ -26,5 +26,27 @@ namespace Libreria.Service
 
             }).ToList();
         }
+        //public MemberLoginViewModel GetMember(MemberLoginViewModel model)
+        //{
+        //    string passwordSha512 = Utility.GetSha512(model.MemberPassword);
+
+        //    try
+        //    {
+        //        if (ModelState.IsValid)
+        //        {
+        //            var result = _libreriaRepository.GetAll<member>().Where(u => u.memberName == model.MemberName && u.memberPassword == passwordSha512)
+        //                                       .FirstOrDefault();
+        //            return result;
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        ex.ToString();
+        //    }
+
+
+        //}
     }
+
+
 }

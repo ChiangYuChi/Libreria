@@ -38,7 +38,7 @@ namespace Libreria.Controllers
                 {
                     Session["MemberName"] = member.memberName;
                     Session["MemberPassword"] = member.memberPassword;
-                 
+                    Session["MemberID"] = member.memberId;
 
                     return RedirectToAction("Index", "Home");
                 }
@@ -59,6 +59,7 @@ namespace Libreria.Controllers
         {
             Session["MemberName"] = string.Empty;
             Session["MemberPassword"] = string.Empty;
+            Session["MemberID"] = string.Empty; 
             return RedirectToAction("Index", "Home");
         }
 
