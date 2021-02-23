@@ -24,39 +24,37 @@
                         <span>▍</span>
                         <span>登入會員</span>
                     </div>
-                    <div class="register">
-                        <span>還不是我們的會員嗎? <a href="../MemberCenter/MemberRegisterPage">註冊會員</a></span>
-                    </div>
                 </div>
                 @using (Html.BeginForm("Index", "MemberLogin", FormMethod.Post, new { @class = "input-group" }))
                 {
                     @Html.AntiForgeryToken()
-          
+
                     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
                     <label>
                         <div class="form-group">
                             @Html.LabelFor(model => model.MemberName, htmlAttributes: new { @class = "control-label col-md-2", @placeholder = "證件號碼/台灣手機/會員卡號/自訂帳號" })
-                            <div class="col-md-10">
+                            <div class="col-md-12">
                                 @Html.TextBoxFor(model => model.MemberName, new { htmlAttributes = new { @class = "form-control" } })
                                 @Html.ValidationMessageFor(model => model.MemberName, "", new { @class = "text-danger" })
                             </div>
                         </div>
                     </label>
                     <label>
-                        <div class="mvc-fix">
-                            <span class="forget-password-span"><a href="#">忘記密碼</a></span> <br />
-                        </div>
                         <div class="form-group">
                             @Html.LabelFor(model => model.MemberPassword, htmlAttributes: new { @class = "control-label col-md-2", @name = "password", @id = "password", @placeholder = "請輸入密碼", type = "password" })
-                            <div class="col-md-10">
+                            <div class="col-md-12">
                                 @Html.PasswordFor(model => model.MemberPassword, new { htmlAttributes = new { @class = "form-control" } })
                                 @Html.ValidationMessageFor(model => model.MemberPassword, "", new { @class = "text-danger" })
                             </div>
                         </div>
+                        <div class="mvc-fix">
+                            <span class="forget-password-span"><a href="#">忘記密碼</a></span> <br />
+                        </div>
                     </label>
-                    <span class="password-wording">※ 申辦會員首次登入預設密碼為西元生日 ex:19880505</span>
-                    <input type="submit" id="login" value="登入"> 
+
+                    <input type="submit" id="login" value="登入" class="col-6">
+                    <a id="login" class="col-6 register" href="../MemberCenter/MemberRegisterPage">註冊會員</a>
                 }
             </div>                
         </div>

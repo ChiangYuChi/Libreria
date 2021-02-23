@@ -19,10 +19,12 @@ namespace Libreria.Service
 
        public List<ShoppingCartViewModel> GetAll()
         {
+            var MemberId = Convert.ToInt32(System.Web.HttpContext.Current.Session["MemberID"]);
+
             var result = (from s in _DbRepository.GetAll<ShoppingCart>()
                          join p in _DbRepository.GetAll<Product>()
                          on s.ProductId equals p.ProductId
-                         where s.memberId == 1
+                         where s.memberId == MemberId
                          join v in _DbRepository.GetAll<Preview>()
                          on s.ProductId equals v.ProductId
                          where v.Sort == 0
@@ -41,12 +43,12 @@ namespace Libreria.Service
         public OperationResult Create(ProductViewModel ProductVM)
         {
             var result = new OperationResult();
-
+            var MemberId = Convert.ToInt32(System.Web.HttpContext.Current.Session["MemberID"]);
             try
             {
-                if (_DbRepository.GetAll<ShoppingCart>().Where(x => x.memberId == 1 && x.ProductId == ProductVM.Id).FirstOrDefault() == null)
+                if (_DbRepository.GetAll<ShoppingCart>().Where(x => x.memberId == MemberId && x.ProductId == ProductVM.Id).FirstOrDefault() == null)
                 {
-                    ShoppingCart entity = new ShoppingCart() { ProductId = ProductVM.Id, memberId = 1, Count = 1 }; //memberID后面需要修改成真实资料
+                    ShoppingCart entity = new ShoppingCart() { ProductId = ProductVM.Id, memberId = MemberId, Count = 1 };
                     _DbRepository.Create<ShoppingCart>(entity);
                 }
 
@@ -63,10 +65,10 @@ namespace Libreria.Service
         public OperationResult DeleteFromCart(ShoppingCartViewModel ShoppingCartVM)
         {
             var result = new OperationResult();
-
+            var MemberId = Convert.ToInt32(System.Web.HttpContext.Current.Session["MemberID"]);
             try
             {
-                _DbRepository.Delete<ShoppingCart>(_DbRepository.GetAll<ShoppingCart>().Where(x => x.ProductId == ShoppingCartVM.ProductId && x.memberId == 1).FirstOrDefault()); //memberID后面需要修改成真实资料
+                _DbRepository.Delete<ShoppingCart>(_DbRepository.GetAll<ShoppingCart>().Where(x => x.ProductId == ShoppingCartVM.ProductId && x.memberId == MemberId).FirstOrDefault());
                 result.IsSuccessful = true;
             }
             catch

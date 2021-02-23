@@ -25,7 +25,7 @@ namespace Libreria
             app.UseCookieAuthentication(new CookieAuthenticationOptions
             {
                 AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie,
-                LoginPath = new PathString("/Account/Login"),
+                LoginPath = new PathString("/MemberLogin"),
                 Provider = new CookieAuthenticationProvider
                 {
                     // 讓應用程式在使用者登入時驗證安全性戳記。
@@ -34,7 +34,7 @@ namespace Libreria
                         validateInterval: TimeSpan.FromMinutes(30),
                         regenerateIdentity: (manager, user) => user.GenerateUserIdentityAsync(manager))
                 }
-            });            
+            });
             app.UseExternalSignInCookie(DefaultAuthenticationTypes.ExternalCookie);
 
             // 讓應用程式在雙因素驗證程序中驗證第二個因素時暫時儲存使用者資訊。

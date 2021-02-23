@@ -469,16 +469,23 @@ body {
   padding: 11px;
   background-color: #8a6926;
   border: none;
-  margin-top: 40px;
+  margin-top: 10px;
   border-radius: 5px;
   font-weight: 400;
   font-family: 'Noto Sans TC', sans-serif;
   color: white;
+  box-sizing:border-box;
+  border:#fff solid 16px;
+  
 }
+.register{
+    text-decoration:none;
+    text-align:center;
+}
+    .register:hover {
+        text-decoration: none;
+    }
 /*# sourceMappingURL=member-login.css.map */
-
-
-
 /* MVC½Õ¾ã */
 .member .row .member-login .input-group label {
     display: block;
@@ -496,5 +503,5 @@ body {
 
 .member .row .member-login .input-group label .forget-password-span{
     position: absolute;
-    right: 5px;
+    right: 18px;
 }
