@@ -164,50 +164,47 @@ namespace Libreria.Controllers
             }
             return View();
         }
-        [CustomAllowAnonymous]
+
+        //[Authorize]
         public ActionResult Favorite()
         {
-            List<FavoriteViewModel> favorite = (List<FavoriteViewModel>)Session["Favorite"];
-            return View(favorite);
+            var favs = ((Session["Favorite"]) == null ? new List<Favorite>() : (List<Favorite>)Session["Favorite"]).Select(x => x.ProductId);
+            var result = _favoriteService.GetFavoriteInfo(favs);
+            return View(result);
         }
 
-        //[HttpPost]
-        //public int AddToFavorite(int id)
-        //{
-        //    List<Favorite> favs = new List<Favorite>();
+        [HttpPost]
+        public int AddToFavorite(int id)
+        {
+            List<Favorite> favs = new List<Favorite>();
+            var memberId = Convert.ToInt32(HttpContext.Session["MemberId"]);
+            if (Session["Favorite"] == null)
+            {
+                Favorite fav = new Favorite
+                {
+                    ProductId = id,
+                    memberId = memberId,
+                };
 
-        //    if (Session["Favorite"] == null)
-        //    {
-        //        Favorite fav = new Favorite
-        //        {
-        //            ProductId =
-        //        };
+                favs.Add(fav);
+                Session["Favorite"] = favs;
+            }
+            else
+            {
+                favs = (List<Favorite>)Session["Favorite"];
 
-        //        favorites.Add(favorite);
+                Favorite favorite = new Favorite
+                {
+                    ProductId = id,
+                    memberId = memberId,
+                };
 
-        //        Session["Favorite"] = favorites;
-        //    }
-        //    else
-        //    {
-        //        favorites = (List<FavoriteViewModel>)Session["Favorite"];
+                favs.Add(favorite);
 
-        //        FavoriteViewModel favorite = new FavoriteViewModel
-        //        {
-        //            RecordId = favorites.Count() + 1,
-        //            ProductId = ProductVM.Id,
-        //            Name = ProductVM.Name,
-        //            Img = ProductVM.MainUrl,
-        //            Author = ProductVM.Author,
-        //            Supplier = ProductVM.Supplier,
-        //            PublishDate = ProductVM.PublishDate
-        //        };
-
-        //        favorites.Add(favorite);
-
-        //        Session["Favorite"] = favorites;
-        //    }
-        //    return favorites.Count;
-        //}
+                Session["Favorite"] = favs;
+            }
+            return favs.Count;
+        }
 
 
 
