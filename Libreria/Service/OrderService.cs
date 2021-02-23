@@ -11,10 +11,12 @@ namespace Libreria.Service
     public class OrderService
     {
         private readonly LibreriaRepository _DbRepository;
+        private readonly ShoppingService _shoppingService;
 
         public OrderService()
         {
             _DbRepository = new LibreriaRepository();
+            _shoppingService = new ShoppingService();
         }
 
         public OperationResult Create(OrderViewModel orderVM)
@@ -26,7 +28,7 @@ namespace Libreria.Service
             {
                 Order order = new Order()
                 {
-                    ShippingDate = DateTime.Now.AddDays(2),
+                    ShippingDate = DateTime.Now.AddDays(1),
                     OrderDate = DateTime.Now,
                     memberId = UserMemberId,
                     ShipName = orderVM.RecipientName,
@@ -43,14 +45,17 @@ namespace Libreria.Service
 
                 _DbRepository.Create(order);
 
-                OrderDetail orderDetail = new OrderDetail()
+                foreach(var orderDetailVM in orderVM.OrderDetailList)
                 {
-                    OrderId = order.OrderId,
-                    ProductId = 1,
-                    Quantity = 2,
-                };
+                    OrderDetail orderDetail = new OrderDetail()
+                    {
+                        OrderId = order.OrderId,
+                        ProductId = orderDetailVM.ProductId,
+                        Quantity = orderDetailVM.Quantity,
+                    };
 
-                _DbRepository.Create(orderDetail);
+                    _DbRepository.Create(orderDetail);
+                }
 
                 result.IsSuccessful = true;
             }
@@ -246,6 +251,27 @@ namespace Libreria.Service
             ).ToList();
 
             return result;
+        }
+
+        public OrderViewModel PutShoppingCartsToOrderVM(OrderViewModel orderVM)
+        {
+            //訂單編號
+            orderVM.OrderDetailList = new List<OrderDetailViewModel>();
+
+            //取得購物車
+            var shoppingCartVMList = _shoppingService.GetAll();
+            foreach (var shoppingCartVM in shoppingCartVMList)
+            {
+                OrderDetailViewModel orderDetailVM = new OrderDetailViewModel()
+                {
+                    ProductId = shoppingCartVM.ProductId,
+                    Quantity = shoppingCartVM.Count
+                };
+                orderVM.OrderDetailList.Add(orderDetailVM);
+                _shoppingService.DeleteFromCart(shoppingCartVM); //從購物車刪除該項
+            }
+
+            return orderVM;
         }
 
     }

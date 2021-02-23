@@ -21,5 +21,7 @@ namespace Libreria.ViewModels
         /// 數量
         /// </summary>
         public int Quantity { get; set; }
+
+        public int ProductId { get; set; }
     }
 }

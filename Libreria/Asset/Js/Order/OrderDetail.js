@@ -27,7 +27,12 @@ function SubscriberToRecipient() {
     RecipientCellphone.value = SubscriberCellphone.value;
     RecipientTelephone.value = SubscriberTelephone.value;
     AddressCitySelect.value = SubscriberAddressCitySelect.value;
+
+    AddressRegionSelect.add(new Option(
+        text = SubscriberAddressRegionSelect.value,
+        value = SubscriberAddressRegionSelect.value));
     AddressRegionSelect.value = SubscriberAddressRegionSelect.value;
+
     RecipientAddress.value = SubscriberAddress.value;
     RecipientPostalCode.value = SubscriberPostalCode.value;
 
@@ -48,10 +53,8 @@ AddressCitySelect.addEventListener("change", function() { changeAddressRegion(Ad
 SubscriberAddressCitySelect.addEventListener("change", function () { changeAddressRegion(SubscriberAddressCitySelect, SubscriberAddressRegionSelect) })
 
 function changeAddressRegion(addressCitySelect, addressRegionSelect) {
-    DefaultOption = document.getElementById("DefaultOption");
     addressRegionSelect.options.length = 0;
-    DefaultOption = addressRegionSelect.add(new Option(text = "請選擇", value = ""));
-    DefaultOption.setAttribute("id", "DefaultOption");
+    addressRegionSelect.add(new Option(text = "請選擇", value = ""));
 
     let index = addressCitySelect.selectedIndex;
     let regionList = [];

@@ -7,6 +7,14 @@ namespace Libreria.ViewModels
 {
     public class OrderViewModel
     {
+        public OrderViewModel()
+        {
+            OrderDetailList = new List<OrderDetailViewModel>();
+        }
+
+
+
+
         public int OrderId { get; set; }
 
         /// <summary>

@@ -67,7 +67,11 @@ namespace Libreria.Controllers
         [HttpPost]
         public ActionResult Checkout(OrderViewModel orderVM)
         {
-            if (orderVM != null)
+            //取得購物車並放入訂單
+            orderVM = _orderService.PutShoppingCartsToOrderVM(orderVM);
+
+            //訂單存進資料庫
+            if (orderVM != null && orderVM.OrderDetailList.Any())
             {
                 OperationResult result = _orderService.Create(orderVM);
 
@@ -81,7 +85,7 @@ namespace Libreria.Controllers
                 }
             }
 
-            return View(orderVM);
+            return Json(orderVM);
         }
 
         public ActionResult Test()
