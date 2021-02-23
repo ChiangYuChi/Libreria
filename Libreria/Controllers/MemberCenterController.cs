@@ -48,25 +48,25 @@ namespace Libreria.Controllers
         
         public ActionResult MemberOrderInquery(string Inquire, int? TransactionId)
         {
-            int memberId = 1; //假資料
+            int UserMemberId = Convert.ToInt32(System.Web.HttpContext.Current.Session["MemberID"]);
 
             List<OrderViewModel> result = null;
             if (Inquire == "history")
             {
-                result = _orderService.GetBymemberId(memberId);
+                result = _orderService.GetBymemberId(UserMemberId);
             }
             else if(Inquire == "oneMonth")
             {
-                result = _orderService.GetBymemberId(memberId, TimeSpan.FromDays(30));
+                result = _orderService.GetBymemberId(UserMemberId, TimeSpan.FromDays(30));
             }
             else if (Inquire == "sixMonths")
             {
-                result = _orderService.GetBymemberId(memberId, TimeSpan.FromDays(30*6));
+                result = _orderService.GetBymemberId(UserMemberId, TimeSpan.FromDays(30*6));
             }
             else if (Inquire == "notShipped")
             {
                 // 未完成
-                result = _orderService.GetBymemberId(memberId);
+                result = _orderService.GetBymemberId(UserMemberId);
             }
             else if(Inquire == "return")
             {
@@ -76,7 +76,7 @@ namespace Libreria.Controllers
             else
             {
                 //預設代入一個月
-                result = _orderService.GetBymemberId(memberId, TimeSpan.FromDays(30));
+                result = _orderService.GetBymemberId(UserMemberId, TimeSpan.FromDays(30));
             }
 
             return View(result);

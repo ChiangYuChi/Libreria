@@ -1,4 +1,43 @@
 ﻿
+//訂購人資料同收件人資料
+let SubscriberEqualRecipient = document.getElementById("SubscriberEqualRecipient");
+
+SubscriberEqualRecipient.addEventListener("click", function () { SubscriberToRecipient() })
+
+function SubscriberToRecipient() {
+    //訂購人資料
+    let SubscriberName = document.getElementById("SubscriberName");
+    let SubscriberCellphone = document.getElementById("SubscriberCellphone");
+    let SubscriberTelephone = document.getElementById("SubscriberTelephone");
+    let SubscriberAddressCitySelect = document.getElementById("subscriber_option subscriber_option_counties Region");
+    let SubscriberAddressRegionSelect = document.getElementById("subscriber_option_district Town");
+    let SubscriberAddress = document.getElementById("SubscriberAddress");
+    let SubscriberPostalCode = document.getElementById("SubscriberPostalCode")
+
+    //收件人資料
+    let RecipientName = document.getElementById("RecipientName");
+    let RecipientCellphone = document.getElementById("RecipientCellphone");
+    let RecipientTelephone = document.getElementById("RecipientTelephone");
+    let AddressCitySelect = document.getElementById("recipient_option recipient_option_counties Region");
+    let AddressRegionSelect = document.getElementById("recipient_option_district Town");
+    let RecipientAddress = document.getElementById("RecipientAddress");
+    let RecipientPostalCode = document.getElementById("RecipientPostalCode");
+
+    RecipientName.value = SubscriberName.value;
+    RecipientCellphone.value = SubscriberCellphone.value;
+    RecipientTelephone.value = SubscriberTelephone.value;
+    AddressCitySelect.value = SubscriberAddressCitySelect.value;
+    AddressRegionSelect.value = SubscriberAddressRegionSelect.value;
+    RecipientAddress.value = SubscriberAddress.value;
+    RecipientPostalCode.value = SubscriberPostalCode.value;
+
+
+
+}
+
+
+
+
 //縣市轄區
 let AddressCitySelect = document.getElementById("recipient_option recipient_option_counties Region");
 let AddressRegionSelect = document.getElementById("recipient_option_district Town");
@@ -9,8 +48,10 @@ AddressCitySelect.addEventListener("change", function() { changeAddressRegion(Ad
 SubscriberAddressCitySelect.addEventListener("change", function () { changeAddressRegion(SubscriberAddressCitySelect, SubscriberAddressRegionSelect) })
 
 function changeAddressRegion(addressCitySelect, addressRegionSelect) {
+    DefaultOption = document.getElementById("DefaultOption");
     addressRegionSelect.options.length = 0;
-    addressRegionSelect.add(new Option("請選擇", ""));
+    DefaultOption = addressRegionSelect.add(new Option(text = "請選擇", value = ""));
+    DefaultOption.setAttribute("id", "DefaultOption");
 
     let index = addressCitySelect.selectedIndex;
     let regionList = [];
@@ -184,11 +225,12 @@ let submit = document.getElementById("submit");
 submit.addEventListener("click", checkForm);
 
 function checkForm() {
-    let recipientCellphone = document.getElementById("recipientCellphone")
-    let recipientTelephone = document.getElementById("recipientTelephone")
-    let subscriberCellphone = document.getElementById("subscriberCellphone")
-    let subscriberTelephone = document.getElementById("subscriberTelephone")
-    let recipientPostalCode = document.getElementById("recipientPostalCode")
+    let recipientCellphone = document.getElementById("RecipientCellphone")
+    let recipientTelephone = document.getElementById("RecipientTelephone")
+    let subscriberCellphone = document.getElementById("SubscriberCellphone")
+    let subscriberTelephone = document.getElementById("SubscriberTelephone")
+    let recipientPostalCode = document.getElementById("RecipientPostalCode")
+    let subscriberPostalCode = document.getElementById("SubscriberPostalCode")
 
     if (recipientCellphone.validity.patternMismatch == true) {
         recipientCellphone.setCustomValidity("請輸入十個數字");
@@ -223,6 +265,13 @@ function checkForm() {
     }
     else {
         recipientPostalCode.setCustomValidity("");
+    }
+
+    if (subscriberPostalCode.validity.patternMismatch == true) {
+        subscriberPostalCode.setCustomValidity("請輸入數字");
+    }
+    else {
+        subscriberPostalCode.setCustomValidity("");
     }
 }
 

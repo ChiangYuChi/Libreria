@@ -19,6 +19,8 @@ namespace Libreria.Service
 
         public OperationResult Create(OrderViewModel orderVM)
         {
+            int UserMemberId = Convert.ToInt32(System.Web.HttpContext.Current.Session["MemberID"]);
+
             var result = new OperationResult();
             try
             {
@@ -26,7 +28,7 @@ namespace Libreria.Service
                 {
                     ShippingDate = DateTime.Now.AddDays(2),
                     OrderDate = DateTime.Now,
-                    memberId = 1,
+                    memberId = UserMemberId,
                     ShipName = orderVM.RecipientName,
                     ShipCity = orderVM.AddressCitySelect,
                     ShipRegion = orderVM.AddressRegionSelect,

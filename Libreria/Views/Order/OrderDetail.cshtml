@@ -113,15 +113,15 @@
                 <div class="subscriber_profile_body">
                     <div class="recipient_profile_name">
                         <p>姓名</p>
-                        <input type="text" placeholder="姓名" name="SubscriberName" required>
+                        <input type="text" placeholder="姓名" name="SubscriberName" id="SubscriberName" required>
                     </div>
                     <div class="recipient_profile_phone">
                         <p>行動電話</p>
-                        <input type="tel" placeholder="號碼" name="SubscriberCellphone" id="subscriberCellphone" required pattern="\d{10}">
+                        <input type="tel" placeholder="號碼" name="SubscriberCellphone" id="SubscriberCellphone" required pattern="\d{10}">
                     </div>
                     <div class="recipient_profile_homePhone">
                         <p>連絡電話</p>
-                        <input type="tel" placeholder="市話" name="SubscriberTelephone" id="subscriberTelephone" required pattern="\d*">
+                        <input type="tel" placeholder="市話" name="SubscriberTelephone" id="SubscriberTelephone" required pattern="\d*">
                     </div>
                     <div class="recipient_profile_address">
                         <p>地址</p>
@@ -157,11 +157,11 @@
                         </div>
                     </div>
                     <div class="recipient_profile_address_txt">
-                        <input type="text" placeholder="詳細地址" name="SubscriberAddress" required>
+                        <input type="text" placeholder="詳細地址" name="SubscriberAddress" id="SubscriberAddress" required>
                     </div>
                     <div class="recipient_profile_postalCode">
                         <p>郵遞區號</p>
-                        <input type="text" placeholder="郵遞區號" name="SubscriberPostalCode" id="recipientPostalCode" required pattern="\d*">
+                        <input type="text" placeholder="郵遞區號" name="SubscriberPostalCode" id="SubscriberPostalCode" required pattern="\d*">
                     </div>
                 </div>
             </div>
@@ -173,28 +173,29 @@
                         <h2>收件人資料</h2>
                     </div>
                 </div>
+                <button type="button" class="SubscriberEqualRecipient-button" id="SubscriberEqualRecipient">同訂購人資料</button>
                 <div class="recipient_profile_body">
                     <div class="recipient_profile_name">
                         <p>姓名</p>
                         <div class="recipient_profile_name_input">
-                            <input type="text" placeholder="姓名" id="recipient_input" name="RecipientName" required>
+                            <input type="text" placeholder="姓名" name="RecipientName" id="RecipientName" required>
                         </div>
                     </div>
                     <div class="recipient_profile_phone_tel">
                         <div class="recipient_profile_phone">
                             <p>行動電話</p>
-                            <input type="tel" placeholder="號碼" name="RecipientCellphone" id="recipientCellphone" required pattern="\d{10}">
+                            <input type="tel" placeholder="號碼" name="RecipientCellphone" id="RecipientCellphone" required pattern="\d{10}">
                         </div>
                     </div>
                     <div class="recipient_profile_homePhone">
                         <p>連絡電話</p>
-                        <input type="tel" placeholder="市話" name="RecipientTelephone" id="recipientTelephone" required pattern="\d*">
+                        <input type="tel" placeholder="市話" name="RecipientTelephone" id="RecipientTelephone" required pattern="\d*">
                     </div>
                     <div class="recipient_profile_address">
                         <p>地址</p>
                         <div class="recipient_profile_select">
                             <select name="AddressCitySelect" id="recipient_option recipient_option_counties Region" required>
-                                <option id="taiwanAddressNew" value="">請選擇</option>
+                                <option id="DefaultOption" value="">請選擇</option>
                                 <option value="臺北市">臺北市</option> <!--1-->
                                 <option value="新北市">新北市</option> <!--2-->
                                 <option value="桃園市">桃園市</option> <!--3-->
@@ -219,16 +220,16 @@
                                 <option value="連江縣">連江縣</option> <!--22-->
                             </select>
                             <select name="AddressRegionSelect" id="recipient_option_district Town" required>
-                                <option value="">請選擇</option>
+                                <option id="DefaultOption" value="">請選擇</option>
                             </select>
                         </div>
                     </div>
                     <div class="recipient_profile_address_txt">
-                        <input type="text" placeholder="詳細地址" name="RecipientAddress" required>
+                        <input type="text" placeholder="詳細地址" name="RecipientAddress" id="RecipientAddress" required>
                     </div>
                     <div class="recipient_profile_postalCode">
                         <p>郵遞區號</p>
-                        <input type="text" placeholder="郵遞區號" name="RecipientPostalCode" id="recipientPostalCode" required pattern="\d*">
+                        <input type="text" placeholder="郵遞區號" name="RecipientPostalCode" id="RecipientPostalCode" required pattern="\d*">
                     </div>
                 </div>
             </div>
@@ -328,12 +329,12 @@
                                 <p>@shoppingCartVM.ProductName</p>
                             </div>
                             <div class="cart_details_price">
-                                <p>@shoppingCartVM.Price</p>
+                                <p>@((int)shoppingCartVM.Price)</p>
                             </div>
                         </div>
                         <div class="cart_detail_quantity">
                             <p>@shoppingCartVM.Count</p>
-                            <span>@(shoppingCartVM.Price*shoppingCartVM.Count)</span>
+                            <span>@((int)shoppingCartVM.Price*shoppingCartVM.Count)</span>
                         </div>
                     </div>
                 }
@@ -344,10 +345,10 @@
             <div class="commodity_discount">
                 <div class="commodity_discount_txt">
                     <p>商品小計</p>
-                    @{decimal PriceSum = 0;}
+                    @{int PriceSum = 0;}
                     @foreach (var shoppingCartVM in Model)
                     {
-                        PriceSum += shoppingCartVM.Price * shoppingCartVM.Count;
+                        PriceSum += (int)shoppingCartVM.Price * shoppingCartVM.Count;
                     }
                     <span>@PriceSum</span>
                     <span>-</span>
@@ -360,7 +361,9 @@
                 </div>
                 <div class="commodity_discount_txt commodity_discount_txt2">
                     <p>訂單處理費</p>
-                    <span>$50</span>
+                    <span>
+                        @(PriceSum<350? 50: 0)
+                    </span>
                 </div>
             </div>
             <!-- 商品總計 -->
@@ -368,7 +371,7 @@
                 <div class="commodity_total_txt">
                     <p>商品總金額</p>
                     @*<span>$1210</span>*@
-                    <span>@(PriceSum+50)</span>
+                    <span>@(PriceSum+ (PriceSum<350? 50 : 0))</span>
                     <button type="submit" id="submit">確認結帳</button>
                 </div>
             </div>
