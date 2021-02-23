@@ -19,6 +19,9 @@
     <script src="https://kit.fontawesome.com/d22f4b5afc.js" crossorigin="anonymous"></script>
 }
 
+
+
+
 <div class="container">
     <div class="crumbs">
         <p class="crumb">首頁</p>
@@ -29,7 +32,7 @@
     </div>
     <div class="favorites">
         <h1>收藏商品</h1>
-        <h2>(共有<span>2</span>筆商品)</h2>
+        <h2 id="Num">(共有<span>1</span>筆商品)</h2>
     </div>
 
     @foreach (var item in Model)
@@ -95,6 +98,7 @@
                 dataType: "text",
                 success: function () {
                     location.reload();
+                    $("#MyCart").text("購物車(" + response + ")");
                 }
             });
         }

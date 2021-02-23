@@ -167,24 +167,47 @@ namespace Libreria.Controllers
         [CustomAllowAnonymous]
         public ActionResult Favorite()
         {
-            var result = _favoriteService.GetAll();
-            return View(result);
+            List<FavoriteViewModel> favorite = (List<FavoriteViewModel>)Session["Favorite"];
+            return View(favorite);
         }
 
-        [HttpPost]
-        public string AddToFavorite(ProductViewModel ProductVM)
-        {
-            var result = _favoriteService.Create(ProductVM);
+        //[HttpPost]
+        //public int AddToFavorite(int id)
+        //{
+        //    List<Favorite> favs = new List<Favorite>();
 
-            if (result.IsSuccessful)
-            {
-                return "加入成功!";
-            }
-            else
-            {
-                return "加入失败";
-            }
-        }
+        //    if (Session["Favorite"] == null)
+        //    {
+        //        Favorite fav = new Favorite
+        //        {
+        //            ProductId = 
+        //        };
+
+        //        favorites.Add(favorite);
+
+        //        Session["Favorite"] = favorites;
+        //    }
+        //    else
+        //    {
+        //        favorites = (List<FavoriteViewModel>)Session["Favorite"];
+
+        //        FavoriteViewModel favorite = new FavoriteViewModel
+        //        {
+        //            RecordId = favorites.Count() + 1,
+        //            ProductId = ProductVM.Id,
+        //            Name = ProductVM.Name,
+        //            Img = ProductVM.MainUrl,
+        //            Author = ProductVM.Author,
+        //            Supplier = ProductVM.Supplier,
+        //            PublishDate = ProductVM.PublishDate
+        //        };
+
+        //        favorites.Add(favorite);
+
+        //        Session["Favorite"] = favorites;
+        //    }
+        //    return favorites.Count;
+        //}
 
 
 

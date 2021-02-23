@@ -253,6 +253,14 @@
     <Compile Include="Migrations\202102221105367_Modify_membertable.Designer.cs">
       <DependentUpon>202102221105367_Modify_membertable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202102230532131_123.cs" />
+    <Compile Include="Migrations\202102230532131_123.Designer.cs">
+      <DependentUpon>202102230532131_123.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202102230540472_666.cs" />
+    <Compile Include="Migrations\202102230540472_666.Designer.cs">
+      <DependentUpon>202102230540472_666.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\EntityModel\AspNetRole.cs" />
@@ -1185,6 +1193,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202102221105367_Modify_membertable.resx">
       <DependentUpon>202102221105367_Modify_membertable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102230532131_123.resx">
+      <DependentUpon>202102230532131_123.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102230540472_666.resx">
+      <DependentUpon>202102230540472_666.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -27,6 +27,8 @@ namespace Libreria.Service
                          where v.Sort == 0
                          join c in _DbRepository.GetAll<Category>()
                          on p.CategoryId equals c.CategoryId
+                         join s in _DbRepository.GetAll<Supplier>()
+                         on p.SupplierId equals s.SupplierId
                          select new ProductViewModel()
                          {
                              Id = p.ProductId,
@@ -35,6 +37,8 @@ namespace Libreria.Service
                              CategoryId = p.CategoryId,
                              CategoryName = c.Name,
                              Author = p.Author,
+                             Supplier = s.Name,
+                             PublishDate = p.PublishDate,
                              CreateTime = p.CreateTime,
                              Introduction = p.Introduction,
                              MainUrl = v.ImgUrl
