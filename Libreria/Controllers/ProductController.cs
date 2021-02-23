@@ -92,7 +92,9 @@ namespace Libreria.Controllers
         }
         public PartialViewResult ShopCartIconPartial()
         {
-            return PartialView();
+            var product = _productService.GetAll();
+
+            return PartialView(product);
         }
     }
 }

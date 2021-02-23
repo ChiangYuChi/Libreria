@@ -1,4 +1,4 @@
-﻿.button {
+﻿.cart-button {
     display: inline-block;
     background: #39C;
     padding: 5px 10px;
@@ -148,9 +148,13 @@ body.open .cart {
     -webkit-transition: opacity 250ms ease-in-out, width 0ms ease-in-out 250ms;
     transition: opacity 250ms ease-in-out, width 0ms ease-in-out 250ms;
 }
-.shop-icon{
-    position:fixed;
-    right:0;
-    bottom:20px;
-    font-size:40px;
+.fa-shopping-cart {
+    position: fixed;
+    right: 60px;
+    bottom: 50px;
+    font-size: 40px;
+    color: #ccc;
+    border: #ccc solid 1px;
+    border-radius: 50%;
+    padding:10px;
 }

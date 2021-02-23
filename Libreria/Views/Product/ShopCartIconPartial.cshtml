@@ -1,16 +1,20 @@
-﻿
+﻿@model List<ProductViewModel>
+
 
 
 
 <div class="shop-icon">
-    <i class="fas fa-shopping-cart"></i>
+    <a class=" js-toggle-cart" href="#" title="View cart">
+
+        <i class="fas fa-shopping-cart"></i>
+    </a>
 </div>
 
 <aside class="cart js-cart">
     <div class="cart__header">
         <h1 class="cart__title">購物車</h1>
         <p class="cart__text">
-            <a class="button button--light js-toggle-cart" href="#" title="Close cart">
+            <a class="cart-button button--light js-toggle-cart" href="#" title="Close cart">
                 關閉購物車
             </a>
         </p>
@@ -21,18 +25,21 @@
         </p>
         <div class="cart__product js-cart-product-template">
             <article class="js-cart-product">
-                <h1>Product title</h1>
+                <h1>title</h1>
+                <img src="#" alt="書圖" />
+                <p class="price">price</p>
                 <p>
                     <a class="js-remove-product" href="#" title="Delete product">
                         刪除商品
                     </a>
                 </p>
+
             </article>
         </div>
     </div>
     <div class="cart__footer">
         <p class="cart__text">
-            <a class="button" href="#" title="Buy products">
+            <a class="cart-button" href="#" title="Buy products">
                 購買
             </a>
         </p>
