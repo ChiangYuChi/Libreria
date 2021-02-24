@@ -128,6 +128,9 @@ namespace Libreria.ViewModels
 
         /// <summary>
         /// 出貨進度
+        /// "準備出貨中"
+        /// "已出貨，尚未送達"
+        /// "貨已送達"
         /// </summary>
         public string Progress { get; set; }
     }

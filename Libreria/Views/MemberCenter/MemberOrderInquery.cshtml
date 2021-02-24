@@ -1,5 +1,9 @@
 ﻿@model List<OrderViewModel>
 
+@{ 
+    int sum=0;
+}
+
 @section topCss{
     <link href="~/Asset/Css/MemberCenter/member_order_inquery.css" rel="stylesheet" />
 
@@ -24,9 +28,37 @@
                     <p>客樂得未領退回: <span>0</span> 件</p>
                 </div>
                 <div class="title__item--narrow-only">
-                    <p>未出貨: <span>0</span></p>
-                    <p>已到門市: <span>0</span></p>
-                    <p>已寄出: <span>0</span></p>
+                    <p>未出貨: 
+                        <span>
+                            @{ sum = 0;}
+                            @foreach(var order in Model)
+                            {
+                                if (order.Progress == "準備出貨中") { sum++; }
+                            }
+                            @sum
+                        </span>
+                    </p>
+                    <p>已到門市: 
+                        <span>
+                            @{ sum = 0;}
+                            @foreach (var order in Model)
+                            {
+                                if (order.Progress == "貨已送達") { sum++; }
+                            }
+                            @sum
+                        </span>    
+                    </p>
+                    <p>
+                        已寄出:
+                        <span>
+                            @{ sum = 0;}
+                            @foreach (var order in Model)
+                            {
+                                if (order.Progress == "已出貨，尚未送達") { sum++; }
+                            }
+                            @sum
+                        </span>
+                    </p>
                 </div>
             </div>
 
@@ -155,7 +187,7 @@
                                     }
                                     <td>
                                         <!--訂單金額-->
-                                        @{var sum = 0;}
+                                        @{sum = 0;}
                                         @foreach (var orderDetail in order.OrderDetailList)
                                         {
                                             sum += (int)orderDetail.UnitPrice * orderDetail.Quantity;
