@@ -77,7 +77,7 @@ namespace Libreria.Controllers
 
                 if(result.IsSuccessful)
                 {
-
+                    orderVM = _orderService.GetByOrderId(orderVM.OrderId).FirstOrDefault();
                 }
                 else
                 {

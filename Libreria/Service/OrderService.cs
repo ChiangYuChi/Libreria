@@ -57,6 +57,8 @@ namespace Libreria.Service
                     _DbRepository.Create(orderDetail);
                 }
 
+                orderVM.OrderId = order.OrderId;
+
                 result.IsSuccessful = true;
             }
             catch (Exception ex)
@@ -94,13 +96,13 @@ namespace Libreria.Service
                     SubscriberTelephone = null,
                     SubscriberAddress = null,
                     Progress = "準備出貨中",
+                    OrderPrice = 0,
                 }
             ).ToList();
 
-            foreach (var order in result)
+            foreach (var orderVM in result)
             {
-                order.OrderDetailList = GetOrderDetailByOrderId(order.OrderId);
-                order.Progress = CalculateProgress(order.OrderDate);
+                CompleteOrderVM(orderVM);
             }
 
             return result;
@@ -129,13 +131,15 @@ namespace Libreria.Service
                     SubscriberTelephone = null,
                     SubscriberAddress = null,
                     Progress = "準備出貨中",
+                    OrderPrice = 0,
                 }
             ).ToList();
 
-            foreach(var order in result)
+            foreach(var orderVM in result)
             {
-                order.OrderDetailList = GetOrderDetailByOrderId(order.OrderId);
-                order.Progress = CalculateProgress(order.OrderDate);
+                orderVM.OrderDetailList = GetOrderDetailByOrderId(orderVM.OrderId);
+                orderVM.Progress = CalculateProgress(orderVM.OrderDate);
+                orderVM.OrderPrice = CalculateOrderPrice(orderVM);
             }
 
             return result;
@@ -172,13 +176,13 @@ namespace Libreria.Service
                     SubscriberTelephone = null,
                     SubscriberAddress = null,
                     Progress = "準備出貨中",
+                    OrderPrice = 0,
                 }
             ).ToList();
 
-            foreach (var order in result)
+            foreach (var orderVM in result)
             {
-                order.OrderDetailList = GetOrderDetailByOrderId(order.OrderId);
-                order.Progress = CalculateProgress(order.OrderDate);
+                CompleteOrderVM(orderVM);
             }
 
             return result;
@@ -207,13 +211,13 @@ namespace Libreria.Service
                     SubscriberTelephone = null,
                     SubscriberAddress = null,
                     Progress = "準備出貨中",
+                    OrderPrice = 0,
                 }
             ).ToList();
 
-            foreach (var order in result)
+            foreach (var orderVM in result)
             {
-                order.OrderDetailList = GetOrderDetailByOrderId(order.OrderId);
-                order.Progress = CalculateProgress(order.OrderDate);
+                CompleteOrderVM(orderVM);
             }
 
             return result;
@@ -249,17 +253,20 @@ namespace Libreria.Service
                     SubscriberTelephone = null,
                     SubscriberAddress = null,
                     Progress = "準備出貨中",
+                    OrderPrice = 0,
                 }
             ).ToList();
 
-            foreach (var order in result)
+            foreach (var orderVM in result)
             {
-                order.OrderDetailList = GetOrderDetailByOrderId(order.OrderId);
-                order.Progress = CalculateProgress(order.OrderDate);
+                CompleteOrderVM(orderVM);
             }
 
             return result;
         }
+
+
+
 
         public List<OrderDetailViewModel> GetAllOrderDetail()
         {
@@ -272,8 +279,14 @@ namespace Libreria.Service
                     ProductName = product.ProductName,
                     UnitPrice = product.UnitPrice,
                     Quantity = orderDetail.Quantity,
+                    DetailPrice = 0,
                 }
             ).ToList();
+
+            foreach(var orderDetailVM in result)
+            {
+                CompleteOrderDetailVM(orderDetailVM);
+            }
 
             return result;
         }
@@ -290,11 +303,44 @@ namespace Libreria.Service
                     ProductName = product.ProductName,
                     UnitPrice = product.UnitPrice,
                     Quantity = orderDetail.Quantity,
+                    DetailPrice = 0,
                 }
             ).ToList();
 
+            foreach (var orderDetailVM in result)
+            {
+                CompleteOrderDetailVM(orderDetailVM);
+            }
+
             return result;
         }
+
+
+
+
+        public OrderViewModel CompleteOrderVM(OrderViewModel orderVM)
+        {
+            foreach (var orderDetailVM in orderVM.OrderDetailList)
+            {
+                CompleteOrderDetailVM(orderDetailVM);
+            }
+
+            orderVM.OrderDetailList = GetOrderDetailByOrderId(orderVM.OrderId);
+            orderVM.Progress = CalculateProgress(orderVM.OrderDate);
+            orderVM.OrderPrice = CalculateOrderPrice(orderVM);
+
+            return orderVM;
+        }
+
+        public OrderDetailViewModel CompleteOrderDetailVM(OrderDetailViewModel orderDetailVM)
+        {
+            orderDetailVM.DetailPrice = orderDetailVM.UnitPrice * orderDetailVM.Quantity;
+
+            return orderDetailVM;
+        }
+
+
+
 
         public OrderViewModel PutShoppingCartsToOrderVM(OrderViewModel orderVM)
         {
@@ -308,7 +354,7 @@ namespace Libreria.Service
                 OrderDetailViewModel orderDetailVM = new OrderDetailViewModel()
                 {
                     ProductId = shoppingCartVM.ProductId,
-                    Quantity = shoppingCartVM.Count
+                    Quantity = shoppingCartVM.Count,
                 };
                 orderVM.OrderDetailList.Add(orderDetailVM);
                 _shoppingService.DeleteFromCart(shoppingCartVM); //從購物車刪除該項
@@ -333,5 +379,15 @@ namespace Libreria.Service
             }
         }
 
+        public decimal CalculateOrderPrice(OrderViewModel orderVM)
+        {
+            orderVM.OrderPrice = 0;
+            foreach(var orderDetailVM in orderVM.OrderDetailList)
+            {
+                orderVM.OrderPrice += orderDetailVM.DetailPrice;
+            }
+
+            return orderVM.OrderPrice;
+        }
     }
 }

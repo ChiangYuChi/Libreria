@@ -133,5 +133,10 @@ namespace Libreria.ViewModels
         /// "貨已送達"
         /// </summary>
         public string Progress { get; set; }
+
+        /// <summary>
+        /// 訂單總金額
+        /// </summary>
+        public decimal OrderPrice { get; set; }
     }
 }
