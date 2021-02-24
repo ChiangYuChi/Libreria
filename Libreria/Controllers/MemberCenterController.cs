@@ -66,12 +66,12 @@ namespace Libreria.Controllers
             else if (Inquire == "notShipped")
             {
                 // 未完成
-                result = _orderService.GetBymemberId(UserMemberId);
+                result = _orderService.GetByProgress(UserMemberId, "準備出貨中");
             }
             else if(Inquire == "return")
             {
                 //未完成
-                result = null;
+                result = new List<OrderViewModel>();
             }
             else if(Inquire == "transactionId")
             {

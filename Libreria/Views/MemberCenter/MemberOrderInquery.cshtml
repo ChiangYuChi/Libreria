@@ -1,7 +1,7 @@
 ﻿@model List<OrderViewModel>
 
-@{ 
-    int sum=0;
+@{
+    int sum = 0;
 }
 
 @section topCss{
@@ -28,17 +28,19 @@
                     <p>客樂得未領退回: <span>0</span> 件</p>
                 </div>
                 <div class="title__item--narrow-only">
-                    <p>未出貨: 
+                    <p>
+                        未出貨:
                         <span>
                             @{ sum = 0;}
-                            @foreach(var order in Model)
+                            @foreach (var order in Model)
                             {
                                 if (order.Progress == "準備出貨中") { sum++; }
                             }
                             @sum
                         </span>
                     </p>
-                    <p>已到門市: 
+                    <p>
+                        已到門市:
                         <span>
                             @{ sum = 0;}
                             @foreach (var order in Model)
@@ -46,7 +48,7 @@
                                 if (order.Progress == "貨已送達") { sum++; }
                             }
                             @sum
-                        </span>    
+                        </span>
                     </p>
                     <p>
                         已寄出:
@@ -167,24 +169,9 @@
                                         @order.OrderDate
                                     </td>
                                     <!--付款方式-->
-                                    @if (order.PaymentMethod == 1)
-                                    {
-                                        <td>
-                                            取貨付款
-                                        </td>
-                                    }
-                                    else if (order.PaymentMethod == 2)
-                                    {
-                                        <td>
-                                            ATM轉帳
-                                        </td>
-                                    }
-                                    else if (order.PaymentMethod == 3)
-                                    {
-                                        <td>
-                                            信用卡
-                                        </td>
-                                    }
+                                    <td>
+                                        @order.PaymentMethodText
+                                    </td>
                                     <td>
                                         <!--訂單金額-->
                                         @((int)order.OrderPrice)
@@ -209,7 +196,7 @@
                                     </td>
                                     <td>
                                         <!-- Button trigger modal -->
-                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" id=@("ModalButton"+order.OrderId)>
                                             詳細資料
                                         </button>
 
@@ -224,13 +211,13 @@
                                                         </button>
                                                     </div>
                                                     <div class="modal-body">
-                                                        <p>訂單編號：@order.OrderId</p>
-                                                        <p>訂購時間：@order.OrderDate</p>
-                                                        <p>出貨時間：@order.ShippingDate</p>
-                                                        <p>付款方式：@order.PaymentMethod</p>
-                                                        <p>收件人：@order.RecipientName</p>
-                                                        <p>收件地址：@order.AddressCitySelect@order.AddressRegionSelect@order.RecipientAddress</p>
-                                                        <p>訂單金額：@((int)order.OrderPrice)</p>
+                                                        <p id="ModalOrderId">訂單編號：@order.OrderId</p>
+                                                        <p id="ModalOrderDate">訂購時間：@order.OrderDate</p>
+                                                        <p id="ModalShippingDate">出貨時間：@order.ShippingDate</p>
+                                                        <p id="ModalPaymentMethod">付款方式：@order.PaymentMethodText</p>
+                                                        <p id="ModalRecipientName">收件人：@order.RecipientName</p>
+                                                        <p id="ModalAddress">收件地址：@order.AddressCitySelect@order.AddressRegionSelect@order.RecipientAddress</p>
+                                                        <p id="ModalOrderPrice">訂單金額：@((int)order.OrderPrice)</p>
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -283,6 +270,41 @@
 
 @section endJs{
     <script src="~/Asset/Js/MemberCenter/member-MyOrder.js"></script>
+
+
+
+    @*訂單詳細資料*@
+    <script>
+        let ModalButton
+
+        let ModalOrderId = document.getElementById("ModalOrderId");
+        let ModalOrderDate = document.getElementById("ModalOrderDate");
+        let ModalShippingDate = document.getElementById("ModalShippingDate");
+        let ModalPaymentMethod = document.getElementById("ModalPaymentMethod");
+        let ModalRecipientName = document.getElementById("ModalRecipientName");
+        let ModalAddress = document.getElementById("ModalAddress");
+        let ModalOrderPrice = document.getElementById("ModalOrderPrice");
+    </script>
+
+    @foreach (var order in Model)
+    {
+<script>
+            ModalButton = document.getElementById("@("ModalButton"+order.OrderId)");
+            ModalButton.addEventListener("click", function () {
+                ModalOrderId.innerText = "訂單編號：@order.OrderId";
+                ModalOrderDate.innerText = "訂購時間：@order.OrderDate";
+                ModalShippingDate.innerText = "出貨時間：@order.ShippingDate";
+                ModalPaymentMethod.innerText = "付款方式：@order.PaymentMethodText";
+                ModalRecipientName.innerText = "收件人：@order.RecipientName";
+                ModalAddress.innerText = "收件地址：@order.AddressCitySelect@order.AddressRegionSelect@order.RecipientAddress";
+                ModalOrderPrice = "訂單金額：@((int)order.OrderPrice)";
+            })
+
+
+</script>
+    }
+
+
 }
 
 

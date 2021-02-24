@@ -100,6 +100,8 @@ namespace Libreria.ViewModels
         /// </summary>
         public int PaymentMethod { get; set; }
 
+        public string PaymentMethodText { get; set; }
+
         /// <summary>
         /// 發票開立方式
         /// 1為二聯式電子發票(存入會員帳號)

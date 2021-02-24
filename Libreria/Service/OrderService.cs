@@ -45,7 +45,7 @@ namespace Libreria.Service
 
                 _DbRepository.Create(order);
 
-                foreach(var orderDetailVM in orderVM.OrderDetailList)
+                foreach (var orderDetailVM in orderVM.OrderDetailList)
                 {
                     OrderDetail orderDetail = new OrderDetail()
                     {
@@ -84,6 +84,7 @@ namespace Libreria.Service
                     OrderDate = order.OrderDate,
                     ShippingDate = order.ShippingDate,
                     PaymentMethod = order.PaymentType,
+                    PaymentMethodText = null, //CompleteOrderVM(orderVM)
                     RecipientName = order.ShipName,
                     RecipientCellphone = null,
                     RecipientTelephone = null,
@@ -95,8 +96,9 @@ namespace Libreria.Service
                     SubscriberCellphone = null,
                     SubscriberTelephone = null,
                     SubscriberAddress = null,
-                    Progress = "準備出貨中",
-                    OrderPrice = 0,
+                    //OrderDetailList = null, //CompleteOrderVM(orderVM)
+                    Progress = null, //CompleteOrderVM(orderVM)
+                    OrderPrice = 0, //CompleteOrderVM(orderVM)
                 }
             ).ToList();
 
@@ -119,6 +121,7 @@ namespace Libreria.Service
                     OrderDate = order.OrderDate,
                     ShippingDate = order.ShippingDate,
                     PaymentMethod = order.PaymentType,
+                    PaymentMethodText = null, //CompleteOrderVM(orderVM)
                     RecipientName = order.ShipName,
                     RecipientCellphone = null,
                     RecipientTelephone = null,
@@ -130,16 +133,15 @@ namespace Libreria.Service
                     SubscriberCellphone = null,
                     SubscriberTelephone = null,
                     SubscriberAddress = null,
-                    Progress = "準備出貨中",
-                    OrderPrice = 0,
+                    //OrderDetailList = null, //CompleteOrderVM(orderVM)
+                    Progress = null, //CompleteOrderVM(orderVM)
+                    OrderPrice = 0, //CompleteOrderVM(orderVM)
                 }
             ).ToList();
 
-            foreach(var orderVM in result)
+            foreach (var orderVM in result)
             {
-                orderVM.OrderDetailList = GetOrderDetailByOrderId(orderVM.OrderId);
-                orderVM.Progress = CalculateProgress(orderVM.OrderDate);
-                orderVM.OrderPrice = CalculateOrderPrice(orderVM);
+                CompleteOrderVM(orderVM);
             }
 
             return result;
@@ -164,6 +166,7 @@ namespace Libreria.Service
                     OrderDate = order.OrderDate,
                     ShippingDate = order.ShippingDate,
                     PaymentMethod = order.PaymentType,
+                    PaymentMethodText = null, //CompleteOrderVM(orderVM)
                     RecipientName = order.ShipName,
                     RecipientCellphone = null,
                     RecipientTelephone = null,
@@ -175,8 +178,75 @@ namespace Libreria.Service
                     SubscriberCellphone = null,
                     SubscriberTelephone = null,
                     SubscriberAddress = null,
-                    Progress = "準備出貨中",
-                    OrderPrice = 0,
+                    //OrderDetailList = null, //CompleteOrderVM(orderVM)
+                    Progress = null, //CompleteOrderVM(orderVM)
+                    OrderPrice = 0, //CompleteOrderVM(orderVM)
+                }
+            ).ToList();
+
+            foreach (var orderVM in result)
+            {
+                CompleteOrderVM(orderVM);
+            }
+
+            return result;
+        }
+
+        public List<OrderViewModel> GetByProgress(int memberId, string progress)
+        {
+            TimeSpan startTimeSpan;
+            TimeSpan endTimeSpan;
+
+            if(progress== "準備出貨中")
+            {
+                startTimeSpan = TimeSpan.FromDays(0);
+                endTimeSpan = TimeSpan.FromDays(1);
+            }
+            else if (progress == "已出貨,尚未送達")
+            {
+                startTimeSpan = TimeSpan.FromDays(1);
+                endTimeSpan = TimeSpan.FromDays(5);
+            }
+            else if(progress == "貨已送達")
+            {
+                startTimeSpan = TimeSpan.FromDays(5);
+                endTimeSpan = TimeSpan.MaxValue;
+            }
+            else
+            {
+                startTimeSpan = TimeSpan.FromDays(5);
+                endTimeSpan = TimeSpan.MaxValue;
+            }
+
+            DateTime requiredstartDate = DateTime.Now - startTimeSpan;
+            DateTime requiredendDate = DateTime.Now - endTimeSpan;
+
+            var result = (
+                from order in _DbRepository.GetAll<Order>()
+                where order.memberId == memberId &&
+                    order.OrderDate <= requiredstartDate &&
+                    order.OrderDate > requiredendDate
+                select new OrderViewModel()
+                {
+                    OrderId = order.OrderId,
+                    OrderDate = order.OrderDate,
+                    ShippingDate = order.ShippingDate,
+                    PaymentMethod = order.PaymentType,
+                    PaymentMethodText = null, //CompleteOrderVM(orderVM)
+                    RecipientName = order.ShipName,
+                    RecipientCellphone = null,
+                    RecipientTelephone = null,
+                    AddressCitySelect = order.ShipCity,
+                    AddressRegionSelect = order.ShipRegion,
+                    RecipientAddress = order.ShipAddress,
+                    RecipientPostalCode = order.ShipPostalCode,
+                    SubscriberName = null,
+                    SubscriberCellphone = null,
+                    SubscriberTelephone = null,
+                    SubscriberAddress = null,
+                    //OrderDetailList = null, //CompleteOrderVM(orderVM)
+                    Progress = null, //CompleteOrderVM(orderVM)
+                    OrderPrice = 0, //CompleteOrderVM(orderVM)
                 }
             ).ToList();
 
@@ -199,6 +269,7 @@ namespace Libreria.Service
                     OrderDate = order.OrderDate,
                     ShippingDate = order.ShippingDate,
                     PaymentMethod = order.PaymentType,
+                    PaymentMethodText = null, //CompleteOrderVM(orderVM)
                     RecipientName = order.ShipName,
                     RecipientCellphone = null,
                     RecipientTelephone = null,
@@ -210,8 +281,9 @@ namespace Libreria.Service
                     SubscriberCellphone = null,
                     SubscriberTelephone = null,
                     SubscriberAddress = null,
-                    Progress = "準備出貨中",
-                    OrderPrice = 0,
+                    //OrderDetailList = null, //CompleteOrderVM(orderVM)
+                    Progress = null, //CompleteOrderVM(orderVM)
+                    OrderPrice = 0, //CompleteOrderVM(orderVM)
                 }
             ).ToList();
 
@@ -241,6 +313,7 @@ namespace Libreria.Service
                     OrderDate = order.OrderDate,
                     ShippingDate = order.ShippingDate,
                     PaymentMethod = order.PaymentType,
+                    PaymentMethodText = null, //CompleteOrderVM(orderVM)
                     RecipientName = order.ShipName,
                     RecipientCellphone = null,
                     RecipientTelephone = null,
@@ -252,8 +325,9 @@ namespace Libreria.Service
                     SubscriberCellphone = null,
                     SubscriberTelephone = null,
                     SubscriberAddress = null,
-                    Progress = "準備出貨中",
-                    OrderPrice = 0,
+                    //OrderDetailList = null, //CompleteOrderVM(orderVM)
+                    Progress = null, //CompleteOrderVM(orderVM)
+                    OrderPrice = 0, //CompleteOrderVM(orderVM)
                 }
             ).ToList();
 
@@ -279,11 +353,11 @@ namespace Libreria.Service
                     ProductName = product.ProductName,
                     UnitPrice = product.UnitPrice,
                     Quantity = orderDetail.Quantity,
-                    DetailPrice = 0,
+                    DetailPrice = 0, //CompleteOrderDetailVM(orderDetailVM)
                 }
             ).ToList();
 
-            foreach(var orderDetailVM in result)
+            foreach (var orderDetailVM in result)
             {
                 CompleteOrderDetailVM(orderDetailVM);
             }
@@ -291,19 +365,19 @@ namespace Libreria.Service
             return result;
         }
 
-        public List<OrderDetailViewModel> GetOrderDetailByOrderId(int OrderId)
+        public List<OrderDetailViewModel> GetOrderDetailByOrderId(int orderId)
         {
             var result = (
                 from orderDetail in _DbRepository.GetAll<OrderDetail>()
                 join product in _DbRepository.GetAll<Product>()
                 on orderDetail.ProductId equals product.ProductId
-                where orderDetail.OrderId == OrderId
+                where orderDetail.OrderId == orderId
                 select new OrderDetailViewModel()
                 {
                     ProductName = product.ProductName,
                     UnitPrice = product.UnitPrice,
                     Quantity = orderDetail.Quantity,
-                    DetailPrice = 0,
+                    DetailPrice = 0, //CompleteOrderDetailVM(orderDetailVM)
                 }
             ).ToList();
 
@@ -328,6 +402,7 @@ namespace Libreria.Service
             orderVM.OrderDetailList = GetOrderDetailByOrderId(orderVM.OrderId);
             orderVM.Progress = CalculateProgress(orderVM.OrderDate);
             orderVM.OrderPrice = CalculateOrderPrice(orderVM);
+            orderVM.PaymentMethodText = GetPaymentMethodText(orderVM.PaymentMethod);
 
             return orderVM;
         }
@@ -365,7 +440,7 @@ namespace Libreria.Service
 
         public string CalculateProgress(DateTime orderDate)
         {
-            if(DateTime.Now - orderDate < TimeSpan.FromDays(1))
+            if (DateTime.Now - orderDate < TimeSpan.FromDays(1))
             {
                 return "準備出貨中";
             }
@@ -382,12 +457,31 @@ namespace Libreria.Service
         public decimal CalculateOrderPrice(OrderViewModel orderVM)
         {
             orderVM.OrderPrice = 0;
-            foreach(var orderDetailVM in orderVM.OrderDetailList)
+            foreach (var orderDetailVM in orderVM.OrderDetailList)
             {
                 orderVM.OrderPrice += orderDetailVM.DetailPrice;
             }
 
             return orderVM.OrderPrice;
+        }
+
+        public string GetPaymentMethodText(int paymentMethod)
+        {
+            string paymentMethodText = "取貨付款";
+            if (paymentMethod == 1)
+            {
+                paymentMethodText = "取貨付款";
+            }
+            else if (paymentMethod == 2)
+            {
+                paymentMethodText = "ATM轉帳";
+            }
+            else if (paymentMethod == 3)
+            {
+                paymentMethodText = "信用卡";
+            }
+
+            return paymentMethodText;
         }
     }
 }
