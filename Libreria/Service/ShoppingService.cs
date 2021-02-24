@@ -73,7 +73,7 @@ namespace Libreria.Service
             }
         }
 
-        public OperationResult AddToCart(ProductViewModel ProductVM)
+        public OperationResult AddToCart(int productId)
         {
             var result = new OperationResult();
             var MemberId = Convert.ToInt32(System.Web.HttpContext.Current.Session["MemberID"]);
@@ -86,23 +86,23 @@ namespace Libreria.Service
                     if (HttpContext.Current.Session["ShoppingCart"] == null)
                     {
                         cartitems = new List<ShoppingCart>();
-                        ShoppingCart SessionEntity = new ShoppingCart() { ProductId = ProductVM.Id, memberId = 0, Count = 1 };
+                        ShoppingCart SessionEntity = new ShoppingCart() { ProductId = productId, memberId = 0, Count = 1 };
                         cartitems.Add(SessionEntity);
                         HttpContext.Current.Session["ShoppingCart"] = cartitems;
                     }
                     else
                     {
                         cartitems = (List<ShoppingCart>)HttpContext.Current.Session["ShoppingCart"];
-                        ShoppingCart SessionEntity = new ShoppingCart() { ProductId = ProductVM.Id, memberId = 0, Count = 1 };
+                        ShoppingCart SessionEntity = new ShoppingCart() { ProductId = productId, memberId = 0, Count = 1 };
                         cartitems.Add(SessionEntity);
                         HttpContext.Current.Session["ShoppingCart"] = cartitems;
                     }
                 }
                 else
                 {
-                    if (_DbRepository.GetAll<ShoppingCart>().Where(x => x.memberId == MemberId && x.ProductId == ProductVM.Id).FirstOrDefault() == null)
+                    if (_DbRepository.GetAll<ShoppingCart>().Where(x => x.memberId == MemberId && x.ProductId == productId).FirstOrDefault() == null)
                     {
-                        ShoppingCart entity = new ShoppingCart() { ProductId = ProductVM.Id, memberId = MemberId, Count = 1 };
+                        ShoppingCart entity = new ShoppingCart() { ProductId = productId, memberId = MemberId, Count = 1 };
                         _DbRepository.Create<ShoppingCart>(entity);
                     }
                 }
@@ -117,7 +117,7 @@ namespace Libreria.Service
             return result;
         }
 
-        public OperationResult DeleteFromCart(ShoppingCartViewModel ShoppingCartVM)
+        public OperationResult DeleteFromCart(int productId)
         {
             var result = new OperationResult();
             var MemberId = Convert.ToInt32(System.Web.HttpContext.Current.Session["MemberID"]);
@@ -126,13 +126,13 @@ namespace Libreria.Service
                 if (MemberId == 0)
                 {
                     List<ShoppingCart> cartitems = (List<ShoppingCart>)HttpContext.Current.Session["ShoppingCart"];
-                    var newcart = cartitems.Where(x => x.ProductId != ShoppingCartVM.ProductId).ToList() ;
+                    var newcart = cartitems.Where(x => x.ProductId != productId).ToList() ;
                     HttpContext.Current.Session["ShoppingCart"] = newcart;
                 }
                 else
                 {
                     _DbRepository.Delete<ShoppingCart>(_DbRepository.GetAll<ShoppingCart>()
-                        .Where(x => x.ProductId == ShoppingCartVM.ProductId && x.memberId == MemberId)
+                        .Where(x => x.ProductId == productId && x.memberId == MemberId)
                         .FirstOrDefault());
                 }
                 
@@ -142,6 +142,14 @@ namespace Libreria.Service
             {
                 result.IsSuccessful = false;
             }
+
+            return result;
+        }
+
+        public OperationResult AddOne(int productId)
+        {
+            var result = new OperationResult();
+
 
             return result;
         }
