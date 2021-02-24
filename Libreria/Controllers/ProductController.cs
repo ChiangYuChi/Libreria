@@ -12,11 +12,14 @@ namespace Libreria.Controllers
     public class ProductController : Controller
     {
         private readonly ProductService _productService;
+        private readonly ShoppingService _shoppingService;
+
 
 
         public ProductController()
         {
             _productService = new ProductService();
+            _shoppingService = new ShoppingService();
         }
 
        
@@ -92,7 +95,7 @@ namespace Libreria.Controllers
         }
         public PartialViewResult ShopCartIconPartial()
         {
-            var product = _productService.GetAll();
+            var product = _shoppingService.GetAnonymousAll();
 
             return PartialView(product);
         }

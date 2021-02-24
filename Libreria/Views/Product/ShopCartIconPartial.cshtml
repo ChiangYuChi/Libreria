@@ -1,4 +1,4 @@
-﻿@model List<ProductViewModel>
+﻿@model List<ShoppingCartViewModel>
 
 
 
@@ -23,19 +23,22 @@
         <p class="cart__empty js-cart-empty">
             目前是空的啊! 快去找本好書吧!
         </p>
-        <div class="cart__product js-cart-product-template">
-            <article class="js-cart-product">
-                <h1>title</h1>
-                <img src="#" alt="書圖" />
-                <p class="price">price</p>
-                <p>
-                    <a class="js-remove-product" href="#" title="Delete product">
-                        刪除商品
-                    </a>
-                </p>
+        @foreach (var item in Model)
+        {
+            <div class="cart__product js-cart-product-template">
+                <article class="js-cart-product">
+                    <h1>@item.ProductName</h1>
+                    <img src="@item.PicUrl" alt="書圖" />
+                    <p class="price">@item.Price</p>
+                    <p>
+                        <a class="js-remove-product" href="#" title="Delete product">
+                            刪除商品
+                        </a>
+                    </p>
+                </article>
+            </div>
+        }
 
-            </article>
-        </div>
     </div>
     <div class="cart__footer">
         <p class="cart__text">
