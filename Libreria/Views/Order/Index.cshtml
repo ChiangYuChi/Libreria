@@ -284,6 +284,35 @@
             });
         }
 
+        function PlusOne(id) {
+            let productId = id;
+
+            $.ajax({
+                type: "POST",
+                url: "/Order/PlusOne",
+                data: { ProductId: productId },
+                dataType: "text",
+                success: function () {
+                    location.reload();
+                }
+            });
+        }
+
+        function MinusOne(id) {
+            let productId = id;
+
+            $.ajax({
+                type: "POST",
+                url: "/Order/MinusOne",
+                data: { ProductId: productId },
+                dataType: "text",
+                success: function () {
+                    location.reload();
+                }
+            });
+        }
+
+
     </script>
     
 }
