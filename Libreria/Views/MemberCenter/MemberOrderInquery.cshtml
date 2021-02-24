@@ -40,23 +40,23 @@
                         </span>
                     </p>
                     <p>
-                        已到門市:
-                        <span>
-                            @{ sum = 0;}
-                            @foreach (var order in Model)
-                            {
-                                if (order.Progress == "貨已送達") { sum++; }
-                            }
-                            @sum
-                        </span>
-                    </p>
-                    <p>
                         已寄出:
                         <span>
                             @{ sum = 0;}
                             @foreach (var order in Model)
                             {
                                 if (order.Progress == "已出貨，尚未送達") { sum++; }
+                            }
+                            @sum
+                        </span>
+                    </p>
+                    <p>
+                        已送達:
+                        <span>
+                            @{ sum = 0;}
+                            @foreach (var order in Model)
+                            {
+                                if (order.Progress == "貨已送達") { sum++; }
                             }
                             @sum
                         </span>
