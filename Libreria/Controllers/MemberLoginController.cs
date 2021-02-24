@@ -40,12 +40,12 @@ namespace Libreria.Controllers
         [HttpPost]
         public ActionResult Index(MemberLoginViewModel model)
         {
-            _memberLoginService.GetMember(model, ModelState.IsValid);
+            var result = _memberLoginService.GetMember(model, ModelState.IsValid);
             if (ModelState.IsValid)
             {
 
                 
-                if (model != null)
+                if (result != null)
                 {
                     
                     return RedirectToAction("MemberLogin", "MemberCenter");
