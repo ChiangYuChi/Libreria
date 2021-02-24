@@ -174,7 +174,7 @@ namespace Libreria.Controllers
         }
 
         [HttpPost]
-        public int AddToFavorite(int id)
+        public void AddToFavorite(int id)
         {
             List<Favorite> favs = new List<Favorite>();
             var memberId = Convert.ToInt32(HttpContext.Session["MemberId"]);
@@ -203,8 +203,15 @@ namespace Libreria.Controllers
 
                 Session["Favorite"] = favs;
             }
-            return favs.Count;
         }
+
+
+        public bool RemoveFavorite(int id)
+        {
+            
+        }
+
+        
 
 
 

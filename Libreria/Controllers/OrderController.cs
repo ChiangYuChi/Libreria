@@ -1,4 +1,5 @@
-﻿using Libreria.Service;
+﻿using Libreria.Models.EntityModel;
+using Libreria.Service;
 using Libreria.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -80,6 +81,38 @@ namespace Libreria.Controllers
             }
 
             return View(orderVM);
+        }
+
+        [HttpPost]
+        public void FavoriteToCart(int id)
+        {
+            List<ShoppingCart> carts = new List<ShoppingCart>();
+            var memberId = Convert.ToInt32(HttpContext.Session["MemberId"]);
+            if (Session["Cart"] == null)
+            {
+                ShoppingCart cart = new ShoppingCart
+                {
+                    ProductId = id,
+                    memberId = memberId,
+                };
+
+                carts.Add(cart);
+                Session["Cart"] = cart;
+            }
+            else
+            {
+                carts = (List<ShoppingCart>)Session["Cart"];
+
+                ShoppingCart cart = new ShoppingCart
+                {
+                    ProductId = id,
+                    memberId = memberId,
+                };
+
+                carts.Add(cart);
+
+                Session["Favorite"] = carts;
+            }
         }
 
         public ActionResult Test()
