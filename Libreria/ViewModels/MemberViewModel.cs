@@ -19,7 +19,7 @@ namespace Libreria.ViewModels
         /// 手機號碼
         /// </summary>
         [Required]
-        [StringLength(50)]
+        [StringLength(50)]                                                                          
         public string MobileNumber { get; set; }
         /// <summary>
         /// 市話
