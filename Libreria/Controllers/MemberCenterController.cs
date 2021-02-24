@@ -164,26 +164,46 @@ namespace Libreria.Controllers
             }
             return View();
         }
-        [CustomAllowAnonymous]
+
+        //[Authorize]
         public ActionResult Favorite()
         {
-            var result = _favoriteService.GetAll();
+            var favs = ((Session["Favorite"]) == null ? new List<Favorite>() : (List<Favorite>)Session["Favorite"]).Select(x => x.ProductId);
+            var result = _favoriteService.GetFavoriteInfo(favs);
             return View(result);
         }
 
         [HttpPost]
-        public string AddToFavorite(ProductViewModel ProductVM)
+        public int AddToFavorite(int id)
         {
-            var result = _favoriteService.Create(ProductVM);
-
-            if (result.IsSuccessful)
+            List<Favorite> favs = new List<Favorite>();
+            var memberId = Convert.ToInt32(HttpContext.Session["MemberId"]);
+            if (Session["Favorite"] == null)
             {
-                return "加入成功!";
+                Favorite fav = new Favorite
+                {
+                    ProductId = id,
+                    memberId = memberId,
+                };
+
+                favs.Add(fav);
+                Session["Favorite"] = favs;
             }
             else
             {
-                return "加入失败";
+                favs = (List<Favorite>)Session["Favorite"];
+
+                Favorite favorite = new Favorite
+                {
+                    ProductId = id,
+                    memberId = memberId,
+                };
+
+                favs.Add(favorite);
+
+                Session["Favorite"] = favs;
             }
+            return favs.Count;
         }
 
 

@@ -10,9 +10,7 @@ namespace Libreria.Models.EntityModel
     public partial class Favorite
     {
         public int FavoriteId { get; set; }
-
         public int ProductId { get; set; }
-
         public int memberId { get; set; }
 
         public virtual member member { get; set; }
