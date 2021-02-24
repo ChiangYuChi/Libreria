@@ -49,17 +49,23 @@ namespace Libreria.Service
         public List<ExhibitionVIewModel> OverdueExhibitioning()
         {
             var GetEx = GetAll();
-            return GetEx.Where(x => x.ExhibitionEndTime < Nowdate)
+            var result = GetEx.Where(x => x.ExhibitionEndTime < Nowdate)
                         .OrderByDescending(x => x.ExhibitionEndTime)
                         .ToList();
+
+
+            return result;
         }
 
         public List<ExhibitionVIewModel> NotYetExhibitioning()
         {
             var GetEx = GetAll();
-            return GetEx.Where(x => x.ExhibitionStartTime > Nowdate)
+            
+            var result = GetEx.Where(x => x.ExhibitionStartTime > Nowdate)
                         .OrderBy(x => x.ExhibitionStartTime)
                         .ToList();
+
+            return result;
         }
     }
 }

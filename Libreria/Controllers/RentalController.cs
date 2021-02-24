@@ -35,6 +35,7 @@ namespace Libreria.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult ConfirmBooling(RentalConfirmViewModel model)
         {
+
             if (ModelState.IsValid) {
 
                 _rentalService.ConfirmBooling(model);
@@ -42,7 +43,7 @@ namespace Libreria.Controllers
             }
             else
             {
-                return View("Confirm");
+                return View("Confirm", model);
             }
         }
     }

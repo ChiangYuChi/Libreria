@@ -27,7 +27,11 @@ function generateStartDate(item) {
     let endDate = calender.getPickDateRange().pickEndDate;
     let indexDate = new Date(startDate.getTime());
     $('option:eq(0)', item).nextAll().remove();
-    for (let i = 0; i <= endDate.getDate() - startDate.getDate(); i++) {
+    function datediff(startDate, endDate) {
+        return Math.round((endDate - startDate) / (1000 * 60 * 60 * 24));
+    }
+
+    for (let i = 0; i <= datediff(startDate, endDate); i++) {
         let option = document.createElement("option");
         option.value = indexDate.yyyymmdd();
         option.innerText = `${indexDate.getFullYear()}年${indexDate.getMonth() + 1}月${indexDate.getDate()}日`;
@@ -87,9 +91,13 @@ function Calendar() {
 
         
         $('td', tbody).each(function () {
-            let indexDate = $(this).data('data');
-            if (pickStartDate <= indexDate && indexDate <= pickEndDate) {
-                $(this).addClass('pick-date');
+            let indexdate = $(this).data('data');
+            if (indexdate != undefined &&
+                pickStartDate != undefined &&
+                pickEndDate != undefined) {
+                if (pickStartDate <= indexdate && indexdate <= pickEndDate) {
+                    $(this).addClass('pick-date');
+                }
             }
         });
         
@@ -104,8 +112,12 @@ function Calendar() {
        
         $('td', tbody).each(function () {
             let indexdate = $(this).data('data');
-            if (pickstartdate <= indexdate && indexdate <= pickenddate) {
-                $(this).addclass('pick-date');
+            if (indexdate != undefined &&
+                pickStartDate != undefined &&
+                pickEndDate != undefined) {
+                if (pickStartDate <= indexdate && indexdate <= pickEndDate) {
+                    $(this).addClass('pick-date');
+                }
             }
         });
         

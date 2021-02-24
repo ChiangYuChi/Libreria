@@ -48,38 +48,4 @@ $('#upload-image input').change(function () {
     reader.readAsDataURL(file);
 });
 
-function ConfirmReservation() {
-    let name = `${$('#last-name').val()} ${$('#first-name').val()}`
-    let phone = $('#phoneNumber').val();
-    let email = $('#email').val();
-    let organizer = $('#organizer').val();
-    let fare = $('#fare').val();
-    let introduction = $('#introduction').val();
-    let pic = $('#pic').val();
-    let exName = $('#exName').val();
-    let startDate = $('#StartDate').val();
-    let endDate = $('#EndDate').val();
-    let exhibitionStartTime = $('#ExhibitionStartTime').val();
-    let exhibitionEndTime = $('#ExhibitionEndTime').val();
-    $.ajax({
-        method: "post",
-        url: "/rental/ConfirmBooling",
-        data: {
-            EndDate: endDate,
-            StartDate: startDate,
-            ExhibitionStartTime: exhibitionStartTime,
-            ExhibitionEndTime: exhibitionEndTime,
-            ExCustomerName: name,
-            ExCustomerPhone: phone,
-            ExCustomerEmail: email,
-            ExhibitionIntro: organizer,
-            MasterUnit: introduction,
-            ExhibitionPrice: pic,
-            ExPhoto: fare,
-            ExName: exName
-        }
-    }).done(function (msg) {
-        alert("預定完成!"); 
-    });
-}
-//$('#confirm').click(ConfirmReservation)
+

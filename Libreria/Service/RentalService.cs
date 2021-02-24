@@ -3,6 +3,7 @@ using Libreria.Repository;
 using Libreria.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 
@@ -23,6 +24,14 @@ namespace Libreria.Service
 
             try
             {
+                string fileName = null;
+                if (model.ExPhoto.ContentLength > 0)
+                {
+                    fileName = Path.GetFileName(model.ExPhoto.FileName);
+                    //var path = Path.Combine(Server.MapPath("~/FileUploads"), fileName);
+                    //file.SaveAs(path);
+                }
+
                 ExhibitionCustomer exhibitionCustomer = new ExhibitionCustomer
                 {
                     ExCustomerName = model.ExCustomerName,
@@ -47,7 +56,7 @@ namespace Libreria.Service
                     ExhibitionPrice = Convert.ToDecimal(model.ExhibitionPrice),
                     EditModifyDate = DateTime.Now,
                     ExCustomerId = exhibitionCustomer.ExCustomerId,
-                    ExPhoto = model.ExPhoto,
+                    ExPhoto = fileName,
                     ExName = model.ExName
                 };
                 _DbRepository.Create(entity);
@@ -60,8 +69,6 @@ namespace Libreria.Service
 
             return result;
         }
-
-      
     }
     
 }

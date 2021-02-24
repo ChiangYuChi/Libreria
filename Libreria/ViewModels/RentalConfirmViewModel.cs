@@ -90,7 +90,7 @@ namespace Libreria.ViewModels
         /// 展覽圖片
         /// </summary>
         [Required]
-        public string ExPhoto { get; set; }
+        public HttpPostedFileBase ExPhoto { get; set; }
 
         /// <summary>
         /// 展覽名稱
