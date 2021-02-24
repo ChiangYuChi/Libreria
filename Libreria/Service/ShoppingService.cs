@@ -152,7 +152,31 @@ namespace Libreria.Service
         public OperationResult AddOne(int productId)
         {
             var result = new OperationResult();
+            var MemberId = Convert.ToInt32(System.Web.HttpContext.Current.Session["MemberID"]);
+            try
+            {
+                if (MemberId == 0)
+                {
 
+                }
+                else
+                {
+
+                }
+
+                result.IsSuccessful = true;
+            }
+            catch
+            {
+                result.IsSuccessful = false;
+            }
+
+            return result;
+        }
+
+        public OperationResult MinusOne(int productId)
+        {
+            var result = new OperationResult();
 
             return result;
         }

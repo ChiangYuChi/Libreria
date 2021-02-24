@@ -93,7 +93,6 @@
         function AddCart(id) {
             let productId = id;
 
-
             $.ajax({
                 type: "POST",
                 url: "/Order/AddToCart",
@@ -105,7 +104,6 @@
                 }
             });
         }
-
 
         function AddFavorite(id) {
             let favId = id

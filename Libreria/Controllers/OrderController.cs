@@ -70,7 +70,7 @@ namespace Libreria.Controllers
         [HttpPost]
         public void MinusOne(ShoppingCartViewModel ShoppingCartVM)
         {
-
+            _shoppingService.MinusOne(ShoppingCartVM.ProductId);
         }
 
         /// <summary>
