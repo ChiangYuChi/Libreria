@@ -73,11 +73,16 @@ namespace Libreria.Controllers
                 //未完成
                 result = null;
             }
+            else if(Inquire == "transactionId")
+            {
+                result = _orderService.GetByOrderId(TransactionId);
+            }
             else
             {
                 //預設代入一個月
                 result = _orderService.GetBymemberId(UserMemberId, TimeSpan.FromDays(30));
             }
+            ViewBag.Inquire = Inquire;
 
             return View(result);
         }

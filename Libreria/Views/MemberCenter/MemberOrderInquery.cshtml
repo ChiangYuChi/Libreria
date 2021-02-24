@@ -2,8 +2,8 @@
 
 @section topCss{
     <link href="~/Asset/Css/MemberCenter/member_order_inquery.css" rel="stylesheet" />
-    
-    }
+
+}
 
 
 <div class="container">
@@ -56,7 +56,7 @@
                             <tr>
                                 <th>訂單編號</th>
                                 <td>
-                                    <input type="radio" name="Inquire" value="transactionId" id="transa-ctionid_radio" >
+                                    <input type="radio" name="Inquire" value="transactionId" id="transa-ctionid_radio">
                                     <label for="transa-ctionid_radio">&nbsp;</label>
                                     <input type="number" id="transa-ctionid" name="TransactionId" maxlength="" minlength="">
 
@@ -75,7 +75,34 @@
         <div class="order__content section-block">
             <div class="content__title decoration">
                 <h3>
-                    <em>一個月內訂單</em>
+                    @if (ViewBag.Inquire == "history")
+                    {
+                        <em>所有訂單</em>
+                    }
+                    else if (ViewBag.Inquire == "oneMonth")
+                    {
+                        <em>一個月內訂單</em>
+                    }
+                    else if (ViewBag.Inquire == "sixMonths")
+                    {
+                        <em>六個月內訂單</em>
+                    }
+                    else if (ViewBag.Inquire == "notShipped")
+                    {
+                        <em>未出貨訂單</em>
+                    }
+                    else if (ViewBag.Inquire == "return")
+                    {
+                        <em>退換貨訂單</em>
+                    }
+                    else if (ViewBag.Inquire == "transactionId")
+                    {
+                        <em>查詢訂單</em>
+                    }
+                    else
+                    {
+                        <em>一個月內訂單</em>
+                    }
                     <span>共 <cite>0</cite> 筆訂單</span>
                 </h3>
             </div>
@@ -90,6 +117,7 @@
                             <th>商品名稱</th>
                             <th>數量</th>
                             <th>處理狀況</th>
+                            <th>詳細資料</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -106,16 +134,31 @@
                                         <!--訂購時間-->
                                         @order.OrderDate
                                     </td>
-                                    <td>
-                                        <!--付款方式-->
-                                        @order.PaymentMethod
-                                    </td>
+                                    <!--付款方式-->
+                                    @if (order.PaymentMethod == 1)
+                                    {
+                                        <td>
+                                            取貨付款
+                                        </td>
+                                    }
+                                    else if (order.PaymentMethod == 2)
+                                    {
+                                        <td>
+                                            ATM轉帳
+                                        </td>
+                                    }
+                                    else if (order.PaymentMethod == 3)
+                                    {
+                                        <td>
+                                            信用卡
+                                        </td>
+                                    }
                                     <td>
                                         <!--訂單金額-->
                                         @{var sum = 0;}
                                         @foreach (var orderDetail in order.OrderDetailList)
                                         {
-                                            sum += (int)orderDetail.UnitPrice*orderDetail.Quantity;
+                                            sum += (int)orderDetail.UnitPrice * orderDetail.Quantity;
                                         }
                                         @sum
                                     </td>
@@ -135,7 +178,41 @@
                                     </td>
                                     <td>
                                         <!--處理狀況-->
-                                            @order.Progress
+                                        @order.Progress
+                                    </td>
+                                    <td>
+                                        <!-- Button trigger modal -->
+                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                                            詳細資料
+                                        </button>
+
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <p>訂單編號：@order.OrderId</p>
+                                                        <p>訂購時間：@order.OrderDate</p>
+                                                        <p>出貨時間：@order.ShippingDate</p>
+                                                        <p>付款方式：@order.PaymentMethod</p>
+                                                        <p>收件人：@order.RecipientName</p>
+                                                        <p>收件地址：@order.AddressCitySelect@order.AddressRegionSelect@order.RecipientAddress</p>
+                                                        <p></p>
+
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                        @*<button type="button" class="btn btn-primary">Save changes</button>*@
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </td>
                                 </tr>
                             }
@@ -179,7 +256,7 @@
 </div>
 
 @section endJs{
-    <script src="~/Asset/Js/MemberCenter/member-MyOrder.js"></script>    
+    <script src="~/Asset/Js/MemberCenter/member-MyOrder.js"></script>
 }
 
 

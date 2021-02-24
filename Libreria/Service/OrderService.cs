@@ -28,8 +28,8 @@ namespace Libreria.Service
             {
                 Order order = new Order()
                 {
-                    ShippingDate = DateTime.Now.AddDays(1),
                     OrderDate = DateTime.Now,
+                    ShippingDate = DateTime.Now.AddDays(1),
                     memberId = UserMemberId,
                     ShipName = orderVM.RecipientName,
                     ShipCity = orderVM.AddressCitySelect,
@@ -80,6 +80,7 @@ namespace Libreria.Service
                 {
                     OrderId = order.OrderId,
                     OrderDate = order.OrderDate,
+                    ShippingDate = order.ShippingDate,
                     PaymentMethod = order.PaymentType,
                     RecipientName = order.ShipName,
                     RecipientCellphone = null,
@@ -99,6 +100,7 @@ namespace Libreria.Service
             foreach (var order in result)
             {
                 order.OrderDetailList = GetOrderDetailByOrderId(order.OrderId);
+                order.Progress = CalculateProgress(order.OrderDate);
             }
 
             return result;
@@ -113,6 +115,7 @@ namespace Libreria.Service
                 {
                     OrderId = order.OrderId,
                     OrderDate = order.OrderDate,
+                    ShippingDate = order.ShippingDate,
                     PaymentMethod = order.PaymentType,
                     RecipientName = order.ShipName,
                     RecipientCellphone = null,
@@ -132,6 +135,7 @@ namespace Libreria.Service
             foreach(var order in result)
             {
                 order.OrderDetailList = GetOrderDetailByOrderId(order.OrderId);
+                order.Progress = CalculateProgress(order.OrderDate);
             }
 
             return result;
@@ -154,6 +158,7 @@ namespace Libreria.Service
                 {
                     OrderId = order.OrderId,
                     OrderDate = order.OrderDate,
+                    ShippingDate = order.ShippingDate,
                     PaymentMethod = order.PaymentType,
                     RecipientName = order.ShipName,
                     RecipientCellphone = null,
@@ -173,6 +178,42 @@ namespace Libreria.Service
             foreach (var order in result)
             {
                 order.OrderDetailList = GetOrderDetailByOrderId(order.OrderId);
+                order.Progress = CalculateProgress(order.OrderDate);
+            }
+
+            return result;
+        }
+
+        public List<OrderViewModel> GetByOrderId(int? orderId)
+        {
+            var result = (
+                from order in _DbRepository.GetAll<Order>()
+                where order.OrderId == orderId
+                select new OrderViewModel()
+                {
+                    OrderId = order.OrderId,
+                    OrderDate = order.OrderDate,
+                    ShippingDate = order.ShippingDate,
+                    PaymentMethod = order.PaymentType,
+                    RecipientName = order.ShipName,
+                    RecipientCellphone = null,
+                    RecipientTelephone = null,
+                    AddressCitySelect = order.ShipCity,
+                    AddressRegionSelect = order.ShipRegion,
+                    RecipientAddress = order.ShipAddress,
+                    RecipientPostalCode = order.ShipPostalCode,
+                    SubscriberName = null,
+                    SubscriberCellphone = null,
+                    SubscriberTelephone = null,
+                    SubscriberAddress = null,
+                    Progress = "準備出貨中",
+                }
+            ).ToList();
+
+            foreach (var order in result)
+            {
+                order.OrderDetailList = GetOrderDetailByOrderId(order.OrderId);
+                order.Progress = CalculateProgress(order.OrderDate);
             }
 
             return result;
@@ -194,6 +235,7 @@ namespace Libreria.Service
                 {
                     OrderId = order.OrderId,
                     OrderDate = order.OrderDate,
+                    ShippingDate = order.ShippingDate,
                     PaymentMethod = order.PaymentType,
                     RecipientName = order.ShipName,
                     RecipientCellphone = null,
@@ -213,6 +255,7 @@ namespace Libreria.Service
             foreach (var order in result)
             {
                 order.OrderDetailList = GetOrderDetailByOrderId(order.OrderId);
+                order.Progress = CalculateProgress(order.OrderDate);
             }
 
             return result;
@@ -272,6 +315,22 @@ namespace Libreria.Service
             }
 
             return orderVM;
+        }
+
+        public string CalculateProgress(DateTime orderDate)
+        {
+            if(DateTime.Now - orderDate < TimeSpan.FromDays(1))
+            {
+                return "準備出貨中";
+            }
+            else if (DateTime.Now - orderDate < TimeSpan.FromDays(5))
+            {
+                return "已出貨，尚未送達";
+            }
+            else
+            {
+                return "貨已送達";
+            }
         }
 
     }

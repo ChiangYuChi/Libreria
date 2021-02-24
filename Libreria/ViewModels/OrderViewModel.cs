@@ -112,9 +112,14 @@ namespace Libreria.ViewModels
         public int Invoice { get; set; }
 
         /// <summary>
-        /// 訂購日期
+        /// 訂購時間
         /// </summary>
         public DateTime OrderDate { get; set; }
+
+        /// <summary>
+        /// 出貨時間
+        /// </summary>
+        public DateTime ShippingDate { get; set; }
 
         /// <summary>
         /// 書

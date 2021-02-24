@@ -17,20 +17,20 @@ $('.search__list li').click(function(){
 });
 
 
-$('.order__inquire label').click(function () {
-    if ($(this).text() == "六個月內訂單" && false) {
-        $('.content__title em').text("所有訂單")
+//$('.order__inquire label').click(function () {
+//    if ($(this).text() == "六個月內訂單" && false) {
+//        $('.content__title em').text("所有訂單")
         
-    }
-    else if($(this).html() == "&nbsp;"){
-        $('.content__title em').text("訂單查詢")
+//    }
+//    else if($(this).html() == "&nbsp;"){
+//        $('.content__title em').text("訂單查詢")
         
 
-    }
-    else{
-        $('.content__title em').html( $(this).text());
-    }
-});
+//    }
+//    else{
+//        $('.content__title em').html( $(this).text());
+//    }
+//});
 
 
 $('input[name=transa-ctionid]:text').click(function(){
