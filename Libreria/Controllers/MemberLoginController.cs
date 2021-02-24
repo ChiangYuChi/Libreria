@@ -60,7 +60,7 @@ namespace Libreria.Controllers
         {
             Session["MemberName"] = string.Empty;
             Session["MemberPassword"] = string.Empty;
-            Session["MemberID"] = string.Empty;
+            Session["MemberID"] = null;
             return RedirectToAction("Index", "Home");
         }
 

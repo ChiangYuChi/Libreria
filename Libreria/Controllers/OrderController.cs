@@ -25,7 +25,15 @@ namespace Libreria.Controllers
         /// <returns></returns>
         public ActionResult Index()
         {
-            var result = _shoppingService.GetAll();
+            List<ShoppingCartViewModel> result;
+            if (System.Web.HttpContext.Current.Session["MemberID"] == null)
+            {
+                result = _shoppingService.GetAnonymousAll();
+            }
+            else
+            {
+                result = _shoppingService.GetAll();
+            }
 
             return View(result);
         }
@@ -33,7 +41,7 @@ namespace Libreria.Controllers
         [HttpPost]
         public string AddToCart(ProductViewModel ProductVM)
         {
-            var result = _shoppingService.Create(ProductVM);
+            var result = _shoppingService.AddToCart(ProductVM);
             
 
             if (result.IsSuccessful)
