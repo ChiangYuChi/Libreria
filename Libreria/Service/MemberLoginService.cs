@@ -1,4 +1,5 @@
-﻿using Libreria.Models.EntityModel;
+﻿using Libreria.Helpers;
+using Libreria.Models.EntityModel;
 using Libreria.Repository;
 using Libreria.ViewModels;
 using System;
@@ -17,14 +18,46 @@ namespace Libreria.Service
             _libreriaRepository = new LibreriaRepository();
         }
 
-        public List<MemberLoginViewModel> GetAll()
-        {
-            return _libreriaRepository.GetAll<member>().Select(m => new MemberLoginViewModel()
-            {
-                MemberName = m.memberName,
-                MemberPassword = m.memberPassword
+        //public List<MemberLoginViewModel> GetAll()
+        //{
+        //    return _libreriaRepository.GetAll<member>().Select(m => new MemberLoginViewModel()
+        //    {
+        //        MemberName = m.memberName,
+        //        MemberPassword = m.memberPassword
 
-            }).ToList();
+        //    }).ToList();
+        //}
+        public member GetMember(MemberLoginViewModel model, bool IsValid)
+        {
+            string passwordSha512 = Utility.GetSha512(model.MemberPassword);
+            member member=null;
+            try
+            {
+                if (IsValid)
+                {
+                    member = _libreriaRepository.GetAll<member>().Where(u => u.memberName == model.MemberName && u.memberPassword == passwordSha512)
+                                               .FirstOrDefault();
+                    if (member != null)
+                    {
+                        HttpContext.Current.Session["MemberName"] = member.memberName;
+                        HttpContext.Current.Session["MemberPassword"] = member.memberPassword;
+                        HttpContext.Current.Session["MemberID"] = member.memberId;
+
+
+                        //var CookiesessionID = HttpContext.Request.Cookies["SesssionID"];
+                     
+                        return member;
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                ex.ToString();
+            }
+            return member;
         }
     }
+
+
 }

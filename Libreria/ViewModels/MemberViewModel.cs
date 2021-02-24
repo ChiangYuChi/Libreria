@@ -21,7 +21,7 @@ namespace Libreria.ViewModels
         /// </summary>
         [Display(Name = "手機號碼")]
         [Required]
-        [StringLength(50)]
+        [StringLength(50)]                                                                          
         public string MobileNumber { get; set; }
         /// <summary>
         /// 市話
