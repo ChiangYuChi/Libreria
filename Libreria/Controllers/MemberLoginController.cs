@@ -25,16 +25,16 @@ namespace Libreria.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-            //if (User.Identity.Name!=null)
-            //{
-            //    Response.Write("您現在是已登入狀態。");
-            //    return RedirectToAction("MemberLogin", "MemberCenter");
-            //}
-            //else
-            //{
+            if (Session["MemberName"] != null)
+            {
+                Response.Write("您現在是已登入狀態。");
+                return RedirectToAction("MemberLogin", "MemberCenter");
+            }
+            else
+            {
                 return View();
 
-            //}
+            }
         }
         
         [HttpPost]
