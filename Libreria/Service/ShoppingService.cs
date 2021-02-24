@@ -93,8 +93,11 @@ namespace Libreria.Service
                     else
                     {
                         cartitems = (List<ShoppingCart>)HttpContext.Current.Session["ShoppingCart"];
-                        ShoppingCart SessionEntity = new ShoppingCart() { ProductId = productId, memberId = 0, Count = 1 };
-                        cartitems.Add(SessionEntity);
+                        if (cartitems.Where(x => x.ProductId == productId).FirstOrDefault() == null)
+                        {
+                            ShoppingCart SessionEntity = new ShoppingCart() { ProductId = productId, memberId = 0, Count = 1 };
+                            cartitems.Add(SessionEntity);
+                        }
                         HttpContext.Current.Session["ShoppingCart"] = cartitems;
                     }
                 }
