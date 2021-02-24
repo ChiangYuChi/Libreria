@@ -16,5 +16,7 @@ namespace Libreria.ViewModels
         [Display(Name = "密碼")]
         [DataType(DataType.Password)]
         public string MemberPassword { get; set; }
+        [Display(Name = "記得我")]
+        public bool Remember { get; set; }
     }
 }

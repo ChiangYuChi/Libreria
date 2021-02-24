@@ -280,6 +280,7 @@
     <Compile Include="Service\ExhibitionService.cs" />
     <Compile Include="Service\MemberLoginService.cs" />
     <Compile Include="Service\FavoriteService.cs" />
+    <Compile Include="Service\MemberRegisterPageService.cs" />
     <Compile Include="Service\OperationResult.cs" />
     <Compile Include="Service\OrderService.cs" />
     <Compile Include="Service\ProductService.cs" />
