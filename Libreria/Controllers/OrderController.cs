@@ -13,11 +13,13 @@ namespace Libreria.Controllers
     {
         private readonly OrderService _orderService;
         private readonly ShoppingService _shoppingService;
+        private readonly FavoriteService _favoriteService;
 
         public OrderController()
         {
             _orderService = new OrderService();
             _shoppingService = new ShoppingService();
+            _favoriteService = new FavoriteService();
         }
 
         /// <summary>
@@ -58,7 +60,7 @@ namespace Libreria.Controllers
         [HttpPost] 
         public string FavoriteToCart(ProductViewModel ProductVM)
         {
-            var result = _shoppingService.Create(ProductVM);
+            var result = _favoriteService.CreateToCart(ProductVM);
 
 
             if (result.IsSuccessful)

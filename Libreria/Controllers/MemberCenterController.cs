@@ -141,7 +141,7 @@ namespace Libreria.Controllers
         [HttpPost]
         public string AddToFavorite(ProductViewModel ProductVM)
         {
-            var result = _favoriteService.Create(ProductVM);
+            var result = _favoriteService.CreateToFavorite(ProductVM);
 
 
             if (result.IsSuccessful)
