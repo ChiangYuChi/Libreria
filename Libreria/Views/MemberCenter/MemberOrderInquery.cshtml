@@ -23,10 +23,10 @@
         <div class="order">
             <div class="order__title">
                 <h2>我的訂單</h2>
-                <div class="title__item">
+                @*<div class="title__item">
                     <p>7-11逾期未領退回: <span>0</span> 件</p>
                     <p>客樂得未領退回: <span>0</span> 件</p>
-                </div>
+                </div>*@
                 <div class="title__item--narrow-only">
                     <p>
                         未出貨:
@@ -137,7 +137,7 @@
                     {
                         <em>一個月內訂單</em>
                     }
-                    <span>共 <cite>0</cite> 筆訂單</span>
+                    <span>共 <cite>@Model.Count</cite> 筆訂單</span>
                 </h3>
             </div>
             <div class="content__list">
@@ -214,6 +214,7 @@
                                                         <p id="ModalOrderId">訂單編號：@order.OrderId</p>
                                                         <p id="ModalOrderDate">訂購時間：@order.OrderDate</p>
                                                         <p id="ModalShippingDate">出貨時間：@order.ShippingDate</p>
+                                                        <p id="ModalProgress">出貨進度：@order.Progress</p>
                                                         <p id="ModalPaymentMethod">付款方式：@order.PaymentMethodText</p>
                                                         <p id="ModalRecipientName">收件人：@order.RecipientName</p>
                                                         <p id="ModalAddress">收件地址：@order.AddressCitySelect@order.AddressRegionSelect@order.RecipientAddress</p>
@@ -236,7 +237,7 @@
             </div>
         </div>
 
-        <div class="min-Pagination">
+        @*<div class="min-Pagination">
             <nav>
                 <ul>
                     <li>
@@ -254,7 +255,7 @@
                     </li>
                 </ul>
             </nav>
-        </div>
+        </div>*@
 
         <div class="order__remarks section-block">
             <div class="remarks__title decoration">
@@ -294,6 +295,7 @@
                 ModalOrderId.innerText = "訂單編號：@order.OrderId";
                 ModalOrderDate.innerText = "訂購時間：@order.OrderDate";
                 ModalShippingDate.innerText = "出貨時間：@order.ShippingDate";
+                ModalProgress.innerText = "出貨進度：@order.Progress";
                 ModalPaymentMethod.innerText = "付款方式：@order.PaymentMethodText";
                 ModalRecipientName.innerText = "收件人：@order.RecipientName";
                 ModalAddress.innerText = "收件地址：@order.AddressCitySelect@order.AddressRegionSelect@order.RecipientAddress";

@@ -12,11 +12,13 @@ namespace Libreria.Controllers
     {
         private readonly OrderService _orderService;
         private readonly ShoppingService _shoppingService;
+        private readonly MemberService _memberService;
 
         public OrderController()
         {
             _orderService = new OrderService();
             _shoppingService = new ShoppingService();
+            _memberService = new MemberService();
         }
 
         /// <summary>
@@ -59,7 +61,10 @@ namespace Libreria.Controllers
         /// <returns></returns>
         public ActionResult OrderDetail()
         {
+            int UserMemberId = Convert.ToInt32(System.Web.HttpContext.Current.Session["MemberID"]);
+
             var result = _shoppingService.GetAll();
+            ViewBag.MemberVMList = _memberService.GetByMemberId(UserMemberId);
 
             return View(result);
         }

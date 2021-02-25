@@ -2,6 +2,49 @@
 
 @{
     ViewBag.Title = "OrderDetail";
+
+    List<MemberViewModel> MemberVMList;
+    MemberVMList = ViewBag.MemberVMList;
+
+    MemberViewModel MemberVM;
+    if (ViewBag.MemberVMList != null && MemberVMList.Any())
+    {
+        MemberVMList = ViewBag.MemberVMList;
+        MemberVM = MemberVMList.FirstOrDefault();
+    }
+    else
+    {
+        MemberVM = new MemberViewModel();
+    }
+
+    int CityIndex;
+    int RegionIndex;
+
+    string MemberCity="";
+    string MemberRegion="";
+    string MemberAddress="";
+
+    if (MemberVM.Address != null)
+    {
+        //縣市
+        CityIndex = MemberVM.Address.IndexOf("市");
+        if (CityIndex < 0) { CityIndex = MemberVM.Address.IndexOf("縣"); }
+
+        if (CityIndex >= 0) { MemberCity = MemberVM.Address.Substring(0, CityIndex + 1); }
+        else { MemberCity = ""; }
+
+        //轄區
+        RegionIndex = MemberVM.Address.IndexOf("區");
+
+        if (CityIndex >= 0 && RegionIndex >= 0) { MemberRegion = MemberVM.Address.Substring(CityIndex + 1, RegionIndex - CityIndex); }
+        else if (RegionIndex >= 0) { MemberRegion = MemberVM.Address.Substring(0, RegionIndex + 1); }
+        else { MemberRegion = ""; }
+
+        //地址
+        if (RegionIndex >= 0) { MemberAddress = MemberVM.Address.Substring(RegionIndex + 1); }
+        else { MemberAddress = ""; }
+    }
+
 }
 
 @section topcss{
@@ -22,6 +65,7 @@
 
 @section topJS{
     <script src="https://kit.fontawesome.com/d22f4b5afc.js" crossorigin="anonymous"></script>
+
 }
 
 @section endJs{
@@ -71,9 +115,9 @@
                         <h2>選擇配送方式</h2>
                     </div>
                 </div>
-                <div class="delivery_option_fee">
-                    <p>超商取貨未滿350元，酌收訂單處理費50元</p>
-                </div>
+                @*<div class="delivery_option_fee">
+                        <p>超商取貨未滿350元，酌收訂單處理費50元</p>
+                    </div>*@
                 <div class="delivery_option_body">
                     @*<label class="col-md-3 delivery_option_7-11 delivery_options click_options" id="options for="7Eleven">
                             <span class="col-md-1 circle" value="0">
@@ -113,15 +157,15 @@
                 <div class="subscriber_profile_body">
                     <div class="recipient_profile_name">
                         <p>姓名</p>
-                        <input type="text" placeholder="姓名" name="SubscriberName" id="SubscriberName" required>
+                        <input type="text" placeholder="姓名" name="SubscriberName" id="SubscriberName" required value=@MemberVM.memberUserName>
                     </div>
                     <div class="recipient_profile_phone">
                         <p>行動電話</p>
-                        <input type="tel" placeholder="號碼" name="SubscriberCellphone" id="SubscriberCellphone" required pattern="\d{10}">
+                        <input type="tel" placeholder="號碼" name="SubscriberCellphone" id="SubscriberCellphone" required pattern="\d{10}" value=@MemberVM.MobileNumber>
                     </div>
                     <div class="recipient_profile_homePhone">
                         <p>連絡電話</p>
-                        <input type="tel" placeholder="市話" name="SubscriberTelephone" id="SubscriberTelephone" required pattern="\d*">
+                        <input type="tel" placeholder="市話" name="SubscriberTelephone" id="SubscriberTelephone" required pattern="\d*" value=@MemberVM.HomeNumber>
                     </div>
                     <div class="recipient_profile_address">
                         <p>地址</p>
@@ -150,14 +194,22 @@
                                 <option value="澎湖縣">澎湖縣</option> <!--20-->
                                 <option value="金門縣">金門縣</option> <!--21-->
                                 <option value="連江縣">連江縣</option> <!--22-->
+                                @if (MemberCity != "")
+                                {
+                                    <option value=@MemberCity selected>@MemberCity</option> <!--最後一項-->
+                                }
                             </select>
                             <select name="SubscriberAddressRegionSelect" id="subscriber_option_district Town" required>
                                 <option value="">請選擇</option>
+                                @if (MemberRegion != "")
+                                {
+                                    <option value=@MemberRegion selected>@MemberRegion</option> <!--最後一項-->
+                                }
                             </select>
                         </div>
                     </div>
                     <div class="recipient_profile_address_txt">
-                        <input type="text" placeholder="詳細地址" name="SubscriberAddress" id="SubscriberAddress" required>
+                        <input type="text" placeholder="詳細地址" name="SubscriberAddress" id="SubscriberAddress" required value=@MemberAddress>
                     </div>
                     <div class="recipient_profile_postalCode">
                         <p>郵遞區號</p>
@@ -173,7 +225,7 @@
                         <h2>收件人資料</h2>
                     </div>
                 </div>
-                <button type="button" class="SubscriberEqualRecipient-button" id="SubscriberEqualRecipient">同訂購人資料</button>
+                <input type="checkbox" class="SubscriberEqualRecipient-button align-middle" id="SubscriberEqualRecipient"><span>同訂購人資料</span>
                 <div class="recipient_profile_body">
                     <div class="recipient_profile_name">
                         <p>姓名</p>
@@ -353,16 +405,16 @@
                     <span>@PriceSum</span>
                     <span>-</span>
                     <p>優惠活動</p>
-                    <span>$0</span>
+                    <span>0</span>
                     <span>-</span>
                     <p>優惠券</p>
-                    <span>$0</span>
+                    <span>0</span>
                     <span>+</span>
                 </div>
                 <div class="commodity_discount_txt commodity_discount_txt2">
                     <p>訂單處理費</p>
                     <span>
-                        @(PriceSum<350? 50: 0)
+                        0
                     </span>
                 </div>
             </div>
@@ -371,7 +423,7 @@
                 <div class="commodity_total_txt">
                     <p>商品總金額</p>
                     @*<span>$1210</span>*@
-                    <span>@(PriceSum+ (PriceSum<350? 50 : 0))</span>
+                    <span>@PriceSum</span>
                     <button type="submit" id="submit">確認結帳</button>
                 </div>
             </div>

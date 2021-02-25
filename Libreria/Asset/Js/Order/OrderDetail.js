@@ -2,41 +2,49 @@
 //訂購人資料同收件人資料
 let SubscriberEqualRecipient = document.getElementById("SubscriberEqualRecipient");
 
-SubscriberEqualRecipient.addEventListener("click", function () { SubscriberToRecipient() })
+SubscriberEqualRecipient.addEventListener("change", function () { SubscriberToRecipient() })
 
 function SubscriberToRecipient() {
-    //訂購人資料
-    let SubscriberName = document.getElementById("SubscriberName");
-    let SubscriberCellphone = document.getElementById("SubscriberCellphone");
-    let SubscriberTelephone = document.getElementById("SubscriberTelephone");
-    let SubscriberAddressCitySelect = document.getElementById("subscriber_option subscriber_option_counties Region");
-    let SubscriberAddressRegionSelect = document.getElementById("subscriber_option_district Town");
-    let SubscriberAddress = document.getElementById("SubscriberAddress");
-    let SubscriberPostalCode = document.getElementById("SubscriberPostalCode")
 
-    //收件人資料
-    let RecipientName = document.getElementById("RecipientName");
-    let RecipientCellphone = document.getElementById("RecipientCellphone");
-    let RecipientTelephone = document.getElementById("RecipientTelephone");
-    let AddressCitySelect = document.getElementById("recipient_option recipient_option_counties Region");
-    let AddressRegionSelect = document.getElementById("recipient_option_district Town");
-    let RecipientAddress = document.getElementById("RecipientAddress");
-    let RecipientPostalCode = document.getElementById("RecipientPostalCode");
+    if (SubscriberEqualRecipient.checked == true) {
 
-    RecipientName.value = SubscriberName.value;
-    RecipientCellphone.value = SubscriberCellphone.value;
-    RecipientTelephone.value = SubscriberTelephone.value;
-    AddressCitySelect.value = SubscriberAddressCitySelect.value;
+        //訂購人資料
+        let SubscriberName = document.getElementById("SubscriberName");
+        let SubscriberCellphone = document.getElementById("SubscriberCellphone");
+        let SubscriberTelephone = document.getElementById("SubscriberTelephone");
+        let SubscriberAddressCitySelect = document.getElementById("subscriber_option subscriber_option_counties Region");
+        let SubscriberAddressRegionSelect = document.getElementById("subscriber_option_district Town");
+        let SubscriberAddress = document.getElementById("SubscriberAddress");
+        let SubscriberPostalCode = document.getElementById("SubscriberPostalCode")
 
-    AddressRegionSelect.add(new Option(
-        text = SubscriberAddressRegionSelect.value,
-        value = SubscriberAddressRegionSelect.value));
-    AddressRegionSelect.value = SubscriberAddressRegionSelect.value;
+        //收件人資料
+        let RecipientName = document.getElementById("RecipientName");
+        let RecipientCellphone = document.getElementById("RecipientCellphone");
+        let RecipientTelephone = document.getElementById("RecipientTelephone");
+        let AddressCitySelect = document.getElementById("recipient_option recipient_option_counties Region");
+        let AddressRegionSelect = document.getElementById("recipient_option_district Town");
+        let RecipientAddress = document.getElementById("RecipientAddress");
+        let RecipientPostalCode = document.getElementById("RecipientPostalCode");
 
-    RecipientAddress.value = SubscriberAddress.value;
-    RecipientPostalCode.value = SubscriberPostalCode.value;
+        RecipientName.value = SubscriberName.value;
+        RecipientCellphone.value = SubscriberCellphone.value;
+        RecipientTelephone.value = SubscriberTelephone.value;
+        AddressCitySelect.value = SubscriberAddressCitySelect.value;
 
+        AddressCitySelect.add(new Option(
+            text = SubscriberAddressCitySelect.value,
+            value = SubscriberAddressCitySelect.value));
+        AddressCitySelect.value = SubscriberAddressCitySelect.value;
 
+        AddressRegionSelect.add(new Option(
+            text = SubscriberAddressRegionSelect.value,
+            value = SubscriberAddressRegionSelect.value));
+        AddressRegionSelect.value = SubscriberAddressRegionSelect.value;
+
+        RecipientAddress.value = SubscriberAddress.value;
+        RecipientPostalCode.value = SubscriberPostalCode.value;
+
+    }
 
 }
 
@@ -49,7 +57,7 @@ let AddressRegionSelect = document.getElementById("recipient_option_district Tow
 let SubscriberAddressCitySelect = document.getElementById("subscriber_option subscriber_option_counties Region");
 let SubscriberAddressRegionSelect = document.getElementById("subscriber_option_district Town");
 
-AddressCitySelect.addEventListener("change", function() { changeAddressRegion(AddressCitySelect, AddressRegionSelect) })
+AddressCitySelect.addEventListener("change", function () { changeAddressRegion(AddressCitySelect, AddressRegionSelect) })
 SubscriberAddressCitySelect.addEventListener("change", function () { changeAddressRegion(SubscriberAddressCitySelect, SubscriberAddressRegionSelect) })
 
 function changeAddressRegion(addressCitySelect, addressRegionSelect) {
@@ -66,10 +74,10 @@ function changeAddressRegion(addressCitySelect, addressRegionSelect) {
     else if (index == 1) //臺北市
     {
         regionList = ["中正區", "大同區", "中山區", "松山區", "大安區", "萬華區", "信義區", "士林區", "北投區", "內湖區", "南港區", "文山區"];
-        regionList.forEach(function(region){
+        regionList.forEach(function (region) {
             addressRegionSelect.add(new Option(region, region));
         })
-        
+
     }
     else if (index == 2) //新北市
     {
