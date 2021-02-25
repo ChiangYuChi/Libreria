@@ -2,7 +2,8 @@
 
 @{
     ViewBag.Title = "ShoppingCart";
-    var totalprice = string.Format("{0:N0}", Model.Select(x => x.Price * x.Count).Sum());
+
+    var totalprice = Convert.ToInt32(Model.Select(x => x.Price * x.Count).Sum());
 }
 
 @section topCss{
@@ -79,22 +80,6 @@
                                 <a href="@Url.Action("ProductDetail", "Product", new { id = item.ProductId })">
                                     <span class="product-name font-weight-bold">@item.ProductName</span>
                                 </a>
-                                <div class="product-activities mt-1">
-                                    <a href="#" class="d-flex">
-                                        <div class="icon-content"></div>
-                                        <div class="activity-content">
-                                            <span class="gold-text ml-1">書的活動在這邊</span>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="product-activities mt-1">
-                                    <a href="#" class="d-flex">
-                                        <div class="icon-content"></div>
-                                        <div class="activity-content">
-                                            <span class="gold-text ml-1">書的活動在這邊</span>
-                                        </div>
-                                    </a>
-                                </div>
                                 <div class="product-activities mt-1">
                                     <a href="#" class="d-flex">
                                         <div class="icon-content"></div>
@@ -298,6 +283,35 @@
                 }
             });
         }
+
+        function PlusOne(id) {
+            let productId = id;
+
+            $.ajax({
+                type: "POST",
+                url: "/Order/PlusOne",
+                data: { ProductId: productId },
+                dataType: "text",
+                success: function () {
+                    location.reload();
+                }
+            });
+        }
+
+        function MinusOne(id) {
+            let productId = id;
+
+            $.ajax({
+                type: "POST",
+                url: "/Order/MinusOne",
+                data: { ProductId: productId },
+                dataType: "text",
+                success: function () {
+                    location.reload();
+                }
+            });
+        }
+
 
     </script>
     

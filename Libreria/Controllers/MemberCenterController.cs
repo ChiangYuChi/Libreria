@@ -18,14 +18,14 @@ namespace Libreria.Controllers
     public class MemberCenterController : Controller
     {
         private readonly FavoriteService _favoriteService;
-        private readonly LibreriaDataModel _libreriaDataModel;
+        private readonly MemberRegisterPageService _memberRegisterPageService;
         private readonly OrderService _orderService;
 
         public MemberCenterController()
         {
             _orderService = new OrderService();
             _favoriteService = new FavoriteService();
-            _libreriaDataModel = new LibreriaDataModel();
+            _memberRegisterPageService = new MemberRegisterPageService();
         }
 
         public ActionResult MemberLogin()
@@ -120,48 +120,14 @@ namespace Libreria.Controllers
         [CustomAllowAnonymous]
         public ActionResult MemberRegisterPage(MemberViewModel model)
         {
-            if (ModelState.IsValid)
-            {             
+            var result = _memberRegisterPageService.CreateMember(model, ModelState.IsValid);
 
-                member member = new member
-                {
-                    memberName = HttpUtility.HtmlEncode(model.memberName),
-                    MobileNumber = HttpUtility.HtmlEncode(model.MobileNumber),
-                    HomeNumber = HttpUtility.HtmlEncode(model.HomeNumber),
-                    Address = HttpUtility.HtmlEncode(model.Address),
-                    Email = HttpUtility.HtmlEncode(model.Email),
-                    memberUserName = HttpUtility.HtmlEncode(model.memberUserName),
-                    memberPassword = Utility.GetSha512(HttpUtility.HtmlEncode(model.memberPassword)),
-                    birthday = DateTime.Parse(HttpUtility.HtmlEncode(model.birthday)),
-                    Gender = int.Parse(HttpUtility.HtmlEncode(model.Gender)),
-                    IDnumber = HttpUtility.HtmlEncode(model.IDnumber)
-                };
-                 //var a = member = _libreriaDataModel.members
-                 //                  .Where(u => u.memberName == model.memberName)
-                 //                  .SingleOrDefault();
-
-                //EF
-                //if (a == null)
-                //{
-                    try
-                    {
-                        _libreriaDataModel.members.Add(member);
-                        _libreriaDataModel.SaveChanges();
-                        return Redirect("MemberLogin");
-                    }
-                    //下列部分需要再處裡
-                    catch (Exception ex)
-                    {
-                        return Content("新增帳號失敗:" + ex.ToString());
-                    }
-                //}
-                //else
-                //{
-                //    ModelState.AddModelError("", "*帳號已被使用");
-                //    return View(model);
-                //}
-                
+            if (result.IsSuccessful)
+            {  
+               return Redirect("MemberLogin");                   
+               
             }
+            //還需登入失敗的頁面跳轉
             return View();
         }
 

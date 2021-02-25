@@ -26,7 +26,15 @@ namespace Libreria.Controllers
         /// <returns></returns>
         public ActionResult Index()
         {
-            var result = _shoppingService.GetAll();
+            List<ShoppingCartViewModel> result;
+            if (System.Web.HttpContext.Current.Session["MemberID"] == null)
+            {
+                result = _shoppingService.GetAnonymousAll();
+            }
+            else
+            {
+                result = _shoppingService.GetAll();
+            }
 
             return View(result);
         }
@@ -34,7 +42,7 @@ namespace Libreria.Controllers
         [HttpPost]
         public string AddToCart(ProductViewModel ProductVM)
         {
-            var result = _shoppingService.Create(ProductVM);
+            var result = _shoppingService.AddToCart(ProductVM.Id);
             
 
             if (result.IsSuccessful)
@@ -68,7 +76,19 @@ namespace Libreria.Controllers
         [HttpPost]
         public void DeleteFromCart(ShoppingCartViewModel ShoppingCartVM)
         {
-            _shoppingService.DeleteFromCart(ShoppingCartVM);
+            _shoppingService.DeleteFromCart(ShoppingCartVM.ProductId);
+
+        }
+
+        [HttpPost]
+        public void PlusOne(ShoppingCartViewModel ShoppingCartVM)
+        {
+            _shoppingService.AddOne(ShoppingCartVM.ProductId);
+        }
+
+        [HttpPost]
+        public void MinusOne(ShoppingCartViewModel ShoppingCartVM)
+        {
 
         }
 
