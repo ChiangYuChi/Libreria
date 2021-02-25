@@ -97,11 +97,11 @@
 
                         <div class="align-self-center col-8 col-lg-2 mt-1 pl-lg-4 pr-lg-0">
                             <div class="info-item-count">
-                                <button type="button" class="count-minus">
+                                <button type="button" class="count-minus" onclick="MinusOne(@item.ProductId)">
                                     <i class="icon icon-mius"></i>
                                 </button>
                                 <input type="number" maxlength="3" class="count-view" value="@item.Count">
-                                <button type="button" class="count-plus">
+                                <button type="button" class="count-plus" onclick="PlusOne(@item.ProductId)">
                                     <i class="icon icon-plus"></i>
                                 </button>
                             </div>
@@ -138,7 +138,7 @@
 
         </div>
 
-        <div class="promotions outerborder mt-4">
+        @*<div class="promotions outerborder mt-4">
             <div class="promotions_banner chinese px-0 mx-0 head-block row">
                 <h3 class="promotions_banner_title m-0 col-12 col-lg-9 left">優惠活動</h3>
                 <h3 class="promotions_banner_discount right m-0 d-none d-lg-flex col-lg-3">折扣</h3>
@@ -236,7 +236,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div>*@
 
         <div class="amount-summary bg-white mt-4 py-2">
             <div class="amount-equation px-0 m-0 chinese">

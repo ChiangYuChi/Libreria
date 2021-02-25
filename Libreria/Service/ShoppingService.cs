@@ -157,11 +157,21 @@ namespace Libreria.Service
             {
                 if (MemberId == 0)
                 {
+                    List<ShoppingCart> cartitems = (List<ShoppingCart>)HttpContext.Current.Session["ShoppingCart"];
+                    var newcart = cartitems
+                        .Select(x => x.ProductId == productId ? new ShoppingCart { ProductId = x.ProductId, Count = x.Count+1, memberId = 0 } : x)
+                        .ToList();
 
+                    HttpContext.Current.Session["ShoppingCart"] = newcart;
                 }
                 else
                 {
+                    ShoppingCart entity = _DbRepository.GetAll<ShoppingCart>()
+                        .Where(x => x.ProductId == productId && x.memberId == MemberId)
+                        .FirstOrDefault();
 
+                    entity.Count += 1;
+                    _DbRepository.Update<ShoppingCart>(entity);
                 }
 
                 result.IsSuccessful = true;
@@ -177,6 +187,43 @@ namespace Libreria.Service
         public OperationResult MinusOne(int productId)
         {
             var result = new OperationResult();
+            var MemberId = Convert.ToInt32(System.Web.HttpContext.Current.Session["MemberID"]);
+
+            try
+            {
+                if (MemberId == 0)
+                {
+                    List<ShoppingCart> cartitems = (List<ShoppingCart>)HttpContext.Current.Session["ShoppingCart"];
+                    var newcart = cartitems
+                        .Select(x => x.ProductId == productId ? new ShoppingCart { ProductId = x.ProductId, Count = x.Count - 1, memberId = 0 } : x)
+                        .Where(x => x.Count > 0)
+                        .ToList();
+                    
+                    HttpContext.Current.Session["ShoppingCart"] = newcart;
+                }
+                else
+                {
+                    ShoppingCart entity = _DbRepository.GetAll<ShoppingCart>()
+                        .Where(x => x.ProductId == productId && x.memberId == MemberId)
+                        .FirstOrDefault();
+
+                    if (entity.Count - 1 == 0)
+                    {
+                        _DbRepository.Delete<ShoppingCart>(entity);
+                    }
+                    else 
+                    {
+                        entity.Count -= 1;
+                        _DbRepository.Update<ShoppingCart>(entity);
+                    }
+                }
+
+                result.IsSuccessful = true;
+            }
+            catch
+            {
+                result.IsSuccessful = false;
+            }
 
             return result;
         }
