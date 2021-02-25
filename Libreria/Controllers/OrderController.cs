@@ -47,6 +47,24 @@ namespace Libreria.Controllers
             }
         }
 
+        [HttpPost] 
+        public string FavoriteToCart(ProductViewModel ProductVM)
+        {
+            var result = _shoppingService.Create(ProductVM);
+
+
+            if (result.IsSuccessful)
+            {
+                return "加入成功!";
+            }
+            else
+            {
+                return "加入失败";
+            }
+        }
+
+
+
         [HttpPost]
         public void DeleteFromCart(ShoppingCartViewModel ShoppingCartVM)
         {
@@ -81,38 +99,6 @@ namespace Libreria.Controllers
             }
 
             return View(orderVM);
-        }
-
-        [HttpPost]
-        public void FavoriteToCart(int id)
-        {
-            List<ShoppingCart> carts = new List<ShoppingCart>();
-            var memberId = Convert.ToInt32(HttpContext.Session["MemberId"]);
-            if (Session["Cart"] == null)
-            {
-                ShoppingCart cart = new ShoppingCart
-                {
-                    ProductId = id,
-                    memberId = memberId,
-                };
-
-                carts.Add(cart);
-                Session["Cart"] = cart;
-            }
-            else
-            {
-                carts = (List<ShoppingCart>)Session["Cart"];
-
-                ShoppingCart cart = new ShoppingCart
-                {
-                    ProductId = id,
-                    memberId = memberId,
-                };
-
-                carts.Add(cart);
-
-                Session["Favorite"] = carts;
-            }
         }
 
         public ActionResult Test()
