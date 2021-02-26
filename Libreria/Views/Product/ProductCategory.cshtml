@@ -6,7 +6,9 @@
 
 
 }
-
+@section topJs{
+    <script src="https://kit.fontawesome.com/b4e5145ad1.js" crossorigin="anonymous"></script>
+}
 
 
 
@@ -20,7 +22,7 @@
                     <a href="#">商品分類</a>
                 </div>
                 <div class="row">
-               
+
                     <div class="main-result col-lg-12 flex-wrap">
 
 
@@ -62,12 +64,10 @@
                                                 @item.Author
                                             </div>
                                             <button class="cbp-vm-icon cbp-vm-add" onclick="AddCart(@item.Id)">加入購物車</button>
-                                            <a class="wish-list " onclick="AddFavorite(@item.Id)"><i class="fas fa-heart"></i></a>
+                                            <a class="wish-list " onclick="AddFavorite(@item.Id)"><i class="far fa-heart"></i></a>
                                         </li>
-                                        
+
                                     }
-
-
                                 </ul>
                             </div>
 
@@ -111,10 +111,10 @@
             $.ajax({
                 type: "POST",
                 url: "/MemberCenter/AddToFavorite",
-                data: { Id: favId},
+                data: { Id: favId },
                 dataType: "text",
                 success: function (response) {
-                    alert(response);
+                    alert("成功");
                 }
             });
         }

@@ -1,4 +1,5 @@
-﻿using Libreria.Service;
+﻿using Libreria.Models.EntityModel;
+using Libreria.Service;
 using Libreria.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -13,12 +14,14 @@ namespace Libreria.Controllers
         private readonly OrderService _orderService;
         private readonly ShoppingService _shoppingService;
         private readonly MemberService _memberService;
+        private readonly FavoriteService _favoriteService;
 
         public OrderController()
         {
             _orderService = new OrderService();
             _shoppingService = new ShoppingService();
             _memberService = new MemberService();
+            _favoriteService = new FavoriteService();
         }
 
         /// <summary>
@@ -55,6 +58,24 @@ namespace Libreria.Controllers
                 return "加入失败";
             }
         }
+
+        [HttpPost] 
+        public string FavoriteToCart(ProductViewModel ProductVM)
+        {
+            var result = _favoriteService.CreateToCart(ProductVM);
+
+
+            if (result.IsSuccessful)
+            {
+                return "加入成功!";
+            }
+            else
+            {
+                return "加入失败";
+            }
+        }
+
+
 
         [HttpPost]
         public void DeleteFromCart(ShoppingCartViewModel ShoppingCartVM)
