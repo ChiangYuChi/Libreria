@@ -310,6 +310,7 @@
     <Content Include="Asset\Css\MemberCenter\Favorate.css" />
     <Content Include="Asset\Css\Layout\Sidebar.css" />
     <Content Include="Asset\Css\MemberCenter\Favorite.css" />
+    <Content Include="Asset\Css\MemberCenter\MemberBenefits.css" />
     <Content Include="Asset\Css\PartialView\category-sidenav.css" />
     <Content Include="Asset\Css\Home-Index\Home.css" />
     <Content Include="Asset\Css\Home-Index\slick-theme.min.css" />
