@@ -54,30 +54,35 @@ function generateStartDate(item) {
 
 // 線上預訂
 function bookingOnline() {
-    if (calender.getPickDateRange().pickStartDate != null && calender.getPickDateRange().pickEndDate != null && $('#exhibition-startDate').val() != null && $('#exhibition-endDataModel').val() != null) {
-        let pickDateRange = calender.getPickDateRange();
-        let checkOutTimeContainer = $(this).closest('div').prev();
-        let ExhibitionStartTime = $('select[name=start-data]', checkOutTimeContainer).find('option:selected').val();
-        let ExhibitionEndTime = $('select[name=end-data]', checkOutTimeContainer).find('option:selected').val();
+    if (calender.getPickDateRange().pickStartDate != null && calender.getPickDateRange().pickEndDate != null) {
+        if ($('#exhibition-startDate').val() != "" && $('#exhibition-endDataModel').val() != "") {
+            let pickDateRange = calender.getPickDateRange();
+            let checkOutTimeContainer = $(this).closest('div').prev();
+            let ExhibitionStartTime = $('select[name=start-data]', checkOutTimeContainer).find('option:selected').val();
+            let ExhibitionEndTime = $('select[name=end-data]', checkOutTimeContainer).find('option:selected').val();
 
-        function getInput(name, value) {
-            return $(document.createElement('input')).attr({
-                'type': 'hidden',
-                'name': name,
-                'value': value,
-            });
+            function getInput(name, value) {
+                return $(document.createElement('input')).attr({
+                    'type': 'hidden',
+                    'name': name,
+                    'value': value,
+                });
+            }
+            let form = $(document.createElement('form')).attr({
+                'action': '/Rental/Confirm',
+                'method': 'post',
+            }).append(getInput('ExhibitionStartTime', ExhibitionStartTime))
+                .append(getInput('ExhibitionEndTime', ExhibitionEndTime))
+                .append(getInput('StartDate', pickDateRange.pickStartDate.yyyymmdd()))
+                .append(getInput('EndDate', pickDateRange.pickEndDate.yyyymmdd()))
+            $('body').append(form);
+            form.submit();
         }
-        let form = $(document.createElement('form')).attr({
-            'action': '/Rental/Confirm',
-            'method': 'post',
-        }).append(getInput('ExhibitionStartTime', ExhibitionStartTime))
-            .append(getInput('ExhibitionEndTime', ExhibitionEndTime))
-            .append(getInput('StartDate', pickDateRange.pickStartDate.yyyymmdd()))
-            .append(getInput('EndDate', pickDateRange.pickEndDate.yyyymmdd()))
-        $('body').append(form);
-        form.submit();
+        else {
+            alert("展覽日期請選取!");
+        }
     } else {
-        alert("日期請選取!"); 
+        alert("租借日期請選取!"); 
     }
     
 }
