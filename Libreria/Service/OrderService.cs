@@ -432,7 +432,7 @@ namespace Libreria.Service
                     Quantity = shoppingCartVM.Count,
                 };
                 orderVM.OrderDetailList.Add(orderDetailVM);
-                _shoppingService.DeleteFromCart(shoppingCartVM); //從購物車刪除該項
+                _shoppingService.DeleteFromCart(shoppingCartVM.ProductId); //從購物車刪除該項
             }
 
             return orderVM;
