@@ -29,11 +29,15 @@ namespace Libreria.ViewModels
         [Display(Name = "市話")]
 
         [StringLength(50)]
+
         public string HomeNumber { get; set; }
+
+        public string City { get; set; }
+
+        public string Region { get; set; }
         /// <summary>
         /// 地址
         /// </summary>
-        [Required]
         [StringLength(100)]
         [Display(Name = "地址")]
 
