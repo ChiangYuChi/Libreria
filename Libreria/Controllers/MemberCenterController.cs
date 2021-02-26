@@ -113,7 +113,7 @@ namespace Libreria.Controllers
         [HttpGet]
         [CustomAllowAnonymous]
         public ActionResult MemberRegisterPage()
-        {
+        {            
             return View();
         }        
         [HttpPost]
