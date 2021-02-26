@@ -22,53 +22,64 @@ namespace Libreria.Service
         {
             var result = new OperationResult();
 
-            try
-            {
-                string fileName = null;
-                if (model.ExPhoto.ContentLength > 0)
-                {
-                    fileName = Path.GetFileName(model.ExPhoto.FileName);
-                    //var path = Path.Combine(Server.MapPath("~/FileUploads"), fileName);
-                    //file.SaveAs(path);
-                }
+            LibreriaDataModel context = new LibreriaDataModel();
 
-                ExhibitionCustomer exhibitionCustomer = new ExhibitionCustomer
-                {
-                    ExCustomerName = model.ExCustomerName,
-                    ExCustomerPhone = model.ExCustomerPhone,
-                    ExCustomerEmail = model.ExCustomerEmail
-                };
-                _DbRepository.Create(exhibitionCustomer);
-                ExhibitionOrder exhibitionOrder = new ExhibitionOrder
-                {
-                    StartDate = model.StartDate,
-                    EndDate = model.EndDate,
-                    Price = model.Price,
-                    ExCustomerId = exhibitionCustomer.ExCustomerId
-                };
-                _DbRepository.Create(exhibitionOrder);
-                Exhibition entity = new Exhibition()
-                {
-                    ExhibitionStartTime = model.ExhibitionStartTime,
-                    ExhibitionEndTime = model.ExhibitionEndTime,
-                    ExhibitionIntro = model.ExhibitionIntro,
-                    MasterUnit = model.MasterUnit,
-                    ExhibitionPrice = Convert.ToDecimal(model.ExhibitionPrice),
-                    EditModifyDate = DateTime.Now,
-                    ExCustomerId = exhibitionCustomer.ExCustomerId,
-                    ExPhoto = fileName,
-                    ExName = model.ExName
-                };
-                _DbRepository.Create(entity);
-                result.IsSuccessful = true;
-            }
-            catch
+            using (var transaction = context.Database.BeginTransaction())
             {
-                result.IsSuccessful = false;
+                try
+                {
+                    string fileName = null;
+                    if (model.ExPhoto.ContentLength > 0)
+                    {
+                        fileName = Path.GetFileName(model.ExPhoto.FileName);
+                        //var path = Path.Combine(Server.MapPath("~/FileUploads"), fileName);
+                        //file.SaveAs(path);
+                    }
+
+                    ExhibitionCustomer exhibitionCustomer = new ExhibitionCustomer()
+                    {
+                        ExCustomerName = model.ExCustomerName,
+                        ExCustomerPhone = model.ExCustomerPhone,
+                        ExCustomerEmail = model.ExCustomerEmail
+                    };
+                    _DbRepository.Create(exhibitionCustomer);
+                    ExhibitionOrder exhibitionOrder = new ExhibitionOrder()
+                    {
+                        StartDate = model.StartDate,
+                        EndDate = model.EndDate,
+                        Price = ((model.EndDate - model.StartDate).Days + 1) * 2500,
+                        ExCustomerId = exhibitionCustomer.ExCustomerId
+                    };
+                    _DbRepository.Create(exhibitionOrder);
+                    Exhibition entity = new Exhibition()
+                    {
+                        ExhibitionStartTime = model.ExhibitionStartTime,
+                        ExhibitionEndTime = model.ExhibitionEndTime,
+                        ExhibitionIntro = model.ExhibitionIntro,
+                        MasterUnit = model.MasterUnit,
+                        ExhibitionPrice = Convert.ToDecimal(model.ExhibitionPrice),
+                        EditModifyDate = DateTime.Now,
+                        ExCustomerId = exhibitionCustomer.ExCustomerId,
+                        ExPhoto = fileName,
+                        ExName = model.ExName
+                    };
+                    _DbRepository.Create(entity);
+                    result.IsSuccessful = true;
+                    transaction.Commit();
+                }
+                catch (Exception ex)
+                {
+                    result.IsSuccessful = false;
+                    result.exception = ex;
+                    transaction.Rollback();
+                }
             }
 
             return result;
         }
+
+        
+        
     }
     
 }

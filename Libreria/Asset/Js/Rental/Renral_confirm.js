@@ -19,7 +19,6 @@
 
 
 
-
 $(document).ready(function () {
 
     $.validator.addMethod("isChcek", function (value, element) {
@@ -43,6 +42,9 @@ $('#upload-image input').change(function () {
         $('#upload-image').addClass('upload-image');
         $('#upload-image').css('text-align', 'center');
         $('.fixd-narrow-only').css('bottom', '-840px');
+        //$('#upload-image label::after').css({ 'top': '460px', 'right': '255px'});
+        $('#upload-image label::after').css('top', '460px');
+        $('#upload-image label::after').css('right','255px')
         $('#upload-image label').css('background-image', 'url("' + e.target.result + '")');
     };
     reader.readAsDataURL(file);

@@ -13,6 +13,11 @@ Date.prototype.yyyymmdd = function () {
     ].join('');
 };
 
+function Appendzero(obj) {
+    if (obj < 10) return "0" + "" + obj;
+    else return obj;
+}
+
 let calender;
 window.onload = () => {
     calender = new Calendar();
@@ -34,7 +39,7 @@ function generateStartDate(item) {
     for (let i = 0; i <= datediff(startDate, endDate); i++) {
         let option = document.createElement("option");
         option.value = indexDate.yyyymmdd();
-        option.innerText = `${indexDate.getFullYear()}年${indexDate.getMonth() + 1}月${indexDate.getDate()}日`;
+        option.innerText = `${indexDate.getFullYear()}年${Appendzero(indexDate.getMonth() + 1)}月${Appendzero(indexDate.getDate())}日`;
         $(item).append(option)
         indexDate.setDate(indexDate.getDate() + 1);
     }

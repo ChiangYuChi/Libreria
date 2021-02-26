@@ -37,6 +37,10 @@
     content: '*';
     color: red;
 }
+#upload-image label::after{
+    position:absolute;
+    top:50px;
+}
 .Rental .fixd-narrow-only label::after {
     content: '';
     color: transparent;

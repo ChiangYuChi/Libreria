@@ -32,13 +32,12 @@
     <script src="~/Asset/Js/Rental/Renral_confirm.js"></script>
 }
 
-
-@Html.Hidden("StartDate", Model.StartDate.ToString("yyyy/MM/dd"))
-@Html.Hidden("EndDate", Model.EndDate.ToString("yyyy/MM/dd"))
-@Html.Hidden("ExhibitionStartTime", Model.ExhibitionStartTime.ToString("yyyy/MM/dd"))
-@Html.Hidden("ExhibitionEndTime", Model.ExhibitionEndTime.ToString("yyyy/MM/dd"))
 @using (Html.BeginForm("ConfirmBooling", "Rental", FormMethod.Post, new { @class = "needs-validation", id = "confirmForm", enctype = "multipart/form-data" }))
 {
+    @Html.Hidden("StartDate", Model.StartDate.ToString("yyyy/MM/dd"))
+    @Html.Hidden("EndDate", Model.EndDate.ToString("yyyy/MM/dd"))
+    @Html.Hidden("ExhibitionStartTime", Model.ExhibitionStartTime.ToString("yyyy/MM/dd"))
+    @Html.Hidden("ExhibitionEndTime", Model.ExhibitionEndTime.ToString("yyyy/MM/dd"))
     <div class="container Rental mt-3 md-5">
         <div class="row">
             <div class="col-12 col-lg-6">
@@ -150,8 +149,8 @@
                     <div class="form-group" id="upload-image">
                         <label for="pic">請上傳展覽宣傳圖片 <span>(尺寸請用300 x 400)</span> </label>
                         <input type="file" class="form-control-file" id="ExPhoto" name="ExPhoto" accept="image/*">
-                        @*@Html.EditorFor(model => model.ExPhoto, new { htmlAttributes = new { @class = "form-control-file", @id = "pic" } })
-                            @Html.ValidationMessageFor(model => model.ExPhoto, "", new { @class = "text-danger" })*@
+                        @*@Html.EditorFor(model => model.ExPhoto, new { htmlAttributes = new { @class = "form-control-file", @id = "pic" } })*@
+                        @*@Html.ValidationMessageFor(model => model.ExPhoto, "", new { @class = "text-danger" })*@
                     </div>
                     <hr />
                     <div class="Rental__reservation--data">
@@ -168,7 +167,7 @@
                     <hr />
                     <div class="Rental__reservation--price">
                         @{
-                            var days = (Model.EndDate - Model.StartDate).Days;
+                            var days = (Model.EndDate - Model.StartDate).Days + 1;
                             var totalPrice = 2500 * days;
 
                         }

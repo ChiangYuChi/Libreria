@@ -101,3 +101,31 @@ p {
 .ex-exhibition{
     margin-bottom:3%;
 }
+.btn:focus, .btn.focus{
+    box-shadow:none;
+}
+.btn-secondary {
+    background-color: rgba(138, 105, 38, 1);
+    border-color: rgba(138, 105, 38, 1);
+}
+.btn-primary:hover {
+    background-color: rgba(138, 105, 38, 1);
+    border-color: rgba(138, 105, 38, 1);
+    color: white;
+}
+.card-body {
+    max-height:380px;
+}
+.card-text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 10;
+    -webkit-box-orient: vertical;
+}
+.ex-Main-pic{
+    margin-bottom:40px;
+}
+.intro{
+    margin-bottom:20px;
+}

@@ -31,7 +31,8 @@ namespace Libreria.Service
                 EditModifyDate=x.EditModifyDate,
                 ExhibitionPrice=x.ExhibitionPrice,
                 ExPhoto=x.ExPhoto,
-                ExCustomerId=x.ExCustomerId
+                ExCustomerId=x.ExCustomerId,
+                MasterUnit=x.MasterUnit
             }).ToList();
         }
         public ExhibitionVIewModel GetExhibitioning()
