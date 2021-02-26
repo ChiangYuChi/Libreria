@@ -21,12 +21,30 @@
     padding: 50px 0;
     min-height: calc(100vh - 100px);
 }
-
+.Required {
+    position: absolute;
+    top: 40px;
+    right:20px;
+}
+.Required span {
+    color: red;
+}
 .Rental__reservation--path ul {
     display: flex;
     padding: 0;
 }
-
+.Rental label::after {
+    content: '*';
+    color: red;
+}
+#upload-image label::after{
+    position:absolute;
+    top:50px;
+}
+.Rental .fixd-narrow-only label::after {
+    content: '';
+    color: transparent;
+}
 .Rental__reservation--path li + li::before {
     font-family: "Font Awesome 5 Free";
     font-weight: 900;
@@ -130,6 +148,13 @@
     font-size: 20px;
     font-weight: 700;
 }
+#specification li {
+    list-style-type: disc;
+}
+#introduction {
+    margin-bottom: 20px;
+}
+
 
 @media screen and (max-width:991px) {
     .Rental__content{
@@ -138,7 +163,7 @@
     .fixd-narrow-only {
         position: absolute;
         width:90%;
-        bottom: -500px;
+        bottom: -460px;
         z-index:2;
     }
     #upload-image input {
@@ -147,8 +172,11 @@
     
 }
 @media screen and (min-width:992px){
-    .Rental__reservation--path ul{
-        margin-bottom:25px;
+    .Required{
+        top:50px;
+    }
+    .Rental__reservation--path ul {
+        margin-bottom: 25px;
     }
     .Rental__content {
         margin-top: 49.67px;
