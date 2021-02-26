@@ -13,9 +13,11 @@ namespace Libreria.Filters
     {
         public void OnAuthentication(AuthenticationContext filterContext)
         {
+            //if (string.IsNullOrEmpty(Convert.ToString(filterContext.HttpContext.Session["MemberName"]))&&filterContext.HttpContext.Request.Cookies["MemberName"]!=null)
             if (string.IsNullOrEmpty(Convert.ToString(filterContext.HttpContext.Session["MemberName"])))
             {
                 filterContext.Result = new HttpUnauthorizedResult();
+                //filterContext.HttpContext.Session["MemberName"] = filterContext.HttpContext.Request.Cookies["MemberName"].Value;
             }
         }
         public void OnAuthenticationChallenge(AuthenticationChallengeContext filterContext)

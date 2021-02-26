@@ -1,48 +1,54 @@
 ﻿using Libreria.Helpers;
 using Libreria.Models.EntityModel;
+using Libreria.Service;
 using Libreria.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
+
 
 namespace Libreria.Controllers
 {
     public class MemberLoginController : Controller
     {
-        private readonly LibreriaDataModel _libreriaDataModel;
+       
+
+        public readonly MemberLoginService _memberLoginService;
         public MemberLoginController()
         {
-            _libreriaDataModel = new LibreriaDataModel();
+            _memberLoginService = new MemberLoginService();
         }
         // GET: MemberLogin
         [HttpGet]
         public ActionResult Index()
         {
-            
-            return View();
+            //if (User.Identity.Name!=null)
+            //{
+            //    Response.Write("您現在是已登入狀態。");
+            //    return RedirectToAction("MemberLogin", "MemberCenter");
+            //}
+            //else
+            //{
+                return View();
+
+            //}
         }
         
         [HttpPost]
         public ActionResult Index(MemberLoginViewModel model)
         {
-            string passwordSha512 = Utility.GetSha512(model.MemberPassword);
+            var result = _memberLoginService.GetMember(model, ModelState.IsValid);
             if (ModelState.IsValid)
             {
 
-                member member = _libreriaDataModel.members
-                                               .Where(u => u.memberName == model.MemberName && u.memberPassword == passwordSha512)
-                                               .FirstOrDefault();
-
-                if (member != null)
+                
+                if (result != null)
                 {
-                    Session["MemberName"] = member.memberName;
-                    Session["MemberPassword"] = member.memberPassword;
-                    Session["MemberID"] = member.memberId;
-                 
-
-                    return RedirectToAction("Index", "Home");
+                    
+                    return RedirectToAction("MemberLogin", "MemberCenter");
                 }
                 else
                 {
@@ -54,6 +60,7 @@ namespace Libreria.Controllers
             {
                 return View(model);
             }
+                        
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -61,7 +68,7 @@ namespace Libreria.Controllers
         {
             Session["MemberName"] = string.Empty;
             Session["MemberPassword"] = string.Empty;
-            Session["MemberID"] = string.Empty;
+            Session["MemberID"] = null;
             return RedirectToAction("Index", "Home");
         }
 

@@ -1,4 +1,5 @@
-﻿using Libreria.Service;
+﻿using Libreria.Models.EntityModel;
+using Libreria.Service;
 using Libreria.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -12,11 +13,15 @@ namespace Libreria.Controllers
     {
         private readonly OrderService _orderService;
         private readonly ShoppingService _shoppingService;
+        private readonly MemberService _memberService;
+        private readonly FavoriteService _favoriteService;
 
         public OrderController()
         {
             _orderService = new OrderService();
             _shoppingService = new ShoppingService();
+            _memberService = new MemberService();
+            _favoriteService = new FavoriteService();
         }
 
         /// <summary>
@@ -25,7 +30,15 @@ namespace Libreria.Controllers
         /// <returns></returns>
         public ActionResult Index()
         {
-            var result = _shoppingService.GetAll();
+            List<ShoppingCartViewModel> result;
+            if (System.Web.HttpContext.Current.Session["MemberID"] == null)
+            {
+                result = _shoppingService.GetAnonymousAll();
+            }
+            else
+            {
+                result = _shoppingService.GetAll();
+            }
 
             return View(result);
         }
@@ -33,7 +46,7 @@ namespace Libreria.Controllers
         [HttpPost]
         public string AddToCart(ProductViewModel ProductVM)
         {
-            var result = _shoppingService.Create(ProductVM);
+            var result = _shoppingService.AddToCart(ProductVM.Id);
             
 
             if (result.IsSuccessful)
@@ -46,11 +59,41 @@ namespace Libreria.Controllers
             }
         }
 
+        [HttpPost] 
+        public string FavoriteToCart(ProductViewModel ProductVM)
+        {
+            var result = _favoriteService.CreateToCart(ProductVM);
+
+
+            if (result.IsSuccessful)
+            {
+                return "加入成功!";
+            }
+            else
+            {
+                return "加入失败";
+            }
+        }
+
+
+
         [HttpPost]
         public void DeleteFromCart(ShoppingCartViewModel ShoppingCartVM)
         {
-            _shoppingService.DeleteFromCart(ShoppingCartVM);
+            _shoppingService.DeleteFromCart(ShoppingCartVM.ProductId);
 
+        }
+
+        [HttpPost]
+        public void PlusOne(ShoppingCartViewModel ShoppingCartVM)
+        {
+            _shoppingService.AddOne(ShoppingCartVM.ProductId);
+        }
+
+        [HttpPost]
+        public void MinusOne(ShoppingCartViewModel ShoppingCartVM)
+        {
+            _shoppingService.MinusOne(ShoppingCartVM.ProductId);
         }
 
         /// <summary>
@@ -59,19 +102,28 @@ namespace Libreria.Controllers
         /// <returns></returns>
         public ActionResult OrderDetail()
         {
-            return View();
+            int UserMemberId = Convert.ToInt32(System.Web.HttpContext.Current.Session["MemberID"]);
+
+            var result = _shoppingService.GetAll();
+            ViewBag.MemberVMList = _memberService.GetByMemberId(UserMemberId);
+
+            return View(result);
         }
 
         [HttpPost]
-        public ActionResult OrderDetail(OrderViewModel orderVM)
+        public ActionResult Checkout(OrderViewModel orderVM)
         {
-            if (orderVM != null)
+            //取得購物車並放入訂單
+            orderVM = _orderService.PutShoppingCartsToOrderVM(orderVM);
+
+            //訂單存進資料庫
+            if (orderVM != null && orderVM.OrderDetailList.Any())
             {
                 OperationResult result = _orderService.Create(orderVM);
 
                 if(result.IsSuccessful)
                 {
-
+                    orderVM = _orderService.GetByOrderId(orderVM.OrderId).FirstOrDefault();
                 }
                 else
                 {
@@ -79,7 +131,7 @@ namespace Libreria.Controllers
                 }
             }
 
-            return View(orderVM);
+            return Json(orderVM);
         }
 
         public ActionResult Test()

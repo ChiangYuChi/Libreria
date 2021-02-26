@@ -284,6 +284,8 @@
     <Compile Include="Service\ExhibitionService.cs" />
     <Compile Include="Service\MemberLoginService.cs" />
     <Compile Include="Service\FavoriteService.cs" />
+    <Compile Include="Service\MemberRegisterPageService.cs" />
+    <Compile Include="Service\MemberService.cs" />
     <Compile Include="Service\OperationResult.cs" />
     <Compile Include="Service\OrderService.cs" />
     <Compile Include="Service\ProductService.cs" />
@@ -904,6 +906,7 @@
     <Content Include="Asset\Css\Member\Member.css" />
     <Content Include="Asset\Js\ContactService\ContactService.js" />
     <Content Include="Asset\Js\MemberCenter\Favorite.js" />
+    <Content Include="Asset\Js\MemberCenter\member-MyOrder.js" />
     <Content Include="Asset\Js\MemberCenter\subscribe.js" />
     <Content Include="Asset\Js\Order\OrderDetail.js" />
     <Content Include="Asset\Js\Product\book-reviewer.js" />

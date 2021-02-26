@@ -76,8 +76,8 @@
 
             $.ajax({
                 type: "POST",
-                url: "/MemberCenter/AddToCart",
-                data: { ProductId: productId },
+                url: "/Order/FavoriteToCart",
+                data: { Id: productId },
                 dataType: "text",
                 success: function (response) {
                     alert(response);

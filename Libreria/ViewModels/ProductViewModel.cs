@@ -19,6 +19,7 @@ namespace Libreria.ViewModels
 
         public string Introduction { get; set; }
         public string MainUrl { get; set; }
+        public bool isFav { get; set; }
 
         public List<string> PreviewUrls { get; set; }
         public int Count { get; set; }

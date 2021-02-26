@@ -18,14 +18,14 @@ namespace Libreria.Controllers
     public class MemberCenterController : Controller
     {
         private readonly FavoriteService _favoriteService;
-        private readonly LibreriaDataModel _libreriaDataModel;
+        private readonly MemberRegisterPageService _memberRegisterPageService;
         private readonly OrderService _orderService;
 
         public MemberCenterController()
         {
             _orderService = new OrderService();
             _favoriteService = new FavoriteService();
-            _libreriaDataModel = new LibreriaDataModel();
+            _memberRegisterPageService = new MemberRegisterPageService();
         }
 
         public ActionResult MemberLogin()
@@ -48,36 +48,41 @@ namespace Libreria.Controllers
         
         public ActionResult MemberOrderInquery(string Inquire, int? TransactionId)
         {
-            int memberId = 1; //假資料
+            int UserMemberId = Convert.ToInt32(System.Web.HttpContext.Current.Session["MemberID"]);
 
             List<OrderViewModel> result = null;
             if (Inquire == "history")
             {
-                result = _orderService.GetBymemberId(memberId);
+                result = _orderService.GetBymemberId(UserMemberId);
             }
             else if(Inquire == "oneMonth")
             {
-                result = _orderService.GetBymemberId(memberId, TimeSpan.FromDays(30));
+                result = _orderService.GetBymemberId(UserMemberId, TimeSpan.FromDays(30));
             }
             else if (Inquire == "sixMonths")
             {
-                result = _orderService.GetBymemberId(memberId, TimeSpan.FromDays(30*6));
+                result = _orderService.GetBymemberId(UserMemberId, TimeSpan.FromDays(30*6));
             }
             else if (Inquire == "notShipped")
             {
                 // 未完成
-                result = _orderService.GetBymemberId(memberId);
+                result = _orderService.GetByProgress(UserMemberId, "準備出貨中");
             }
             else if(Inquire == "return")
             {
                 //未完成
-                result = null;
+                result = new List<OrderViewModel>();
+            }
+            else if(Inquire == "transactionId")
+            {
+                result = _orderService.GetByOrderId(TransactionId);
             }
             else
             {
                 //預設代入一個月
-                result = _orderService.GetBymemberId(memberId, TimeSpan.FromDays(30));
+                result = _orderService.GetBymemberId(UserMemberId, TimeSpan.FromDays(30));
             }
+            ViewBag.Inquire = Inquire;
 
             return View(result);
         }
@@ -120,91 +125,42 @@ namespace Libreria.Controllers
         [CustomAllowAnonymous]
         public ActionResult MemberRegisterPage(MemberViewModel model)
         {
-            if (ModelState.IsValid)
-            {             
+            var result = _memberRegisterPageService.CreateMember(model, ModelState.IsValid);
 
-                member member = new member
-                {
-                    memberName = HttpUtility.HtmlEncode(model.memberName),
-                    MobileNumber = HttpUtility.HtmlEncode(model.MobileNumber),
-                    HomeNumber = HttpUtility.HtmlEncode(model.HomeNumber),
-                    Address = HttpUtility.HtmlEncode(model.Address),
-                    Email = HttpUtility.HtmlEncode(model.Email),
-                    memberUserName = HttpUtility.HtmlEncode(model.memberUserName),
-                    memberPassword = Utility.GetSha512(HttpUtility.HtmlEncode(model.memberPassword)),
-                    birthday = DateTime.Parse(HttpUtility.HtmlEncode(model.birthday)),
-                    Gender = int.Parse(HttpUtility.HtmlEncode(model.Gender)),
-                    IDnumber = HttpUtility.HtmlEncode(model.IDnumber)
-                };
-                 //var a = member = _libreriaDataModel.members
-                 //                  .Where(u => u.memberName == model.memberName)
-                 //                  .SingleOrDefault();
-
-                //EF
-                //if (a == null)
-                //{
-                    try
-                    {
-                        _libreriaDataModel.members.Add(member);
-                        _libreriaDataModel.SaveChanges();
-                        return Redirect("MemberLogin");
-                    }
-                    //下列部分需要再處裡
-                    catch (Exception ex)
-                    {
-                        return Content("新增帳號失敗:" + ex.ToString());
-                    }
-                //}
-                //else
-                //{
-                //    ModelState.AddModelError("", "*帳號已被使用");
-                //    return View(model);
-                //}
-                
+            if (result.IsSuccessful)
+            {  
+               return Redirect("MemberLogin");                   
+               
             }
+            //還需登入失敗的頁面跳轉
             return View();
         }
 
         //[Authorize]
         public ActionResult Favorite()
         {
-            var favs = ((Session["Favorite"]) == null ? new List<Favorite>() : (List<Favorite>)Session["Favorite"]).Select(x => x.ProductId);
-            var result = _favoriteService.GetFavoriteInfo(favs);
+            var result = _favoriteService.GetAll();
             return View(result);
         }
 
         [HttpPost]
-        public int AddToFavorite(int id)
+        public string AddToFavorite(ProductViewModel ProductVM)
         {
-            List<Favorite> favs = new List<Favorite>();
-            var memberId = Convert.ToInt32(HttpContext.Session["MemberId"]);
-            if (Session["Favorite"] == null)
-            {
-                Favorite fav = new Favorite
-                {
-                    ProductId = id,
-                    memberId = memberId,
-                };
+            var result = _favoriteService.CreateToFavorite(ProductVM);
 
-                favs.Add(fav);
-                Session["Favorite"] = favs;
+
+            if (result.IsSuccessful)
+            {
+                return "加入成功!";
             }
             else
             {
-                favs = (List<Favorite>)Session["Favorite"];
-
-                Favorite favorite = new Favorite
-                {
-                    ProductId = id,
-                    memberId = memberId,
-                };
-
-                favs.Add(favorite);
-
-                Session["Favorite"] = favs;
+                return "加入失败";
             }
-            return favs.Count;
         }
+
+
+
 
 
 
