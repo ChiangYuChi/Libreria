@@ -635,4 +635,6 @@ input {
 
 .SubscriberEqualRecipient-button {
     margin-left: 16px;
+    position: relative;
+    /*bottom: 5px;*/
 }
