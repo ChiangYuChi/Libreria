@@ -115,7 +115,9 @@
                 <div class="cart__product js-cart-product-template ">
                     <article class="js-cart-product row">
                         <h4 class="col-12" style="font-size:20px;">@item.ProductName</h4>
-                        <img src="@item.PicUrl" alt="書圖" class="col-9" />
+                        <div class="col-9">
+                            <img src="@item.PicUrl" alt="書圖" style="height:100%;" />
+                        </div>
                         <div class="col-3" style="align-self:flex-end;text-align:end;">
                             <p class="price">@item.Price</p>
                             <p>
@@ -157,16 +159,16 @@
                         $("#MyCart").text("購物車(" + response + ")");
                     }
                 });
-                $.ajax({
-                    type: "POST",
-                    url: "/Product/ProductCategory",
-                    data: { Id: productId },
-                    dataType: "text",
-                    success: function (response) {
-                        $(".js-cart-product-template").text("購物車(" + response + ")");
+                //$.ajax({
+                //    type: "POST",
+                //    url: "/Product/ProductCategory",
+                //    data: { Id: productId },
+                //    dataType: "text",
+                //    success: function (response) {
+                //        $(".js-cart-product-template").text("購物車(" + response + ")");
                         
-                    }
-                });
+                //    }
+                //});
             }
 
 
@@ -216,6 +218,7 @@
 
             function openCart() {
                 cartOpen = true;
+
                 $('body').addClass('open');
             }
 
