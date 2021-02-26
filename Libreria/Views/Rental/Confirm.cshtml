@@ -14,6 +14,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/d22f4b5afc.js" crossorigin="anonymous"></script>
     <link href="~/Asset/Css/Rental/Rental_Confirm.css" rel="stylesheet" />
+    <style>
+        span.error {
+            color: red;
+        }
+    </style>
 }
 
 
@@ -23,128 +28,160 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
             crossorigin="anonymous"></script>
+    @Scripts.Render("~/bundles/jqueryval")
     <script src="~/Asset/Js/Rental/Renral_confirm.js"></script>
 }
 
-@Html.Hidden("StartDate", Model.StartDate.ToString("yyyy/MM/dd"))
-@Html.Hidden("EndDate", Model.EndDate.ToString("yyyy/MM/dd"))
-@Html.Hidden("ExhibitionStartTime", Model.EndDate.ToString("yyyy/MM/dd"))
-@Html.Hidden("ExhibitionEndTime", Model.EndDate.ToString("yyyy/MM/dd"))
-<div class="container Rental mt-3 md-5">
-    <div class="row">
-        <div class="col-12 col-lg-6">
-            <div class="Rental__reservation--path">
-                <ul>
-                    <li><a href="#">首頁</a></li>
-                    <li><a href="#">場地租借</a></li>
-                    <li><a href="#">確認預定</a></li>
-                </ul>
-            </div>
-            <div class="Rental__reservation--contact-person">
-                <form class="needs-validation" novalidate>
+@using (Html.BeginForm("ConfirmBooling", "Rental", FormMethod.Post, new { @class = "needs-validation", id = "confirmForm", enctype = "multipart/form-data" }))
+{
+    @Html.Hidden("StartDate", Model.StartDate.ToString("yyyy/MM/dd"))
+    @Html.Hidden("EndDate", Model.EndDate.ToString("yyyy/MM/dd"))
+    @Html.Hidden("ExhibitionStartTime", Model.ExhibitionStartTime.ToString("yyyy/MM/dd"))
+    @Html.Hidden("ExhibitionEndTime", Model.ExhibitionEndTime.ToString("yyyy/MM/dd"))
+    <div class="container Rental mt-3 md-5">
+        <div class="row">
+            <div class="col-12 col-lg-6">
+                <div class="Rental__reservation--path">
+                    <ul>
+                        <li><a href="#">首頁</a></li>
+                        <li><a href="#">場地租借</a></li>
+                        <li><a href="#">確認預定</a></li>
+                    </ul>
+                </div>
+                <div class="Required"><span>*</span> 必填</div>
+                <div class="Rental__reservation--contact-person">
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                     <div class="form-row">
-                        <div class="col-md-5 mb-3">
-                            <label for="last-name">聯絡人姓</label>
-                            <input type="text" class="form-control" id="last-name" required>
-                            <div class="invalid-feedback">
-                                請輸入姓氏!
-                            </div>
+                        <div class="col-md-6 mb-3">
+                            @Html.LabelFor(model => model.ExCustomerName, "聯絡人姓名")
+                            @Html.EditorFor(model => model.ExCustomerName, new { htmlAttributes = new { @class = "form-control", @id = "ExCustomerName" } })
+                            @Html.ValidationMessageFor(model => model.ExCustomerName, "", new { @class = "text-danger" })
                         </div>
-                        <div class="col-md-7 mb-3">
-                            <label for="first-name">名</label>
-                            <input type="text" class="form-control" id="first-name" required>
+                        <div class="col-md-6 mb-3">
+                            @Html.LabelFor(model => model.ExCustomerPhone, "連絡電話")
+                            @Html.EditorFor(model => model.ExCustomerPhone, new { htmlAttributes = new { @class = "form-control", @id = "phoneNumber" } })
+                            @Html.ValidationMessageFor(model => model.ExCustomerPhone, "", new { @class = "text-danger" })
                         </div>
                     </div>
                     <div class="form-row">
-                        <div class="col-md-5 mb-3">
-                            <label for="phoneNumber">連絡電話</label>
-                            <input type="text" class="form-control" id="phoneNumber" required>
-                            <div class="invalid-feedback">
-                                請輸入連絡電話!
-                            </div>
-                        </div>
-                        <div class="col-md-7 mb-3">
-                            <label for="email">Email</label>
-                            <input type="email" class="form-control" id="email" name="Email" required>
-                            <div class="invalid-feedback">
-                                請輸入電子郵件!
-                            </div>
+                        <div class="col-md-12 mb-3">
+                            @Html.LabelFor(model => model.ExCustomerEmail, "電子郵件")
+                            @Html.EditorFor(model => model.ExCustomerEmail, new { htmlAttributes = new { @class = "form-control", @id = "email" } })
+                            @Html.ValidationMessageFor(model => model.ExCustomerEmail, "", new { @class = "text-danger" })
                         </div>
                         <div class="col-md-12 mb-3">
-                            <label for="exName">展覽名稱</label>
-                            <input type="text" class="form-control" id="exName" required>
-                            <div class="invalid-feedback">
-                                請輸入主辦單位!
-                            </div>
+                            @Html.LabelFor(model => model.ExName, "展覽名稱")
+                            @Html.EditorFor(model => model.ExName, new { htmlAttributes = new { @class = "form-control", @id = "exName" } })
+                            @Html.ValidationMessageFor(model => model.ExName, "", new { @class = "text-danger" })
                         </div>
                         <div class="col-md-7 mb-3">
-                            <label for="organizer">主辦單位</label>
-                            <input type="text" class="form-control" id="organizer" required>
-                            <div class="invalid-feedback">
-                                請輸入主辦單位!
-                            </div>
+                            @Html.LabelFor(model => model.MasterUnit, "主辦單位")
+                            @Html.EditorFor(model => model.MasterUnit, new { htmlAttributes = new { @class = "form-control", @id = "organizer" } })
+                            @Html.ValidationMessageFor(model => model.MasterUnit, "", new { @class = "text-danger" })
                         </div>
                         <div class="col-md-5 mb-3">
-                            <label for="fare">票價</label>
-                            <input type="text" class="form-control" id="fare">
+                            @Html.LabelFor(model => model.ExhibitionPrice, "票價")
+                            @Html.EditorFor(model => model.ExhibitionPrice, new { htmlAttributes = new { @class = "form-control", @id = "fare" } })
+                            @Html.ValidationMessageFor(model => model.ExhibitionPrice, "", new { @class = "text-danger" })
                         </div>
-                        <div class="form-group col-md-12">
-                            <label for="introduction">展演簡介</label>
-                            <textarea class="form-control" id="introduction" rows="3"></textarea>
+                        <div class="col-md-12">
+                            @Html.LabelFor(model => model.ExhibitionIntro, "展演簡介")
+                            @Html.TextAreaFor(model => model.ExhibitionIntro, 4, 80, new { @class = "form-control", @id = "introduction" })
+                            @Html.ValidationMessageFor(model => model.ExhibitionIntro, "", new { @class = "text-danger" })
                         </div>
                     </div>
                     <div class="fixd-narrow-only">
                         <div class="form-group">
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+                                <input type="checkbox" class="isChcek form-check-input" value="true" id="IsCheck" name="IsCheck">
                                 <label class="form-check-label" for="invalidCheck">
-                                    我已詳閱並同意<a href="#">使用及取消規範</a>
+                                    我已詳閱並同意  <a href="#" data-toggle="modal" data-target="#specification">使用及取消規範</a>
                                 </label>
                                 <div class="invalid-feedback">
                                     請閱讀規範並勾選確認
                                 </div>
+                                <br />
+                                @Html.ValidationMessage("invalidCheck", new { @class = "text-danger" })
                             </div>
                         </div>
-                        <button id="confirm" class="btn btn-primary" type="submit">送出預定</button>
+                        <button id="confirm" class="btn btn-primary" type="button">送出預定</button>
                     </div>
 
-                </form>
-            </div>
-        </div>
-        <div class="col-12 col-lg-6">
-            <div class="Rental__content">
-                <form novalidate>
-                    <div class="form-group" id="upload-image">
-                        <label for="pic">請上傳展覽宣傳圖片 <span>(尺寸請用300 x 400)</span> </label>
-                        <input type="file" class="form-control-file" id="pic" accept="image/*">
-                    </div>
-                </form>
-                <hr />
-                <div class="Rental__reservation--data">
-                    <div class="data-exhibition">
-                        <h5>展覽日期</h5>
-                        <p>@Model.ExhibitionStartTime.ToString("yyyy年MM月dd日")-@Model.ExhibitionEndTime.ToString("yyyy年MM月dd日")</p>
-                        <p>時間:@Model.StartTime — @Model.EndTime</p>
-                    </div>
-                    <hr />
-                    <div class="data-lease">
-                        <h5>租借日期</h5>
-                        <p>@Model.StartDate.ToString("yyyy年MM月dd日")—@Model.EndDate.ToString("yyyy年MM月dd日")</p>
+                    <div class="modal fade" id="specification" tabindex="-1" role="dialog" aria-labelledby="specification" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Libreria 預訂條約</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <h5>【訂單資訊相關】</h5>
+                                    <ul>
+                                        <li>為了維護您自身的權益，送出訂單前請確認租借日期、聯絡電話及電子郵件等資訊填寫無誤。</li>
+                                        <li>送出預訂單並不代表訂單成立，訂單需通過Libreria審核並接受後才正式成立，Libreria將會有專人於3天內與您聯繫。</li>
+                                        <li>預訂送出後，可以使用電子郵件或電話聯絡Libreria確認。</li>
+                                    </ul>
+                                    <h5>【付款流程相關】</h5>
+                                    <ul>
+                                        <li>線上刷卡的交易由綠界金流服務平台進行，Libreria 不會儲存任何信用卡資訊。</li>
+                                        <li>送出預訂單後，您會收到由綠界金流所發出的付款完成通知信，此時信用卡僅先授權額度，Libreria接受訂單後才會正式扣款；若Libreria拒絕訂單，綠界金流將取消刷卡授權並退還額度。歸還額度的時程依發卡銀行作業時間不同，詳情請向銀行確認。</li>
+                                    </ul>
+                                    <h5>【使用場地相關】</h5>
+                                    <ul>
+                                        <li>請詳閱並遵守場地規範及退款條約，使用場地時請注意自身安全。</li>
+                                        <li>惡意破壞與偷竊及從事不法，請自行負起相關法律責任認與追究賠償。</li>
+                                        <li>若須取消、退款，請先向Libreria聯繫。</li>
+                                    </ul>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-primary" data-dismiss="modal">確認</button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <hr />
-                <div class="Rental__reservation--price">
-                    <div class="price-calculation">
-                        <p>$525 x 7天</p>
-                        <p>$3675</p>
+            </div>
+            <div class="col-12 col-lg-6">
+                <div class="Rental__content">
+                    <div class="form-group" id="upload-image">
+                        <label for="pic">請上傳展覽宣傳圖片 <span>(尺寸請用300 x 400)</span> </label>
+                        <input type="file" class="form-control-file" id="ExPhoto" name="ExPhoto" accept="image/*">
+                        @*@Html.EditorFor(model => model.ExPhoto, new { htmlAttributes = new { @class = "form-control-file", @id = "pic" } })*@
+                        @*@Html.ValidationMessageFor(model => model.ExPhoto, "", new { @class = "text-danger" })*@
                     </div>
-                    <div class="price-total">
-                        <p><span>總計</span>(TWD)</p>
-                        <p>$3675</p>
+                    <hr />
+                    <div class="Rental__reservation--data">
+                        <div class="data-exhibition">
+                            <h5>展覽日期</h5>
+                            <p>@Model.ExhibitionStartTime.ToString("yyyy年MM月dd日")-@Model.ExhibitionEndTime.ToString("yyyy年MM月dd日")</p>
+                        </div>
+                        <hr />
+                        <div class="data-lease">
+                            <h5>租借日期</h5>
+                            <p>@Model.StartDate.ToString("yyyy年MM月dd日")—@Model.EndDate.ToString("yyyy年MM月dd日")</p>
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="Rental__reservation--price">
+                        @{
+                            var days = (Model.EndDate - Model.StartDate).Days + 1;
+                            var totalPrice = 2500 * days;
+
+                        }
+                        <div class="price-calculation">
+                            <p>$2500 x @days 天</p>
+                            <p>$@totalPrice</p>
+                        </div>
+                        <div class="price-total">
+                            <p><span>總計</span>(TWD)</p>
+                            <p>$@totalPrice</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-
+}

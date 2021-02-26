@@ -15,6 +15,7 @@
 }
 @section endJs{
     <script src="~/Asset/Js/Rental/Rental_index.js"></script>
+    
 }
 
 <div class="spaceLease">
@@ -187,16 +188,16 @@
                                         </button>
                                     </div>
                                     <div class="modal-body">
-                                        <div class="space__check-out--money">
+                                        <div class="space__check-out--money modelItem-group">
                                             <p>每天</p>
                                             <p>$525-525</p>
                                         </div>
-                                        <div class="space__check-out--data">
+                                        <div class="space__check-out--data modelItem-group">
                                             <h5>租借日期</h5>
                                             <div class="start-data">請選擇租借開始日期</div>
                                             <div class="end-data">請選擇租借結束日期</div>
                                         </div>
-                                        <div class="space__check-out--exhibition-data">
+                                        <div class="space__check-out--exhibition-data modelItem-group">
                                             <h5>展覽日期</h5>
                                             <div class="time-group">
                                                 <select id="exhibition-startDateModel" name="start-data" class="custom-select">
@@ -208,33 +209,6 @@
                                                     <option value="" selected>結束時間</option>
                                                 </select>
                                             </div>
-                                        </div>
-                                        @{
-                                            var startDateTime = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 9, 0, 0);
-                                            var timeRange = Enumerable.Range(0, 20).Select(s => new
-                                            {
-                                                index = s,
-                                                HHmm = startDateTime.AddMinutes(s * 30).ToString("HH:mm")
-                                            });
-                                        }
-
-                                        <div class="space__check-out--time">
-                                            <h5>展覽時間</h5>
-                                            <div class="time-group">
-                                                <select id="start-modal" name="start-time" class="custom-select">
-                                                    <option value="" selected>開始時間</option>
-                                                    @foreach (var item in timeRange)
-                                                    {
-                                                        <option value="@(item.index + 1)">@item.HHmm</option>
-                                                    }
-                                                </select>
-                                            </div>
-                                            <div class="time-group">
-                                                <select id="end-modal" name="end-time" class="custom-select">
-                                                    <option value="" selected>結束時間</option>
-                                                </select>
-                                            </div>
-
                                         </div>
                                         <div class="space__check-out--btn">
                                             <a name="bookingOnlineBtn" href="javascript:void(0);">線上預訂</a>
@@ -289,16 +263,16 @@
         </div>
         <div class="col-12 col-lg-4">
             <div class="space__check-out">
-                <div class="space__check-out--money">
+                <div class="space__check-out--money modelItem-group">
                     <p>每天</p>
-                    <p>$525-525</p>
+                    <p>$2500</p>
                 </div>
-                <div class="space__check-out--data">
+                <div class="space__check-out--data modelItem-group">
                     <h5>租借日期</h5>
                     <div class="start-data">請選擇租借開始日期</div>
                     <div class="end-data">請選擇租借結束日期</div>
                 </div>
-                <div class="space__check-out--exhibition-data">
+                <div class="space__check-out--exhibition-data modelItem-group">
                     <h5>展覽日期</h5>
                     <div class="time-group">
                         <select id="exhibition-startDate" name="start-data" class="custom-select">
@@ -307,23 +281,6 @@
                     </div>
                     <div class="time-group">
                         <select id="exhibition-endDataModel" name="end-data" class="custom-select">
-                            <option value="" selected>結束時間</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="space__check-out--time">
-                    <h5>展覽時間</h5>
-                    <div class="time-group">
-                        <select id="start" name="start-time" class="custom-select">
-                            <option value="" selected>開始時間</option>
-                            @foreach (var item in timeRange)
-                            {
-                                <option value="@(item.index + 1)">@item.HHmm</option>
-                            }
-                        </select>
-                    </div>
-                    <div class="time-group">
-                        <select id="end" name="end-time" class="custom-select">
                             <option value="" selected>結束時間</option>
                         </select>
                     </div>

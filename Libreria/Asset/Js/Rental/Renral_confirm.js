@@ -17,6 +17,22 @@
     }, false);
 })();
 
+
+
+$(document).ready(function () {
+
+    $.validator.addMethod("isChcek", function (value, element) {
+        return $(element).is(':checked');
+    }, '請勾選我同意');
+
+    $('#confirm').click(function () {
+        if ($('#confirmForm').valid()) {
+            $('#confirmForm').submit();
+        }
+    });
+
+})
+
 //上傳圖片顯示
 $('#upload-image input').change(function () {
     let file = $('#upload-image input')[0].files[0];
@@ -25,44 +41,13 @@ $('#upload-image input').change(function () {
         $('#upload-image label').html('');
         $('#upload-image').addClass('upload-image');
         $('#upload-image').css('text-align', 'center');
-        $('.fixd-narrow-only').css('bottom', '-890px');
+        $('.fixd-narrow-only').css('bottom', '-840px');
+        //$('#upload-image label::after').css({ 'top': '460px', 'right': '255px'});
+        $('#upload-image label::after').css('top', '460px');
+        $('#upload-image label::after').css('right','255px')
         $('#upload-image label').css('background-image', 'url("' + e.target.result + '")');
     };
     reader.readAsDataURL(file);
 });
 
-function ConfirmReservation() {
-    let name = `${$('#last-name').val()} ${$('#first-name').val()}`
-    let phone = $('#phoneNumber').val();
-    let email = $('#email').val();
-    let organizer = $('#organizer').val();
-    let fare = $('#fare').val();
-    let introduction = $('#introduction').val();
-    let pic = $('#pic').val();
-    let exName = $('#exName').val();
-    let startDate = $('#StartDate').val();
-    let endDate = $('#EndDate').val();
-    let exhibitionStartTime = $('#ExhibitionStartTime').val();
-    let exhibitionEndTime = $('#ExhibitionEndTime').val();
-    $.ajax({
-        method: "post",
-        url: "/rental/ConfirmBooling",
-        data: {
-            EndDate: endDate,
-            StartDate: startDate,
-            ExhibitionStartTime: exhibitionStartTime,
-            ExhibitionEndTime: exhibitionEndTime,
-            ExCustomerName: name,
-            ExCustomerPhone: phone,
-            ExCustomerEmail: email,
-            ExhibitionIntro: organizer,
-            MasterUnit: introduction,
-            ExhibitionPrice: pic,
-            ExPhoto: fare,
-            ExName: exName
-        }
-    }).done(function (msg) {
-        alert("預定完成!"); 
-    });
-}
-$('#confirm').click(ConfirmReservation)
+
