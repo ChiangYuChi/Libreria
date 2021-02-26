@@ -1,13 +1,68 @@
 ﻿
+//訂購人資料同收件人資料
+let SubscriberEqualRecipient = document.getElementById("SubscriberEqualRecipient");
+
+SubscriberEqualRecipient.addEventListener("change", function () { SubscriberToRecipient() })
+
+function SubscriberToRecipient() {
+
+    if (SubscriberEqualRecipient.checked == true) {
+
+        //訂購人資料
+        let SubscriberName = document.getElementById("SubscriberName");
+        let SubscriberCellphone = document.getElementById("SubscriberCellphone");
+        let SubscriberTelephone = document.getElementById("SubscriberTelephone");
+        let SubscriberAddressCitySelect = document.getElementById("subscriber_option subscriber_option_counties Region");
+        let SubscriberAddressRegionSelect = document.getElementById("subscriber_option_district Town");
+        let SubscriberAddress = document.getElementById("SubscriberAddress");
+        let SubscriberPostalCode = document.getElementById("SubscriberPostalCode")
+
+        //收件人資料
+        let RecipientName = document.getElementById("RecipientName");
+        let RecipientCellphone = document.getElementById("RecipientCellphone");
+        let RecipientTelephone = document.getElementById("RecipientTelephone");
+        let AddressCitySelect = document.getElementById("recipient_option recipient_option_counties Region");
+        let AddressRegionSelect = document.getElementById("recipient_option_district Town");
+        let RecipientAddress = document.getElementById("RecipientAddress");
+        let RecipientPostalCode = document.getElementById("RecipientPostalCode");
+
+        RecipientName.value = SubscriberName.value;
+        RecipientCellphone.value = SubscriberCellphone.value;
+        RecipientTelephone.value = SubscriberTelephone.value;
+        AddressCitySelect.value = SubscriberAddressCitySelect.value;
+
+        AddressCitySelect.add(new Option(
+            text = SubscriberAddressCitySelect.value,
+            value = SubscriberAddressCitySelect.value));
+        AddressCitySelect.value = SubscriberAddressCitySelect.value;
+
+        AddressRegionSelect.add(new Option(
+            text = SubscriberAddressRegionSelect.value,
+            value = SubscriberAddressRegionSelect.value));
+        AddressRegionSelect.value = SubscriberAddressRegionSelect.value;
+
+        RecipientAddress.value = SubscriberAddress.value;
+        RecipientPostalCode.value = SubscriberPostalCode.value;
+
+    }
+
+}
+
+
+
+
 //縣市轄區
-let addressCitySelect = document.getElementById("recipient_option recipient_option_counties Region");
-let addressRegionSelect = document.getElementById("recipient_option_district Town");
+let AddressCitySelect = document.getElementById("recipient_option recipient_option_counties Region");
+let AddressRegionSelect = document.getElementById("recipient_option_district Town");
+let SubscriberAddressCitySelect = document.getElementById("subscriber_option subscriber_option_counties Region");
+let SubscriberAddressRegionSelect = document.getElementById("subscriber_option_district Town");
 
-addressCitySelect.onchange = changeAddressRegion;
+AddressCitySelect.addEventListener("change", function () { changeAddressRegion(AddressCitySelect, AddressRegionSelect) })
+SubscriberAddressCitySelect.addEventListener("change", function () { changeAddressRegion(SubscriberAddressCitySelect, SubscriberAddressRegionSelect) })
 
-function changeAddressRegion() {
+function changeAddressRegion(addressCitySelect, addressRegionSelect) {
     addressRegionSelect.options.length = 0;
-    addressRegionSelect.add(new Option("請選擇", ""));
+    addressRegionSelect.add(new Option(text = "請選擇", value = ""));
 
     let index = addressCitySelect.selectedIndex;
     let regionList = [];
@@ -19,10 +74,10 @@ function changeAddressRegion() {
     else if (index == 1) //臺北市
     {
         regionList = ["中正區", "大同區", "中山區", "松山區", "大安區", "萬華區", "信義區", "士林區", "北投區", "內湖區", "南港區", "文山區"];
-        regionList.forEach(function(region){
+        regionList.forEach(function (region) {
             addressRegionSelect.add(new Option(region, region));
         })
-        
+
     }
     else if (index == 2) //新北市
     {
@@ -181,11 +236,12 @@ let submit = document.getElementById("submit");
 submit.addEventListener("click", checkForm);
 
 function checkForm() {
-    let recipientCellphone = document.getElementById("recipientCellphone")
-    let recipientTelephone = document.getElementById("recipientTelephone")
-    let subscriberCellphone = document.getElementById("subscriberCellphone")
-    let subscriberTelephone = document.getElementById("subscriberTelephone")
-    let recipientPostalCode = document.getElementById("recipientPostalCode")
+    let recipientCellphone = document.getElementById("RecipientCellphone")
+    let recipientTelephone = document.getElementById("RecipientTelephone")
+    let subscriberCellphone = document.getElementById("SubscriberCellphone")
+    let subscriberTelephone = document.getElementById("SubscriberTelephone")
+    let recipientPostalCode = document.getElementById("RecipientPostalCode")
+    let subscriberPostalCode = document.getElementById("SubscriberPostalCode")
 
     if (recipientCellphone.validity.patternMismatch == true) {
         recipientCellphone.setCustomValidity("請輸入十個數字");
@@ -220,6 +276,13 @@ function checkForm() {
     }
     else {
         recipientPostalCode.setCustomValidity("");
+    }
+
+    if (subscriberPostalCode.validity.patternMismatch == true) {
+        subscriberPostalCode.setCustomValidity("請輸入數字");
+    }
+    else {
+        subscriberPostalCode.setCustomValidity("");
     }
 }
 

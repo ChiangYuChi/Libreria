@@ -31,7 +31,8 @@ namespace Libreria.Service
                 EditModifyDate=x.EditModifyDate,
                 ExhibitionPrice=x.ExhibitionPrice,
                 ExPhoto=x.ExPhoto,
-                ExCustomerId=x.ExCustomerId
+                ExCustomerId=x.ExCustomerId,
+                MasterUnit=x.MasterUnit
             }).ToList();
         }
         public ExhibitionVIewModel GetExhibitioning()
@@ -49,17 +50,23 @@ namespace Libreria.Service
         public List<ExhibitionVIewModel> OverdueExhibitioning()
         {
             var GetEx = GetAll();
-            return GetEx.Where(x => x.ExhibitionEndTime < Nowdate)
+            var result = GetEx.Where(x => x.ExhibitionEndTime < Nowdate)
                         .OrderByDescending(x => x.ExhibitionEndTime)
                         .ToList();
+
+
+            return result;
         }
 
         public List<ExhibitionVIewModel> NotYetExhibitioning()
         {
             var GetEx = GetAll();
-            return GetEx.Where(x => x.ExhibitionStartTime > Nowdate)
+            
+            var result = GetEx.Where(x => x.ExhibitionStartTime > Nowdate)
                         .OrderBy(x => x.ExhibitionStartTime)
                         .ToList();
+
+            return result;
         }
     }
 }

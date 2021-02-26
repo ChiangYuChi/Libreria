@@ -42,6 +42,7 @@ namespace Libreria.Service
                              CreateTime = p.CreateTime,
                              Introduction = p.Introduction,
                              MainUrl = v.ImgUrl
+
                          }).ToList();
 
             return result;

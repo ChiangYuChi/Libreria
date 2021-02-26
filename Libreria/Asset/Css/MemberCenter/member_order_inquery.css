@@ -381,3 +381,15 @@ em {
         bottom: -10px;
     }
 }
+
+.btn-primary {
+    background-color: #E3E3E3;
+    color: #212529;
+    border-color: #212529;
+}
+
+    .btn-primary:hover {
+        background-color: #E3E3E3;
+        color: #212529;
+        border-color: #212529;
+    }
