@@ -1,4 +1,4 @@
-﻿@model List<FavoriteViewModel>
+﻿@model List<Libreria.ViewModels.FavoriteViewModel>
 
 
 @section topcss{
@@ -29,7 +29,7 @@
     </div>
     <div class="favorites">
         <h1>收藏商品</h1>
-        <h2>(共有<span>2</span>筆商品)</h2>
+        <h2 id="Num">(共有<span>@Model.Count</span>筆商品)</h2>
     </div>
 
     @foreach (var item in Model)
@@ -95,6 +95,7 @@
                 dataType: "text",
                 success: function () {
                     location.reload();
+                    $("#MyCart").text("購物車(" + response + ")");
                 }
             });
         }

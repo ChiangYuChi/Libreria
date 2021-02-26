@@ -64,8 +64,10 @@
                                             <button class="cbp-vm-icon cbp-vm-add" onclick="AddCart(@item.Id)">加入購物車</button>
                                             <a class="wish-list " onclick="AddFavorite(@item.Id)"><i class="fas fa-heart"></i></a>
                                         </li>
-
+                                        
                                     }
+
+
                                 </ul>
                             </div>
 
@@ -91,6 +93,7 @@
         function AddCart(id) {
             let productId = id;
 
+
             $.ajax({
                 type: "POST",
                 url: "/Order/AddToCart",
@@ -103,17 +106,17 @@
             });
         }
 
-        function AddFavorite(f) {
-            let ids = f;
+
+        function AddFavorite(id) {
+            let favId = id
 
             $.ajax({
                 type: "POST",
                 url: "/MemberCenter/AddToFavorite",
-                data: { Id: ids },
+                data: { Id: favId},
                 dataType: "text",
                 success: function (response) {
                     alert(response);
-                    $("#MyCart").text("購物車(" + response + ")");
                 }
             });
         }

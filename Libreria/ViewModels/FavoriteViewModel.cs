@@ -7,6 +7,7 @@ namespace Libreria.ViewModels
 {
     public class FavoriteViewModel
     {
+        public int RecordId { get; set; }
         public int ProductId { get; set; }
         public string Name { get; set; }
         public string Img { get; set; }
