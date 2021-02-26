@@ -134,6 +134,7 @@ namespace Libreria.Controllers
         //[Authorize]
         public ActionResult Favorite()
         {
+
             var result = _favoriteService.GetAll();
             return View(result);
         }
@@ -141,8 +142,10 @@ namespace Libreria.Controllers
         [HttpPost]
         public string AddToFavorite(ProductViewModel ProductVM)
         {
+            
+            
             var result = _favoriteService.CreateToFavorite(ProductVM);
-
+            
 
             if (result.IsSuccessful)
             {
@@ -154,8 +157,19 @@ namespace Libreria.Controllers
             }
         }
 
+        [HttpPost]
+        public void DeleteFavorite(FavoriteViewModel favoriteVM)
+        {
+            _favoriteService.DeleteFromFavorite(favoriteVM);
 
+        }
 
+        [HttpPost]
+        public void DeleteFromFavorite(FavoriteViewModel favoriteVM)
+        {
+            _favoriteService.DeleteFromFavorite(favoriteVM);
+
+        }
 
 
 
@@ -164,12 +178,6 @@ namespace Libreria.Controllers
             return View();
         }
        
-        [HttpPost]
-        public void DeleteFavorite(FavoriteViewModel favoriteVM)
-        {
-            _favoriteService.DeleteFromFavorite(favoriteVM);
-
-        }
-
+        
     }
 }

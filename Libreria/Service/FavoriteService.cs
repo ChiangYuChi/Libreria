@@ -53,9 +53,17 @@ namespace Libreria.Service
                               PublishDate = p.PublishDate,
                               Img = v.ImgUrl
                           }).ToList();
-
             return result;
         }
+        //public Product GetById(ProductViewModel productVM)
+        //{
+        //    var MemberId = Convert.ToInt32(System.Web.HttpContext.Current.Session["MemberID"]);
+        //    var result = (from f in _DbRepository.GetAll<Product>()
+        //                  ) 
+
+
+        //    return result;
+        //}
 
         public OperationResult CreateToFavorite(ProductViewModel ProductVM)
         {
@@ -107,28 +115,10 @@ namespace Libreria.Service
         public OperationResult DeleteFromFavorite(FavoriteViewModel favoriteVM)
         {
             var result = new OperationResult();
-
+            var MemberId = Convert.ToInt32(System.Web.HttpContext.Current.Session["MemberID"]);
             try
             {
-                _DbRepository.Delete<Favorite>(_DbRepository.GetAll<Favorite>().Where(x => x.ProductId == favoriteVM.ProductId && x.memberId == 1).FirstOrDefault()); //memberID后面需要修改成真实资料
-                result.IsSuccessful = true;
-            }
-            catch
-            {
-                result.IsSuccessful = false;
-            }
-
-            return result;
-        }
-
-        public OperationResult CreateToCart(FavoriteViewModel favoriteVM)
-        {
-            var result = new OperationResult();
-
-            try
-            {
-                ShoppingCart entity = new ShoppingCart() { ProductId = favoriteVM.ProductId, memberId = 1, Count = 1 }; //memberID后面需要修改成真实资料
-                _DbRepository.Create<ShoppingCart>(entity);
+                _DbRepository.Delete<Favorite>(_DbRepository.GetAll<Favorite>().Where(x => x.ProductId == favoriteVM.ProductId && x.memberId == MemberId).FirstOrDefault()); 
                 result.IsSuccessful = true;
             }
             catch
@@ -140,5 +130,6 @@ namespace Libreria.Service
         }
 
 
+        
     }
 }

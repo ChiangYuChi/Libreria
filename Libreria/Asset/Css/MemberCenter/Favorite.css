@@ -15,12 +15,13 @@
     max-width: 180px;
     height: 160px;
 }
-
 .favorites {
     display: flex;
     border-bottom: 2px solid #EEEEEE;
 }
-
+.footer {
+    margin-top: 50px;
+}
     .favorites span {
         color: red;
     }
@@ -33,7 +34,6 @@
 
 
 .pro_pic img {
-    width: 100%;
     height: 80%;
 }
 
