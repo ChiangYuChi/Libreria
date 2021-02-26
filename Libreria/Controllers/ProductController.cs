@@ -34,6 +34,7 @@ namespace Libreria.Controllers
         public ActionResult ProductCategory(int? CategoryId, int? Order)
         {
             List<ProductViewModel> result;
+            ViewBag.shoppincart = _shoppingService.GetAnonymousAll();
 
             if (CategoryId != null)
             {
@@ -93,11 +94,6 @@ namespace Libreria.Controllers
             var product = _productService.PromoteMajor();
             return PartialView(product);
         }
-        public PartialViewResult ShopCartIconPartial()
-        {
-            var product = _shoppingService.GetAnonymousAll();
-
-            return PartialView(product);
-        }
+       
     }
 }

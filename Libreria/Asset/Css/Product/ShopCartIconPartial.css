@@ -8,7 +8,6 @@
     text-decoration: none;
     color: #FFF;
 }
-
 .button--light {
     background: #FFF;
     color: #F00;
@@ -99,7 +98,7 @@ body.open .cart {
             }
 
 .cart__product {
-    display: none;
+    display:block;
 }
 
 .cart__empty {
@@ -150,11 +149,15 @@ body.open .cart {
 }
 .shop-cartid-icon {
     position: fixed;
-    right: 60px;
+    right: 40px;
     bottom: 50px;
-    font-size: 40px;
+    font-size: 30px;
     color: #ccc;
     border: #ccc solid 1px;
     border-radius: 50%;
     padding: 10px;
+}
+.js-cart-product img{
+    width:200px;
+    height:380px;
 }
