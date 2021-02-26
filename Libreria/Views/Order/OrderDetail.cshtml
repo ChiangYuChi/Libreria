@@ -1,6 +1,50 @@
-﻿
+﻿@model List<ShoppingCartViewModel>
+
 @{
     ViewBag.Title = "OrderDetail";
+
+    List<MemberViewModel> MemberVMList;
+    MemberVMList = ViewBag.MemberVMList;
+
+    MemberViewModel MemberVM;
+    if (ViewBag.MemberVMList != null && MemberVMList.Any())
+    {
+        MemberVMList = ViewBag.MemberVMList;
+        MemberVM = MemberVMList.FirstOrDefault();
+    }
+    else
+    {
+        MemberVM = new MemberViewModel();
+    }
+
+    int CityIndex;
+    int RegionIndex;
+
+    string MemberCity="";
+    string MemberRegion="";
+    string MemberAddress="";
+
+    if (MemberVM.Address != null)
+    {
+        //縣市
+        CityIndex = MemberVM.Address.IndexOf("市");
+        if (CityIndex < 0) { CityIndex = MemberVM.Address.IndexOf("縣"); }
+
+        if (CityIndex >= 0) { MemberCity = MemberVM.Address.Substring(0, CityIndex + 1); }
+        else { MemberCity = ""; }
+
+        //轄區
+        RegionIndex = MemberVM.Address.IndexOf("區");
+
+        if (CityIndex >= 0 && RegionIndex >= 0) { MemberRegion = MemberVM.Address.Substring(CityIndex + 1, RegionIndex - CityIndex); }
+        else if (RegionIndex >= 0) { MemberRegion = MemberVM.Address.Substring(0, RegionIndex + 1); }
+        else { MemberRegion = ""; }
+
+        //地址
+        if (RegionIndex >= 0) { MemberAddress = MemberVM.Address.Substring(RegionIndex + 1); }
+        else { MemberAddress = ""; }
+    }
+
 }
 
 @section topcss{
@@ -21,6 +65,7 @@
 
 @section topJS{
     <script src="https://kit.fontawesome.com/d22f4b5afc.js" crossorigin="anonymous"></script>
+
 }
 
 @section endJs{
@@ -31,7 +76,7 @@
 
 
 
-<form method="post">
+<form method="post" action="Checkout">
     <div class="container">
         <div class="header">
             <div class="header_step">
@@ -70,9 +115,9 @@
                         <h2>選擇配送方式</h2>
                     </div>
                 </div>
-                <div class="delivery_option_fee">
-                    <p>超商取貨未滿350元，酌收訂單處理費50元</p>
-                </div>
+                @*<div class="delivery_option_fee">
+                        <p>超商取貨未滿350元，酌收訂單處理費50元</p>
+                    </div>*@
                 <div class="delivery_option_body">
                     @*<label class="col-md-3 delivery_option_7-11 delivery_options click_options" id="options for="7Eleven">
                             <span class="col-md-1 circle" value="0">
@@ -100,8 +145,79 @@
                         <span id="option_txt" class="col-md-11">Libreria門市取貨</span>
                     </label>
                 </div>
-
             </div>
+
+            <!-- 訂購人資料 -->
+            <div class="subscriber_profile">
+                <div class="cart_title">
+                    <div class="subscriber_profile_title cart_titles">
+                        <h2>訂購人資料</h2>
+                    </div>
+                </div>
+                <div class="subscriber_profile_body">
+                    <div class="recipient_profile_name">
+                        <p>姓名</p>
+                        <input type="text" placeholder="姓名" name="SubscriberName" id="SubscriberName" required value=@MemberVM.memberUserName>
+                    </div>
+                    <div class="recipient_profile_phone">
+                        <p>行動電話</p>
+                        <input type="tel" placeholder="號碼" name="SubscriberCellphone" id="SubscriberCellphone" required pattern="\d{10}" value=@MemberVM.MobileNumber>
+                    </div>
+                    <div class="recipient_profile_homePhone">
+                        <p>連絡電話</p>
+                        <input type="tel" placeholder="市話" name="SubscriberTelephone" id="SubscriberTelephone" required pattern="\d*" value=@MemberVM.HomeNumber>
+                    </div>
+                    <div class="recipient_profile_address">
+                        <p>地址</p>
+                        <div class="recipient_profile_select">
+                            <select name="SubscriberAddressCitySelect" id="subscriber_option subscriber_option_counties Region" required>
+                                <option id="taiwanAddressNew" value="">請選擇</option>
+                                <option value="臺北市">臺北市</option> <!--1-->
+                                <option value="新北市">新北市</option> <!--2-->
+                                <option value="桃園市">桃園市</option> <!--3-->
+                                <option value="臺中市">臺中市</option> <!--4-->
+                                <option value="臺南市">臺南市</option> <!--5-->
+                                <option value="高雄市">高雄市</option> <!--6-->
+                                <option value="基隆市">基隆市</option> <!--7-->
+                                <option value="新竹市">新竹市</option> <!--8-->
+                                <option value="嘉義市">嘉義市</option> <!--9-->
+                                <option value="新竹縣">新竹縣</option> <!--10-->
+                                <option value="苗栗縣">苗栗縣</option> <!--11-->
+                                <option value="彰化縣">彰化縣</option> <!--12-->
+                                <option value="南投縣">南投縣</option> <!--13-->
+                                <option value="雲林縣">雲林縣</option> <!--14-->
+                                <option value="嘉義縣">嘉義縣</option> <!--15-->
+                                <option value="屏東縣">屏東縣</option> <!--16-->
+                                <option value="宜蘭縣">宜蘭縣</option> <!--17-->
+                                <option value="花蓮縣">花蓮縣</option> <!--18-->
+                                <option value="臺東縣">臺東縣</option> <!--19-->
+                                <option value="澎湖縣">澎湖縣</option> <!--20-->
+                                <option value="金門縣">金門縣</option> <!--21-->
+                                <option value="連江縣">連江縣</option> <!--22-->
+                                @if (MemberCity != "")
+                                {
+                                    <option value=@MemberCity selected>@MemberCity</option> <!--最後一項-->
+                                }
+                            </select>
+                            <select name="SubscriberAddressRegionSelect" id="subscriber_option_district Town" required>
+                                <option value="">請選擇</option>
+                                @if (MemberRegion != "")
+                                {
+                                    <option value=@MemberRegion selected>@MemberRegion</option> <!--最後一項-->
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <div class="recipient_profile_address_txt">
+                        <input type="text" placeholder="詳細地址" name="SubscriberAddress" id="SubscriberAddress" required value=@MemberAddress>
+                    </div>
+                    <div class="recipient_profile_postalCode">
+                        <p>郵遞區號</p>
+                        <input type="text" placeholder="郵遞區號" name="SubscriberPostalCode" id="SubscriberPostalCode" required pattern="\d*">
+                    </div>
+                </div>
+            </div>
+
             <!-- 收件人資料 -->
             <div class="recipient_profile">
                 <div class="cart_title">
@@ -109,35 +225,29 @@
                         <h2>收件人資料</h2>
                     </div>
                 </div>
+                <input type="checkbox" class="SubscriberEqualRecipient-button align-middle" id="SubscriberEqualRecipient"><span>同訂購人資料</span>
                 <div class="recipient_profile_body">
                     <div class="recipient_profile_name">
                         <p>姓名</p>
                         <div class="recipient_profile_name_input">
-                            <input type="text" placeholder="姓名" id="recipient_input" name="RecipientName" required>
+                            <input type="text" placeholder="姓名" name="RecipientName" id="RecipientName" required>
                         </div>
                     </div>
                     <div class="recipient_profile_phone_tel">
                         <div class="recipient_profile_phone">
                             <p>行動電話</p>
-                            <div class="recipient_profile_name_select">
-                                <select class="recipient_profile_select">
-                                    <option>+886(台灣)</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="recipient_profile_name_tel">
-                            <input type="tel" placeholder="號碼" name="RecipientCellphone" id="recipientCellphone" required pattern="\d{10}">
+                            <input type="tel" placeholder="號碼" name="RecipientCellphone" id="RecipientCellphone" required pattern="\d{10}">
                         </div>
                     </div>
                     <div class="recipient_profile_homePhone">
                         <p>連絡電話</p>
-                        <input type="tel" placeholder="市話" name="RecipientTelephone" id="recipientTelephone" required pattern="\d*">
+                        <input type="tel" placeholder="市話" name="RecipientTelephone" id="RecipientTelephone" required pattern="\d*">
                     </div>
                     <div class="recipient_profile_address">
                         <p>地址</p>
                         <div class="recipient_profile_select">
                             <select name="AddressCitySelect" id="recipient_option recipient_option_counties Region" required>
-                                <option id="taiwanAddressNew" value="">請選擇</option>
+                                <option id="DefaultOption" value="">請選擇</option>
                                 <option value="臺北市">臺北市</option> <!--1-->
                                 <option value="新北市">新北市</option> <!--2-->
                                 <option value="桃園市">桃園市</option> <!--3-->
@@ -162,45 +272,20 @@
                                 <option value="連江縣">連江縣</option> <!--22-->
                             </select>
                             <select name="AddressRegionSelect" id="recipient_option_district Town" required>
-                                <option value="">請選擇</option>
+                                <option id="DefaultOption" value="">請選擇</option>
                             </select>
                         </div>
                     </div>
                     <div class="recipient_profile_address_txt">
-                        <input type="text" placeholder="詳細地址" name="RecipientAddress" required>
+                        <input type="text" placeholder="詳細地址" name="RecipientAddress" id="RecipientAddress" required>
                     </div>
                     <div class="recipient_profile_postalCode">
                         <p>郵遞區號</p>
-                        <input type="text" placeholder="郵遞區號" name="RecipientPostalCode" id="recipientPostalCode" required pattern="\d*">
+                        <input type="text" placeholder="郵遞區號" name="RecipientPostalCode" id="RecipientPostalCode" required pattern="\d*">
                     </div>
                 </div>
             </div>
-            <!-- 訂購人資料 -->
-            <div class="subscriber_profile">
-                <div class="cart_title">
-                    <div class="subscriber_profile_title cart_titles">
-                        <h2>訂購人資料</h2>
-                    </div>
-                </div>
-                <div class="subscriber_profile_body">
-                    <div class="recipient_profile_name">
-                        <p>姓名</p>
-                        <input type="text" placeholder="姓名" name="SubscriberName" required>
-                    </div>
-                    <div class="recipient_profile_phone">
-                        <p>行動電話</p>
-                        <input type="tel" placeholder="號碼" name="SubscriberCellphone" id="subscriberCellphone" required pattern="\d{10}">
-                    </div>
-                    <div class="recipient_profile_homePhone">
-                        <p>連絡電話</p>
-                        <input type="tel" placeholder="市話" name="SubscriberTelephone" id="subscriberTelephone" required pattern="\d*">
-                    </div>
-                    <div class="recipient_profile_address">
-                        <p>地址</p>
-                        <input type="text" placeholder="詳細地址" name="SubscriberAddress" required>
-                    </div>
-                </div>
-            </div>
+
             <!-- 付款方式 -->
             <div class="payment_options">
                 <div class="cart_title">
@@ -285,44 +370,26 @@
                         <p>總計</p>
                     </div>
                 </div>
-                <div class="cart_details_body_detail">
-                    <div class="cart_details_body">
-                        <div class="cart_details_pic">
-                            <img src="https://i.imgur.com/vYZ6nOul.jpg">
+                @foreach (var shoppingCartVM in Model)
+                {
+                    <div class="cart_details_body_detail">
+                        <div class="cart_details_body">
+                            <div class="cart_details_pic">
+                                <img src=@shoppingCartVM.PicUrl>
+                            </div>
+                            <div class="cart_details_txt">
+                                <p>@shoppingCartVM.ProductName</p>
+                            </div>
+                            <div class="cart_details_price">
+                                <p>@((int)shoppingCartVM.Price)</p>
+                            </div>
                         </div>
-                        <div class="cart_details_txt">
-                            <p>沙茶：戰後潮汕移民與臺灣飲食變遷</p>
-                        </div>
-                        <div class="cart_details_price">
-                            <p>$380</p>
-                        </div>
-                    </div>
-                    <div class="cart_detail_quantity">
-                        <p>2</p>
-                        <span>$760</span>
-                    </div>
-                </div>
-                @*<div class="cart_details_body_detail">
-                    <div class="cart_details_body">
-                        <div class="cart_details_pic">
-                            <img src="https://i.imgur.com/QCNiHuCl.jpg">
-                        </div>
-                        <div class="cart_details_txt">
-                            <p>沙茶：宮前町九十番地（紀念新版）</p>
-                        </div>
-                        <div class="cart_details_price">
-                            <p>$400</p>
+                        <div class="cart_detail_quantity">
+                            <p>@shoppingCartVM.Count</p>
+                            <span>@((int)shoppingCartVM.Price*shoppingCartVM.Count)</span>
                         </div>
                     </div>
-                    <div class="cart_detail_quantity">
-                        <p>1</p>
-                        <span>$400</span>
-                    </div>
-                    <div class="cart_details_total">
-                        <p>商品金額小計</p>
-                        <span>$1160</span>
-                    </div>
-                </div>*@
+                }
             </div>
         </div>
         <!-- 商品折扣 -->
@@ -330,19 +397,25 @@
             <div class="commodity_discount">
                 <div class="commodity_discount_txt">
                     <p>商品小計</p>
-                    @*<span>$1160</span>*@
-                    <span>760</span>
+                    @{int PriceSum = 0;}
+                    @foreach (var shoppingCartVM in Model)
+                    {
+                        PriceSum += (int)shoppingCartVM.Price * shoppingCartVM.Count;
+                    }
+                    <span>@PriceSum</span>
                     <span>-</span>
                     <p>優惠活動</p>
-                    <span>$0</span>
+                    <span>0</span>
                     <span>-</span>
                     <p>優惠券</p>
-                    <span>$0</span>
+                    <span>0</span>
                     <span>+</span>
                 </div>
                 <div class="commodity_discount_txt commodity_discount_txt2">
                     <p>訂單處理費</p>
-                    <span>$50</span>
+                    <span>
+                        0
+                    </span>
                 </div>
             </div>
             <!-- 商品總計 -->
@@ -350,7 +423,7 @@
                 <div class="commodity_total_txt">
                     <p>商品總金額</p>
                     @*<span>$1210</span>*@
-                    <span>$810</span>
+                    <span>@PriceSum</span>
                     <button type="submit" id="submit">確認結帳</button>
                 </div>
             </div>

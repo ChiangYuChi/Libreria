@@ -6,6 +6,9 @@
         <link href="~/Asset/Css/PartialView/category-sidenav.css" rel="stylesheet" />
         <link href="~/Asset/Css/Product/ShopCartIconPartial.css" rel="stylesheet" />
 }
+@section topJs{
+    <script src="https://kit.fontawesome.com/b4e5145ad1.js" crossorigin="anonymous"></script>
+}
 
 
 
@@ -54,25 +57,29 @@
                                         @foreach (var item in Model)
                                         {
 
-                                            <li class="book-list">
-                                                <a class="cbp-vm-image" href="@Url.Action("ProductDetail", "Product", new { id = item.Id }, null)"><img src="@item.MainUrl"></a>
-                                                <h3 class="cbp-vm-title">  @Html.ActionLink(@item.Name, "ProductDetail", "Product", new { id = item.Id }, null)</h3>
-                                                <div class="cbp-vm-price">NT$ <span>@(String.Format("{0:N0}",item.UnitPrice))</span></div>
-                                                <div class="cbp-vm-details">
-                                                    @item.Author
-                                                </div>
-                                                <button class="cbp-vm-icon cbp-vm-add js-add-product" onclick="AddCart(@item.Id)">
-                                                    加入購物車
-                                                </button>
+                                    <li class="book-list">
+                                        <a class="cbp-vm-image" href="@Url.Action("ProductDetail", "Product", new { id = item.Id }, null)"><img src="@item.MainUrl"></a>
+                                        <h3 class="cbp-vm-title">  @Html.ActionLink(@item.Name, "ProductDetail", "Product", new { id = item.Id }, null)</h3>
+                                        <div class="cbp-vm-price">NT$ <span>@(String.Format("{0:N0}",item.UnitPrice))</span></div>
+                                        <div class="cbp-vm-details">
+                                            @item.Author
+                                        </div>
+                                        <button class="cbp-vm-icon cbp-vm-add" onclick="AddCart(@item.Id)">加入購物車</button>
+                                        <a class="wish-list " onclick="AddFavorite(@item.Id)"><i class="far fa-heart"></i></a>
+                                        @*@{if (item.isFav == true)
+                                            { 
+                                                <i class="fas fa-heart"></i>
+                                            }
+                                            else
+                                            {
+                                                <i class="far fa-heart"></i>
+                                            }
+                                        }</a>*@
+                                    </li>
 
-                                                <a class="wish-list " onclick="AddFavorite(@item.Id)"><i class="fas fa-heart"></i></a>
-                                            </li>
-
-                                        }
-
-
-                                    </ul>
-                                </div>
+                                    }
+                                </ul>
+                            </div>
 
                             </div>
                         </div>
