@@ -903,9 +903,9 @@
     <Content Include="Asset\Image\AboutUs\quote-icon.png" />
     <Content Include="Asset\Image\smlogo_v2.png" />
     <Content Include="Asset\Js\Home-Index\slick.min.js" />
-    <Content Include="Asset\Css\ContactService\ContactService.css" />
+    <Content Include="Asset\Css\MemberCenter\MemberContact.css" />
     <Content Include="Asset\Css\Member\Member.css" />
-    <Content Include="Asset\Js\ContactService\ContactService.js" />
+    <Content Include="Asset\Js\MemberCenter\MemberContact.js" />
     <Content Include="Asset\Js\MemberCenter\Favorite.js" />
     <Content Include="Asset\Js\MemberCenter\member-MyOrder.js" />
     <Content Include="Asset\Js\MemberCenter\subscribe.js" />

@@ -415,7 +415,7 @@ span {
 }
 
 .recipient_profile_address_txt {
-    padding: 0px 0px 15px 105px;
+    padding: 0px 0px 15px 115px;
 }
 
 #recipient_option {
@@ -637,4 +637,12 @@ input {
     margin-left: 16px;
     position: relative;
     bottom: 3px;
+}
+
+.ask-star {
+    padding: 0px 20px 10px;
+}
+
+.starcolor {
+    color: #d0011b;
 }

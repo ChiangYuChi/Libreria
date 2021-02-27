@@ -13,7 +13,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
 
     <!--本頁CSS樣式-->
-    <link href="~/Asset/Css/ContactService/ContactService.css" rel="stylesheet" />
+    <link href="~/Asset/Css/MemberCenter/MemberContact.css" rel="stylesheet" />
 }
 
 @section topJS {
@@ -118,25 +118,28 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-4">
-                                <div class="tag">
-                                    <p>聯絡我們</p>
-                                </div>
+                                <input type="radio" name="tags" id="tag1" checked/>
+                                <label class="tag" for="tag1">
+                                    聯絡我們
+                                </label>
                             </div>
                             <div class="col-4">
-                                <div class="tag">
-                                    <p>常見問題</p>
-                                </div>
+                                <input type="radio" name="tags" id="tag2"/>
+                                <label class="tag" for="tag2">
+                                    常見問題
+                                </label>
                             </div>
-                            <div class="col-4">
-                                <div class="tag">
-                                    <p>發問紀錄</p>
-                                </div>
+                            <div class="col-4 deleted">
+                                <input type="radio" name="tags" id="tag3"/>
+                                <label class="tag" for="tag3">
+                                    發問紀錄
+                                </label>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <form class="contact-block">
+                <form class="contact-block" id="contact-block">
                     <div class="txt">
                         <p>我們非常重視您的意見，也很樂意解答您的問題，請提供以下資訊，幫助我們能儘快處理及回覆，謝謝您的配合，並祝您有個充實而愉快的閱讀生活。</p>
                         <!-- <p><span class="starcolor">*</span>必填欄位</p> -->
@@ -282,6 +285,231 @@
                         <input class="submit-button" type="submit" value="確認送出">
                     </div>
                 </form>
+
+                <div class="commonProblem-block" id="commonProblem-block">
+
+                    <div class="ProblemInquery">
+                        類型
+                        <select id="ProblemClass">
+                            <option value="store-information">門市資訊</option>
+                            <option value="member-service">會員服務</option>
+                            <option value="signup-login">註冊登入</option>
+                            <option value="APP">Libreria APP</option>
+                            <option value="online-store">網路書店</option>
+                            <option value="invoice">電子發票</option>
+                            <option value="cooperation">異界合作</option>
+                            <option value="gift-certificate">禮券服務</option>
+                            <option value="traveler">外籍旅客</option>
+                            <option value="other">其它</option>
+                        </select>
+
+                        問題搜索
+                        <input type="search" name="search" id="search" />
+                    </div>
+
+                    @{int num = 1; }
+                    <!--門市資訊-->
+                    <div class="Answer-block" id="Answer-block-0">
+                        @{num = 1;}
+                        <details>
+                            <summary>
+                                @(num++).查詢Libreria門市資訊及服務內容
+                            </summary>
+                            請參閱「<a href="">門市資訊</a>」查詢各門市的營業資訊及服務內容。
+                        </details>
+                        <details>
+                            <summary>
+                                @(num++).查詢Libreria書店的書籍或商品庫存
+                            </summary>
+                            請參考下列方式查詢Libreria書店書籍或商品庫存資料。<br />
+                            <br />
+                            (1)洽詢<a href="">Libreria</a>書店服務台。 <br />
+                            (2)透過Libreria網路書店「查看全台書店有無此商品」功能，查詢商品庫存。 <br />
+                            (3)透過「Libreria APP」的【門市預訂】服務，查詢商品庫存。 <br />
+                        </details>
+                        <details>
+                            <summary>
+                                @(num++).如何訂閱、收到Libreria活動訊息
+                            </summary>
+                            請透過以下多元平台接收、瀏覽Libreria活動訊息： <br />
+                            <br />
+                            (1)透過電子報訂閱平台，自行訂閱有興趣的電子報。提醒您，「會員權益信」和「Libreria獨享特刊」為會員專屬報別，開通登入會員即可訂閱。 <br />
+                            (2)造訪「Libreria」網站 <br />
+                            (3)下載登入「Libreria APP」，可設定選擇您喜歡的內容主題。 <br />
+                            (4)加入Libreria官方FB粉絲團。 <br />
+                        </details>
+                        <details>
+                            <summary>
+                                @(num++). Libreria門市的退換貨服務
+                            </summary>
+                            於Libreria書店購買到非人為損害之瑕疵書籍/商品，請攜帶完整瑕疵商品(含贈品)、電子發票證明聯、銷貨明細聯信用卡結帳需一併攜帶消費簽帳單及信用卡，於消費隔日起7日內至原購買門市辦理，服務同仁將非常樂意為您服務。 <br />
+                            <br />
+                            於商場設櫃品牌購買商品，相關退換貨服務原則需依各合作品牌現場公告或人員說明為準。<br />
+                        </details>
+                        @*<details>
+                <summary>
+                    @(num++). Libreria門市有提供禮品包裝服務嗎？
+                </summary>
+                部份Libreria書店提供禮品包裝服務，相關付費及包裝方式，歡迎洽詢 <a href="">Libreria書店</a>服務台。
+            </details>*@
+                        @*<details>
+                <summary>
+                    @(num++). Libreria門市可使用國民旅遊卡？
+                </summary>
+                Libreria門市為「國民旅遊卡」配合特約商店，刷【國民旅遊卡】消費可獲休假補助費補助。 <br />
+                <br />
+                若位於百貨商場內的門市(如：美麗華店、高雄遠百店…等)，則依該百貨商場是否配合國旅卡服務為準。 <br />
+                <br />
+                您可以透過「<a href="">國民旅遊卡</a>」查詢配合特約商店的Libreria書店門市。 <br />
+            </details>*@
+                        <details>
+                            <summary>
+                                @(num++). Libreria有提供捐書服務？
+                            </summary>
+                            Libreria書店配合募書活動，將書籍送到需要的人手上。相關募書活動參加方式，請參閱「<a href="">Libreria文化藝術基金會</a>」網站查詢。
+                        </details>
+                        @*<details>
+                <summary>
+                    @(num++). 有提供兩廳院票券訂購或領取服務？
+                </summary>
+                部分Libreria書店門市提供兩廳院購/取票服務，請參閱「<a href="">兩廳院網站</a>」查詢服務端點。
+            </details>*@
+                        <details>
+                            <summary>
+                                @(num++). 寵物攜帶入店原則
+                            </summary>
+                            歡迎以寵物箱方式攜帶寵物至Libreria門市遊逛。美食街、餐廳、食品專櫃等地點，因飲食衛生考量，恕無開放攜帶寵物入內。 <br />
+                            <br />
+                            導盲犬、聽導犬不在此限。 <br />
+                        </details>
+                        @*<details>
+                <summary>
+                    @(num++). Libreria門市可以使用【振興券】或【藝FUN券】？
+                </summary>
+                【振興券】
+                ​● 可使用於全台Libreria書店、Libreria生活商場專櫃。 <br />
+                ● 不可使用於Libreria網路書店 (包含Libreria書店下單後選擇門市取貨)。 <br />
+                <br />
+                【藝FUN券】 <br />
+                ​● 可使用於全台Libreria書店（含兒童館、音樂館、文具館、精品館）、松菸電影院。 <br />
+                ● 不可使用於Libreria網路書店 (包含網路書店下單後選擇門市取貨)、Libreria生活商場專櫃。 <br />
+            </details>*@
+                    </div>
+
+                    <!--會員服務-->
+                    <div class="Answer-block" id="Answer-block-1">
+                        @{ num = 1;}
+                        <details>
+                            <summary>
+                                @(num++).如何查詢消費紀錄？
+                            </summary>
+                            會員可透過【會員專區】查詢會員消費紀錄。
+                        </details>
+                        <details>
+                            <summary>
+                                @(num++).會員消費時可以出示哪些身分證明？
+                            </summary>
+                            (1)出示會員卡(實體卡/誠品人APP行動會員卡)。<br />
+                            (2)提供會員身分證號。<br />
+                            (3)提供會員手機號碼。<br />
+                        </details>
+                        <details>
+                            <summary>
+                                @(num++).會員身份可以移轉給家人或朋友嗎？
+                            </summary>
+                            Libreria會員制度及權益限申請會員本人使用，恕無提供會員身分轉讓或會員消費移轉。
+                        </details>
+                        <details>
+                            <summary>
+                                @(num++).已經取消訂閱電子報，仍收到電子報？
+                            </summary>
+                            可透過電子報訂閱/取消訂閱平台，自行設定電子報訂閱報別。因報別訂閱資料更新，約有3個工作天緩衝時間差，此段時間可能仍會收到剛取消的電子報。 <br />
+                            <br />
+                            此外，「會員權益信」和「Libreria獨享特刊」為會員專屬報別，需要登入網路會員，方可訂閱/取消訂閱。您可確認登入網路會員後，於電子報訂閱/取消訂閱平台確認是否已取消預計取消訂閱的電子報。 <br />
+                            <br />
+                            ※提醒說明： <br />
+                            <br />
+                            取消「會員權益信」後，將無法收到會員權益相關通知提醒，建議可透過【會員專區】自行查詢會員消費及點數紀錄，以免影響會員權益。 <br />
+                        </details>
+                    </div>
+
+                    <!--註冊登入-->
+                    <div class="Answer-block" id="Answer-block-2">
+                        @{ num = 1;}
+
+                    </div>
+
+                    <!--Libreria APP-->
+                    <div class="Answer-block" id="Answer-block-3">
+                        @{ num = 1;}
+
+                    </div>
+
+                    <!--網路書店-->
+                    <div class="Answer-block" id="Answer-block-4">
+                        @{ num = 1;}
+                        <details>
+                            <summary>
+                                @(num++).網路書店的配送範圍？
+                            </summary>
+                            目前網路書店提供台灣及台灣以外遞送服務，相關服務方式及費用，請參考「<a>網路書店-常見問題FAQ</a>」說明。
+                        </details>
+                        <details>
+                            <summary>
+                                @(num++).網路書店與實體書店的商品售價是否相同？
+
+                            </summary>
+                            網路書店及實體書店價格並非相通，目前商品售價、折扣及庫存依照銷售管道而定，請依購買頁面或門市現場標示及說明為準。
+                        </details>
+                        <details>
+                            <summary>
+                                @(num++).Libreria是否有提供電子發票服務？
+                            </summary>
+                            目前Libreria書店、Libreria商場有提供電子發票之服務，若非使用Libreria系統之專櫃，需請您洽詢現場服務人員協助確認是否有提供此服務。
+                        </details>
+                        <details>
+                            <summary>
+                                @(num++).Libreria通路是否有提供電子發票之載具服務？
+                            </summary>
+                            歡迎您至「財政部整合服務平台網站」申請註冊電子發票載具。於電子發票配合之專櫃結帳時出示相關載具(如：手機條碼、愛心碼…等)儲存電子發票，即可將發票資料匯入個人雲端帳戶。 <br />
+                            <br />
+                            相關申請作業，請至「<a href="">財政部電子發票整合服務平台</a>」網站查詢 。 <br />
+                        </details>
+                    </div>
+
+                    <!--電子發票-->
+                    <div class="Answer-block" id="Answer-block-5">
+                        @{ num = 1;}
+
+                    </div>
+
+                    <!--異界合作-->
+                    <div class="Answer-block" id="Answer-block-6">
+                        @{ num = 1;}
+
+                    </div>
+
+                    <!--禮券服務-->
+                    <div class="Answer-block" id="Answer-block-7">
+                        @{ num = 1;}
+
+                    </div>
+
+                    <!--外籍旅客-->
+                    <div class="Answer-block" id="Answer-block-8">
+                        @{ num = 1;}
+
+                    </div>
+
+                    <!--其它-->
+                    <div class="Answer-block" id="Answer-block-9">
+                        @{ num = 1;}
+
+                    </div>
+
+
+                </div>
+
             </div>
         </div>
     </div>
@@ -289,7 +517,7 @@
 
 
 @section endJS {
-    <script src="~/Asset/Js/ContactService/ContactService.js" crossorigin="anonymous"></script>
+    <script src="~/Asset/Js/MemberCenter/MemberContact.js" crossorigin="anonymous"></script>
 }
 
 
