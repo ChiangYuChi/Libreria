@@ -23,7 +23,7 @@ namespace Libreria.Service
         public member GetMember(MemberLoginViewModel model, bool IsValid)
         {
             string passwordSha512 = Utility.GetSha512(model.MemberPassword);
-            member member=null;
+            member member=null; 
             try
             {
                 if (IsValid)

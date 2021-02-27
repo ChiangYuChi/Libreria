@@ -26,9 +26,10 @@
                aria-controls="profile" aria-selected="false">密碼修改</a>
         </li>
     </ul>
+
     <div class="tab-content" id="myTabContent">
         <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-            <div class="form-group row mt-4">
+            <form class="form-group row mt-4" id="infoForm>
                 <div class="col-12">
                     <div class="form-group row">
                         <label class="form-subtitle col-3 col-xl-1 col-lg-2 text-right text-nowrap">姓名</label>
@@ -197,17 +198,20 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </form>
         <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-            <div class="row">
-                <div class="form-group form-input form-row">
-                    <div class="col-12 inputbox"><p>原登入密碼</p><input type="password"></div>
-                    <div class="col-12 inputbox"><p>設定新密碼</p><input type="password"></div>
-                    <div class="col-12 inputbox"><p>確認新密碼</p><input type="password"></div>
+            <from id="passwordFrom">
+                <div class="row">
+                    <div class="form-group form-input form-row">
+                        <div class="col-12 inputbox"><p>原登入密碼</p><input type="password"></div>
+                        <div class="col-12 inputbox"><p>設定新密碼</p><input type="password"></div>
+                        <div class="col-12 inputbox"><p>確認新密碼</p><input type="password"></div>
+
+                    </div>
 
                 </div>
-
-            </div>
+            </from>
+            
             <div class="col-12 mt-2 d-flex justify-content-center" ">
                 <button type="button" class="cancel">取消</button>
                 <button type="submit" class="confirm" disabled="disable">確認</button>
@@ -219,4 +223,18 @@
         @*OrderDetail JS*@
         <script src="~/Asset/Js/ShoppingCart/OrderDetail.js"></script>
         <script src="~/Asset/Js/Order/OrderDetail.js" crossorigin="anonymous"></script>
+        <script>
+            //update data
+            @*$("form").submit(function (event) {
+                event.preventDefault();
+                var formData = new FormData($("infoForm").get(0));
+                $.ajax({
+                    url: '@Url.Action("ActionName", "ControllerName")',
+                    type: 'POST',
+                    data: formdata,
+                    processData: false,
+                    contentType: false,
+                    });
+            })*@
+        </script>
     }

@@ -140,14 +140,13 @@ namespace Libreria.Controllers
         /// 帳號是否重複
         /// </summary>
         /// <returns></returns>
-        public JsonResult CheckAllowMemberName(string memberName)
-        {
+        //public JsonResult CheckAllowMemberName(string memberName)
+        //{
             
-            var search = _memberRegisterPageService.IsExistMember(memberName);
-            bool result = search.IsSuccessful;
-            return Json(!result, JsonRequestBehavior.AllowGet);
-                
-        }
+        //    var search = _memberRegisterPageService.IsExistMember(memberName);
+        //    bool result = search.IsSuccessful;
+        //    return Json(!result, JsonRequestBehavior.AllowGet);                
+        //}
        
 
 

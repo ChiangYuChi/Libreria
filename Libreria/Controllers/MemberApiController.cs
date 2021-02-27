@@ -12,24 +12,24 @@
 
 //namespace Libreria.Controllers
 //{
-//    public static class SessionVariables
-//    {
-//        private static object GetValue(string AttrName)
-//        {
-//            return HttpContext.Current.Session[AttrName];
-//        }
-//        private static void SetValue(string AttrName, object AttrValue)
-//        {
-//            HttpContext.Current.Session[AttrName] = AttrValue;
+//    //public static class SessionVariables
+//    //{
+//    //    private static object GetValue(string AttrName)
+//    //    {
+//    //        return HttpContext.Current.Session[AttrName];
+//    //    }
+//    //    private static void SetValue(string AttrName, object AttrValue)
+//    //    {
+//    //        HttpContext.Current.Session[AttrName] = AttrValue;
 
-//        }
+//    //    }
 
-//        public static int PageIndex
-//        {
-//            get => (int?)GetValue("pageIndex") ?? 0;
-//            set => SetValue("pageIndex", value);
-//        }
-//    }
+//    //    public static int PageIndex
+//    //    {
+//    //        get => (int?)GetValue("pageIndex") ?? 0;
+//    //        set => SetValue("pageIndex", value);
+//    //    }
+//    //}
 //    public class MemberApiController : ApiController
 //    {
 //        static LibreriaDataModel context = null;
@@ -48,12 +48,12 @@
 //        {
 
 //            context = new MemberLoginViewModel();
-            
+
 //            member member = context.members
 //                                   .Where(u => u.memberName == model.MemberName && u.memberPassword == model.MemberPassword)
 //                                   .FirstOrDefault();
 //            return member;
-          
+
 
 //        }
 //        internal class InternalLibreriaDataModel : LibreriaDataModel
