@@ -21,12 +21,6 @@ namespace Libreria.Service
 
         public List<ProductViewModel> GetAll()
         {
-            var MemberId = Convert.ToInt32(System.Web.HttpContext.Current.Session["MemberID"]);
-            var fav = _DbRepository.GetAll<Favorite>().Where(x => x.memberId == MemberId).ToList();
-
-
-
-
             var result = (from p in _DbRepository.GetAll<Product>()
                          join v in _DbRepository.GetAll<Preview>()
                          on p.ProductId equals v.ProductId
@@ -35,8 +29,6 @@ namespace Libreria.Service
                          on p.CategoryId equals c.CategoryId
                          join s in _DbRepository.GetAll<Supplier>()
                          on p.SupplierId equals s.SupplierId
-                         join f in _DbRepository.GetAll<Favorite>()
-                         on p.ProductId equals f.ProductId
                          select new ProductViewModel()
                          {
                              Id = p.ProductId,
@@ -49,12 +41,33 @@ namespace Libreria.Service
                              PublishDate = p.PublishDate,
                              CreateTime = p.CreateTime,
                              Introduction = p.Introduction,
-                             MainUrl = v.ImgUrl,
-                             isFav = fav.Any(x => x.ProductId == p.ProductId)
+                             MainUrl = v.ImgUrl
                          }).ToList();
 
+            var MemberId = Convert.ToInt32(System.Web.HttpContext.Current.Session["MemberID"]);
 
-            return result;
+            if (MemberId == 0)
+            {
+                result.ForEach(x => x.isFav = false);
+                return result;
+            }
+            else
+            {
+                var fav = _DbRepository.GetAll<Favorite>().Where(x => x.memberId == MemberId).ToList();
+                foreach (var item in result)
+                {
+                    if (fav.Any(x => x.ProductId == item.Id))
+                    {
+                        item.isFav = true;
+                    }
+                    else
+                    {
+                        item.isFav = false;
+                    }
+                }
+
+                return result;
+            }
         }
 
         public ProductViewModel GetById(int id)
@@ -119,7 +132,29 @@ namespace Libreria.Service
                               MainUrl = v.ImgUrl,
                               CategoryName = c.Name
                           }).ToList();
-            
+
+            var MemberId = Convert.ToInt32(System.Web.HttpContext.Current.Session["MemberID"]);
+
+            if (MemberId == 0)
+            {
+                result.ForEach(x => x.isFav = false);
+            }
+            else
+            {
+                var fav = _DbRepository.GetAll<Favorite>().Where(x => x.memberId == MemberId).ToList();
+                foreach (var item in result)
+                {
+                    if (fav.Any(x => x.ProductId == item.Id))
+                    {
+                        item.isFav = true;
+                    }
+                    else
+                    {
+                        item.isFav = false;
+                    }
+                }
+            }
+
             return result;
         }
 
