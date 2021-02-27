@@ -1,4 +1,8 @@
-﻿//動態調整服務類型的選單
+﻿//import index from "../../../Scripts/esm/popper-utils";
+
+//import { forEach } from "../../../Scripts/fontawesome/v4-shims";
+
+//動態調整服務類型的選單
 let serviceClassSelect = document.getElementById("service-class");
 let serviceClassDetailSelect = document.getElementById("service-class-detail");
 
@@ -124,3 +128,63 @@ function resetInput() {
         needResetTextarea[i].value = "";
     }
 }
+
+
+
+
+let tags = [];
+tags[0] = document.getElementById("tag1");
+tags[1] = document.getElementById("tag2");
+tags[2] = document.getElementById("tag3");
+
+let tagTargets = [];
+tagTargets[0] = document.getElementById("contact-block");
+tagTargets[1] = document.getElementById("commonProblem-block");
+
+tags.forEach(function (tag, index) {
+    tag.addEventListener("change", function () { changeTag(tag, tagTargets, index); })
+})
+
+function changeTag(tag, tagTargets, index) {
+    tagTargets.forEach(function (tagTarget) {
+        tagTarget.style.display = "none";
+    })
+
+    if (tag.checked == true && tagTargets[index] != null) {
+        tagTargets[index].style.display = "block";
+    }
+}
+
+
+
+
+
+let ProblemClassSelect = document.getElementById("ProblemClass");
+
+let AnswerBlock = [];
+for (let i = 0; i < ProblemClassSelect.length; i++) {
+    AnswerBlock[i] = document.getElementById("Answer-block-" + i);
+    if (AnswerBlock[i] != null) {
+        AnswerBlock[i].style.display = "none";
+    }
+}
+if (AnswerBlock[0] != null) {
+    AnswerBlock[0].style.display = "block";
+}
+
+ProblemClassSelect.addEventListener("change", function () { PloblemChoose(); })
+
+function PloblemChoose() {
+    for (let i = 0; i < AnswerBlock.length; i++) {
+        if (AnswerBlock[i] != null) {
+            AnswerBlock[i].style.display = "none";
+        }
+    }
+
+    let index = ProblemClassSelect.selectedIndex;
+    if (AnswerBlock[index] != null) {
+        AnswerBlock[index].style.display = "block";
+    }
+}
+
+
