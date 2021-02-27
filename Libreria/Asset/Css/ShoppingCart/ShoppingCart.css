@@ -480,13 +480,13 @@
 .amount-total_button {
 }
 
-    .amount-total_button button {
-        padding: 6px 50px;
-        background-color: #a82130;
-        border: solid black 1px;
-        color: white;
-        border-radius:4px;
-    }
+.amount-total_button button {
+    padding: 6px 50px;
+    background-color: #a82130;
+    border: solid black 1px;
+    color: white;
+    border-radius: 4px;
+}
 
 
 
