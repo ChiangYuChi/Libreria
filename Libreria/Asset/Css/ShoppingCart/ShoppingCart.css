@@ -3,9 +3,11 @@
 .bodycolor {
     background-color: #eee;
 }
+
 .body-content {
     background-color: #eee;
 }
+
 .chinese {
     font-family: 'Open Sans', sans-serif;
 }
@@ -464,15 +466,12 @@
     justify-content: space-evenly;
 }
 
-.amount-total a{
-    text-decoration: none;
-    color: white;
-}
+
 
 
 .amount-total_display {
-        align-items: center;
-    }
+    align-items: center;
+}
 
 .total-price-size {
     font-size: 28px;
@@ -483,13 +482,12 @@
 
     .amount-total_button button {
         padding: 6px 50px;
-        background-color: floralwhite;
-        border:solid black 1px;
+        background-color: #a82130;
+        border: solid black 1px;
         color: white;
+        border-radius:4px;
     }
-.amount-total_button button a{
-    color:black;
-}
+
 
 
 
