@@ -70,7 +70,7 @@
 
                     @foreach (var item in Model)
                     {
-                        <div class="col-12 col-lg-6 px-2 px-lg-3 d-flex">
+                        <div class="col-12 col-lg-6 px-2 px-lg-3 d-flex mb-3">
                             <div class="info-image">
                                 <a href="@Url.Action("ProductDetail", "Product", new { id = item.ProductId })">
                                     <img src="@item.PicUrl">
@@ -260,7 +260,7 @@
                     </p>
                 </div>
                 <div class="amount-total_button p-0">
-                    <button><a href="/Order/OrderDetail">結帳</a></button>
+                    <button onclick="Redirect()">結帳</button>
                 </div>
             </div>
         </div>
@@ -308,6 +308,21 @@
                 dataType: "text",
                 success: function () {
                     location.reload();
+                }
+            });
+        }
+
+        function Redirect() {
+            $.ajax({
+                type: "Post",
+                url: "/Order/Redirect",
+                success: function (result) {
+                    if (result == 1) {
+                        window.location.href = "@Url.Action("OrderDetail", "Order")";
+                    }
+                    else {
+                        window.location.href = "@Url.Action("Index", "MemberLogin")";
+                    }
                 }
             });
         }

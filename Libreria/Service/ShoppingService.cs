@@ -18,25 +18,25 @@ namespace Libreria.Service
             _DbRepository = new LibreriaRepository();
         }
 
-       public List<ShoppingCartViewModel> GetAll()
+        public List<ShoppingCartViewModel> GetAll()
         {
             var MemberId = Convert.ToInt32(HttpContext.Current.Session["MemberID"]);
 
             var result = (from s in _DbRepository.GetAll<ShoppingCart>()
-                         join p in _DbRepository.GetAll<Product>()
-                         on s.ProductId equals p.ProductId
-                         where s.memberId == MemberId
-                         join v in _DbRepository.GetAll<Preview>()
-                         on s.ProductId equals v.ProductId
-                         where v.Sort == 0
-                         select new ShoppingCartViewModel()
-                         {
-                             ProductId = s.ProductId,
-                             ProductName = p.ProductName,
-                             Count = s.Count,
-                             Price = p.UnitPrice,
-                             PicUrl = v.ImgUrl
-                         }).ToList();
+                          join p in _DbRepository.GetAll<Product>()
+                          on s.ProductId equals p.ProductId
+                          where s.memberId == MemberId
+                          join v in _DbRepository.GetAll<Preview>()
+                          on s.ProductId equals v.ProductId
+                          where v.Sort == 0
+                          select new ShoppingCartViewModel()
+                          {
+                              ProductId = s.ProductId,
+                              ProductName = p.ProductName,
+                              Count = s.Count,
+                              Price = p.UnitPrice,
+                              PicUrl = v.ImgUrl
+                          }).ToList();
 
             return result;
         }
@@ -129,7 +129,7 @@ namespace Libreria.Service
                 if (MemberId == 0)
                 {
                     List<ShoppingCart> cartitems = (List<ShoppingCart>)HttpContext.Current.Session["ShoppingCart"];
-                    var newcart = cartitems.Where(x => x.ProductId != productId).ToList() ;
+                    var newcart = cartitems.Where(x => x.ProductId != productId).ToList();
                     HttpContext.Current.Session["ShoppingCart"] = newcart;
                 }
                 else
@@ -138,7 +138,7 @@ namespace Libreria.Service
                         .Where(x => x.ProductId == productId && x.memberId == MemberId)
                         .FirstOrDefault());
                 }
-                
+
                 result.IsSuccessful = true;
             }
             catch
@@ -159,7 +159,7 @@ namespace Libreria.Service
                 {
                     List<ShoppingCart> cartitems = (List<ShoppingCart>)HttpContext.Current.Session["ShoppingCart"];
                     var newcart = cartitems
-                        .Select(x => x.ProductId == productId ? new ShoppingCart { ProductId = x.ProductId, Count = x.Count+1, memberId = 0 } : x)
+                        .Select(x => x.ProductId == productId ? new ShoppingCart { ProductId = x.ProductId, Count = x.Count + 1, memberId = 0 } : x)
                         .ToList();
 
                     HttpContext.Current.Session["ShoppingCart"] = newcart;
@@ -198,7 +198,7 @@ namespace Libreria.Service
                         .Select(x => x.ProductId == productId ? new ShoppingCart { ProductId = x.ProductId, Count = x.Count - 1, memberId = 0 } : x)
                         .Where(x => x.Count > 0)
                         .ToList();
-                    
+
                     HttpContext.Current.Session["ShoppingCart"] = newcart;
                 }
                 else
@@ -211,7 +211,7 @@ namespace Libreria.Service
                     {
                         _DbRepository.Delete<ShoppingCart>(entity);
                     }
-                    else 
+                    else
                     {
                         entity.Count -= 1;
                         _DbRepository.Update<ShoppingCart>(entity);
@@ -226,6 +226,18 @@ namespace Libreria.Service
             }
 
             return result;
+        }
+
+        public int Redirect()
+        {
+            if (HttpContext.Current.Session["MemberId"] != null)
+            {
+                return 1; //会员已登录
+            }
+            else
+            {
+                return 2; //会员没有登陆
+            }
         }
     }
 }
