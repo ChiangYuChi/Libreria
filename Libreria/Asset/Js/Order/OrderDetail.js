@@ -6,30 +6,28 @@ SubscriberEqualRecipient.addEventListener("change", function () { SubscriberToRe
 
 function SubscriberToRecipient() {
 
+    let SubscriberName = document.getElementById("SubscriberName");
+    let SubscriberCellphone = document.getElementById("SubscriberCellphone");
+    let SubscriberTelephone = document.getElementById("SubscriberTelephone");
+    let SubscriberAddressCitySelect = document.getElementById("subscriber_option subscriber_option_counties Region");
+    let SubscriberAddressRegionSelect = document.getElementById("subscriber_option_district Town");
+    let SubscriberAddress = document.getElementById("SubscriberAddress");
+    let SubscriberPostalCode = document.getElementById("SubscriberPostalCode")
+
+    //收件人資料
+    let RecipientName = document.getElementById("RecipientName");
+    let RecipientCellphone = document.getElementById("RecipientCellphone");
+    let RecipientTelephone = document.getElementById("RecipientTelephone");
+    let AddressCitySelect = document.getElementById("recipient_option recipient_option_counties Region");
+    let AddressRegionSelect = document.getElementById("recipient_option_district Town");
+    let RecipientAddress = document.getElementById("RecipientAddress");
+    let RecipientPostalCode = document.getElementById("RecipientPostalCode");
+
     if (SubscriberEqualRecipient.checked == true) {
-
-        //訂購人資料
-        let SubscriberName = document.getElementById("SubscriberName");
-        let SubscriberCellphone = document.getElementById("SubscriberCellphone");
-        let SubscriberTelephone = document.getElementById("SubscriberTelephone");
-        let SubscriberAddressCitySelect = document.getElementById("subscriber_option subscriber_option_counties Region");
-        let SubscriberAddressRegionSelect = document.getElementById("subscriber_option_district Town");
-        let SubscriberAddress = document.getElementById("SubscriberAddress");
-        let SubscriberPostalCode = document.getElementById("SubscriberPostalCode")
-
-        //收件人資料
-        let RecipientName = document.getElementById("RecipientName");
-        let RecipientCellphone = document.getElementById("RecipientCellphone");
-        let RecipientTelephone = document.getElementById("RecipientTelephone");
-        let AddressCitySelect = document.getElementById("recipient_option recipient_option_counties Region");
-        let AddressRegionSelect = document.getElementById("recipient_option_district Town");
-        let RecipientAddress = document.getElementById("RecipientAddress");
-        let RecipientPostalCode = document.getElementById("RecipientPostalCode");
 
         RecipientName.value = SubscriberName.value;
         RecipientCellphone.value = SubscriberCellphone.value;
         RecipientTelephone.value = SubscriberTelephone.value;
-        AddressCitySelect.value = SubscriberAddressCitySelect.value;
 
         AddressCitySelect.add(new Option(
             text = SubscriberAddressCitySelect.value,
@@ -44,6 +42,14 @@ function SubscriberToRecipient() {
         RecipientAddress.value = SubscriberAddress.value;
         RecipientPostalCode.value = SubscriberPostalCode.value;
 
+    }
+    else {
+        RecipientName.value = "";
+        RecipientCellphone.value = "";
+        RecipientTelephone.value = "";
+
+        RecipientAddress.value = "";
+        RecipientPostalCode.value = "";
     }
 
 }
