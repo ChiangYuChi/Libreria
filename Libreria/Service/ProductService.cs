@@ -68,12 +68,6 @@ namespace Libreria.Service
 
                 return result;
             }
-
-            
-
-            
-
-            
         }
 
         public ProductViewModel GetById(int id)
@@ -144,7 +138,6 @@ namespace Libreria.Service
             if (MemberId == 0)
             {
                 result.ForEach(x => x.isFav = false);
-                return result;
             }
             else
             {
@@ -160,9 +153,9 @@ namespace Libreria.Service
                         item.isFav = false;
                     }
                 }
-
-                return result;
             }
+
+            return result;
         }
 
         public List<ProductViewModel> GetByPublishDate()
