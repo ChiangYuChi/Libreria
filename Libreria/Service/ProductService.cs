@@ -21,12 +21,6 @@ namespace Libreria.Service
 
         public List<ProductViewModel> GetAll()
         {
-            var MemberId = Convert.ToInt32(System.Web.HttpContext.Current.Session["MemberID"]);
-            var fav = _DbRepository.GetAll<Favorite>().Where(x => x.memberId == MemberId).ToList();
-
-
-
-
             var result = (from p in _DbRepository.GetAll<Product>()
                          join v in _DbRepository.GetAll<Preview>()
                          on p.ProductId equals v.ProductId
@@ -50,7 +44,6 @@ namespace Libreria.Service
                              CreateTime = p.CreateTime,
                              Introduction = p.Introduction,
                              MainUrl = v.ImgUrl,
-                             isFav = fav.Any(x => x.ProductId == p.ProductId)
                          }).ToList();
 
 
