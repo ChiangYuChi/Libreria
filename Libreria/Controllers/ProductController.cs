@@ -90,6 +90,9 @@ namespace Libreria.Controllers
             var product = _productService.PromoteMajor();
             return PartialView(product);
         }
-
+        public ActionResult Test()
+        {
+            return View();
+        }
     }
 }
