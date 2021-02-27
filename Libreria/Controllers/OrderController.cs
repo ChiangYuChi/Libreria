@@ -47,7 +47,7 @@ namespace Libreria.Controllers
         public string AddToCart(ProductViewModel ProductVM)
         {
             var result = _shoppingService.AddToCart(ProductVM.Id);
-            
+
 
             if (result.IsSuccessful)
             {
@@ -59,7 +59,7 @@ namespace Libreria.Controllers
             }
         }
 
-        [HttpPost] 
+        [HttpPost]
         public string FavoriteToCart(ProductViewModel ProductVM)
         {
             var result = _favoriteService.CreateToCart(ProductVM);
@@ -74,8 +74,6 @@ namespace Libreria.Controllers
                 return "加入失败";
             }
         }
-
-
 
         [HttpPost]
         public void DeleteFromCart(ShoppingCartViewModel ShoppingCartVM)
@@ -94,6 +92,22 @@ namespace Libreria.Controllers
         public void MinusOne(ShoppingCartViewModel ShoppingCartVM)
         {
             _shoppingService.MinusOne(ShoppingCartVM.ProductId);
+        }
+
+        [HttpPost]
+        public int Redirect()
+        {
+            var result = _shoppingService.Redirect();
+
+            if (result == 1)
+            {
+                return 1;
+            }
+            else
+            {
+                return 2;
+            }    
+
         }
 
         /// <summary>
@@ -121,7 +135,7 @@ namespace Libreria.Controllers
             {
                 OperationResult result = _orderService.Create(orderVM);
 
-                if(result.IsSuccessful)
+                if (result.IsSuccessful)
                 {
                     orderVM = _orderService.GetByOrderId(orderVM.OrderId).FirstOrDefault();
                 }
