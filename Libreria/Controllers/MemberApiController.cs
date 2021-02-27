@@ -30,49 +30,41 @@
 //            set => SetValue("pageIndex", value);
 //        }
 //    }
-//    //    public class MemberApiController : ApiController
-//    //    {
-//    //        static LibreriaDataModel context = null;
-//    //        //static void Main(string[] args)
-//    //        //{
-//    //        //    try
-//    //        //    {
-//    //        //        var test = GetMember();
-//    //        //    }
-//    //        //    finally
-//    //        //    {
-//    //        //        context.Dispose();
-//    //        //    }
-//    //        //}
-//    //        public IQueryable<MemberLoginViewModel> GetMember(MemberLoginViewModel model)
-//    //        {
+//    public class MemberApiController : ApiController
+//    {
+//        static LibreriaDataModel context = null;
+//        static void Main(string[] args)
+//        {
+//            try
+//            {
+//                var test = GetMember();
+//            }
+//            finally
+//            {
+//                context.Dispose();
+//            }
+//        }
+//        public member GetMember(MemberLoginViewModel model)
+//        {
 
-//    //            context = new MemberLoginViewModel();
+//            context = new MemberLoginViewModel();
+            
+//            member member = context.members
+//                                   .Where(u => u.memberName == model.MemberName && u.memberPassword == model.MemberPassword)
+//                                   .FirstOrDefault();
+//            return member;
+          
 
+//        }
+//        internal class InternalLibreriaDataModel : LibreriaDataModel
+//        {
+//            public virtual DbSet<member> MembersforWebApi { get; set; }
+//        }
+//        internal class MemberLoginViewModel : InternalLibreriaDataModel
+//        {
+//            public string MemberName { get; set; }
 
-
-//    //            //if (ModelState.IsValid)
-//    //            //{
-//    //            //    member member = context.members
-//    //            //                                   .Where(u => u.memberName == model.MemberName && u.memberPassword == model.MemberPassword)
-//    //            //                                   .FirstOrDefault();
-//    //            //    return member;
-//    //            //}
-//    //            //else
-//    //            //{
-
-//    //            //}
-
-//    //        }
-//    //        internal class InternalLibreriaDataModel : LibreriaDataModel
-//    //        {
-//    //            public virtual DbSet<member> MembersforWebApi { get; set; }
-//    //        }
-//    //        internal class MemberLoginViewModel : InternalLibreriaDataModel
-//    //        {
-//    //            public string MemberName { get; set; }
-
-//    //            public string MemberPassword { get; set; }
-//    //        }
-//    //    }
+//            public string MemberPassword { get; set; }
+//        }
+//    }
 //}

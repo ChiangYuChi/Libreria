@@ -51,5 +51,23 @@ namespace Libreria.Service
             }
             return result;
         }
+        public OperationResult IsExistMember(string membername)
+        {
+            var result = new OperationResult();
+            member member = null;
+            membername = (_libreriaRepository.GetAll<member>().Where(m => member.memberName == membername)
+                                        .FirstOrDefault()).memberName;
+            if (member != null)
+            {
+                result.IsSuccessful = true;
+            }
+            else
+            {
+                result.IsSuccessful = false;
+            }
+            return result;
+                
         }
+    }
+      
 }

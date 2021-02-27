@@ -7,6 +7,7 @@ using System.Web;
 
 namespace Libreria.ViewModels
 {
+
     public class MemberViewModel
     {
         /// <summary>
@@ -15,6 +16,7 @@ namespace Libreria.ViewModels
         [Required]
         [StringLength(50)]
         [Display(Name = "帳號")]
+        [System.Web.Mvc.Remote("CheckAllowMemberName", "MemberCenter", ErrorMessage = "帳號已有人使用")]
         public string memberName { get; set; }
         /// <summary>
         /// 手機號碼
@@ -32,8 +34,14 @@ namespace Libreria.ViewModels
 
         public string HomeNumber { get; set; }
 
+        /// <summary>
+        /// 市
+        /// </summary>
         public string City { get; set; }
 
+        /// <summary>
+        /// 區
+        /// </summary>
         public string Region { get; set; }
         /// <summary>
         /// 地址
