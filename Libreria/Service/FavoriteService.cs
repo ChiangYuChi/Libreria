@@ -36,6 +36,7 @@ namespace Libreria.Service
             return result;
         }
 
+
         public List<FavoriteViewModel> GetAll()
         {
             var MemberId = Convert.ToInt32(System.Web.HttpContext.Current.Session["MemberID"]);
@@ -43,7 +44,7 @@ namespace Libreria.Service
                           join p in _DbRepository.GetAll<Product>() on f.ProductId equals p.ProductId
                           join s in _DbRepository.GetAll<Supplier>() on p.SupplierId equals s.SupplierId
                           join v in _DbRepository.GetAll<Preview>() on p.ProductId equals v.ProductId
-                          where v.Sort == 0 
+                          where v.Sort == 0 && f.memberId == MemberId
                           select new FavoriteViewModel()
                           {
                               ProductId = p.ProductId,
@@ -55,15 +56,13 @@ namespace Libreria.Service
                           }).ToList();
             return result;
         }
-        //public Product GetById(ProductViewModel productVM)
-        //{
-        //    var MemberId = Convert.ToInt32(System.Web.HttpContext.Current.Session["MemberID"]);
-        //    var result = (from f in _DbRepository.GetAll<Product>()
-        //                  ) 
 
-
-        //    return result;
-        //}
+        public List<Favorite> GetFavorite()
+        {
+            var MemberId = Convert.ToInt32(System.Web.HttpContext.Current.Session["MemberID"]);
+            var result = _DbRepository.GetAll<Favorite>().ToList();
+            return result;
+        }
 
         public OperationResult CreateToFavorite(ProductViewModel ProductVM)
         {
