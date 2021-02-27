@@ -97,17 +97,7 @@ namespace Libreria.Controllers
         [HttpPost]
         public int Redirect()
         {
-            var result = _shoppingService.Redirect();
-
-            if (result == 1)
-            {
-                return 1;
-            }
-            else
-            {
-                return 2;
-            }    
-
+            return _shoppingService.Redirect();  
         }
 
         /// <summary>

@@ -70,7 +70,7 @@
 
                     @foreach (var item in Model)
                     {
-                        <div class="col-12 col-lg-6 px-2 px-lg-3 d-flex">
+                        <div class="col-12 col-lg-6 px-2 px-lg-3 d-flex mb-3">
                             <div class="info-image">
                                 <a href="@Url.Action("ProductDetail", "Product", new { id = item.ProductId })">
                                     <img src="@item.PicUrl">
