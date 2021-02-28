@@ -19,7 +19,7 @@ namespace Libreria.Controllers
         // GET: Rental
         public ActionResult Index()
         {
-            ViewBag.RentalDate = _rentalService.GetRentalDate();
+            ViewBag.RentalDate = _rentalService.GetPickDateRange();
             return View();
         }
 
@@ -45,10 +45,5 @@ namespace Libreria.Controllers
             }
         }
 
-        [HttpGet]
-        public ActionResult RentalDate()
-        {
-            return View();
-        }
     }
 }

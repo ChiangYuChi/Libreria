@@ -77,13 +77,13 @@ namespace Libreria.Service
 
             return result;
         }
-        public List<RentalConfirmViewModel> GetRentalDate()
-        {
-            return _DbRepository.GetAll<ExhibitionOrder>().Select(x => new RentalConfirmViewModel()
+
+        public dynamic GetPickDateRange() {
+            return _DbRepository.GetAll<ExhibitionOrder>().ToList().Select(x => new 
             {
-                StartDate = x.StartDate,
-                EndDate = x.EndDate
-            }).ToList();
+                StartDate = x.StartDate.ToString("yyyy/MM/dd"),
+                EndDate = x.EndDate.ToString("yyyy/MM/dd")
+            });
         }
 
     }

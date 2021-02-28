@@ -14,8 +14,14 @@
     <link href="~/Asset/Css/Rental/Rental_index.css" rel="stylesheet" />
 }
 @section endJs{
+
+    <script type="text/javascript">
+
+        let GetPickDateRange = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(ViewBag.RentalDate));
+    </script>
+
     <script src="~/Asset/Js/Rental/Rental_index.js"></script>
-    
+
 }
 
 <div class="spaceLease">
@@ -190,8 +196,10 @@
                                     <div class="modal-body">
                                         <div class="space__check-out--money modelItem-group">
                                             <p>每天</p>
-                                            <p>$525-525  @ViewBag.RentalDate.StartDate</p>
+                                            <p>$2500</p>
                                         </div>
+
+
                                         <div class="space__check-out--data modelItem-group">
                                             <h5>租借日期</h5>
                                             <div class="start-data">請選擇租借開始日期</div>
@@ -214,6 +222,7 @@
                                             <a name="bookingOnlineBtn" href="javascript:void(0);">線上預訂</a>
                                         </div>
                                     </div>
+
                                 </div>
                             </div>
                         </div>

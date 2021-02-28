@@ -2,27 +2,43 @@
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
-    
+
 
 }
 
 
 @section topCss{
-
+    <script src="https://kit.fontawesome.com/d22f4b5afc.js" crossorigin="anonymous"></script>
     <link href="~/Asset/Css/Exhibition/Exhibition.css" rel="stylesheet" />
 }
+
 <div class="main-Exhibition container">
+    <div class="ex-path">
+        <ul>
+            <li><a href="/Home/Index">首頁</a></li>
+            <li><a href="#">展演</a></li>
+        </ul>
+    </div>
+    <div class="ex-block-text">
+        <p>
+            當期展覽
+        </p>
+    </div>
+
     <!-- Button trigger modal -->
     <button type="button" class="btn main-btn col-12" data-toggle="modal" data-target="#exampleModal">
 
-        <div class="main-Exhibition-pic col-12 ">
+        <div class="main-Exhibition-pic">
             <img src="@Model.ExPhoto" class="w-100">
+            <div class="text">
+                <p>可點選閱讀詳細資訊!</p>
+            </div>
         </div>
     </button>
 
     <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
+    <div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
             <div class="modal-content">
                 <div class="modal-header">
                     <h2 class="modal-title" id="exampleModalLabel">@Model.ExName</h2>
@@ -35,12 +51,12 @@
                 </div>
                 <div class="modal-body">
                     <p>展覽日期: @Model.ExhibitionStartTime.ToString("yyyy年MM月dd日") - @Model.ExhibitionEndTime.ToString("yyyy年MM月dd日")</p>
-                    <p>門票: @Model.ExhibitionPrice</p>
+                    <p>門票(新台幣/元): @Model.ExhibitionPrice.ToString("#0")</p>
                     <div class="intro">
                         @Model.ExHibitionIntro
                     </div>
                     <p>主辦單位: @Model.MasterUnit</p>
-                    <p class="card-text"><small class="text-muted">更新日期:@Model.EditModifyDate</small></p>
+                    <p class="card-text"><small class="text-muted">更新日期:@Model.EditModifyDate.ToString("yyyy/MM/dd")</small></p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -48,8 +64,7 @@
             </div>
         </div>
     </div>
-    <div class="midsolid container">
-    </div>
+    <hr />
 </div>
 
 
@@ -59,74 +74,84 @@
 <div class="container other-exhibition">
     <div class="ex-block-text">
         <p>
-            未來展覽
+            預告展覽
         </p>
     </div>
-    @foreach (var item in ViewBag.NotYetExhibitioning)
-    {
-        <div class="future-exhibition row col-12">
-            <button type="button" class="btn col-sm-12 col-md-6 col-lg-4" data-toggle="modal" data-target="#ex2">
-                <div class="card h-100" style="width: 18rem;">
-                    <img src="@item.ExPhoto" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h3 class="card-title">@item.ExName</h3>
-                        <p class="card-text">@item.ExHibitionIntro</p>
+    <div class="row">
+        @{
+            int notYetIndex = 0;
+        }
+        @foreach (var item in ViewBag.NotYetExhibitioning)
+        {
+            string id = "notYet" + notYetIndex;
+            <div class="future-exhibition col-12 col-md-6 col-lg-4">
+                <button type="button" class="btn col-sm-12 col-md-6 col-lg-4" data-toggle="modal" data-target="#@id">
+                    <div class="card h-100">
+                        <img src="@item.ExPhoto" class="card-img-top" alt="...">
+                        <div class="text">
+                            <p>可點選閱讀詳細資訊!</p>
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title">@item.ExName</h3>
+                            <p class="card-text">@item.ExHibitionIntro</p>
+                        </div>
                     </div>
-                </div>
-            </button>
+                </button>
 
-            <!-- Modal -->
-            <div class="modal fade" id="ex2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h3 class="modal-title" id="exampleModalLabel">@item.ExName</h3>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <div class="ex-Main-pic">
-                                <img src="@item.ExPhoto" class="col-12">
+                @*Modal*@
+                <div class="modal hide fade" id="@id" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-xl">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h3 class="modal-title" id="exampleModalLabel">@item.ExName</h3>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
                             </div>
-                            <div>
-                                <p>展覽日期: @item.ExhibitionStartTime.ToString("yyyy年MM月dd日") - @item.ExhibitionEndTime.ToString("yyyy年MM月dd日")</p>
-                                <p>門票: @item.ExhibitionPrice</p>
-                                <div class="intro">
-                                    @item.ExHibitionIntro
+                            <div class="modal-body">
+                                <div class="ex-Main-pic">
+                                    <img src="@item.ExPhoto" class="col-12">
                                 </div>
-                                <p>主辦單位: @item.MasterUnit</p>
-                                <p class="card-text"><small class="text-muted">更新日期:@item.EditModifyDate</small></p>
+                                <div>
+                                    <p>展覽日期: @item.ExhibitionStartTime.ToString("yyyy年MM月dd日") - @item.ExhibitionEndTime.ToString("yyyy年MM月dd日")</p>
+                                    <p>門票(新台幣/元): @item.ExhibitionPrice.ToString("#0")</p>
+                                    <div class="intro">
+                                        @item.ExHibitionIntro
+                                    </div>
+                                    <p>主辦單位: @item.MasterUnit</p>
+                                    <p class="card-text"><small class="text-muted">更新日期:@item.EditModifyDate.ToString("yyyy/MM/dd")</small></p>
+                                </div>
                             </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    }
+            notYetIndex++;
+        }
 
-
-
-
-    <div class="midsolid">
     </div>
-
-
-
+    <hr />
     <div class="ex-block-text">
         <p>
-            過去展覽
+            歷年展覽
         </p>
     </div>
+    @{
+        int overdueIndex = 0;
+    }
     @foreach (var item in ViewBag.OverdueExhibitioning)
     {
-        <div class="ex-exhibition row col-12">
-            <button type="button" class="btn col-sm-12 col-md-6 col-lg-4" data-toggle="modal" data-target="#ex6">
-                <div class="card h-100" style="width: 18rem;">
+        string id = "overdue" + overdueIndex;
+        <div class="future-exhibition col-12 col-md-6 col-lg-4">
+            <button type="button" class="btn col-sm-12 col-md-6 col-lg-4" data-toggle="modal" data-target="#@id">
+                <div class="card h-100">
                     <img src="@item.ExPhoto" class="card-img-top" alt="...">
+                    <div class="text">
+                        <p>可點選閱讀詳細資訊!</p>
+                    </div>
                     <div class="card-body">
                         <h3 class="card-title">@item.ExName</h3>
                         <p class="card-text">@item.ExHibitionIntro</p>
@@ -134,9 +159,9 @@
                 </div>
             </button>
 
-        <!-- Modal -->
-            <div class="modal fade" id="ex6" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
+            @*Modal*@
+            <div class="modal hide fade" id="@id" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-xl">
                     <div class="modal-content">
                         <div class="modal-header">
                             <h3 class="modal-title" id="exampleModalLabel">@item.ExName</h3>
@@ -150,12 +175,12 @@
                             </div>
                             <div>
                                 <p>展覽日期: @item.ExhibitionStartTime.ToString("yyyy年MM月dd日") - @item.ExhibitionEndTime.ToString("yyyy年MM月dd日")</p>
-                                <p>門票: @item.ExhibitionPrice</p>
+                                <p>門票(新台幣/元): @item.ExhibitionPrice.ToString("#0")</p>
                                 <div class="intro">
                                     @item.ExHibitionIntro
                                 </div>
                                 <p>主辦單位: @item.MasterUnit</p>
-                                <p class="card-text"><small class="text-muted">更新日期:@item.EditModifyDate</small></p>
+                                <p class="card-text"><small class="text-muted">更新日期:@item.EditModifyDate.ToString("yyyy/MM/dd")</small></p>
                             </div>
                         </div>
                         <div class="modal-footer">
@@ -165,12 +190,8 @@
                 </div>
             </div>
         </div>
+        overdueIndex++;
 
-       
-
-
-
-        
     }
 
 </div>
