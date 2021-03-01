@@ -158,6 +158,10 @@ function Calendar() {
                     continue;
                 }
                 let td = document.createElement('td');
+                //已被預訂
+                if (PickDateRange.indexOf(currentDate.yyyymmdd()) > -1) {
+                    td.className = 'booked';
+                }
                 if (currentDate <= new Date()) {
                     // 不可預約 
                     td.className = 'no-appointment';
@@ -165,10 +169,8 @@ function Calendar() {
                 td.innerHTML = currentDate.getDate();
                 tr.appendChild(td);
 
-                //for (let i = 0; i <= GetPickDateRange.length; i++) {
-                //    if ()
-                //}
-
+                
+                
                 //選取租借時間
                 $(td).data('data', new Date(currentDate.getTime()));
                 $(td).click(function () {

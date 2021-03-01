@@ -56,6 +56,7 @@ p {
     margin: auto;
     box-sizing: border-box;
     width:20rem;
+    max-height:30rem;
     position:relative;
 }
 .card:hover .text{
@@ -85,9 +86,6 @@ p {
     text-align: center;
 }
 
-.card-body {
-    max-height: 380px;
-}
 
 .card-text {
     overflow: hidden;

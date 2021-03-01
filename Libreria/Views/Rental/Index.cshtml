@@ -17,7 +17,7 @@
 
     <script type="text/javascript">
 
-        let GetPickDateRange = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(ViewBag.RentalDate));
+        let PickDateRange = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(ViewBag.PickDateRange));
     </script>
 
     <script src="~/Asset/Js/Rental/Rental_index.js"></script>
@@ -179,7 +179,10 @@
                             </tbody>
                         </table>
                     </div>
-                    <span>已預定</span>
+                    <div class="space__orderedTitle">
+                        <span>選取預定日期</span>
+                        <span>已被預定</span>
+                    </div>
                     <div class="space__check-out--btn btn-narrow-only">
                         <button data-toggle="modal" data-target="#exampleModal2">確定</button>
                     </div>
@@ -196,7 +199,7 @@
                                     <div class="modal-body">
                                         <div class="space__check-out--money modelItem-group">
                                             <p>每天</p>
-                                            <p>$2500</p>
+                                            <p>$1500</p>
                                         </div>
 
 
@@ -274,7 +277,7 @@
             <div class="space__check-out">
                 <div class="space__check-out--money modelItem-group">
                     <p>每天</p>
-                    <p>$2500</p>
+                    <p>$1500</p>
                 </div>
                 <div class="space__check-out--data modelItem-group">
                     <h5>租借日期</h5>
