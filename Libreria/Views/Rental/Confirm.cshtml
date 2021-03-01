@@ -14,11 +14,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/d22f4b5afc.js" crossorigin="anonymous"></script>
     <link href="~/Asset/Css/Rental/Rental_Confirm.css" rel="stylesheet" />
-    <style>
+    @*<style>
         span.error {
             color: red;
         }
-    </style>
+    </style>*@
 }
 
 
@@ -56,18 +56,18 @@
                         <div class="col-md-6 mb-3">
                             @Html.LabelFor(model => model.ExCustomerName, "聯絡人姓名")
                             @Html.EditorFor(model => model.ExCustomerName, new { htmlAttributes = new { @class = "form-control", @id = "ExCustomerName" } })
-                            @Html.ValidationMessageFor(model => model.ExCustomerName, "", new { @class = "text-danger" })
+                            @Html.ValidationMessageFor(model => model.ExCustomerName, "", new { @class = "text-danger"  })
                         </div>
                         <div class="col-md-6 mb-3">
                             @Html.LabelFor(model => model.ExCustomerPhone, "連絡電話")
-                            @Html.EditorFor(model => model.ExCustomerPhone, new { htmlAttributes = new { @class = "form-control", @id = "phoneNumber" } })
-                            @Html.ValidationMessageFor(model => model.ExCustomerPhone, "", new { @class = "text-danger" })
+                            @Html.EditorFor(model => model.ExCustomerPhone, new { htmlAttributes = new { @class = "form-control is-invalid", @id = "phoneNumber" } })
+                            @Html.ValidationMessageFor(model => model.ExCustomerPhone, "", new { @class = "text-danger invalid-feedback" })
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="col-md-12 mb-3">
                             @Html.LabelFor(model => model.ExCustomerEmail, "電子郵件")
-                            @Html.EditorFor(model => model.ExCustomerEmail, new { htmlAttributes = new { @class = "form-control", @id = "email" } })
+                            @Html.EditorFor(model => model.ExCustomerEmail, new { htmlAttributes = new { @class = "form-control is-invalid", @id = "email" } })
                             @Html.ValidationMessageFor(model => model.ExCustomerEmail, "", new { @class = "text-danger" })
                         </div>
                         <div class="col-md-12 mb-3">
