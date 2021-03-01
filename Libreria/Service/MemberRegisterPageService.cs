@@ -28,6 +28,8 @@ namespace Libreria.Service
                     memberName = HttpUtility.HtmlEncode(model.memberName),
                     MobileNumber = HttpUtility.HtmlEncode(model.MobileNumber),
                     HomeNumber = HttpUtility.HtmlEncode(model.HomeNumber),
+                    //City = HttpUtility.HtmlEncode(model.City),
+                    //Region = HttpUtility.HtmlEncode(model.Region),
                     Address = HttpUtility.HtmlEncode(model.Address),
                     Email = HttpUtility.HtmlEncode(model.Email),
                     memberUserName = HttpUtility.HtmlEncode(model.memberUserName),

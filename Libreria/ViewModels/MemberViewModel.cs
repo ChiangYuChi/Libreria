@@ -34,11 +34,15 @@ namespace Libreria.ViewModels
 
         public string HomeNumber { get; set; }
 
+        [Required]
+        [StringLength(5)]
         /// <summary>
         /// 市
         /// </summary>
         public string City { get; set; }
 
+        [Required]
+        [StringLength(5)]
         /// <summary>
         /// 區
         /// </summary>
