@@ -42,10 +42,32 @@ namespace Libreria.Service
                              CreateTime = p.CreateTime,
                              Introduction = p.Introduction,
                              MainUrl = v.ImgUrl
-
                          }).ToList();
 
-            return result;
+            var MemberId = Convert.ToInt32(System.Web.HttpContext.Current.Session["MemberID"]);
+
+            if (MemberId == 0)
+            {
+                result.ForEach(x => x.isFav = false);
+                return result;
+            }
+            else
+            {
+                var fav = _DbRepository.GetAll<Favorite>().Where(x => x.memberId == MemberId).ToList();
+                foreach (var item in result)
+                {
+                    if (fav.Any(x => x.ProductId == item.Id))
+                    {
+                        item.isFav = true;
+                    }
+                    else
+                    {
+                        item.isFav = false;
+                    }
+                }
+
+                return result;
+            }
         }
 
         public ProductViewModel GetById(int id)
@@ -109,9 +131,30 @@ namespace Libreria.Service
                               Introduction = p.Introduction,
                               MainUrl = v.ImgUrl,
                               CategoryName = c.Name
-
                           }).ToList();
-            
+
+            var MemberId = Convert.ToInt32(System.Web.HttpContext.Current.Session["MemberID"]);
+
+            if (MemberId == 0)
+            {
+                result.ForEach(x => x.isFav = false);
+            }
+            else
+            {
+                var fav = _DbRepository.GetAll<Favorite>().Where(x => x.memberId == MemberId).ToList();
+                foreach (var item in result)
+                {
+                    if (fav.Any(x => x.ProductId == item.Id))
+                    {
+                        item.isFav = true;
+                    }
+                    else
+                    {
+                        item.isFav = false;
+                    }
+                }
+            }
+
             return result;
         }
 

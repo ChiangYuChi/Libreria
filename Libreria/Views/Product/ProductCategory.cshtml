@@ -64,8 +64,8 @@
                                             @item.Author
                                         </div>
                                         <button class="cbp-vm-icon cbp-vm-add" onclick="AddCart(@item.Id)">加入購物車</button>
-                                        <a class="wish-list " onclick="AddFavorite(@item.Id)"><i class="far fa-heart"></i></a>
-                                        @*@{if (item.isFav == true)
+                                        <a class="wish-list " onclick="AddFavorite(@item.Id)">
+                                        @{if (item.isFav == true)
                                             { 
                                                 <i class="fas fa-heart"></i>
                                             }
@@ -73,7 +73,7 @@
                                             {
                                                 <i class="far fa-heart"></i>
                                             }
-                                        }</a>*@
+                                        }</a>
                                     </li>
 
                                     }
