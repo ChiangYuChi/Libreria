@@ -50,6 +50,9 @@
     <Reference Include="BouncyCastle.Crypto, Version=1.8.5.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
       <HintPath>..\packages\BouncyCastle.1.8.5\lib\BouncyCastle.Crypto.dll</HintPath>
     </Reference>
+    <Reference Include="ECPay.Payment.Integration">
+      <HintPath>..\..\..\..\..\Downloads\ECPayAIO_Net-master\ECPay.Payment.Integration.dll</HintPath>
+    </Reference>
     <Reference Include="Google.Protobuf, Version=3.11.4.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
       <HintPath>..\packages\Google.Protobuf.3.11.4\lib\net45\Google.Protobuf.dll</HintPath>
     </Reference>
@@ -253,6 +256,10 @@
     <Compile Include="Migrations\202102260827243_addIsFav.Designer.cs">
       <DependentUpon>202102260827243_addIsFav.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202103011436399_addCityAndRegineInMemberList.cs" />
+    <Compile Include="Migrations\202103011436399_addCityAndRegineInMemberList.Designer.cs">
+      <DependentUpon>202103011436399_addCityAndRegineInMemberList.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\EntityModel\AspNetRole.cs" />
@@ -310,6 +317,7 @@
     <Content Include="Asset\Css\MemberCenter\Favorate.css" />
     <Content Include="Asset\Css\Layout\Sidebar.css" />
     <Content Include="Asset\Css\MemberCenter\Favorite.css" />
+    <Content Include="Asset\Css\MemberCenter\MemberBenefits.css" />
     <Content Include="Asset\Css\PartialView\category-sidenav.css" />
     <Content Include="Asset\Css\Home-Index\Home.css" />
     <Content Include="Asset\Css\Home-Index\slick-theme.min.css" />
@@ -902,9 +910,9 @@
     <Content Include="Asset\Image\AboutUs\quote-icon.png" />
     <Content Include="Asset\Image\smlogo_v2.png" />
     <Content Include="Asset\Js\Home-Index\slick.min.js" />
-    <Content Include="Asset\Css\ContactService\ContactService.css" />
+    <Content Include="Asset\Css\MemberCenter\MemberContact.css" />
     <Content Include="Asset\Css\Member\Member.css" />
-    <Content Include="Asset\Js\ContactService\ContactService.js" />
+    <Content Include="Asset\Js\MemberCenter\MemberContact.js" />
     <Content Include="Asset\Js\MemberCenter\Favorite.js" />
     <Content Include="Asset\Js\MemberCenter\member-MyOrder.js" />
     <Content Include="Asset\Js\MemberCenter\subscribe.js" />
@@ -1149,7 +1157,6 @@
     <Content Include="Views\Rental\Index.cshtml" />
     <Content Include="Views\MemberCenter\Favorite.cshtml" />
     <Content Include="Views\Product\ProductLayoutPartial.cshtml" />
-    <Content Include="Views\Product\Test.cshtml" />
     <Content Include="Views\MemberCenter\MemberRegisterPage.cshtml" />
     <Content Include="Views\Product\PromoteByPublishDatePartial.cshtml" />
     <Content Include="Views\Product\PromoteByTotalSalesPartial.cshtml" />
@@ -1163,6 +1170,8 @@
     <Content Include="Views\MemberLogin\LoginPartial.cshtml" />
     <Content Include="Views\Rental\Confirm.cshtml" />
     <Content Include="Views\MemberLogin\LoginPartialHambuger.cshtml" />
+    <Content Include="Views\Product\Test.cshtml" />
+    <Content Include="Views\MemberCenter\MemberBenefits.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Code\" />
@@ -1191,6 +1200,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202102260827243_addIsFav.resx">
       <DependentUpon>202102260827243_addIsFav.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103011436399_addCityAndRegineInMemberList.resx">
+      <DependentUpon>202103011436399_addCityAndRegineInMemberList.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

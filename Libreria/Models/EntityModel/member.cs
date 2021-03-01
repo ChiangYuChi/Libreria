@@ -30,6 +30,9 @@ namespace Libreria.Models.EntityModel
         [StringLength(50)]
         public string HomeNumber { get; set; }
 
+        public string City { get; set; }
+
+        public string Region { get; set; }
         [Required]
         [StringLength(100)]
         public string Address { get; set; }
