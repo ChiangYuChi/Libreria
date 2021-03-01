@@ -116,54 +116,54 @@
             </ul>
         </nav>
     </nav>
-    
-    <div class="container-fluid body-content col-11 pt-5" >
-        
-        
-        
-        <div class="row" >
-            
-            <div id="productPage" class="col-lg-2" >
-                
-                    <div class="column-padding__class w-100">
-                        <div class="class__title">
-                            <div id="class" class="class-btn button-group">
-                                <h2>書籍分類</h2>
-                                <i class="fas fa-angle-down"></i>
-                            </div>
-                        </div>
-                        <div class="class__list class-btn item-group ">
-                           
-                           @Html.Action("CategoryPartial", "Category")
-                             
 
-                            
-                        </div>
-                    </div>
-                    <div class="column-padding__class--xl " >
-                        <div class="class__title--xl class-btn button-group">
+    <div class="container-fluid body-content col-11 pt-5">
+
+
+
+        <div class="row">
+
+            <div id="productPage" class="col-lg-2">
+
+                <div class="column-padding__class w-100">
+                    <div class="class__title">
+                        <div id="class" class="class-btn button-group">
                             <h2>書籍分類</h2>
-                        </div>
-                        <div class="class__list--xl class-btn item-group ">
-                            
-                                <a href="#">@Html.Action("CategoryPartial", "Category")</a>
-
-                            
+                            <i class="fas fa-angle-down"></i>
                         </div>
                     </div>
-                
-                
+                    <div class="class__list class-btn item-group ">
+
+                        @Html.Action("CategoryPartial", "Category")
+
+
+
+                    </div>
+                </div>
+                <div class="column-padding__class--xl ">
+                    <div class="class__title--xl class-btn button-group">
+                        <h2>書籍分類</h2>
+                    </div>
+                    <div class="class__list--xl class-btn item-group ">
+
+                        <a href="#">@Html.Action("CategoryPartial", "Category")</a>
+
+
+                    </div>
+                </div>
+
+
             </div>
             <div class="col-lg-10">
                 @RenderBody()
             </div>
-          
+
         </div>
 
 
 
 
-        
+
 
 
     </div>
@@ -221,6 +221,38 @@
         }
         mediaQueryList.addListener(screenTest);
 
+
+
+        function AddCart(id) {
+            let productId = id;
+
+
+            $.ajax({
+                type: "POST",
+                url: "/Order/AddToCart",
+                data: { Id: productId },
+                dataType: "text",
+                success: function (response) {
+                    alert(response);
+                    $("#MyCart").text("購物車(" + response + ")");
+                }
+            });
+        }
+
+
+        function AddFavorite(id) {
+            let favId = id
+
+            $.ajax({
+                type: "POST",
+                url: "/MemberCenter/AddToFavorite",
+                data: { Id: favId },
+                dataType: "text",
+                success: function (response) {
+                    alert("成功");
+                }
+            });
+        }
     </script>
 
 
@@ -230,6 +262,14 @@
     @RenderSection("scripts", required: false)
     @RenderSection("endCss", required: false)
     @RenderSection("endJs", required: false)
-    @section endJs{<script src="~/Asset/Js/Product/sidenav-toggle.js"></script>}
+    @section endJs{
+        <script src="~/Asset/Js/Product/sidenav-toggle.js"></script>
+
+
+
+
+
+
+    }
 </body>
 </html>
