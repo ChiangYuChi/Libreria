@@ -73,6 +73,8 @@ p {
     color: #7E7672;
 }
 
+
+
 .tags {
     text-align: center;
     font-weight: bold;
@@ -84,12 +86,17 @@ p {
         padding: 0;
     }
 
+    .tags input[type="radio"] {
+        display: none;
+    }
+
 .tag {
     height: 40px;
     box-sizing: border-box;
     border-bottom: 1px solid #d8d8d8;
     color: #cccccc;
     cursor: pointer;
+    width: 100%;
 }
 
     .tag:hover {
@@ -97,6 +104,22 @@ p {
         border-bottom: 6px solid #e4e0d2;
         transition: 0.5s;
     }
+
+.tags input[type="radio"]:checked + label {
+    color: #212529;
+    border-bottom: 6px solid #e4e0d2;
+    transition: 0.5s;
+}
+
+.contact-block {
+    display: block;
+}
+
+.commonProblem-block {
+    display: none;
+}
+
+
 
 .contact-block div {
     margin: 10px 0px;
@@ -218,4 +241,26 @@ p {
     .desktop-fix-br {
         display: none;
     }
+}
+
+
+
+.ProblemInquery {
+    color: #717071;
+    margin-bottom: 40px;
+}
+
+.ProblemInquery select {
+    margin-right: 20px;
+}
+
+.Answer-block details {
+    margin-bottom: 20px;
+    background-color: #F9F9F9;
+    min-height: 62px;
+    padding: 20px;
+}
+
+.Answer-block summary {
+    margin-bottom: 20px;
 }

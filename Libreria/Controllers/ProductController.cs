@@ -1,4 +1,5 @@
 ﻿using Libreria.Filters;
+using Libreria.Models.EntityModel;
 using Libreria.Service;
 using Libreria.ViewModels;
 using System;
@@ -12,6 +13,7 @@ namespace Libreria.Controllers
     public class ProductController : Controller
     {
         private readonly ProductService _productService;
+        private readonly FavoriteService _favoriteService;
         private readonly ShoppingService _shoppingService;
 
 
@@ -20,6 +22,7 @@ namespace Libreria.Controllers
         {
             _productService = new ProductService();
             _shoppingService = new ShoppingService();
+            _favoriteService = new FavoriteService();
         }
 
        
@@ -29,6 +32,7 @@ namespace Libreria.Controllers
         {
             return View();   
         }
+
 
 
         public ActionResult ProductCategory(int? CategoryId, int? Order)
@@ -94,6 +98,9 @@ namespace Libreria.Controllers
             var product = _productService.PromoteMajor();
             return PartialView(product);
         }
-       
+        public ActionResult Test()
+        {
+            return View();
+        }
     }
 }

@@ -70,7 +70,7 @@
 
                     @foreach (var item in Model)
                     {
-                        <div class="col-12 col-lg-6 px-2 px-lg-3 d-flex">
+                        <div class="col-12 col-lg-6 px-2 px-lg-3 d-flex mb-3">
                             <div class="info-image">
                                 <a href="@Url.Action("ProductDetail", "Product", new { id = item.ProductId })">
                                     <img src="@item.PicUrl">
@@ -139,117 +139,117 @@
         </div>
 
         @*<div class="promotions outerborder mt-4">
-            <div class="promotions_banner chinese px-0 mx-0 head-block row">
-                <h3 class="promotions_banner_title m-0 col-12 col-lg-9 left">優惠活動</h3>
-                <h3 class="promotions_banner_discount right m-0 d-none d-lg-flex col-lg-3">折扣</h3>
-            </div>
-
-            <div class="promotions_information bg-white py-3">
-                <div class="promotions-info-row row mb-3">
-                    <div class="discount-row col-12 col-lg-10 d-flex mb-3 chinese">
-                        <div class="discount-condition mr-2 px-3 py-1">
-                            <span class="discount-condition-label">已符合</span>
-                        </div>
-                        <div class="discount-wording justify-content-lg-between">
-                            <div class="discount-name">
-                                <span>【2021線上國際書展】圖書滿$888折$100</span>
-                            </div>
-                            <div class="discount-price d-none d-lg-block">
-                                <span>-$100</span>
-                            </div>
-                        </div>
-                    </div>
+                <div class="promotions_banner chinese px-0 mx-0 head-block row">
+                    <h3 class="promotions_banner_title m-0 col-12 col-lg-9 left">優惠活動</h3>
+                    <h3 class="promotions_banner_discount right m-0 d-none d-lg-flex col-lg-3">折扣</h3>
                 </div>
-                <div class="row">
-                    <div class="col-12 col-sm-7 pr-0">
-                        <span class="promotions-description chinese">※ 商品若符合多個滿額滿件折扣活動，系統將自動選取「已符合」且「最優惠」的折扣，作為購物車優惠活動計算</span>
-                    </div>
-                    <div class="col-8 col-sm-2 d-flex justify-content-end justify-content-lg-center">
-                        <span class="chinese">優惠活動</span>
-                    </div>
-                    <div class="col-4 col-sm-3 number-color">
-                        <span class="promotions-subtotal-sign">-</span>
-                        <span class="promotions-subtotal english">$100</span>
-                    </div>
-                </div>
-            </div>
-            <div class="promotions-divider col-12 pt-4"></div>
-        </div>
 
-        <div class="coupons outerborder mt-4">
-            <div class="coupons_banner chinese px-0 mx-0 head-block col-12">
-                <h3 class="coupons_banner_title m-0">優惠券</h3>
-            </div>
-
-            <div class="coupons_information bg-white py-3 px-4">
-                <div>
-                    <div class="row mb-3">
-                        <div class="col-12 pr-0 pr-md-3 chinese">
-                            <span>您有</span>
-                            <span class="coupons-length english number-color">1</span>
-                            <span>張優惠券符合本次訂單可使用條件：</span>
-                            <span class="coupons-rule">(若有尚未領取的序號及通關密語優惠券，請先在「 會員中心>優惠券」領取)</span>
+                <div class="promotions_information bg-white py-3">
+                    <div class="promotions-info-row row mb-3">
+                        <div class="discount-row col-12 col-lg-10 d-flex mb-3 chinese">
+                            <div class="discount-condition mr-2 px-3 py-1">
+                                <span class="discount-condition-label">已符合</span>
+                            </div>
+                            <div class="discount-wording justify-content-lg-between">
+                                <div class="discount-name">
+                                    <span>【2021線上國際書展】圖書滿$888折$100</span>
+                                </div>
+                                <div class="discount-price d-none d-lg-block">
+                                    <span>-$100</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-12 px-2 pr-md-3 d-flex justify-content-bewteen">
-                            <div class="coupons-ticket d-lg-flex">
-                                <div class="coupons-ticket-image">
-                                    <div class="mr-2">
-                                        <span class="icon-circle"></span>
-                                    </div>
-                                    <div>
-                                        <div class="coupons-title chinese">
-                                            <span class="d-block">新會員網路入會禮_202101</span>
-                                            <span class="d-block">單筆滿$500即可抵用</span>
+                        <div class="col-12 col-sm-7 pr-0">
+                            <span class="promotions-description chinese">※ 商品若符合多個滿額滿件折扣活動，系統將自動選取「已符合」且「最優惠」的折扣，作為購物車優惠活動計算</span>
+                        </div>
+                        <div class="col-8 col-sm-2 d-flex justify-content-end justify-content-lg-center">
+                            <span class="chinese">優惠活動</span>
+                        </div>
+                        <div class="col-4 col-sm-3 number-color">
+                            <span class="promotions-subtotal-sign">-</span>
+                            <span class="promotions-subtotal english">$100</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="promotions-divider col-12 pt-4"></div>
+            </div>
+
+            <div class="coupons outerborder mt-4">
+                <div class="coupons_banner chinese px-0 mx-0 head-block col-12">
+                    <h3 class="coupons_banner_title m-0">優惠券</h3>
+                </div>
+
+                <div class="coupons_information bg-white py-3 px-4">
+                    <div>
+                        <div class="row mb-3">
+                            <div class="col-12 pr-0 pr-md-3 chinese">
+                                <span>您有</span>
+                                <span class="coupons-length english number-color">1</span>
+                                <span>張優惠券符合本次訂單可使用條件：</span>
+                                <span class="coupons-rule">(若有尚未領取的序號及通關密語優惠券，請先在「 會員中心>優惠券」領取)</span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 px-2 pr-md-3 d-flex justify-content-bewteen">
+                                <div class="coupons-ticket d-lg-flex">
+                                    <div class="coupons-ticket-image">
+                                        <div class="mr-2">
+                                            <span class="icon-circle"></span>
                                         </div>
-                                        <div class="coupons-discount number-color">
-                                            <span>現折</span>
-                                            <span class="coupons-discount-amount mx-1 english">50</span>
-                                            <span>元</span>
-                                        </div>
-                                        <div class="coupons-date">
-                                            <span>使用期限 2021/1/1-2021/2/28</span>
+                                        <div>
+                                            <div class="coupons-title chinese">
+                                                <span class="d-block">新會員網路入會禮_202101</span>
+                                                <span class="d-block">單筆滿$500即可抵用</span>
+                                            </div>
+                                            <div class="coupons-discount number-color">
+                                                <span>現折</span>
+                                                <span class="coupons-discount-amount mx-1 english">50</span>
+                                                <span>元</span>
+                                            </div>
+                                            <div class="coupons-date">
+                                                <span>使用期限 2021/1/1-2021/2/28</span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="coupons-more-button p-3 d-none d-md-block">
-                                <div class="text-center">
-                                    <div>展開全部</div>
-                                    <div>優惠券</div>
-                                    <div class="pt-0 m-0 h1">+</div>
+                                <div class="coupons-more-button p-3 d-none d-md-block">
+                                    <div class="text-center">
+                                        <div>展開全部</div>
+                                        <div>優惠券</div>
+                                        <div class="pt-0 m-0 h1">+</div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="coupons_subtotal-row bg-white py-3 px-4">
-                <div class="row d-flex align-items-center flex-row-reverse">
-                    <div class="col-4 col-sm-3">
-                        <span class="coupons-subtotal-sign number-color">-</span>
-                        <span class="coupons-subtotal number-color english">$0</span>
-                    </div>
-                    <div class="col-8 col-sm-2 d-flex justify-content-end justify-content-lg-center">
-                        <span>優惠券</span>
+                <div class="coupons_subtotal-row bg-white py-3 px-4">
+                    <div class="row d-flex align-items-center flex-row-reverse">
+                        <div class="col-4 col-sm-3">
+                            <span class="coupons-subtotal-sign number-color">-</span>
+                            <span class="coupons-subtotal number-color english">$0</span>
+                        </div>
+                        <div class="col-8 col-sm-2 d-flex justify-content-end justify-content-lg-center">
+                            <span>優惠券</span>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>*@
+            </div>*@
 
         <div class="amount-summary bg-white mt-4 py-2">
             <div class="amount-equation px-0 m-0 chinese">
-                <p class="m-0 py-2">
-                    商品總計
-                    <span class="english number-color font-weight-bold"> $@totalprice </span>
-                    <span class="english number-color font-weight-bold">- </span>
-                    優惠活動
-                    <span class="english number-color font-weight-bold"> $0 </span>
-                    <span class="english number-color font-weight-bold">- </span>
-                    優惠券
-                    <span class="english number-color font-weight-bold"> $0</span>
-                </p>
+                @*<p class="m-0 py-2">
+                        商品總計
+                        <span class="english number-color font-weight-bold"> $@totalprice </span>
+                        <span class="english number-color font-weight-bold">- </span>
+                        優惠活動
+                        <span class="english number-color font-weight-bold"> $0 </span>
+                        <span class="english number-color font-weight-bold">- </span>
+                        優惠券
+                        <span class="english number-color font-weight-bold"> $0</span>
+                    </p>*@
             </div>
 
             <div class="amount-total d-flex chinese">
@@ -260,7 +260,7 @@
                     </p>
                 </div>
                 <div class="amount-total_button p-0">
-                    <button><a href="/Order/OrderDetail">結帳</a></button>
+                    <button onclick="Redirect()">結帳</button>
                 </div>
             </div>
         </div>
@@ -312,9 +312,24 @@
             });
         }
 
+        function Redirect() {
+            $.ajax({
+                type: "Post",
+                url: "/Order/Redirect",
+                success: function (result) {
+                    if (result == 1) {
+                        window.location.href = "@Url.Action("OrderDetail", "Order")";
+                    }
+                    else {
+                        window.location.href = "@Url.Action("Index", "MemberLogin")";
+                    }
+                }
+            });
+        }
+
 
     </script>
-    
+
 }
 
 

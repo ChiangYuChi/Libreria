@@ -147,8 +147,7 @@ namespace Libreria.Controllers
         [HttpPost]
         public string AddToFavorite(ProductViewModel ProductVM)
         {
-            
-            
+
             var result = _favoriteService.CreateToFavorite(ProductVM);
             
 
@@ -179,6 +178,13 @@ namespace Libreria.Controllers
 
 
         public ActionResult ContactUs()
+        {
+            return View();
+        }
+
+
+
+        public ActionResult MemberBenefits()
         {
             return View();
         }
