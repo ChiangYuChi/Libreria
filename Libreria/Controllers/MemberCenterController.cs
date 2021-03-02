@@ -31,6 +31,11 @@ namespace Libreria.Controllers
 
         public ActionResult MemberLogin()
         {
+            int UserMemberId = Convert.ToInt32(System.Web.HttpContext.Current.Session["MemberID"]);
+
+            List<OrderViewModel> OrderVMList = _orderService.GetBymemberId(UserMemberId);
+            ViewBag.OrderVMList = OrderVMList;
+
             return View();
         }
 
