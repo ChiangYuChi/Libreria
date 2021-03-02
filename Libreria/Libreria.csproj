@@ -1180,6 +1180,7 @@
   <ItemGroup>
     <Folder Include="App_Code\" />
     <Folder Include="App_Data\" />
+    <Folder Include="Asset\Json\" />
     <Folder Include="Asset\Js\common\" />
     <Folder Include="Asset\Js\Index\" />
     <Folder Include="Data\" />
