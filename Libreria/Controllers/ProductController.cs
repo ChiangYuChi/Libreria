@@ -34,12 +34,18 @@ namespace Libreria.Controllers
 
         public ActionResult ProductCategory(int? CategoryId, int? Order)
         {
-            List<ProductViewModel> result;
+          
 
+            List<ProductViewModel> result;
+         
             if (CategoryId != null)
             {
                 result = _productService.GetByCategory(Convert.ToInt32(CategoryId));
+                
                 ViewBag.CategoryId = CategoryId;
+
+                
+
             }
             else
             {

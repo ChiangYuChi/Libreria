@@ -493,7 +493,9 @@ namespace Libreria.Service
             {
                 using (AllInOne oPayment = new AllInOne())
                 {
-                     var orderDetail = orderVM.OrderDetailList.FirstOrDefault();
+                     var orderDetail = orderVM.OrderDetailList;
+                    var orderTotal = orderVM.OrderPrice;
+                    
                     /* 服務參數 */
                     oPayment.ServiceMethod = HttpMethod.HttpPOST;//介接服務時，呼叫 API 的方法
                     oPayment.ServiceURL = "https://payment-stage.ecpay.com.tw/Cashier/AioCheckOut/V5";//要呼叫介接服務的網址
@@ -504,11 +506,11 @@ namespace Libreria.Service
                     /* 基本參數 */
                     oPayment.Send.ReturnURL = "http://example.com";//付款完成通知回傳的網址
                     oPayment.Send.ClientBackURL = "http://www.ecpay.com.tw/";//瀏覽器端返回的廠商網址
-                    oPayment.Send.OrderResultURL = "";//瀏覽器端回傳付款結果網址
+                    oPayment.Send.OrderResultURL = "http://30430246162e.ngrok.io";//瀏覽器端回傳付款結果網址
                     oPayment.Send.MerchantTradeNo = "n"+"ECPay" + new Random().Next(0, 99999).ToString();//廠商的交易編號
                     oPayment.Send.MerchantTradeDate = DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss");//廠商的交易時間
                     /*oPayment.Send.TotalAmount = Decimal.Parse($"{ orderVM.OrderPrice}") */ ;//交易總金額
-                    oPayment.Send.TotalAmount = Decimal.Parse($"{String.Format("{0:N0}", orderDetail.UnitPrice)}".ToString());
+                    oPayment.Send.TotalAmount = Decimal.Parse($"{String.Format("{0:N0}",orderTotal )}".ToString());
                    
                     oPayment.Send.TradeDesc = "交易描述";//交易描述
                     oPayment.Send.ChoosePayment = PaymentMethod.ALL;//使用的付款方式
@@ -535,16 +537,21 @@ namespace Libreria.Service
                     //    URL = "http://google.com",//商品的說明網址
 
                     //});
-                   
-                    oPayment.Send.Items.Add(new Item()
-                    {
-                        Name = orderDetail.ProductName,//商品名稱
-                        Price = Decimal.Parse($"{orderDetail.UnitPrice}".ToString()),//商品單價
-                        Currency = "新台幣",//幣別單位
-                        Quantity = Int32.Parse("1"),//購買數量
-                        URL = "http://google.com",//商品的說明網址
 
-                    });
+                    foreach(var item in orderDetail)
+                    {
+                        oPayment.Send.Items.Add(new Item()
+                        {
+                            Name = item.ProductName,//商品名稱
+                            Price = Decimal.Parse($"{item.UnitPrice}".ToString()),//商品單價
+                            Currency = "新台幣",//幣別單位
+                            Quantity = Int32.Parse("1"),//購買數量
+                            URL = "http://google.com",//商品的說明網址
+
+                        });
+                    }
+
+                    
 
                     //訂單的商品資料
 

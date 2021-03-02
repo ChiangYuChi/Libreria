@@ -198,7 +198,7 @@
         transition: background 0.2s;
         text-decoration: none;
         position: absolute;
-        bottom: 10px;
+        bottom: 20px;
         border: none;
     }
 
@@ -270,12 +270,16 @@
         padding-top: 23px;
     }
 
-    .render-section .cbp-vm-view-grid .cbp-vm-details {
-        max-width: 300px;
-        min-height: 70px;
-        margin: 0 auto;
-        color: #b0b0b0;
-    }
+.render-section .cbp-vm-view-grid .cbp-vm-details {
+    max-width: 300px;
+    min-height: 70px;
+    margin: 0 auto;
+    color: #b0b0b0;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 100%;
+}
 
     .render-section .cbp-vm-view-grid .cbp-vm-price {
         margin: 10px 0;
@@ -295,7 +299,7 @@
         padding: 20px 0;
         white-space: nowrap;
         border-bottom: 1px solid #e3e3e3;
-        height: 200px;
+        height: 220px;
     }
 
     .render-section .cbp-vm-view-list .cbp-vm-image,

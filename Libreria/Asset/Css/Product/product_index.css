@@ -2,6 +2,9 @@
     padding: 20px 0;
 }*/
 
+a{
+   text-decoration:none;
+}
 
 .product-index {
     padding-top: 35px;
@@ -77,6 +80,11 @@
     display: flex;
     justify-content: flex-start;
     font-size: 16px;
+}
+
+.promotion-discount .title a {
+   text-decoration:none!important;
+   color: #5b6252;
 }
 
 .promotion-discount p {
@@ -309,6 +317,11 @@
     bottom:0;
     right:0;
     
+}
+
+.main .major a {
+    text-decoration: none !important;
+    color: #5b6252;
 }
 
 .main .major .title {
