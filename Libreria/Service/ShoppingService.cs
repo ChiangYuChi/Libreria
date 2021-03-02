@@ -207,11 +207,7 @@ namespace Libreria.Service
                         .Where(x => x.ProductId == productId && x.memberId == MemberId)
                         .FirstOrDefault();
 
-                    if (entity.Count - 1 == 0)
-                    {
-                        _DbRepository.Delete<ShoppingCart>(entity);
-                    }
-                    else
+                    if (entity.Count - 1 != 0)
                     {
                         entity.Count -= 1;
                         _DbRepository.Update<ShoppingCart>(entity);
