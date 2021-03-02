@@ -26,9 +26,10 @@
                aria-controls="profile" aria-selected="false">密碼修改</a>
         </li>
     </ul>
+
     <div class="tab-content" id="myTabContent">
         <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-            <div class="form-group row mt-4">
+            <form class="form-group row mt-4" id="infoForm>
                 <div class="col-12">
                     <div class="form-group row">
                         <label class="form-subtitle col-3 col-xl-1 col-lg-2 text-right text-nowrap">姓名</label>
@@ -115,7 +116,7 @@
                         <label class="form-subtitle col-3 col-xl-1 col-lg-2 text-right text-nowrap">市內電話</label>
                         <div class="form-content col-xl-4 col-lg-5 col-9 ">
                             <div class="form-row">
-                                <input class="col-4" placeholder="市話區碼" type="tel"></input>
+                                <input class="col-4" placeholder="市話區碼" type="tel">
                                 <input class="col-5" placeholder="市話號碼" type="tel">
                                 <input class="col-3" placeholder="分機" type="tel">
                             </div>
@@ -152,33 +153,88 @@
                         </div>
                     </div>
                 </div>
+                
                 <div class="col-12">
-                    <div class="form-group row">
-                        <label class="form-subtitle col-3 col-xl-1 col-lg-2 text-right text-nowrap">聯絡地址</label>
+                    <div class="form-group row"><div class="recipient_profile_address">
+                    <p>聯絡地址</p>
+                    <div class="recipient_profile_select">
+                        <select name="AddressCitySelect" id="recipient_option recipient_option_counties Region" required>
+                            <option id="taiwanAddressNew" value="">請選擇</option>
+                            <option value="臺北市">臺北市</option> <!--1-->
+                            <option value="新北市">新北市</option> <!--2-->
+                            <option value="桃園市">桃園市</option> <!--3-->
+                            <option value="臺中市">臺中市</option> <!--4-->
+                            <option value="臺南市">臺南市</option> <!--5-->
+                            <option value="高雄市">高雄市</option> <!--6-->
+                            <option value="基隆市">基隆市</option> <!--7-->
+                            <option value="新竹市">新竹市</option> <!--8-->
+                            <option value="嘉義市">嘉義市</option> <!--9-->
+                            <option value="新竹縣">新竹縣</option> <!--10-->
+                            <option value="苗栗縣">苗栗縣</option> <!--11-->
+                            <option value="彰化縣">彰化縣</option> <!--12-->
+                            <option value="南投縣">南投縣</option> <!--13-->
+                            <option value="雲林縣">雲林縣</option> <!--14-->
+                            <option value="嘉義縣">嘉義縣</option> <!--15-->
+                            <option value="屏東縣">屏東縣</option> <!--16-->
+                            <option value="宜蘭縣">宜蘭縣</option> <!--17-->
+                            <option value="花蓮縣">花蓮縣</option> <!--18-->
+                            <option value="臺東縣">臺東縣</option> <!--19-->
+                            <option value="澎湖縣">澎湖縣</option> <!--20-->
+                            <option value="金門縣">金門縣</option> <!--21-->
+                            <option value="連江縣">連江縣</option> <!--22-->
+                        </select>
+                        <select name="AddressRegionSelect" id="recipient_option_district Town" required>
+                            <option value="">請選擇</option>
+                        </select>
                         <div class="form-content col-xl-4 col-lg-5 col-9">
-                            <p class="contact-address"></p>
+                            <input class="contact-address" type="text">
                         </div>
                     </div>
+                </div>
+                        
                     <div class="col-12 mt-2 d-flex justify-content-center" ">
                         <button type="button" class="cancel">取消</button>
                         <button type="submit" class="confirm" disabled="disable">確認</button>
                     </div>
                 </div>
             </div>
-        </div>
+        </form>
         <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-            <div class="row">
-                <div class="form-group form-input form-row">
-                    <div class="col-12 inputbox"><p>原登入密碼</p><input type="password"></div>
-                    <div class="col-12 inputbox"><p>設定新密碼</p><input type="password"></div>
-                    <div class="col-12 inputbox"><p>確認新密碼</p><input type="password"></div>
+            <from id="passwordFrom">
+                <div class="row">
+                    <div class="form-group form-input form-row">
+                        <div class="col-12 inputbox"><p>原登入密碼</p><input type="password"></div>
+                        <div class="col-12 inputbox"><p>設定新密碼</p><input type="password"></div>
+                        <div class="col-12 inputbox"><p>確認新密碼</p><input type="password"></div>
+
+                    </div>
 
                 </div>
-
-            </div>
+            </from>
+            
             <div class="col-12 mt-2 d-flex justify-content-center" ">
                 <button type="button" class="cancel">取消</button>
                 <button type="submit" class="confirm" disabled="disable">確認</button>
             </div>
         </div>
     </div>
+
+    @section endJs{
+        @*OrderDetail JS*@
+        <script src="~/Asset/Js/ShoppingCart/OrderDetail.js"></script>
+        <script src="~/Asset/Js/Order/OrderDetail.js" crossorigin="anonymous"></script>
+        <script>
+            //update data
+            @*$("form").submit(function (event) {
+                event.preventDefault();
+                var formData = new FormData($("infoForm").get(0));
+                $.ajax({
+                    url: '@Url.Action("ActionName", "ControllerName")',
+                    type: 'POST',
+                    data: formdata,
+                    processData: false,
+                    contentType: false,
+                    });
+            })*@
+        </script>
+    }

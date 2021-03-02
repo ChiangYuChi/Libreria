@@ -25,6 +25,7 @@ namespace Libreria.Controllers
             var result2 = _productService.GetByTotalSalesHome();
             var result3 = _productService.GetByPublishDateHome();
 
+            
             ViewBag.TotalSales = result2;
 
             ViewBag.GetByPublishDateHome = result3;

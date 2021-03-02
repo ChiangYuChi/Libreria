@@ -13,9 +13,16 @@ namespace Libreria
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
-                routeTemplate: "api/{controller}/{action}",
+                routeTemplate: "api/{controller}/{action}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+
+            config.Routes.MapHttpRoute(
+            name: "GetMemberByMemberName",
+            routeTemplate: "api/{controller}/name/{name}",
+            defaults: new { name = RouteParameter.Optional }
+            );
+
         }
     }
 }

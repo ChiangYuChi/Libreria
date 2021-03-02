@@ -11,6 +11,7 @@ using System.Web.Mvc;
 using System.Web.Services.Description;
 using System.Web.Mvc.Filters;
 using static Libreria.Filters.CustomAuthenticationFilter;
+using System.Threading.Tasks;
 
 namespace Libreria.Controllers
 {
@@ -118,14 +119,14 @@ namespace Libreria.Controllers
         [HttpGet]
         [CustomAllowAnonymous]
         public ActionResult MemberRegisterPage()
-        {
+        {            
             return View();
         }        
         [HttpPost]
         [CustomAllowAnonymous]
         public ActionResult MemberRegisterPage(MemberViewModel model)
         {
-            var result = _memberRegisterPageService.CreateMember(model, ModelState.IsValid);
+            var result =_memberRegisterPageService.CreateMember(model, ModelState.IsValid);
 
             if (result.IsSuccessful)
             {  
@@ -135,8 +136,20 @@ namespace Libreria.Controllers
             //還需登入失敗的頁面跳轉
             return View();
         }
+        /// <summary>
+        /// 帳號是否重複
+        /// </summary>
+        /// <returns></returns>
+        //public JsonResult CheckAllowMemberName(string memberName)
+        //{
+            
+        //    var search = _memberRegisterPageService.IsExistMember(memberName);
+        //    bool result = search.IsSuccessful;
+        //    return Json(!result, JsonRequestBehavior.AllowGet);                
+        //}
+       
 
-        //[Authorize]
+
         public ActionResult Favorite()
         {
 
@@ -188,6 +201,10 @@ namespace Libreria.Controllers
         {
             return View();
         }
+       
+        
+
+        
        
         
     }

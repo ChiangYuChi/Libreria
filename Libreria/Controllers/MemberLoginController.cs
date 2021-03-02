@@ -28,10 +28,9 @@ namespace Libreria.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-            //if (User.Identity.Name!=null)
+            //if (User.Identity.IsAuthenticated == true)
             //{
-            //    Response.Write("您現在是已登入狀態。");
-            //    return RedirectToAction("MemberLogin", "MemberCenter");
+            //    return Redirect("MemberLogin");
             //}
             //else
             //{
