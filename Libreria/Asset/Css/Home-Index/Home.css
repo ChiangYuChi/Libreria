@@ -42,6 +42,7 @@ body {
 .seller-item {
     margin: auto;
     overflow: visible;
+    margin-bottom:20px;
 }
 
 .seller-pic {
@@ -66,10 +67,10 @@ body {
     height: 270px;
     margin: auto;
     margin-top: 180px;
-    margin-left: 50px;
-
 }
-
+.seller-block a{
+    color:black;
+}
 .seller-text p {
     position: absolute;
     bottom: -10px;
@@ -77,14 +78,17 @@ body {
     font-size: 20px;
     overflow:hidden;
 }
-
-.seller-text p .sale {
-    font-size: 18px;
-    color: #f21;
-}
+    .seller-text p #text {
+        text-decoration: none;
+        color: black;
+    }
+    .seller-text p .sale {
+        font-size: 18px;
+        color: #f21;
+    }
 
 .seller-text p .unitprice {
-    font-size: 12px;
+    font-size: 14px;
 }
 
 .seller-title {
@@ -268,7 +272,9 @@ p {
     text-align: center;
     font-size: 22px;
 }
-
+.seller-block{
+    margin:auto;
+}
 .section2 {
     background-image: url(/picture/slow.gif);
     background-repeat: no-repeat;
