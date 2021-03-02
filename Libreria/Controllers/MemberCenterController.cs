@@ -162,6 +162,24 @@ namespace Libreria.Controllers
         }
 
         [HttpPost]
+        public string CartToFavorite(ShoppingCartViewModel shoppingCartVM)
+        {
+
+            var result = _favoriteService.DeleteCartToFavorite(shoppingCartVM);
+
+
+            if (result.IsSuccessful)
+            {
+                return "加入成功!";
+            }
+            else
+            {
+                return "加入失败";
+            }
+        }
+
+
+        [HttpPost]
         public void DeleteFavorite(FavoriteViewModel favoriteVM)
         {
             _favoriteService.DeleteFromFavorite(favoriteVM);
