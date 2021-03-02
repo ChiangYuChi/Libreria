@@ -1,6 +1,11 @@
 img {
     vertical-align: top;
 }
+
+.card img {
+    height: 10rem;
+    object-fit: contain;
+}
 .main-Exhibition-pic {
     max-width: 950px;
     position: relative;

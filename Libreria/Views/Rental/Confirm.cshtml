@@ -14,11 +14,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/d22f4b5afc.js" crossorigin="anonymous"></script>
     <link href="~/Asset/Css/Rental/Rental_Confirm.css" rel="stylesheet" />
-    @*<style>
-        span.error {
-            color: red;
-        }
-    </style>*@
+    <style>
+            span.error {
+                color: red;
+            }
+        </style>
 }
 
 
@@ -29,6 +29,8 @@
             integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
             crossorigin="anonymous"></script>
     @Scripts.Render("~/bundles/jqueryval")
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js" integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ==" crossorigin="anonymous"></script>
     <script src="~/Asset/Js/Rental/Renral_confirm.js"></script>
 }
 
@@ -56,18 +58,18 @@
                         <div class="col-md-6 mb-3">
                             @Html.LabelFor(model => model.ExCustomerName, "聯絡人姓名")
                             @Html.EditorFor(model => model.ExCustomerName, new { htmlAttributes = new { @class = "form-control", @id = "ExCustomerName" } })
-                            @Html.ValidationMessageFor(model => model.ExCustomerName, "", new { @class = "text-danger"  })
+                            @Html.ValidationMessageFor(model => model.ExCustomerName, "", new { @class = "text-danger" })
                         </div>
                         <div class="col-md-6 mb-3">
                             @Html.LabelFor(model => model.ExCustomerPhone, "連絡電話")
-                            @Html.EditorFor(model => model.ExCustomerPhone, new { htmlAttributes = new { @class = "form-control is-invalid", @id = "phoneNumber" } })
-                            @Html.ValidationMessageFor(model => model.ExCustomerPhone, "", new { @class = "text-danger invalid-feedback" })
+                            @Html.EditorFor(model => model.ExCustomerPhone, new { htmlAttributes = new { @class = "form-control", @id = "phoneNumber" } })
+                            @Html.ValidationMessageFor(model => model.ExCustomerPhone, "", new { @class = "text-danger" })
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="col-md-12 mb-3">
                             @Html.LabelFor(model => model.ExCustomerEmail, "電子郵件")
-                            @Html.EditorFor(model => model.ExCustomerEmail, new { htmlAttributes = new { @class = "form-control is-invalid", @id = "email" } })
+                            @Html.EditorFor(model => model.ExCustomerEmail, new { htmlAttributes = new { @class = "form-control", @id = "email" } })
                             @Html.ValidationMessageFor(model => model.ExCustomerEmail, "", new { @class = "text-danger" })
                         </div>
                         <div class="col-md-12 mb-3">
@@ -95,14 +97,14 @@
                         <div class="form-group">
                             <div class="form-check">
                                 <input type="checkbox" class="isChcek form-check-input" value="true" id="IsCheck" name="IsCheck">
-                                <label class="form-check-label" for="invalidCheck">
+                                <label class="form-check-label" for="IsCheck">
                                     我已詳閱並同意  <a href="#" data-toggle="modal" data-target="#specification">使用及取消規範</a>
                                 </label>
                                 <div class="invalid-feedback">
                                     請閱讀規範並勾選確認
                                 </div>
                                 <br />
-                                @Html.ValidationMessage("invalidCheck", new { @class = "text-danger" })
+                                @Html.ValidationMessage("IsCheck", new { @class = "text-danger" })
                             </div>
                         </div>
                         <button id="confirm" class="btn btn-primary" type="button">送出預定</button>
@@ -149,8 +151,7 @@
                     <div class="form-group" id="upload-image">
                         <label for="pic">請上傳展覽宣傳圖片 <span>(尺寸請用300 x 400)</span> </label>
                         <input type="file" class="form-control-file" id="ExPhoto" name="ExPhoto" accept="image/*">
-                        @*@Html.EditorFor(model => model.ExPhoto, new { htmlAttributes = new { @class = "form-control-file", @id = "pic" } })*@
-                        @*@Html.ValidationMessageFor(model => model.ExPhoto, "", new { @class = "text-danger" })*@
+                        @Html.ValidationMessageFor(model => model.ExPhoto, "", new { @class = "text-danger" })
                     </div>
                     <hr />
                     <div class="Rental__reservation--data">
