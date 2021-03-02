@@ -7,7 +7,7 @@ using System.Web.Mvc;
 using System.Web.Routing;
 
 namespace Libreria.Filters
-{
+{ 
     public class CustomAuthorizeAttribute : AuthorizeAttribute
     {
         private readonly string[] allowedroles;
@@ -36,6 +36,7 @@ namespace Libreria.Filters
                     {
                         if (role == memberRole.RoleName) return true;
                     }
+                    //HttpCookie cookie = httpContext.Request.Cookies[SessionStateAttribute.GetCustomAttribute.OnAuthorization];
                     
                 }
             return authorize; 

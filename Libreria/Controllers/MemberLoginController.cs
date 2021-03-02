@@ -18,18 +18,19 @@ namespace Libreria.Controllers
        
 
         public readonly MemberLoginService _memberLoginService;
+        public readonly ShoppingService _shoppingService;
         public MemberLoginController()
         {
             _memberLoginService = new MemberLoginService();
+            _shoppingService = new ShoppingService();
         }
         // GET: MemberLogin
         [HttpGet]
         public ActionResult Index()
         {
-            //if (User.Identity.Name!=null)
+            //if (User.Identity.IsAuthenticated == true)
             //{
-            //    Response.Write("您現在是已登入狀態。");
-            //    return RedirectToAction("MemberLogin", "MemberCenter");
+            //    return Redirect("MemberLogin");
             //}
             //else
             //{
@@ -44,11 +45,9 @@ namespace Libreria.Controllers
             var result = _memberLoginService.GetMember(model, ModelState.IsValid);
             if (ModelState.IsValid)
             {
-
-                
                 if (result != null)
                 {
-                    
+                    _shoppingService.CombineCarts();
                     return RedirectToAction("MemberLogin", "MemberCenter");
                 }
                 else
@@ -60,9 +59,9 @@ namespace Libreria.Controllers
             else
             {
                 return View(model);
-            }
-                        
+            }          
         }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult LogOff()

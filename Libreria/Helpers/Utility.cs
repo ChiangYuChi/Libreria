@@ -19,9 +19,7 @@ namespace Libreria.Helpers
             string result = Convert.ToBase64String(crypto);
 
             return result;
-        }
-
-       
+        }           
        
     }
 }
