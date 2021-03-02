@@ -54,6 +54,8 @@ namespace Libreria.Service
                     memberUserName = member.memberUserName,
                     MobileNumber = member.MobileNumber,
                     HomeNumber = member.HomeNumber,
+                    City = member.City,
+                    Region = member.Region,
                     Address = member.Address,
                     Email = member.Email,
                     memberName = member.memberName,
@@ -73,7 +75,7 @@ namespace Libreria.Service
         }
 
         //update MemberInfo
-        public OperationResult UpdateMember(member model,bool isValid)
+        public OperationResult UpdateMember(MemberViewModel model,bool isValid)
         {
             var result = new OperationResult();
             member updateMember = null;

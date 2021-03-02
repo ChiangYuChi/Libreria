@@ -28,8 +28,8 @@ namespace Libreria.Service
                     memberName = HttpUtility.HtmlEncode(model.memberName),
                     MobileNumber = HttpUtility.HtmlEncode(model.MobileNumber),
                     HomeNumber = HttpUtility.HtmlEncode(model.HomeNumber),
-                    //City = HttpUtility.HtmlEncode(model.City),
-                    //Region = HttpUtility.HtmlEncode(model.Region),
+                    City = HttpUtility.HtmlEncode(model.City),
+                    Region = HttpUtility.HtmlEncode(model.Region),
                     Address = HttpUtility.HtmlEncode(model.Address),
                     Email = HttpUtility.HtmlEncode(model.Email),
                     memberUserName = HttpUtility.HtmlEncode(model.memberUserName),
@@ -42,7 +42,7 @@ namespace Libreria.Service
             try
             {
                 //後端判斷帳號是否有重複
-                if (IsExistMember(member).IsSuccessful == false)
+                if (IsExistMember(member).IsSuccessful == true)
                 {
 
                     _libreriaRepository.Create<member>(member);
@@ -65,10 +65,10 @@ namespace Libreria.Service
         public OperationResult IsExistMember(member membername)
         {
             var result = new OperationResult();
-            member member = null;
-            membername = _libreriaRepository.GetAll<member>().Where(m => member.memberName == membername.memberName)
+            member member = new member();
+            var checkMembername = _libreriaRepository.GetAll<member>().Where(m => member.memberName == membername.memberName)
                                         .FirstOrDefault();
-            if (member != null)
+            if (membername != checkMembername)
             {
                 result.IsSuccessful = true;
             }

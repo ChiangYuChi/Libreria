@@ -21,27 +21,43 @@ namespace Libreria.Controllers
         private readonly FavoriteService _favoriteService;
         private readonly MemberRegisterPageService _memberRegisterPageService;
         private readonly OrderService _orderService;
+        private readonly MemberService _memberService;
+
 
         public MemberCenterController()
         {
             _orderService = new OrderService();
             _favoriteService = new FavoriteService();
             _memberRegisterPageService = new MemberRegisterPageService();
+            _memberService = new MemberService();
         }
-
         public ActionResult MemberLogin()
         {
             return View();
         }
+      
+      
 
-
-        // GET: MemberCenter
+    // GET: MemberCenter
+        [HttpGet]
 
         public ActionResult MemberInfo()
         {
+            int UserMemberId = Convert.ToInt32(System.Web.HttpContext.Current.Session["MemberID"]);
+            ViewBag.member = _memberService.GetByMemberId(UserMemberId);
             return View();
         }
-        public ActionResult ChangePassward()
+        [HttpPost]
+
+        public ActionResult MemberInfo(MemberViewModel member)
+        {
+            var result = _memberService.UpdateMember(member, ModelState.IsValid);
+
+
+            return View();
+        }
+
+            public ActionResult ChangePassward()
         {
             return View();
         }
@@ -129,12 +145,17 @@ namespace Libreria.Controllers
             var result =_memberRegisterPageService.CreateMember(model, ModelState.IsValid);
 
             if (result.IsSuccessful)
-            {  
-               return Redirect("MemberLogin");                   
+            {
+               return Redirect("MemberLogin");    
+                
                
             }
-            //還需登入失敗的頁面跳轉
-            return View();
+            else
+            {
+                ModelState.AddModelError("memberName", "帳號已存在。");
+                ModelState.AddModelError("", "帳號已存在。");
+                return View();
+            }
         }
         /// <summary>
         /// 帳號是否重複
