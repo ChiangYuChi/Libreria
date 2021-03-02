@@ -116,7 +116,7 @@
                     <article class="js-cart-product row">
                         <h4 class="col-12" style="font-size:20px;">@item.ProductName</h4>
                         <div class="col-9">
-                            <img src="@item.PicUrl" alt="書圖" style="height:100%;" />
+                            <img src="@item.PicUrl" alt="書圖" style="height:280px;" />
                         </div>
                         <div class="col-3" style="align-self:flex-end;text-align:end;">
                             <p class="price">@item.Price</p>
@@ -148,6 +148,9 @@
         <script src="~/Asset/Js/Product/ProductCategory.js"></script>
 
         <script>
+            jsonObj = [];
+            item = {};
+
             function AddCart(id) {
                 let productId = id;
                 $.ajax({
@@ -157,18 +160,19 @@
                     dataType: "text",
                     success: function (response) {
                         $("#MyCart").text("購物車(" + response + ")");
+                        $.ajax({
+                            type: "POST",
+                            url: "/Product/GetToCartPartial",
+                            dataType: "text",
+                            success: function (response) {
+                                Gson gson = new Gson();
+                                String str = gson.toJson(response);
+                                console.log(str);
+                            }
+                        });
                     }
                 });
-                //$.ajax({
-                //    type: "POST",
-                //    url: "/Product/ProductCategory",
-                //    data: { Id: productId },
-                //    dataType: "text",
-                //    success: function (response) {
-                //        $(".js-cart-product-template").text("購物車(" + response + ")");
-                        
-                //    }
-                //});
+                
             }
 
 
@@ -230,6 +234,7 @@
             function addProduct(e) {
                 e.preventDefault();
                 //openCart();
+                
                 numberOfProducts++;
             }
 

@@ -102,5 +102,10 @@ namespace Libreria.Controllers
         {
             return View();
         }
+        [HttpPost]
+        public List<ShoppingCartViewModel> GetToCartPartial()
+        {
+            return _shoppingService.GetAnonymousAll();
+        }
     }
 }
