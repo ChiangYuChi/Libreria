@@ -103,11 +103,11 @@ namespace Libreria.Controllers
             return View();
         }
         [HttpPost]
-        public List<ShoppingCartViewModel> GetToCartPartial()
+        public ActionResult GetToCartPartial()
         {
             var cartList = _shoppingService.GetAnonymousAll();
 
-            return cartList;
+            return Json(cartList);
         }
     }
 }
