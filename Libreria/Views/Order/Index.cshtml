@@ -296,31 +296,6 @@
                 }
             });
 
-
-
-
-            Command: toastr["success"]("加入成功!")
-
-            toastr.options = {
-                "closeButton": false,
-                "debug": false,
-                "newestOnTop": false,
-                "progressBar": false,
-                "positionClass": "toast-top-center",
-                "preventDuplicates": false,
-                "onclick": null,
-                "showDuration": "300",
-                "hideDuration": "1000",
-                "timeOut": "1500",
-                "extendedTimeOut": "1000",
-                "showEasing": "swing",
-                "hideEasing": "linear",
-                "showMethod": "fadeIn",
-                "hideMethod": "fadeOut"
-            }
-
-
-
             let favId = id;
             $.ajax({
                 type: "POST",
@@ -328,21 +303,12 @@
                 data: { ProductId: favId },
                 dataType: "text",
                 success: function (response) {
-                    
-                    toastr.success("加入成功！");
+                    alert("成功");
                     location.reload();
-
                 }
             });
 
 
-        }
-
-
-        function AddFavorite(id) {
-            let favId = id;
-
-            
         }
 
 
