@@ -54,6 +54,8 @@ namespace Libreria.Service
                     memberUserName = member.memberUserName,
                     MobileNumber = member.MobileNumber,
                     HomeNumber = member.HomeNumber,
+                    City = member.City,
+                    Region = member.Region,
                     Address = member.Address,
                     Email = member.Email,
                     memberName = member.memberName,
@@ -73,28 +75,31 @@ namespace Libreria.Service
         }
 
         //update MemberInfo
-        public OperationResult UpdateMember(member model,bool isValid)
+        public OperationResult UpdateMember(MemberViewModel model)
         {
             var result = new OperationResult();
             member updateMember = null;
-            var originalMember = _DbRepository.GetAll<member>().Where(m => m.memberName == model.memberName).FirstOrDefault();
+            var originalMember = _DbRepository.GetAll<member>().Where(m => m.memberName == model.memberName).First();
 
-            if (isValid)
-            {
 
                 updateMember = new member
                 {
+                    memberId = Convert.ToInt32(System.Web.HttpContext.Current.Session["MemberID"]),
+                    memberName = HttpUtility.HtmlEncode(model.memberName),
                     MobileNumber = HttpUtility.HtmlEncode(model.MobileNumber),
                     HomeNumber = HttpUtility.HtmlEncode(model.HomeNumber),
+                    City = HttpUtility.HtmlEncode(model.City),
+                    Region = HttpUtility.HtmlEncode(model.Region),
                     Address = HttpUtility.HtmlEncode(model.Address),
                     Email = HttpUtility.HtmlEncode(model.Email),
                     memberUserName = HttpUtility.HtmlEncode(model.memberUserName),
                     birthday = DateTime.Parse(HttpUtility.HtmlEncode(model.birthday)),
                     Gender = int.Parse(HttpUtility.HtmlEncode(model.Gender)),
-                    IDnumber = HttpUtility.HtmlEncode(model.IDnumber)
+                    IDnumber = HttpUtility.HtmlEncode(model.IDnumber),
+                    memberPassword = HttpUtility.HtmlEncode(model.memberPassword),
                 };
                 originalMember = updateMember;
-            }
+            
             try
             {
                 _DbRepository.Update<member>(originalMember);
