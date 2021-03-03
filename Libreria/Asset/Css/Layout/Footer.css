@@ -2,9 +2,7 @@
 body {
     background-color: #f0e1b8;
 }
-.container-fluid {
-    min-height: 60vh;
-}
+
 ul {
     list-style: none;
 }

@@ -32,14 +32,22 @@ namespace Libreria.Controllers
 
 
 
-        public ActionResult ProductCategory(int? CategoryId, int? Order)
+
+
+        public ActionResult ProductCategory(int? CategoryId, int? Order,string CategoryName)
         {
+            ViewBag.Name = CategoryName;
+
             List<ProductViewModel> result;
 
             if (CategoryId != null)
             {
                 result = _productService.GetByCategory(Convert.ToInt32(CategoryId));
+
                 ViewBag.CategoryId = CategoryId;
+              
+
+
             }
             else
             {
@@ -94,11 +102,6 @@ namespace Libreria.Controllers
             var product = _productService.PromoteMajor();
             return PartialView(product);
         }
-        public ActionResult Test()
-        {
-            return View();
-        }
-
-
+        
     }
 }

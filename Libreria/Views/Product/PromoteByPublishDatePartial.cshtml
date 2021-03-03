@@ -6,7 +6,7 @@
 
 <div class="product col-lg-3 pic">
     <div class="book-cover">
-        <a class="promote-image" href=" @Url.Action("ProductDetail", "Product", new { id = item.Id }, null)"><img src="@item.MainUrl" alt=""></a>
+        <a class="promote-image" href=" @Url.Action("ProductDetail", "Product", new { id = item.Id,style="text-decoration:none;" }, null)"><img src="@item.MainUrl" alt=""></a>
 
         <div class="cart">
 
@@ -16,7 +16,7 @@
     </div>
 
     <div class="promotion-discount">
-        <div class="title"> @Html.ActionLink(@item.Name, "ProductDetail", "Product", new { id = item.Id }, null)</div>
+        <div class="title"> @Html.ActionLink(@item.Name, "ProductDetail", "Product", new { id = item.Id, style = "text-decoration:none;" }, null)</div>
         <p><span>NT$</span>@(String.Format("{0:N0}",item.UnitPrice))</p>
     </div>
 

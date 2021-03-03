@@ -1,5 +1,6 @@
 ﻿@model List<ProductViewModel>
 
+
 @section topCss{
     <link href="~/Asset/Css/Product/ProductCategory.css" rel="stylesheet" />
     <link href="~/Asset/Css/PartialView/category-sidenav.css" rel="stylesheet" />
@@ -19,7 +20,7 @@
                 <div class="product-breadcrumb">
                     <a href="/Product/Index">首頁</a>
                     <i class="fas fa-chevron-right"></i>
-                    <a href="#">商品分類</a>
+                    <a href="#">@ViewBag.Name</a>
                 </div>
                 <div class="row">
 
@@ -46,12 +47,12 @@
                                 <div class="sort-box">
                                     <span col-lg-1>排序</span>
                                     <button class="col-lg-2 sort-btn-price sort-btn" data-type="price">
-                                        @Html.ActionLink("價格排序", "ProductCategory", new { CategoryId = ViewBag.CategoryId, Order = 1 })
+                                        @Html.ActionLink("價格排序低到高", "ProductCategory", new { CategoryId = ViewBag.CategoryId, Order = 1 })
                                     </button>
                                     <button class="col-lg-2 sort-btn">@Html.ActionLink("上市日期排序", "ProductCategory", new { CategoryId = ViewBag.CategoryId, Order = 2 })</button>
                                 </div>
                                 <ul>
-                                    @*@Html.Action("ProductPartial")*@
+                                  
 
                                     @foreach (var item in Model)
                                     {

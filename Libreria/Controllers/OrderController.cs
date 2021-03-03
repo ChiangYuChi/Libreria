@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using ECPay.Payment.Integration;
 
 namespace Libreria.Controllers
 {
@@ -136,7 +137,15 @@ namespace Libreria.Controllers
                 }
             }
 
-            return Json(orderVM);
+            return PayOrder(orderVM);
+        }
+
+        public ActionResult PayOrder(OrderViewModel orderVM)
+        {
+            var result = _orderService.ECPay(orderVM);
+            ViewBag.Html = result;
+            return View("PayOrder");
+
         }
 
         public ActionResult Test()
