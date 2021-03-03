@@ -19,7 +19,6 @@ using Xamarin.Forms;
 
 namespace Libreria.Controllers
 {
-    [HandleError(ExceptionType = typeof(NullReferenceException), View = "~/Views/Error/NullReference.cshtml")]
 
     [CustomAuthenticationFilter]
     public class MemberCenterController : Controller

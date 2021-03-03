@@ -233,19 +233,8 @@
             </script>
 
 
-                @*<script src="~/Asset/Js/MemberCenter/MemberRegisterPage.js" crossorigin="anonymous"></script>
-                <script>
-                    function ValidMemberNAme() {
-                        $.ajax({
-                            url: "",
-                            data: {
-
-                            }
-                        })
-                    }
-                </script>*@
-
-<script>
+               
+            <script>
                     window.onload = () => {
                         requestAreaJson();
                         document.querySelector("#Region").addEventListener("change", findTown);
@@ -262,13 +251,7 @@
                     let texNode;
                     let CountiesLat;
                     let CountiesLng;
-                    let pickcenterLat;
-                    let pickcenterLng;
-                    let AttractionLat;
-                    let AttractionLng;
-                    let AttractionName;
-                    var marker;
-                    var _pickAttraction;
+             
 
 
                     function requestAreaJson() {
