@@ -164,7 +164,7 @@ h2 {
 }
 
 .recipient_profile_homePhone p {
-    margin: 7px 10px 0px 0px;
+    margin: 7px 20px 0px 0px;
 }
 
 .recipient_profile_address p {
@@ -415,7 +415,7 @@ span {
 }
 
 .recipient_profile_address_txt {
-    padding: 0px 0px 15px 105px;
+    padding: 0px 0px 15px 115px;
 }
 
 #recipient_option {
@@ -553,6 +553,7 @@ input {
 
     .cart_details_body_detail {
         display: flex;
+        margin-bottom: 10px;
     }
 
     .cart_detail_quantity {
@@ -635,4 +636,14 @@ input {
 
 .SubscriberEqualRecipient-button {
     margin-left: 16px;
+    position: relative;
+    bottom: 3px;
+}
+
+.ask-star {
+    padding: 0px 20px 10px;
+}
+
+.starcolor {
+    color: #d0011b;
 }

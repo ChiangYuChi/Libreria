@@ -33,6 +33,11 @@ namespace Libreria.Controllers
         }
         public ActionResult MemberLogin()
         {
+            int UserMemberId = Convert.ToInt32(System.Web.HttpContext.Current.Session["MemberID"]);
+
+            List<OrderViewModel> OrderVMList = _orderService.GetBymemberId(UserMemberId);
+            ViewBag.OrderVMList = OrderVMList;
+
             return View();
         }
       
@@ -181,8 +186,7 @@ namespace Libreria.Controllers
         [HttpPost]
         public string AddToFavorite(ProductViewModel ProductVM)
         {
-            
-            
+
             var result = _favoriteService.CreateToFavorite(ProductVM);
             
 
@@ -216,6 +220,15 @@ namespace Libreria.Controllers
         {
             return View();
         }
+
+
+
+        public ActionResult MemberBenefits()
+        {
+            return View();
+        }
+       
+        
 
         
        
