@@ -34,13 +34,16 @@
 
     <div class="tab-content" id="myTabContent">
         <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-            @using (Html.BeginForm("MemberInfo", "MemberCenter", FormMethod.Post, new { @id = "infoForm", @class = "form-group row mt-4" }))
+            @foreach (var item in member)
             {
-                foreach (var item in member)
+                using (Html.BeginForm("MemberInfo", "MemberCenter", FormMethod.Post, new { @id = "infoForm", @class = "form-group row mt-4" }))
                 {
+                    @Html.HiddenFor(model => model.memberPassword, new { @class = "form-control", @Value = item.memberPassword })
+                    @Html.HiddenFor(model => model.memberPassword, new { @class = "form-control", @Value = item.memberPassword })
+
                     <div class="col-12">
                         <div class="form-group row">
-                            <span style="color:red;">*</span> @Html.LabelFor(model => model.memberName, htmlAttributes: new { @class = "form-subtitle col-3 col-xl-1 col-lg-2 text-right text-nowrap" })
+                            @Html.LabelFor(model => model.memberName, htmlAttributes: new { @class = "form-subtitle col-3 col-xl-1 col-lg-2 text-right text-nowrap" })
                             <div class="form-content col-xl-4 col-lg-5 col-9">
                                 <p class="card-number">
                                     @Html.HiddenFor(model => model.memberName, new { @class = "form-control", @Value = item.memberName })
@@ -55,43 +58,43 @@
                             @Html.LabelFor(model => model.memberUserName, htmlAttributes: new { @class = "form-subtitle col-3 col-xl-1 col-lg-2 text-right text-nowrap" })
                             <div class="form-content col-xl-4 col-lg-5 col-9">
                                 <p class="name">
-                                @Html.ValidationMessage("memberUserName", new { @class = "text-danger" })
-                                    @Html.TextBoxFor(model => model.memberName, new { @class = "form-control", @Value = item.memberUserName })
+                                    @Html.ValidationMessage("memberUserName", new { @class = "text-danger" })
+                                    @Html.TextBoxFor(model => model.memberUserName, new { @class = "form-control", @Value = item.memberUserName })
                                 </p>
                             </div>
                         </div>
                     </div>
                     <div class="col-12">
                         <div class="form-group row">
-                            <span style="color:red;">*</span>@Html.LabelFor(model => model.birthday, htmlAttributes: new { @class = "form-subtitle col-3 col-xl-1 col-lg-2 text-right text-nowrap" })
+                            @Html.LabelFor(model => model.birthday, htmlAttributes: new { @class = "form-subtitle col-3 col-xl-1 col-lg-2 text-right text-nowrap" })
                             <div class="form-content col-xl-4 col-lg-5 col-9">
                                 <p class="birthday">
-                                @Html.ValidationMessageFor(model => model.birthday, "", new { @class = "text-danger" })
-                                @Html.TextBoxFor(model => model.birthday, "{0:yyyy-MM-dd}", new { @class = "form-control", @Value = item.birthday.ToString("yyyy-MM-dd"), Type = "date" })
+                                    @Html.ValidationMessageFor(model => model.birthday, "", new { @class = "text-danger" })
+                                    @Html.TextBoxFor(model => model.birthday, "{0:yyyy-MM-dd}", new { @class = "form-control", @Value = item.birthday.ToString("yyyy-MM-dd"), Type = "date" })
                                 </p>
                             </div>
                         </div>
                     </div>
                     <div class="col-12">
                         <div class="form-group row">
-                            <span style="color:red;">*</span>@Html.LabelFor(model => model.IDnumber, htmlAttributes: new { @class = "form-subtitle col-3 col-xl-1 col-lg-2 text-right text-nowrap" })
-                        <div class="form-content col-xl-4 col-lg-5 col-9">
-                            <p class="Id-number">
-                            @Html.ValidationMessageFor(model => model.IDnumber, "", new { @class = "text-danger" })
-                            @Html.TextBoxFor(model => model.IDnumber, new { @class = "form-control", @Value = item.IDnumber })
-                            </p>
-                        </div>
+                            @Html.LabelFor(model => model.IDnumber, htmlAttributes: new { @class = "form-subtitle col-3 col-xl-1 col-lg-2 text-right text-nowrap" })
+                            <div class="form-content col-xl-4 col-lg-5 col-9">
+                                <p class="Id-number">
+                                    @Html.ValidationMessageFor(model => model.IDnumber, "", new { @class = "text-danger" })
+                                    @Html.TextBoxFor(model => model.IDnumber, new { @class = "form-control", @Value = item.IDnumber })
+                                </p>
+                            </div>
                         </div>
                     </div>
                     <div class="col-12">
                         <div class="form-group row">
-                            <span style="color:red;">*</span>@Html.LabelFor(model => model.Gender, htmlAttributes: new { @class = "form-subtitle col-3 col-xl-1 col-lg-2 text-right text-nowrap" })
+                            @Html.LabelFor(model => model.Gender, htmlAttributes: new { @class = "form-subtitle col-3 col-xl-1 col-lg-2 text-right text-nowrap" })
 
                             <div class="form-content col-xl-4 col-lg-5 col-9">
                                 <div class="gender">
-                                    @Html.RadioButtonFor(model => model.Gender, 0, htmlAttributes: new { @id = "Gendersradio0", @name = "Gender", @class = "control-label col-md-2", @checked = (item.Gender == 0 ? true : false) })@Html.Label("男")
-                                    @Html.RadioButtonFor(model => model.Gender, 1, htmlAttributes: new { @id = "Gendersradio0", @name = "Gender", @class = "control-label col-md-2", @checked = (item.Gender == 1 ? true : false) })@Html.Label("女")
-                                    @Html.RadioButtonFor(model => model.Gender, 2, htmlAttributes: new { @id = "Gendersradio0", @name = "Gender", @class = "control-label col-md-2", @checked = (item.Gender == 2 ? true : false) })@Html.Label("其他")<br>
+                                    @Html.RadioButtonFor(model => model.Gender, 0, new { @id = "Gendersradio0", @name = "Gender", @class = "control-label col-md-2", @Checked = (item.Gender == 0 ? true : false) })@Html.Label("男")
+                                    @Html.RadioButtonFor(model => model.Gender, 1, new { @id = "Gendersradio0", @name = "Gender", @class = "control-label col-md-2", @Checked = (item.Gender == 1 ? true : false) })@Html.Label("女")
+                                    @Html.RadioButtonFor(model => model.Gender, 2, new { @id = "Gendersradio0", @name = "Gender", @class = "control-label col-md-2", @Checked = (item.Gender == 2 ? true : false) })@Html.Label("其他")<br>
 
                                 </div>
                             </div>
@@ -99,21 +102,21 @@
                     </div>
                     <div class="col-12">
                         <div class="form-group row">
-                            <span style="color:red;">*</span>@Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "form-subtitle col-3 col-xl-1 col-lg-2 text-right text-nowrap" })
-                        <div class="form-content col-xl-4 col-lg-5 col-9">
-                            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
-                            @Html.TextBoxFor(model => model.Email, new { @class = "form-control", @Value = item.Email })
-                        </div>
+                            @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "form-subtitle col-3 col-xl-1 col-lg-2 text-right text-nowrap" })
+                            <div class="form-content col-xl-4 col-lg-5 col-9">
+                                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                                @Html.TextBoxFor(model => model.Email, new { @class = "form-control", @Value = item.Email })
+                            </div>
                         </div>
                     </div>
                     <div class="col-12">
                         <div class="form-group row">
-                            <span style="color:red;">*</span>@Html.LabelFor(model => model.MobileNumber, htmlAttributes: new { @class = "form-subtitle col-3 col-xl-1 col-lg-2 text-right text-nowrap" })
+                            @Html.LabelFor(model => model.MobileNumber, htmlAttributes: new { @class = "form-subtitle col-3 col-xl-1 col-lg-2 text-right text-nowrap" })
                             <div class="form-content col-xl-4 col-lg-5 col-9">
                                 <p class="mobilephone-number">
                                     <div name="mobilephone-area" id="mobilephone-area">
                                         @Html.ValidationMessageFor(model => model.MobileNumber, "", new { @class = "text-danger" })
-                                        @Html.TextBoxFor(model => model.MobileNumber, new { @class = "form-control", @Value = item.MobileNumber })                                        
+                                        @Html.TextBoxFor(model => model.MobileNumber, new { @class = "form-control", @Value = item.MobileNumber })
                                     </div>
                                 </p>
                             </div>
@@ -121,10 +124,10 @@
                     </div>
                     <div class="col-12">
                         <div class="form-group row">
-                            <span style="color:red;">*</span>@Html.LabelFor(model => model.HomeNumber, htmlAttributes: new { @class = "form-subtitle col-3 col-xl-1 col-lg-2 text-right text-nowrap" })
+                            @Html.LabelFor(model => model.HomeNumber, htmlAttributes: new { @class = "form-subtitle col-3 col-xl-1 col-lg-2 text-right text-nowrap" })
                             <div class="form-content col-xl-4 col-lg-5 col-9 ">
                                 <div class="form-row">
-                                @Html.ValidationMessageFor(model => model.HomeNumber, "", new { @class = "text-danger" })
+                                    @Html.ValidationMessageFor(model => model.HomeNumber, "", new { @class = "text-danger" })
                                     @Html.TextBoxFor(model => model.HomeNumber, new { @class = "form-control", @Value = item.HomeNumber })
                                 </div>
                             </div>
@@ -132,55 +135,53 @@
                     </div>
                     <div class="col-12">
                         <div class="form-group row">
-                            <div class="recipient_profile_address">
-                                <span style="color:red;">*</span>@Html.LabelFor(model => model.Address, htmlAttributes: new { @class = "form-subtitle col-3 col-xl-1 col-lg-2 text-right text-nowrap" })
-                                @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+                                @Html.LabelFor(model => model.Address, htmlAttributes: new { @class = "form-subtitle col-3 col-xl-1 col-lg-2 text-right text-nowrap" })
+                            <div class="recipient_profile_address form-content col-xl-4 col-lg-5 col-9 ">
+                                <div class="form-row">
 
-                                <div class="recipient_profile_select">
-                                    @Html.DropDownListFor(model => model.City, new List<SelectListItem>{
-                                  new SelectListItem{ Value="0",Text="選取縣市"},
-                                  new SelectListItem{ Value="臺北市",Text="臺北市"},
-                                  new SelectListItem{ Value="新北市",Text="新北市"},
-                                  //new SelectListItem{ Value="新北市",Text="新北市", Selected = (item.City == "新北市" ? true : false) },
-                                  new SelectListItem{ Value="桃園市",Text="桃園市"},
-                                  new SelectListItem{ Value="臺中市",Text="臺中市"},
-                                  new SelectListItem{ Value="臺南市",Text="臺南市"},
-                                  new SelectListItem{ Value="高雄市",Text="高雄市"},
-                                  new SelectListItem{ Value="基隆市",Text="基隆市"},
-                                  new SelectListItem{ Value="新竹市",Text="新竹市"},
-                                  new SelectListItem{ Value="嘉義市",Text="嘉義市"},
-                                  new SelectListItem{ Value="新竹縣",Text="新竹縣"},
-                                  new SelectListItem{ Value="苗栗縣",Text="苗栗縣"},
-                                  new SelectListItem{ Value="彰化縣",Text="彰化縣"},
-                                  new SelectListItem{ Value="南投縣",Text="南投縣"},
-                                  new SelectListItem{ Value="雲林縣",Text="雲林縣"},
-                                  new SelectListItem{ Value="嘉義縣",Text="嘉義縣"},
-                                  new SelectListItem{ Value="屏東縣",Text="屏東縣"},
-                                  new SelectListItem{ Value="宜蘭縣",Text="宜蘭縣"},
-                                  new SelectListItem{ Value="花蓮縣",Text="花蓮縣"},
-                                  new SelectListItem{ Value="臺東縣",Text="臺東縣"},
-                                  new SelectListItem{ Value="澎湖縣",Text="澎湖縣"},
-                                  new SelectListItem{ Value="金門縣",Text="金門縣"},
-                                  new SelectListItem{ Value="連江縣",Text="連江縣"},
-                         }, new { @id = "Region", @class = "form-select form-select-lg mb-3", @name = "AddressCitySelect"})
+                                    <div class="recipient_profile_select">
+                                        @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+                                        @Html.DropDownListFor(model => model.City, new List<SelectListItem>{
+                                      new SelectListItem{ Value="0",Text="選取縣市"},
+                                      new SelectListItem{ Value="臺北市",Text="臺北市", Selected = (item.City == "臺北市" ? true : false) },
+                                      new SelectListItem{ Value="新北市",Text="新北市", Selected = (item.City == "新北市" ? true : false) },
+                                      new SelectListItem{ Value="桃園市",Text="桃園市", Selected = (item.City == "桃園市" ? true : false) },
+                                      new SelectListItem{ Value="臺中市",Text="臺中市", Selected = (item.City == "臺中市" ? true : false) },
+                                      new SelectListItem{ Value="臺南市",Text="臺南市", Selected = (item.City == "臺南市" ? true : false) },
+                                      new SelectListItem{ Value="高雄市",Text="高雄市", Selected = (item.City == "高雄市" ? true : false) },
+                                      new SelectListItem{ Value="基隆市",Text="基隆市", Selected = (item.City == "基隆市" ? true : false) },
+                                      new SelectListItem{ Value="新竹市",Text="新竹市", Selected = (item.City == "新竹市" ? true : false) },
+                                      new SelectListItem{ Value="嘉義市",Text="嘉義市", Selected = (item.City == "嘉義市" ? true : false) },
+                                      new SelectListItem{ Value="新竹縣",Text="新竹縣", Selected = (item.City == "新竹縣" ? true : false) },
+                                      new SelectListItem{ Value="苗栗縣",Text="苗栗縣", Selected = (item.City == "苗栗縣" ? true : false) },
+                                      new SelectListItem{ Value="彰化縣",Text="彰化縣", Selected = (item.City == "彰化縣" ? true : false) },
+                                      new SelectListItem{ Value="南投縣",Text="南投縣", Selected = (item.City == "南投縣" ? true : false) },
+                                      new SelectListItem{ Value="雲林縣",Text="雲林縣", Selected = (item.City == "雲林縣" ? true : false) },
+                                      new SelectListItem{ Value="嘉義縣",Text="嘉義縣", Selected = (item.City == "嘉義縣" ? true : false) },
+                                      new SelectListItem{ Value="屏東縣",Text="屏東縣", Selected = (item.City == "屏東縣" ? true : false) },
+                                      new SelectListItem{ Value="宜蘭縣",Text="宜蘭縣", Selected = (item.City == "宜蘭縣" ? true : false) },
+                                      new SelectListItem{ Value="花蓮縣",Text="花蓮縣", Selected = (item.City == "花蓮縣" ? true : false) },
+                                      new SelectListItem{ Value="臺東縣",Text="臺東縣", Selected = (item.City == "臺東縣" ? true : false) },
+                                      new SelectListItem{ Value="澎湖縣",Text="澎湖縣", Selected = (item.City == "澎湖縣" ? true : false) },
+                                      new SelectListItem{ Value="金門縣",Text="金門縣", Selected = (item.City == "金門縣" ? true : false) },
+                                      new SelectListItem{ Value="連江縣",Text="連江縣", Selected = (item.City == "連江縣" ? true : false) },
+                             }, new { @id = "Region", @class = "form-select form-select-lg mb-3", @name = "AddressCitySelect" })
 
-                                    @Html.DropDownListFor(model => model.Region, new List<SelectListItem>{
-                                                new SelectListItem { Value="選取鄉政市區",Text="選取鄉政市區"}
-                                            }, new { @id = "Town", @class = "form-select form-select-lg mb-3"})
-                                   
-                                    @Html.TextBoxFor(model => model.Address, new { @class = "form-control",@Value=item.Address } )
+                                        @Html.DropDownListFor(model => model.Region, new List<SelectListItem>{
+                                                    new SelectListItem { Value="選取鄉政市區",Text="選取鄉政市區"}
+                                                }, new { @id = "Town", @class = "form-select form-select-lg mb-3" })
 
+                                        @Html.TextBoxFor(model => model.Address, new { @class = "form-control", @Value = item.Address })
+                                    </div>
                                 </div>
-                            </div>
+                                </div>
 
                             <div class="col-12 mt-2 d-flex justify-content-center">
-                                <button type="button" class="cancel">取消</button>
+                                <button><a href="" class="cancel">取消</a></button>
                                 <button type="submit" class="confirm">確認</button>
                             </div>
 
-
-                        </div>
-
+                            </div>
                     </div>
                 }
             }
@@ -200,8 +201,7 @@
 
                                 </div>
                                 <div class="col-12 mt-2 d-flex justify-content-center">
-                                    <button type="button" class="cancel">取消</button>
-                                    @*<button type="submit" class="confirm" disabled="disable">確認</button>*@
+                                    <button><a href="" class="cancel">取消</a></button>
                                     <button type="submit" class="confirm">確認</button>
                                 </div>
                                 }

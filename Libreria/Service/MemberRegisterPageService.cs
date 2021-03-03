@@ -54,7 +54,6 @@ namespace Libreria.Service
                 }
 
             }
-            //下列部分需要再處裡
             catch (Exception ex)
             {
                 ex.ToString();

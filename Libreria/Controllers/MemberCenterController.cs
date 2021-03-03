@@ -56,10 +56,22 @@ namespace Libreria.Controllers
 
         public ActionResult MemberInfo(MemberViewModel member)
         {
-            var result = _memberService.UpdateMember(member, ModelState.IsValid);
+            //int UserMemberId = Convert.ToInt32(System.Web.HttpContext.Current.Session["MemberID"]);
+            //ViewBag.member = _memberService.GetByMemberId(UserMemberId);
 
+            var result = _memberService.UpdateMember(member);
 
-            return View();
+            if (result.IsSuccessful)
+            {
+                return Redirect("MemberLogin");
+
+            }
+            else
+            {
+                ModelState.AddModelError("", "修改失敗");
+                return Redirect("MemberLogin");
+            }
+
         }
 
             public ActionResult ChangePassward()
@@ -151,8 +163,7 @@ namespace Libreria.Controllers
 
             if (result.IsSuccessful)
             {
-               return Redirect("MemberLogin");    
-                
+               return Redirect("MemberLogin");                  
                
             }
             else
@@ -161,18 +172,7 @@ namespace Libreria.Controllers
                 ModelState.AddModelError("", "帳號已存在。");
                 return View();
             }
-        }
-        /// <summary>
-        /// 帳號是否重複
-        /// </summary>
-        /// <returns></returns>
-        //public JsonResult CheckAllowMemberName(string memberName)
-        //{
-            
-        //    var search = _memberRegisterPageService.IsExistMember(memberName);
-        //    bool result = search.IsSuccessful;
-        //    return Json(!result, JsonRequestBehavior.AllowGet);                
-        //}
+        }   
        
 
 
