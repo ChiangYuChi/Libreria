@@ -192,7 +192,7 @@ namespace Libreria.Controllers
 
             if (result.IsSuccessful)
             {
-                return "加入成功!";
+                return "加入成功";
             }
             else
             {

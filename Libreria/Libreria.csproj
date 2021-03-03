@@ -337,6 +337,7 @@
     <Content Include="Asset\Css\Product\ProductDetail.css" />
     <Content Include="Asset\Css\Product\product_index.css" />
     <Content Include="Asset\Css\MemberLogin\member-login.css" />
+    <Content Include="Asset\Css\Product\ShopCartIconPartial.css" />
     <Content Include="Asset\Css\Product\swiper.css" />
     <Content Include="Asset\Css\Rental\Rental_Confirm.css" />
     <Content Include="Asset\Css\Rental\Rental_index.css" />
@@ -920,6 +921,7 @@
     <Content Include="Asset\Js\MemberCenter\MemberRegisterPage.js" />
     <Content Include="Asset\Js\Product\ProductCategory.js" />
     <Content Include="Asset\Js\Product\ProductIndex.js" />
+    <Content Include="Asset\Js\Product\ShopCartIconRartial.js" />
     <Content Include="Asset\Js\Product\sidenav-toggle.js" />
     <Content Include="Asset\Js\Product\swiper.js" />
     <Content Include="Asset\Js\Rental\Renral_confirm.js" />
@@ -1169,6 +1171,7 @@
     <Content Include="Views\MemberCenter\ContactUs.cshtml" />
     <Content Include="Views\MemberCenter\Favorite.cshtml" />
     <Content Include="Views\MemberLogin\LoginPartial.cshtml" />
+    <Content Include="Views\MemberCenter\Favorite.cshtml" />
     <Content Include="Views\Rental\Confirm.cshtml" />
     <Content Include="Views\MemberLogin\LoginPartialHambuger.cshtml" />
     <Content Include="Views\Product\Test.cshtml" />
