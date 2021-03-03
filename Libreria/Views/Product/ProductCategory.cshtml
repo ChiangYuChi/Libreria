@@ -47,9 +47,9 @@
                                 <div class="sort-box">
                                     <span col-lg-1>排序</span>
                                     <button class="col-lg-2 sort-btn-price sort-btn" data-type="price">
-                                        @Html.ActionLink("價格排序低到高", "ProductCategoryPartial", new { CategoryId = ViewBag.CategoryId, Order = 1 })
+                                        @Html.ActionLink("價格排序低到高", "ProductCategory", new { CategoryId = ViewBag.CategoryId, Order = 1 })
                                     </button>
-                                    <button class="col-lg-2 sort-btn">@Html.ActionLink("上市日期排序", "ProductCategoryPartial", new { CategoryId = ViewBag.CategoryId, Order = 2 })</button>
+                                    <button class="col-lg-2 sort-btn">@Html.ActionLink("上市日期排序", "ProductCategory", new { CategoryId = ViewBag.CategoryId, Order = 2 })</button>
                                 </div>
                                 <ul>
                                   
