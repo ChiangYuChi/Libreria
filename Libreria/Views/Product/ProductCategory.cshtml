@@ -64,7 +64,7 @@
                                             @item.Author
                                         </div>
                                         <button class="cbp-vm-icon cbp-vm-add" onclick="AddCart(@item.Id)">加入購物車</button>
-                                        <a class="wish-list " onclick="AddFavorite(@item.Id)">
+                                        <a id="wish" class="wish-list " onclick="AddFavorite(@item.Id)">
                                         @{if (item.isFav == true)
                                             { 
                                                 <i class="fas fa-heart"></i>
@@ -172,9 +172,15 @@
                 
             }
 
+        let wish = document.querySelectorAll("#wish");
+        wish.forEach((x) => {
+            x.addEventListener("click", function () {
+                x.innerHTML = "<i class='fas fa-heart'></i>";
+            })
+        });
 
-            function AddFavorite(id) {
-                let favId = id
+        function AddFavorite(id) {
+            let favId = id;
 
                 $.ajax({
                     type: "POST",

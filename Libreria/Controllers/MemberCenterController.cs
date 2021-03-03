@@ -184,11 +184,19 @@ namespace Libreria.Controllers
         }
 
         [HttpPost]
-        public string AddToFavorite(ProductViewModel ProductVM)
+        public void AddToFavorite(ProductViewModel ProductVM)
+        {
+            
+            _favoriteService.CreateToFavorite(ProductVM);
+ 
+        }
+
+        [HttpPost]
+        public string CartToFavorite(ShoppingCartViewModel shoppingCartVM)
         {
 
-            var result = _favoriteService.CreateToFavorite(ProductVM);
-            
+            var result = _favoriteService.DeleteCartToFavorite(shoppingCartVM);
+
 
             if (result.IsSuccessful)
             {
@@ -199,6 +207,7 @@ namespace Libreria.Controllers
                 return "加入失败";
             }
         }
+
 
         [HttpPost]
         public void DeleteFavorite(FavoriteViewModel favoriteVM)

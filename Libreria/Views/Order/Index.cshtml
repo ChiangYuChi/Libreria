@@ -119,8 +119,8 @@
                             </div>
 
                             <div class="split-line"></div>
-                            <div class="operation-favorite py-lg-0">
-                                <span>加入收藏</span>
+                            <div class="operation-favorite py-lg-0 mt-2">
+                                <button onclick="DeleteFromCart(@item.ProductId)">加入收藏</button>
                             </div>
                         </div>
 
@@ -295,6 +295,34 @@
                 }
             });
         }
+
+        function DeleteFromCart(id) {
+            let productId = id;
+
+            $.ajax({
+                type: "POST",
+                url: "/Order/DeleteFromCart",
+                data: { ProductId: productId },
+                dataType: "text",
+                success: function () {
+                }
+            });
+
+            let favId = id;
+            $.ajax({
+                type: "POST",
+                url: "/MemberCenter/CartToFavorite",
+                data: { ProductId: favId },
+                dataType: "text",
+                success: function (response) {
+                    alert("成功");
+                    location.reload();
+                }
+            });
+
+
+        }
+
 
         function PlusOne(id) {
             let productId = id;
