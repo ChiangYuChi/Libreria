@@ -1,61 +1,44 @@
-.tabbox {
-    margin: 0 auto;
-    min-width: 320px;
-    max-width: 1000px;
-    text-align: center;
-    padding: 60px 0 60px;
+img {
+    vertical-align: top;
 }
 
-
-.content > div {
-    display: none;
-    padding: 20px 25px 5px;
+.card img {
+    height: 10rem;
+    object-fit: contain;
+}
+.main-Exhibition-pic {
+    max-width: 950px;
+    position: relative;
 }
 
-input {
-    display: none;
+.main-Exhibition-pic:hover .text{
+    opacity: 1;
 }
 
-.tp {
-    display: inline-block;
-    padding: 5px 10px;
-    font-weight: 600;
-    text-align: center;
-    font-size: 34px;
+.main-btn {
+    display: flex;
+    justify-content: center;
 }
 
-    .tp:hover {
-        color: #eee;
-        cursor: pointer;
-    }
-
-input:checked + .tp {
-    color: #111;
-    background-color: #eee;
+.ex-Main-pic {
+    margin-bottom: 30px;
+    padding-top:20px;
+    padding-bottom:40px;
+    max-width:70%;
+    margin:auto;
 }
 
-#tab1:checked ~ .content #content1,
-#tab2:checked ~ .content #content2,
-#tab3:checked ~ .content #content3,
-#tab4:checked ~ .content #content4,
-#tab5:checked ~ .content #content5 {
-    display: block;
-    text-align: left;
+.modal-body p{
+    font-size:20px;
+}
+.modal-body p {
+    font-size: 20px;
 }
 
 .content {
     border-top: solid #333 2px;
     padding-top: 1%;
     box-sizing: border-box;
-}
-
-#content1,
-#content2 {
-    margin: 0 0 20px;
-    height: 100%;
-    border: 1px solid #666;
-    border-radius: 3px;
-    background-color: #eee;
 }
 
 .main-btn {
@@ -74,17 +57,56 @@ p {
     margin: 0px;
 }
 
-.row {
-    margin-right: 0px;
-    margin-left: 0px;
-}
-
 .card {
     margin: auto;
     box-sizing: border-box;
+    width:20rem;
+    max-height:30rem;
+    position:relative;
+}
+.card:hover .text{
+    opacity:1;
 }
 
-.midsolid {
+.text {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    color: white;
+    background-color: rgba(0,0,0,.5);
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    opacity: 0;
+    transition: .5s;
+}
+
+.text p {
+    font-size:20px;
+    font-weight:900;
+    text-align: center;
+}
+
+.card-title{
+    font-size:1.7rem;
+}
+
+.card-body {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 10;
+    -webkit-box-orient: vertical;
+}
+.card-text {
+    text-align: center;
+}
+
+hr{
     border: #666 solid 2px;
 }
 
@@ -95,14 +117,39 @@ p {
     font-size: 40px;
     padding: 20px;
 }
+
+.ex-path ul {
+    display: flex;
+    padding:0;
+}
+
+.ex-path a {
+    color: black;
+    text-decoration: none;
+}
+
+.ex-path li:hover a {
+    color: rgba(138, 105, 38, 1);
+    transition: .5s;
+}
+
+.ex-path li + li::before {
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    content: '\f054';
+    padding: 0 5px;
+}
+
 .main-Exhibition{
-    margin-top:3%;
+    margin-top:40px;
 }
-.ex-exhibition{
-    margin-bottom:3%;
+
+.other-exhibition{
+    padding-bottom:20px;
 }
-.btn:focus, .btn.focus{
-    box-shadow:none;
+
+.btn:focus, .btn.focus {
+    box-shadow: none;
 }
 .btn-secondary {
     background-color: rgba(138, 105, 38, 1);
@@ -113,19 +160,8 @@ p {
     border-color: rgba(138, 105, 38, 1);
     color: white;
 }
-.card-body {
-    max-height:380px;
-}
-.card-text {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 10;
-    -webkit-box-orient: vertical;
-}
-.ex-Main-pic{
-    margin-bottom:40px;
-}
+
+
 .intro{
     margin-bottom:20px;
 }

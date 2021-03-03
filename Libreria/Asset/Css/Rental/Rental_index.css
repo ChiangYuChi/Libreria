@@ -32,10 +32,19 @@ pointer-events: none;
 border: none !important;
 color: rgba(176, 176, 176, 1);
 }
+
+/*已被預約*/
+.booked {
+    pointer-events: none;
+    border: none !important;
+    background-color: rgba(119, 90, 31, 0.6);
+    color: white;
+}
+
 /*選取日期*/
 .pick-date {
-    background-color:rgba(138, 105, 38, 1);
-    color:white;
+    background-color: rgba(138, 105, 38, 1);
+    color: white;
 }
 
 
@@ -271,25 +280,31 @@ transition: .5s;
 cursor: pointer;
 }
 
-.space__calendar span {
-margin-top: 50px;
+.space__orderedTitle span {
+    margin-top: 50px;
 }
 
-.space__calendar span::before {
-content: '';
-display: inline-block;
-width: 20px;
-height: 20px;
-margin-right: 5px;
-border-radius: 2px;
-vertical-align: text-top;
-background-color: rgba(138, 105, 38, 1);
+.space__orderedTitle span::before {
+    content: '';
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+    border-radius: 2px;
+    vertical-align: text-top;
+    background-color: rgba(138, 105, 38, 1);
 }
+
+.space__orderedTitle span + span::before {
+    margin-left:20px;
+    background-color: rgba(119, 90, 31, 0.6);
+}
+
 
 .space__rule li {
-list-style-type: square;
-margin-left: 20px;
-line-height:30px;
+    list-style-type: square;
+    margin-left: 20px;
+    line-height: 30px;
 }
 
 .space__rule li + li {
@@ -374,9 +389,6 @@ padding-top: 20px;
     -webkit-box-shadow: none;
     box-shadow: none;
 }
-
-
-
 
 
 .space__check-out--btn a {
@@ -477,7 +489,7 @@ display: none;
     .space__check-out {
     position: sticky;
     display: block;
-    top: 0;
+    top: 20px;
     margin-left: 40px;
     }
 
