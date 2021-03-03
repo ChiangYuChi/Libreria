@@ -19,10 +19,9 @@ namespace Libreria.Controllers
         // GET: Rental
         public ActionResult Index()
         {
+            ViewBag.PickDateRange = _rentalService.GetPickDateRange();
             return View();
         }
-
-
 
         [HttpPost]
         public ActionResult Confirm(RentalConfirmViewModel model)
@@ -45,5 +44,6 @@ namespace Libreria.Controllers
                 return View("Confirm", model);
             }
         }
+
     }
 }

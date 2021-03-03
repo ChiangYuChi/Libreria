@@ -6,7 +6,7 @@
 {
 
     <li class="book-list">
-        <a class="cbp-vm-image" href="@Url.Action("ProductDetail", "Product", new { id = item.Id })"><img src="@item.MainUrl"></a>
+        <a class="cbp-vm-image" href="@Url.Action("ProductDetail", "Product", new { id = item.Id,style="text-decoration:none;" })"><img src="@item.MainUrl"></a>
         <h3 class="cbp-vm-title">  @Html.ActionLink(@item.Name, "ProductDetail", "Product", new { id = item.Id, style = "text-decoration:none" }, null)</h3>
         <div class="cbp-vm-price">NT$ <span>@(String.Format("{0:N0}",item.UnitPrice))</span></div>
         <div class="cbp-vm-details">

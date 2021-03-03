@@ -78,8 +78,19 @@ namespace Libreria.Service
             return result;
         }
 
-        
-        
+        public IEnumerable<string> GetPickDateRange()
+        {
+            var exhibitionOrders = _DbRepository.GetAll<ExhibitionOrder>().ToList();
+            var convertDateRange = exhibitionOrders.Select(x =>
+             {
+                 var days = (x.EndDate - x.StartDate).Days + 1;
+                 return Enumerable.Range(0, days).Select(index => x.StartDate.AddDays(index).ToString("yyyy/MM/dd"));
+             });
+            var listDateRange = convertDateRange.SelectMany(s => s);
+
+            return listDateRange.Distinct();
+        }
+
     }
     
 }
