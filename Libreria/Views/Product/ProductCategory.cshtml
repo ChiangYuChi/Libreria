@@ -161,12 +161,11 @@
                     success: function (response) {
                         $("#MyCart").text("購物車(" + response + ")");
                         $.ajax({
-                            type: "POST",
+                            type: "GET",
                             url: "/Product/GetToCartPartial",
-                            dataType: "text",
-                            success: function (response) {
-                                Gson gson = new Gson();
-                                String str = gson.toJson(response);
+                            dataType: "",
+                            success: function (cartList) {
+                                console.log(cartList);
                             }
                         });
                     }
@@ -220,8 +219,6 @@
             }
 
             function openCart() {
-                cartOpen = true;
-
                 $('body').addClass('open');
             }
 
@@ -233,6 +230,8 @@
             function addProduct(e) {
                 e.preventDefault();
                 //openCart();
+                cartOpen = true;
+                location.reload();
                 
                 numberOfProducts++;
             }
