@@ -1,4 +1,6 @@
-﻿@section topCSS{
+﻿@model Libreria.ViewModels.MemberViewModel
+
+@section topCSS{
     @*MemberInfo CSS*@
     <link href="~/Asset/Css/MemberInfo/member_info.css" rel="stylesheet" />
 }
@@ -11,7 +13,10 @@
             crossorigin="anonymous"></script>
 
 }
-
+@{
+    List<MemberViewModel> member;
+    member = ViewBag.member;
+}
 
 
 <div class="container">
@@ -29,201 +34,190 @@
 
     <div class="tab-content" id="myTabContent">
         <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-            <form class="form-group row mt-4" id="infoForm>
-                <div class="col-12">
-                    <div class="form-group row">
-                        <label class="form-subtitle col-3 col-xl-1 col-lg-2 text-right text-nowrap">姓名</label>
-                        <div class="form-content col-xl-4 col-lg-5 col-9">
-                            <p class="name">陳*穎</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12">
-                    <div class="form-group row">
-                        <label class="form-subtitle col-3 col-xl-1 col-lg-2 text-right text-nowrap">會員卡號</label>
-                        <div class="form-content col-xl-4 col-lg-5 col-9">
-                            <p class="card-number">1234567890</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12">
-                    <div class="form-group row">
-                        <label class="form-subtitle col-3 col-xl-1 col-lg-2 text-right text-nowrap">生日</label>
-                        <div class="form-content col-xl-4 col-lg-5 col-9">
-                            <p class="birthday">
-                                0000/00/00
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12">
-                    <div class="form-group row">
-                        <label class="form-subtitle col-3 col-xl-1 col-lg-2 text-right text-nowrap">證件號碼</label>
-                        <div class="form-content col-xl-4 col-lg-5 col-9">
-                            <p class="Id-number">
-                                A123456789
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12">
-                    <div class="form-group row">
-                        <label class="form-subtitle col-3 col-xl-1 col-lg-2 text-right text-nowrap">性別</label>
-                        <div class="form-content col-xl-4 col-lg-5 col-9">
-                            <div class="gender">
-                                <div class="form-check-inline">
-                                    <label class="form-check-label">
-                                        <input type="radio" class="form-check-input" name="optradio">男
-                                    </label>
-                                </div>
-                                <div class="form-check-inline">
-                                    <label class="form-check-label">
-                                        <input type="radio" class="form-check-input" name="optradio">女
-                                    </label>
-                                </div>
-                                <div class="form-check-inline">
-                                    <label class="form-check-label">
-                                        <input type="radio" class="form-check-input" name="optradio">不指定
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12">
-                    <div class="form-group row">
-                        <label class="form-subtitle col-3 col-xl-1 col-lg-2 text-right text-nowrap">Email</label>
-                        <div class="form-content col-xl-4 col-lg-5 col-9">
-                            <input class="Email" type="email" placeholder="email@gmail.com"></input>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12">
-                    <div class="form-group row">
-                        <label class="form-subtitle col-3 col-xl-1 col-lg-2 text-right text-nowrap">行動電話</label>
-                        <div class="form-content col-xl-4 col-lg-5 col-9">
-                            <p class="mobilephone-number">
-                                <select name="mobilephone-area" id="mobilephone-area">
-                                    <option value="886" placeholder="0912345678">+886(台灣)</option>
-                                    <input type="tel" id="mobilephone">
-                                </select>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12">
-                    <div class="form-group row">
-                        <label class="form-subtitle col-3 col-xl-1 col-lg-2 text-right text-nowrap">市內電話</label>
-                        <div class="form-content col-xl-4 col-lg-5 col-9 ">
-                            <div class="form-row">
-                                <input class="col-4" placeholder="市話區碼" type="tel">
-                                <input class="col-5" placeholder="市話號碼" type="tel">
-                                <input class="col-3" placeholder="分機" type="tel">
-                            </div>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12">
-                    <div class="form-group row">
-                        <label class="form-subtitle col-3 col-xl-1 col-lg-2 text-right text-nowrap">居住地</label>
-                        <div class="form-content col-xl-4 col-lg-5 col-9">
-                            <div class="habitation">
-                                <div class="form-check-inline">
-                                    <label class="form-check-label">
-                                        <input type="radio" class="form-check-input" name="optradio">台灣
-                                    </label>
-                                </div>
-                                <div class="form-check-inline">
-                                    <label class="form-check-label">
-                                        <input type="radio" class="form-check-input" name="optradio">大陸
-                                    </label>
-                                </div>
-                                <div class="form-check-inline">
-                                    <label class="form-check-label">
-                                        <input type="radio" class="form-check-input" name="optradio">香港
-                                    </label>
-                                </div>
-                                <div class="form-check-inline">
-                                    <label class="form-check-label">
-                                        <input type="radio" class="form-check-input" name="optradio">其他
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-12">
-                    <div class="form-group row"><div class="recipient_profile_address">
-                    <p>聯絡地址</p>
-                    <div class="recipient_profile_select">
-                        <select name="AddressCitySelect" id="recipient_option recipient_option_counties Region" required>
-                            <option id="taiwanAddressNew" value="">請選擇</option>
-                            <option value="臺北市">臺北市</option> <!--1-->
-                            <option value="新北市">新北市</option> <!--2-->
-                            <option value="桃園市">桃園市</option> <!--3-->
-                            <option value="臺中市">臺中市</option> <!--4-->
-                            <option value="臺南市">臺南市</option> <!--5-->
-                            <option value="高雄市">高雄市</option> <!--6-->
-                            <option value="基隆市">基隆市</option> <!--7-->
-                            <option value="新竹市">新竹市</option> <!--8-->
-                            <option value="嘉義市">嘉義市</option> <!--9-->
-                            <option value="新竹縣">新竹縣</option> <!--10-->
-                            <option value="苗栗縣">苗栗縣</option> <!--11-->
-                            <option value="彰化縣">彰化縣</option> <!--12-->
-                            <option value="南投縣">南投縣</option> <!--13-->
-                            <option value="雲林縣">雲林縣</option> <!--14-->
-                            <option value="嘉義縣">嘉義縣</option> <!--15-->
-                            <option value="屏東縣">屏東縣</option> <!--16-->
-                            <option value="宜蘭縣">宜蘭縣</option> <!--17-->
-                            <option value="花蓮縣">花蓮縣</option> <!--18-->
-                            <option value="臺東縣">臺東縣</option> <!--19-->
-                            <option value="澎湖縣">澎湖縣</option> <!--20-->
-                            <option value="金門縣">金門縣</option> <!--21-->
-                            <option value="連江縣">連江縣</option> <!--22-->
-                        </select>
-                        <select name="AddressRegionSelect" id="recipient_option_district Town" required>
-                            <option value="">請選擇</option>
-                        </select>
-                        <div class="form-content col-xl-4 col-lg-5 col-9">
-                            <input class="contact-address" type="text">
-                        </div>
-                    </div>
-                </div>
-                        
-                    <div class="col-12 mt-2 d-flex justify-content-center" ">
-                        <button type="button" class="cancel">取消</button>
-                        <button type="submit" class="confirm" disabled="disable">確認</button>
-                    </div>
-                </div>
-            </div>
-        </form>
-        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-            <from id="passwordFrom">
-                <div class="row">
-                    <div class="form-group form-input form-row">
-                        <div class="col-12 inputbox"><p>原登入密碼</p><input type="password"></div>
-                        <div class="col-12 inputbox"><p>設定新密碼</p><input type="password"></div>
-                        <div class="col-12 inputbox"><p>確認新密碼</p><input type="password"></div>
+            @foreach (var item in member)
+            {
+                using (Html.BeginForm("MemberInfo", "MemberCenter", FormMethod.Post, new { @id = "infoForm", @class = "form-group row mt-4" }))
+                {
+                    @Html.HiddenFor(model => model.memberPassword, new { @class = "form-control", @Value = item.memberPassword })
+                    @Html.HiddenFor(model => model.memberPassword, new { @class = "form-control", @Value = item.memberPassword })
 
-                    </div>
+                    <div class="col-12">
+                        <div class="form-group row">
+                            @Html.LabelFor(model => model.memberName, htmlAttributes: new { @class = "form-subtitle col-3 col-xl-1 col-lg-2 text-right text-nowrap" })
+                            <div class="form-content col-xl-4 col-lg-5 col-9">
+                                <p class="card-number">
+                                    @Html.HiddenFor(model => model.memberName, new { @class = "form-control", @Value = item.memberName })
 
-                </div>
-            </from>
-            
-            <div class="col-12 mt-2 d-flex justify-content-center" ">
-                <button type="button" class="cancel">取消</button>
-                <button type="submit" class="confirm" disabled="disable">確認</button>
-            </div>
+                                    @Html.DisplayFor(modelItem => item.memberName)
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="form-group row">
+                            @Html.LabelFor(model => model.memberUserName, htmlAttributes: new { @class = "form-subtitle col-3 col-xl-1 col-lg-2 text-right text-nowrap" })
+                            <div class="form-content col-xl-4 col-lg-5 col-9">
+                                <p class="name">
+                                    @Html.ValidationMessage("memberUserName", new { @class = "text-danger" })
+                                    @Html.TextBoxFor(model => model.memberUserName, new { @class = "form-control", @Value = item.memberUserName })
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="form-group row">
+                            @Html.LabelFor(model => model.birthday, htmlAttributes: new { @class = "form-subtitle col-3 col-xl-1 col-lg-2 text-right text-nowrap" })
+                            <div class="form-content col-xl-4 col-lg-5 col-9">
+                                <p class="birthday">
+                                    @Html.ValidationMessageFor(model => model.birthday, "", new { @class = "text-danger" })
+                                    @Html.TextBoxFor(model => model.birthday, "{0:yyyy-MM-dd}", new { @class = "form-control", @Value = item.birthday.ToString("yyyy-MM-dd"), Type = "date" })
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="form-group row">
+                            @Html.LabelFor(model => model.IDnumber, htmlAttributes: new { @class = "form-subtitle col-3 col-xl-1 col-lg-2 text-right text-nowrap" })
+                            <div class="form-content col-xl-4 col-lg-5 col-9">
+                                <p class="Id-number">
+                                    @Html.ValidationMessageFor(model => model.IDnumber, "", new { @class = "text-danger" })
+                                    @Html.TextBoxFor(model => model.IDnumber, new { @class = "form-control", @Value = item.IDnumber })
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="form-group row">
+                            @Html.LabelFor(model => model.Gender, htmlAttributes: new { @class = "form-subtitle col-3 col-xl-1 col-lg-2 text-right text-nowrap" })
+
+                            <div class="form-content col-xl-4 col-lg-5 col-9">
+                                <div class="gender">
+                                    @Html.RadioButtonFor(model => model.Gender, 0, new { @id = "Gendersradio0", @name = "Gender", @class = "control-label col-md-2", @Checked = (item.Gender == 0 ? true : false) })@Html.Label("男")
+                                    @Html.RadioButtonFor(model => model.Gender, 1, new { @id = "Gendersradio0", @name = "Gender", @class = "control-label col-md-2", @Checked = (item.Gender == 1 ? true : false) })@Html.Label("女")
+                                    @Html.RadioButtonFor(model => model.Gender, 2, new { @id = "Gendersradio0", @name = "Gender", @class = "control-label col-md-2", @Checked = (item.Gender == 2 ? true : false) })@Html.Label("其他")<br>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="form-group row">
+                            @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "form-subtitle col-3 col-xl-1 col-lg-2 text-right text-nowrap" })
+                            <div class="form-content col-xl-4 col-lg-5 col-9">
+                                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                                @Html.TextBoxFor(model => model.Email, new { @class = "form-control", @Value = item.Email })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="form-group row">
+                            @Html.LabelFor(model => model.MobileNumber, htmlAttributes: new { @class = "form-subtitle col-3 col-xl-1 col-lg-2 text-right text-nowrap" })
+                            <div class="form-content col-xl-4 col-lg-5 col-9">
+                                <p class="mobilephone-number">
+                                    <div name="mobilephone-area" id="mobilephone-area">
+                                        @Html.ValidationMessageFor(model => model.MobileNumber, "", new { @class = "text-danger" })
+                                        @Html.TextBoxFor(model => model.MobileNumber, new { @class = "form-control", @Value = item.MobileNumber })
+                                    </div>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="form-group row">
+                            @Html.LabelFor(model => model.HomeNumber, htmlAttributes: new { @class = "form-subtitle col-3 col-xl-1 col-lg-2 text-right text-nowrap" })
+                            <div class="form-content col-xl-4 col-lg-5 col-9 ">
+                                <div class="form-row">
+                                    @Html.ValidationMessageFor(model => model.HomeNumber, "", new { @class = "text-danger" })
+                                    @Html.TextBoxFor(model => model.HomeNumber, new { @class = "form-control", @Value = item.HomeNumber })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="form-group row">
+                                @Html.LabelFor(model => model.Address, htmlAttributes: new { @class = "form-subtitle col-3 col-xl-1 col-lg-2 text-right text-nowrap" })
+                            <div class="recipient_profile_address form-content col-xl-4 col-lg-5 col-9 ">
+                                <div class="form-row">
+
+                                    <div class="recipient_profile_select">
+                                        @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+                                        @Html.DropDownListFor(model => model.City, new List<SelectListItem>{
+                                      new SelectListItem{ Value="0",Text="選取縣市"},
+                                      new SelectListItem{ Value="臺北市",Text="臺北市", Selected = (item.City == "臺北市" ? true : false) },
+                                      new SelectListItem{ Value="新北市",Text="新北市", Selected = (item.City == "新北市" ? true : false) },
+                                      new SelectListItem{ Value="桃園市",Text="桃園市", Selected = (item.City == "桃園市" ? true : false) },
+                                      new SelectListItem{ Value="臺中市",Text="臺中市", Selected = (item.City == "臺中市" ? true : false) },
+                                      new SelectListItem{ Value="臺南市",Text="臺南市", Selected = (item.City == "臺南市" ? true : false) },
+                                      new SelectListItem{ Value="高雄市",Text="高雄市", Selected = (item.City == "高雄市" ? true : false) },
+                                      new SelectListItem{ Value="基隆市",Text="基隆市", Selected = (item.City == "基隆市" ? true : false) },
+                                      new SelectListItem{ Value="新竹市",Text="新竹市", Selected = (item.City == "新竹市" ? true : false) },
+                                      new SelectListItem{ Value="嘉義市",Text="嘉義市", Selected = (item.City == "嘉義市" ? true : false) },
+                                      new SelectListItem{ Value="新竹縣",Text="新竹縣", Selected = (item.City == "新竹縣" ? true : false) },
+                                      new SelectListItem{ Value="苗栗縣",Text="苗栗縣", Selected = (item.City == "苗栗縣" ? true : false) },
+                                      new SelectListItem{ Value="彰化縣",Text="彰化縣", Selected = (item.City == "彰化縣" ? true : false) },
+                                      new SelectListItem{ Value="南投縣",Text="南投縣", Selected = (item.City == "南投縣" ? true : false) },
+                                      new SelectListItem{ Value="雲林縣",Text="雲林縣", Selected = (item.City == "雲林縣" ? true : false) },
+                                      new SelectListItem{ Value="嘉義縣",Text="嘉義縣", Selected = (item.City == "嘉義縣" ? true : false) },
+                                      new SelectListItem{ Value="屏東縣",Text="屏東縣", Selected = (item.City == "屏東縣" ? true : false) },
+                                      new SelectListItem{ Value="宜蘭縣",Text="宜蘭縣", Selected = (item.City == "宜蘭縣" ? true : false) },
+                                      new SelectListItem{ Value="花蓮縣",Text="花蓮縣", Selected = (item.City == "花蓮縣" ? true : false) },
+                                      new SelectListItem{ Value="臺東縣",Text="臺東縣", Selected = (item.City == "臺東縣" ? true : false) },
+                                      new SelectListItem{ Value="澎湖縣",Text="澎湖縣", Selected = (item.City == "澎湖縣" ? true : false) },
+                                      new SelectListItem{ Value="金門縣",Text="金門縣", Selected = (item.City == "金門縣" ? true : false) },
+                                      new SelectListItem{ Value="連江縣",Text="連江縣", Selected = (item.City == "連江縣" ? true : false) },
+                             }, new { @id = "Region", @class = "form-select form-select-lg mb-3", @name = "AddressCitySelect" })
+
+                                        @Html.DropDownListFor(model => model.Region, new List<SelectListItem>{
+                                                    new SelectListItem { Value="選取鄉政市區",Text="選取鄉政市區"}
+                                                }, new { @id = "Town", @class = "form-select form-select-lg mb-3" })
+
+                                        @Html.TextBoxFor(model => model.Address, new { @class = "form-control", @Value = item.Address })
+                                    </div>
+                                </div>
+                                </div>
+
+                            <div class="col-12 mt-2 d-flex justify-content-center">
+                                <button><a href="" class="cancel">取消</a></button>
+                                <button type="submit" class="confirm">確認</button>
+                            </div>
+
+                            </div>
+                    </div>
+                }
+            }
         </div>
-    </div>
+                    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                            @using (Html.BeginForm("MemberInfo", "MemberCenter", FormMethod.Post, new { @id = "passwordFrom", @class = "form-group row mt-4" }))
+                            {
+                                foreach (var item in member)
+                                {
+                                <div class="row">
+                                    <div class="form-group form-input form-row">
+                                        <div class="col-12 inputbox"><p>原登入密碼</p><input type="password"></div>
+                                        <div class="col-12 inputbox"><p>設定新密碼</p><input type="password"></div>
+                                        <div class="col-12 inputbox"><p>確認新密碼</p><input type="password"></div>
 
-    @section endJs{
-        @*OrderDetail JS*@
-        <script src="~/Asset/Js/ShoppingCart/OrderDetail.js"></script>
-        <script src="~/Asset/Js/Order/OrderDetail.js" crossorigin="anonymous"></script>
-        <script>
+                                    </div>
+
+                                </div>
+                                <div class="col-12 mt-2 d-flex justify-content-center">
+                                    <button><a href="" class="cancel">取消</a></button>
+                                    <button type="submit" class="confirm">確認</button>
+                                </div>
+                                }
+                            }
+                    </div>
+                
+            
+        
+    </div>
+ </div>
+
+        @section endJs{
+            @*OrderDetail JS*@
+            <script src="~/Asset/Js/ShoppingCart/OrderDetail.js"></script>
+            <script src="~/Asset/Js/Order/OrderDetail.js" crossorigin="anonymous"></script>
+            <script>
             //update data
             @*$("form").submit(function (event) {
                 event.preventDefault();
@@ -236,5 +230,77 @@
                     contentType: false,
                     });
             })*@
-        </script>
-    }
+            </script>
+
+
+                @*<script src="~/Asset/Js/MemberCenter/MemberRegisterPage.js" crossorigin="anonymous"></script>
+                <script>
+                    function ValidMemberNAme() {
+                        $.ajax({
+                            url: "",
+                            data: {
+
+                            }
+                        })
+                    }
+                </script>*@
+
+<script>
+                    window.onload = () => {
+                        requestAreaJson();
+                        document.querySelector("#Region").addEventListener("change", findTown);
+
+                    }
+                    const url = "https://raw.githubusercontent.com/eric861129/BuildSchoolLab/main/TwArea.json";
+                    let areaArray = [];
+                    let _area;
+                    let item;
+                    let Town = document.getElementById("Town");
+
+                    let townArray = [];
+                    let CountiesAttractionArray = [];
+                    let texNode;
+                    let CountiesLat;
+                    let CountiesLng;
+                    let pickcenterLat;
+                    let pickcenterLng;
+                    let AttractionLat;
+                    let AttractionLng;
+                    let AttractionName;
+                    var marker;
+                    var _pickAttraction;
+
+
+                    function requestAreaJson() {
+                        let xhr = new XMLHttpRequest();
+                        xhr.onload = function () {
+                            areaArray = JSON.parse(this.response);
+                        }
+                        xhr.open("GET", url);
+                        xhr.send();
+                    }
+                    function findTown() {
+                        //Town.innerHTML = '<option selected>選取鄉政市區</option>';
+
+                        _area = document.querySelector("#Region").value;
+                        document.querySelector("#Town").disabled = null;
+                        areaArray.forEach(x => {
+                            if (x.Counties == _area) {
+                                townArray = x.township;
+                                CountiesLat = x.lat;
+                                CountiesLng = x.lng;
+                                Town.innerHTML = "";
+                                townArray.forEach(item => {
+                                    let newOption = document.createElement('option');
+                                    texNode = document.createTextNode(item);
+                                    newOption.appendChild(texNode);
+                                    Town.appendChild(newOption);
+                                });
+                            }
+                        });
+                    }
+
+                   
+</script>
+
+            }
