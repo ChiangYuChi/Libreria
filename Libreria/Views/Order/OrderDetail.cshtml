@@ -45,7 +45,22 @@
         //地址
         if (RegionIndex >= 0) { MemberAddress = MemberVM.Address.Substring(RegionIndex + 1); }
         else { MemberAddress = ""; }
+
+
+
+        //如果會員資料已經有縣市轄區
+        if (MemberVM.City != null && MemberVM.City != "")
+        {
+            MemberCity = MemberVM.City;
+        }
+
+        if (MemberVM.Region != null && MemberVM.Region != "")
+        {
+            MemberRegion = MemberVM.Region;
+        }
     }
+
+
 
 }
 
