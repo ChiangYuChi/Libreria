@@ -66,7 +66,7 @@ namespace Libreria.ViewModels
         /// </summary>
         [Required]
         [Display(Name = "展覽簡介")]
-        [StringLength(150, ErrorMessage = "最多輸入150個字")]
+        [StringLength(500, ErrorMessage = "最多輸入500個字")]
         public string ExhibitionIntro { get; set; }
 
         /// <summary>
@@ -90,6 +90,8 @@ namespace Libreria.ViewModels
         /// 展覽圖片
         /// </summary>
         [Required]
+        [Display(Name = "上傳圖片")]
+        //[FileExtensions(ErrorMessage = "這不是圖片檔格式!", Extensions = "jpg,jpeg,gif,png,bmp") ]
         public HttpPostedFileBase ExPhoto { get; set; }
 
         /// <summary>

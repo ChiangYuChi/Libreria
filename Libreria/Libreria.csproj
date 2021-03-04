@@ -911,6 +911,7 @@
     <Content Include="Asset\Js\Home-Index\slick.min.js" />
     <Content Include="Asset\Css\MemberCenter\MemberContact.css" />
     <Content Include="Asset\Css\Member\Member.css" />
+    <Content Include="Asset\Js\MemberCenter\MemberOrderInquery.js" />
     <Content Include="Asset\Js\MemberCenter\MemberContact.js" />
     <Content Include="Asset\Js\MemberCenter\Favorite.js" />
     <Content Include="Asset\Js\MemberCenter\member-MyOrder.js" />
@@ -1175,6 +1176,7 @@
     <Content Include="Views\MemberLogin\LoginPartialHambuger.cshtml" />
     <Content Include="Views\Product\Test.cshtml" />
     <Content Include="Views\MemberCenter\MemberBenefits.cshtml" />
+    <Content Include="Views\Order\PayOrder.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Code\" />

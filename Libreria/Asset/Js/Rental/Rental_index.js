@@ -2,6 +2,7 @@
     $('#myInput').trigger('focus')
 })
 
+
 Date.prototype.yyyymmdd = function () {
     var mm = this.getMonth() + 1;
     var dd = this.getDate();
@@ -54,30 +55,35 @@ function generateStartDate(item) {
 
 // 線上預訂
 function bookingOnline() {
-    if (calender.getPickDateRange().pickStartDate != null && calender.getPickDateRange().pickEndDate != null && $('#exhibition-startDate').val() != null && $('#exhibition-endDataModel').val() != null) {
-        let pickDateRange = calender.getPickDateRange();
-        let checkOutTimeContainer = $(this).closest('div').prev();
-        let ExhibitionStartTime = $('select[name=start-data]', checkOutTimeContainer).find('option:selected').val();
-        let ExhibitionEndTime = $('select[name=end-data]', checkOutTimeContainer).find('option:selected').val();
+    let pickDateRange = calender.getPickDateRange();
+    let checkOutTimeContainer = $(this).closest('div').prev();
+    let ExhibitionStartTime = $('select[name=start-data]', checkOutTimeContainer).find('option:selected').val();
+    let ExhibitionEndTime = $('select[name=end-data]', checkOutTimeContainer).find('option:selected').val();
 
-        function getInput(name, value) {
-            return $(document.createElement('input')).attr({
-                'type': 'hidden',
-                'name': name,
-                'value': value,
-            });
+    if (pickDateRange.pickStartDate != null && pickDateRange.pickEndDate != null) {
+        if (ExhibitionStartTime != "" && ExhibitionEndTime != "") {
+            function getInput(name, value) {
+                return $(document.createElement('input')).attr({
+                    'type': 'hidden',
+                    'name': name,
+                    'value': value,
+                });
+            }
+            let form = $(document.createElement('form')).attr({
+                'action': '/Rental/Confirm',
+                'method': 'post',
+            }).append(getInput('ExhibitionStartTime', ExhibitionStartTime))
+                .append(getInput('ExhibitionEndTime', ExhibitionEndTime))
+                .append(getInput('StartDate', pickDateRange.pickStartDate.yyyymmdd()))
+                .append(getInput('EndDate', pickDateRange.pickEndDate.yyyymmdd()))
+            $('body').append(form);
+            form.submit();
         }
-        let form = $(document.createElement('form')).attr({
-            'action': '/Rental/Confirm',
-            'method': 'post',
-        }).append(getInput('ExhibitionStartTime', ExhibitionStartTime))
-            .append(getInput('ExhibitionEndTime', ExhibitionEndTime))
-            .append(getInput('StartDate', pickDateRange.pickStartDate.yyyymmdd()))
-            .append(getInput('EndDate', pickDateRange.pickEndDate.yyyymmdd()))
-        $('body').append(form);
-        form.submit();
+        else {
+            alert("展覽日期請選取!");
+        }
     } else {
-        alert("日期請選取!"); 
+        alert("租借日期請選取!"); 
     }
     
 }
@@ -93,7 +99,6 @@ function Calendar() {
     $('.back', container).click(function () {
         currentDate.setMonth(currentDate.getMonth() - 1);
         generateDaysOfWeek();
-
         
         $('td', tbody).each(function () {
             let indexdate = $(this).data('data');
@@ -105,22 +110,19 @@ function Calendar() {
                 }
             }
         });
-        
-        
-
     });
     // 下個月 
     $('.next', container).click(function () {
         currentDate.setMonth(currentDate.getMonth() + 1);
         generateDaysOfWeek();
 
-       
         $('td', tbody).each(function () {
             let indexdate = $(this).data('data');
             if (indexdate != undefined &&
                 pickStartDate != undefined &&
                 pickEndDate != undefined) {
                 if (pickStartDate <= indexdate && indexdate <= pickEndDate) {
+                    
                     $(this).addClass('pick-date');
                 }
             }
@@ -156,6 +158,10 @@ function Calendar() {
                     continue;
                 }
                 let td = document.createElement('td');
+                //已被預訂
+                if (PickDateRange.indexOf(currentDate.yyyymmdd()) > -1) {
+                    td.className = 'booked';
+                }
                 if (currentDate <= new Date()) {
                     // 不可預約 
                     td.className = 'no-appointment';
@@ -163,6 +169,8 @@ function Calendar() {
                 td.innerHTML = currentDate.getDate();
                 tr.appendChild(td);
 
+                
+                
                 //選取租借時間
                 $(td).data('data', new Date(currentDate.getTime()));
                 $(td).click(function () {
@@ -178,10 +186,11 @@ function Calendar() {
                     if (pickStartDate != null) {
                         pickEndDate = $(this).data('data');
                     }
-                    if (pickStartDate != null && pickEndDate != null ) {
+                    if (pickStartDate != null && pickEndDate != null) {
                         $('td', tbody).each(function () {
                             let indexDate = $(this).data('data');
                             if (pickStartDate <= indexDate && indexDate <= pickEndDate) {
+
                                 $(this).addClass('pick-date');
                             }
                         });

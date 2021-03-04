@@ -14,8 +14,14 @@
     <link href="~/Asset/Css/Rental/Rental_index.css" rel="stylesheet" />
 }
 @section endJs{
+
+    <script type="text/javascript">
+
+        let PickDateRange = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(ViewBag.PickDateRange));
+    </script>
+
     <script src="~/Asset/Js/Rental/Rental_index.js"></script>
-    
+
 }
 
 <div class="spaceLease">
@@ -173,7 +179,10 @@
                             </tbody>
                         </table>
                     </div>
-                    <span>已預定</span>
+                    <div class="space__orderedTitle">
+                        <span>選取預定日期</span>
+                        <span>已被預定</span>
+                    </div>
                     <div class="space__check-out--btn btn-narrow-only">
                         <button data-toggle="modal" data-target="#exampleModal2">確定</button>
                     </div>
@@ -190,8 +199,10 @@
                                     <div class="modal-body">
                                         <div class="space__check-out--money modelItem-group">
                                             <p>每天</p>
-                                            <p>$525-525</p>
+                                            <p>$1500</p>
                                         </div>
+
+
                                         <div class="space__check-out--data modelItem-group">
                                             <h5>租借日期</h5>
                                             <div class="start-data">請選擇租借開始日期</div>
@@ -214,6 +225,7 @@
                                             <a name="bookingOnlineBtn" href="javascript:void(0);">線上預訂</a>
                                         </div>
                                     </div>
+
                                 </div>
                             </div>
                         </div>
@@ -265,7 +277,7 @@
             <div class="space__check-out">
                 <div class="space__check-out--money modelItem-group">
                     <p>每天</p>
-                    <p>$2500</p>
+                    <p>$1500</p>
                 </div>
                 <div class="space__check-out--data modelItem-group">
                     <h5>租借日期</h5>
