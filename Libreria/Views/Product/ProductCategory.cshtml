@@ -131,7 +131,26 @@
                 </article>
             </div>
         }
-
+        @foreach (var item in ViewBag.shoppinCart)
+        {
+            <div class="cart__product js-cart-product-template ">
+                <article class="js-cart-product row">
+                    <h4 class="col-12" id="bookname" style="font-size:20px;">@item.ProductName</h4>
+                    <div class="col-9">
+                        <img src="@item.PicUrl" alt="" id="bookImg" style="height:280px;" />
+                    </div>
+                    <div class="col-3" style="align-self:flex-end;text-align:end;">
+                        <p class="price" id="price">@item.Price</p>
+                        <p>
+                            @*<button onclick="DeleteCart(@item.ProductId)"class="js-remove-product" title="Delete product">删除商品</button>*@
+                            <a class="js-remove-product" id="delete" href="#" title="Delete product" onclick="DeleteCart(@item.ProductId)">
+                                刪除商品
+                            </a>
+                        </p>
+                    </div>
+                </article>
+            </div>
+        }
 
 
     </div>
@@ -203,7 +222,6 @@
                             let productCart = document.querySelector("#cart-pro");
                             let cartblock = document.querySelector(".js-cart-products");
                             let cart;
-                            let id;
                             cartList.forEach(item => {
                                 cart = productCart.content.cloneNode(true);
                                 cart.querySelector("#bookname").innerHTML = item.ProductName;

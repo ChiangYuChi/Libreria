@@ -39,6 +39,7 @@ namespace Libreria.Controllers
         {
             List<ProductViewModel> result;
             ViewBag.shoppincart = _shoppingService.GetAnonymousAll();
+            ViewBag.shoppingCart = _shoppingService.GetAll();
 
             if (CategoryId != null)
             {
@@ -113,9 +114,21 @@ namespace Libreria.Controllers
         /// </returns>
         public ActionResult GetToCartPartial()
         {
-            var cartList = _shoppingService.GetAnonymousAll();
+            List<ShoppingCartViewModel> result;
+            if (System.Web.HttpContext.Current.Session["MemberID"] == null)
+            {
+                result = _shoppingService.GetAnonymousAll();
+                
+            }
+            else
+            {
+                result = _shoppingService.GetAll();
 
-            return Json(cartList);
+            }
+
+            return Json(result);
+
+            
         }
     }
 }
