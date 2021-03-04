@@ -106,7 +106,17 @@ namespace Libreria.Controllers
             var product = _productService.PromoteMajor();
             return PartialView(product);
         }
-        
+
+
+
+
+        /// <summary>
+        /// 於商品分類業的購物車icon，購物車功能，將GetAnonymousAll()之方法所取得之senssion資料以json格式回傳
+        /// </summary>
+        /// <returns>
+        /// 回傳為senssion轉換為json格式之資料。
+        /// </returns>
+        /// 
         [HttpPost]
         public ActionResult GetToCartPartial()
         {
