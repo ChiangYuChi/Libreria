@@ -106,16 +106,13 @@ namespace Libreria.Controllers
             var product = _productService.PromoteMajor();
             return PartialView(product);
         }
-        public ActionResult Test()
-        {
-            return View();
-        }
+        
         [HttpPost]
-        public List<ShoppingCartViewModel> GetToCartPartial()
+        public ActionResult GetToCartPartial()
         {
             var cartList = _shoppingService.GetAnonymousAll();
 
-            return cartList;
+            return Json(cartList);
         }
     }
 }

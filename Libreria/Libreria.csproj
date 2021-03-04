@@ -912,6 +912,7 @@
     <Content Include="Asset\Js\Home-Index\slick.min.js" />
     <Content Include="Asset\Css\MemberCenter\MemberContact.css" />
     <Content Include="Asset\Css\Member\Member.css" />
+    <Content Include="Asset\Js\MemberCenter\MemberOrderInquery.js" />
     <Content Include="Asset\Js\MemberCenter\MemberContact.js" />
     <Content Include="Asset\Js\MemberCenter\Favorite.js" />
     <Content Include="Asset\Js\MemberCenter\member-MyOrder.js" />

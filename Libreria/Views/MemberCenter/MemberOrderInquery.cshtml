@@ -21,12 +21,12 @@
 
     <div class="health-content">
         <div class="order">
-            <div class="order__title" >
+            <div class="order__title">
                 <h2>我的訂單</h2>
                 @*<div class="title__item">
-                    <p>7-11逾期未領退回: <span>0</span> 件</p>
-                    <p>客樂得未領退回: <span>0</span> 件</p>
-                </div>*@
+                        <p>7-11逾期未領退回: <span>0</span> 件</p>
+                        <p>客樂得未領退回: <span>0</span> 件</p>
+                    </div>*@
                 <div class="title__item--narrow-only" style="margin-top:20px;">
                     <p>
                         未出貨:
@@ -157,9 +157,13 @@
                     <tbody>
                         @if (Model != null)
                         {
+                            int OrderCount = 0;
                             foreach (var order in Model)
                             {
-                                <tr>
+                                OrderCount++;
+                                string OrderHtmlId = "OrderHtmlId-";
+                                OrderHtmlId += OrderCount;
+                                <tr class="Order-Html-Class" id=@OrderHtmlId>
                                     <td>
                                         <!--訂單編號-->
                                         @order.OrderId
@@ -176,7 +180,9 @@
                                         <!--訂單金額-->
                                         @((int)order.OrderPrice)
                                     </td>
+
                                     <td>
+
                                         <!--商品名稱-->
                                         @foreach (var orderDetail in order.OrderDetailList)
                                         {
@@ -196,7 +202,7 @@
                                     </td>
                                     <td>
                                         <!-- Button trigger modal -->
-                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" id=@("ModalButton"+order.OrderId)>
+                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" id=@("ModalButton" + order.OrderId)>
                                             詳細資料
                                         </button>
 
@@ -237,25 +243,31 @@
             </div>
         </div>
 
-        @*<div class="min-Pagination">
+        <div class="min-Pagination">
             <nav>
                 <ul>
-                    <li>
-                        <a href="#" aria-label="Previous">
-                            <span aria-hidden="true">&laquo;</span>
-                        </a>
-                    </li>
-                    <li><a href="#">1</a></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li>
-                        <a href="#" aria-label="Next">
-                            <span aria-hidden="true">&raquo;</span>
-                        </a>
-                    </li>
+                    <li class="page-click" id="PagePrevious">&laquo;</li>
+                    <li class="page-click" id="PageFirst">1</li>
+                    <li id="PageMoreLeft">...</li>
+                    @{int AmountPerPage = 20;}
+                    @{int PageCount = 0;}
+                    @for (int i = 1; i < (double)Model.Count / AmountPerPage + 1; i++)
+                    {
+                        string PageString = "Page-";
+                        PageString += i;
+                        <li class="page-click" id=@PageString>@i</li>
+                        PageCount++;
+                    }
+                    @if (PageCount<1)
+                    {
+                        <li class="page-click" id="Page-1">1</li>
+                    }
+                    <li id="PageMoreRight">...</li>
+                    <li class="page-click" id="PageLast">@PageCount</li>
+                    <li class="page-click" id="PageNext">&raquo;</li>
                 </ul>
             </nav>
-        </div>*@
+        </div>
 
         <div class="order__remarks section-block">
             <div class="remarks__title decoration">
@@ -290,7 +302,7 @@
 
     @foreach (var order in Model)
     {
-<script>
+        <script>
             ModalButton = document.getElementById("@("ModalButton"+order.OrderId)");
             ModalButton.addEventListener("click", function () {
                 ModalOrderId.innerText = "訂單編號：@order.OrderId";
@@ -304,10 +316,114 @@
             })
 
 
-</script>
+        </script>
     }
 
 
+
+    <script>
+
+        //訂單分頁
+        let PageElements = [];
+        let NowPage = 1;
+
+        for (let i = 1; i < @((double)Model.Count / AmountPerPage + 1); i++) {
+            let PageElementId = "Page-";
+            PageElementId += i;
+            PageElements[i] = document.getElementById(PageElementId);
+
+            PageElements[i].onclick = function () { PageClick(i); }
+        }
+
+        PageFirst = document.getElementById("PageFirst");
+        PageMoreLeft = document.getElementById("PageMoreLeft");
+        PageLast = document.getElementById("PageLast");
+        PageMoreRight = document.getElementById("PageMoreRight");
+
+        PageFirst.onclick = function () { PageClick(1); }
+        PageLast.onclick = function () { PageClick(PageElements.length - 1); }
+
+        PagePrevious = document.getElementById("PagePrevious");
+        PageNext = document.getElementById("PageNext");
+
+        let OrderList = [];
+
+        for (let i = 1;i<=@Model.Count;i++){
+            let OrderListId = "OrderHtmlId-";
+            OrderListId += i;
+            OrderList[i] = document.getElementById(OrderListId);
+        }
+
+        function PageClick(nowPage) {
+
+            OrderList.forEach(function(OrderHtml){
+                OrderHtml.style.display = "none";
+            })
+
+            NowPage = nowPage;
+            start = (nowPage - 1) *@AmountPerPage+1;
+            end = Math.min(nowPage *@AmountPerPage, OrderList.length-1);
+
+            for (let i = start; i <= end && i>=1; i++) {
+                OrderList[i].style.display = "table-row";
+            }
+
+            PageDisplay(nowPage);
+        }
+
+        function PageDisplay(nowPage) {
+            let PageDisplayAmount = 2;
+            let start = nowPage - PageDisplayAmount;
+            let end = nowPage + PageDisplayAmount;
+
+
+            //開頭
+            if (nowPage <= 1 + PageDisplayAmount) {
+                PageFirst.style.display = "none";
+                PageMoreLeft.style.display = "none";
+            }
+            else if (nowPage == 1 + PageDisplayAmount+1)
+            {
+                PageFirst.style.display = "list-item";
+                PageMoreLeft.style.display = "none";
+            }
+            else {
+                PageFirst.style.display = "list-item";
+                PageMoreLeft.style.display = "list-item";
+            }
+
+            //結尾
+            if (nowPage >= PageElements.length - 1 - PageDisplayAmount) {
+                PageLast.style.display = "none";
+                PageMoreRight.style.display = "none";
+            }
+            else if (nowPage == PageElements.length - 1 - PageDisplayAmount-1) {
+                PageLast.style.display = "list-item";
+                PageMoreRight.style.display = "none";
+            }
+            else {
+                PageLast.style.display = "list-item";
+                PageMoreRight.style.display = "list-item";
+            }
+
+            PageElements.forEach(function (PageElement) {
+                PageElement.style.display = "none";
+            })
+
+            //中間
+            for (i = start; i <= end; i++) {
+                if (i>=1 && i<=PageElements.length-1) {
+                    PageElements[i].style.display = "list-item";
+                }
+            }
+
+            PagePrevious.onclick = function () { PageClick(Math.max(nowPage - 1, 1)); }
+            PageNext.onclick = function () { PageClick(Math.min(nowPage + 1, PageElements.length - 1)); }
+        }
+
+    </script>
+
+    <script src="~/Asset/Js/MemberCenter/MemberOrderInquery.js"></script>
 }
 
 
