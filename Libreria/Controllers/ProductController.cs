@@ -107,8 +107,8 @@ namespace Libreria.Controllers
             var product = _productService.PromoteMajor();
             return PartialView(product);
         }
-        
-        [HttpPost]
+
+
 
 
         /// <summary>
@@ -117,6 +117,8 @@ namespace Libreria.Controllers
         /// <returns>
         /// 回傳為senssion轉換為json格式之資料。
         /// </returns>
+
+        [HttpPost]
         public ActionResult GetToCartPartial()
         {
             List<ShoppingCartViewModel> result;
