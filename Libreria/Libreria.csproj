@@ -51,7 +51,7 @@
       <HintPath>..\packages\BouncyCastle.1.8.5\lib\BouncyCastle.Crypto.dll</HintPath>
     </Reference>
     <Reference Include="ECPay.Payment.Integration">
-      <HintPath>..\..\..\..\..\Downloads\ECPayAIO_Net-master\ECPay.Payment.Integration.dll</HintPath>
+      <HintPath>C:\Users\USER\Downloads\ECPayAIO_Net-master\ECPayAIO_Net-master\ECPay.Payment.Integration.dll</HintPath>
     </Reference>
     <Reference Include="Google.Protobuf, Version=3.11.4.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
       <HintPath>..\packages\Google.Protobuf.3.11.4\lib\net45\Google.Protobuf.dll</HintPath>
