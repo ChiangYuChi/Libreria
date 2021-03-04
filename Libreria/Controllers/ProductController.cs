@@ -14,11 +14,14 @@ namespace Libreria.Controllers
     {
         private readonly ProductService _productService;
         private readonly FavoriteService _favoriteService;
+        private readonly ShoppingService _shoppingService;
+
 
 
         public ProductController()
         {
             _productService = new ProductService();
+            _shoppingService = new ShoppingService();
             _favoriteService = new FavoriteService();
         }
 
@@ -39,6 +42,7 @@ namespace Libreria.Controllers
             ViewBag.Name = CategoryName;
 
             List<ProductViewModel> result;
+            ViewBag.shoppincart = _shoppingService.GetAnonymousAll();
 
             if (CategoryId != null)
             {
@@ -103,5 +107,12 @@ namespace Libreria.Controllers
             return PartialView(product);
         }
         
+        [HttpPost]
+        public ActionResult GetToCartPartial()
+        {
+            var cartList = _shoppingService.GetAnonymousAll();
+
+            return Json(cartList);
+        }
     }
 }
