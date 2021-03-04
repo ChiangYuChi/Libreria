@@ -52,30 +52,31 @@
                                     <button class="col-lg-2 sort-btn">@Html.ActionLink("上市日期排序", "ProductCategory", new { CategoryId = ViewBag.CategoryId, Order = 2 })</button>
                                 </div>
                                 <ul>
-                                  
+
 
                                     @foreach (var item in Model)
                                     {
 
-                                    <li class="book-list">
-                                        <a class="cbp-vm-image" href="@Url.Action("ProductDetail", "Product", new { id = item.Id }, null)"><img src="@item.MainUrl"></a>
-                                        <h3 class="cbp-vm-title">  @Html.ActionLink(@item.Name, "ProductDetail", "Product", new { id = item.Id }, null)</h3>
-                                        <div class="cbp-vm-price">NT$ <span>@(String.Format("{0:N0}",item.UnitPrice))</span></div>
-                                        <div class="cbp-vm-details">
-                                            @item.Author
-                                        </div>
-                                        <button class="cbp-vm-icon cbp-vm-add" onclick="AddCart(@item.Id)">加入購物車</button>
-                                        <a id="wish" class="wish-list " onclick="AddFavorite(@item.Id)">
-                                        @{if (item.isFav == true)
-                                            { 
-                                                <i class="fas fa-heart"></i>
-                                            }
-                                            else
-                                            {
-                                                <i class="far fa-heart"></i>
-                                            }
-                                        }</a>
-                                    </li>
+                                        <li class="book-list">
+                                            <a class="cbp-vm-image" href="@Url.Action("ProductDetail", "Product", new { id = item.Id }, null)"><img src="@item.MainUrl"></a>
+                                            <h3 class="cbp-vm-title">  @Html.ActionLink(@item.Name, "ProductDetail", "Product", new { id = item.Id }, null)</h3>
+                                            <div class="cbp-vm-price">NT$ <span>@(String.Format("{0:N0}",item.UnitPrice))</span></div>
+                                            <div class="cbp-vm-details">
+                                                @item.Author
+                                            </div>
+                                            <button class="cbp-vm-icon cbp-vm-add" onclick="AddCart(@item.Id)">加入購物車</button>
+                                            <a id="wish" class="wish-list " onclick="AddFavorite(@item.Id)">
+                                                @{if (item.isFav == true)
+                                                    {
+                                                        <i class="fas fa-heart"></i>
+                                                    }
+                                                    else
+                                                    {
+                                                        <i class="far fa-heart"></i>
+                                                    }
+                                                }
+                                            </a>
+                                        </li>
 
                                     }
                                 </ul>
@@ -92,6 +93,7 @@
         </div>
     </section>
 </div>
+
 
 
 
@@ -124,17 +126,29 @@
 
         function AddFavorite(id) {
             let favId = id;
-
             $.ajax({
-                type: "POST",
-                url: "/MemberCenter/AddToFavorite",
-                data: { Id: favId },
-                dataType: "text",
-                success: function (response) {
-                    alert("成功");
-                }
-            });
+                    type: "Post",
+                    url: "/Order/Redirect",
+                    success: function (result) {
+                        if (result == 1) {
+                            $.ajax({
+                                type: "POST",
+                                url: "/MemberCenter/AddToFavorite",
+                                data: { Id: favId },
+                                dataType: "text",
+                                success: function (response) {
+                                    alert("成功");
+                                }
+                            });
+                        }
+                        else {
+                            window.location.href = "@Url.Action("Index", "MemberLogin")";
+                        }
+                    }
+                    });
+            
         }
+
     </script>
 
 }
