@@ -285,17 +285,6 @@
         }
 
         function DeleteFromCart(id) {
-            let productId = id;
-
-            $.ajax({
-                type: "POST",
-                url: "/Order/DeleteFromCart",
-                data: { ProductId: productId },
-                dataType: "text",
-                success: function () {
-                }
-            });
-
             let favId = id;
             $.ajax({
                 type: "POST",
