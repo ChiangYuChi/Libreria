@@ -73,8 +73,8 @@ namespace Libreria.Service
         public ProductViewModel GetById(int id)
         {
             var result = (from p in _DbRepository.GetAll<Product>()
-                          join c in _DbRepository.GetAll<Category>()
-                          on p.CategoryId equals c.CategoryId
+                          join c in _DbRepository.GetAll<Category>() on p.CategoryId equals c.CategoryId
+                          join s in _DbRepository.GetAll<Supplier>() on p.SupplierId equals s.SupplierId
                           where p.ProductId == id
                           select new ProductViewModel()
                           {
@@ -85,7 +85,8 @@ namespace Libreria.Service
                               Author = p.Author,
                               CreateTime = p.CreateTime,
                               Introduction = p.Introduction,
-                              CategoryName = c.Name
+                              CategoryName = c.Name,
+                              Supplier = s.Name,
                           }).FirstOrDefault();
 
             var PreviewList = _DbRepository.GetAll<Preview>()
