@@ -212,6 +212,12 @@ namespace Libreria.Service
             return result;
 
         }
+        /// <summary>
+        /// 首頁用，取得依照上市日期由新至舊排序之商品資料
+        /// </summary>
+        /// <returns>
+        /// 回傳為集合
+        /// </returns>
         public List<ProductViewModel> GetByPublishDateHome()
         {
             var products = (from p in _DbRepository.GetAll<Product>()
@@ -235,6 +241,12 @@ namespace Libreria.Service
             return result;
 
         }
+        /// <summary>
+        /// 首頁用，取得總銷售前N名之商品資料
+        /// </summary>
+        /// <returns>
+        /// 回傳為暢銷商品集合
+        /// </returns>
         public List<ProductViewModel> GetByTotalSalesHome()
         {
             var products = (from p in _DbRepository.GetAll<Product>()
