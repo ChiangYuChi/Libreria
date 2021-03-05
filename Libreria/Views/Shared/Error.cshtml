@@ -1,9 +1,12 @@
 ﻿@model System.Web.Mvc.HandleErrorInfo
-
-@{
-    ViewBag.Title = "錯誤";
+@section topCSS {
+    <link rel="stylesheet" href="~/Asset/Css/Home-Index/Error.css">
 }
-
-<h1 class="text-danger">錯誤。</h1>
-<h2 class="text-danger">處理您的要求時發生錯誤。</h2>
+@{
+    ViewBag.Title = "404";
+}
+<div class="container-fluid m-auto">
+    <h1 class="font-weight-lighter">@ViewBag.Title</h1>
+    <h2>請</br>重</br>新</br>操</br>作</h2>
+</div>
 
