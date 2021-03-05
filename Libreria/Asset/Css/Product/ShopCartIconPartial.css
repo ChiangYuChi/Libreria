@@ -139,12 +139,12 @@ body.open .cart {
 .lightbox {
     position: fixed;
     background: #000;
-    width: 0;
+    width: 0%;
     height: 100%;
     top: 0;
     left: 0;
     z-index: 10;
-    opacity: 0;
+    opacity: .6;
     -webkit-transition: opacity 250ms ease-in-out, width 0ms ease-in-out 250ms;
     transition: opacity 250ms ease-in-out, width 0ms ease-in-out 250ms;
 }

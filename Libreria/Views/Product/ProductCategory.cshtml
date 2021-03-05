@@ -64,7 +64,7 @@
                                         <div class="cbp-vm-details">
                                             @item.Author
                                         </div>
-                                        <button class="cbp-vm-icon cbp-vm-add" onclick="AddCart(@item.Id)">加入購物車</button>
+                                        <button class="cbp-vm-icon cbp-vm-add js-add-product" onclick="AddCart(@item.Id)">加入購物車</button>
                                         <a id="wish" class="wish-list " onclick="AddFavorite(@item.Id)">
                                         @{if (item.isFav == true)
                                             { 
@@ -93,7 +93,7 @@
     </section>
 </div>
 <div class="shop-icon">
-    <a class=" js-toggle-cart" href="#" title="View cart">
+    <a class=" js-toggle-cart" href="#" title="View cart" onclick="GetCartPro()">
 
         <i class="fas fa-shopping-cart shop-cartid-icon"></i>
     </a>
@@ -197,11 +197,30 @@
         item = {};
         cartArraynew = new [];
         let _cartblock = document.querySelector(".cart__products");
-        function clean() {
-            let _cartblock = document.querySelector(".cart__products");
-            _cartblock.innerHTML = "";
-        }
+        
+        function GetCartPro() {
+            $(".cart__products").html("");
+            $.ajax({
+                type: "POST",
+                url: "/Product/GetToCartPartial",
+                dataType: "json",
+                success: function (cartList) {
+                    console.log(cartList);
+                    let productCart = document.querySelector("#cart-pro");
+                    let cartblock = document.querySelector(".js-cart-products");
+                    let cart;
+                    cartList.forEach(item => {
+                        cart = productCart.content.cloneNode(true);
+                        cart.querySelector("#bookname").innerHTML = item.ProductName;
+                        cart.querySelector("#bookImg").src = item.PicUrl;
+                        cart.querySelector("#price").innerHTML = item.Price;
+                        cart.querySelector("#delete").setAttribute("onclick", `DeleteCart(${item.ProductId})`);
 
+                        cartblock.appendChild(cart);
+                    })
+                }
+            });
+        }
         function AddCart(id) {
             let productId = id;
             $.ajax({
@@ -279,32 +298,36 @@
         $('body').on('click', '.js-add-product', addProduct);
         $('body').on('click', '.js-remove-product', removeProduct);
         $('body').on('click', '.open', closeCart);
-
+        
         function toggleCart(e) {
             e.preventDefault();
+           
             if (cartOpen) {
                 closeCart();
                 return;
             }
             openCart();
+            
         }
 
         function openCart() {
             $('body').addClass('open');
             cartOpen = true;
-
+            document.querySelector(".lightbox").setAttribute("style","width:100%")
 
         }
 
         function closeCart() {
             cartOpen = false;
             $('body').removeClass('open');
+            document.querySelector(".lightbox").setAttribute("style", "width:0%")
+
         }
 
         function addProduct(e) {
             e.preventDefault();
             numberOfProducts++;
-            //openCart();
+            openCart();
         }
 
         function removeProduct(e) {
