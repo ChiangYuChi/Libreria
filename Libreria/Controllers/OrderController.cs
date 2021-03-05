@@ -148,15 +148,10 @@ namespace Libreria.Controllers
 
         }
 
-        public ActionResult OrderResult()
+        public ActionResult Test()
         {
-
-            return View();
-        }
-
-        public ActionResult OrderDetailReturn()
-        {
-            return View();
+            var result = _orderService.GetAll();
+            return View(result);
         }
     }
 }
