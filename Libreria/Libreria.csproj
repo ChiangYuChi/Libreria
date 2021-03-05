@@ -1172,6 +1172,8 @@
     <Content Include="Views\Product\Test.cshtml" />
     <Content Include="Views\MemberCenter\MemberBenefits.cshtml" />
     <Content Include="Views\Order\PayOrder.cshtml" />
+    <Content Include="Views\Order\OrderResult.cshtml" />
+    <Content Include="Views\Order\OrderDetailReturn.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Code\" />
