@@ -24,7 +24,7 @@ namespace Libreria.Controllers
 
             try
             {
-                throw new Exception();
+                //throw new Exception();
                 var result = _productService.GetAll();
                 return new ApiResult(ApiStatus.Success, string.Empty, result);
             }

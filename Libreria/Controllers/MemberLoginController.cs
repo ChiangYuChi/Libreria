@@ -1,5 +1,4 @@
-﻿
-using Libreria.Helpers;
+﻿using Libreria.Helpers;
 using Libreria.Models.EntityModel;
 using Libreria.Service;
 using Libreria.ViewModels;
@@ -40,8 +39,16 @@ namespace Libreria.Controllers
         }
         
         [HttpPost]
-        public ActionResult Index(MemberLoginViewModel model)
+        public ActionResult Index(MemberLoginViewModel model, FormCollection form)
         {
+            string gRecaptchaResponse = form["g-recaptcha-response"]; //"g-recaptcha-response無法透過ViewModel接收
+            ReCaptchaViewModel reCaptchaVM = Utility.GetRecaptchaVaildation(gRecaptchaResponse);
+            if(reCaptchaVM.success != true)
+            {
+                ModelState.AddModelError("", "請勾選我不是機器人");
+                return View(model);
+            }
+
             var result = _memberLoginService.GetMember(model, ModelState.IsValid);
             if (ModelState.IsValid)
             {
