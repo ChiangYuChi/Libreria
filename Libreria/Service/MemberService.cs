@@ -102,11 +102,7 @@ namespace Libreria.Service
             return result;
         }
 
-        //public OperationResult ChangePassword(PasswordViewModel model)
-        //{
-        //    var result = new OperationResult();
-        //    var Ori
-        //}
+      
 
     }
 }
