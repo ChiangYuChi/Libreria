@@ -115,12 +115,14 @@
 
                         <div class="operation col-12 col-lg-2 p-0 mt-2 pr-2">
                             <div class="operation-delete py-lg-0">
-                                <button onclick="DeleteCart(@item.ProductId)">删除商品</button>
+                                <i class="far fa-times-circle"></i>
+                                <a href="#" onclick="DeleteCart(@item.ProductId)">删除商品</a>
                             </div>
 
                             <div class="split-line"></div>
                             <div class="operation-favorite py-lg-0 mt-2">
-                                <button onclick="DeleteFromCart(@item.ProductId)">加入收藏</button>
+                                <i class="far fa-heart"></i>
+                                <a href="#" onclick="DeleteFromCart(@item.ProductId)">加入收藏</a>
                             </div>
                         </div>
 
@@ -266,7 +268,7 @@
                         <span class="english number-color font-weight-bold total-price-size"> @totalprice</span>
                     </p>
                 </div>
-                <div class="amount-total_button p-0">
+                <div class="amount-total_button p-0 pt-1">
                     <button onclick="Redirect()">結帳</button>
                 </div>
             </div>

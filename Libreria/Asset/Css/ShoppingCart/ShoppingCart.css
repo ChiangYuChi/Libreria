@@ -32,7 +32,10 @@
     color: #a82130;
 }
 
-
+.operation a{
+    text-decoration: none;
+    color: black;
+}
 /*123*/
 .header {
     display: flex;
