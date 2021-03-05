@@ -92,9 +92,9 @@
 
                             <div class="form-content col-xl-4 col-lg-5 col-9">
                                 <div class="gender">
-                                    @Html.RadioButtonFor(model => model.Gender, 0, new { @id = "Gendersradio0", @name = "Gender", @class = "control-label col-md-2", @Checked = (item.Gender == 0 ? true : false) })@Html.Label("男")
-                                    @Html.RadioButtonFor(model => model.Gender, 1, new { @id = "Gendersradio0", @name = "Gender", @class = "control-label col-md-2", @Checked = (item.Gender == 1 ? true : false) })@Html.Label("女")
-                                    @Html.RadioButtonFor(model => model.Gender, 2, new { @id = "Gendersradio0", @name = "Gender", @class = "control-label col-md-2", @Checked = (item.Gender == 2 ? true : false) })@Html.Label("其他")<br>
+                                    @Html.RadioButtonFor(model => model.Gender, 0, new {  @name = "Gender", @class = "control-label col-md-2 Gender", @id = (item.Gender == 0 ? true : false) })@Html.Label("男")
+                                    @Html.RadioButtonFor(model => model.Gender, 1, new {  @name = "Gender", @class = "control-label col-md-2 Gender", @id = (item.Gender == 1 ? true : false) })@Html.Label("女")
+                                    @Html.RadioButtonFor(model => model.Gender, 2, new {  @name = "Gender", @class = "control-label col-md-2 Gender", @id = (item.Gender == 2 ? true : false) })@Html.Label("其他")<br>
 
                                 </div>
                             </div>
@@ -168,7 +168,7 @@
                              }, new { @id = "Region", @class = "form-select form-select-lg mb-3", @name = "AddressCitySelect" })
 
                                         @Html.DropDownListFor(model => model.Region, new List<SelectListItem>{
-                                                    new SelectListItem { Value="選取鄉政市區",Text="選取鄉政市區"}
+                                                    new SelectListItem { Value=item.Region.ToString(),Text=item.Region.ToString()}
                                                 }, new { @id = "Town", @class = "form-select form-select-lg mb-3" })
 
                                         @Html.TextBoxFor(model => model.Address, new { @class = "form-control", @Value = item.Address })
@@ -238,8 +238,9 @@
                     window.onload = () => {
                         requestAreaJson();
                         document.querySelector("#Region").addEventListener("change", findTown);
-
+                        findRadioButtonChecked();
                     }
+                    //縣市DropDownList生成
                     const url = "https://raw.githubusercontent.com/eric861129/BuildSchoolLab/main/TwArea.json";
                     let areaArray = [];
                     let _area;
@@ -282,6 +283,22 @@
                             }
                         });
                     }
+                //Radio Button checked
+                function findRadioButtonChecked() {
+                    var witchChecked = document.getElementsByClassName("Gender");
+                    var isTrueOrFalse = document.getElementById("True");
+
+                    for (var i = 0; i < witchChecked.length; i++) {
+                        if (witchChecked[i].value == isTrueOrFalse.value) {
+
+                            witchChecked[i].setAttribute("checked", "")
+                            break;
+                        }
+                    }
+                }
+               
+               
+                    
 
                    
 </script>

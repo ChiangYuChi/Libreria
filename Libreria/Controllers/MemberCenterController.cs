@@ -61,9 +61,7 @@ namespace Libreria.Controllers
         [HttpPost]
 
         public ActionResult MemberInfo(MemberViewModel member)
-        {
-            //int UserMemberId = Convert.ToInt32(System.Web.HttpContext.Current.Session["MemberID"]);
-            //ViewBag.member = _memberService.GetByMemberId(UserMemberId);
+        {                    
 
             var result = _memberService.UpdateMember(member);
 
