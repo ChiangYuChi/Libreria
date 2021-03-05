@@ -32,8 +32,7 @@ namespace Libreria.Service
                     if (model.ExPhoto.ContentLength > 0)
                     {
                         fileName = Path.GetFileName(model.ExPhoto.FileName);
-                        //var path = Path.Combine(Server.MapPath("~/FileUploads"), fileName);
-                        //file.SaveAs(path);
+                        
                     }
 
                     ExhibitionCustomer exhibitionCustomer = new ExhibitionCustomer()
