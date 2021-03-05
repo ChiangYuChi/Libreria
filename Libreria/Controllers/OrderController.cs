@@ -148,6 +148,17 @@ namespace Libreria.Controllers
 
         }
 
+        public ActionResult PayReturnResult()
+        {
+            return View();
+        }
+
+        public ActionResult PayReturnDetail()
+        {
+            return View();
+        }
+
+
         public ActionResult Test()
         {
             var result = _orderService.GetAll();

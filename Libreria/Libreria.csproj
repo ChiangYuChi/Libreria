@@ -1200,6 +1200,8 @@
     <Content Include="Views\Home\Exception.cshtml" />
     <Content Include="Views\Order\OrderResult.cshtml" />
     <Content Include="Views\Order\OrderDetailReturn.cshtml" />
+    <Content Include="Views\Order\PayReturnResult.cshtml" />
+    <Content Include="Views\Order\PayReturnDetail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Code\" />
