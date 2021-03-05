@@ -2,7 +2,6 @@
 
 @{
     ViewBag.Title = "ShoppingCart";
-
     var totalprice = Convert.ToInt32(Model.Select(x => x.Price * x.Count).Sum());
 }
 
@@ -70,6 +69,7 @@
 
                     @foreach (var item in Model)
                     {
+
                         <div class="col-12 col-lg-6 px-2 px-lg-3 d-flex mb-3">
                             <div class="info-image">
                                 <a href="@Url.Action("ProductDetail", "Product", new { id = item.ProductId })">
@@ -92,23 +92,25 @@
                         </div>
 
                         <div class="offset-8 offset-lg-0 col-4 col-lg-1 p-0 text-lg-center text-right my-auto pr-3 pr-lg-0 pt-2 pt-lg-0">
-                            <span class="info-unitprice english">$@string.Format("{0:N0}", item.Price)</span>
+                            <span class="info-unitprice english">$</span>
+                            <span class="info-unitprice english" id="itemprice">@string.Format("{0:N0}", item.Price)</span>
                         </div>
 
-                        <div class="align-self-center col-8 col-lg-2 mt-1 pl-lg-4 pr-lg-0">
+                        <div class="align-self-center col-8 col-lg-2 mt-1 pl-lg-4 pr-lg-0" id="app">
                             <div class="info-item-count">
-                                <button type="button" class="count-minus" onclick="MinusOne(@item.ProductId)">
+                                <button type="button" class="count-minus" id="minus" onclick="MinusOne(@item.ProductId)">
                                     <i class="icon icon-mius"></i>
                                 </button>
-                                <input maxlength="3" class="count-view" value="@item.Count">
-                                <button type="button" class="count-plus" onclick="PlusOne(@item.ProductId)">
+                                <input maxlength="3" class="count-view" value="@item.Count" id="ProductNum">
+                                <button type="button" class="count-plus" onclick="PlusOne(@item.ProductId)" id="add">
                                     <i class="icon icon-plus"></i>
                                 </button>
                             </div>
                         </div>
 
                         <div class="col-4 col-lg-1 pr-3 text-right my-auto">
-                            <span class="info-totalprice english">$@string.Format("{0:N0}", item.Price * item.Count)</span>
+                            <span class="info-totalprice english">$</span>
+                            <span class="info-totalprice english" id="itemtotal">@string.Format("{0:N0}", item.Price * item.Count)</span>
                         </div>
 
                         <div class="operation col-12 col-lg-2 p-0 mt-2 pr-2">
@@ -117,10 +119,13 @@
                             </div>
 
                             <div class="split-line"></div>
-                            <div class="operation-favorite py-lg-0">
-                                <span>加入收藏</span>
+                            <div class="operation-favorite py-lg-0 mt-2">
+                                <button onclick="DeleteFromCart(@item.ProductId)">加入收藏</button>
                             </div>
                         </div>
+
+
+
                     }
 
                 </div>
@@ -131,7 +136,8 @@
                         <span>商品總計</span>
                     </div>
                     <div class="subtotal-price col-4 col-lg-3">
-                        <span class="subtotal-number english">$@totalprice</span>
+                        <span class="subtotal-number english">$</span>
+                        <span class="subtotal-number english">@totalprice</span>
                     </div>
                 </div>
             </div>
@@ -256,7 +262,8 @@
                 <div class="amount-total_display p-0 m-0 d-flex justify-content-center">
                     <p class="m-0">
                         商品總金額
-                        <span class="english number-color font-weight-bold total-price-size"> $@totalprice</span>
+                        <span class="english number-color font-weight-bold total-price-size">$</span>
+                        <span class="english number-color font-weight-bold total-price-size"> @totalprice</span>
                     </p>
                 </div>
                 <div class="amount-total_button p-0">
@@ -270,6 +277,11 @@
 
 @section EndJs{
     <script>
+        //var productnum = document.getElementById("ProductNum");
+        //var itemtotal = document.getElementById("itemtotal");
+        //var itemprice = document.getElementById("itemprice");
+
+
         function DeleteCart(id) {
             let productId = id;
 
@@ -284,6 +296,34 @@
             });
         }
 
+        function DeleteFromCart(id) {
+            let productId = id;
+
+            $.ajax({
+                type: "POST",
+                url: "/Order/DeleteFromCart",
+                data: { ProductId: productId },
+                dataType: "text",
+                success: function () {
+                }
+            });
+
+            let favId = id;
+            $.ajax({
+                type: "POST",
+                url: "/MemberCenter/CartToFavorite",
+                data: { ProductId: favId },
+                dataType: "text",
+                success: function (response) {
+                    alert("成功");
+                    location.reload();
+                }
+            });
+
+
+        }
+
+
         function PlusOne(id) {
             let productId = id;
 
@@ -293,6 +333,11 @@
                 data: { ProductId: productId },
                 dataType: "text",
                 success: function () {
+                    //this.productnum.value++;
+                    //itemtotal.innerHTML = productnum.value * itemprice.innerHTML;
+
+                    //document.getElementById("minus").disabled = false;
+
                     location.reload();
                 }
             });
@@ -307,7 +352,24 @@
                 data: { ProductId: productId },
                 dataType: "text",
                 success: function () {
+                    //if (productnum.value - 1 == 1) {
+                    //    productnum.value--;
+                    //    document.getElementById("minus").disabled = true;
+                    //    itemtotal.innerHTML = productnum.value * itemprice.innerHTML;
+                    //}
+                    //else if (productnum.value == 1)
+                    //{
+                    //    document.getElementById("minus").disabled = true;
+                    //}
+                    //else
+                    //{
+                    //    productnum.value--;
+                    //    document.getElementById("minus").disabled = false;
+                    //    itemtotal.innerHTML = productnum.value * itemprice.innerHTML;
+                    //}
+
                     location.reload();
+
                 }
             });
         }

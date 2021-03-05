@@ -35,6 +35,8 @@
 
         //轄區
         RegionIndex = MemberVM.Address.IndexOf("區");
+        if (RegionIndex < 0) { RegionIndex = MemberVM.Address.IndexOf("鎮"); }
+        if (RegionIndex < 0) { RegionIndex = MemberVM.Address.IndexOf("鄉"); }
 
         if (CityIndex >= 0 && RegionIndex >= 0) { MemberRegion = MemberVM.Address.Substring(CityIndex + 1, RegionIndex - CityIndex); }
         else if (RegionIndex >= 0) { MemberRegion = MemberVM.Address.Substring(0, RegionIndex + 1); }
@@ -43,7 +45,22 @@
         //地址
         if (RegionIndex >= 0) { MemberAddress = MemberVM.Address.Substring(RegionIndex + 1); }
         else { MemberAddress = ""; }
+
+
+
+        //如果會員資料已經有縣市轄區
+        if (MemberVM.City != null && MemberVM.City != "")
+        {
+            MemberCity = MemberVM.City;
+        }
+
+        if (MemberVM.Region != null && MemberVM.Region != "")
+        {
+            MemberRegion = MemberVM.Region;
+        }
     }
+
+
 
 }
 
@@ -165,8 +182,8 @@
                         <input type="tel" placeholder="號碼" name="SubscriberCellphone" id="SubscriberCellphone" required pattern="\d{10}" value=@MemberVM.MobileNumber>
                     </div>
                     <div class="recipient_profile_homePhone">
-                        <p>連絡電話<span class="starcolor">*</span></p>
-                        <input type="tel" placeholder="市話" name="SubscriberTelephone" id="SubscriberTelephone" required pattern="\d*" value=@MemberVM.HomeNumber>
+                        <p>連絡電話</p>
+                        <input type="tel" placeholder="市話" name="SubscriberTelephone" id="SubscriberTelephone" pattern="\d*" value=@MemberVM.HomeNumber>
                     </div>
                     <div class="recipient_profile_address">
                         <p>地址<span class="starcolor">*</span></p>
@@ -241,8 +258,8 @@
                         </div>
                     </div>
                     <div class="recipient_profile_homePhone">
-                        <p>連絡電話<span class="starcolor">*</span></p>
-                        <input type="tel" placeholder="市話" name="RecipientTelephone" id="RecipientTelephone" required pattern="\d*">
+                        <p>連絡電話</p>
+                        <input type="tel" placeholder="市話" name="RecipientTelephone" id="RecipientTelephone" pattern="\d*">
                     </div>
                     <div class="recipient_profile_address">
                         <p>地址<span class="starcolor">*</span></p>
@@ -300,24 +317,14 @@
                             </span>
                             <span id="option_txt" class="col-md-11 col-md-11">取貨付款</span>
                         </label>
-                        @*<label class="col-md-3 payment_options_ATM payment_optionss click_options2" id="options6" for="ATMTransfer">
-                                <span class="col-md-1 circle" value="0">
-                                    <input type="radio" name="PaymentMethod" id="ATMTransfer" value="2">
-                                </span>
-                                <span id="option_txt" class="col-md-11">ATM轉帳付款</span>
-                            </label>*@
+                       
                         <label class="col-md-3 payment_options_cradit payment_optionss click_options2" id="options7" for="creditCard">
                             <span class="col-md-1 circle" value="0">
                                 <input type="radio" name="PaymentMethod" id="creditCard" value="3">
                             </span>
                             <span id="option_txt" class="col-md-11">信用卡一次付清</span>
                         </label>
-                        @*<label class="col-md-3 payment_options_discount payment_optionss click_options2" id="options8" for="discount">
-                                <span class="col-md-1 circle" value="0">
-                                    <input type="radio" name="PaymentMethod" id="discount" value="4">
-                                </span>
-                                <span id="option_txt" class="col-md-11">Libreria點折扣</span>
-                            </label>*@
+                       
                     </div>
                 </div>
             </div>

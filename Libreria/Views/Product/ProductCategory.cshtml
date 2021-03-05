@@ -1,14 +1,15 @@
 ﻿@model List<ProductViewModel>
 
+
 @section topCss{
     <link href="~/Asset/Css/Product/ProductCategory.css" rel="stylesheet" />
     <link href="~/Asset/Css/PartialView/category-sidenav.css" rel="stylesheet" />
-
-
+    <link href="~/Asset/Css/Product/ShopCartIconPartial.css" rel="stylesheet" />
 }
 @section topJs{
     <script src="https://kit.fontawesome.com/b4e5145ad1.js" crossorigin="anonymous"></script>
 }
+
 
 
 
@@ -19,7 +20,7 @@
                 <div class="product-breadcrumb">
                     <a href="/Product/Index">首頁</a>
                     <i class="fas fa-chevron-right"></i>
-                    <a href="#">商品分類</a>
+                    <a href="#">@ViewBag.Name</a>
                 </div>
                 <div class="row">
 
@@ -46,12 +47,12 @@
                                 <div class="sort-box">
                                     <span col-lg-1>排序</span>
                                     <button class="col-lg-2 sort-btn-price sort-btn" data-type="price">
-                                        @Html.ActionLink("價格排序", "ProductCategory", new { CategoryId = ViewBag.CategoryId, Order = 1 })
+                                        @Html.ActionLink("價格排序低到高", "ProductCategory", new { CategoryId = ViewBag.CategoryId, Order = 1 })
                                     </button>
                                     <button class="col-lg-2 sort-btn">@Html.ActionLink("上市日期排序", "ProductCategory", new { CategoryId = ViewBag.CategoryId, Order = 2 })</button>
                                 </div>
                                 <ul>
-                                    @*@Html.Action("ProductPartial")*@
+                                  
 
                                     @foreach (var item in Model)
                                     {
@@ -64,7 +65,7 @@
                                             @item.Author
                                         </div>
                                         <button class="cbp-vm-icon cbp-vm-add" onclick="AddCart(@item.Id)">加入購物車</button>
-                                        <a class="wish-list " onclick="AddFavorite(@item.Id)">
+                                        <a id="wish" class="wish-list " onclick="AddFavorite(@item.Id)">
                                         @{if (item.isFav == true)
                                             { 
                                                 <i class="fas fa-heart"></i>
@@ -91,42 +92,213 @@
         </div>
     </section>
 </div>
+<div class="shop-icon">
+    <a class=" js-toggle-cart" href="#" title="View cart">
+
+        <i class="fas fa-shopping-cart shop-cartid-icon"></i>
+    </a>
+</div>
+
+<aside class="cart js-cart">
+    <div class="cart__header">
+        <h1 class="cart__title">購物車</h1>
+        <p class="cart__text">
+            <a class="cart-button button--light js-toggle-cart" href="#" title="Close cart">
+                關閉購物車
+            </a>
+        </p>
+    </div>
+
+    <div class="cart__products js-cart-products">
+        @foreach (var item in ViewBag.shoppincart)
+        {
+            <div class="cart__product js-cart-product-template ">
+                <article class="js-cart-product row">
+                    <h4 class="col-12" id="bookname" style="font-size:20px;">@item.ProductName</h4>
+                    <div class="col-9">
+                        <img src="@item.PicUrl" alt="" id="bookImg" style="height:280px;" />
+                    </div>
+                    <div class="col-3" style="align-self:flex-end;text-align:end;">
+                        <p class="price" id="price">@item.Price</p>
+                        <p>
+                            @*<button onclick="DeleteCart(@item.ProductId)"class="js-remove-product" title="Delete product">删除商品</button>*@
+                            <a class="js-remove-product" id="delete" href="#" title="Delete product" onclick="DeleteCart(@item.ProductId)">
+                                刪除商品
+                            </a>
+                        </p>
+                    </div>
+                </article>
+            </div>
+        }
 
 
+
+    </div>
+    <template id="cart-pro">
+
+        <div class="cart__product js-cart-product-template ">
+            <article class="js-cart-product row">
+                <h4 class="col-12" id="bookname" style="font-size:20px;"></h4>
+                <div class="col-9">
+                    <img src="" alt="" id="bookImg" style="height:280px;" />
+                </div>
+                <div class="col-3" style="align-self:flex-end;text-align:end;">
+                    <p class="price" id="price"></p>
+                    <p>
+                        @*<button onclick=""  id="delete" class="js-remove-product" title="Delete product">删除商品</button>*@
+
+                        <a class="js-remove-product" id="delete" href="#" title="Delete product" onclick="">
+                            刪除商品
+                        </a>
+                    </p>
+                </div>
+            </article>
+        </div>
+
+    </template>
+
+
+    <div class="cart__footer">
+        <p class="cart__text">
+            <a class="cart-button" href="/Order/Index" title="Buy products">
+                購買
+            </a>
+        </p>
+    </div>
+</aside>
+
+<div class="lightbox js-lightbox js-toggle-cart"></div>
 
 
 @section EndJs{
     <script src="~/Asset/Js/Product/ProductCategory.js"></script>
 
     <script>
+        jsonObj = [];
+        item = {};
+        cartArraynew = new [];
+        let _cartblock = document.querySelector(".cart__products");
+        function clean() {
+            let _cartblock = document.querySelector(".cart__products");
+            _cartblock.innerHTML = "";
+        }
+
         function AddCart(id) {
             let productId = id;
-
             $.ajax({
                 type: "POST",
                 url: "/Order/AddToCart",
                 data: { Id: productId },
                 dataType: "text",
                 success: function (response) {
-                    alert(response);
                     $("#MyCart").text("購物車(" + response + ")");
+                    $(".cart__products").html("");
+                    $.ajax({
+                        type: "POST",
+                        url: "/Product/GetToCartPartial",
+                        dataType: "json",
+                        success: function (cartList) {
+                            console.log(cartList);
+                            let productCart = document.querySelector("#cart-pro");
+                            let cartblock = document.querySelector(".js-cart-products");
+                            let cart;
+                            let id;
+                            cartList.forEach(item => {
+                                cart = productCart.content.cloneNode(true);
+                                cart.querySelector("#bookname").innerHTML = item.ProductName;
+                                cart.querySelector("#bookImg").src = item.PicUrl;
+                                cart.querySelector("#price").innerHTML = item.Price;
+                                cart.querySelector("#delete").setAttribute("onclick", `DeleteCart(${item.ProductId})`);
+
+                                cartblock.appendChild(cart);
+                            })
+                        }
+                    });
                 }
             });
+
         }
 
+        let wish = document.querySelectorAll("#wish");
+        wish.forEach((x) => {
+            x.addEventListener("click", function () {
+                x.innerHTML = "<i class='fas fa-heart'></i>";
+            })
+        });
+
         function AddFavorite(id) {
-            let favId = id
+            let favId = id;
 
             $.ajax({
                 type: "POST",
                 url: "/MemberCenter/AddToFavorite",
                 data: { Id: favId },
-                dataType: "text",
+                dataType: html,
                 success: function (response) {
-                    alert("成功");
+                    $("#MyCart").text("購物車(" + response + ")");
+                }
+            });
+        }
+        function DeleteCart(id) {
+            let productId = id;
+
+            $.ajax({
+                type: "POST",
+                url: "/Order/DeleteFromCart",
+                data: { ProductId: productId },
+                dataType: "text",
+                success: function () {
                 }
             });
         }
     </script>
+    <script>
+        var cartOpen = false;
+        var numberOfProducts = 0;
+
+
+        $('body').on('click', '.js-toggle-cart', toggleCart);
+        $('body').on('click', '.js-add-product', addProduct);
+        $('body').on('click', '.js-remove-product', removeProduct);
+        $('body').on('click', '.open', closeCart);
+
+        function toggleCart(e) {
+            e.preventDefault();
+            if (cartOpen) {
+                closeCart();
+                return;
+            }
+            openCart();
+        }
+
+        function openCart() {
+            $('body').addClass('open');
+            cartOpen = true;
+
+
+        }
+
+        function closeCart() {
+            cartOpen = false;
+            $('body').removeClass('open');
+        }
+
+        function addProduct(e) {
+            e.preventDefault();
+            numberOfProducts++;
+            //openCart();
+        }
+
+        function removeProduct(e) {
+            e.preventDefault();
+            numberOfProducts--;
+            $(this).closest('.js-cart-product').hide(250);
+            if (numberOfProducts == 0) {
+                $('.js-cart-empty').removeClass('hide');
+            }
+        }
+    </script>
+
+
 
 }

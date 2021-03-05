@@ -21,27 +21,60 @@ namespace Libreria.Controllers
         private readonly FavoriteService _favoriteService;
         private readonly MemberRegisterPageService _memberRegisterPageService;
         private readonly OrderService _orderService;
+        private readonly MemberService _memberService;
+
 
         public MemberCenterController()
         {
             _orderService = new OrderService();
             _favoriteService = new FavoriteService();
             _memberRegisterPageService = new MemberRegisterPageService();
+            _memberService = new MemberService();
         }
-
         public ActionResult MemberLogin()
         {
+            int UserMemberId = Convert.ToInt32(System.Web.HttpContext.Current.Session["MemberID"]);
+
+            List<OrderViewModel> OrderVMList = _orderService.GetBymemberId(UserMemberId);
+            ViewBag.OrderVMList = OrderVMList;
+
             return View();
         }
+      
+      
 
-
-        // GET: MemberCenter
+    // GET: MemberCenter
+        [HttpGet]
 
         public ActionResult MemberInfo()
         {
+            int UserMemberId = Convert.ToInt32(System.Web.HttpContext.Current.Session["MemberID"]);
+            ViewBag.member = _memberService.GetByMemberId(UserMemberId);
             return View();
         }
-        public ActionResult ChangePassward()
+        [HttpPost]
+
+        public ActionResult MemberInfo(MemberViewModel member)
+        {
+            //int UserMemberId = Convert.ToInt32(System.Web.HttpContext.Current.Session["MemberID"]);
+            //ViewBag.member = _memberService.GetByMemberId(UserMemberId);
+
+            var result = _memberService.UpdateMember(member);
+
+            if (result.IsSuccessful)
+            {
+                return Redirect("MemberLogin");
+
+            }
+            else
+            {
+                ModelState.AddModelError("", "修改失敗");
+                return Redirect("MemberLogin");
+            }
+
+        }
+
+            public ActionResult ChangePassward()
         {
             return View();
         }
@@ -51,7 +84,7 @@ namespace Libreria.Controllers
         {
             int UserMemberId = Convert.ToInt32(System.Web.HttpContext.Current.Session["MemberID"]);
 
-            List<OrderViewModel> result = null;
+            List<OrderViewModel> result = new List<OrderViewModel>();
             if (Inquire == "history")
             {
                 result = _orderService.GetBymemberId(UserMemberId);
@@ -84,6 +117,8 @@ namespace Libreria.Controllers
                 result = _orderService.GetBymemberId(UserMemberId, TimeSpan.FromDays(30));
             }
             ViewBag.Inquire = Inquire;
+
+            result.Reverse();
 
             return View(result);
         }
@@ -129,24 +164,17 @@ namespace Libreria.Controllers
             var result =_memberRegisterPageService.CreateMember(model, ModelState.IsValid);
 
             if (result.IsSuccessful)
-            {  
-               return Redirect("MemberLogin");                   
+            {
+               return Redirect("MemberLogin");                  
                
             }
-            //還需登入失敗的頁面跳轉
-            return View();
-        }
-        /// <summary>
-        /// 帳號是否重複
-        /// </summary>
-        /// <returns></returns>
-        //public JsonResult CheckAllowMemberName(string memberName)
-        //{
-            
-        //    var search = _memberRegisterPageService.IsExistMember(memberName);
-        //    bool result = search.IsSuccessful;
-        //    return Json(!result, JsonRequestBehavior.AllowGet);                
-        //}
+            else
+            {
+                ModelState.AddModelError("memberName", "帳號已存在。");
+                ModelState.AddModelError("", "帳號已存在。");
+                return View();
+            }
+        }   
        
 
 
@@ -158,21 +186,30 @@ namespace Libreria.Controllers
         }
 
         [HttpPost]
-        public string AddToFavorite(ProductViewModel ProductVM)
+        public void AddToFavorite(ProductViewModel ProductVM)
+        {
+            
+            _favoriteService.CreateToFavorite(ProductVM);
+ 
+        }
+
+        [HttpPost]
+        public string CartToFavorite(ShoppingCartViewModel shoppingCartVM)
         {
 
-            var result = _favoriteService.CreateToFavorite(ProductVM);
-            
+            var result = _favoriteService.DeleteCartToFavorite(shoppingCartVM);
+
 
             if (result.IsSuccessful)
             {
-                return "加入成功!";
+                return "加入成功";
             }
             else
             {
                 return "加入失败";
             }
         }
+
 
         [HttpPost]
         public void DeleteFavorite(FavoriteViewModel favoriteVM)

@@ -87,6 +87,29 @@ namespace Libreria.Service
             return result;
         }
 
+        public OperationResult DeleteCartToFavorite(ShoppingCartViewModel shoppingCartVM)
+        {
+            var result = new OperationResult();
+            var MemberId = Convert.ToInt32(System.Web.HttpContext.Current.Session["MemberID"]);
+            try
+            {
+                if (_DbRepository.GetAll<Favorite>().Where(x => x.memberId == MemberId && x.ProductId == shoppingCartVM.ProductId).FirstOrDefault() == null)
+                {
+                    Favorite entity = new Favorite() { ProductId = shoppingCartVM.ProductId, memberId = MemberId };
+                    _DbRepository.Create<Favorite>(entity);
+                }
+
+
+                result.IsSuccessful = true;
+            }
+            catch
+            {
+                result.IsSuccessful = false;
+            }
+
+            return result;
+        }
+
         public OperationResult CreateToCart(ProductViewModel ProductVM)
         {
             var result = new OperationResult();
@@ -95,7 +118,7 @@ namespace Libreria.Service
             {
                 if (_DbRepository.GetAll<ShoppingCart>().Where(x => x.memberId == MemberId && x.ProductId == ProductVM.Id).FirstOrDefault() == null)
                 {
-                    ShoppingCart entity = new ShoppingCart() { ProductId = ProductVM.Id, memberId = MemberId };
+                    ShoppingCart entity = new ShoppingCart() { ProductId = ProductVM.Id, memberId = MemberId,Count = 1, };
                     _DbRepository.Create<ShoppingCart>(entity);
                 }
 
