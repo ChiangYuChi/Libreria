@@ -79,27 +79,17 @@ namespace Libreria.Service
         {
             var result = new OperationResult();
             member updateMember = null;
-            var originalMember = _DbRepository.GetAll<member>().Where(m => m.memberName == model.memberName).First();
+            var originalMember = _DbRepository.GetAll<member>().Where(m => m.memberName == model.memberName).FirstOrDefault();
+            originalMember.memberUserName = model.memberUserName;
+            originalMember.birthday = model.birthday;
+            originalMember.IDnumber = model.IDnumber;
+            originalMember.Gender = model.Gender;
+            originalMember.Email = model.Email;
+            originalMember.MobileNumber = model.MobileNumber;
+            originalMember.HomeNumber = model.HomeNumber;
+            originalMember.City = model.City;
+            originalMember.Region = model.Region;
 
-
-                updateMember = new member
-                {
-                    memberId = Convert.ToInt32(System.Web.HttpContext.Current.Session["MemberID"]),
-                    memberName = HttpUtility.HtmlEncode(model.memberName),
-                    MobileNumber = HttpUtility.HtmlEncode(model.MobileNumber),
-                    HomeNumber = HttpUtility.HtmlEncode(model.HomeNumber),
-                    City = HttpUtility.HtmlEncode(model.City),
-                    Region = HttpUtility.HtmlEncode(model.Region),
-                    Address = HttpUtility.HtmlEncode(model.Address),
-                    Email = HttpUtility.HtmlEncode(model.Email),
-                    memberUserName = HttpUtility.HtmlEncode(model.memberUserName),
-                    birthday = DateTime.Parse(HttpUtility.HtmlEncode(model.birthday)),
-                    Gender = int.Parse(HttpUtility.HtmlEncode(model.Gender)),
-                    IDnumber = HttpUtility.HtmlEncode(model.IDnumber),
-                    memberPassword = HttpUtility.HtmlEncode(model.memberPassword),
-                };
-                originalMember = updateMember;
-            
             try
             {
                 _DbRepository.Update<member>(originalMember);

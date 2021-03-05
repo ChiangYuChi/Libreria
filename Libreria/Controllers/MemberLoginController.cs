@@ -14,9 +14,7 @@ using System.Web.Security;
 namespace Libreria.Controllers
 {
     public class MemberLoginController : Controller
-    {
-       
-
+    {     
         public readonly MemberLoginService _memberLoginService;
         public readonly ShoppingService _shoppingService;
         public MemberLoginController()
@@ -28,15 +26,7 @@ namespace Libreria.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-            //if (User.Identity.IsAuthenticated == true)
-            //{
-            //    return Redirect("MemberLogin");
-            //}
-            //else
-            //{
-                return View();
-
-            //}
+           return View();
         }
         
         [HttpPost]

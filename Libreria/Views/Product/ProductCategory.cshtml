@@ -35,7 +35,7 @@
                                     <div class="search-result-status ">
                                         <div class="search-result-num d-flex">
 
-                                            <div>共有<span class="search-result-total"></span>筆商品</div>
+                                            <div>共有<span class="search-result-total">@ViewBag.TotalAmount</span>筆商品</div>
                                         </div>
                                     </div>
                                     <a href="#" class="cbp-vm-icon cbp-vm-grid cbp-vm-selected"
@@ -52,7 +52,7 @@
                                     </button>
                                     <button class="col-lg-2 sort-btn">@Html.ActionLink("上市日期排序", "ProductCategory", new { CategoryId = ViewBag.CategoryId, Order = 2 })</button>
                                 </div>
-                                <ul>
+                                <ul class="book-block">
 
 
                                     @foreach (var item in Model)
@@ -81,6 +81,51 @@
 
                                     }
                                 </ul>
+
+                                <!--分頁-->
+                                <ul class="page-block">
+                                    @{
+                                        int totalPage = ViewBag.TotalPage;
+                                        int nowPage = ViewBag.NowPage;
+                                        int pageDisplay = 3;
+                                    }
+                                    <li>
+                                        @Html.ActionLink("《", "ProductCategory", new { CategoryId = ViewBag.CategoryId, Order = ViewBag.Order, NowPage = Math.Max(nowPage - 1, 1) })
+                                    </li>
+                                    <li>
+                                        @Html.ActionLink("1", "ProductCategory", new { CategoryId = ViewBag.CategoryId, Order = ViewBag.Order, NowPage = 1 })
+                                    </li>
+                                    @if (nowPage >= pageDisplay + 2)
+                                    {
+                                        <li>
+                                            ...
+                                        </li>
+                                    }
+
+                                    @for (int i = Math.Max(nowPage - pageDisplay, 2); i <= nowPage + pageDisplay && i <= totalPage - 1; i++)
+                                    {
+                                        <li>
+                                            @Html.ActionLink("" + i, "ProductCategory", new { CategoryId = ViewBag.CategoryId, Order = ViewBag.Order, NowPage = i })
+                                        </li>
+                                    }
+                                    @if (nowPage <= totalPage - pageDisplay - 2)
+                                    {
+                                        <li>
+                                            ...
+                                        </li>
+                                    }
+                                    @if (totalPage > 1)
+                                    {
+                                        <li>
+                                            @Html.ActionLink("" + totalPage, "ProductCategory", new { CategoryId = ViewBag.CategoryId, Order = ViewBag.Order, NowPage = totalPage })
+                                        </li>
+                                    }
+                                    <li>
+                                        @Html.ActionLink("》", "ProductCategory", new { CategoryId = ViewBag.CategoryId, Order = ViewBag.Order, NowPage = Math.Min(nowPage + 1, totalPage) })
+                                    </li>
+                                </ul>
+
+
                             </div>
 
                         </div>
@@ -337,7 +382,7 @@
             /*openCart();*/
             document.querySelector(".CartMsg-wrap").setAttribute("style", "display:flex")
             var time = window.setTimeout((() =>document.querySelector(".CartMsg-wrap").setAttribute("style", "display:none")), 800)
-            time();
+            
         }
 
         function removeProduct(e) {
