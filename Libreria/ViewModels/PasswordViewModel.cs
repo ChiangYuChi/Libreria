@@ -7,7 +7,7 @@ using System.Web;
 
 namespace Libreria.ViewModels
 {
-    public class Password
+    public class PasswordViewModel
     {
         [Required]
         [StringLength(50)]
@@ -18,7 +18,7 @@ namespace Libreria.ViewModels
         /// 確認密碼專用欄位，不影響資料庫
         /// </summary>
         [NotMapped]
-        [Compare("memberPassword")]
+        [Compare("OriginalPassword")]
         [Display(Name = "確認密碼")]
 
         public string confirmPassword { get; set; }

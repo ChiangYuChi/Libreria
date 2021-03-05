@@ -78,7 +78,6 @@ namespace Libreria.Service
         public OperationResult UpdateMember(MemberViewModel model)
         {
             var result = new OperationResult();
-            member updateMember = null;
             var originalMember = _DbRepository.GetAll<member>().Where(m => m.memberName == model.memberName).FirstOrDefault();
             originalMember.memberUserName = model.memberUserName;
             originalMember.birthday = model.birthday;
@@ -103,6 +102,11 @@ namespace Libreria.Service
             return result;
         }
 
+        //public OperationResult ChangePassword(PasswordViewModel model)
+        //{
+        //    var result = new OperationResult();
+        //    var Ori
+        //}
 
     }
 }
