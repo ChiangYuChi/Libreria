@@ -298,19 +298,30 @@
             });
         }
 
+        
+
         function DeleteFromCart(id) {
             let favId = id;
             $.ajax({
-                type: "POST",
-                url: "/MemberCenter/CartToFavorite",
-                data: { ProductId: favId },
-                dataType: "text",
-                success: function (response) {
-                    alert("成功");
-                    location.reload();
-                }
+                    type: "Post",
+                    url: "/Order/Redirect",
+                    success: function (result) {
+                        if (result == 1) {
+                            $.ajax({
+                                type: "POST",
+                                url: "/MemberCenter/CartToFavorite",
+                                data: { ProductId: favId },
+                                dataType: "text",
+                                success: function (response) {
+                                    alert("成功");
+                                }
+                            });
+                        }
+                        else {
+                            window.location.href = "@Url.Action("Index", "MemberLogin")";
+                        }
+                    }
             });
-
 
         }
 

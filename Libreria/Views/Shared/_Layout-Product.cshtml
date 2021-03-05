@@ -239,25 +239,24 @@
                 dataType: "text",
                 success: function (response) {
                     alert(response);
-                    $("#MyCart").text("購物車(" + response + ")");
                 }
             });
         }
 
 
-        function AddFavorite(id) {
-            let favId = id
+        //function AddFavorite(id) {
+        //    let favId = id
 
-            $.ajax({
-                type: "POST",
-                url: "/MemberCenter/AddToFavorite",
-                data: { Id: favId },
-                dataType: "text",
-                success: function (response) {
-                    alert("成功");
-                }
-            });
-        }
+        //    $.ajax({
+        //        type: "POST",
+        //        url: "/MemberCenter/AddToFavorite",
+        //        data: { Id: favId },
+        //        dataType: "text",
+        //        success: function (response) {
+        //            alert("成功");
+        //        }
+        //    });
+        //}
     </script>
 
 

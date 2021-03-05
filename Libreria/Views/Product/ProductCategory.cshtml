@@ -65,7 +65,7 @@
                                                 @item.Author
                                             </div>
                                             <button class="cbp-vm-icon cbp-vm-add" onclick="AddCart(@item.Id)">加入購物車</button>
-                                            <a id="wish" class="wish-list " onclick="AddFavorite(@item.Id)">
+                                            <a id="wish" class="wish-list"  onclick="AddFavorite(@item.Id)">
                                                 @{if (item.isFav == true)
                                                     {
                                                         <i class="fas fa-heart"></i>
@@ -220,15 +220,21 @@
 
         }
 
-        let wish = document.querySelectorAll("#wish");
-        wish.forEach((x) => {
-            x.addEventListener("click", function () {
-                x.innerHTML = "<i class='fas fa-heart'></i>";
-            })
-        });
+
+
+
+
+        
 
         function AddFavorite(id) {
             let favId = id;
+            let wish = document.querySelectorAll("#wish");
+            wish.forEach((x) => {
+                x.addEventListener("click", function () {
+                    console.log("12300");
+                    x.innerHTML = "<i class='fas fa-heart'></i>";
+                })
+            });
             $.ajax({
                     type: "Post",
                     url: "/Order/Redirect",
@@ -248,12 +254,11 @@
                             window.location.href = "@Url.Action("Index", "MemberLogin")";
                         }
                     }
-                    });
+            });
             
         }
 
-    </script>
-    <script>
+    
         var cartOpen = false;
         var numberOfProducts = 0;
 
