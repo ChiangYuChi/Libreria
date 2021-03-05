@@ -68,12 +68,17 @@ namespace Libreria.Controllers
             }
             ViewBag.Order = Order;
 
+            //商品總數
+            int totalAmount = result.Count;
+            ViewBag.TotalAmount = totalAmount;
+
             //分頁
             int perPageAmount = 8;
-            int totalPage = (int)Math.Ceiling((double)result.Count() / perPageAmount);
+            int totalPage = (int)Math.Ceiling((double)totalAmount / perPageAmount);
             result = result.Skip((NowPage - 1) * perPageAmount).Take(perPageAmount).ToList();
             ViewBag.NowPage = NowPage;
             ViewBag.TotalPage = totalPage;
+            
 
             return View(result);
 
