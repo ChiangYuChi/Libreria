@@ -116,7 +116,7 @@
                                     @if (totalPage > 1)
                                     {
                                         <li>
-                                            @Html.ActionLink("" + totalPage, "ProductCategory", new { CategoryId = ViewBag.CategoryId, Order = ViewBag.Order, NowPage = 1 })
+                                            @Html.ActionLink("" + totalPage, "ProductCategory", new { CategoryId = ViewBag.CategoryId, Order = ViewBag.Order, NowPage = totalPage })
                                         </li>
                                     }
                                     <li>
