@@ -197,7 +197,6 @@
     <script>
         jsonObj = [];
         item = {};
-        cartArraynew = new [];
         let _cartblock = document.querySelector(".cart__products");
 
         function GetCartPro() {
@@ -258,21 +257,20 @@
 
         }
 
+        let wish = document.querySelectorAll("#wish");
+        wish.forEach((x) => {
+            x.addEventListener("click", function () {
+                x.innerHTML = "<i class='fas fa-heart'></i>";
+            })
+        });
 
 
 
 
-        
 
         function AddFavorite(id) {
             let favId = id;
-            let wish = document.querySelectorAll("#wish");
-            wish.forEach((x) => {
-                x.addEventListener("click", function () {
-                    console.log("12300");
-                    x.innerHTML = "<i class='fas fa-heart'></i>";
-                })
-            });
+
             $.ajax({
                     type: "Post",
                     url: "/Order/Redirect",
@@ -284,7 +282,9 @@
                                 data: { Id: favId },
                                 dataType: "text",
                                 success: function (response) {
-                                    alert("成功");
+                                    document.querySelector(".CartMsg-wrap").setAttribute("style", "display:flex")
+                                    var time = window.setTimeout((() => document.querySelector(".CartMsg-wrap").setAttribute("style", "display:none")), 800)
+                                    time();
                                 }
                             });
                         }
@@ -293,10 +293,10 @@
                         }
                     }
             });
-            
+
         }
 
-    
+
         var cartOpen = false;
         var numberOfProducts = 0;
 

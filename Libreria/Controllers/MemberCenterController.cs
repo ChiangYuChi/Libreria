@@ -230,11 +230,14 @@ namespace Libreria.Controllers
         {
             return View();
         }
-       
-        
 
-        
-       
-        
+
+        public PartialViewResult CartMsgPartial()
+        {
+            return PartialView();
+        }
+
+
+
     }
 }

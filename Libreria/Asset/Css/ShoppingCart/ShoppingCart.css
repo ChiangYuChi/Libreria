@@ -24,6 +24,9 @@
     color: #8a6927 !important;
 }
 
+#favorite:hover {
+    cursor: pointer;
+}
 .bottom-padding {
     padding-bottom: 8rem;
 }

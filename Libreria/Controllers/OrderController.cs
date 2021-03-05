@@ -153,5 +153,10 @@ namespace Libreria.Controllers
             var result = _orderService.GetAll();
             return View(result);
         }
+
+        public PartialViewResult CartMsgPartial()
+        {
+            return PartialView();
+        }
     }
 }

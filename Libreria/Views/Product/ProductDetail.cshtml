@@ -145,18 +145,32 @@
             });
         }
 
-        function AddFavorite(f) {
-            let ids = f;
+        function AddFavorite(id) {
+            let favId = id;
 
             $.ajax({
-                type: "POST",
-                url: "/MemberCenter/AddToFavorite",
-                data: { Id: ids },
-                dataType: "text",
-                success: function (response) {
-                    alert(response);
-                }
+                    type: "Post",
+                    url: "/Order/Redirect",
+                    success: function (result) {
+                        if (result == 1) {
+                            $.ajax({
+                                type: "POST",
+                                url: "/MemberCenter/AddToFavorite",
+                                data: { Id: favId },
+                                dataType: "text",
+                                success: function (response) {
+                                    document.querySelector(".CartMsg-wrap").setAttribute("style", "display:flex")
+                                    var time = window.setTimeout((() => document.querySelector(".CartMsg-wrap").setAttribute("style", "display:none")), 800)
+                                    time();
+                                }
+                            });
+                        }
+                        else {
+                            window.location.href = "@Url.Action("Index", "MemberLogin")";
+                        }
+                    }
             });
+
         }
 
     </script>
