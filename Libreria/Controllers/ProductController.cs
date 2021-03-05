@@ -37,7 +37,7 @@ namespace Libreria.Controllers
 
 
 
-        public ActionResult ProductCategory(int? CategoryId, int? Order,string CategoryName)
+        public ActionResult ProductCategory(int? CategoryId, int? Order,string CategoryName, int NowPage=1)
         {
             ViewBag.Name = CategoryName;
 
@@ -66,6 +66,14 @@ namespace Libreria.Controllers
             {
                 result = result.OrderBy(x => x.CreateTime).ToList();
             }
+            ViewBag.Order = Order;
+
+            //分頁
+            int perPageAmount = 8;
+            int totalPage = (int)Math.Ceiling((double)result.Count() / perPageAmount);
+            result = result.Skip((NowPage - 1) * perPageAmount).Take(perPageAmount).ToList();
+            ViewBag.NowPage = NowPage;
+            ViewBag.TotalPage = totalPage;
 
             return View(result);
 

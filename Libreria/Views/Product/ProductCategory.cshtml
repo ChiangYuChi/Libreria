@@ -51,34 +51,80 @@
                                     </button>
                                     <button class="col-lg-2 sort-btn">@Html.ActionLink("上市日期排序", "ProductCategory", new { CategoryId = ViewBag.CategoryId, Order = 2 })</button>
                                 </div>
-                                <ul>
-                                  
+                                <ul class="book-block">
+
 
                                     @foreach (var item in Model)
                                     {
 
-                                    <li class="book-list">
-                                        <a class="cbp-vm-image" href="@Url.Action("ProductDetail", "Product", new { id = item.Id }, null)"><img src="@item.MainUrl"></a>
-                                        <h3 class="cbp-vm-title">  @Html.ActionLink(@item.Name, "ProductDetail", "Product", new { id = item.Id }, null)</h3>
-                                        <div class="cbp-vm-price">NT$ <span>@(String.Format("{0:N0}",item.UnitPrice))</span></div>
-                                        <div class="cbp-vm-details">
-                                            @item.Author
-                                        </div>
-                                        <button class="cbp-vm-icon cbp-vm-add" onclick="AddCart(@item.Id)">加入購物車</button>
-                                        <a id="wish" class="wish-list " onclick="AddFavorite(@item.Id)">
-                                        @{if (item.isFav == true)
-                                            { 
-                                                <i class="fas fa-heart"></i>
-                                            }
-                                            else
-                                            {
-                                                <i class="far fa-heart"></i>
-                                            }
-                                        }</a>
-                                    </li>
+                                        <li class="book-list">
+                                            <a class="cbp-vm-image" href="@Url.Action("ProductDetail", "Product", new { id = item.Id }, null)"><img src="@item.MainUrl"></a>
+                                            <h3 class="cbp-vm-title">  @Html.ActionLink(@item.Name, "ProductDetail", "Product", new { id = item.Id }, null)</h3>
+                                            <div class="cbp-vm-price">NT$ <span>@(String.Format("{0:N0}",item.UnitPrice))</span></div>
+                                            <div class="cbp-vm-details">
+                                                @item.Author
+                                            </div>
+                                            <button class="cbp-vm-icon cbp-vm-add" onclick="AddCart(@item.Id)">加入購物車</button>
+                                            <a id="wish" class="wish-list " onclick="AddFavorite(@item.Id)">
+                                                @{if (item.isFav == true)
+                                                    {
+                                                        <i class="fas fa-heart"></i>
+                                                    }
+                                                    else
+                                                    {
+                                                        <i class="far fa-heart"></i>
+                                                    }
+                                                }
+                                            </a>
+                                        </li>
 
                                     }
                                 </ul>
+
+                                <!--分頁-->
+                                <ul class="page-block">
+                                    @{
+                                        int totalPage = ViewBag.TotalPage;
+                                        int nowPage = ViewBag.NowPage;
+                                        int pageDisplay = 3;
+                                    }
+                                    <li>
+                                        @Html.ActionLink("《", "ProductCategory", new { CategoryId = ViewBag.CategoryId, Order = ViewBag.Order, NowPage = Math.Max(nowPage - 1, 1) })
+                                    </li>
+                                    <li>
+                                        @Html.ActionLink("1", "ProductCategory", new { CategoryId = ViewBag.CategoryId, Order = ViewBag.Order, NowPage = 1 })
+                                    </li>
+                                    @if (nowPage >= pageDisplay + 2)
+                                    {
+                                        <li>
+                                            ...
+                                        </li>
+                                    }
+
+                                    @for (int i = Math.Max(nowPage - pageDisplay, 2); i <= nowPage + pageDisplay && i <= totalPage - 1; i++)
+                                    {
+                                        <li>
+                                            @Html.ActionLink("" + i, "ProductCategory", new { CategoryId = ViewBag.CategoryId, Order = ViewBag.Order, NowPage = i })
+                                        </li>
+                                    }
+                                    @if (nowPage <= totalPage - pageDisplay - 2)
+                                    {
+                                        <li>
+                                            ...
+                                        </li>
+                                    }
+                                    @if (totalPage > 1)
+                                    {
+                                        <li>
+                                            @Html.ActionLink("" + totalPage, "ProductCategory", new { CategoryId = ViewBag.CategoryId, Order = ViewBag.Order, NowPage = 1 })
+                                        </li>
+                                    }
+                                    <li>
+                                        @Html.ActionLink("》", "ProductCategory", new { CategoryId = ViewBag.CategoryId, Order = ViewBag.Order, NowPage = Math.Min(nowPage + 1, totalPage) })
+                                    </li>
+                                </ul>
+
+
                             </div>
 
                         </div>
