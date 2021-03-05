@@ -65,7 +65,7 @@
                                             <div class="cbp-vm-details">
                                                 @item.Author
                                             </div>
-                                            <button class="cbp-vm-icon cbp-vm-add" onclick="AddCart(@item.Id)">加入購物車</button>
+                                            <button class="cbp-vm-icon cbp-vm-add .js-add-product" onclick="AddCart(@item.Id)">加入購物車</button>
                                             <a id="wish" class="wish-list " onclick="AddFavorite(@item.Id)">
                                                 @{if (item.isFav == true)
                                                     {
@@ -376,7 +376,7 @@
             /*openCart();*/
             document.querySelector(".CartMsg-wrap").setAttribute("style", "display:flex")
             var time = window.setTimeout((() =>document.querySelector(".CartMsg-wrap").setAttribute("style", "display:none")), 800)
-            time();
+            
         }
 
         function removeProduct(e) {
