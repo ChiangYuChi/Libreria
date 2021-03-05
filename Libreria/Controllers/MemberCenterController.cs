@@ -84,7 +84,7 @@ namespace Libreria.Controllers
         {
             int UserMemberId = Convert.ToInt32(System.Web.HttpContext.Current.Session["MemberID"]);
 
-            List<OrderViewModel> result = null;
+            List<OrderViewModel> result = new List<OrderViewModel>();
             if (Inquire == "history")
             {
                 result = _orderService.GetBymemberId(UserMemberId);
@@ -117,6 +117,8 @@ namespace Libreria.Controllers
                 result = _orderService.GetBymemberId(UserMemberId, TimeSpan.FromDays(30));
             }
             ViewBag.Inquire = Inquire;
+
+            result.Reverse();
 
             return View(result);
         }

@@ -14,11 +14,14 @@ namespace Libreria.Controllers
     {
         private readonly ProductService _productService;
         private readonly FavoriteService _favoriteService;
+        private readonly ShoppingService _shoppingService;
+
 
 
         public ProductController()
         {
             _productService = new ProductService();
+            _shoppingService = new ShoppingService();
             _favoriteService = new FavoriteService();
         }
 
@@ -39,6 +42,7 @@ namespace Libreria.Controllers
             ViewBag.Name = CategoryName;
 
             List<ProductViewModel> result;
+            ViewBag.shoppincart = _shoppingService.GetAnonymousAll();
 
             if (CategoryId != null)
             {
@@ -102,6 +106,23 @@ namespace Libreria.Controllers
             var product = _productService.PromoteMajor();
             return PartialView(product);
         }
-        
+
+
+
+
+        /// <summary>
+        /// 於商品分類業的購物車icon，購物車功能，將GetAnonymousAll()之方法所取得之senssion資料以json格式回傳
+        /// </summary>
+        /// <returns>
+        /// 回傳為senssion轉換為json格式之資料。
+        /// </returns>
+        /// 
+        [HttpPost]
+        public ActionResult GetToCartPartial()
+        {
+            var cartList = _shoppingService.GetAnonymousAll();
+
+            return Json(cartList);
+        }
     }
 }
