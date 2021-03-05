@@ -1198,6 +1198,8 @@
     <Content Include="Views\Order\PayOrder.cshtml" />
     <Content Include="Views\Product\CartMsgPartial.cshtml" />
     <Content Include="Views\Home\Exception.cshtml" />
+    <Content Include="Views\Order\OrderResult.cshtml" />
+    <Content Include="Views\Order\OrderDetailReturn.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Code\" />
