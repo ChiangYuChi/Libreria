@@ -40,7 +40,12 @@ namespace Libreria.Service
 
             return result;
         }
-
+        /// <summary>
+        /// 購物車取得senssion之資料
+        /// </summary>
+        /// <returns>
+        /// 回傳為集合
+        /// </returns>
         public List<ShoppingCartViewModel> GetAnonymousAll()
         {
             List<ShoppingCart> cartitems = (List<ShoppingCart>)HttpContext.Current.Session["ShoppingCart"];

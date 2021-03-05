@@ -241,7 +241,6 @@
     <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\RentalController.cs" />
-    <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Filters\CustomAuthenticationFilter.cs" />
     <Compile Include="Filters\CustomAuthorizeAttribute.cs" />
     <Compile Include="Global.asax.cs">
@@ -341,6 +340,7 @@
     <Content Include="Asset\Css\Product\swiper.css" />
     <Content Include="Asset\Css\Rental\Rental_Confirm.css" />
     <Content Include="Asset\Css\Rental\Rental_index.css" />
+    <Content Include="Asset\Css\ShoppingCart\CartMsgPartial.css" />
     <Content Include="Asset\Css\ShoppingCart\Normalize.css" />
     <Content Include="Asset\Css\ShoppingCart\OrderDetail.css" />
     <Content Include="Asset\Css\ShoppingCart\ShoppingCart.css" />
@@ -1178,6 +1178,7 @@
     <Content Include="Views\Product\Test.cshtml" />
     <Content Include="Views\MemberCenter\MemberBenefits.cshtml" />
     <Content Include="Views\Order\PayOrder.cshtml" />
+    <Content Include="Views\Product\CartMsgPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Code\" />
