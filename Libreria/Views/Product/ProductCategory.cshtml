@@ -5,6 +5,7 @@
     <link href="~/Asset/Css/Product/ProductCategory.css" rel="stylesheet" />
     <link href="~/Asset/Css/PartialView/category-sidenav.css" rel="stylesheet" />
     <link href="~/Asset/Css/Product/ShopCartIconPartial.css" rel="stylesheet" />
+    <link href="~/Asset/Css/ShoppingCart/CartMsgPartial.css" rel="stylesheet" />
 }
 @section topJs{
     <script src="https://kit.fontawesome.com/b4e5145ad1.js" crossorigin="anonymous"></script>
@@ -34,7 +35,7 @@
                                     <div class="search-result-status ">
                                         <div class="search-result-num d-flex">
 
-                                            <div>共有<span class="search-result-total"></span>筆商品</div>
+                                            <div>共有<span class="search-result-total">@ViewBag.TotalAmount</span>筆商品</div>
                                         </div>
                                     </div>
                                     <a href="#" class="cbp-vm-icon cbp-vm-grid cbp-vm-selected"
@@ -51,34 +52,80 @@
                                     </button>
                                     <button class="col-lg-2 sort-btn">@Html.ActionLink("上市日期排序", "ProductCategory", new { CategoryId = ViewBag.CategoryId, Order = 2 })</button>
                                 </div>
-                                <ul>
-                                  
+                                <ul class="book-block">
+
 
                                     @foreach (var item in Model)
                                     {
 
-                                    <li class="book-list">
-                                        <a class="cbp-vm-image" href="@Url.Action("ProductDetail", "Product", new { id = item.Id }, null)"><img src="@item.MainUrl"></a>
-                                        <h3 class="cbp-vm-title">  @Html.ActionLink(@item.Name, "ProductDetail", "Product", new { id = item.Id }, null)</h3>
-                                        <div class="cbp-vm-price">NT$ <span>@(String.Format("{0:N0}",item.UnitPrice))</span></div>
-                                        <div class="cbp-vm-details">
-                                            @item.Author
-                                        </div>
-                                        <button class="cbp-vm-icon cbp-vm-add" onclick="AddCart(@item.Id)">加入購物車</button>
-                                        <a id="wish" class="wish-list " onclick="AddFavorite(@item.Id)">
-                                        @{if (item.isFav == true)
-                                            { 
-                                                <i class="fas fa-heart"></i>
-                                            }
-                                            else
-                                            {
-                                                <i class="far fa-heart"></i>
-                                            }
-                                        }</a>
-                                    </li>
+                                        <li class="book-list">
+                                            <a class="cbp-vm-image" href="@Url.Action("ProductDetail", "Product", new { id = item.Id }, null)"><img src="@item.MainUrl"></a>
+                                            <h3 class="cbp-vm-title">  @Html.ActionLink(@item.Name, "ProductDetail", "Product", new { id = item.Id }, null)</h3>
+                                            <div class="cbp-vm-price">NT$ <span>@(String.Format("{0:N0}",item.UnitPrice))</span></div>
+                                            <div class="cbp-vm-details">
+                                                @item.Author
+                                            </div>
+                                            <button class="cbp-vm-icon cbp-vm-add js-add-product" onclick="AddCart(@item.Id)">加入購物車</button>
+                                            <a id="wish" class="wish-list " onclick="AddFavorite(@item.Id)">
+                                                @{if (item.isFav == true)
+                                                    {
+                                                        <i class="fas fa-heart"></i>
+                                                    }
+                                                    else
+                                                    {
+                                                        <i class="far fa-heart"></i>
+                                                    }
+                                                }
+                                            </a>
+                                        </li>
 
                                     }
                                 </ul>
+
+                                <!--分頁-->
+                                <ul class="page-block">
+                                    @{
+                                        int totalPage = ViewBag.TotalPage;
+                                        int nowPage = ViewBag.NowPage;
+                                        int pageDisplay = 3;
+                                    }
+                                    <li>
+                                        @Html.ActionLink("《", "ProductCategory", new { CategoryId = ViewBag.CategoryId, Order = ViewBag.Order, NowPage = Math.Max(nowPage - 1, 1) })
+                                    </li>
+                                    <li>
+                                        @Html.ActionLink("1", "ProductCategory", new { CategoryId = ViewBag.CategoryId, Order = ViewBag.Order, NowPage = 1 })
+                                    </li>
+                                    @if (nowPage >= pageDisplay + 2)
+                                    {
+                                        <li>
+                                            ...
+                                        </li>
+                                    }
+
+                                    @for (int i = Math.Max(nowPage - pageDisplay, 2); i <= nowPage + pageDisplay && i <= totalPage - 1; i++)
+                                    {
+                                        <li>
+                                            @Html.ActionLink("" + i, "ProductCategory", new { CategoryId = ViewBag.CategoryId, Order = ViewBag.Order, NowPage = i })
+                                        </li>
+                                    }
+                                    @if (nowPage <= totalPage - pageDisplay - 2)
+                                    {
+                                        <li>
+                                            ...
+                                        </li>
+                                    }
+                                    @if (totalPage > 1)
+                                    {
+                                        <li>
+                                            @Html.ActionLink("" + totalPage, "ProductCategory", new { CategoryId = ViewBag.CategoryId, Order = ViewBag.Order, NowPage = totalPage })
+                                        </li>
+                                    }
+                                    <li>
+                                        @Html.ActionLink("》", "ProductCategory", new { CategoryId = ViewBag.CategoryId, Order = ViewBag.Order, NowPage = Math.Min(nowPage + 1, totalPage) })
+                                    </li>
+                                </ul>
+
+
                             </div>
 
                         </div>
@@ -93,8 +140,7 @@
     </section>
 </div>
 <div class="shop-icon">
-    <a class=" js-toggle-cart" href="#" title="View cart">
-
+    <a class=" js-toggle-cart" href="#" title="View cart" onclick="GetCartPro()">
         <i class="fas fa-shopping-cart shop-cartid-icon"></i>
     </a>
 </div>
@@ -130,7 +176,26 @@
                 </article>
             </div>
         }
-
+        @foreach (var item in ViewBag.shoppinCart)
+        {
+            <div class="cart__product js-cart-product-template ">
+                <article class="js-cart-product row">
+                    <h4 class="col-12" id="bookname" style="font-size:20px;">@item.ProductName</h4>
+                    <div class="col-9">
+                        <img src="@item.PicUrl" alt="" id="bookImg" style="height:280px;" />
+                    </div>
+                    <div class="col-3" style="align-self:flex-end;text-align:end;">
+                        <p class="price" id="price">@item.Price</p>
+                        <p>
+                            @*<button onclick="DeleteCart(@item.ProductId)"class="js-remove-product" title="Delete product">删除商品</button>*@
+                            <a class="js-remove-product" id="delete" href="#" title="Delete product" onclick="DeleteCart(@item.ProductId)">
+                                刪除商品
+                            </a>
+                        </p>
+                    </div>
+                </article>
+            </div>
+        }
 
 
     </div>
@@ -168,6 +233,7 @@
 </aside>
 
 <div class="lightbox js-lightbox js-toggle-cart"></div>
+@Html.Action("CartMsgPartial")
 
 
 @section EndJs{
@@ -176,13 +242,31 @@
     <script>
         jsonObj = [];
         item = {};
-        cartArraynew = new [];
         let _cartblock = document.querySelector(".cart__products");
-        function clean() {
-            let _cartblock = document.querySelector(".cart__products");
-            _cartblock.innerHTML = "";
-        }
 
+        function GetCartPro() {
+            $(".cart__products").html("");
+            $.ajax({
+                type: "POST",
+                url: "/Product/GetToCartPartial",
+                dataType: "json",
+                success: function (cartList) {
+                    console.log(cartList);
+                    let productCart = document.querySelector("#cart-pro");
+                    let cartblock = document.querySelector(".js-cart-products");
+                    let cart;
+                    cartList.forEach(item => {
+                        cart = productCart.content.cloneNode(true);
+                        cart.querySelector("#bookname").innerHTML = item.ProductName;
+                        cart.querySelector("#bookImg").src = item.PicUrl;
+                        cart.querySelector("#price").innerHTML = item.Price;
+                        cart.querySelector("#delete").setAttribute("onclick", `DeleteCart(${item.ProductId})`);
+
+                        cartblock.appendChild(cart);
+                    })
+                }
+            });
+        }
         function AddCart(id) {
             let productId = id;
             $.ajax({
@@ -202,7 +286,6 @@
                             let productCart = document.querySelector("#cart-pro");
                             let cartblock = document.querySelector(".js-cart-products");
                             let cart;
-                            let id;
                             cartList.forEach(item => {
                                 cart = productCart.content.cloneNode(true);
                                 cart.querySelector("#bookname").innerHTML = item.ProductName;
@@ -226,33 +309,39 @@
             })
         });
 
+
+
+
+
         function AddFavorite(id) {
             let favId = id;
 
             $.ajax({
-                type: "POST",
-                url: "/MemberCenter/AddToFavorite",
-                data: { Id: favId },
-                dataType: html,
-                success: function (response) {
-                    $("#MyCart").text("購物車(" + response + ")");
-                }
+                    type: "Post",
+                    url: "/Order/Redirect",
+                    success: function (result) {
+                        if (result == 1) {
+                            $.ajax({
+                                type: "POST",
+                                url: "/MemberCenter/AddToFavorite",
+                                data: { Id: favId },
+                                dataType: "text",
+                                success: function (response) {
+                                    document.querySelector(".CartMsg-wrap").setAttribute("style", "display:flex")
+                                    var time = window.setTimeout((() => document.querySelector(".CartMsg-wrap").setAttribute("style", "display:none")), 800)
+                                    time();
+                                }
+                            });
+                        }
+                        else {
+                            window.location.href = "@Url.Action("Index", "MemberLogin")";
+                        }
+                    }
             });
-        }
-        function DeleteCart(id) {
-            let productId = id;
 
-            $.ajax({
-                type: "POST",
-                url: "/Order/DeleteFromCart",
-                data: { ProductId: productId },
-                dataType: "text",
-                success: function () {
-                }
-            });
         }
-    </script>
-    <script>
+
+
         var cartOpen = false;
         var numberOfProducts = 0;
 
@@ -264,29 +353,36 @@
 
         function toggleCart(e) {
             e.preventDefault();
+
             if (cartOpen) {
                 closeCart();
                 return;
             }
             openCart();
+
         }
 
         function openCart() {
             $('body').addClass('open');
             cartOpen = true;
-
+            document.querySelector(".lightbox").setAttribute("style", "width:100%")
 
         }
 
         function closeCart() {
             cartOpen = false;
             $('body').removeClass('open');
+            document.querySelector(".lightbox").setAttribute("style", "width:0%")
+
         }
 
         function addProduct(e) {
             e.preventDefault();
             numberOfProducts++;
-            //openCart();
+            /*openCart();*/
+            document.querySelector(".CartMsg-wrap").setAttribute("style", "display:flex")
+            var time = window.setTimeout((() =>document.querySelector(".CartMsg-wrap").setAttribute("style", "display:none")), 800)
+            
         }
 
         function removeProduct(e) {

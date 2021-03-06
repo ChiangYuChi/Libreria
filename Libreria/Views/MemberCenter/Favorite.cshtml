@@ -6,6 +6,7 @@
     @*Favorate CSS*@
     <link href="~/Asset/Css/MemberCenter/Favorite.css" rel="stylesheet" />
 
+    <link href="~/Asset/Css/ShoppingCart/CartMsgPartial.css" rel="stylesheet" />
 
     @*Chinese Font CSS*@
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -63,7 +64,7 @@
             <button class="fas fa-chevron-right"></button>
         </div>
     </div>
-</div>
+</div>@Html.Action("CartMsgPartial")
 
 @section EndJS{
 
@@ -80,7 +81,9 @@
                 data: { Id: productId },
                 dataType: "text",
                 success: function (response) {
-                    alert(response);
+                    document.querySelector(".CartMsg-wrap").setAttribute("style", "display:flex")
+                    var time = window.setTimeout((() => document.querySelector(".CartMsg-wrap").setAttribute("style", "display:none")), 800)
+                    time();
                 }
             });
         }
@@ -99,6 +102,6 @@
             });
         }
 
-        
+
     </script>
 }

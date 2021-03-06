@@ -12,9 +12,14 @@ using System.Web.Services.Description;
 using System.Web.Mvc.Filters;
 using static Libreria.Filters.CustomAuthenticationFilter;
 using System.Threading.Tasks;
+using System.Web.UI.WebControls;
+using DocumentFormat.OpenXml.Wordprocessing;
+using System.Windows.Forms;
+using Xamarin.Forms;
 
 namespace Libreria.Controllers
 {
+
     [CustomAuthenticationFilter]
     public class MemberCenterController : Controller
     {
@@ -31,6 +36,7 @@ namespace Libreria.Controllers
             _memberRegisterPageService = new MemberRegisterPageService();
             _memberService = new MemberService();
         }
+        
         public ActionResult MemberLogin()
         {
             int UserMemberId = Convert.ToInt32(System.Web.HttpContext.Current.Session["MemberID"]);
@@ -55,9 +61,7 @@ namespace Libreria.Controllers
         [HttpPost]
 
         public ActionResult MemberInfo(MemberViewModel member)
-        {
-            //int UserMemberId = Convert.ToInt32(System.Web.HttpContext.Current.Session["MemberID"]);
-            //ViewBag.member = _memberService.GetByMemberId(UserMemberId);
+        {                    
 
             var result = _memberService.UpdateMember(member);
 
@@ -159,8 +163,17 @@ namespace Libreria.Controllers
         }        
         [HttpPost]
         [CustomAllowAnonymous]
-        public ActionResult MemberRegisterPage(MemberViewModel model)
+        public ActionResult MemberRegisterPage(MemberViewModel model, FormCollection form)
         {
+            string gRecaptchaResponse = form["g-recaptcha-response"]; //"g-recaptcha-response無法透過ViewModel接收
+            ReCaptchaViewModel reCaptchaVM = Utility.GetRecaptchaVaildation(gRecaptchaResponse);
+
+            if (reCaptchaVM.success != true)
+            {
+                ModelState.AddModelError("", "請勾選我不是機器人");
+                return View(model);
+            }
+
             var result =_memberRegisterPageService.CreateMember(model, ModelState.IsValid);
 
             if (result.IsSuccessful)
@@ -177,7 +190,7 @@ namespace Libreria.Controllers
         }   
        
 
-
+        
         public ActionResult Favorite()
         {
 
@@ -194,20 +207,12 @@ namespace Libreria.Controllers
         }
 
         [HttpPost]
-        public string CartToFavorite(ShoppingCartViewModel shoppingCartVM)
+        public void CartToFavorite(ShoppingCartViewModel shoppingCartVM)
         {
 
             var result = _favoriteService.DeleteCartToFavorite(shoppingCartVM);
 
 
-            if (result.IsSuccessful)
-            {
-                return "加入成功";
-            }
-            else
-            {
-                return "加入失败";
-            }
         }
 
 
@@ -238,11 +243,14 @@ namespace Libreria.Controllers
         {
             return View();
         }
-       
-        
 
-        
-       
-        
+
+        public PartialViewResult CartMsgPartial()
+        {
+            return PartialView();
+        }
+
+
+
     }
 }

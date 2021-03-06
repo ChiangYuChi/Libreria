@@ -37,12 +37,13 @@ namespace Libreria.Controllers
 
 
 
-        public ActionResult ProductCategory(int? CategoryId, int? Order,string CategoryName)
+        public ActionResult ProductCategory(int? CategoryId, int? Order,string CategoryName, int NowPage=1)
         {
             ViewBag.Name = CategoryName;
 
             List<ProductViewModel> result;
             ViewBag.shoppincart = _shoppingService.GetAnonymousAll();
+            ViewBag.shoppingCart = _shoppingService.GetAll();
 
             if (CategoryId != null)
             {
@@ -66,6 +67,19 @@ namespace Libreria.Controllers
             {
                 result = result.OrderBy(x => x.CreateTime).ToList();
             }
+            ViewBag.Order = Order;
+
+            //商品總數
+            int totalAmount = result.Count;
+            ViewBag.TotalAmount = totalAmount;
+
+            //分頁
+            int perPageAmount = 8;
+            int totalPage = (int)Math.Ceiling((double)totalAmount / perPageAmount);
+            result = result.Skip((NowPage - 1) * perPageAmount).Take(perPageAmount).ToList();
+            ViewBag.NowPage = NowPage;
+            ViewBag.TotalPage = totalPage;
+            
 
             return View(result);
 
@@ -116,13 +130,29 @@ namespace Libreria.Controllers
         /// <returns>
         /// 回傳為senssion轉換為json格式之資料。
         /// </returns>
-        /// 
+
         [HttpPost]
         public ActionResult GetToCartPartial()
         {
-            var cartList = _shoppingService.GetAnonymousAll();
+            List<ShoppingCartViewModel> result;
+            if (System.Web.HttpContext.Current.Session["MemberID"] == null)
+            {
+                result = _shoppingService.GetAnonymousAll();
+                
+            }
+            else
+            {
+                result = _shoppingService.GetAll();
 
-            return Json(cartList);
+            }
+
+            return Json(result);
+
+            
+        }
+        public PartialViewResult CartMsgPartial()
+        {
+            return PartialView();
         }
     }
 }

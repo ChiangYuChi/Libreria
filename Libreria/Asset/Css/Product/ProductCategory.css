@@ -139,16 +139,16 @@
                 background-color: #1a1a1a;
             }
 
-    .render-section .cbp-vm-switcher ul {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-    }
+.render-section .cbp-vm-switcher .book-block {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
 
-        .render-section .cbp-vm-switcher ul li {
-            display: block;
-            position: relative;
-        }
+    .render-section .cbp-vm-switcher .book-block li {
+        display: block;
+        position: relative;
+    }
 
     .render-section .cbp-vm-image {
         display: block;
@@ -226,48 +226,48 @@
         -webkit-font-smoothing: antialiased;
     }
 
-    .render-section .cbp-vm-view-grid ul {
+.render-section .cbp-vm-view-grid .book-block {
+    text-align: left;
+}
+
+    .render-section .cbp-vm-view-grid .book-block li {
+        width: 24%;
         text-align: left;
+        padding: 25px;
+        box-sizing: border-box;
+        margin: 30px 0 0;
+        display: inline-block;
+        max-height: 550px;
+        vertical-align: top;
+        position: relative;
     }
 
-        .render-section .cbp-vm-view-grid ul li {
-            width: 24%;
-            text-align: left;
-            padding: 25px;
-            box-sizing:border-box;
-            margin: 30px 0 0;
-            display: inline-block;
-            max-height: 550px;
-            vertical-align: top;
-            position: relative;
+        .render-section .cbp-vm-view-grid .book-block li .fa-heart {
+            position: absolute;
+            color: #aa3744;
+            right: 15%;
+            bottom: 5%;
+            font-size: 20px;
         }
 
-            .render-section .cbp-vm-view-grid ul li .fa-heart {
-                position: absolute;
-                color: #aa3744;
-                right: 15%;
-                bottom: 5%;
-                font-size: 20px;
+            .render-section .cbp-vm-view-grid .book-block li .fa-heart:hover {
+                color: #901d2a;
             }
 
-                .render-section .cbp-vm-view-grid ul li .fa-heart:hover {
-                    color: #901d2a;
-                }
+        .render-section .cbp-vm-view-grid .book-block li:hover {
+            background-color: #f4f4f4;
+        }
 
-            .render-section .cbp-vm-view-grid ul li:hover {
-                background-color: #f4f4f4;
-            }
+.render-section .cbp-vm-view-list .book-block li .fa-heart {
+    position: absolute;
+    right: 0;
+    bottom: 10%;
+    color: #901d2a;
+}
 
-    .render-section .cbp-vm-view-list ul li .fa-heart {
-        position: absolute;
-        right: 0;
-        bottom: 10%;
-        color: #901d2a;
-    }
-
-    .render-section .cbp-vm-view-grid ul li .fa-heart:hover {
-        color: #901d2a;
-    }
+.render-section .cbp-vm-view-grid .book-block li .fa-heart:hover {
+    color: #901d2a;
+}
 
     .render-section .cbp-vm-view-grid .cbp-vm-title {
         font-size: 1.3em;
@@ -349,7 +349,7 @@
 }
 
 @media screen and (max-width: 57em) {
-    .render-section .cbp-vm-view-grid ul li {
+    .render-section .cbp-vm-view-grid .book-block li {
         width: 49%;
     }
 }
@@ -375,8 +375,17 @@
 }
 
 @media screen and (max-width: 40.125em) {
-    .render-section .cbp-vm-view-grid ul li {
+    .render-section .cbp-vm-view-grid .book-block li {
         width: 100%;
     }
 }
 /*# sourceMappingURL=main-page-category.css.map */
+
+.page-block {
+    display: flex;
+    justify-content: center;
+}
+
+.page-block li {
+    margin: 10px;
+}

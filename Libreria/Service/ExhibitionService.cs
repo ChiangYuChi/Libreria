@@ -35,6 +35,12 @@ namespace Libreria.Service
                 MasterUnit=x.MasterUnit
             }).ToList();
         }
+        /// <summary>
+        /// 取得 依照目前日期所判定正在舉辦之展覽，以展覽結束時間來做判斷，若目前沒有則會視即將舉辦展覽，若也沒有即將舉辦的展覽會是過往展覽第一筆。
+        /// </summary>
+        /// <returns>
+        /// 回傳單筆展覽資料
+        /// </returns>
         public ExhibitionVIewModel GetExhibitioning()
         {
             var GetEx = GetAll();
@@ -47,6 +53,12 @@ namespace Libreria.Service
                 return GetEx.FirstOrDefault(x => x.ExhibitionEndTime <= Nowdate);
             }
         }
+        /// <summary>
+        /// 取得即將舉辦之展覽資料
+        /// </summary>
+        /// <returns>
+        /// 回傳為集合
+        /// </returns>
         public List<ExhibitionVIewModel> OverdueExhibitioning()
         {
             var GetEx = GetAll();
@@ -57,7 +69,12 @@ namespace Libreria.Service
 
             return result;
         }
-
+        /// <summary>
+        /// 取得過往展覽之展覽資料，依新至舊排列
+        /// </summary>
+        /// <returns>
+        /// 回傳為集合
+        /// </returns>
         public List<ExhibitionVIewModel> NotYetExhibitioning()
         {
             var GetEx = GetAll();

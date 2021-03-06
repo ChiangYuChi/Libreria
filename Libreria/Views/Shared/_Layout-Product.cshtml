@@ -238,25 +238,34 @@
                 data: { Id: productId },
                 dataType: "text",
                 success: function (response) {
-                    alert(response);
-                    $("#MyCart").text("購物車(" + response + ")");
                 }
             });
         }
 
 
         function AddFavorite(id) {
-            let favId = id
+            let favId = id;
 
             $.ajax({
-                type: "POST",
-                url: "/MemberCenter/AddToFavorite",
-                data: { Id: favId },
-                dataType: "text",
-                success: function (response) {
-                    alert("成功");
-                }
+                    type: "Post",
+                    url: "/Order/Redirect",
+                    success: function (result) {
+                        if (result == 1) {
+                            $.ajax({
+                                type: "POST",
+                                url: "/MemberCenter/AddToFavorite",
+                                data: { Id: favId },
+                                dataType: "text",
+                                success: function (response) {
+                                }
+                            });
+                        }
+                        else {
+                            window.location.href = "@Url.Action("Index", "MemberLogin")";
+                        }
+                    }
             });
+
         }
     </script>
 
