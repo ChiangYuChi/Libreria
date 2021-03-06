@@ -148,14 +148,15 @@ namespace Libreria.Controllers
 
         }
 
-        public ActionResult OrderResult()
+        public ActionResult PayReturnResult()
         {
-
             return View();
         }
 
-        public ActionResult OrderDetailReturn()
+        public ActionResult PayReturnDetail(FormCollection form)
         {
+            var RtnCode = form["RtnCode"];
+            //var paymentFinish = _orderService.GetPaymentResult(RtnCode);
             return View();
         }
 
