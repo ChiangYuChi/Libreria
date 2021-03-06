@@ -57,6 +57,7 @@ namespace Libreria.Models.EntityModel
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OrderDetail> OrderDetails { get; set; }
+        public string PaymentState { get; set; }
 
         
     }
