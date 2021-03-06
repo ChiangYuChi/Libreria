@@ -504,14 +504,13 @@ namespace Libreria.Service
                     oPayment.MerchantID = "2000132";//ECPay提供的特店編號
 
                     /* 基本參數 */
-                    oPayment.Send.ReturnURL = "https://localhost:44330/Order/OrderDetailReturn";//付款完成通知回傳的網址
-                    oPayment.Send.ClientBackURL = "http://example.com";//瀏覽器端返回的廠商網址
-                    oPayment.Send.OrderResultURL = "https://localhost:44330/Order/OrderResult";//瀏覽器端回傳付款結果網址
+                    oPayment.Send.ReturnURL = "https://localhost:44330/Order/PayReturnResult";//付款完成通知回傳的網址
+                    oPayment.Send.ClientBackURL = "http://127.0.0.1:4040";//瀏覽器端返回的廠商網址
+                    oPayment.Send.OrderResultURL = $"https://localhost:44330/Order/PayReturnDetail?orderId={orderVM.OrderId}";//瀏覽器端回傳付款結果網址
                     oPayment.Send.MerchantTradeNo = "n"+"ECPay" + new Random().Next(0, 99999).ToString();//廠商的交易編號
                     oPayment.Send.MerchantTradeDate = DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss");//廠商的交易時間
                     /*oPayment.Send.TotalAmount = Decimal.Parse($"{ orderVM.OrderPrice}") */ ;//交易總金額
                     oPayment.Send.TotalAmount = Decimal.Parse($"{String.Format("{0:N0}",orderTotal )}".ToString());
-                   
                     oPayment.Send.TradeDesc = "交易描述";//交易描述
                     oPayment.Send.ChoosePayment = PaymentMethod.ALL;//使用的付款方式
                     oPayment.Send.Remark = "";//備註欄位
@@ -551,8 +550,7 @@ namespace Libreria.Service
                         });
                     }
 
-                    
-
+  
                     //訂單的商品資料
 
                     /*************************非即時性付款:ATM、CVS 額外功能參數**************/
@@ -633,5 +631,23 @@ namespace Libreria.Service
 
             return html;
         }
+
+        public string GetPaymentResult(string RtnCode)
+        {
+            string paymentResultText = "已刷卡";
+
+            if (RtnCode == "1")
+            {
+                paymentResultText = "已刷卡";
+            }else if(RtnCode !="1")
+            {
+                paymentResultText = "交易失敗";
+            }
+
+            return paymentResultText;
+        }
+
+
+
     }
 }

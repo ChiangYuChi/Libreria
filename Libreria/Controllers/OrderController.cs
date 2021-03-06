@@ -148,14 +148,18 @@ namespace Libreria.Controllers
 
         }
 
-        public ActionResult OrderResult()
-        {
+        /// <summary>
+        /// 取得付款回傳結果並放入訂單欄位
+        /// <returns></returns>
 
-            return View();
-        }
-
-        public ActionResult OrderDetailReturn()
+        public ActionResult PayReturnDetail(int orderId, FormCollection form)
         {
+   
+            var RtnCode = form["RtnCode"];
+            List<OrderViewModel> orderVMList = _orderService.GetByOrderId(orderId);
+            OrderViewModel orderVM = orderVMList.FirstOrDefault();
+
+           
             return View();
         }
 

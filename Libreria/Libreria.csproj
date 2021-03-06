@@ -57,6 +57,7 @@
     <Reference Include="ECPay.Payment.Integration">
       <HintPath>.\ECPay.Payment.Integration.dll</HintPath>
       <HintPath>..\ECPayAIO_Net-master\ECPay.Payment.Integration.dll</HintPath>
+      <HintPath>..\..\..\..\..\Desktop\ECPayAIO_Net-master\ECPay.Payment.Integration.dll</HintPath>
     </Reference>
     <Reference Include="Google.Protobuf, Version=3.11.4.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
       <HintPath>..\packages\Google.Protobuf.3.11.4\lib\net45\Google.Protobuf.dll</HintPath>
@@ -292,6 +293,10 @@
     <Compile Include="Migrations\202103011436399_addCityAndRegineInMemberList.cs" />
     <Compile Include="Migrations\202103011436399_addCityAndRegineInMemberList.Designer.cs">
       <DependentUpon>202103011436399_addCityAndRegineInMemberList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103060750436_PaymentState.cs" />
+    <Compile Include="Migrations\202103060750436_PaymentState.Designer.cs">
+      <DependentUpon>202103060750436_PaymentState.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -1183,7 +1188,6 @@
     <Content Include="Views\MemberCenter\ChangePassward.cshtml" />
     <Content Include="Views\MemberCenter\_ViewStart.cshtml" />
     <Content Include="Views\Product\Index.cshtml" />
-    <Content Include="Views\Order\Test.cshtml" />
     <Content Include="Views\Shared\_Layout-Home.cshtml" />
     <Content Include="Views\AboutUs\Index.cshtml" />
     <Content Include="Views\Exhibition\Index.cshtml" />
@@ -1212,7 +1216,6 @@
     <Content Include="Views\MemberCenter\Favorite.cshtml" />
     <Content Include="Views\Rental\Confirm.cshtml" />
     <Content Include="Views\MemberLogin\LoginPartialHambuger.cshtml" />
-    <Content Include="Views\Product\Test.cshtml" />
     <Content Include="Views\MemberCenter\MemberBenefits.cshtml" />
     <Content Include="Views\Order\PayOrder.cshtml" />
     <Content Include="Views\Product\CartMsgPartial.cshtml" />
@@ -1222,6 +1225,8 @@
     <Content Include="Views\MemberCenter\CartMsgPartial.cshtml" />
     <Content Include="Views\Order\CartMsgPartial.cshtml" />
     <Content Include="Views\Rental\CartMsgPartial.cshtml" />
+    <Content Include="Views\Order\PayReturnResult.cshtml" />
+    <Content Include="Views\Order\PayReturnDetail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Code\" />
@@ -1254,6 +1259,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202103011436399_addCityAndRegineInMemberList.resx">
       <DependentUpon>202103011436399_addCityAndRegineInMemberList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103060750436_PaymentState.resx">
+      <DependentUpon>202103060750436_PaymentState.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
