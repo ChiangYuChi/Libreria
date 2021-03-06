@@ -17,7 +17,7 @@
 }
 
 
-.circle {
+.fa-exclamation {
     font-size: 90px;
     color: rgb(139, 120, 8);
     background-color: white;
@@ -25,8 +25,10 @@
     margin-top: 20px;
     margin-left: 105px;
     margin-bottom: 15px;
-    width:91px;
-    height:91px;
+    width: 100px;
+    height: 100px;
+    text-align:center;
+    padding-top:5px;
 }
 
 .CartMsg-alert_txt {

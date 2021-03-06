@@ -1221,6 +1221,7 @@
     <Content Include="Views\Order\OrderDetailReturn.cshtml" />
     <Content Include="Views\MemberCenter\CartMsgPartial.cshtml" />
     <Content Include="Views\Order\CartMsgPartial.cshtml" />
+    <Content Include="Views\Rental\CartMsgPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Code\" />

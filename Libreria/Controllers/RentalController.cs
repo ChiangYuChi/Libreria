@@ -46,5 +46,10 @@ namespace Libreria.Controllers
             }
         }
 
+        public PartialViewResult CartMsgPartial()
+        {
+            return PartialView();
+        }
+
     }
 }
