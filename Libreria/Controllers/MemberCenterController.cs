@@ -159,8 +159,17 @@ namespace Libreria.Controllers
         }        
         [HttpPost]
         [CustomAllowAnonymous]
-        public ActionResult MemberRegisterPage(MemberViewModel model)
+        public ActionResult MemberRegisterPage(MemberViewModel model, FormCollection form)
         {
+            string gRecaptchaResponse = form["g-recaptcha-response"]; //"g-recaptcha-response無法透過ViewModel接收
+            ReCaptchaViewModel reCaptchaVM = Utility.GetRecaptchaVaildation(gRecaptchaResponse);
+
+            if (reCaptchaVM.success != true)
+            {
+                ModelState.AddModelError("", "請勾選我不是機器人");
+                return View(model);
+            }
+
             var result =_memberRegisterPageService.CreateMember(model, ModelState.IsValid);
 
             if (result.IsSuccessful)
