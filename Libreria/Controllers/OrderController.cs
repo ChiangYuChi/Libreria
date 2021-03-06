@@ -158,8 +158,10 @@ namespace Libreria.Controllers
             var RtnCode = form["RtnCode"];
             List<OrderViewModel> orderVMList = _orderService.GetByOrderId(orderId);
             OrderViewModel orderVM = orderVMList.FirstOrDefault();
+           _orderService.SetState(orderVM, RtnCode);
 
-           
+
+ 
             return View();
         }
 
