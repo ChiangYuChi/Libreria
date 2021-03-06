@@ -159,7 +159,7 @@ namespace Libreria.Controllers
             List<OrderViewModel> orderVMList = _orderService.GetByOrderId(orderId);
             OrderViewModel orderVM = orderVMList.FirstOrDefault();
 
-           
+            ViewData["OrderNum"] = form["MerchantTradeNo"];
             return View();
         }
 

@@ -370,6 +370,7 @@
     <Content Include="Asset\Css\MemberCenter\sub_cancel.css" />
     <Content Include="Asset\Css\MemberCenter\sub_info.css" />
     <Content Include="Asset\Css\Passward\Passward.css" />
+    <Content Include="Asset\Css\Pay\PayReturnDetail.css" />
     <Content Include="Asset\Css\Product\ProductCategory.css" />
     <Content Include="Asset\Css\Product\ProductDetail.css" />
     <Content Include="Asset\Css\Product\product_index.css" />

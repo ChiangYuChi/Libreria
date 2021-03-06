@@ -1,0 +1,42 @@
+﻿.icon {
+    text-align: center;
+    padding-top: 150px;
+    padding-bottom: 10px;
+}
+
+.check {
+    font-size: 80px;
+    color: rgb(86, 230, 20);
+}
+
+.txt {
+    text-align: center;
+}
+
+.button button {
+    border: none;
+    background-color: rgb(67,179,15);
+    border-radius: 10px;
+    color: white;
+    width: 150px;
+    height: 40px;
+}
+
+.button {
+    display: flex;
+    justify-content: center;
+}
+
+.num {
+    text-align: center;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+#back {
+    margin-right: 5px;
+}
+
+button:hover {
+    background-color: rgb(52, 144, 10);
+}
