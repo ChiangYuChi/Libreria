@@ -14,7 +14,6 @@ using static Libreria.Filters.CustomAuthenticationFilter;
 using System.Threading.Tasks;
 using System.Web.UI.WebControls;
 using DocumentFormat.OpenXml.Wordprocessing;
-using System.Windows.Forms;
 using Xamarin.Forms;
 
 namespace Libreria.Controllers
