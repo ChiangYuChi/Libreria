@@ -1,11 +1,16 @@
-﻿@section topCSS {
-    <link rel="stylesheet" href="~/Asset/Css/MemberLogin/member-login.css">
-}
-@model Libreria.ViewModels.MemberLoginViewModel
+﻿@model Libreria.ViewModels.MemberLoginViewModel
 
 
 @{
     ViewBag.Title = "Login";
+}
+
+@section topCSS {
+    <link rel="stylesheet" href="~/Asset/Css/MemberLogin/member-login.css">
+}
+
+@section topJS{
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 }
 
 <section class="member">
@@ -48,15 +53,18 @@
                                 @Html.ValidationMessageFor(model => model.MemberPassword, "", new { @class = "text-danger" })
                             </div>
                         </div>
-                        
+
                     </label>
+
+                    <div class="g-recaptcha" data-sitekey="6LdHiXIaAAAAAEGQeL96rfsHY_fooaCxQhd0K2t9"></div>
+
                     <label>
                         <div class="form-group">
-                            
+
                         </div>
                         <div class="mvc-fix">
                             <div class="editor-field">
-                                @Html.LabelFor(model => model.Remember, htmlAttributes: new { @class = "control-label col-md-2 d-inline",@style= "font-size: 15px;color: #8a6926;" })
+                                @Html.LabelFor(model => model.Remember, htmlAttributes: new { @class = "control-label col-md-2 d-inline", @style = "font-size: 15px;color: #8a6926;" })
                                 @Html.EditorFor(model => model.Remember)
                                 @Html.ValidationMessageFor(model => model.Remember, "", new { @class = "text-danger" })
                             </div>
@@ -64,12 +72,11 @@
                         </div>
 
                     </label>
-                    
 
                     <input type="submit" id="login" value="登入" class="col-6">
                     <a id="login" class="col-6 register" href="../MemberCenter/MemberRegisterPage">註冊會員</a>
                 }
-            </div>                
+            </div>
         </div>
     </div>
 </section>
