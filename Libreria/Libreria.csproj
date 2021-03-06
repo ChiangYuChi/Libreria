@@ -678,6 +678,7 @@
     <Content Include="Views\Product\Test.cshtml" />
     <Content Include="Views\MemberCenter\MemberBenefits.cshtml" />
     <Content Include="Views\Home\Exception.cshtml" />
+    <Content Include="Views\MemberCenter\PasswordPartialView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Code\" />
