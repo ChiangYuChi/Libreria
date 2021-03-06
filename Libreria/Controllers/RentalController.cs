@@ -3,6 +3,7 @@ using Libreria.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
@@ -32,11 +33,11 @@ namespace Libreria.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult ConfirmBooling(RentalConfirmViewModel model)
+        public async Task<ActionResult> ConfirmBooling(RentalConfirmViewModel model)
         {
             if (ModelState.IsValid) {
 
-                _rentalService.ConfirmBooling(model);
+                await _rentalService.ConfirmBooling(model);
                 return View("index");
             }
             else
