@@ -59,6 +59,7 @@ namespace Libreria.ViewModels
         [Required]
         [Display(Name = "電子郵件")]
         [DataType(DataType.EmailAddress, ErrorMessage = "請輸入正確電子郵件格式，例:abc@gmail.com")]
+        [EmailAddress(ErrorMessage = "請輸入正確電子郵件格式，例:abc@gmail.com")]
         public string ExCustomerEmail { get; set; }
 
         /// <summary>
@@ -66,7 +67,7 @@ namespace Libreria.ViewModels
         /// </summary>
         [Required]
         [Display(Name = "展覽簡介")]
-        [StringLength(150, ErrorMessage = "最多輸入150個字")]
+        [StringLength(500, ErrorMessage = "最多輸入500個字")]
         public string ExhibitionIntro { get; set; }
 
         /// <summary>
@@ -90,6 +91,8 @@ namespace Libreria.ViewModels
         /// 展覽圖片
         /// </summary>
         [Required]
+        [Display(Name = "上傳圖片")]
+        [FileExtensions(Extensions = "jpg,jpeg,gif,png,bmp", ErrorMessage = "這不是圖片檔格式!")]
         public HttpPostedFileBase ExPhoto { get; set; }
 
         /// <summary>

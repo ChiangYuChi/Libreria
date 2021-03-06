@@ -403,7 +403,7 @@ body {
 
 .member .row .member-login .login-head .register {
   font-size: 15px;
-  font-weight: 400px;
+  font-weight: 400;
   font-family: 'Noto Sans TC', sans-serif;
   padding-top: 3px;
 }
@@ -451,11 +451,11 @@ body {
         color: #8a6926;
     }
 
-.member .row .member-login .input-group label input {
-  width: 100%;
-  padding: 11px;
-  border: 1px solid #b0b0b0;
-  border-radius: 5px;
+#MemberName, #MemberPassword {
+    width: 100%;
+    padding: 11px;
+    border: 1px solid #b0b0b0;
+    border-radius: 5px;
 }
 
 .member .row .member-login .input-group span {
@@ -497,11 +497,20 @@ body {
     justify-content: flex-start;
 }
 
-.member .row .member-login .input-group label input{
+#MemberName, #MemberPassword {
     min-width: 100%;
 }
 
 .member .row .member-login .input-group label .forget-password-span{
     position: absolute;
     right: 18px;
+}
+.mvc-fix input{
+    width:30px;
+}
+.mvc-fix .editor-field {
+    display: flex;
+    line-height:10px;
+    width:200px;
+    padding:10px;
 }

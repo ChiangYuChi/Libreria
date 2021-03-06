@@ -40,7 +40,12 @@ namespace Libreria.Service
 
             return result;
         }
-
+        /// <summary>
+        /// 購物車取得senssion之資料
+        /// </summary>
+        /// <returns>
+        /// 回傳為集合
+        /// </returns>
         public List<ShoppingCartViewModel> GetAnonymousAll()
         {
             List<ShoppingCart> cartitems = (List<ShoppingCart>)HttpContext.Current.Session["ShoppingCart"];
@@ -207,11 +212,7 @@ namespace Libreria.Service
                         .Where(x => x.ProductId == productId && x.memberId == MemberId)
                         .FirstOrDefault();
 
-                    if (entity.Count - 1 == 0)
-                    {
-                        _DbRepository.Delete<ShoppingCart>(entity);
-                    }
-                    else
+                    if (entity.Count - 1 != 0)
                     {
                         entity.Count -= 1;
                         _DbRepository.Update<ShoppingCart>(entity);

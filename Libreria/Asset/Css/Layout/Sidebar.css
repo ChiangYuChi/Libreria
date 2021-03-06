@@ -1,16 +1,17 @@
 ﻿@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300&display=swap');
 #productPage .col-12 {
     padding: 0;
+    padding-top: 80px;
     position: sticky;
-    display: block;
-    top: 0;
+    
 }
 
-#productPage {
-    padding-top: 80px;
-   
+#productPage{
+    margin-top: 83px;
 }
-#productPage ul{
+
+
+#productPage ul {
     margin: 0;
 }
 #productPage p{
@@ -179,6 +180,7 @@ padding: 10px 0;
 @media screen and (min-width:992px){
     #productPage .column-padding{
         width: 30%;
+      
     }
     #productPage .column-main{
         width: 70%;

@@ -2,6 +2,9 @@
     padding: 20px 0;
 }*/
 
+a{
+   text-decoration:none;
+}
 
 .product-index {
     padding-top: 35px;
@@ -77,6 +80,11 @@
     display: flex;
     justify-content: flex-start;
     font-size: 16px;
+}
+
+.promotion-discount .title a {
+   text-decoration:none!important;
+   color: #5b6252;
 }
 
 .promotion-discount p {
@@ -217,14 +225,15 @@
         -webkit-box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034);
         -moz-box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034);
         box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034);
-        z-index: 9999;
+        z-index: 999;
         border-right: 1px solid transparent;
         border-bottom: 1px solid transparent;
         cursor: pointer;
     }
 
 .main .new-product .pic .book-cover {
-    height: 250px;
+    width:100%;
+    height: 340px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -310,6 +319,11 @@
     
 }
 
+.main .major a {
+    text-decoration: none !important;
+    color: #5b6252;
+}
+
 .main .major .title {
     font-size: 22px;
     overflow: hidden;
@@ -337,8 +351,9 @@
 }
 
 .main .hot-issue {
-    padding: 30px;
+
     height: 500px;
+    box-sizing:border-box;
 }
 
     .main .hot-issue h3 {
@@ -366,9 +381,12 @@
 
     .main .hot-issue .pic {
         width: 100%;
+        height: 50%;
+        
+       padding:10px;
     }
 
         .main .hot-issue .pic img {
-            width: 110%;
-            margin-top: 20px;
+            max-width: 100%;
+            max-height: 100%;
         }

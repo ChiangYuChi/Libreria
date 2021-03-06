@@ -73,8 +73,8 @@ namespace Libreria.Service
         public ProductViewModel GetById(int id)
         {
             var result = (from p in _DbRepository.GetAll<Product>()
-                          join c in _DbRepository.GetAll<Category>()
-                          on p.CategoryId equals c.CategoryId
+                          join c in _DbRepository.GetAll<Category>() on p.CategoryId equals c.CategoryId
+                          join s in _DbRepository.GetAll<Supplier>() on p.SupplierId equals s.SupplierId
                           where p.ProductId == id
                           select new ProductViewModel()
                           {
@@ -85,7 +85,8 @@ namespace Libreria.Service
                               Author = p.Author,
                               CreateTime = p.CreateTime,
                               Introduction = p.Introduction,
-                              CategoryName = c.Name
+                              CategoryName = c.Name,
+                              Supplier = s.Name,
                           }).FirstOrDefault();
 
             var PreviewList = _DbRepository.GetAll<Preview>()
@@ -111,6 +112,8 @@ namespace Libreria.Service
 
             return result;
         }
+
+  
 
         public List<ProductViewModel> GetByCategory(int CategoryId)
         {
@@ -158,6 +161,35 @@ namespace Libreria.Service
             return result;
         }
 
+        public List<ProductViewModel> GetCategoryName(int CategoryId)
+        {
+            var name= (from p in _DbRepository.GetAll<Product>()
+                          join v in _DbRepository.GetAll<Preview>()
+                          on p.ProductId equals v.ProductId
+                          where p.CategoryId == CategoryId && v.Sort == 0
+                          join c in _DbRepository.GetAll<Category>()
+                          on p.CategoryId equals c.CategoryId
+                          select new ProductViewModel()
+                          {
+                              Id = p.ProductId,
+                              Name = p.ProductName,
+                              UnitPrice = p.UnitPrice,
+                              CategoryId = p.CategoryId,
+                              Author = p.Author,
+                              CreateTime = p.CreateTime,
+                              Introduction = p.Introduction,
+                              MainUrl = v.ImgUrl,
+                              CategoryName = c.Name
+                          }).ToList();
+
+            
+
+            return name;
+        }
+
+
+
+
         public List<ProductViewModel> GetByPublishDate()
         {
             var products = (from p in _DbRepository.GetAll<Product>()
@@ -181,11 +213,17 @@ namespace Libreria.Service
             return result;
 
         }
+        /// <summary>
+        /// 首頁用，取得依照上市日期由新至舊排序之商品資料
+        /// </summary>
+        /// <returns>
+        /// 回傳為集合
+        /// </returns>
         public List<ProductViewModel> GetByPublishDateHome()
         {
             var products = (from p in _DbRepository.GetAll<Product>()
                            .OrderByDescending(p => p.PublishDate)
-                           .Take(5)
+                           .Take(3)
                             join v in _DbRepository.GetAll<Preview>()
                             on p.ProductId equals v.ProductId
                             where v.Sort == 0
@@ -204,11 +242,17 @@ namespace Libreria.Service
             return result;
 
         }
+        /// <summary>
+        /// 首頁用，取得總銷售前N名之商品資料
+        /// </summary>
+        /// <returns>
+        /// 回傳為暢銷商品集合
+        /// </returns>
         public List<ProductViewModel> GetByTotalSalesHome()
         {
             var products = (from p in _DbRepository.GetAll<Product>()
                            .OrderByDescending(p => p.TotalSales)
-                           .Take(5)
+                           .Take(3)
                             join v in _DbRepository.GetAll<Preview>()
                             on p.ProductId equals v.ProductId
                             where v.Sort == 0
@@ -318,6 +362,6 @@ namespace Libreria.Service
             var result = products.ToList();
             return result;
         }
-
+        
     }
 }

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using ECPay.Payment.Integration;
 
 namespace Libreria.Controllers
 {
@@ -82,6 +83,7 @@ namespace Libreria.Controllers
 
         }
 
+
         [HttpPost]
         public void PlusOne(ShoppingCartViewModel ShoppingCartVM)
         {
@@ -135,13 +137,32 @@ namespace Libreria.Controllers
                 }
             }
 
-            return Json(orderVM);
+            return PayOrder(orderVM);
         }
 
-        public ActionResult Test()
+        public ActionResult PayOrder(OrderViewModel orderVM)
         {
-            var result = _orderService.GetAll();
-            return View(result);
+            var result = _orderService.ECPay(orderVM);
+            ViewBag.Html = result;
+            return View("PayOrder");
+
+        }
+
+        public ActionResult PayReturnResult()
+        {
+            return View();
+        }
+
+        public ActionResult PayReturnDetail(FormCollection form)
+        {
+            var RtnCode = form["RtnCode"];
+            //var paymentFinish = _orderService.GetPaymentResult(RtnCode);
+            return View();
+        }
+
+        public PartialViewResult CartMsgPartial()
+        {
+            return PartialView();
         }
     }
 }

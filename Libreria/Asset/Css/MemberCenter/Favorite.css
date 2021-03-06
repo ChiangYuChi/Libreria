@@ -19,8 +19,8 @@
     display: flex;
     border-bottom: 2px solid #EEEEEE;
 }
-.footer {
-    margin-top: 50px;
+.container{
+    min-height: 57vh;
 }
     .favorites span {
         color: red;
@@ -38,7 +38,7 @@
 }
 
 .favorites h1 {
-    font-size: px;
+    font-size: 30px;
 }
 
 .favorites h2 {

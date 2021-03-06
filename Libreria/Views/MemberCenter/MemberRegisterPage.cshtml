@@ -4,6 +4,10 @@
     <link rel="stylesheet" href="~/Asset/Css/MemberCenter/MemberRegisterPage.css">
 }
 
+@section topJS{
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+}
+
 @{
     ViewBag.Title = "Register";
 }
@@ -60,7 +64,7 @@
                             @Html.TextBoxFor(model => model.IDnumber, new { htmlAttributes = new { @class = "form-control" } })
 
 
-                            <span style="color:red;">*</span>@Html.LabelFor(model=>model.Gender, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <span style="color:red;">*</span>@Html.LabelFor(model => model.Gender, htmlAttributes: new { @class = "control-label col-md-4" })
                             @Html.RadioButtonFor(model => model.Gender, 0, htmlAttributes: new { @id = "Gendersradio0", @name = "Gender", @class = "control-label col-md-2" })@Html.Label("男")
                             @Html.RadioButtonFor(model => model.Gender, 1, htmlAttributes: new { @id = "Gendersradio0", @name = "Gender", @class = "control-label col-md-2" })@Html.Label("女")
                             @Html.RadioButtonFor(model => model.Gender, 2, htmlAttributes: new { @id = "Gendersradio0", @name = "Gender", @class = "control-label col-md-2" })@Html.Label("其他")<br>
@@ -112,13 +116,14 @@
                                                 new SelectListItem { Value="選取鄉政市區",Text="選取鄉政市區"}
                                             }, new { @id = "Town", @class = "form-select form-select-lg mb-3" })
                                     @*<select id="Town" disabled class="form-select form-select-lg mb-3" aria-label=".form-select-sm example">
-                        <option selected>選取鄉政市區</option>
-                    </select>*@
+                                            <option selected>選取鄉政市區</option>
+                                        </select>*@
                                     @Html.TextBoxFor(model => model.Address, new { htmlAttributes = new { @class = "form-control" } })
 
                                 </div>
                             </div>
 
+                            <div class="g-recaptcha" data-sitekey="6LdHiXIaAAAAAEGQeL96rfsHY_fooaCxQhd0K2t9"></div>
 
                             @Html.ValidationSummary(false, "", new { @class = "text-danger" })
                             <div class="button-block">
@@ -136,17 +141,17 @@
 @section endJS{
 
     @*<script src="~/Asset/Js/MemberCenter/MemberRegisterPage.js" crossorigin="anonymous"></script>
-    <script>
-        function ValidMemberNAme() {
-            $.ajax({
-                url: "",
-                data: {
+        <script>
+            function ValidMemberNAme() {
+                $.ajax({
+                    url: "",
+                    data: {
 
-                }
-            })
-        }
-    </script>*@
-    
+                    }
+                })
+            }
+        </script>*@
+
     <script>
         window.onload = () => {
             requestAreaJson();
@@ -200,11 +205,18 @@
                     });
                 }
             });
-        }      
-      
+        }
 
-        
+
+
     </script>
+
+    <script>
+        function onSubmit(token) {
+            document.getElementById("demo-form").submit();
+        }
+    </script>
+
 
 }
 
