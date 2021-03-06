@@ -711,7 +711,7 @@
     <Content Include="Views\Order\PayReturnDetail.cshtml" />
     <Content Include="Views\MemberCenter\CartMsgPartial.cshtml" />
     <Content Include="Views\Order\CartMsgPartial.cshtml" />
-    <Content Include="Views\MemberCenter\PasswordPartialView.cshtml" />
+    <Content Include="Views\MemberCenter\PasswordPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Code\" />

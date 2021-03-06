@@ -1,4 +1,5 @@
-﻿using Libreria.Models.EntityModel;
+﻿using Libreria.Helpers;
+using Libreria.Models.EntityModel;
 using Libreria.Repository;
 using Libreria.ViewModels;
 using System;
@@ -38,7 +39,7 @@ namespace Libreria.Service
 
             foreach (var memberVM in result)
             {
-                
+
             }
 
             return result;
@@ -94,7 +95,7 @@ namespace Libreria.Service
                 _DbRepository.Update<member>(originalMember);
                 result.IsSuccessful = true;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 result.IsSuccessful = false;
                 ex.ToString();
@@ -104,9 +105,22 @@ namespace Libreria.Service
 
         public OperationResult ChangePassword(PasswordViewModel model)
         {
-            var result = new OperationResult();
-            return result;
-        }
+            var result = new OperationResult();            
+            var member = _DbRepository.GetAll<member>().Where(m => Utility.GetSha512(m.memberPassword) == model.OriginalPassword).FirstOrDefault();
+            member.memberPassword = Utility.GetSha512(model.NewPassword);
 
+            return result;
+            try
+            {
+                _DbRepository.Update<member>(member);
+            }
+            catch(Exception ex)
+            {
+                result.IsSuccessful = false;
+                ex.ToString();
+            }
+        }
+    
+    
     }
 }
