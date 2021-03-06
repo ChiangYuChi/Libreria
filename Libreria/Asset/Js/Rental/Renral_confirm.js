@@ -24,7 +24,18 @@ $(document).ready(function () {
     $.validator.addMethod("isChcek", function (value, element) {
         return $(element).is(':checked');
     }, '請勾選我同意');
-    
+
+    $.validator.addMethod("accept", function (value, element) {
+        var validExts = $(element).attr('data-val-extension-extension').split(',');
+
+        var fileExt = element.value;
+        fileExt = fileExt.substring(fileExt.lastIndexOf('.') + 1);
+        if (validExts.indexOf(fileExt) < 0) {
+            
+            return false;
+        }
+        else return true;
+    });
 
     $('#confirm').click(function () {
         if ($('#confirmForm').valid()) {

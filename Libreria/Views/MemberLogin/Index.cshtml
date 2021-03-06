@@ -64,8 +64,8 @@
                         </div>
                         <div class="mvc-fix">
                             <div class="editor-field">
-                                @Html.LabelFor(model => model.Remember, htmlAttributes: new { @class = "control-label col-md-2 d-inline", @style = "font-size: 15px;color: #8a6926;" })
                                 @Html.EditorFor(model => model.Remember)
+                                @Html.LabelFor(model => model.Remember, htmlAttributes: new { @class = "control-label d-inline",@style= "font-size: 15px;color: #8a6926;" })
                                 @Html.ValidationMessageFor(model => model.Remember, "", new { @class = "text-danger" })
                             </div>
                             <span class="forget-password-span"><a href="#">忘記密碼</a></span> <br />
