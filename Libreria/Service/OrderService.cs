@@ -511,7 +511,6 @@ namespace Libreria.Service
                     oPayment.Send.MerchantTradeDate = DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss");//廠商的交易時間
                     /*oPayment.Send.TotalAmount = Decimal.Parse($"{ orderVM.OrderPrice}") */ ;//交易總金額
                     oPayment.Send.TotalAmount = Decimal.Parse($"{String.Format("{0:N0}",orderTotal )}".ToString());
-                   
                     oPayment.Send.TradeDesc = "交易描述";//交易描述
                     oPayment.Send.ChoosePayment = PaymentMethod.ALL;//使用的付款方式
                     oPayment.Send.Remark = "";//備註欄位
@@ -551,8 +550,7 @@ namespace Libreria.Service
                         });
                     }
 
-                    
-
+  
                     //訂單的商品資料
 
                     /*************************非即時性付款:ATM、CVS 額外功能參數**************/
@@ -633,5 +631,7 @@ namespace Libreria.Service
 
             return html;
         }
+
+        
     }
 }

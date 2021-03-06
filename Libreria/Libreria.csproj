@@ -1164,7 +1164,6 @@
     <Content Include="Views\MemberCenter\ChangePassward.cshtml" />
     <Content Include="Views\MemberCenter\_ViewStart.cshtml" />
     <Content Include="Views\Product\Index.cshtml" />
-    <Content Include="Views\Order\Test.cshtml" />
     <Content Include="Views\Shared\_Layout-Home.cshtml" />
     <Content Include="Views\AboutUs\Index.cshtml" />
     <Content Include="Views\Exhibition\Index.cshtml" />
@@ -1193,7 +1192,6 @@
     <Content Include="Views\MemberCenter\Favorite.cshtml" />
     <Content Include="Views\Rental\Confirm.cshtml" />
     <Content Include="Views\MemberLogin\LoginPartialHambuger.cshtml" />
-    <Content Include="Views\Product\Test.cshtml" />
     <Content Include="Views\MemberCenter\MemberBenefits.cshtml" />
     <Content Include="Views\Order\PayOrder.cshtml" />
     <Content Include="Views\Product\CartMsgPartial.cshtml" />

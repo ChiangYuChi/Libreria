@@ -153,16 +153,13 @@ namespace Libreria.Controllers
             return View();
         }
 
-        public ActionResult PayReturnDetail()
+        public ActionResult PayReturnDetail(FormCollection form)
         {
+            var RtnCode = form["RtnCode"];
+            //var paymentFinish = _orderService.GetPaymentResult(RtnCode);
             return View();
         }
 
 
-        public ActionResult Test()
-        {
-            var result = _orderService.GetAll();
-            return View(result);
-        }
     }
 }
