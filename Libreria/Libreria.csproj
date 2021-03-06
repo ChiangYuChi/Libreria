@@ -56,8 +56,8 @@
     </Reference>
     <Reference Include="ECPay.Payment.Integration">
       <HintPath>.\ECPay.Payment.Integration.dll</HintPath>
-      <HintPath>..\..\..\..\..\Desktop\ECPayAIO_Net-master\ECPay.Payment.Integration.dll</HintPath>
       <HintPath>..\ECPayAIO_Net-master\ECPay.Payment.Integration.dll</HintPath>
+      <HintPath>..\..\..\..\..\Desktop\ECPayAIO_Net-master\ECPay.Payment.Integration.dll</HintPath>
     </Reference>
     <Reference Include="Google.Protobuf, Version=3.11.4.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
       <HintPath>..\packages\Google.Protobuf.3.11.4\lib\net45\Google.Protobuf.dll</HintPath>
@@ -1218,10 +1218,10 @@
     <Content Include="Views\Home\Exception.cshtml" />
     <Content Include="Views\Order\OrderResult.cshtml" />
     <Content Include="Views\Order\OrderDetailReturn.cshtml" />
-    <Content Include="Views\Order\PayReturnResult.cshtml" />
-    <Content Include="Views\Order\PayReturnDetail.cshtml" />
     <Content Include="Views\MemberCenter\CartMsgPartial.cshtml" />
     <Content Include="Views\Order\CartMsgPartial.cshtml" />
+    <Content Include="Views\Order\PayReturnResult.cshtml" />
+    <Content Include="Views\Order\PayReturnDetail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Code\" />
