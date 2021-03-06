@@ -149,8 +149,8 @@
             <div class="col-12 col-lg-6">
                 <div class="Rental__content">
                     <div class="form-group" id="upload-image">
-                        <label for="pic">請上傳展覽宣傳圖片 <span>(尺寸請用300 x 400)</span> </label>
-                        <input type="file" class="form-control-file" id="ExPhoto" name="ExPhoto" accept="image/*">
+                        <label for="pic">請上傳展覽宣傳圖片 <span>(尺寸請用1200 x 450)</span> </label>
+                        @Html.TextBoxFor(model => model.ExPhoto, new { @class = "form-control-file",type ="file", accept= "image/*" })
                         @Html.ValidationMessageFor(model => model.ExPhoto, "", new { @class = "text-danger" })
                     </div>
                     <hr />
@@ -173,7 +173,7 @@
 
                         }
                         <div class="price-calculation">
-                            <p>$2500 x @days 天</p>
+                            <p>$1500 x @days 天</p>
                             <p>$@totalPrice</p>
                         </div>
                         <div class="price-total">

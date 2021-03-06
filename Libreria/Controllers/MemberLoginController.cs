@@ -1,5 +1,4 @@
-﻿
-using Libreria.Helpers;
+﻿using Libreria.Helpers;
 using Libreria.Models.EntityModel;
 using Libreria.Service;
 using Libreria.ViewModels;
@@ -14,9 +13,7 @@ using System.Web.Security;
 namespace Libreria.Controllers
 {
     public class MemberLoginController : Controller
-    {
-       
-
+    {     
         public readonly MemberLoginService _memberLoginService;
         public readonly ShoppingService _shoppingService;
         public MemberLoginController()
@@ -28,20 +25,20 @@ namespace Libreria.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-            //if (User.Identity.IsAuthenticated == true)
-            //{
-            //    return Redirect("MemberLogin");
-            //}
-            //else
-            //{
-                return View();
-
-            //}
+           return View();
         }
         
         [HttpPost]
-        public ActionResult Index(MemberLoginViewModel model)
+        public ActionResult Index(MemberLoginViewModel model, FormCollection form)
         {
+            string gRecaptchaResponse = form["g-recaptcha-response"]; //"g-recaptcha-response無法透過ViewModel接收
+            ReCaptchaViewModel reCaptchaVM = Utility.GetRecaptchaVaildation(gRecaptchaResponse);
+            if(reCaptchaVM.success != true)
+            {
+                ModelState.AddModelError("", "請勾選我不是機器人");
+                return View(model);
+            }
+
             var result = _memberLoginService.GetMember(model, ModelState.IsValid);
             if (ModelState.IsValid)
             {
