@@ -275,6 +275,8 @@
                 data: { Id: productId },
                 dataType: "text",
                 success: function (response) {
+                    addProduct(response);
+
                     $("#MyCart").text("購物車(" + response + ")");
                     $(".cart__products").html("");
                     $.ajax({
@@ -347,7 +349,7 @@
 
 
         $('body').on('click', '.js-toggle-cart', toggleCart);
-        $('body').on('click', '.js-add-product', addProduct);
+        //$('body').on('click', '.js-add-product', addProduct);
         $('body').on('click', '.js-remove-product', removeProduct);
         $('body').on('click', '.open', closeCart);
 
@@ -376,12 +378,29 @@
 
         }
 
-        function addProduct(e) {
-            e.preventDefault();
-            numberOfProducts++;
+        function addProduct(response) {
+            //e.preventDefault();
+            if (response == "商品加入成功！") {
+                numberOfProducts++;
+                //document.getElementById("CartMsgAlertText").innerText = response;
+                document.querySelector(".fa-check-circle").style.display = "block";
+                document.querySelector(".fa-times-circle").style.display = "none";
+            }
+            else {
+                document.getElementById("CartMsgAlertText").innerText = response;
+                document.querySelector(".fa-check-circle").style.display = "none";
+                document.querySelector(".fa-times-circle").style.display = "block";
+            }
+            document.querySelector(".CartMsg-wrap").setAttribute("style", "display:flex");
+
             /*openCart();*/
-            document.querySelector(".CartMsg-wrap").setAttribute("style", "display:flex")
-            var time = window.setTimeout((() =>document.querySelector(".CartMsg-wrap").setAttribute("style", "display:none")), 800)
+
+            var time = window.setTimeout((() => {
+                document.querySelector(".CartMsg-wrap").setAttribute("style", "display:none");
+                document.getElementById("CartMsgAlertText").innerText = "商品加入成功！";
+                document.querySelector(".fa-check-circle").style.display = "block";
+                document.querySelector(".fa-times-circle").style.display = "none";
+            }), 800)
             
         }
 

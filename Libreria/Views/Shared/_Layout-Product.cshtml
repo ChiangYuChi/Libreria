@@ -238,6 +238,7 @@
                 data: { Id: productId },
                 dataType: "text",
                 success: function (response) {
+                    addProduct(response);
                 }
             });
         }
