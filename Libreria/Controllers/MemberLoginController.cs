@@ -16,10 +16,12 @@ namespace Libreria.Controllers
     {     
         public readonly MemberLoginService _memberLoginService;
         public readonly ShoppingService _shoppingService;
+        public readonly MemberService _memberService;
         public MemberLoginController()
         {
             _memberLoginService = new MemberLoginService();
             _shoppingService = new ShoppingService();
+            _memberService = new MemberService();
         }
         // GET: MemberLogin
         [HttpGet]

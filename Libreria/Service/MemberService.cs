@@ -5,6 +5,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Threading.Tasks;
+using SendGrid;
+using SendGrid.Helpers.Mail;
 
 namespace Libreria.Service
 {
@@ -38,7 +41,7 @@ namespace Libreria.Service
 
             foreach (var memberVM in result)
             {
-                
+
             }
 
             return result;
@@ -95,13 +98,46 @@ namespace Libreria.Service
                 _DbRepository.Update<member>(originalMember);
                 result.IsSuccessful = true;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 result.IsSuccessful = false;
                 ex.ToString();
             }
             return result;
         }
+
+        public OperationResult SendEmail(string email)
+        {
+            var result = new OperationResult();
+            var member = _DbRepository.GetAll<member>().Where(x => x.Email == email).FirstOrDefault();
+            
+            if (member != null)
+            {
+                ForgotPasswordEmail(member).Wait();
+                result.IsSuccessful = true;
+            }
+            else
+            {
+                result.IsSuccessful = false;
+            }
+
+            return result;
+        }
+
+        public async Task ForgotPasswordEmail(member member)
+        {
+            var apikey = "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";
+            var client = new SendGridClient(apikey);
+            var from = new EmailAddress("buildschool@libreria.com", "Libreria");
+            var to = new EmailAddress(member.Email, member.memberName);
+            var subject = "Libreria密码重置";
+            var plainTextContent = "";
+            var htmlContent = "<p>请点击链接来重置您的密码 <a href = ''>www.google.com</a></p>";
+            var msg = MailHelper.CreateSingleEmail(from, to, subject, plainTextContent, htmlContent);
+            var response = await client.SendEmailAsync(msg);
+        }
+
+
 
 
     }
