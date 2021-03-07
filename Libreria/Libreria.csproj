@@ -300,6 +300,10 @@
     <Compile Include="Migrations\202103011436399_addCityAndRegineInMemberList.Designer.cs">
       <DependentUpon>202103011436399_addCityAndRegineInMemberList.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202103060750436_PaymentState.cs" />
+    <Compile Include="Migrations\202103060750436_PaymentState.Designer.cs">
+      <DependentUpon>202103060750436_PaymentState.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\EntityModel\AspNetRole.cs" />
@@ -1260,6 +1264,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202103011436399_addCityAndRegineInMemberList.resx">
       <DependentUpon>202103011436399_addCityAndRegineInMemberList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103060750436_PaymentState.resx">
+      <DependentUpon>202103060750436_PaymentState.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
