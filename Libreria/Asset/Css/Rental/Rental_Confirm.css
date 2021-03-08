@@ -126,10 +126,11 @@
 }
 
 
-#upload-image span {
+#upload-image label span {
     font-size: 16px;
     color: rgba(176, 176, 176, 1);
 }
+
 #upload-image input{
     max-width: 400px;
 }
@@ -166,6 +167,8 @@
     border-color: none;
     box-shadow: none;
 }
+
+
 
 @media screen and (max-width:991px) {
     .Rental__content{

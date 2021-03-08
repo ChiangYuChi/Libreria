@@ -38,12 +38,20 @@ namespace Libreria.Controllers
             if (ModelState.IsValid) {
 
                 await _rentalService.ConfirmBooling(model);
-                return View("index");
+                var result = _rentalService.ECPay(model);
+                TempData["RentalPayOrderResult"] = result;
+                return RedirectToAction("PayOrder");
             }
             else
             {
                 return View("Confirm", model);
             }
+        }
+
+        public ActionResult PayOrder()
+        {
+            ViewBag.html = (string)TempData["RentalPayOrderResult"];
+            return View("PayOrder");
         }
 
         public PartialViewResult CartMsgPartial()
