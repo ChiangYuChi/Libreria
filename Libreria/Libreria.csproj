@@ -57,7 +57,7 @@
     <Reference Include="ECPay.Payment.Integration">
       <HintPath>.\ECPay.Payment.Integration.dll</HintPath>
       <HintPath>..\ECPayAIO_Net-master\ECPay.Payment.Integration.dll</HintPath>
-      <HintPath>..\..\..\..\..\Desktop\ECPayAIO_Net-master\ECPay.Payment.Integration.dll</HintPath>
+      <HintPath>..\ECPayAIO_Net-master\ECPay.Payment.Integration.dll</HintPath>
     </Reference>
     <Reference Include="Google.Protobuf, Version=3.11.4.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
       <HintPath>..\packages\Google.Protobuf.3.11.4\lib\net45\Google.Protobuf.dll</HintPath>
@@ -275,6 +275,7 @@
     <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\RentalController.cs" />
+    <Compile Include="Filters\AllowExtensionsAttribute.cs" />
     <Compile Include="Filters\CustomAuthenticationFilter.cs" />
     <Compile Include="Filters\CustomAuthorizeAttribute.cs" />
     <Compile Include="Filters\CustomExceptionFilter.cs" />
@@ -297,6 +298,10 @@
     <Compile Include="Migrations\202103060750436_PaymentState.cs" />
     <Compile Include="Migrations\202103060750436_PaymentState.Designer.cs">
       <DependentUpon>202103060750436_PaymentState.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103081145267_payment-eshi.cs" />
+    <Compile Include="Migrations\202103081145267_payment-eshi.Designer.cs">
+      <DependentUpon>202103081145267_payment-eshi.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -954,6 +959,7 @@
     <Content Include="Asset\Js\Home-Index\slick.min.js" />
     <Content Include="Asset\Css\MemberCenter\MemberContact.css" />
     <Content Include="Asset\Css\Member\Member.css" />
+    <Content Include="Asset\Js\MemberCenter\MemberLogin.js" />
     <Content Include="Asset\Js\MemberCenter\MemberOrderInquery.js" />
     <Content Include="Asset\Js\MemberCenter\MemberContact.js" />
     <Content Include="Asset\Js\MemberCenter\Favorite.js" />
@@ -1225,8 +1231,10 @@
     <Content Include="Views\Home\Exception.cshtml" />
     <Content Include="Views\MemberCenter\CartMsgPartial.cshtml" />
     <Content Include="Views\Order\CartMsgPartial.cshtml" />
+    <Content Include="Views\Rental\CartMsgPartial.cshtml" />
     <Content Include="Views\Order\PayReturnResult.cshtml" />
     <Content Include="Views\Order\PayReturnDetail.cshtml" />
+    <Content Include="Views\Rental\PayOrder.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Code\" />
@@ -1262,6 +1270,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202103060750436_PaymentState.resx">
       <DependentUpon>202103060750436_PaymentState.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103081145267_payment-eshi.resx">
+      <DependentUpon>202103081145267_payment-eshi.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

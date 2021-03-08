@@ -38,12 +38,36 @@ namespace Libreria.Controllers
             if (ModelState.IsValid) {
 
                 await _rentalService.ConfirmBooling(model);
-                return View("index");
+                var result = _rentalService.ECPay(model);
+                TempData["RentalPayOrderResult"] = result;
+                return RedirectToAction("PayOrder");
             }
             else
             {
                 return View("Confirm", model);
             }
+        }
+
+        public ActionResult PayOrder()
+        {
+            ViewBag.html = (string)TempData["RentalPayOrderResult"];
+            return View("PayOrder");
+        }
+
+        //public ActionResult PayReturnDetail(int orderId, FormCollection form)
+        //{
+
+        //    var RtnCode = form["RtnCode"];
+        //    List<OrderViewModel> orderVMList = _rentalService.GetByOrderId(orderId);
+        //    OrderViewModel orderVM = orderVMList.FirstOrDefault();
+
+
+        //    return View();
+        //}
+
+        public PartialViewResult CartMsgPartial()
+        {
+            return PartialView();
         }
 
     }
