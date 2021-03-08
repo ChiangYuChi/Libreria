@@ -72,7 +72,6 @@ namespace Libreria.Controllers
             else
             {
                 return "商品加入失敗！";
-                //test
             }
         }
 
