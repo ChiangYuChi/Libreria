@@ -35,6 +35,7 @@ namespace Libreria.Service
             {
                 try
                 {
+                    //圖片上傳至imgur並取得圖片網址
                    string imageUrl = null;
                     if (model.ExPhoto.ContentLength > 0)
                     {
@@ -89,6 +90,7 @@ namespace Libreria.Service
             return result;
         }
 
+        //取得目前有預約的日期
         public IEnumerable<string> GetPickDateRange()
         {
             var exhibitionOrders = _DbRepository.GetAll<ExhibitionOrder>().ToList();
@@ -101,6 +103,7 @@ namespace Libreria.Service
 
             return listDateRange.Distinct();
         }
+
 
         public string ECPay(RentalConfirmViewModel rentalVM)
         {
@@ -248,6 +251,8 @@ namespace Libreria.Service
 
             return html;
         }
+
+
     }
     
 }

@@ -54,6 +54,12 @@ namespace Libreria.Service
                             cookie.Expires = DateTime.Now.AddDays(7);
                             HttpContext.Current.Response.Cookies.Add(cookie);
                         }
+                        else if(model.Remember == false)
+                        {
+                            HttpCookie removeCookie = new HttpCookie("MyCookie");
+                            removeCookie.Expires = DateTime.Now.AddDays(-1);
+                            HttpContext.Current.Request.Cookies.Add(removeCookie);
+                        }
                         
                         //var CookiesessionID = HttpContext.Request.Cookies["SesssionID"];
 

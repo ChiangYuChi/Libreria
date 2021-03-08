@@ -299,6 +299,10 @@
     <Compile Include="Migrations\202103060750436_PaymentState.Designer.cs">
       <DependentUpon>202103060750436_PaymentState.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202103081145267_payment-eshi.cs" />
+    <Compile Include="Migrations\202103081145267_payment-eshi.Designer.cs">
+      <DependentUpon>202103081145267_payment-eshi.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\EntityModel\AspNetRole.cs" />
@@ -1265,6 +1269,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202103060750436_PaymentState.resx">
       <DependentUpon>202103060750436_PaymentState.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103081145267_payment-eshi.resx">
+      <DependentUpon>202103081145267_payment-eshi.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -54,6 +54,17 @@ namespace Libreria.Controllers
             return View("PayOrder");
         }
 
+        //public ActionResult PayReturnDetail(int orderId, FormCollection form)
+        //{
+
+        //    var RtnCode = form["RtnCode"];
+        //    List<OrderViewModel> orderVMList = _rentalService.GetByOrderId(orderId);
+        //    OrderViewModel orderVM = orderVMList.FirstOrDefault();
+
+
+        //    return View();
+        //}
+
         public PartialViewResult CartMsgPartial()
         {
             return PartialView();
