@@ -16,6 +16,7 @@ namespace Libreria.Controllers
         private readonly ShoppingService _shoppingService;
         private readonly MemberService _memberService;
         private readonly FavoriteService _favoriteService;
+        private readonly ProductService _productService;
 
         public OrderController()
         {
@@ -23,6 +24,7 @@ namespace Libreria.Controllers
             _shoppingService = new ShoppingService();
             _memberService = new MemberService();
             _favoriteService = new FavoriteService();
+            _productService = new ProductService();
         }
 
         /// <summary>
@@ -41,22 +43,35 @@ namespace Libreria.Controllers
                 result = _shoppingService.GetAll();
             }
 
-            return View(result);
+            return View("Index", result);
         }
 
         [HttpPost]
         public string AddToCart(ProductViewModel ProductVM)
         {
-            var result = _shoppingService.AddToCart(ProductVM.Id);
+            OperationResult result = new OperationResult() {
+                IsSuccessful = false,
+            };
 
+            //查詢庫存
+            ProductVM = _productService.GetById(ProductVM.Id);
+
+            if(ProductVM.Count >= 1) //檢查庫存
+            {
+                result = _shoppingService.AddToCart(ProductVM.Id);
+            }
+            else //庫存小於1
+            {
+                return "商品庫存不足！";
+            }
 
             if (result.IsSuccessful)
             {
-                return "加入成功!";
+                return "商品加入成功！";
             }
             else
             {
-                return "加入失败";
+                return "商品加入失敗！";
             }
         }
 
@@ -84,10 +99,23 @@ namespace Libreria.Controllers
         }
 
 
+        //若有錯誤，回傳錯誤訊息
         [HttpPost]
-        public void PlusOne(ShoppingCartViewModel ShoppingCartVM)
+        public string PlusOne(ShoppingCartViewModel ShoppingCartVM)
         {
-            _shoppingService.AddOne(ShoppingCartVM.ProductId);
+
+            //查詢庫存
+            ProductViewModel ProductVM = _productService.GetById(ShoppingCartVM.ProductId);
+
+            if (ProductVM.Count >= ShoppingCartVM.Count+1) //檢查庫存
+            {
+                _shoppingService.AddOne(ShoppingCartVM.ProductId); //商品數量+1
+                return "";
+            }
+            else
+            {
+                return $"《{ProductVM.Name}》庫存不足";
+            }
         }
 
         [HttpPost]
@@ -97,9 +125,21 @@ namespace Libreria.Controllers
         }
 
         [HttpPost]
-        public int Redirect()
+        public string Redirect()
         {
-            return _shoppingService.Redirect();  
+            //檢查庫存
+            List<ShoppingCartViewModel> shoppingCartVMs = _shoppingService.GetAll();
+            foreach(var shoppingCartVM in shoppingCartVMs)
+            {
+                ProductViewModel ProductVM = _productService.GetById(shoppingCartVM.ProductId);
+
+                if (ProductVM.Count < shoppingCartVM.Count) //檢查庫存
+                {
+                    return $"《{ProductVM.Name}》庫存不足"; //回傳錯誤訊息
+                }
+            }
+
+            return _shoppingService.Redirect().ToString();  
         }
 
         /// <summary>
@@ -119,6 +159,19 @@ namespace Libreria.Controllers
         [HttpPost]
         public ActionResult Checkout(OrderViewModel orderVM)
         {
+            //檢查庫存
+            List<ShoppingCartViewModel> shoppingCartVMs = _shoppingService.GetAll();
+            foreach (var shoppingCartVM in shoppingCartVMs)
+            {
+                ProductViewModel ProductVM = _productService.GetById(shoppingCartVM.ProductId);
+
+                if (ProductVM.Count < shoppingCartVM.Count) //檢查庫存
+                {
+                    ViewBag.ErrorMsg = $"《{ProductVM.Name}》庫存不足"; //回傳錯誤訊息
+                    return Index(); //回到購物車
+                }
+            }
+
             //取得購物車並放入訂單
             orderVM = _orderService.PutShoppingCartsToOrderVM(orderVM);
 
@@ -158,8 +211,10 @@ namespace Libreria.Controllers
             var RtnCode = form["RtnCode"];
             List<OrderViewModel> orderVMList = _orderService.GetByOrderId(orderId);
             OrderViewModel orderVM = orderVMList.FirstOrDefault();
+           _orderService.SetState(orderVM, RtnCode);
 
-           
+
+ 
             return View();
         }
 

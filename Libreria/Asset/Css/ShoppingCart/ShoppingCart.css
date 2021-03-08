@@ -451,6 +451,15 @@
     font-weight: 700;
 }
 
+
+
+
+/*錯誤訊息*/
+.error-msg {
+    text-align: end;
+    color: red;
+}
+
 /* 价格总计 */
 .amount-summary {
     position: fixed;
