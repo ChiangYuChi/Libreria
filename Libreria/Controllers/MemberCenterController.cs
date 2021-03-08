@@ -76,12 +76,19 @@ namespace Libreria.Controllers
             }
 
         }
-
         [HttpPost]
         public ActionResult ChangePassward(PasswordViewModel model)
         {
-            var result = model;
-            return View();
+            var result = _memberService.ChangePassword(model, ModelState.IsValid);
+            if (result.IsSuccessful)
+            {
+                return Redirect("MemberLogin");
+            }
+            else
+            {
+                ModelState.AddModelError("", "修改失敗");
+                return Redirect("MemberInfo");
+            }
         }
 
 

@@ -39,6 +39,10 @@
             {
                 using (Html.BeginForm("MemberInfo", "MemberCenter", FormMethod.Post, new { @id = "infoForm", @class = "form-group row mt-4" }))
                 {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+
+
                     @Html.HiddenFor(model => model.memberPassword, new { @class = "form-control", @Value = item.memberPassword })
                     @Html.HiddenFor(model => model.memberPassword, new { @class = "form-control", @Value = item.memberPassword })
 
@@ -93,9 +97,9 @@
 
                             <div class="form-content col-xl-4 col-lg-5 col-9">
                                 <div class="gender">
-                                    @Html.RadioButtonFor(model => model.Gender, 0, new {  @name = "Gender", @class = "control-label col-md-2 Gender", @id = (item.Gender == 0 ? true : false) })@Html.Label("男")
-                                    @Html.RadioButtonFor(model => model.Gender, 1, new {  @name = "Gender", @class = "control-label col-md-2 Gender", @id = (item.Gender == 1 ? true : false) })@Html.Label("女")
-                                    @Html.RadioButtonFor(model => model.Gender, 2, new {  @name = "Gender", @class = "control-label col-md-2 Gender", @id = (item.Gender == 2 ? true : false) })@Html.Label("其他")<br>
+                                    @Html.RadioButtonFor(model => model.Gender, 0, new { @name = "Gender", @class = "control-label col-md-2 Gender", @id = (item.Gender == 0 ? true : false) })@Html.Label("男")
+                                    @Html.RadioButtonFor(model => model.Gender, 1, new { @name = "Gender", @class = "control-label col-md-2 Gender", @id = (item.Gender == 1 ? true : false) })@Html.Label("女")
+                                    @Html.RadioButtonFor(model => model.Gender, 2, new { @name = "Gender", @class = "control-label col-md-2 Gender", @id = (item.Gender == 2 ? true : false) })@Html.Label("其他")<br>
 
                                 </div>
                             </div>
@@ -136,7 +140,7 @@
                     </div>
                     <div class="col-12">
                         <div class="form-group row">
-                                @Html.LabelFor(model => model.Address, htmlAttributes: new { @class = "form-subtitle col-3 col-xl-1 col-lg-2 text-right text-nowrap" })
+                            @Html.LabelFor(model => model.Address, htmlAttributes: new { @class = "form-subtitle col-3 col-xl-1 col-lg-2 text-right text-nowrap" })
                             <div class="recipient_profile_address form-content col-xl-4 col-lg-5 col-9 ">
                                 <div class="form-row">
 
@@ -175,32 +179,35 @@
                                         @Html.TextBoxFor(model => model.Address, new { @class = "form-control", @Value = item.Address })
                                     </div>
                                 </div>
-                                </div>
+                            </div>
 
                             <div class="col-12 mt-2 d-flex justify-content-center">
                                 <button><a href="" class="cancel">取消</a></button>
                                 <button type="submit" class="confirm">確認</button>
                             </div>
 
-                            </div>
+                        </div>
                     </div>
                 }
             }
         </div>
-                    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                            @using (Html.BeginForm("ChangePassward", "MemberCenter", FormMethod.Post, new { @id = "passwordFrom", @class = "form-group row mt-4" }))
-                            {
-                                foreach (var item in member)
-                                {
-                                    @Html.Partial("PasswordPartial")                               
+        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+            @using (Html.BeginForm("ChangePassward", "MemberCenter", FormMethod.Post, new { @id = "passwordFrom", @class = "form-group row mt-4" }))
+            {
+                @Html.AntiForgeryToken()
 
-                                <div class="col-12 mt-2 d-flex justify-content-center">
-                                    <button><a href="" class="cancel">取消</a></button>
-                                    <button type="submit" class="confirm">確認</button>
-                                </div>
-                                }
-                            }
+                
+                    @Html.Partial("PasswordPartial")
+
+                    <div class="col-12 mt-2 d-flex justify-content-center">
+                        <button><a href="" class="cancel">取消</a></button>
+                        <button type="submit" class="confirm">確認</button>
                     </div>
+                
+                @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+
+            }
+        </div>
                 
             
         

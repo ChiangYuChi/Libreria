@@ -103,22 +103,27 @@ namespace Libreria.Service
             return result;
         }
 
-        public OperationResult ChangePassword(PasswordViewModel model)
+        public OperationResult ChangePassword(PasswordViewModel model,bool isValid)
         {
-            var result = new OperationResult();            
-            var member = _DbRepository.GetAll<member>().Where(m => Utility.GetSha512(m.memberPassword) == model.OriginalPassword).FirstOrDefault();
-            member.memberPassword = Utility.GetSha512(model.NewPassword);
+            var result = new OperationResult();
+            if (isValid)
+            {
+                var original = Utility.GetSha512(model.OriginalPassword);
+                var member = _DbRepository.GetAll<member>().Where(m => m.memberPassword == original).FirstOrDefault();
+                member.memberPassword = Utility.GetSha512(model.NewPassword);
 
+                try
+                {
+                    _DbRepository.Update<member>(member);
+                }
+                catch (Exception ex)
+                {
+                    result.IsSuccessful = false;
+                    ex.ToString();
+                }
+            }
             return result;
-            try
-            {
-                _DbRepository.Update<member>(member);
-            }
-            catch(Exception ex)
-            {
-                result.IsSuccessful = false;
-                ex.ToString();
-            }
+                        
         }
     
     
