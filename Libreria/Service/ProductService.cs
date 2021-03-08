@@ -236,7 +236,7 @@ namespace Libreria.Service
                             {
                                 Id = p.ProductId,
                                 Name = p.ProductName,
-                                UnitPrice = p.UnitPrice,
+                                UnitPrice = Math.Truncate(p.UnitPrice),
                                 CategoryId = p.CategoryId,
                                 Author = p.Author,
                                 CreateTime = p.CreateTime,

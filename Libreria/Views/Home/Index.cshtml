@@ -45,7 +45,7 @@
                                     </div>
                                     <p>
                                         @item.Name<br>
-                                        <span class="unitprice">@item.UnitPrice</span>
+                                        <span class="unitprice">@String.Format("{0:N0}", item.UnitPrice)</span>
                                     </p>
                                 </div>
                             </div>
@@ -78,7 +78,7 @@
                                         </div>
                                         <p>
                                             @item.Name<br>
-                                            <span class="unitprice">@item.UnitPrice</span>
+                                            <span class="unitprice">@String.Format("{0:N0}", item.UnitPrice)</span>
                                         </p>
                                     </div>
                                 </div>
