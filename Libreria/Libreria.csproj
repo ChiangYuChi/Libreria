@@ -1031,6 +1031,9 @@
     <Content Include="Content\bootstrap-reboot.css.map" />
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
+    <None Include="Properties\PublishProfiles\WebLibreria - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\WebLibreria - ReadOnly - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\WebLibreria - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -1220,8 +1223,6 @@
     <Content Include="Views\Order\PayOrder.cshtml" />
     <Content Include="Views\Product\CartMsgPartial.cshtml" />
     <Content Include="Views\Home\Exception.cshtml" />
-    <Content Include="Views\Order\OrderResult.cshtml" />
-    <Content Include="Views\Order\OrderDetailReturn.cshtml" />
     <Content Include="Views\MemberCenter\CartMsgPartial.cshtml" />
     <Content Include="Views\Order\CartMsgPartial.cshtml" />
     <Content Include="Views\Order\PayReturnResult.cshtml" />
