@@ -106,14 +106,14 @@ namespace Libreria.Service
             return result;
         }
 
-        public OperationResult SendEmail(string email)
+        public OperationResult SendEmail(string email, string callbackurl)
         {
             var result = new OperationResult();
             var member = _DbRepository.GetAll<member>().Where(x => x.Email == email).FirstOrDefault();
             
             if (member != null)
             {
-                ForgotPasswordEmail(member).Wait();
+                ForgotPasswordEmail(member, callbackurl).Wait();
                 result.IsSuccessful = true;
             }
             else
@@ -124,17 +124,43 @@ namespace Libreria.Service
             return result;
         }
 
-        public async Task ForgotPasswordEmail(member member)
+        public async Task ForgotPasswordEmail(member member, string callbackurl)
         {
             var apikey = "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";
             var client = new SendGridClient(apikey);
-            var from = new EmailAddress("buildschool@libreria.com", "Libreria");
+            var from = new EmailAddress("dezhengl@uci.edu", "Libreria");
             var to = new EmailAddress(member.Email, member.memberName);
             var subject = "Libreria密码重置";
             var plainTextContent = "";
-            var htmlContent = "<p>请点击链接来重置您的密码 <a href = ''>www.google.com</a></p>";
+            var htmlContent = "<p>请点击链接来重置您的密码" + "<a href = '" + callbackurl + "'>重置密码</a></p>";
             var msg = MailHelper.CreateSingleEmail(from, to, subject, plainTextContent, htmlContent);
             var response = await client.SendEmailAsync(msg);
+        }
+
+        public OperationResult UpdatePassword(string email, string password)
+        {
+            var result = new OperationResult();
+            var member = _DbRepository.GetAll<member>().Where(x => x.Email == email).FirstOrDefault();
+
+            try
+            {
+                if (member != null)
+                {
+                    member.memberPassword = password; //修改密码,需要经过加密！！！
+                    _DbRepository.Update<member>(member);
+                    result.IsSuccessful = true;
+                }
+                else
+                {
+                    result.IsSuccessful = false;
+                }
+            }
+            catch
+            {
+                result.IsSuccessful = false;
+            }
+            
+            return result;
         }
 
 

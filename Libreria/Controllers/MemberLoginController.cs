@@ -71,6 +71,48 @@ namespace Libreria.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+        public ActionResult ResetEmail()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public string SendResetEmail(string Email)
+        {
+            var callbackUrl = Url.Action("ResetPassword", "MemberLogin");
+            var result = _memberService.SendEmail(Email, callbackUrl);
+
+            if (result.IsSuccessful)
+            {
+                return "成功发出!";
+            }
+            else
+            {
+                return "发出失败,请检查后重试";
+            }
+            
+        }
+
+        public ActionResult ResetPassword()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public string ConfirmResetPassword(string Email, string password)
+        {
+            var result = _memberService.UpdatePassword(Email, password);
+
+            if (result.IsSuccessful)
+            {
+                return "密码修改成功!";
+            }
+            else
+            {
+                return "密码修改失败,请重试";
+            }
+        }
+
 
 
     }
