@@ -87,7 +87,7 @@ namespace Libreria.Controllers
             else
             {
                 ModelState.AddModelError("", "修改失敗");
-                return Redirect("MemberInfo");
+                return RedirectToAction("MemberInfo",model);
             }
         }
 

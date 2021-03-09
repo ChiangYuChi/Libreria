@@ -89,6 +89,7 @@ namespace Libreria.Service
             originalMember.HomeNumber = model.HomeNumber;
             originalMember.City = model.City;
             originalMember.Region = model.Region;
+            originalMember.Address = model.Address;
 
             try
             {
