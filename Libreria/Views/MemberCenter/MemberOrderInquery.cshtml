@@ -1,7 +1,15 @@
 ﻿@model List<OrderViewModel>
 
 @{
+    int i = 0;
     int sum = 0;
+
+    //單筆訂單最大數量
+    int MaxBookCount = 0;
+    foreach (var order in Model)
+    {
+        MaxBookCount = Math.Max(order.OrderDetailList.Count(), MaxBookCount);
+    }
 }
 
 @section topCss{
@@ -111,31 +119,31 @@
                 <h3>
                     @if (ViewBag.Inquire == "history")
                     {
-                        <em>所有訂單</em>
+                        <b>所有訂單</b>
                     }
                     else if (ViewBag.Inquire == "oneMonth")
                     {
-                        <em>一個月內訂單</em>
+                        <b>一個月內訂單</b>
                     }
                     else if (ViewBag.Inquire == "sixMonths")
                     {
-                        <em>六個月內訂單</em>
+                        <b>六個月內訂單</b>
                     }
                     else if (ViewBag.Inquire == "notShipped")
                     {
-                        <em>未出貨訂單</em>
+                        <b>未出貨訂單</b>
                     }
                     else if (ViewBag.Inquire == "return")
                     {
-                        <em>退換貨訂單</em>
+                        <b>退換貨訂單</b>
                     }
                     else if (ViewBag.Inquire == "transactionId")
                     {
-                        <em>查詢訂單</em>
+                        <b>查詢訂單</b>
                     }
                     else
                     {
-                        <em>一個月內訂單</em>
+                        <b>一個月內訂單</b>
                     }
                     <span>共 <cite>@Model.Count</cite> 筆訂單</span>
                 </h3>
@@ -148,8 +156,8 @@
                             <th>訂購時間</th>
                             <th>付款方式</th>
                             <th>訂單金額</th>
-                            <th>商品名稱</th>
-                            <th>數量</th>
+                            <th class="desktop-display">商品名稱</th>
+                            <th class="desktop-display">數量</th>
                             <th>處理狀況</th>
                             <th>詳細資料</th>
                         </tr>
@@ -178,10 +186,10 @@
                                     </td>
                                     <td>
                                         <!--訂單金額-->
-                                        @((int)order.OrderPrice)
+                                        @((int)order.OrderPrice)元
                                     </td>
 
-                                    <td>
+                                    <td class="desktop-display">
 
                                         <!--商品名稱-->
                                         @foreach (var orderDetail in order.OrderDetailList)
@@ -189,7 +197,7 @@
                                             @orderDetail.ProductName <br />
                                         }
                                     </td>
-                                    <td>
+                                    <td class="desktop-display">
                                         <!--數量-->
                                         @foreach (var orderDetail in order.OrderDetailList)
                                         {
@@ -225,6 +233,14 @@
                                                         <p id="ModalRecipientName">收件人：@order.RecipientName</p>
                                                         <p id="ModalAddress">收件地址：@order.AddressCitySelect@order.AddressRegionSelect@order.RecipientAddress</p>
                                                         <p id="ModalOrderPrice">訂單金額：@((int)order.OrderPrice)</p>
+
+                                                        @* 商品細項 *@
+                                                        @for (i = 1; i <= MaxBookCount; i++)
+                                                        {
+                                                            <p id="ModalOrderBook-@i">@($"商品{i}：")《orderDetail.ProductName》 @("數量：")：orderDetail.Quantity</p>
+                                                        }
+
+
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -251,14 +267,14 @@
                     <li id="PageMoreLeft">...</li>
                     @{int AmountPerPage = 20;}
                     @{int PageCount = 0;}
-                    @for (int i = 1; i < (double)Model.Count / AmountPerPage + 1; i++)
+                    @for (i = 1; i < (double)Model.Count / AmountPerPage + 1; i++)
                     {
                         string PageString = "Page-";
                         PageString += i;
                         <li class="page-click" id=@PageString>@i</li>
                         PageCount++;
                     }
-                    @if (PageCount<1)
+                    @if (PageCount < 1)
                     {
                         <li class="page-click" id="Page-1">1</li>
                     }
@@ -288,7 +304,7 @@
 
     @*訂單詳細資料*@
     <script>
-        let ModalButton
+        let ModalButton;
 
         let ModalOrderId = document.getElementById("ModalOrderId");
         let ModalOrderDate = document.getElementById("ModalOrderDate");
@@ -298,12 +314,30 @@
         let ModalRecipientName = document.getElementById("ModalRecipientName");
         let ModalAddress = document.getElementById("ModalAddress");
         let ModalOrderPrice = document.getElementById("ModalOrderPrice");
+
+        let ModalOrderBook = [];
+        let ModalBookListDisplay = [];
+        let ModalBookListDisplayNone = [];
     </script>
 
-    @foreach (var order in Model)
+    @for (i = 1; i <= MaxBookCount; i++)
     {
         <script>
+            ModalOrderBook[@i] = document.getElementById("ModalOrderBook-@i")
+            ModalBookListDisplayNone[@i] = function () {
+                ModalOrderBook[@i].style.display = "none";
+            }
+        </script>
+    }
+
+    @{i = 0;}
+    @foreach (var order in Model)
+    {
+        i++;
+        <script>
             ModalButton = document.getElementById("@("ModalButton"+order.OrderId)");
+            ModalBookListDisplay[@i] = [];
+
             ModalButton.addEventListener("click", function () {
                 ModalOrderId.innerText = "訂單編號：@order.OrderId";
                 ModalOrderDate.innerText = "訂購時間：@order.OrderDate";
@@ -313,10 +347,29 @@
                 ModalRecipientName.innerText = "收件人：@order.RecipientName";
                 ModalAddress.innerText = "收件地址：@order.AddressCitySelect@order.AddressRegionSelect@order.RecipientAddress";
                 ModalOrderPrice.innerText = "訂單金額：@((int)order.OrderPrice)";
+
+                ModalBookListDisplayNone.forEach(function (item) {
+                    item();
+                })
+
+                ModalBookListDisplay[@i].forEach(function(item){
+                    item();
+                })
+
             })
-
-
         </script>
+        int j = 0;
+        foreach (var orderDetail in order.OrderDetailList)
+        {
+            j++;
+            <script>
+                ModalBookListDisplay[@i][@j] = function () {
+                    ModalOrderBook[@j].innerText =
+                        "@($"商品{j}：")《@orderDetail.ProductName》 @("數量：")@orderDetail.Quantity";
+                    ModalOrderBook[@j].style.display = "block";
+                }
+            </script>
+        }
     }
 
 
