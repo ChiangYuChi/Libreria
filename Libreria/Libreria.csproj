@@ -389,6 +389,7 @@
     <Content Include="Asset\Css\Rental\Rental_Confirm.css" />
     <Content Include="Asset\Css\Rental\Rental_index.css" />
     <Content Include="Asset\Css\ShoppingCart\CartMsgPartial.css" />
+    <Content Include="Asset\Css\ShoppingCart\FavMsgPartial.css" />
     <Content Include="Asset\Css\ShoppingCart\Normalize.css" />
     <Content Include="Asset\Css\ShoppingCart\OrderDetail.css" />
     <Content Include="Asset\Css\ShoppingCart\ShoppingCart.css" />
@@ -724,6 +725,7 @@
     <Content Include="Views\Order\PayReturnResult.cshtml" />
     <Content Include="Views\Order\PayReturnDetail.cshtml" />
     <Content Include="Views\Rental\PayOrder.cshtml" />
+    <Content Include="Views\Product\FavMsgPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Code\" />
