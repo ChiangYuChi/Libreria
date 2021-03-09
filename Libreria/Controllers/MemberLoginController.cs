@@ -27,7 +27,15 @@ namespace Libreria.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-           return View();
+            //記得我
+            var memberLogin = Request.Cookies["MemberLogin"];
+            if (memberLogin != null)
+            {
+                ViewBag.memberName = memberLogin["MemberName"];
+                ViewBag.memberPassword = memberLogin["MemberPassword"];
+            }
+
+            return View();
         }
         
         [HttpPost]

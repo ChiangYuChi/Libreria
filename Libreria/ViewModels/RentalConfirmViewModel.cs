@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Libreria.Filters;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -92,7 +93,7 @@ namespace Libreria.ViewModels
         /// </summary>
         [Required]
         [Display(Name = "上傳圖片")]
-        [FileExtensions(Extensions = "jpg,jpeg,gif,png,bmp", ErrorMessage = "這不是圖片檔格式!")]
+        [AllowExtensions(Extensions = "jpg,jpeg,gif,png,bmp", ErrorMessage = "這不是圖片檔格式!")]
         public HttpPostedFileBase ExPhoto { get; set; }
 
         /// <summary>
@@ -105,5 +106,7 @@ namespace Libreria.ViewModels
 
         [Required]
         public bool? IsCheck { get; set; }
+
+
     }
 }

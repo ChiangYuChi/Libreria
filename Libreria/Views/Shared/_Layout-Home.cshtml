@@ -4,7 +4,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - 我的 ASP.NET 應用程式</title>
+    <title>Libreria</title>
     <link href="~/Asset/Css/Layout/Nav_bar.css" rel="stylesheet" />
     <link href="~/Asset/Css/Layout/Nav_bar.css" rel="stylesheet" />
     <link href="~/Asset/Css/Layout/Footer.css" rel="stylesheet" />
@@ -125,7 +125,7 @@
        
 
     </div>
-    <section class="footer px-5">
+    @*<section class="footer px-5">
         <div class="container">
             <div class="row d-flex pt-5">
                 <div class="col-sm-12 col-md-2 order-sm-2 footer-company">
@@ -166,7 +166,8 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section>*@
+    @Html.Partial("_FooterPartial")
     <script>
 
         //排除漢堡被打開後，RWD沒漢堡的情況下會自動收合
