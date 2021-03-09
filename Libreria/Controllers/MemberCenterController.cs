@@ -66,7 +66,8 @@ namespace Libreria.Controllers
 
             if (result.IsSuccessful)
             {
-                return Redirect("MemberLogin");
+                TempData["Success"] = "修改成功";
+                return RedirectToAction("MemberLogin", "MemberCenter");
 
             }
             else
