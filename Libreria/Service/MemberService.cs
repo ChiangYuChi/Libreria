@@ -6,6 +6,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Threading.Tasks;
+using SendGrid;
+using SendGrid.Helpers.Mail;
+using Uti
+using Libreria.Helpers;
 
 namespace Libreria.Service
 {
@@ -107,6 +112,64 @@ namespace Libreria.Service
             return result;
         }
 
+        public OperationResult SendEmail(string email, string callbackurl)
+        {
+            var result = new OperationResult();
+            var member = _DbRepository.GetAll<member>().Where(x => x.Email == email).FirstOrDefault();
+            
+            if (member != null)
+            {
+                ForgotPasswordEmail(member, callbackurl).Wait();
+                result.IsSuccessful = true;
+            }
+            else
+            {
+                result.IsSuccessful = false;
+            }
+
+            return result;
+        }
+
+        public async Task ForgotPasswordEmail(member member, string callbackurl)
+        {
+            var apikey = "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";
+            var client = new SendGridClient(apikey);
+            var from = new EmailAddress("dezhengl@uci.edu", "Libreria");
+            var to = new EmailAddress(member.Email, member.memberName);
+            var subject = "Libreria密码重置";
+            var plainTextContent = "";
+            var htmlContent = "<p>请点击链接来重置您的密码" + "<a href = '" + callbackurl + "'>重置密码</a></p>";
+            var msg = MailHelper.CreateSingleEmail(from, to, subject, plainTextContent, htmlContent);
+            var response = await client.SendEmailAsync(msg);
+        }
+
+        public OperationResult UpdatePassword(string username, string password)
+        {
+            var result = new OperationResult();
+            var member = _DbRepository.GetAll<member>().Where(x => x.memberUserName == username).FirstOrDefault();
+
+            try
+            {
+                if (member != null)
+                {
+                    var newpassword = Utility.GetSha512(password);
+                    member.memberPassword = newpassword;
+                    _DbRepository.Update<member>(member);
+                    result.IsSuccessful = true;
+                }
+                else
+                {
+                    result.IsSuccessful = false;
+                }
+            }
+            catch
+            {
+                result.IsSuccessful = false;
+            }
+
+            return result;
+        }
+
         public OperationResult ChangePassword(PasswordViewModel model,bool isValid)
         {
             var result = new OperationResult();
@@ -129,7 +192,9 @@ namespace Libreria.Service
             return result;
                         
         }
-    
-    
+
+
+
+
     }
 }
