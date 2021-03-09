@@ -8,6 +8,8 @@ using System.Web;
 using System.Threading.Tasks;
 using SendGrid;
 using SendGrid.Helpers.Mail;
+using Uti
+using Libreria.Helpers;
 
 namespace Libreria.Service
 {
@@ -137,10 +139,10 @@ namespace Libreria.Service
             var response = await client.SendEmailAsync(msg);
         }
 
-        public OperationResult UpdatePassword(string email, string password)
+        public OperationResult UpdatePassword(string username, string password)
         {
             var result = new OperationResult();
-            var member = _DbRepository.GetAll<member>().Where(x => x.Email == email).FirstOrDefault();
+            var member = _DbRepository.GetAll<member>().Where(x => x.memberUserName == username).FirstOrDefault();
 
             try
             {

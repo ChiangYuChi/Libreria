@@ -99,9 +99,9 @@ namespace Libreria.Controllers
         }
 
         [HttpPost]
-        public string ConfirmResetPassword(string Email, string password)
+        public string ConfirmResetPassword(string username, string password)
         {
-            var result = _memberService.UpdatePassword(Email, password);
+            var result = _memberService.UpdatePassword(username, password);
 
             if (result.IsSuccessful)
             {
