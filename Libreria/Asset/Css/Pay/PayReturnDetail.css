@@ -1,21 +1,22 @@
 ﻿.icon {
     text-align: center;
-    padding-top: 150px;
+    padding-top: 80px;
     padding-bottom: 10px;
 }
 
 .check {
     font-size: 80px;
-    color: rgb(86, 230, 20);
+    color: #8A6927;
 }
 
 .txt {
     text-align: center;
+    
 }
 
 .button button {
     border: none;
-    background-color: rgb(67,179,15);
+    background-color: #8A6927;
     border-radius: 10px;
     color: white;
     width: 150px;
@@ -31,6 +32,7 @@
     text-align: center;
     padding-top: 50px;
     padding-bottom: 50px;
+    font-size: 20px;
 }
 
 #back {
@@ -38,5 +40,8 @@
 }
 
 button:hover {
-    background-color: rgb(52, 144, 10);
+    background-color: #6b511e;
+}
+.container{
+    min-height: 60vh;
 }
