@@ -160,7 +160,7 @@ input[type=text] {
     font-weight: 800;
     font-size: 17px;
     margin-top: 20px;
-    text-align: center;
+    /*text-align: center;*/
 }
 
 .inquire__btn {
@@ -273,9 +273,9 @@ em {
     margin-left: 20px;
 }
 
-@@ media screen and (max-width:767px) {
+@media screen and (max-width:767px) {
     .order__title {
-        text-align: center;
+        /*text-align: center;*/
         background-color: rgba(176, 176, 176, 1);
     }
 
@@ -284,7 +284,7 @@ em {
         }
 
     .order__inquire {
-        display: none;
+        /*display: none;*/
     }
 
     .inquire__narrow-only--title span {
@@ -328,12 +328,12 @@ em {
         display: none;
     }
 
-    .content__list td {
+    .content__list td:not(.desktop-display) {
         display: block;
     }
 }
 
-@@ media screen and (min-width:768px) {
+@media screen and (min-width:768px) {
     .order__title {
         padding-bottom: 30px;
     }
@@ -372,7 +372,7 @@ em {
     }
 
     .content__list {
-        text-align: center;
+        /*text-align: center;*/
         margin-top: 20px;
     }
 
@@ -402,3 +402,16 @@ em {
         color: #212529;
         border-color: #212529;
     }
+
+
+
+
+.desktop-display{
+    display: none;
+}
+
+@media screen and (min-width:768px) {
+    .desktop-display {
+        display: table-cell;
+    }
+}
