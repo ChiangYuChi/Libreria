@@ -152,7 +152,8 @@ namespace Libreria.Service
             {
                 if (member != null)
                 {
-                    member.memberPassword = password; //修改密码,需要经过加密！！！
+                    var newpassword = Utility.GetSha512(password);
+                    member.memberPassword = newpassword;
                     _DbRepository.Update<member>(member);
                     result.IsSuccessful = true;
                 }
@@ -165,12 +166,7 @@ namespace Libreria.Service
             {
                 result.IsSuccessful = false;
             }
-            
-            catch (Exception ex)
-            {
-                result.IsSuccessful = false;
-                ex.ToString();
-            }
+
             return result;
         }
 
