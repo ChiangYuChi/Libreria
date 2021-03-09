@@ -188,7 +188,8 @@ namespace Libreria.Controllers
 
             if (result.IsSuccessful)
             {
-                return Redirect("MemberLogin");
+                TempData["Success"] = "註冊成功!請重新登入";
+                return RedirectToAction("Index", "MemberLogin");
 
             }
             else

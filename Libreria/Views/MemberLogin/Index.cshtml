@@ -17,6 +17,7 @@
         let memberPassword = '@ViewBag.memberPassword';
     </script>
 }
+@Html.Partial("../Shared/SuccessOrFail")
 
 <section class="member">
     <div class="container-fluid pt-5 mb-5">
@@ -45,7 +46,7 @@
                         <div class="form-group">
                             @Html.LabelFor(model => model.MemberName, htmlAttributes: new { @class = "control-label col-md-2", @placeholder = "證件號碼/台灣手機/會員卡號/自訂帳號" })
                             <div class="col-md-12">
-                                @Html.TextBoxFor(model => model.MemberName, new { htmlAttributes = new { @class = "form-control"} })
+                                @Html.TextBoxFor(model => model.MemberName, new { htmlAttributes = new { @class = "form-control" } })
                                 @Html.ValidationMessageFor(model => model.MemberName, "", new { @class = "text-danger" })
                             </div>
                         </div>
@@ -54,7 +55,7 @@
                         <div class="form-group">
                             @Html.LabelFor(model => model.MemberPassword, htmlAttributes: new { @class = "control-label col-md-2", @name = "password", @id = "password", @placeholder = "請輸入密碼", type = "password" })
                             <div class="col-md-12">
-                                @Html.PasswordFor(model => model.MemberPassword, new { htmlAttributes = new { @class = "form-control"} })
+                                @Html.PasswordFor(model => model.MemberPassword, new { htmlAttributes = new { @class = "form-control" } })
                                 @Html.ValidationMessageFor(model => model.MemberPassword, "", new { @class = "text-danger" })
                             </div>
                         </div>
@@ -70,7 +71,7 @@
                         <div class="mvc-fix">
                             <div class="editor-field">
                                 @Html.EditorFor(model => model.Remember)
-                                @Html.LabelFor(model => model.Remember, htmlAttributes: new { @class = "control-label d-inline",@style= "font-size: 15px;color: #8a6926;"})
+                                @Html.LabelFor(model => model.Remember, htmlAttributes: new { @class = "control-label d-inline", @style = "font-size: 15px;color: #8a6926;" })
                                 @Html.ValidationMessageFor(model => model.Remember, "", new { @class = "text-danger" })
                             </div>
                             <span class="forget-password-span"><a href="#">忘記密碼</a></span> <br />
