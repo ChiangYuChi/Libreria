@@ -737,6 +737,8 @@
     <Content Include="Views\Rental\PayOrder.cshtml" />
     <Content Include="Views\Shared\_FooterPartial.cshtml" />
     <Content Include="Views\Product\FavMsgPartial.cshtml" />
+    <Content Include="Views\MemberLogin\ResetEmail.cshtml" />
+    <Content Include="Views\MemberLogin\ResetPassword.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Code\" />
