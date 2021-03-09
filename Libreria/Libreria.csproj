@@ -351,6 +351,7 @@
     <Compile Include="ViewModels\OrderDetailViewModel.cs" />
     <Compile Include="ViewModels\OrderViewModel.cs" />
     <Compile Include="ViewModels\ExhibitionVIewModel.cs" />
+    <Compile Include="ViewModels\PasswordViewModel.cs" />
     <Compile Include="ViewModels\ProductViewModel.cs" />
     <Compile Include="ViewModels\ReCaptchaViewModel.cs" />
     <Compile Include="ViewModels\ShoppingCartViewModel.cs" />
@@ -719,12 +720,16 @@
     <Content Include="Views\Order\PayOrder.cshtml" />
     <Content Include="Views\Product\CartMsgPartial.cshtml" />
     <Content Include="Views\Home\Exception.cshtml" />
+    <Content Include="Views\Order\PayReturnResult.cshtml" />
+    <Content Include="Views\Order\PayReturnDetail.cshtml" />
     <Content Include="Views\MemberCenter\CartMsgPartial.cshtml" />
     <Content Include="Views\Order\CartMsgPartial.cshtml" />
+    <Content Include="Views\MemberCenter\PasswordPartial.cshtml" />
     <Content Include="Views\Rental\CartMsgPartial.cshtml" />
     <Content Include="Views\Order\PayReturnResult.cshtml" />
     <Content Include="Views\Order\PayReturnDetail.cshtml" />
     <Content Include="Views\Rental\PayOrder.cshtml" />
+    <Content Include="Views\Shared\_FooterPartial.cshtml" />
     <Content Include="Views\Product\FavMsgPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>

@@ -35,7 +35,7 @@ namespace Libreria.Controllers
             _memberRegisterPageService = new MemberRegisterPageService();
             _memberService = new MemberService();
         }
-        
+
         public ActionResult MemberLogin()
         {
             int UserMemberId = Convert.ToInt32(System.Web.HttpContext.Current.Session["MemberID"]);
@@ -45,10 +45,10 @@ namespace Libreria.Controllers
 
             return View();
         }
-      
-      
 
-    // GET: MemberCenter
+
+
+        // GET: MemberCenter
         [HttpGet]
 
         public ActionResult MemberInfo()
@@ -60,7 +60,7 @@ namespace Libreria.Controllers
         [HttpPost]
 
         public ActionResult MemberInfo(MemberViewModel member)
-        {                    
+        {
 
             var result = _memberService.UpdateMember(member);
 
@@ -76,13 +76,22 @@ namespace Libreria.Controllers
             }
 
         }
-
-            public ActionResult ChangePassward()
+        [HttpPost]
+        public ActionResult ChangePassward(PasswordViewModel model)
         {
-            return View();
+            var result = _memberService.ChangePassword(model, ModelState.IsValid);
+            if (result.IsSuccessful)
+            {
+                return Redirect("MemberLogin");
+            }
+            else
+            {
+                ModelState.AddModelError("", "修改失敗");
+                return RedirectToAction("MemberInfo",model);
+            }
         }
 
-        
+
         public ActionResult MemberOrderInquery(string Inquire, int? TransactionId)
         {
             int UserMemberId = Convert.ToInt32(System.Web.HttpContext.Current.Session["MemberID"]);
@@ -92,25 +101,25 @@ namespace Libreria.Controllers
             {
                 result = _orderService.GetBymemberId(UserMemberId);
             }
-            else if(Inquire == "oneMonth")
+            else if (Inquire == "oneMonth")
             {
                 result = _orderService.GetBymemberId(UserMemberId, TimeSpan.FromDays(30));
             }
             else if (Inquire == "sixMonths")
             {
-                result = _orderService.GetBymemberId(UserMemberId, TimeSpan.FromDays(30*6));
+                result = _orderService.GetBymemberId(UserMemberId, TimeSpan.FromDays(30 * 6));
             }
             else if (Inquire == "notShipped")
             {
                 // 未完成
                 result = _orderService.GetByProgress(UserMemberId, "準備出貨中");
             }
-            else if(Inquire == "return")
+            else if (Inquire == "return")
             {
                 //未完成
                 result = new List<OrderViewModel>();
             }
-            else if(Inquire == "transactionId")
+            else if (Inquire == "transactionId")
             {
                 result = _orderService.GetByOrderId(TransactionId);
             }
@@ -157,9 +166,9 @@ namespace Libreria.Controllers
         [HttpGet]
         [CustomAllowAnonymous]
         public ActionResult MemberRegisterPage()
-        {            
+        {
             return View();
-        }        
+        }
         [HttpPost]
         [CustomAllowAnonymous]
         public ActionResult MemberRegisterPage(MemberViewModel model, FormCollection form)
@@ -173,12 +182,12 @@ namespace Libreria.Controllers
                 return View(model);
             }
 
-            var result =_memberRegisterPageService.CreateMember(model, ModelState.IsValid);
+            var result = _memberRegisterPageService.CreateMember(model, ModelState.IsValid);
 
             if (result.IsSuccessful)
             {
-               return Redirect("MemberLogin");                  
-               
+                return Redirect("MemberLogin");
+
             }
             else
             {
@@ -186,10 +195,10 @@ namespace Libreria.Controllers
                 ModelState.AddModelError("", "帳號已存在。");
                 return View();
             }
-        }   
-       
+        }
 
-        
+
+
         public ActionResult Favorite()
         {
 
@@ -200,9 +209,9 @@ namespace Libreria.Controllers
         [HttpPost]
         public void AddToFavorite(ProductViewModel ProductVM)
         {
-            
+
             _favoriteService.CreateToFavorite(ProductVM);
- 
+
         }
 
         [HttpPost]

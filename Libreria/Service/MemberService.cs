@@ -1,4 +1,5 @@
-﻿using Libreria.Models.EntityModel;
+﻿using Libreria.Helpers;
+using Libreria.Models.EntityModel;
 using Libreria.Repository;
 using Libreria.ViewModels;
 using System;
@@ -38,7 +39,7 @@ namespace Libreria.Service
 
             foreach (var memberVM in result)
             {
-                
+
             }
 
             return result;
@@ -78,7 +79,9 @@ namespace Libreria.Service
         public OperationResult UpdateMember(MemberViewModel model)
         {
             var result = new OperationResult();
+#pragma warning disable CS0219 // 已指派變數 'updateMember'，但是從未使用過它的值
             member updateMember = null;
+#pragma warning restore CS0219 // 已指派變數 'updateMember'，但是從未使用過它的值
             var originalMember = _DbRepository.GetAll<member>().Where(m => m.memberName == model.memberName).FirstOrDefault();
             originalMember.memberUserName = model.memberUserName;
             originalMember.birthday = model.birthday;
@@ -89,13 +92,14 @@ namespace Libreria.Service
             originalMember.HomeNumber = model.HomeNumber;
             originalMember.City = model.City;
             originalMember.Region = model.Region;
+            originalMember.Address = model.Address;
 
             try
             {
                 _DbRepository.Update<member>(originalMember);
                 result.IsSuccessful = true;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 result.IsSuccessful = false;
                 ex.ToString();
@@ -103,6 +107,29 @@ namespace Libreria.Service
             return result;
         }
 
+        public OperationResult ChangePassword(PasswordViewModel model,bool isValid)
+        {
+            var result = new OperationResult();
+            if (isValid)
+            {
+                var original = Utility.GetSha512(model.OriginalPassword);
+                var member = _DbRepository.GetAll<member>().Where(m => m.memberPassword == original).FirstOrDefault();
+                member.memberPassword = Utility.GetSha512(model.NewPassword);
 
+                try
+                {
+                    _DbRepository.Update<member>(member);
+                }
+                catch (Exception ex)
+                {
+                    result.IsSuccessful = false;
+                    ex.ToString();
+                }
+            }
+            return result;
+                        
+        }
+    
+    
     }
 }
