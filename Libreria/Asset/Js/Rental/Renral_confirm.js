@@ -26,7 +26,7 @@ $(document).ready(function () {
     }, '請勾選我同意');
 
     $.validator.addMethod("accept", function (value, element) {
-        var validExts = $(element).attr('data-val-extension-extension').split(',');
+        var validExts = $(element).attr('DataValExtension').split(',');
 
         var fileExt = element.value;
         fileExt = fileExt.substring(fileExt.lastIndexOf('.') + 1);
@@ -35,7 +35,7 @@ $(document).ready(function () {
             return false;
         }
         else return true;
-    });
+    },'這不是圖片檔格式!');
 
     $('#confirm').click(function () {
         if ($('#confirmForm').valid()) {

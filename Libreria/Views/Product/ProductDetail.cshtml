@@ -139,9 +139,28 @@
                 data: { Id: productId },
                 dataType: "text",
                 success: function (response) {
-                    document.querySelector(".CartMsg-wrap").setAttribute("style", "display:flex")
-                    var time = window.setTimeout((() => document.querySelector(".CartMsg-wrap").setAttribute("style", "display:none")), 800)
-                    time();
+                    if (response == "商品加入成功！") {
+                        //numberOfProducts++;
+                        //document.getElementById("CartMsgAlertText").innerText = response;
+                        document.querySelector(".fa-check-circle").style.display = "block";
+                        document.querySelector(".fa-times-circle").style.display = "none";
+                    }
+                    else {
+                        document.getElementById("CartMsgAlertText").innerText = response;
+                        document.querySelector(".fa-check-circle").style.display = "none";
+                        document.querySelector(".fa-times-circle").style.display = "block";
+                    }
+                    document.querySelector(".CartMsg-wrap").setAttribute("style", "display:flex");
+
+                    /*openCart();*/
+
+                    var time = window.setTimeout((() => {
+                        document.querySelector(".CartMsg-wrap").setAttribute("style", "display:none");
+                        document.getElementById("CartMsgAlertText").innerText = "商品加入成功！";
+                        document.querySelector(".fa-check-circle").style.display = "block";
+                        document.querySelector(".fa-times-circle").style.display = "none";
+                    }), 800)
+
                     $("#MyCart").text("購物車(" + response + ")");
                 }
             });

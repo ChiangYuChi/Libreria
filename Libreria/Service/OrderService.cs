@@ -493,7 +493,7 @@ namespace Libreria.Service
             {
                 using (AllInOne oPayment = new AllInOne())
                 {
-                     var orderDetail = orderVM.OrderDetailList;
+                    var orderDetail = orderVM.OrderDetailList;
                     var orderTotal = orderVM.OrderPrice;
                     
                     /* 服務參數 */
@@ -632,22 +632,17 @@ namespace Libreria.Service
             return html;
         }
 
-        public string GetPaymentResult(string RtnCode)
+        public void SetState(OrderViewModel orderVM, string RtnCode)
         {
-            string paymentResultText = "已刷卡";
-
-            if (RtnCode == "1")
-            {
-                paymentResultText = "已刷卡";
-            }else if(RtnCode !="1")
-            {
-                paymentResultText = "交易失敗";
+            if (RtnCode == "1") {
+                var order = _DbRepository.GetAll<Order>()
+                            .Where(x => x.OrderId == orderVM.OrderId)
+                            .FirstOrDefault();
+                order.PaymentState = "已付款";
+                _DbRepository.Update<Order>(order);
+           
             }
-
-            return paymentResultText;
+          
         }
-
-
-
     }
 }
