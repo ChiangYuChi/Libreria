@@ -19,7 +19,7 @@
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
-    <Use64BitIISExpress />
+    <Use64BitIISExpress>true</Use64BitIISExpress>
     <IISExpressSSLPort>44330</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
@@ -466,6 +466,7 @@
     <Content Include="Asset\Js\Rental\Rental_index.js" />
     <Content Include="Asset\Js\ShoppingCart\OrderDetail.js" />
     <Content Include="Asset\Js\Home-Index\slick.min.js" />
+    <Content Include="Asset\Js\SucessOrFalseMsg.js" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-reboot.css" />
@@ -729,6 +730,7 @@
     <Content Include="Views\Order\PayReturnResult.cshtml" />
     <Content Include="Views\Order\PayReturnDetail.cshtml" />
     <Content Include="Views\Rental\PayOrder.cshtml" />
+    <Content Include="Views\Shared\SuccessOrFail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Code\" />

@@ -13,11 +13,8 @@
     @*MemberLogin CSS*@
     <link href="~/Asset/Css/MemberCenter/member_login.css" rel="stylesheet" />
 }
-@if (TempData["Success"] != null)
-{
-    <p id="message" class="alert" style="background-color: rgba(119, 90, 31, 0.6);margin:auto;color:snow"  id="successMessage">@TempData["Success"]</p>
-    
-}
+@Html.Partial("../Shared/SuccessOrFail")
+
 
 <section class="member-center pb-5">
     <div class="container-fluid pt-5">
@@ -83,11 +80,9 @@
                 </div>
 
             </div>
-
+        </div>
+    </div>
 </section>
 
-<style>
-</style>
-<script>    
-    $('#message').delay(5000).fadeOut('slow');
-</script>
+
+
