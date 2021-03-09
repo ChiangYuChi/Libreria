@@ -22,28 +22,43 @@ namespace Libreria.Service
 
         public member GetMember(MemberLoginViewModel model, bool IsValid)
         {
-            string passwordSha512 = Utility.GetSha512(model.MemberPassword);
             member member=null; 
             try
             {
                 if (IsValid)
                 {
-                    member = _libreriaRepository.GetAll<member>().Where(u => u.memberName == model.MemberName && u.memberPassword == passwordSha512)
-                                               .FirstOrDefault();
+                    //如是加密後的密碼，直接至資料庫比對
+                    member = _libreriaRepository.GetAll<member>().Where(u => u.memberName == model.MemberName && u.memberPassword == model.MemberPassword)
+                                                  .FirstOrDefault();
+
+                    if (member == null)
+                    {
+                        string passwordSha512 = Utility.GetSha512(model.MemberPassword);
+                        member = _libreriaRepository.GetAll<member>().Where(u => u.memberName == model.MemberName && u.memberPassword == passwordSha512)
+                                                   .FirstOrDefault();
+                    }
+
                     if (member != null)
                     {
                         HttpContext.Current.Session["MemberName"] = member.memberName;
                         HttpContext.Current.Session["MemberPassword"] = member.memberPassword;
                         HttpContext.Current.Session["MemberID"] = member.memberId;
 
-                        if (model.Remember)
+                        if (model.Remember == true)
                         {
-                            HttpCookie cookie = new HttpCookie("MemberName");
+                            HttpCookie cookie = new HttpCookie("MemberLogin");
 
                             cookie["MemberName"] = (HttpContext.Current.Session["MemberName"]).ToString();
+                            cookie["MemberPassword"] = (HttpContext.Current.Session["MemberPassword"]).ToString();
 
                             cookie.Expires = DateTime.Now.AddDays(7);
                             HttpContext.Current.Response.Cookies.Add(cookie);
+                        }
+                        else if(model.Remember == false)
+                        {
+                            HttpCookie removeCookie = new HttpCookie("MyCookie");
+                            removeCookie.Expires = DateTime.Now.AddDays(-1);
+                            HttpContext.Current.Request.Cookies.Add(removeCookie);
                         }
                         
                         //var CookiesessionID = HttpContext.Request.Cookies["SesssionID"];

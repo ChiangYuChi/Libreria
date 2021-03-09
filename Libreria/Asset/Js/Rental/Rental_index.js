@@ -75,10 +75,15 @@ function bookingOnline() {
             form.submit();
         }
         else {
-            alert("展覽日期請選取!");
+            $(".CartMsg-alert_txt .txt").text("請選取展覽日期!")
+            document.querySelector(".CartMsg-wrap").setAttribute("style", "display:flex")
+            window.setTimeout((() => document.querySelector(".CartMsg-wrap").setAttribute("style", "display:none")), 1000)
+            
         }
     } else {
-        alert("租借日期請選取!"); 
+        document.querySelector(".CartMsg-wrap").setAttribute("style", "display:flex")
+        window.setTimeout((() => document.querySelector(".CartMsg-wrap").setAttribute("style", "display:none")), 1000)
+        
     }
     
 }

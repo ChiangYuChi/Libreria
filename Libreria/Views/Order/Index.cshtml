@@ -102,7 +102,7 @@
                                     <i class="icon icon-mius"></i>
                                 </button>
                                 <input maxlength="3" class="count-view" value="@item.Count" id="ProductNum">
-                                <button type="button" class="count-plus" onclick="PlusOne(@item.ProductId)" id="add">
+                                <button type="button" class="count-plus" onclick="PlusOne(@item.ProductId, @item.Count)" id="add">
                                     <i class="icon icon-plus"></i>
                                 </button>
                             </div>
@@ -247,6 +247,8 @@
             </div>
         </div>*@
 
+        <div class="error-msg" id="errorMsg">@ViewBag.ErrorMsg</div>
+
         <div class="amount-summary bg-white mt-4 py-2">
             <div class="amount-equation px-0 m-0 chinese">
                 @*<p class="m-0 py-2">
@@ -285,6 +287,7 @@
         //var productnum = document.getElementById("ProductNum");
         //var itemtotal = document.getElementById("itemtotal");
         //var itemprice = document.getElementById("itemprice");
+        let errorMsgText = document.getElementById("errorMsg");
 
 
         function DeleteCart(id) {
@@ -318,7 +321,6 @@
                             success: function (response) {
                                 document.querySelector(".CartMsg-wrap").setAttribute("style", "display:flex")
                                 var time = window.setTimeout((() => document.querySelector(".CartMsg-wrap").setAttribute("style", "display:none")), 800)
-
                             }
                         });
                     }
@@ -331,21 +333,26 @@
 
 
 
-        function PlusOne(id) {
+        function PlusOne(id, count) {
             let productId = id;
 
             $.ajax({
                 type: "POST",
                 url: "/Order/PlusOne",
-                data: { ProductId: productId },
+                data: { ProductId: productId, Count: count },
                 dataType: "text",
-                success: function () {
+                success: function (errorMsg) {
                     //this.productnum.value++;
                     //itemtotal.innerHTML = productnum.value * itemprice.innerHTML;
 
                     //document.getElementById("minus").disabled = false;
 
-                    location.reload();
+                    if (errorMsg == "") { //沒錯誤訊息代表數量成功+1
+                        location.reload(); //頁面重載
+                    }
+                    else { //庫存不足
+                        errorMsgText.innerText = errorMsg; //顯示錯誤訊息
+                    }
                 }
             });
         }
@@ -386,11 +393,14 @@
                 type: "Post",
                 url: "/Order/Redirect",
                 success: function (result) {
-                    if (result == 1) {
+                    if (result == 1) { //跳轉至確認頁面
                         window.location.href = "@Url.Action("OrderDetail", "Order")";
                     }
-                    else {
+                    else if (result == 2) { //沒有登入
                         window.location.href = "@Url.Action("Index", "MemberLogin")";
+                    }
+                    else { //庫存不足
+                        errorMsgText.innerText = result; //顯示錯誤訊息
                     }
                 }
             });
