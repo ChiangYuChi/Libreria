@@ -44,7 +44,8 @@
 
         //地址
         if (RegionIndex >= 0) { MemberAddress = MemberVM.Address.Substring(RegionIndex + 1); }
-        else { MemberAddress = ""; }
+        else if(CityIndex >= 0) { MemberAddress = MemberVM.Address.Substring(CityIndex + 1); }
+        else { MemberAddress = MemberVM.Address; }
 
 
 

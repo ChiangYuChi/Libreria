@@ -22,27 +22,28 @@ namespace Libreria.Service
         public List<ProductViewModel> GetAll()
         {
             var result = (from p in _DbRepository.GetAll<Product>()
-                         join v in _DbRepository.GetAll<Preview>()
-                         on p.ProductId equals v.ProductId
-                         where v.Sort == 0
-                         join c in _DbRepository.GetAll<Category>()
-                         on p.CategoryId equals c.CategoryId
-                         join s in _DbRepository.GetAll<Supplier>()
-                         on p.SupplierId equals s.SupplierId
-                         select new ProductViewModel()
-                         {
-                             Id = p.ProductId,
-                             Name = p.ProductName,
-                             UnitPrice = p.UnitPrice,
-                             CategoryId = p.CategoryId,
-                             CategoryName = c.Name,
-                             Author = p.Author,
-                             Supplier = s.Name,
-                             PublishDate = p.PublishDate,
-                             CreateTime = p.CreateTime,
-                             Introduction = p.Introduction,
-                             MainUrl = v.ImgUrl
-                         }).ToList();
+                          join v in _DbRepository.GetAll<Preview>()
+                          on p.ProductId equals v.ProductId
+                          where v.Sort == 0
+                          join c in _DbRepository.GetAll<Category>()
+                          on p.CategoryId equals c.CategoryId
+                          join s in _DbRepository.GetAll<Supplier>()
+                          on p.SupplierId equals s.SupplierId
+                          select new ProductViewModel()
+                          {
+                              Id = p.ProductId,
+                              Name = p.ProductName,
+                              UnitPrice = p.UnitPrice,
+                              CategoryId = p.CategoryId,
+                              CategoryName = c.Name,
+                              Author = p.Author,
+                              Supplier = s.Name,
+                              PublishDate = p.PublishDate,
+                              CreateTime = p.CreateTime,
+                              Introduction = p.Introduction,
+                              MainUrl = v.ImgUrl,
+                              Count = p.Inventory,
+                          }).ToList();
 
             var MemberId = Convert.ToInt32(System.Web.HttpContext.Current.Session["MemberID"]);
 
@@ -87,6 +88,7 @@ namespace Libreria.Service
                               Introduction = p.Introduction,
                               CategoryName = c.Name,
                               Supplier = s.Name,
+                              Count = p.Inventory,
                           }).FirstOrDefault();
 
             var PreviewList = _DbRepository.GetAll<Preview>()
@@ -113,7 +115,7 @@ namespace Libreria.Service
             return result;
         }
 
-  
+
 
         public List<ProductViewModel> GetByCategory(int CategoryId)
         {
@@ -133,7 +135,8 @@ namespace Libreria.Service
                               CreateTime = p.CreateTime,
                               Introduction = p.Introduction,
                               MainUrl = v.ImgUrl,
-                              CategoryName = c.Name
+                              CategoryName = c.Name,
+                              Count = p.Inventory,
                           }).ToList();
 
             var MemberId = Convert.ToInt32(System.Web.HttpContext.Current.Session["MemberID"]);
@@ -163,26 +166,27 @@ namespace Libreria.Service
 
         public List<ProductViewModel> GetCategoryName(int CategoryId)
         {
-            var name= (from p in _DbRepository.GetAll<Product>()
-                          join v in _DbRepository.GetAll<Preview>()
-                          on p.ProductId equals v.ProductId
-                          where p.CategoryId == CategoryId && v.Sort == 0
-                          join c in _DbRepository.GetAll<Category>()
-                          on p.CategoryId equals c.CategoryId
-                          select new ProductViewModel()
-                          {
-                              Id = p.ProductId,
-                              Name = p.ProductName,
-                              UnitPrice = p.UnitPrice,
-                              CategoryId = p.CategoryId,
-                              Author = p.Author,
-                              CreateTime = p.CreateTime,
-                              Introduction = p.Introduction,
-                              MainUrl = v.ImgUrl,
-                              CategoryName = c.Name
-                          }).ToList();
+            var name = (from p in _DbRepository.GetAll<Product>()
+                        join v in _DbRepository.GetAll<Preview>()
+                        on p.ProductId equals v.ProductId
+                        where p.CategoryId == CategoryId && v.Sort == 0
+                        join c in _DbRepository.GetAll<Category>()
+                        on p.CategoryId equals c.CategoryId
+                        select new ProductViewModel()
+                        {
+                            Id = p.ProductId,
+                            Name = p.ProductName,
+                            UnitPrice = p.UnitPrice,
+                            CategoryId = p.CategoryId,
+                            Author = p.Author,
+                            CreateTime = p.CreateTime,
+                            Introduction = p.Introduction,
+                            MainUrl = v.ImgUrl,
+                            CategoryName = c.Name,
+                            Count = p.Inventory,
+                        }).ToList();
 
-            
+
 
             return name;
         }
@@ -200,15 +204,16 @@ namespace Libreria.Service
                             where v.Sort == 0
                             select new ProductViewModel()
                             {
-                             Id = p.ProductId,
-                             Name = p.ProductName,
-                             UnitPrice = p.UnitPrice,
-                             CategoryId = p.CategoryId,
-                             Author = p.Author,
-                             CreateTime = p.CreateTime,
-                             Introduction = p.Introduction,
-                             MainUrl = v.ImgUrl,
-                         });
+                                Id = p.ProductId,
+                                Name = p.ProductName,
+                                UnitPrice = p.UnitPrice,
+                                CategoryId = p.CategoryId,
+                                Author = p.Author,
+                                CreateTime = p.CreateTime,
+                                Introduction = p.Introduction,
+                                MainUrl = v.ImgUrl,
+                                Count = p.Inventory,
+                            });
             var result = products.ToList();
             return result;
 
@@ -223,7 +228,7 @@ namespace Libreria.Service
         {
             var products = (from p in _DbRepository.GetAll<Product>()
                            .OrderByDescending(p => p.PublishDate)
-                           .Take(3)
+                           .Take(5)
                             join v in _DbRepository.GetAll<Preview>()
                             on p.ProductId equals v.ProductId
                             where v.Sort == 0
@@ -237,6 +242,7 @@ namespace Libreria.Service
                                 CreateTime = p.CreateTime,
                                 Introduction = p.Introduction,
                                 MainUrl = v.ImgUrl,
+                                Count = p.Inventory,
                             });
             var result = products.ToList();
             return result;
@@ -252,7 +258,7 @@ namespace Libreria.Service
         {
             var products = (from p in _DbRepository.GetAll<Product>()
                            .OrderByDescending(p => p.TotalSales)
-                           .Take(3)
+                           .Take(6)
                             join v in _DbRepository.GetAll<Preview>()
                             on p.ProductId equals v.ProductId
                             where v.Sort == 0
@@ -266,6 +272,7 @@ namespace Libreria.Service
                                 CreateTime = p.CreateTime,
                                 Introduction = p.Introduction,
                                 MainUrl = v.ImgUrl,
+                                Count = p.Inventory,
                             });
             var result = products.ToList();
             return result;
@@ -285,6 +292,7 @@ namespace Libreria.Service
                                 Author = p.Author,
                                 CreateTime = p.CreateTime,
                                 Introduction = p.Introduction,
+                                Count = p.Inventory,
                             });
             var result = products.ToList();
             return result;
@@ -293,7 +301,7 @@ namespace Libreria.Service
         public List<ProductViewModel> PromoteToday()
         {
             var products = (from p in _DbRepository.GetAll<Product>()
-                              .OrderByDescending(p => p.CategoryId==6)
+                              .OrderByDescending(p => p.CategoryId == 6)
                               .Take(2)
                             join v in _DbRepository.GetAll<Preview>()
                             on p.ProductId equals v.ProductId
@@ -308,6 +316,7 @@ namespace Libreria.Service
                                 CreateTime = p.CreateTime,
                                 Introduction = p.Introduction,
                                 MainUrl = v.ImgUrl,
+                                Count = p.Inventory,
                             });
             var result = products.ToList();
             return result;
@@ -317,7 +326,7 @@ namespace Libreria.Service
         {
             var products = (from p in _DbRepository.GetAll<Product>()
                                           .OrderByDescending(p => p.CategoryId == 5)
-                                          .OrderBy(p=>p.UnitPrice)
+                                          .OrderBy(p => p.UnitPrice)
                                           .Take(4)
                             join v in _DbRepository.GetAll<Preview>()
                             on p.ProductId equals v.ProductId
@@ -326,12 +335,13 @@ namespace Libreria.Service
                             {
                                 Id = p.ProductId,
                                 Name = p.ProductName,
-                                UnitPrice = p.UnitPrice ,
+                                UnitPrice = p.UnitPrice,
                                 CategoryId = p.CategoryId,
                                 Author = p.Author,
                                 CreateTime = p.CreateTime,
                                 Introduction = p.Introduction,
                                 MainUrl = v.ImgUrl,
+                                Count = p.Inventory,
                             });
             var result = products.ToList();
             return result;
@@ -358,10 +368,11 @@ namespace Libreria.Service
                                 CreateTime = p.CreateTime,
                                 Introduction = p.Introduction,
                                 MainUrl = v.ImgUrl,
+                                Count = p.Inventory,
                             });
             var result = products.ToList();
             return result;
         }
-        
+
     }
 }
