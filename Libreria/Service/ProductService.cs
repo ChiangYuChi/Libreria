@@ -228,7 +228,7 @@ namespace Libreria.Service
         {
             var products = (from p in _DbRepository.GetAll<Product>()
                            .OrderByDescending(p => p.PublishDate)
-                           .Take(3)
+                           .Take(5)
                             join v in _DbRepository.GetAll<Preview>()
                             on p.ProductId equals v.ProductId
                             where v.Sort == 0
@@ -258,7 +258,7 @@ namespace Libreria.Service
         {
             var products = (from p in _DbRepository.GetAll<Product>()
                            .OrderByDescending(p => p.TotalSales)
-                           .Take(3)
+                           .Take(6)
                             join v in _DbRepository.GetAll<Preview>()
                             on p.ProductId equals v.ProductId
                             where v.Sort == 0
