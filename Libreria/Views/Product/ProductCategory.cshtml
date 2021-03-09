@@ -311,10 +311,6 @@
             })
         });
 
-
-
-
-
         function AddFavorite(id) {
             let favId = id;
 
@@ -401,7 +397,7 @@
                 document.querySelector(".fa-check-circle").style.display = "block";
                 document.querySelector(".fa-times-circle").style.display = "none";
             }), 800)
-            
+
         }
 
         function removeProduct(e) {
@@ -412,6 +408,18 @@
                 $('.js-cart-empty').removeClass('hide');
             }
         }
+    </script>
+    <script>
+        $(document).ready(function () {
+            $('#class').click(function () {
+                $('.class__list').slideToggle('slow');
+            });
+
+            $('.class__list li').click(function () {
+                $('.class__list').slideToggle('hled');
+            });
+        });
+
     </script>
 
 
