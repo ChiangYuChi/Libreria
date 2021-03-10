@@ -1,76 +1,7 @@
 ﻿
-body {
-    background-color: #f0e1b8;
-}
-
-ul {
-    list-style: none;
-}
 
 
 
-/* Logo */
-/*#brand {
-    position: absolute;
-    top: 55%;
-    left: 50%;
-    transform: translateX(-100px);
-}
-
-    #brand img {
-        width: 200px;
-    }*/
-/* Logoæ¼¢å ¡æ‰“é–‹ç‰ˆ */
-/*.navbar-brand-hamburger img {
-    width: 100px;
-}
-
-#literial_brand img {
-    max-width: 250px;
-    padding: 30px 0px;
-}*/
-
-/* navbarä¸»è¦–è¦ºè‰²å½© */
-/*#nav-iconlist,
-#nav {
-    background-color: #2a2c27;
-}
-
-#search_from {
-    background-color: #2a2c27;
-}
-
-.nav-item i {
-    color: #7e8186;
-}
-
-.nav {
-    position: relative;
-    position: sticky;
-}*/
-/* navbarå…§éƒ¨æŽ’ç‰ˆèª¿æ•´ */
-/*#navbarToggler .nav-item {
-    padding: 20px;
-    text-align: center;
-}*/
-/* æ”¶åˆé¡¯ç¤ºçŸ¯æ­£ */
-/*.collapse.show + #brand, .collapsing + #brand, .collapse.show + #search-button, .collapsing + #search-button, .collapsing ~ #nav-iconbox, .collapse.show ~ #nav-iconbox {
-    display: none;
-}*/
-
-/* æ”¶åˆå‹•ç•«ä¿®æ­£ã€è“‹æ¿é¡¯ç¤ºä¿®æ­£ */
-/*.collapsing {
-    -webkit-transition: all 0.3s linear;
-    transition: all 0.3s linear;
-    display: -moz-popup;
-}
-
-.navbar-collapse.collapse.show {
-    height: 100vh;
-    -webkit-transition: all 0.3s linear;
-    transition: all 0.3s linear;
-    display: -moz-popup;
-}*/
 
 
 .footer {
@@ -84,14 +15,16 @@ ul {
 .footer-help h5 {
     color: rgba(255, 255, 255, 0.5);
     font-weight: bold;
+    font-size: 14px;
 }
 
 .footer-company a,
 .footer-account a,
 .footer-help a {
     color: rgba(255, 255, 255, 0.5);
-    font-size: 14px;
+    font-size: 12px;
     text-decoration: none;
+    padding-left: 1px;
 }
 
 .footer a:hover {
@@ -100,35 +33,37 @@ ul {
 }
 
 .footer .pic {
-    text-align: center;
+    text-align: right;
+   
 }
 
     .footer .pic img {
-        width: 50%;
-        right: -180%;
+        width: 30%;
+        right: 10%;
     }
 
-.footer-phone {
+.footer .footer-phone {
     color: rgba(255, 255, 255, 0.5);
-    border-top: 1px solid black;
-    margin-top: 15px;
-    padding: 15px 0;
-    font-size: 14px;
-    letter-spacing: 1px
+    border-top: 1px solid rgba(255, 255, 255, 0.5);
+    
+    padding: 20px 0 20px 0;
+    font-size: 12px;
+    letter-spacing: 1px;
+    margin-top: 20px;
 }
 
-    .footer-phone p span {
+    .footer-phone span {
         margin-right: 10px;
     }
 
     .footer-phone .fas,
     .footer-phone .fab {
         padding-right: 10px;
-        font-size: 20px;
+        font-size: 12px;
     }
 
         .footer-phone .fab:hover {
-            color: 1px solid black;
+            color: black;
             cursor: pointer;
             transition: ease-in .5s;
         }
