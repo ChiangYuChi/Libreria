@@ -74,7 +74,7 @@
                                 @Html.LabelFor(model => model.Remember, htmlAttributes: new { @class = "control-label d-inline", @style = "font-size: 15px;color: #8a6926;" })
                                 @Html.ValidationMessageFor(model => model.Remember, "", new { @class = "text-danger" })
                             </div>
-                            <span class="forget-password-span"><a href="#">忘記密碼</a></span> <br />
+                            <span class="forget-password-span"><a href= "@Url.Action("ResetEmail", "MemberLogin")">忘記密碼</a></span> <br />
                         </div>
 
                     </label>

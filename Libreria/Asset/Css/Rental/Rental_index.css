@@ -273,12 +273,12 @@ padding: 10px 5px;
 border-radius: 5px;
 }
 
-.space__calendar td:hover {
-background-color: rgba(138, 105, 38, 1);
-color: white;
-transition: .5s;
-cursor: pointer;
-}
+    .space__calendar td:hover {
+        background-color: rgb(92, 70, 27);
+        color: white;
+        transition: .5s;
+        cursor: pointer;
+    }
 
 .space__orderedTitle span {
     margin-top: 50px;
@@ -407,6 +407,47 @@ padding-top: 20px;
 .space__check-out {
 display: none;
 }
+
+.CartMsg-alert {
+    width: 300px;
+    height: 180px;
+    background-color: rgba(0, 0, 0, 0.712);
+    border-radius: 3%;
+}
+
+.CartMsg-wrap {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    transition: all 2s;
+    position: fixed;
+    top: 45%;
+    right: 40%;
+    z-index: 1022;
+}
+
+
+.fa-exclamation {
+    font-size: 90px;
+    color: rgb(139, 120, 8);
+    background-color: white;
+    border-radius: 50%;
+    margin-top: 20px;
+    margin-left: 105px;
+    margin-bottom: 15px;
+    width: 100px;
+    height: 100px;
+    text-align: center;
+    padding-top: 5px;
+}
+
+.CartMsg-alert_txt {
+    text-align: center;
+    color: white;
+}
+
+
+
 
 @media screen and (min-width:768px) {
     .start-data::after{
