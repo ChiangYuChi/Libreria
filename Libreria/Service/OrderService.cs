@@ -611,6 +611,7 @@ namespace Libreria.Service
 
                     var result = oPayment.CheckOutString(ref html);
                     /* 產生訂單 */
+
                     enErrors.AddRange((IEnumerable<string>)oPayment.CheckOut());
 
                 }
