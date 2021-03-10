@@ -273,12 +273,12 @@ padding: 10px 5px;
 border-radius: 5px;
 }
 
-.space__calendar td:hover {
-background-color: rgba(138, 105, 38, 1);
-color: white;
-transition: .5s;
-cursor: pointer;
-}
+    .space__calendar td:hover {
+        background-color: rgb(92, 70, 27);
+        color: white;
+        transition: .5s;
+        cursor: pointer;
+    }
 
 .space__orderedTitle span {
     margin-top: 50px;
