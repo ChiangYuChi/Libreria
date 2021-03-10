@@ -360,6 +360,7 @@
     <Compile Include="ViewModels\PasswordViewModel.cs" />
     <Compile Include="ViewModels\ProductViewModel.cs" />
     <Compile Include="ViewModels\ReCaptchaViewModel.cs" />
+    <Compile Include="ViewModels\RentalOrderViewModel.cs" />
     <Compile Include="ViewModels\ShoppingCartViewModel.cs" />
     <Compile Include="ViewModels\RentalConfirmViewModel.cs" />
   </ItemGroup>
@@ -736,6 +737,7 @@
     <Content Include="Views\MemberLogin\ResetEmail.cshtml" />
     <Content Include="Views\MemberLogin\ResetPassword.cshtml" />
     <Content Include="Views\Order\PayReturnDetail.cshtml" />
+    <Content Include="Views\Rental\PayReturnDetail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Code\" />
