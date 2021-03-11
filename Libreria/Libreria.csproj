@@ -309,6 +309,14 @@
     <Compile Include="Migrations\202103081145267_payment-eshi.Designer.cs">
       <DependentUpon>202103081145267_payment-eshi.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202103111112498_Manager.cs" />
+    <Compile Include="Migrations\202103111112498_Manager.Designer.cs">
+      <DependentUpon>202103111112498_Manager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103111115298_Manageradd.cs" />
+    <Compile Include="Migrations\202103111115298_Manageradd.Designer.cs">
+      <DependentUpon>202103111115298_Manageradd.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\EntityModel\AspNetRole.cs" />
@@ -322,6 +330,7 @@
     <Compile Include="Models\EntityModel\ExhibitionOrder.cs" />
     <Compile Include="Models\EntityModel\Favorite.cs" />
     <Compile Include="Models\EntityModel\Invoice.cs" />
+    <Compile Include="Models\EntityModel\Manager.cs" />
     <Compile Include="Models\ResultModel.cs" />
     <Compile Include="Repository\DbContext\LibreriaDataModel.cs" />
     <Compile Include="Models\EntityModel\member.cs" />
@@ -774,6 +783,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202103081145267_payment-eshi.resx">
       <DependentUpon>202103081145267_payment-eshi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103111112498_Manager.resx">
+      <DependentUpon>202103111112498_Manager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103111115298_Manageradd.resx">
+      <DependentUpon>202103111115298_Manageradd.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
