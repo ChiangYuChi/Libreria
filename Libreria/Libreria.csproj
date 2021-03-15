@@ -458,6 +458,7 @@
     <Compile Include="Repository\LibreriaRepository.cs" />
     <Compile Include="Service\CategoryService.cs" />
     <Compile Include="Service\ExhibitionService.cs" />
+    <Compile Include="Service\LineLoginService.cs" />
     <Compile Include="Service\MemberLoginService.cs" />
     <Compile Include="Service\FavoriteService.cs" />
     <Compile Include="Service\MemberRegisterPageService.cs" />
@@ -471,6 +472,8 @@
     <Compile Include="ViewModels\apibase\ApiResult.cs" />
     <Compile Include="ViewModels\CategoryViewModel.cs" />
     <Compile Include="ViewModels\FavoriteViewModel.cs" />
+    <Compile Include="ViewModels\LineLoginTokenViewModel.cs" />
+    <Compile Include="ViewModels\LineProfileViewModel.cs" />
     <Compile Include="ViewModels\MemberLoginViewModel.cs" />
     <Compile Include="ViewModels\MemberViewModel.cs" />
     <Compile Include="ViewModels\OrderDetailViewModel.cs" />
@@ -559,6 +562,7 @@
     <Content Include="Asset\Image\MemberCenter\1.jpg" />
     <Content Include="Asset\Image\Logo-grey.png" />
     <Content Include="Asset\Image\member-card.png" />
+    <Content Include="Asset\Image\MemberLogin\btn_login_base.png" />
     <Content Include="Asset\Image\Rental\20-Seated_Update.jpg" />
     <Content Include="Asset\Image\Rental\area.svg" />
     <Content Include="Asset\Image\Rental\check.svg" />

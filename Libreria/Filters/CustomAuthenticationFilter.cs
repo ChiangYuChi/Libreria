@@ -9,16 +9,19 @@ using System.Web.Routing;
 
 namespace Libreria.Filters
 {
+    /// <summary>
+    /// 會員驗證
+    /// </summary>
     public class CustomAuthenticationFilter:ActionFilterAttribute, IAuthenticationFilter
     {
         public void OnAuthentication(AuthenticationContext filterContext)
         {
-            //if (string.IsNullOrEmpty(Convert.ToString(filterContext.HttpContext.Session["MemberName"]))&&filterContext.HttpContext.Request.Cookies["MemberName"]!=null)
             if (string.IsNullOrEmpty(Convert.ToString(filterContext.HttpContext.Session["MemberName"])))
             {
                 filterContext.Result = new HttpUnauthorizedResult();
-                //filterContext.HttpContext.Session["MemberName"] = filterContext.HttpContext.Request.Cookies["MemberName"].Value;
             }
+            //
+            //else if (string.IsNullOrEmpty())
         }
         public void OnAuthenticationChallenge(AuthenticationChallengeContext filterContext)
         {
@@ -38,8 +41,9 @@ namespace Libreria.Filters
             }
 
         }
-
-        //ovverride CustomAuthenticationFilter to implement AllowAnonymous
+        /// <summary>
+        /// 不須驗證可進入
+        /// </summary>
         public class CustomAllowAnonymous : FilterAttribute, IOverrideFilter
         {
             public Type FiltersToOverride

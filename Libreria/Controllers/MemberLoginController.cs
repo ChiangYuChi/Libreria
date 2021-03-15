@@ -8,11 +8,11 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
-using isRock.LineLoginV21;
 using Newtonsoft.Json;
 using System.IdentityModel.Tokens.Jwt;
-
-
+using System.Net;
+using System.Text;
+using System.Collections.Specialized;
 
 namespace Libreria.Controllers
 {
@@ -83,23 +83,6 @@ namespace Libreria.Controllers
             Session["MemberID"] = null;
             return RedirectToAction("Index", "Home");
         }
-
-        //
-        [HttpGet]
-        public ActionResult Callback()
-        {
-            string code = Request.QueryString["code"];
-            if (code == null)
-            {
-                ViewBag.access_token = "沒有正確的code...";
-                return View("Index");
-            }
-            var token = isRock.LineLoginV21.Utility.GetTokenFromCode(code,
-            "1655754480",  //client_id
-            "01688ad326564fb2a0b8004c7c7fc94c", //client_secret
-            "https://localhost:44330/MemberCenter/MemberLogin");  //Call back URL相同
-            var email = "";
-
         public ActionResult ResetEmail()
         {
             return View();
@@ -119,7 +102,7 @@ namespace Libreria.Controllers
             {
                 return "发出失败,请检查后重试";
             }
-            
+
         }
 
         public ActionResult ResetPassword()
@@ -142,28 +125,64 @@ namespace Libreria.Controllers
             }
         }
 
-            //利用access_token取得用戶資料
-            var user = isRock.LineLoginV21.Utility.GetUserProfile(token.access_token);
-            //利用id_token取得Claim資料
-            var JwtSecurityToken = new JwtSecurityToken(token.id_token);
-            //如果有email取得emil
-            if (JwtSecurityToken.Claims.ToList().Find(c => c.Type == "email") != null)
-                email = JwtSecurityToken.Claims.First(c => c.Type == "email").Value;
-
-            ViewBag.email = email;
-            ViewBag.access_token = token.access_token;
-            ViewBag.displayName = user.displayName;
-            return View("index");
-        }
-        [HttpPost]
-        public ActionResult GetUserProfile(string Token, string email)
+       
+        public ActionResult LineLoginDirect()
         {
-            var user = isRock.LineLoginV21.Utility.GetUserProfile(Token);
-            ViewBag.UserProfileJSON = JsonConvert.SerializeObject(user);
+            string response_type = "code";
+            string client_id = "1655754480";
+            string redirect_uri = HttpUtility.UrlEncode("https://localhost:44330/MemberLogin/Callback");
+            string state = "statePassword";
+            string LineLoginUrl = string.Format("https://access.line.me/oauth2/v2.1/authorize?response_type={0}&client_id={1}&redirect_uri={2}&state={3}&scope=openid%20profile%20email&nonce=09876xyz",
+                response_type,
+                client_id,
+                redirect_uri,
+                state
+                );
+            return Redirect(LineLoginUrl);
+        }
 
-            ViewBag.email = email;
-            ViewBag.access_token = Token;
-            return View("Index");
+        public ActionResult Callback(string code, string state)
+        {
+                
+            if (state == "statePassword")
+            {
+                WebClient wc = new WebClient();
+                wc.Encoding = Encoding.UTF8;
+                wc.Headers.Add("Content-Type", "application/x-www-form-urlencoded");
+                NameValueCollection nvc = new NameValueCollection();
+
+                try
+                {
+                    //取回Token
+                    string ApiUrl_Token = "https://api.line.me/oauth2/v2.1/token";
+                    nvc.Add("grant_type", "authorization_code");
+                    nvc.Add("code", code);
+                    nvc.Add("redirect_uri", "https://localhost:44330/MemberLogin/Callback");
+                    nvc.Add("client_id", "1655754480");
+                    nvc.Add("client_secret", "01688ad326564fb2a0b8004c7c7fc94c");
+                    string JsonStr = Encoding.UTF8.GetString(wc.UploadValues(ApiUrl_Token, "POST", nvc));
+                    LineLoginTokenViewModel ToKenObj = JsonConvert.DeserializeObject<LineLoginTokenViewModel>(JsonStr);
+
+                    var id_token = ToKenObj.id_token;
+
+                    var jst = new JwtSecurityToken(id_token);
+                    LineProfileViewModel user = new LineProfileViewModel();
+                    user.userId = jst.Payload.Sub;
+                    user.displayName = jst.Payload["name"].ToString();
+                    if (jst.Payload.ContainsKey("email") && !string.IsNullOrEmpty(Convert.ToString(jst.Payload["email"])))
+                    {
+                        user.email = jst.Payload["email"].ToString();
+                    }
+
+                    return RedirectToAction("MemberLogin", "MemberCenter");
+                }
+                catch (Exception ex)
+                {
+                    string msg = ex.Message;
+                    throw;
+                }
+            }
+            return View();
         }
     }
 }
