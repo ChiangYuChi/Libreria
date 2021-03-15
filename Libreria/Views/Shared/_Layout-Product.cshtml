@@ -10,6 +10,7 @@
     <link href="~/Asset/Css/Layout/Footer.css" rel="stylesheet" />
 
     @*@Styles.Render("~/Content/css")*@
+    <link href="~/Asset/Css/ShoppingCart/FavMsgPartial.css" rel="stylesheet" />
     <link href="~/Asset/Css/Product/reset.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
           integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
@@ -27,8 +28,8 @@
         body {
             background-color: white;
         }
+
         #brand {
-            
             z-index: 2;
         }
     </style>
@@ -172,49 +173,25 @@
         </div>
 
     </div>
-    <section class="footer px-5">
-        <div class="container">
-            <div class="row d-flex pt-5">
-                <div class="col-sm-12 col-md-2 order-sm-2 footer-company">
-                    <div class="row d-flex flex-column">
-                        <h5>Company</h5>
-                        <a href="#">About</a>
-                        <a href="#">Blog</a>
-                        <a href="#">Contact Us</a>
+
+    @Html.Partial("_FooterPartial")
+
+                    </div>
+                    <div class="d-none d-md-block col-sm-6 col-md-6 order-sm-1 order-md-4 footer-logo pt-3 pb-3 px-0">
+                        <div class="pic"><img src="~/Asset/Image/smlogo_v2.png" alt=""></div>
                     </div>
 
-                </div>
-                <div class="col-sm-12 col-md-2  order-sm-3 footer-account ">
-                    <div class="row d-flex flex-column">
-                        <h5>Account</h5>
-                        <a href="#">Payment</a>
-                        <a href="#">Subscriptions</a>
-                    </div>
-                </div>
-                <div class="col-sm-12 col-md-2  order-sm-4 footer-help ">
-                    <div class="row d-flex flex-column">
-                        <h5>Help</h5>
-                        <a href="#">Support</a>
-                    </div>
+                    <div class="col-sm-12 order-sm-5 footer-phone">
+                        <p>
+                            <span><i class="fas fa-phone-square-alt"></i>02-26343434</span><span>
+                                <i class="fas fa-phone-square-alt"></i>liberia@gmail.com
+                            </span> <span>
+                                <i class="fab fa-facebook-f"></i><i class="fab fa-twitter"></i><i class="fab fa-instagram"></i>
+                            </span>
+                        </p>
 
-                </div>
-                <div class="d-none d-md-block col-sm-6 col-md-6 order-sm-1 order-md-4 footer-logo pt-3 pb-3 px-0">
-                    <div class="pic"><img src="~/Asset/Image/smlogo_v2.png" alt=""></div>
-                </div>
-
-                <div class="col-sm-12 order-sm-5 footer-phone">
-                    <p>
-                        <span><i class="fas fa-phone-square-alt"></i>02-26343434</span><span>
-                            <i class="fas fa-phone-square-alt"></i>liberia@gmail.com
-                        </span> <span>
-                            <i class="fab fa-facebook-f"></i><i class="fab fa-twitter"></i><i class="fab fa-instagram"></i>
-                        </span>
-                    </p>
-
-                </div>
-            </div>
-        </div>
-    </section>
+    @Html.Action("FavMsgPartial")
+    @Html.Partial("_FooterPartial")
     <script>
 
         //排除漢堡被打開後，RWD沒漢堡的情況下會自動收合
@@ -258,6 +235,8 @@
                                 data: { Id: favId },
                                 dataType: "text",
                                 success: function (response) {
+                                    document.querySelector(".FavMsg-wrap").setAttribute("style", "display:flex")
+                                    var time = window.setTimeout((() => document.querySelector(".FavMsg-wrap").setAttribute("style", "display:none")), 100000)
                                 }
                             });
                         }
@@ -269,7 +248,7 @@
 
         }
     </script>
-
+   
 
 
     @Scripts.Render("~/bundles/jquery")
@@ -277,14 +256,6 @@
     @RenderSection("scripts", required: false)
     @RenderSection("endCss", required: false)
     @RenderSection("endJs", required: false)
-    @section endJs{
-        <script src="~/Asset/Js/Product/sidenav-toggle.js"></script>
-
-
-
-
-
-
-    }
+    
 </body>
 </html>

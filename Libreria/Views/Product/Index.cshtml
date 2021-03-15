@@ -157,7 +157,18 @@
             }), 800)
         }
     </script>
+    <script>
+        $(document).ready(function () {
+            $('#class').click(function () {
+                $('.class__list').slideToggle('slow');
+            });
 
+            $('.class__list li').click(function () {
+                $('.class__list').slideToggle('hled');
+            });
+        });
+
+    </script>
 
 }
 

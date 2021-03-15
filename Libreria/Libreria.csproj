@@ -180,6 +180,12 @@
     <Reference Include="Renci.SshNet, Version=2020.0.0.0, Culture=neutral, PublicKeyToken=1cee9f8bde3db106, processorArchitecture=MSIL">
       <HintPath>..\packages\SSH.NET.2020.0.0\lib\net40\Renci.SshNet.dll</HintPath>
     </Reference>
+    <Reference Include="SendGrid, Version=9.22.0.0, Culture=neutral, PublicKeyToken=4f047e93159395ca, processorArchitecture=MSIL">
+      <HintPath>..\packages\SendGrid.9.22.0\lib\net452\SendGrid.dll</HintPath>
+    </Reference>
+    <Reference Include="StarkbankEcdsa, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\starkbank-ecdsa.1.2.0\lib\net452\StarkbankEcdsa.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
@@ -413,6 +419,14 @@
     <Compile Include="Migrations\202103081145267_payment-eshi.Designer.cs">
       <DependentUpon>202103081145267_payment-eshi.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202103111112498_Manager.cs" />
+    <Compile Include="Migrations\202103111112498_Manager.Designer.cs">
+      <DependentUpon>202103111112498_Manager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103111115298_Manageradd.cs" />
+    <Compile Include="Migrations\202103111115298_Manageradd.Designer.cs">
+      <DependentUpon>202103111115298_Manageradd.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\EntityModel\AspNetRole.cs" />
@@ -426,6 +440,7 @@
     <Compile Include="Models\EntityModel\ExhibitionOrder.cs" />
     <Compile Include="Models\EntityModel\Favorite.cs" />
     <Compile Include="Models\EntityModel\Invoice.cs" />
+    <Compile Include="Models\EntityModel\Manager.cs" />
     <Compile Include="Models\ResultModel.cs" />
     <Compile Include="Repository\DbContext\LibreriaDataModel.cs" />
     <Compile Include="Models\EntityModel\member.cs" />
@@ -464,6 +479,7 @@
     <Compile Include="ViewModels\PasswordViewModel.cs" />
     <Compile Include="ViewModels\ProductViewModel.cs" />
     <Compile Include="ViewModels\ReCaptchaViewModel.cs" />
+    <Compile Include="ViewModels\RentalOrderViewModel.cs" />
     <Compile Include="ViewModels\ShoppingCartViewModel.cs" />
     <Compile Include="ViewModels\RentalConfirmViewModel.cs" />
   </ItemGroup>
@@ -490,6 +506,7 @@
     <Content Include="Asset\Css\MemberCenter\sub_cancel.css" />
     <Content Include="Asset\Css\MemberCenter\sub_info.css" />
     <Content Include="Asset\Css\Passward\Passward.css" />
+    <Content Include="Asset\Css\Pay\PayReturnDetail.css" />
     <Content Include="Asset\Css\Product\ProductCategory.css" />
     <Content Include="Asset\Css\Product\ProductDetail.css" />
     <Content Include="Asset\Css\Product\product_index.css" />
@@ -499,6 +516,7 @@
     <Content Include="Asset\Css\Rental\Rental_Confirm.css" />
     <Content Include="Asset\Css\Rental\Rental_index.css" />
     <Content Include="Asset\Css\ShoppingCart\CartMsgPartial.css" />
+    <Content Include="Asset\Css\ShoppingCart\FavMsgPartial.css" />
     <Content Include="Asset\Css\ShoppingCart\Normalize.css" />
     <Content Include="Asset\Css\ShoppingCart\OrderDetail.css" />
     <Content Include="Asset\Css\ShoppingCart\ShoppingCart.css" />
@@ -837,18 +855,19 @@
     <Content Include="Views\Order\PayOrder.cshtml" />
     <Content Include="Views\Product\CartMsgPartial.cshtml" />
     <Content Include="Views\Home\Exception.cshtml" />
-    <Content Include="Views\Order\OrderResult.cshtml" />
-    <Content Include="Views\Order\OrderDetailReturn.cshtml" />
-    <Content Include="Views\Order\PayReturnResult.cshtml" />
-    <Content Include="Views\Order\PayReturnDetail.cshtml" />
     <Content Include="Views\MemberCenter\CartMsgPartial.cshtml" />
     <Content Include="Views\Order\CartMsgPartial.cshtml" />
     <Content Include="Views\MemberCenter\PasswordPartial.cshtml" />
     <Content Include="Views\Rental\CartMsgPartial.cshtml" />
-    <Content Include="Views\Order\PayReturnResult.cshtml" />
+    <Content Include="Views\Rental\PayOrder.cshtml" />
+    <Content Include="Views\Shared\_FooterPartial.cshtml" />
+    <Content Include="Views\Product\FavMsgPartial.cshtml" />
+    <Content Include="Views\MemberLogin\ResetEmail.cshtml" />
+    <Content Include="Views\MemberLogin\ResetPassword.cshtml" />
     <Content Include="Views\Order\PayReturnDetail.cshtml" />
     <Content Include="Views\Rental\PayOrder.cshtml" />
     <Content Include="Views\Shared\SuccessOrFail.cshtml" />
+    <Content Include="Views\Rental\PayReturnDetail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Code\" />
@@ -887,6 +906,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202103081145267_payment-eshi.resx">
       <DependentUpon>202103081145267_payment-eshi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103111112498_Manager.resx">
+      <DependentUpon>202103111112498_Manager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103111115298_Manageradd.resx">
+      <DependentUpon>202103111115298_Manageradd.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

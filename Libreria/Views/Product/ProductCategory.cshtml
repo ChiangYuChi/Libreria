@@ -6,6 +6,7 @@
     <link href="~/Asset/Css/PartialView/category-sidenav.css" rel="stylesheet" />
     <link href="~/Asset/Css/Product/ShopCartIconPartial.css" rel="stylesheet" />
     <link href="~/Asset/Css/ShoppingCart/CartMsgPartial.css" rel="stylesheet" />
+    <link href="~/Asset/Css/ShoppingCart/FavMsgPartial.css" rel="stylesheet" />
 }
 @section topJs{
     <script src="https://kit.fontawesome.com/b4e5145ad1.js" crossorigin="anonymous"></script>
@@ -234,6 +235,7 @@
 
 <div class="lightbox js-lightbox js-toggle-cart"></div>
 @Html.Action("CartMsgPartial")
+@Html.Action("FavMsgPartial")
 
 
 @section EndJs{
@@ -311,10 +313,6 @@
             })
         });
 
-
-
-
-
         function AddFavorite(id) {
             let favId = id;
 
@@ -329,9 +327,8 @@
                                 data: { Id: favId },
                                 dataType: "text",
                                 success: function (response) {
-                                    document.querySelector(".CartMsg-wrap").setAttribute("style", "display:flex")
-                                    var time = window.setTimeout((() => document.querySelector(".CartMsg-wrap").setAttribute("style", "display:none")), 800)
-                                    time();
+                                    document.querySelector(".FavMsg-wrap").setAttribute("style", "display:flex")
+                                    var time = window.setTimeout((() => document.querySelector(".FavMsg-wrap").setAttribute("style", "display:none")), 800)
                                 }
                             });
                         }
@@ -401,7 +398,7 @@
                 document.querySelector(".fa-check-circle").style.display = "block";
                 document.querySelector(".fa-times-circle").style.display = "none";
             }), 800)
-            
+
         }
 
         function removeProduct(e) {
@@ -412,6 +409,18 @@
                 $('.js-cart-empty').removeClass('hide');
             }
         }
+    </script>
+    <script>
+        $(document).ready(function () {
+            $('#class').click(function () {
+                $('.class__list').slideToggle('slow');
+            });
+
+            $('.class__list li').click(function () {
+                $('.class__list').slideToggle('hled');
+            });
+        });
+
     </script>
 
 

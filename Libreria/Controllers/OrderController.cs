@@ -215,6 +215,7 @@ namespace Libreria.Controllers
 
 
  
+            ViewData["OrderNum"] = form["MerchantTradeNo"];
             return View();
         }
 

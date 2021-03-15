@@ -20,10 +20,12 @@ namespace Libreria.Controllers
     {     
         public readonly MemberLoginService _memberLoginService;
         public readonly ShoppingService _shoppingService;
+        public readonly MemberService _memberService;
         public MemberLoginController()
         {
             _memberLoginService = new MemberLoginService();
             _shoppingService = new ShoppingService();
+            _memberService = new MemberService();
         }
         // GET: MemberLogin
         [HttpGet]
@@ -97,6 +99,48 @@ namespace Libreria.Controllers
             "01688ad326564fb2a0b8004c7c7fc94c", //client_secret
             "https://localhost:44330/MemberCenter/MemberLogin");  //Call back URL相同
             var email = "";
+
+        public ActionResult ResetEmail()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public string SendResetEmail(string Email)
+        {
+            var callbackUrl = Url.Action("ResetPassword", "MemberLogin");
+            var result = _memberService.SendEmail(Email, callbackUrl);
+
+            if (result.IsSuccessful)
+            {
+                return "成功发出!";
+            }
+            else
+            {
+                return "发出失败,请检查后重试";
+            }
+            
+        }
+
+        public ActionResult ResetPassword()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public string ConfirmResetPassword(string username, string password)
+        {
+            var result = _memberService.UpdatePassword(username, password);
+
+            if (result.IsSuccessful)
+            {
+                return "密码修改成功!";
+            }
+            else
+            {
+                return "密码修改失败,请重试";
+            }
+        }
 
             //利用access_token取得用戶資料
             var user = isRock.LineLoginV21.Utility.GetUserProfile(token.access_token);

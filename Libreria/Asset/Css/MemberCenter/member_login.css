@@ -27,7 +27,7 @@
         }
 
     .member-center .row .member-login-request {
-        background-image: url(../../Asset/Image/member-card.png);
+        background-image: url(../../Image/member-card.png);
         height: 400px;
         width: 300px;
         position: relative;
@@ -223,8 +223,13 @@ p {
     margin: 0;
 }
 
-.fas,
-.fab {
+.fa-address-book,
+.fa-ad,
+.fa-calendar,
+.fa-heart,
+.fa-wpforms,
+.fa-address-book,
+.fa-headphones {
     color: #8a6927;
 }
 

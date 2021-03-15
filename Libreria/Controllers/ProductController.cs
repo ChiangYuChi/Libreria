@@ -150,5 +150,10 @@ namespace Libreria.Controllers
         {
             return PartialView();
         }
+
+        public PartialViewResult FavMsgPartial()
+        {
+            return PartialView();
+        }
     }
 }

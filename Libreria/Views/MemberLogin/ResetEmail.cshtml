@@ -1,0 +1,58 @@
+﻿
+@{
+    ViewBag.Title = "ResetEmail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section topCSS{
+    @*Passward CSS*@
+    <link href="~/Asset/Css/Passward/Passward.css" rel="stylesheet" />
+}
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-12 pt-4 pb-5">
+            <div class="offset-lg-3 col-12 col-lg-6 d-flex align-items-center mb-3">
+                <div class="row title">
+                    <span class="mr-3 mt-1 mb-4">_</span>
+                    <p class="title_text">
+                        密码重置
+                    </p>
+                </div>
+            </div>
+
+            <div class="row passward">
+                <div class="offset-lg-3 col-12 col-lg-6">
+                    <label for="password" class="w-100 col-form-label">请输入邮箱</label>
+                    <div class="w-100 form-group">
+                        <input type="text" id="email" autocomplete="off" class="form-control">
+                    </div>
+                    <div class="w-100">
+                        <button class="btn w-100 p-2" id="log_in" onclick="SendEmail()">確定</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+@section EndJs{
+    <script>
+        function SendEmail() {
+            let email = document.getElementById("email").value;
+
+            $.ajax({
+                type: "POST",
+                url: "/MemberLogin/SendResetEmail",
+                data: { "Email" : email },
+                dataType: "text",
+                success: function () {
+                    alert("发出成功");
+                }
+            });
+        }
+    </script>
+}

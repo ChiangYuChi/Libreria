@@ -393,6 +393,7 @@ body {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+          margin-left: 15px;
 }
 
 .member .row .member-login .login-head .title {
@@ -514,6 +515,9 @@ body {
     width:200px;
     padding:10px;
 }
-.rc-anchor {
-    margin-left: 5px;
+.g-recaptcha {
+    margin-left: 15px;
+}
+.g-recaptcha{
+    margin-left: 15px;
 }
