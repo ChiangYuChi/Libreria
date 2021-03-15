@@ -54,11 +54,14 @@ namespace Libreria.Models.EntityModel
 
         public int Gender { get; set; }
 
-        [Required]
         [StringLength(10)]
         public string IDnumber { get; set; }
 
         public int? RoleId { get; set; }
+
+        public string LineUserID { get; set; }
+
+        public bool? Change { get; set; }   
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Favorite> Favorites { get; set; }
