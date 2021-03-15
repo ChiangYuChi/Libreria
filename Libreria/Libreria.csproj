@@ -431,6 +431,10 @@
     <Compile Include="Migrations\202103151219329_LineLogin.Designer.cs">
       <DependentUpon>202103151219329_LineLogin.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202103151225390_LineLogin1.cs" />
+    <Compile Include="Migrations\202103151225390_LineLogin1.Designer.cs">
+      <DependentUpon>202103151225390_LineLogin1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\EntityModel\AspNetRole.cs" />
@@ -923,6 +927,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202103151219329_LineLogin.resx">
       <DependentUpon>202103151219329_LineLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103151225390_LineLogin1.resx">
+      <DependentUpon>202103151225390_LineLogin1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
