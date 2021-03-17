@@ -16,8 +16,10 @@
 
 .product-breadcrumb {
     padding: 20px 20px;
-    box-sizing:border-box;
     box-sizing: border-box;
+    
+    color: #b0b0b0;
+    font-size: 14px;
 }
 
     .product-breadcrumb a,
