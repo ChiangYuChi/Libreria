@@ -16,7 +16,7 @@ namespace Libreria.Filters
     {
         public void OnAuthentication(AuthenticationContext filterContext)
         {
-            if (string.IsNullOrEmpty(Convert.ToString(filterContext.HttpContext.Session["MemberName"])))
+            if (string.IsNullOrEmpty(Convert.ToString(filterContext.HttpContext.Session["MemberName"]))|| string.IsNullOrEmpty(Convert.ToString(filterContext.HttpContext.Session["LineUserID"])))
             {
                 filterContext.Result = new HttpUnauthorizedResult();
             }

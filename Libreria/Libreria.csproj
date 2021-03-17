@@ -481,6 +481,7 @@
     <Compile Include="ViewModels\CategoryViewModel.cs" />
     <Compile Include="ViewModels\FavoriteViewModel.cs" />
     <Compile Include="ViewModels\LineLoginTokenViewModel.cs" />
+    <Compile Include="ViewModels\LineLoginViewModel.cs" />
     <Compile Include="ViewModels\LineProfileViewModel.cs" />
     <Compile Include="ViewModels\MemberLoginViewModel.cs" />
     <Compile Include="ViewModels\MemberViewModel.cs" />

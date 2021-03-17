@@ -17,15 +17,18 @@ using System.Collections.Specialized;
 namespace Libreria.Controllers
 {
     public class MemberLoginController : Controller
-    {     
-        public readonly MemberLoginService _memberLoginService;
-        public readonly ShoppingService _shoppingService;
-        public readonly MemberService _memberService;
+    {
+        private readonly MemberLoginService _memberLoginService;
+        private readonly ShoppingService _shoppingService;
+        private readonly MemberService _memberService;
+        private readonly LineLoginService _lineLoginService;
         public MemberLoginController()
         {
             _memberLoginService = new MemberLoginService();
             _shoppingService = new ShoppingService();
             _memberService = new MemberService();
+            _lineLoginService = new LineLoginService();
+
         }
         // GET: MemberLogin
         [HttpGet]
@@ -174,7 +177,32 @@ namespace Libreria.Controllers
                         user.email = jst.Payload["email"].ToString();
                     }
 
-                    return RedirectToAction("MemberLogin", "MemberCenter");
+                    //將Token解析回的使用者訊息做出一個LineLoginViewModel
+                    LineLoginViewModel model = new LineLoginViewModel()
+                    {
+                        LineUserID = user.userId,
+                        diaplayName = user.displayName,
+                        Email = user.email
+                    };
+
+                    var result = _lineLoginService.CreateOrLoginLineMember(model, ModelState.IsValid);
+                    if (ModelState.IsValid)
+                    {
+                        if (result != null)
+                        {
+                            _shoppingService.CombineCarts();
+                            return RedirectToAction("MemberLogin", "MemberCenter");
+                        }
+                        else
+                        {
+                            ModelState.AddModelError("", "帳號或密碼輸入錯誤");
+                            return View(model);
+                        }
+                    }
+                    else
+                    {
+                        return View(model);
+                    }
                 }
                 catch (Exception ex)
                 {
