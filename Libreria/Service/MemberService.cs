@@ -34,7 +34,6 @@ namespace Libreria.Service
                     Email = member.Email,
                     memberName = member.memberName,
                     memberPassword = member.memberPassword,
-                    birthday = member.birthday,
                     Gender = member.Gender,
                     IDnumber = member.IDnumber,
                 }
@@ -64,7 +63,6 @@ namespace Libreria.Service
                     Email = member.Email,
                     memberName = member.memberName,
                     memberPassword = member.memberPassword,
-                    birthday = member.birthday,
                     Gender = member.Gender,
                     IDnumber = member.IDnumber,
                 }
@@ -82,9 +80,7 @@ namespace Libreria.Service
         public OperationResult UpdateMember(MemberViewModel model)
         {
             var result = new OperationResult();
-#pragma warning disable CS0219 // 已指派變數 'updateMember'，但是從未使用過它的值
-            member updateMember = null;
-#pragma warning restore CS0219 // 已指派變數 'updateMember'，但是從未使用過它的值
+
             var originalMember = _DbRepository.GetAll<member>().Where(m => m.memberName == model.memberName).FirstOrDefault();
             originalMember.memberUserName = model.memberUserName;
             originalMember.birthday = model.birthday;

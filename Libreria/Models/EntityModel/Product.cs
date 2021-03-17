@@ -54,8 +54,6 @@ namespace Libreria.Models.EntityModel
 
         public int? TotalSales { get; set; }
 
-        public bool isFav { get; set; }
-
         public bool isSpecial { get; set; }
 
         public virtual Category Category { get; set; }

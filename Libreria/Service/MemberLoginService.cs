@@ -58,10 +58,7 @@ namespace Libreria.Service
                         {
                             cookie.Expires = DateTime.Now.AddDays(-1);
                             HttpContext.Current.Response.Cookies.Add(cookie);
-                        }
-                        
-                        //var CookiesessionID = HttpContext.Request.Cookies["SesssionID"];
-
+                        }                        
                      
                         return member;
                     }
