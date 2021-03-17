@@ -188,7 +188,7 @@ namespace Libreria.Controllers
                     var result = _lineLoginService.CreateOrLoginLineMember(model, ModelState.IsValid);
                     if (ModelState.IsValid)
                     {
-                        if (result != null)
+                        if (result.IsSuccessful==true)
                         {
                             _shoppingService.CombineCarts();
                             return RedirectToAction("MemberLogin", "MemberCenter");

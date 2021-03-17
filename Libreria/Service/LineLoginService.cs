@@ -86,6 +86,8 @@ namespace Libreria.Service
                 else
                 {
                     getLineMember(model);
+                    result.IsSuccessful = true;
+
                 }
 
             }
@@ -107,6 +109,7 @@ namespace Libreria.Service
 
                 member = _libreriaRepository.GetAll<member>().Where(u => u.LineUserID == model.LineUserID).FirstOrDefault();
                 HttpContext.Current.Session["LineUserID"] = member.LineUserID;
+                HttpContext.Current.Session["MemberID"] = member.memberId;
                 return member;
 
             }
@@ -122,7 +125,7 @@ namespace Libreria.Service
             member member = new member();
             var checkMemberLineUserID = _libreriaRepository.GetAll<member>().Where(m => member.LineUserID == memberLineID.LineUserID)
                                         .FirstOrDefault();
-            if (member!=null)
+            if (checkMemberLineUserID != null)
             {
                 result.IsSuccessful = true;
             }
