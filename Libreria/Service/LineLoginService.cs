@@ -34,11 +34,10 @@ namespace Libreria.Service
                     memberPassword = model.LineUserID,
                     //生日預設第一次登入日期
                     //birthday = DateTime.ParseExact(DateTime.Now.Date.ToString(),"yyyy-MM-ss",null),
-                    birthday = DateTime.Now.Date,
                     //性別預設不透漏
                     Gender = 2,
                     //LineLogin註冊使用者可修改帳號一次
-                    //Change = true                   
+                    Change = true                  
                     
                 };
             }
@@ -66,7 +65,7 @@ namespace Libreria.Service
             }
             try
             {
-                //後端判斷帳號是否有重複
+                //後端判斷帳號是否已註冊
                 if (IsExistLineMember(member).IsSuccessful == true)
                 {
 

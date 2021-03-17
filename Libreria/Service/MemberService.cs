@@ -34,7 +34,6 @@ namespace Libreria.Service
                     Email = member.Email,
                     memberName = member.memberName,
                     memberPassword = member.memberPassword,
-                    birthday = member.birthday,
                     Gender = member.Gender,
                     IDnumber = member.IDnumber,
                 }
@@ -64,7 +63,6 @@ namespace Libreria.Service
                     Email = member.Email,
                     memberName = member.memberName,
                     memberPassword = member.memberPassword,
-                    birthday = member.birthday,
                     Gender = member.Gender,
                     IDnumber = member.IDnumber,
                 }

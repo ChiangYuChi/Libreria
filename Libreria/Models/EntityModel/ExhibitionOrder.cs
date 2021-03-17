@@ -22,6 +22,9 @@ namespace Libreria.Models.EntityModel
         public int ExCustomerId { get; set; }
 
         public virtual ExhibitionCustomer ExhibitionCustomer { get; set; }
+
         public string PaymentState { get; set; }
+
+        public bool customerVerify { get; set; }
     }
 }

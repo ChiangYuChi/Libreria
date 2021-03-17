@@ -435,6 +435,22 @@
     <Compile Include="Migrations\202103151225390_LineLogin1.Designer.cs">
       <DependentUpon>202103151225390_LineLogin1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202103170612386_removeIsFavFromProductAddColumnAtExhiAndMember.cs" />
+    <Compile Include="Migrations\202103170612386_removeIsFavFromProductAddColumnAtExhiAndMember.Designer.cs">
+      <DependentUpon>202103170612386_removeIsFavFromProductAddColumnAtExhiAndMember.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103170617505_birthdayNullable.cs" />
+    <Compile Include="Migrations\202103170617505_birthdayNullable.Designer.cs">
+      <DependentUpon>202103170617505_birthdayNullable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103170623031_birthdayNullable-02.cs" />
+    <Compile Include="Migrations\202103170623031_birthdayNullable-02.Designer.cs">
+      <DependentUpon>202103170623031_birthdayNullable-02.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103170623543_birthdayNullable-03.cs" />
+    <Compile Include="Migrations\202103170623543_birthdayNullable-03.Designer.cs">
+      <DependentUpon>202103170623543_birthdayNullable-03.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\EntityModel\AspNetRole.cs" />
@@ -931,6 +947,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202103151225390_LineLogin1.resx">
       <DependentUpon>202103151225390_LineLogin1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103170612386_removeIsFavFromProductAddColumnAtExhiAndMember.resx">
+      <DependentUpon>202103170612386_removeIsFavFromProductAddColumnAtExhiAndMember.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103170617505_birthdayNullable.resx">
+      <DependentUpon>202103170617505_birthdayNullable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103170623031_birthdayNullable-02.resx">
+      <DependentUpon>202103170623031_birthdayNullable-02.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103170623543_birthdayNullable-03.resx">
+      <DependentUpon>202103170623543_birthdayNullable-03.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
