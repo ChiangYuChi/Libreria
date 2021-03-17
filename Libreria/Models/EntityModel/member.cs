@@ -19,12 +19,13 @@ namespace Libreria.Models.EntityModel
 
         public int memberId { get; set; }
 
-        [Required]
+        //[DisplayFormat(ConvertEmptyStringToNull = false)]
         [StringLength(50)]
+        [Required(AllowEmptyStrings = true)]
         public string memberName { get; set; }
 
-        [Required]
         [StringLength(50)]
+        [Required(AllowEmptyStrings = true)]
         public string MobileNumber { get; set; }
 
         [StringLength(50)]
@@ -41,6 +42,7 @@ namespace Libreria.Models.EntityModel
 
         [Required]
         [StringLength(50)]
+        [DisplayFormat(ConvertEmptyStringToNull = false)]
         public string Email { get; set; }
 
         [Required]
@@ -66,6 +68,7 @@ namespace Libreria.Models.EntityModel
 
         public string LineUserID { get; set; }
 
+        [NotMapped]
         public bool? Change { get; set; }   
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

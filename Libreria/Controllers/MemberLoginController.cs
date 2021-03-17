@@ -206,7 +206,7 @@ namespace Libreria.Controllers
                 }
                 catch (Exception ex)
                 {
-                    string msg = ex.Message;
+                    ex.ToString();
                     throw;
                 }
             }

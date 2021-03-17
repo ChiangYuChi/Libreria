@@ -451,6 +451,14 @@
     <Compile Include="Migrations\202103170623543_birthdayNullable-03.Designer.cs">
       <DependentUpon>202103170623543_birthdayNullable-03.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202103170728295_booltobit.cs" />
+    <Compile Include="Migrations\202103170728295_booltobit.Designer.cs">
+      <DependentUpon>202103170728295_booltobit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103170845301_ConvertEmptyStringToNullFalse.cs" />
+    <Compile Include="Migrations\202103170845301_ConvertEmptyStringToNullFalse.Designer.cs">
+      <DependentUpon>202103170845301_ConvertEmptyStringToNullFalse.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\EntityModel\AspNetRole.cs" />
@@ -959,6 +967,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202103170623543_birthdayNullable-03.resx">
       <DependentUpon>202103170623543_birthdayNullable-03.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103170728295_booltobit.resx">
+      <DependentUpon>202103170728295_booltobit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103170845301_ConvertEmptyStringToNullFalse.resx">
+      <DependentUpon>202103170845301_ConvertEmptyStringToNullFalse.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
