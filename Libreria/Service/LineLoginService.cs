@@ -108,7 +108,7 @@ namespace Libreria.Service
             {
 
                 member = _libreriaRepository.GetAll<member>().Where(u => u.LineUserID == model.LineUserID).FirstOrDefault();
-                HttpContext.Current.Session["LineUserID"] = member.LineUserID;
+                HttpContext.Current.Session["memberUserName"] = member.memberUserName;
                 HttpContext.Current.Session["MemberID"] = member.memberId;
                 return member;
 

@@ -173,7 +173,7 @@
                              }, new { @id = "Region", @class = "form-select form-select-lg mb-3", @name = "AddressCitySelect" })
 
                                         @Html.DropDownListFor(model => model.Region, new List<SelectListItem>{
-                                                    new SelectListItem { Value=item.Region.ToString(),Text=item.Region.ToString()}
+                                                    new SelectListItem { Value=item.Region,Text=item.Region}
                                                 }, new { @id = "Town", @class = "form-select form-select-lg mb-3" })
 
                                         @Html.TextBoxFor(model => model.Address, new { @class = "form-control", @Value = item.Address })
