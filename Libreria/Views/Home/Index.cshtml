@@ -12,7 +12,10 @@
 }
 <div class="First-sight">
     <div class="First-sight-text">
-        <p>There is no friend so faithful as a good book.</p>
+        <p>There is no friend so faithful as a good book</p>
+        <div class="local-scroll bounce">
+            <a href="#"><i class="fa fa-chevron-down"></i></a>
+        </div>
     </div>
 </div>
 
@@ -30,9 +33,9 @@
         <div id="content1">
             <div class="bestseller seller container">
                 <div class="row">
-                    <div class="bestseller-title seller-title col-sm-12">
-                        <h4><span>暢銷</span>書籍</h4>
-                    </div>
+                    <!--<div class="bestseller-title seller-title col-sm-12">-->
+                        @*<h4><span>暢銷</span>書籍</h4>*@
+                    <!--</div>-->
                     <div class="bestseller-block seller-block slider  col-sm-12">
                         @foreach(var item in ViewBag.TotalSales)
                         {
@@ -64,9 +67,9 @@
         <div id="content2">
             <div class="newseller seller container">
                 <div class="row">
-                    <div class="newseller-title seller-title col-sm-12">
-                        <h4><span>最新</span>上市</h4>
-                    </div>
+                    <!--<div class="newseller-title seller-title col-sm-12">-->
+                        @*<h4><span>最新</span>上市</h4>*@
+                    <!--</div>-->
                     <div class="newseller-block seller-block slider col-sm-12">
                         @foreach (var item in ViewBag.GetByPublishDateHome)
                         {
@@ -97,9 +100,9 @@
         <div id="content3">
             <div class="specialseller seller container">
                 <div class="row">
-                    <div class="specialseller-title seller-title col-sm-12">
+                    @*<div class="specialseller-title seller-title col-sm-12">
                         <h4><span>每日</span>特價</h4>
-                    </div>
+                    </div>*@
                     <div class="specialseller-block seller-block row col-sm-12">
                         <a class="col-sm-12 col-md-6 col-lg-4 col-lg-3" href="">
                             <div class="specialseller-item seller-item">

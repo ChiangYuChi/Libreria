@@ -198,6 +198,9 @@ namespace Libreria.Controllers
                 ModelState.AddModelError("", "帳號已存在。");
                 return View();
             }
+
+          
+
         }
 
 

@@ -42,7 +42,8 @@ namespace Libreria.Controllers
                 ViewBag.memberPassword = memberLogin["MemberPassword"];
             }
 
-            return View();
+            MemberLoginViewModel result = new MemberLoginViewModel();
+            return View(result);
         }
         
         [HttpPost]

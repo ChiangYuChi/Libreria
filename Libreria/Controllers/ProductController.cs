@@ -2,6 +2,7 @@
 using Libreria.Models.EntityModel;
 using Libreria.Service;
 using Libreria.ViewModels;
+using MvcSiteMapProvider;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -37,16 +38,47 @@ namespace Libreria.Controllers
 
 
 
-        public ActionResult ProductCategory(int? CategoryId, int? Order,string CategoryName, int NowPage=1)
+        public ActionResult ProductCategory(int? CategoryId, int? Order,int NowPage=1)
         {
-            ViewBag.Name = CategoryName;
+            string CategoryName = "";
+            if (CategoryId == 1)
+            {
+                CategoryName = "人文社科";
+            }
+            else if (CategoryId == 2)
+            {
+                CategoryName = "旅遊";
+            }
+            else if (CategoryId == 3)
+            {
+                CategoryName = "童書";
+            }
+            else if (CategoryId == 4)
+            {
+                CategoryName = "電腦";
+            }else if (CategoryId == 5)
+            {
+                CategoryName = "自然科普";
+            }
+            else if (CategoryId ==6)
+            {
+                CategoryName = "文學小說";
+            }
+            else if (CategoryId == 7)
+            {
+                CategoryName = "商業";
+            }
 
+
+
+            SiteMaps.Current.CurrentNode.Title = CategoryName;
             List<ProductViewModel> result;
             ViewBag.shoppincart = _shoppingService.GetAnonymousAll();
             ViewBag.shoppingCart = _shoppingService.GetAll();
 
             if (CategoryId != null)
             {
+                
                 result = _productService.GetByCategory(Convert.ToInt32(CategoryId));
 
                 ViewBag.CategoryId = CategoryId;
