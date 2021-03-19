@@ -34,13 +34,11 @@ namespace Libreria.ViewModels
 
         public string HomeNumber { get; set; }
 
-        [Required]
         /// <summary>
         /// 市
         /// </summary>
         public string City { get; set; }
 
-        [Required]
         /// <summary>
         /// 區
         /// </summary>
@@ -105,7 +103,6 @@ namespace Libreria.ViewModels
         /// </summary>
         [Display(Name = "身分證字號")]
 
-        [Required]
         [StringLength(10)]
         public string IDnumber { get; set; }
 

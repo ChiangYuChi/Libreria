@@ -16,12 +16,11 @@ namespace Libreria.Filters
     {
         public void OnAuthentication(AuthenticationContext filterContext)
         {
-            if (string.IsNullOrEmpty(Convert.ToString(filterContext.HttpContext.Session["MemberName"]))|| string.IsNullOrEmpty(Convert.ToString(filterContext.HttpContext.Session["LineUserID"])))
+            if (string.IsNullOrEmpty(Convert.ToString(filterContext.HttpContext.Session["MemberID"])))
             {
                 filterContext.Result = new HttpUnauthorizedResult();
             }
-            //
-            //else if (string.IsNullOrEmpty())
+            
         }
         public void OnAuthenticationChallenge(AuthenticationChallengeContext filterContext)
         {

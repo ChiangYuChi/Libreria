@@ -37,9 +37,8 @@ namespace Libreria.Service
                             //以下為未能從TokenID解析出的資訊預設值
                             memberName = string.Empty,
                             MobileNumber = string.Empty,
-                            //密碼預設LineUserID，若LineLogin使用者需直接修改
+                            //密碼預設LineUserID，若LineLogin使用者需直接使用忘記密碼修改
                             memberPassword = Utility.GetSha512(model.LineUserID),
-                            //生日預設第一次登入日期
                             //性別預設不透漏
                             Gender = 2,
                             //LineLogin註冊使用者可修改帳號一次
@@ -57,9 +56,8 @@ namespace Libreria.Service
                             Email = string.Empty,
                             memberName = string.Empty,
                             MobileNumber = string.Empty,
-                            //密碼預設LineUserID，若LineLogin使用者需直接修改
+                            //密碼預設LineUserID，若LineLogin使用者需直接使用忘記密碼修改
                             memberPassword = model.LineUserID,
-                            //生日預設第一次登入日期
                             //性別預設不透漏
                             Gender = 2,
                             //LineLogin註冊使用者可修改帳號一次
@@ -86,6 +84,8 @@ namespace Libreria.Service
                 else
                 {
                     getLineMember(model);
+                    result.IsSuccessful = true;
+
                 }
 
             }
@@ -106,7 +106,8 @@ namespace Libreria.Service
             {
 
                 member = _libreriaRepository.GetAll<member>().Where(u => u.LineUserID == model.LineUserID).FirstOrDefault();
-                HttpContext.Current.Session["LineUserID"] = member.LineUserID;
+                HttpContext.Current.Session["memberUserName"] = member.memberUserName;
+                HttpContext.Current.Session["MemberID"] = member.memberId;
                 return member;
 
             }
@@ -122,7 +123,7 @@ namespace Libreria.Service
             member member = new member();
             var checkMemberLineUserID = _libreriaRepository.GetAll<member>().Where(m => member.LineUserID == memberLineID.LineUserID)
                                         .FirstOrDefault();
-            if (member!=null)
+            if (checkMemberLineUserID != null)
             {
                 result.IsSuccessful = true;
             }

@@ -469,6 +469,10 @@
     <Compile Include="Migrations\202103170845301_ConvertEmptyStringToNullFalse.Designer.cs">
       <DependentUpon>202103170845301_ConvertEmptyStringToNullFalse.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202103190741509_FixManagerTableType.cs" />
+    <Compile Include="Migrations\202103190741509_FixManagerTableType.Designer.cs">
+      <DependentUpon>202103190741509_FixManagerTableType.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\EntityModel\AspNetRole.cs" />
@@ -996,6 +1000,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202103170845301_ConvertEmptyStringToNullFalse.resx">
       <DependentUpon>202103170845301_ConvertEmptyStringToNullFalse.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103190741509_FixManagerTableType.resx">
+      <DependentUpon>202103190741509_FixManagerTableType.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
