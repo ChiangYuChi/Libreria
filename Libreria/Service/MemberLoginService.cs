@@ -43,6 +43,7 @@ namespace Libreria.Service
                         HttpContext.Current.Session["MemberName"] = member.memberName;
                         HttpContext.Current.Session["MemberPassword"] = member.memberPassword;
                         HttpContext.Current.Session["MemberID"] = member.memberId;
+                        HttpContext.Current.Session["memberUserName"] = member.memberUserName;
 
                         HttpCookie cookie = new HttpCookie("MemberLogin");
                         if (model.Remember == true)
