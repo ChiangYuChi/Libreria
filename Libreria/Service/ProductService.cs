@@ -208,6 +208,7 @@ namespace Libreria.Service
                                 Name = p.ProductName,
                                 UnitPrice = p.UnitPrice,
                                 CategoryId = p.CategoryId,
+
                                 Author = p.Author,
                                 CreateTime = p.CreateTime,
                                 Introduction = p.Introduction,
