@@ -19,8 +19,7 @@
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
-    <Use64BitIISExpress>
-    </Use64BitIISExpress>
+    <Use64BitIISExpress>true</Use64BitIISExpress>
     <IISExpressSSLPort>44330</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
@@ -473,6 +472,26 @@
     <Compile Include="Migrations\202103190741509_FixManagerTableType.Designer.cs">
       <DependentUpon>202103190741509_FixManagerTableType.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202103221041354_managerIdAuto.cs" />
+    <Compile Include="Migrations\202103221041354_managerIdAuto.Designer.cs">
+      <DependentUpon>202103221041354_managerIdAuto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103221130462_deleteManager.cs" />
+    <Compile Include="Migrations\202103221130462_deleteManager.Designer.cs">
+      <DependentUpon>202103221130462_deleteManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103221132588_addManager.cs" />
+    <Compile Include="Migrations\202103221132588_addManager.Designer.cs">
+      <DependentUpon>202103221132588_addManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103221134491_isCanceledInExhi.cs" />
+    <Compile Include="Migrations\202103221134491_isCanceledInExhi.Designer.cs">
+      <DependentUpon>202103221134491_isCanceledInExhi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103221138152_addDbSet.cs" />
+    <Compile Include="Migrations\202103221138152_addDbSet.Designer.cs">
+      <DependentUpon>202103221138152_addDbSet.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\EntityModel\AspNetRole.cs" />
@@ -530,6 +549,7 @@
     <Compile Include="ViewModels\ProductViewModel.cs" />
     <Compile Include="ViewModels\ReCaptchaViewModel.cs" />
     <Compile Include="ViewModels\RentalOrderViewModel.cs" />
+    <Compile Include="ViewModels\ResetPasswordViewModel.cs" />
     <Compile Include="ViewModels\ShoppingCartViewModel.cs" />
     <Compile Include="ViewModels\RentalConfirmViewModel.cs" />
   </ItemGroup>
@@ -1004,6 +1024,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202103190741509_FixManagerTableType.resx">
       <DependentUpon>202103190741509_FixManagerTableType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103221041354_managerIdAuto.resx">
+      <DependentUpon>202103221041354_managerIdAuto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103221130462_deleteManager.resx">
+      <DependentUpon>202103221130462_deleteManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103221132588_addManager.resx">
+      <DependentUpon>202103221132588_addManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103221134491_isCanceledInExhi.resx">
+      <DependentUpon>202103221134491_isCanceledInExhi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103221138152_addDbSet.resx">
+      <DependentUpon>202103221138152_addDbSet.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
