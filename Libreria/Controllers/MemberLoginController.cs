@@ -95,7 +95,7 @@ namespace Libreria.Controllers
         [HttpPost]
         public string SendResetEmail(string Email)
         {
-            var callbackUrl = Url.Action("ResetPassword", "MemberLogin");
+            var callbackUrl = Url.Action("ResetPassword", "MemberLogin", new {}, protocol:Request.Url.Scheme);
             var result = _memberService.SendEmail(Email, callbackUrl);
 
             if (result.IsSuccessful)
@@ -115,9 +115,9 @@ namespace Libreria.Controllers
         }
 
         [HttpPost]
-        public string ConfirmResetPassword(string username, string password)
+        public string ConfirmResetPassword(ResetPasswordViewModel resetVM)
         {
-            var result = _memberService.UpdatePassword(username, password);
+            var result = _memberService.UpdatePassword(resetVM.username, resetVM.password);
 
             if (result.IsSuccessful)
             {

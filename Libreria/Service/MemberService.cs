@@ -9,6 +9,7 @@ using System.Web;
 using System.Threading.Tasks;
 using SendGrid;
 using SendGrid.Helpers.Mail;
+using System.Web.Configuration;
 
 namespace Libreria.Service
 {
@@ -113,7 +114,7 @@ namespace Libreria.Service
             
             if (member != null)
             {
-                ForgotPasswordEmail(member, callbackurl).Wait();
+                ForgotPasswordEmail(member, callbackurl);
                 result.IsSuccessful = true;
             }
             else
@@ -124,9 +125,9 @@ namespace Libreria.Service
             return result;
         }
 
-        public async Task ForgotPasswordEmail(member member, string callbackurl)
+        public void ForgotPasswordEmail(member member, string callbackurl)
         {
-            var apikey = "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";
+            var apikey = WebConfigurationManager.AppSettings["EmailApiKey"];
             var client = new SendGridClient(apikey);
             var from = new EmailAddress("dezhengl@uci.edu", "Libreria");
             var to = new EmailAddress(member.Email, member.memberName);
@@ -134,13 +135,13 @@ namespace Libreria.Service
             var plainTextContent = "";
             var htmlContent = "<p>请点击链接来重置您的密码" + "<a href = '" + callbackurl + "'>重置密码</a></p>";
             var msg = MailHelper.CreateSingleEmail(from, to, subject, plainTextContent, htmlContent);
-            var response = await client.SendEmailAsync(msg);
+            client.SendEmailAsync(msg);
         }
 
         public OperationResult UpdatePassword(string username, string password)
         {
             var result = new OperationResult();
-            var member = _DbRepository.GetAll<member>().Where(x => x.memberUserName == username).FirstOrDefault();
+            var member = _DbRepository.GetAll<member>().Where(x => x.memberName == username).FirstOrDefault();
 
             try
             {
