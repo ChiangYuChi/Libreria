@@ -49,8 +49,8 @@
                 url: "/MemberLogin/SendResetEmail",
                 data: { "Email" : email },
                 dataType: "text",
-                success: function () {
-                    alert("发出成功");
+                success: function (res) {
+                    alert(res);
                 }
             });
         }
