@@ -19,8 +19,7 @@
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
-    <Use64BitIISExpress>
-    </Use64BitIISExpress>
+    <Use64BitIISExpress>true</Use64BitIISExpress>
     <IISExpressSSLPort>44330</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
@@ -472,6 +471,10 @@
     <Compile Include="Migrations\202103190741509_FixManagerTableType.cs" />
     <Compile Include="Migrations\202103190741509_FixManagerTableType.Designer.cs">
       <DependentUpon>202103190741509_FixManagerTableType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103221041354_managerIdAuto.cs" />
+    <Compile Include="Migrations\202103221041354_managerIdAuto.Designer.cs">
+      <DependentUpon>202103221041354_managerIdAuto.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -1002,6 +1005,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202103190741509_FixManagerTableType.resx">
       <DependentUpon>202103190741509_FixManagerTableType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103221041354_managerIdAuto.resx">
+      <DependentUpon>202103221041354_managerIdAuto.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

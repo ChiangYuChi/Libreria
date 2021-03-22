@@ -5,11 +5,13 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
-namespace Libreria.Models.EntityModel
+namespace Libreria.Models.EntityModel 
 {
     [Table("Manager")]
     public class Manager
     {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ManagerId { get; set; }
 
         [Required]
