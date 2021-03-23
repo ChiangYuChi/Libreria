@@ -130,7 +130,7 @@ namespace Libreria.Service
                               CategoryName = c.Name,
                               Supplier = s.Name,
                               Count = p.Inventory,
-                              SpecialPrice = 0
+                              SpecialPrice = 0,
 
                               PublishDate = p.PublishDate,
                           }).FirstOrDefault();
