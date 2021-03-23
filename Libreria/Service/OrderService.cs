@@ -31,9 +31,18 @@ namespace Libreria.Service
             {
                 foreach (var orderDetailVM in orderVM.OrderDetailList)
                 {
+                    //扣除庫存
                     ProductViewModel productVM = _productService.GetById(orderDetailVM.ProductId);
                     productVM.Count -= orderDetailVM.Quantity;
                     _productService.Edit(productVM);
+
+                    //判斷特價
+                    orderDetailVM.SpecialPrice = 0;
+                    if (_DbRepository.GetAll<Product>().FirstOrDefault(product => product.ProductId == orderDetailVM.ProductId).isSpecial)
+                    {
+                        orderDetailVM.SpecialPrice = _DbRepository.GetAll<Product>().FirstOrDefault(product => product.ProductId == orderDetailVM.ProductId).SpecialPrice;
+                    }
+                    else orderDetailVM.SpecialPrice = 0;
                 }
 
                 Order order = new Order()
@@ -57,21 +66,13 @@ namespace Libreria.Service
 
                 foreach (var orderDetailVM in orderVM.OrderDetailList)
                 {
-                    decimal specialPrice = 0;
-                    //判斷特價
-                    if (_DbRepository.GetAll<Product>().FirstOrDefault(product => product.ProductId == orderDetailVM.ProductId).isSpecial)
-                    {
-                        specialPrice = _DbRepository.GetAll<Product>().FirstOrDefault(product => product.ProductId == orderDetailVM.ProductId).SpecialPrice;
-                    }
-                    else specialPrice = 0;
-
                     //建立訂單詳細
                     OrderDetail orderDetail = new OrderDetail()
                     {
                         OrderId = order.OrderId,
                         ProductId = orderDetailVM.ProductId,
                         Quantity = orderDetailVM.Quantity,
-                        SpecialPrice = specialPrice,
+                        SpecialPrice = orderDetailVM.SpecialPrice,
                     };
 
                     _DbRepository.Create(orderDetail);
@@ -562,10 +563,14 @@ namespace Libreria.Service
 
                     foreach (var item in orderDetail)
                     {
+                        decimal unitPrice = 0;
+                        if (item.SpecialPrice > 0) unitPrice = item.SpecialPrice;
+                        else unitPrice = item.UnitPrice;
+
                         oPayment.Send.Items.Add(new Item()
                         {
                             Name = item.ProductName,//商品名稱
-                            Price = Decimal.Parse($"{item.UnitPrice}".ToString()),//商品單價
+                            Price = Decimal.Parse($"{unitPrice}".ToString()),//商品單價
                             Currency = "新台幣",//幣別單位
                             Quantity = Int32.Parse("1"),//購買數量
                             URL = "http://google.com",//商品的說明網址
