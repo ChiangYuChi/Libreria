@@ -35,9 +35,15 @@ namespace Libreria.Service
                               ProductName = p.ProductName,
                               Count = s.Count,
                               Price = p.UnitPrice,
-                              PicUrl = v.ImgUrl
-                          }).ToList();
+                              PicUrl = v.ImgUrl,
+                              IsSpecial = p.isSpecial,
+                                SpecialPrice = 0
 
+                          }).ToList();
+            foreach (var item in result)
+            {
+                item.SpecialPrice = (int)(Decimal.ToDouble(item.Price) * 0.8);
+            }
             return result;
         }
         /// <summary>
@@ -71,9 +77,16 @@ namespace Libreria.Service
                                   ProductName = p.ProductName,
                                   Count = s.Count,
                                   Price = p.UnitPrice,
-                                  PicUrl = v.ImgUrl
-                              }).ToList();
+                                  PicUrl = v.ImgUrl,
+                                  IsSpecial = p.isSpecial,
 
+                                  SpecialPrice = 0
+
+                              }).ToList();
+                foreach (var item in result)
+                {
+                    item.SpecialPrice = (int)(Decimal.ToDouble(item.Price) * 0.8);
+                }
                 return result;
             }
         }

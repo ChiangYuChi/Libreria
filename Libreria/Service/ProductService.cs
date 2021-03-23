@@ -89,6 +89,8 @@ namespace Libreria.Service
                               CategoryName = c.Name,
                               Supplier = s.Name,
                               Count = p.Inventory,
+                              SpecialPrice = 0
+
                           }).FirstOrDefault();
 
             var PreviewList = _DbRepository.GetAll<Preview>()
@@ -243,7 +245,14 @@ namespace Libreria.Service
                                 Introduction = p.Introduction,
                                 MainUrl = v.ImgUrl,
                                 Count = p.Inventory,
-                            });
+                                SpecialPrice = 0,
+                                IsSpecial = p.isSpecial
+
+                            }).ToList();
+            foreach (var item in products)
+            {
+                item.SpecialPrice = (int)(Decimal.ToDouble(item.UnitPrice) * 0.8);
+            }
             var result = products.ToList();
             return result;
 
@@ -273,7 +282,15 @@ namespace Libreria.Service
                                 Introduction = p.Introduction,
                                 MainUrl = v.ImgUrl,
                                 Count = p.Inventory,
-                            });
+                                SpecialPrice = 0,
+                                IsSpecial = p.isSpecial
+
+
+                            }).ToList();
+            foreach (var item in products)
+            {
+                item.SpecialPrice = (int)(Decimal.ToDouble(item.UnitPrice) * 0.8);
+            }
             var result = products.ToList();
             return result;
 

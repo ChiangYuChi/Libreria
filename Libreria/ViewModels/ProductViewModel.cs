@@ -23,6 +23,7 @@ namespace Libreria.ViewModels
         public int Count { get; set; }
         public int SpecialPrice { get; set; }
 
+        public bool IsSpecial { get; set; }
 
     }
 }

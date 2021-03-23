@@ -16,5 +16,7 @@ namespace Libreria.ViewModels
         public decimal Price { get; set; }
 
         public string PicUrl { get; set; }
+        public int SpecialPrice { get; set; }
+        public bool IsSpecial { get; set; }
     }
 }
