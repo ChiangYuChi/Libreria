@@ -373,6 +373,26 @@ namespace Libreria.Service
             var result = products.ToList();
             return result;
         }
-
+        public List<ProductViewModel>GetByIsSpecial()
+        {
+            var products = (from p in _DbRepository.GetAll<Product>().Where(x=>x.isSpecial == true).Take(3)
+                            join v in _DbRepository.GetAll<Preview>()
+                            on p.ProductId equals v.ProductId
+                            where v.Sort == 0
+                            select new ProductViewModel()
+                            {
+                                Id = p.ProductId,
+                                Name = p.ProductName,
+                                UnitPrice = p.UnitPrice,
+                                CategoryId = p.CategoryId,
+                                Author = p.Author,
+                                CreateTime = p.CreateTime,
+                                Introduction = p.Introduction,
+                                MainUrl = v.ImgUrl,
+                                Count = p.Inventory,
+                            });
+            var result = products.ToList();
+            return result;
+        }
     }
 }
