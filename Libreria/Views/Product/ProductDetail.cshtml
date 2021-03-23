@@ -7,6 +7,7 @@
     <link href="~/Asset/Css/PartialView/category-sidenav.css" rel="stylesheet" />
     <link href="~/Asset/Css/ShoppingCart/CartMsgPartial.css" rel="stylesheet" />
     <link href="~/Asset/Css/ShoppingCart/FavMsgPartial.css" rel="stylesheet" />
+
 }
 
 @{
@@ -15,7 +16,7 @@
 }
 
 <section class="book-detail">
-    <div class="container col-11">
+    <div class="container col-11" style="height:60vh;">
         <div class="row ">
 
             <div class="col-sm-12 detail-breadcrumb d-none d-md-block">
@@ -92,11 +93,29 @@
                         <div class="box">
                             <h2 class="pricing-title">購買書籍</h2>
                             <div class="pricing-figures">
-                                <div class="active-price">
-                                    您的價格<div class="pricing-wrapper">
-                                        <span class="price">NT$@(String.Format("{0:N0}",Model.UnitPrice))</span><span class="price currency">&nbsp;TWD</span>
-                                    </div>
-                                </div>
+                                @{ if (Model.IsSpecial == true)
+                                    {
+                                        <div class="active-price" >
+                                            原價<div class="pricing-wrapper">
+                                                <span class="price" style="text-decoration: line-through;">NT$@(String.Format("{0:N0}",Model.UnitPrice))</span><span class="price currency">&nbsp;TWD</span>
+                                            </div>
+                                        </div>
+                                        <div class="active-price" style="color:red;">
+                                            特價<div class="pricing-wrapper">
+                                                <span class="price">NT$@(String.Format("{0:N0}",Model.SpecialPrice))</span><span class="price currency">&nbsp;TWD</span>
+                                            </div>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="active-price">
+                                            您的價格<div class="pricing-wrapper">
+                                                <span class="price">NT$@(String.Format("{0:N0}",Model.UnitPrice))</span><span class="price currency">&nbsp;TWD</span>
+                                            </div>
+                                        </div>
+                                    }
+                                }
+
                                 <button class="purchase-action add-to-cart" onclick="AddCart(@Model.Id)">加入購物車</button>
                                 <button class="purchase-action buy-now" onclick="AddCart(@Model.Id)">
                                     <a href="@Url.Action("Index", "Order")">立即購買</a>

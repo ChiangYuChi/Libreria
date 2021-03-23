@@ -154,7 +154,7 @@
     </a>
 </div>
 
-<aside class="cart js-cart">
+<aside class="cart js-cart" style="z-index:1000;">
     <div class="cart__header">
         <h1 class="cart__title">購物車</h1>
         <p class="cart__text">
@@ -174,7 +174,17 @@
                         <img src="@item.PicUrl" alt="" id="bookImg" style="height:280px;" />
                     </div>
                     <div class="col-3" style="align-self:flex-end;text-align:end;">
-                        <p class="price" id="price">@item.Price</p>
+                        @{ if (item.IsSpecial == true)
+                            {
+                                <p class="price" id="price">@item.SpecialPrice</p>
+
+                            }
+                            else
+                            {
+                                <p class="price" id="price">@item.Price</p>
+
+                            }
+                        }
                         <p>
                             @*<button onclick="DeleteCart(@item.ProductId)"class="js-remove-product" title="Delete product">删除商品</button>*@
                             <a class="js-remove-product" id="delete" href="#" title="Delete product" onclick="DeleteCart(@item.ProductId)">
@@ -194,7 +204,17 @@
                         <img src="@item.PicUrl" alt="" id="bookImg" style="height:280px;" />
                     </div>
                     <div class="col-3" style="align-self:flex-end;text-align:end;">
-                        <p class="price" id="price">@item.Price</p>
+                        @{ if (item.IsSpecial == true)
+                            {
+                                <p class="price" id="price">@item.SpecialPrice</p>
+
+                            }
+                            else
+                            {
+                                <p class="price" id="price">@item.Price</p>
+
+                            }
+                        }
                         <p>
                             @*<button onclick="DeleteCart(@item.ProductId)"class="js-remove-product" title="Delete product">删除商品</button>*@
                             <a class="js-remove-product" id="delete" href="#" title="Delete product" onclick="DeleteCart(@item.ProductId)">
@@ -266,13 +286,25 @@
                     let cartblock = document.querySelector(".js-cart-products");
                     let cart;
                     cartList.forEach(item => {
-                        cart = productCart.content.cloneNode(true);
-                        cart.querySelector("#bookname").innerHTML = item.ProductName;
-                        cart.querySelector("#bookImg").src = item.PicUrl;
-                        cart.querySelector("#price").innerHTML = item.Price;
-                        cart.querySelector("#delete").setAttribute("onclick", `DeleteCart(${item.ProductId})`);
+                        if (item.IsSpecial == true) {
+                            cart = productCart.content.cloneNode(true);
+                            cart.querySelector("#bookname").innerHTML = item.ProductName;
+                            cart.querySelector("#bookImg").src = item.PicUrl;
+                            cart.querySelector("#price").innerHTML = item.SpecialPrice;
+                            cart.querySelector("#delete").setAttribute("onclick", `DeleteCart(${item.ProductId})`);
 
-                        cartblock.appendChild(cart);
+                            cartblock.appendChild(cart);
+                        }
+                        else {
+                            cart = productCart.content.cloneNode(true);
+                            cart.querySelector("#bookname").innerHTML = item.ProductName;
+                            cart.querySelector("#bookImg").src = item.PicUrl;
+                            cart.querySelector("#price").innerHTML = item.Price;
+                            cart.querySelector("#delete").setAttribute("onclick", `DeleteCart(${item.ProductId})`);
+
+                            cartblock.appendChild(cart);
+                        }
+                        
                     })
                 }
             });

@@ -79,7 +79,6 @@ namespace Libreria.Service
                                   Price = p.UnitPrice,
                                   PicUrl = v.ImgUrl,
                                   IsSpecial = p.isSpecial,
-
                                   SpecialPrice = 0
 
                               }).ToList();

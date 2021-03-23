@@ -89,10 +89,14 @@ namespace Libreria.Service
                               CategoryName = c.Name,
                               Supplier = s.Name,
                               Count = p.Inventory,
-                              SpecialPrice = 0
+                              SpecialPrice = 0,
+                              IsSpecial = p.isSpecial
+
 
                           }).FirstOrDefault();
-
+            
+                result.SpecialPrice = (int)(Decimal.ToDouble(result.UnitPrice) * 0.8);
+            
             var PreviewList = _DbRepository.GetAll<Preview>()
                 .Where(x => x.ProductId == id)
                 .OrderBy(x => x.Sort)
