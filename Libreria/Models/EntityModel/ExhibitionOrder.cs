@@ -26,5 +26,7 @@ namespace Libreria.Models.EntityModel
         public string PaymentState { get; set; }
 
         public bool customerVerify { get; set; }
+
+        public bool isCanceled { get; set; }
     }
 }

@@ -10,6 +10,7 @@ namespace Libreria.Models.EntityModel
     [Table("Manager")]
     public class Manager
     {
+        [Key]
         public int ManagerId { get; set; }
 
         [Required]
