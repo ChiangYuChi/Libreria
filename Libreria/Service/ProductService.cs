@@ -27,25 +27,23 @@ namespace Libreria.Service
             OperationResult result = new OperationResult();
             try
             {
-                Product product = new Product()
-                {
-                    ProductId = productVM.Id,
-                    ProductName = productVM.Name,
-                    UnitPrice = productVM.UnitPrice,
-                    ISBN = _DbRepository.GetAll<Product>().FirstOrDefault(inDbProduct=> productVM.Id == inDbProduct.ProductId).ISBN,
-                    SupplierId = _DbRepository.GetAll<Product>().FirstOrDefault(inDbProduct => productVM.Id == inDbProduct.ProductId).SupplierId,
-                    Author = productVM.Author,
-                    Inventory = productVM.Count,
-                    CategoryId = productVM.CategoryId,
-                    PublishDate = productVM.PublishDate,
-                    Sort = _DbRepository.GetAll<Product>().FirstOrDefault(inDbProduct => productVM.Id == inDbProduct.ProductId).Sort,
-                    CreateTime = productVM.CreateTime,
-                    UpdateTime = _DbRepository.GetAll<Product>().FirstOrDefault(inDbProduct => productVM.Id == inDbProduct.ProductId).UpdateTime,
-                    Introduction = productVM.Introduction,
-                    TotalSales = _DbRepository.GetAll<Product>().FirstOrDefault(inDbProduct => productVM.Id == inDbProduct.ProductId).TotalSales 
-                        + _DbRepository.GetAll<Product>().FirstOrDefault(inDbProduct => productVM.Id == inDbProduct.ProductId).Inventory - productVM.Count,
-                    isSpecial = _DbRepository.GetAll<Product>().FirstOrDefault(inDbProduct => productVM.Id == inDbProduct.ProductId).isSpecial,
-                };
+                Product product = _DbRepository.GetAll<Product>().FirstOrDefault(inDbProduct => inDbProduct.ProductId == productVM.Id);
+
+                product.ProductId = productVM.Id;
+                product.ProductName = productVM.Name;
+                product.UnitPrice = productVM.UnitPrice;
+                //product.ISBN = _DbRepository.GetAll<Product>().FirstOrDefault(inDbProduct => productVM.Id == inDbProduct.ProductId).ISBN;
+                //product.SupplierId = _DbRepository.GetAll<Product>().FirstOrDefault(inDbProduct => productVM.Id == inDbProduct.ProductId).SupplierId;
+                product.Author = productVM.Author;
+                product.Inventory = productVM.Count;
+                product.CategoryId = productVM.CategoryId;
+                product.PublishDate = productVM.PublishDate;
+                //product.Sort = _DbRepository.GetAll<Product>().FirstOrDefault(inDbProduct => productVM.Id == inDbProduct.ProductId).Sort;
+                product.CreateTime = productVM.CreateTime;
+                product.UpdateTime = DateTime.Now;
+                product.Introduction = productVM.Introduction;
+                product.TotalSales = product.TotalSales + product.Inventory - productVM.Count;
+                //product.isSpecial = _DbRepository.GetAll<Product>().FirstOrDefault(inDbProduct => productVM.Id == inDbProduct.ProductId).isSpecial;
 
                 _DbRepository.Update(product);
 
