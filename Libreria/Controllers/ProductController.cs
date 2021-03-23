@@ -53,11 +53,11 @@ namespace Libreria.Controllers
          }
 
 
-        public ActionResult Find(string CategoryName)
+        public ActionResult Find(int CategoryId)
         {
             var allProduct = _productService.GetAll();
             var ProductInCategory = (from p in allProduct
-                                     where p.CategoryName == CategoryName
+                                     where p.CategoryId==CategoryId
                                      select p).ToList();
             return View(ProductInCategory);
         }

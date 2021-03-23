@@ -19,8 +19,8 @@ namespace Libreria
             );
             routes.MapRoute(
               name: "FindCategory",
-              url: "Product/Find/{CategoryName}/{id}",
-              defaults: new { controller = "Home", action = "Index", type="CategoryName", id = UrlParameter.Optional }
+              url: "Product/Find/{CategoryId}/{id}",
+              defaults: new { controller = "Product", action = "Find", type = "CategoryId", id = UrlParameter.Optional }
           );
 
 
