@@ -390,7 +390,7 @@ namespace Libreria.Service
                                 Introduction = p.Introduction,
                                 MainUrl = v.ImgUrl,
                                 Count = p.Inventory,
-                                SpecialPrice = 999
+                                SpecialPrice = 0
                             }).ToList();
             
             foreach(var item in products)
