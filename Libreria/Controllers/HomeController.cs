@@ -24,11 +24,14 @@ namespace Libreria.Controllers
             var result = _exhibitionService.GetExhibitioning();
             var result2 = _productService.GetByTotalSalesHome();
             var result3 = _productService.GetByPublishDateHome();
+            var result4 = _productService.GetByIsSpecial();
 
             
             ViewBag.TotalSales = result2;
 
             ViewBag.GetByPublishDateHome = result3;
+
+            ViewBag.GetByIsSpecial = result4;
 
             return View(result);
         }

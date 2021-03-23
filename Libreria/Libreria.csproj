@@ -19,7 +19,8 @@
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
-    <Use64BitIISExpress>true</Use64BitIISExpress>
+    <Use64BitIISExpress>
+    </Use64BitIISExpress>
     <IISExpressSSLPort>44330</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
@@ -491,6 +492,14 @@
     <Compile Include="Migrations\202103221138152_addDbSet.cs" />
     <Compile Include="Migrations\202103221138152_addDbSet.Designer.cs">
       <DependentUpon>202103221138152_addDbSet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103230714061_specialprice.cs" />
+    <Compile Include="Migrations\202103230714061_specialprice.Designer.cs">
+      <DependentUpon>202103230714061_specialprice.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103230736037_specialprice1.cs" />
+    <Compile Include="Migrations\202103230736037_specialprice1.Designer.cs">
+      <DependentUpon>202103230736037_specialprice1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -1039,6 +1048,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202103221138152_addDbSet.resx">
       <DependentUpon>202103221138152_addDbSet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103230714061_specialprice.resx">
+      <DependentUpon>202103230714061_specialprice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103230736037_specialprice1.resx">
+      <DependentUpon>202103230736037_specialprice1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
