@@ -48,7 +48,7 @@
                                     </div>
                                     <p>
                                         @item.Name<br>
-                                        <span class="unitprice">@item.UnitPrice</span>
+                                        <span class="unitprice">@String.Format("{0:N0}", item.UnitPrice)</span>
                                     </p>
                                 </div>
                             </div>
@@ -81,7 +81,7 @@
                                         </div>
                                         <p>
                                             @item.Name<br>
-                                            <span class="unitprice">@item.UnitPrice</span>
+                                            <span class="unitprice">@String.Format("{0:N0}", item.UnitPrice)</span>
                                         </p>
                                     </div>
                                 </div>
@@ -104,47 +104,23 @@
                         <h4><span>每日</span>特價</h4>
                     </div>*@
                     <div class="specialseller-block seller-block row col-sm-12">
-                        <a class="col-sm-12 col-md-6 col-lg-4 col-lg-3" href="">
-                            <div class="specialseller-item seller-item">
+                        @foreach (var item in ViewBag.GetByIsSpecial)
+                        {
+                            <a class="col-sm-12 col-md-6 col-lg-4 col-lg-3" href="@Url.Action("ProductDetail", "Product", new { id = item.Id })">
+                                <div class="bestseller-item seller-item">
+                                    <div class="bestseller-text seller-text">
+                                        <div class="bestseller-pic seller-pic">
+                                            <img src="@item.MainUrl">
+                                        </div>
+                                        <p>
+                                            @item.Name<br>
+                                            <span class="unitprice">@String.Format("{0:N0}", item.UnitPrice)</span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </a>
+                        }
 
-                                <div class="specialseller-text seller-text">
-                                    <div class="specialseller-pic seller-pic">
-                                        <img src="https://picsum.photos/300/300/?random=1">
-                                    </div>
-                                    <p>
-                                        書名<br>
-                                        <span class="unitprice">$300</span><span class="sale"> $200</span>
-                                    </p>
-                                </div>
-                            </div>
-                        </a>
-                        <a class="col-sm-12 col-md-6 col-lg-4 col-lg-3" href="">
-                            <div class="specialseller-item seller-item">
-                                <div class="specialseller-text seller-text">
-                                    <div class="specialseller-pic seller-pic">
-                                        <img src="https://picsum.photos/300/300/?random=2">
-                                    </div>
-                                    <p>
-                                        書名<br>
-                                        <span class="unitprice">$300</span><span class="sale"> $200</span>
-                                    </p>
-                                </div>
-                            </div>
-                        </a>
-                        <a class="col-sm-12 col-md-6 col-lg-4 col-lg-3" href="">
-                            <div class="specialseller-item seller-item">
-                                <div class="specialseller-text seller-text">
-                                    <div class="specialseller-pic seller-pic">
-                                        <img src="https://picsum.photos/300/300/?random=3">
-                                    </div>
-                                    <p>
-                                        書名<br>
-                                        <span class="unitprice">$300</span><span class="sale"> $200</span>
-                                    </p>
-                                </div>
-                            </div>
-                        </a>
-                        
                     </div>
                     <div class="gotobestseller">
                         <a href="/Product/Index" class="m-auto">
