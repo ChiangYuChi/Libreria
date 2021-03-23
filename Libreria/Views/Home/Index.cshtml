@@ -48,7 +48,19 @@
                                     </div>
                                     <p>
                                         @item.Name<br>
-                                        <span class="unitprice">@String.Format("{0:N0}", item.UnitPrice)</span>
+                                        @{ if (item.IsSpecial == true)
+                                            {
+                                                <span class="unitprice" style="text-decoration: line-through;">@String.Format("{0:N0}", item.UnitPrice)</span>
+
+                                                <span class="unitprice" style="color:red;" >@String.Format("{0:N0}", item.SpecialPrice)</span>
+
+                                            }
+                                            else
+                                            {
+                                                <span class="unitprice">@String.Format("{0:N0}", item.UnitPrice)</span>
+
+                                            }
+                                        }
                                     </p>
                                 </div>
                             </div>
@@ -81,7 +93,19 @@
                                         </div>
                                         <p>
                                             @item.Name<br>
-                                            <span class="unitprice">@String.Format("{0:N0}", item.UnitPrice)</span>
+                                            @{ if (item.IsSpecial == true)
+                                                {
+                                                    <span class="unitprice" style="text-decoration: line-through;">@String.Format("{0:N0}", item.UnitPrice)</span>
+
+                                                    <span class="unitprice" style="color:red;">@String.Format("{0:N0}", item.SpecialPrice)</span>
+
+                                                }
+                                                else
+                                                {
+                                                    <span class="unitprice">@String.Format("{0:N0}", item.UnitPrice)</span>
+
+                                                }
+                                            }
                                         </p>
                                     </div>
                                 </div>
@@ -114,7 +138,8 @@
                                         </div>
                                         <p>
                                             @item.Name<br>
-                                            <span class="unitprice">@String.Format("{0:N0}", item.UnitPrice)</span>
+                                            <span class="unitprice" style="text-decoration: line-through;">@String.Format("{0:N0}", item.UnitPrice)</span>
+                                            <span class="unitprice" style="color:red;">@item.SpecialPrice</span>
                                         </p>
                                     </div>
                                 </div>
