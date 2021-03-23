@@ -97,6 +97,12 @@ namespace Libreria.Controllers
             }
             ViewBag.Order = Order;
 
+            //搜尋
+            result = result.Where(product => product.Name.Contains(search)).ToList();
+
+
+
+
             //商品總數
             int totalAmount = result.Count;
             ViewBag.TotalAmount = totalAmount;
@@ -108,11 +114,7 @@ namespace Libreria.Controllers
             ViewBag.NowPage = NowPage;
             ViewBag.TotalPage = totalPage;
 
-            //搜尋
-            result = result.Where(product => product.Name.Contains(search)).ToList();
-         
             return View(result);
-
         }
 
         public ActionResult ProductDetail(int id)
