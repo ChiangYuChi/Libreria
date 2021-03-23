@@ -31,14 +31,10 @@ namespace Libreria.Controllers
 
         public ActionResult Index()
         {
-            return View();   
+            return View();
         }
 
-
-
-
-
-        public ActionResult ProductCategory(int? CategoryId, int? Order,int NowPage=1)
+        public ActionResult ProductCategory(int? CategoryId, int? Order, int NowPage=1, string search = "")
         {
             string CategoryName = "";
             if (CategoryId == 1)
@@ -111,6 +107,9 @@ namespace Libreria.Controllers
             result = result.Skip((NowPage - 1) * perPageAmount).Take(perPageAmount).ToList();
             ViewBag.NowPage = NowPage;
             ViewBag.TotalPage = totalPage;
+
+            //搜尋
+            result = result.Where(product => product.Name.Contains(search)).ToList();
          
             return View(result);
 
