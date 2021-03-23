@@ -139,8 +139,16 @@ namespace Libreria.Service
                               MainUrl = v.ImgUrl,
                               CategoryName = c.Name,
                               Count = p.Inventory,
+                              SpecialPrice = 0,
+                              IsSpecial = p.isSpecial
+
+
                           }).ToList();
-          
+            foreach (var item in result)
+            {
+                item.SpecialPrice = (int)(Decimal.ToDouble(item.UnitPrice) * 0.8);
+            }
+
             var MemberId = Convert.ToInt32(System.Web.HttpContext.Current.Session["MemberID"]);
 
             if (MemberId == 0)
