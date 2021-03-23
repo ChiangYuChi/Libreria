@@ -35,6 +35,7 @@ namespace Libreria.Service
                 //product.ISBN = _DbRepository.GetAll<Product>().FirstOrDefault(inDbProduct => productVM.Id == inDbProduct.ProductId).ISBN;
                 //product.SupplierId = _DbRepository.GetAll<Product>().FirstOrDefault(inDbProduct => productVM.Id == inDbProduct.ProductId).SupplierId;
                 product.Author = productVM.Author;
+                product.TotalSales = product.TotalSales + product.Inventory - productVM.Count;
                 product.Inventory = productVM.Count;
                 product.CategoryId = productVM.CategoryId;
                 product.PublishDate = productVM.PublishDate;
@@ -42,7 +43,6 @@ namespace Libreria.Service
                 product.CreateTime = productVM.CreateTime;
                 product.UpdateTime = DateTime.Now;
                 product.Introduction = productVM.Introduction;
-                product.TotalSales = product.TotalSales + product.Inventory - productVM.Count;
                 //product.isSpecial = _DbRepository.GetAll<Product>().FirstOrDefault(inDbProduct => productVM.Id == inDbProduct.ProductId).isSpecial;
 
                 _DbRepository.Update(product);
