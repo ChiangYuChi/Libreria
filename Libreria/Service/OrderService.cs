@@ -57,11 +57,21 @@ namespace Libreria.Service
 
                 foreach (var orderDetailVM in orderVM.OrderDetailList)
                 {
+                    decimal specialPrice = 0;
+                    //判斷特價
+                    if (_DbRepository.GetAll<Product>().FirstOrDefault(product => product.ProductId == orderDetailVM.ProductId).isSpecial)
+                    {
+                        specialPrice = _DbRepository.GetAll<Product>().FirstOrDefault(product => product.ProductId == orderDetailVM.ProductId).SpecialPrice;
+                    }
+                    else specialPrice = 0;
+
+                    //建立訂單詳細
                     OrderDetail orderDetail = new OrderDetail()
                     {
                         OrderId = order.OrderId,
                         ProductId = orderDetailVM.ProductId,
                         Quantity = orderDetailVM.Quantity,
+                        SpecialPrice = specialPrice,
                     };
 
                     _DbRepository.Create(orderDetail);
@@ -363,6 +373,7 @@ namespace Libreria.Service
                     ProductName = product.ProductName,
                     UnitPrice = product.UnitPrice,
                     Quantity = orderDetail.Quantity,
+                    SpecialPrice = orderDetail.SpecialPrice,
                     DetailPrice = 0, //CompleteOrderDetailVM(orderDetailVM)
                 }
             ).ToList();
@@ -387,6 +398,7 @@ namespace Libreria.Service
                     ProductName = product.ProductName,
                     UnitPrice = product.UnitPrice,
                     Quantity = orderDetail.Quantity,
+                    SpecialPrice = orderDetail.SpecialPrice,
                     DetailPrice = 0, //CompleteOrderDetailVM(orderDetailVM)
                 }
             ).ToList();
@@ -419,7 +431,8 @@ namespace Libreria.Service
 
         public OrderDetailViewModel CompleteOrderDetailVM(OrderDetailViewModel orderDetailVM)
         {
-            orderDetailVM.DetailPrice = orderDetailVM.UnitPrice * orderDetailVM.Quantity;
+            if (orderDetailVM.SpecialPrice > 0) { orderDetailVM.DetailPrice = orderDetailVM.SpecialPrice * orderDetailVM.Quantity; }
+            else { orderDetailVM.DetailPrice = orderDetailVM.UnitPrice * orderDetailVM.Quantity; }
 
             return orderDetailVM;
         }

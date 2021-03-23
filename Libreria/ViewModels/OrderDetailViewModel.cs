@@ -29,5 +29,10 @@ namespace Libreria.ViewModels
         /// 本項金額
         /// </summary>
         public decimal DetailPrice { get; set; }
+
+        /// <summary>
+        /// 特價
+        /// </summary>
+        public decimal SpecialPrice { get; set; }
     }
 }
