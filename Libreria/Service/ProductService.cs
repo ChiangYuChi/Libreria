@@ -19,6 +19,49 @@ namespace Libreria.Service
             _DbRepository = new LibreriaRepository();
         }
 
+
+
+
+        public OperationResult Edit(ProductViewModel productVM)
+        {
+            OperationResult result = new OperationResult();
+            try
+            {
+                Product product = new Product()
+                {
+                    ProductId = productVM.Id,
+                    ProductName = productVM.Name,
+                    UnitPrice = productVM.UnitPrice,
+                    ISBN = _DbRepository.GetAll<Product>().FirstOrDefault(inDbProduct=> productVM.Id == inDbProduct.ProductId).ISBN,
+                    SupplierId = _DbRepository.GetAll<Product>().FirstOrDefault(inDbProduct => productVM.Id == inDbProduct.ProductId).SupplierId,
+                    Author = productVM.Author,
+                    Inventory = productVM.Count,
+                    CategoryId = productVM.CategoryId,
+                    PublishDate = productVM.PublishDate,
+                    Sort = _DbRepository.GetAll<Product>().FirstOrDefault(inDbProduct => productVM.Id == inDbProduct.ProductId).Sort,
+                    CreateTime = productVM.CreateTime,
+                    UpdateTime = _DbRepository.GetAll<Product>().FirstOrDefault(inDbProduct => productVM.Id == inDbProduct.ProductId).UpdateTime,
+                    Introduction = productVM.Introduction,
+                    TotalSales = _DbRepository.GetAll<Product>().FirstOrDefault(inDbProduct => productVM.Id == inDbProduct.ProductId).TotalSales 
+                        + _DbRepository.GetAll<Product>().FirstOrDefault(inDbProduct => productVM.Id == inDbProduct.ProductId).Inventory - productVM.Count,
+                    isSpecial = _DbRepository.GetAll<Product>().FirstOrDefault(inDbProduct => productVM.Id == inDbProduct.ProductId).isSpecial,
+                };
+
+                _DbRepository.Update(product);
+
+                result.IsSuccessful = true;
+            }
+            catch(Exception ex)
+            {
+                result.IsSuccessful = false;
+                result.exception = ex;
+            }
+
+            return result;
+        }
+
+
+
         public List<ProductViewModel> GetAll()
         {
             var result = (from p in _DbRepository.GetAll<Product>()
@@ -89,6 +132,7 @@ namespace Libreria.Service
                               CategoryName = c.Name,
                               Supplier = s.Name,
                               Count = p.Inventory,
+                              PublishDate = p.PublishDate,
                           }).FirstOrDefault();
 
             var PreviewList = _DbRepository.GetAll<Preview>()

@@ -13,11 +13,13 @@ namespace Libreria.Service
     {
         private readonly LibreriaRepository _DbRepository;
         private readonly ShoppingService _shoppingService;
+        private readonly ProductService _productService;
 
         public OrderService()
         {
             _DbRepository = new LibreriaRepository();
             _shoppingService = new ShoppingService();
+            _productService = new ProductService();
         }
 
         public OperationResult Create(OrderViewModel orderVM)
@@ -27,6 +29,13 @@ namespace Libreria.Service
             var result = new OperationResult();
             try
             {
+                foreach (var orderDetailVM in orderVM.OrderDetailList)
+                {
+                    ProductViewModel productVM = _productService.GetById(orderDetailVM.ProductId);
+                    productVM.Count -= orderDetailVM.Quantity;
+                    _productService.Edit(productVM);
+                }
+
                 Order order = new Order()
                 {
                     OrderDate = DateTime.Now,
@@ -198,7 +207,7 @@ namespace Libreria.Service
             TimeSpan startTimeSpan;
             TimeSpan endTimeSpan;
 
-            if(progress== "準備出貨中")
+            if (progress == "準備出貨中")
             {
                 startTimeSpan = TimeSpan.FromDays(0);
                 endTimeSpan = TimeSpan.FromDays(1);
@@ -208,7 +217,7 @@ namespace Libreria.Service
                 startTimeSpan = TimeSpan.FromDays(1);
                 endTimeSpan = TimeSpan.FromDays(5);
             }
-            else if(progress == "貨已送達")
+            else if (progress == "貨已送達")
             {
                 startTimeSpan = TimeSpan.FromDays(5);
                 endTimeSpan = TimeSpan.MaxValue;
@@ -495,7 +504,7 @@ namespace Libreria.Service
                 {
                     var orderDetail = orderVM.OrderDetailList;
                     var orderTotal = orderVM.OrderPrice;
-                    
+
                     /* 服務參數 */
                     oPayment.ServiceMethod = HttpMethod.HttpPOST;//介接服務時，呼叫 API 的方法
                     oPayment.ServiceURL = "https://payment-stage.ecpay.com.tw/Cashier/AioCheckOut/V5";//要呼叫介接服務的網址
@@ -507,10 +516,11 @@ namespace Libreria.Service
                     oPayment.Send.ReturnURL = "https://weblibreria.azurewebsites.net/Order/PayReturnResult";//付款完成通知回傳的網址
                     oPayment.Send.ClientBackURL = "http://127.0.0.1:4040";//瀏覽器端返回的廠商網址
                     oPayment.Send.OrderResultURL = $"https://weblibreria.azurewebsites.net/Order/PayReturnDetail?orderId={orderVM.OrderId}";//瀏覽器端回傳付款結果網址
-                    oPayment.Send.MerchantTradeNo = "n"+"ECPay" + new Random().Next(0, 99999).ToString();//廠商的交易編號
+                    oPayment.Send.MerchantTradeNo = "n" + "ECPay" + new Random().Next(0, 99999).ToString();//廠商的交易編號
                     oPayment.Send.MerchantTradeDate = DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss");//廠商的交易時間
-                    /*oPayment.Send.TotalAmount = Decimal.Parse($"{ orderVM.OrderPrice}") */ ;//交易總金額
-                    oPayment.Send.TotalAmount = Decimal.Parse($"{String.Format("{0:N0}",orderTotal )}".ToString());
+                    /*oPayment.Send.TotalAmount = Decimal.Parse($"{ orderVM.OrderPrice}") */
+                    ;//交易總金額
+                    oPayment.Send.TotalAmount = Decimal.Parse($"{String.Format("{0:N0}", orderTotal)}".ToString());
                     oPayment.Send.TradeDesc = "交易描述";//交易描述
                     oPayment.Send.ChoosePayment = PaymentMethod.ALL;//使用的付款方式
                     oPayment.Send.Remark = "";//備註欄位
@@ -537,7 +547,7 @@ namespace Libreria.Service
 
                     //});
 
-                    foreach(var item in orderDetail)
+                    foreach (var item in orderDetail)
                     {
                         oPayment.Send.Items.Add(new Item()
                         {
@@ -550,7 +560,7 @@ namespace Libreria.Service
                         });
                     }
 
-  
+
                     //訂單的商品資料
 
                     /*************************非即時性付款:ATM、CVS 額外功能參數**************/
@@ -634,15 +644,16 @@ namespace Libreria.Service
 
         public void SetState(OrderViewModel orderVM, string RtnCode)
         {
-            if (RtnCode == "1") {
+            if (RtnCode == "1")
+            {
                 var order = _DbRepository.GetAll<Order>()
                             .Where(x => x.OrderId == orderVM.OrderId)
                             .FirstOrDefault();
                 order.PaymentState = "已付款";
                 _DbRepository.Update<Order>(order);
-           
+
             }
-          
+
         }
     }
 }
