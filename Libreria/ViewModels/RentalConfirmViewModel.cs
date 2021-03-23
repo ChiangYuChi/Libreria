@@ -107,6 +107,6 @@ namespace Libreria.ViewModels
         [Required]
         public bool? IsCheck { get; set; }
 
-
+        public int ExOrderId { get; set; }
     }
 }

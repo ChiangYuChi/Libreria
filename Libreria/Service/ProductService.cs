@@ -138,7 +138,7 @@ namespace Libreria.Service
                               CategoryName = c.Name,
                               Count = p.Inventory,
                           }).ToList();
-
+          
             var MemberId = Convert.ToInt32(System.Web.HttpContext.Current.Session["MemberID"]);
 
             if (MemberId == 0)

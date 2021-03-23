@@ -1,0 +1,36 @@
+﻿
+
+@section topcss{
+
+
+    @*PayReturnDetail CSS*@
+    <link href="~/Asset/Css/Pay/PayReturnDetail.css" rel="stylesheet" />
+    @*Chinese Font CSS*@
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+
+    @*English/Numbers Font CSS*@
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+}
+@section topJS{
+    <script src="https://kit.fontawesome.com/d22f4b5afc.js" crossorigin="anonymous"></script>
+}
+
+
+<div class="container">
+    <div class="icon">
+        <i class="fas fa-check-circle check"></i>
+    </div>
+    <div class="txt">
+        <h1>付款成功 !</h1>
+    </div>
+    <div class="num">
+        <p>訂單編號 : @ViewData["OrderNum"]</p>
+    </div>
+    <div class="button">
+        <button id="back"><a href="/Home/Index">回首頁</a></button>
+    </div>
+</div>
+@section EndJS{
+}

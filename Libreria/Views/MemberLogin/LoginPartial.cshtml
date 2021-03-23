@@ -1,9 +1,9 @@
-﻿@if (!string.IsNullOrEmpty(Convert.ToString(Session["MemberName"])))
+﻿@if (!string.IsNullOrEmpty(Convert.ToString(Session["MemberID"])))
 {
     using (Html.BeginForm("LogOff", "MemberLogin", FormMethod.Post, new { id="logoutForm",@class= "nav-item" }))
     {
         @Html.AntiForgeryToken()
-            //<li>Hi:@Session["MemberName"]</li>
+            @*<li>Hi:@Session["MemberUserName"]</li>*@
             <a href="javascript:document.getElementById('logoutForm').submit()" class="nav-link d-none d-sm-block"><i class="fas fa-sign-in-alt"></i> </a>           
     }
 }

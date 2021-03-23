@@ -1,8 +1,8 @@
-﻿@{ 
+﻿@{
     List<OrderViewModel> OrderVMList = ViewBag.OrderVMList;
 
     int TotlePrice = 0;
-    foreach(var OrderVM in OrderVMList)
+    foreach (var OrderVM in OrderVMList)
     {
         TotlePrice += (int)OrderVM.OrderPrice;
     }
@@ -11,8 +11,9 @@
 
 @section topCss{
     @*MemberLogin CSS*@
-<link href="~/Asset/Css/MemberCenter/member_login.css" rel="stylesheet" />
+    <link href="~/Asset/Css/MemberCenter/member_login.css" rel="stylesheet" />
 }
+@Html.Partial("../Shared/SuccessOrFail")
 
 
 <section class="member-center pb-5">
@@ -32,13 +33,15 @@
                     <div class="member-login-request d-none d-lg-block col-3 mt-5">
                         <div class="warning">
                             <div class="warning-wording pt-5 ">
-                                <div class="pic"><img src="~/Asset/Image/smlogo_v2.png" alt=""></div>
+                                <div class="pic">
+                                    <img src="~/Asset/Image/smlogo_v2.png" />
+                                </div>
                                 <div class="bg-color"></div>
                                 <p>Books and Everything in Between</p>
                             </div>
                         </div>
                     </div>
-                    <div class="level-info d-flex col-9  pt-3 m-auto" >
+                    <div class="level-info d-flex col-9  pt-3 m-auto">
                         <div class="row ">
 
                             <div class="level-detail  col-lg-12">
@@ -46,17 +49,12 @@
                                     <div class="pic col-3 "> <i class="fas fa-cubes"></i></div>
                                     <div class="cardlevel col-9 d-flex flex-wrap">
                                         <div class="name w-100">
-                                            會員 @Session["MemberName"]
+                                            會員 @Session["memberUserName"]
                                         </div>
-                                        @*<div class="point">Liberia 點數 <span>102</span> </div>*@
+                                      
                                         <div class="amount">消費金額 <span>@TotlePrice 元</span></div>
                                         <div class="times">消費次數 <span>@OrderVMList.Count 次</span></div>
 
-
-                                        @*<span class="w-100">消費達6,000即可升等金卡會員</span>*@
-                                        @*<div class="member-account-link ">
-                                                <a href="">我的會員帳戶<i class="fal fa-chevron-right"></i> </a>
-                                            </div>*@
                                     </div>
 
 
@@ -79,10 +77,9 @@
                 </div>
 
             </div>
-
+        </div>
+    </div>
 </section>
 
-<style>
 
-  
-</style>
+

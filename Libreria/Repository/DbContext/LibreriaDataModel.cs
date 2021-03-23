@@ -24,6 +24,7 @@ namespace Libreria.Models.EntityModel
         public virtual DbSet<Favorite> Favorites { get; set; }
         public virtual DbSet<Invoice> Invoices { get; set; }
         public virtual DbSet<member> members { get; set; }
+        public virtual DbSet<Manager> Managers { get; set; }
         public virtual DbSet<OrderDetail> OrderDetails { get; set; }
         public virtual DbSet<Order> Orders { get; set; }
         public virtual DbSet<Preview> Previews { get; set; }

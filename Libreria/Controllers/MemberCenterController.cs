@@ -66,13 +66,14 @@ namespace Libreria.Controllers
 
             if (result.IsSuccessful)
             {
-                return Redirect("MemberLogin");
+                TempData["Success"] = "修改成功";
+                return RedirectToAction("MemberLogin", "MemberCenter");
 
             }
             else
             {
-                ModelState.AddModelError("", "修改失敗");
-                return Redirect("MemberLogin");
+                TempData["Fail"] = "修改失敗";
+                return RedirectToAction("MemberLogin", "MemberCenter");
             }
 
         }
@@ -82,12 +83,13 @@ namespace Libreria.Controllers
             var result = _memberService.ChangePassword(model, ModelState.IsValid);
             if (result.IsSuccessful)
             {
-                return Redirect("MemberLogin");
+                TempData["Success"] = "修改成功";
+                return RedirectToAction("MemberLogin", "MemberCenter");
             }
             else
             {
-                ModelState.AddModelError("", "修改失敗");
-                return RedirectToAction("MemberInfo",model);
+                TempData["Fail"] = "修改失敗";
+                return RedirectToAction("MemberLogin", "MemberCenter");
             }
         }
 
@@ -186,7 +188,8 @@ namespace Libreria.Controllers
 
             if (result.IsSuccessful)
             {
-                return Redirect("MemberLogin");
+                TempData["Success"] = "註冊成功!請重新登入";
+                return RedirectToAction("Index", "MemberLogin");
 
             }
             else
@@ -195,6 +198,9 @@ namespace Libreria.Controllers
                 ModelState.AddModelError("", "帳號已存在。");
                 return View();
             }
+
+          
+
         }
 
 

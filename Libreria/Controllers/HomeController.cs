@@ -30,8 +30,6 @@ namespace Libreria.Controllers
 
             ViewBag.GetByPublishDateHome = result3;
 
-
-
             return View(result);
         }
 

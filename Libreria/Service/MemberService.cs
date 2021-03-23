@@ -6,6 +6,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Threading.Tasks;
+using SendGrid;
+using SendGrid.Helpers.Mail;
+using System.Web.Configuration;
 
 namespace Libreria.Service
 {
@@ -31,7 +35,6 @@ namespace Libreria.Service
                     Email = member.Email,
                     memberName = member.memberName,
                     memberPassword = member.memberPassword,
-                    birthday = member.birthday,
                     Gender = member.Gender,
                     IDnumber = member.IDnumber,
                 }
@@ -61,7 +64,6 @@ namespace Libreria.Service
                     Email = member.Email,
                     memberName = member.memberName,
                     memberPassword = member.memberPassword,
-                    birthday = member.birthday,
                     Gender = member.Gender,
                     IDnumber = member.IDnumber,
                 }
@@ -79,9 +81,7 @@ namespace Libreria.Service
         public OperationResult UpdateMember(MemberViewModel model)
         {
             var result = new OperationResult();
-#pragma warning disable CS0219 // 已指派變數 'updateMember'，但是從未使用過它的值
-            member updateMember = null;
-#pragma warning restore CS0219 // 已指派變數 'updateMember'，但是從未使用過它的值
+
             var originalMember = _DbRepository.GetAll<member>().Where(m => m.memberName == model.memberName).FirstOrDefault();
             originalMember.memberUserName = model.memberUserName;
             originalMember.birthday = model.birthday;
@@ -107,6 +107,64 @@ namespace Libreria.Service
             return result;
         }
 
+        public OperationResult SendEmail(string email, string callbackurl)
+        {
+            var result = new OperationResult();
+            var member = _DbRepository.GetAll<member>().Where(x => x.Email == email).FirstOrDefault();
+            
+            if (member != null)
+            {
+                ForgotPasswordEmail(member, callbackurl);
+                result.IsSuccessful = true;
+            }
+            else
+            {
+                result.IsSuccessful = false;
+            }
+
+            return result;
+        }
+
+        public void ForgotPasswordEmail(member member, string callbackurl)
+        {
+            var apikey = WebConfigurationManager.AppSettings["EmailApiKey"];
+            var client = new SendGridClient(apikey);
+            var from = new EmailAddress("dezhengl@uci.edu", "Libreria");
+            var to = new EmailAddress(member.Email, member.memberName);
+            var subject = "Libreria密码重置";
+            var plainTextContent = "";
+            var htmlContent = "<p>请点击链接来重置您的密码" + "<a href = '" + callbackurl + "'>重置密码</a></p>";
+            var msg = MailHelper.CreateSingleEmail(from, to, subject, plainTextContent, htmlContent);
+            client.SendEmailAsync(msg);
+        }
+
+        public OperationResult UpdatePassword(string username, string password)
+        {
+            var result = new OperationResult();
+            var member = _DbRepository.GetAll<member>().Where(x => x.memberName == username).FirstOrDefault();
+
+            try
+            {
+                if (member != null)
+                {
+                    var newpassword = Utility.GetSha512(password);
+                    member.memberPassword = newpassword;
+                    _DbRepository.Update<member>(member);
+                    result.IsSuccessful = true;
+                }
+                else
+                {
+                    result.IsSuccessful = false;
+                }
+            }
+            catch
+            {
+                result.IsSuccessful = false;
+            }
+
+            return result;
+        }
+
         public OperationResult ChangePassword(PasswordViewModel model,bool isValid)
         {
             var result = new OperationResult();
@@ -129,7 +187,9 @@ namespace Libreria.Service
             return result;
                         
         }
-    
-    
+
+
+
+
     }
 }

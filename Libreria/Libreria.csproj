@@ -19,7 +19,7 @@
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
-    <Use64BitIISExpress />
+    <Use64BitIISExpress>true</Use64BitIISExpress>
     <IISExpressSSLPort>44330</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
@@ -74,24 +74,141 @@
     <Reference Include="K4os.Hash.xxHash, Version=1.0.6.0, Culture=neutral, PublicKeyToken=32cd54395057cec3, processorArchitecture=MSIL">
       <HintPath>..\packages\K4os.Hash.xxHash.1.0.6\lib\net46\K4os.Hash.xxHash.dll</HintPath>
     </Reference>
+    <Reference Include="LineBot, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\LineBotSDK.2.4.32\lib\net45\LineBot.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.Authentication.Abstractions, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNetCore.Authentication.Abstractions.2.2.0\lib\netstandard2.0\Microsoft.AspNetCore.Authentication.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.Authentication.Core, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNetCore.Authentication.Core.2.2.0\lib\netstandard2.0\Microsoft.AspNetCore.Authentication.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.Authorization, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNetCore.Authorization.2.2.0\lib\netstandard2.0\Microsoft.AspNetCore.Authorization.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.Authorization.Policy, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNetCore.Authorization.Policy.2.2.0\lib\netstandard2.0\Microsoft.AspNetCore.Authorization.Policy.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.Hosting.Abstractions, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNetCore.Hosting.Abstractions.2.2.0\lib\netstandard2.0\Microsoft.AspNetCore.Hosting.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.Hosting.Server.Abstractions, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNetCore.Hosting.Server.Abstractions.2.2.0\lib\netstandard2.0\Microsoft.AspNetCore.Hosting.Server.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.Http, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNetCore.Http.2.2.0\lib\netstandard2.0\Microsoft.AspNetCore.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.Http.Abstractions, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNetCore.Http.Abstractions.2.2.0\lib\netstandard2.0\Microsoft.AspNetCore.Http.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.Http.Extensions, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNetCore.Http.Extensions.2.2.0\lib\netstandard2.0\Microsoft.AspNetCore.Http.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.Http.Features, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNetCore.Http.Features.2.2.0\lib\netstandard2.0\Microsoft.AspNetCore.Http.Features.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.Mvc.Abstractions, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNetCore.Mvc.Abstractions.2.2.0\lib\netstandard2.0\Microsoft.AspNetCore.Mvc.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.Mvc.Core, Version=2.2.5.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNetCore.Mvc.Core.2.2.5\lib\netstandard2.0\Microsoft.AspNetCore.Mvc.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.ResponseCaching.Abstractions, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNetCore.ResponseCaching.Abstractions.2.2.0\lib\netstandard2.0\Microsoft.AspNetCore.ResponseCaching.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.Routing, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNetCore.Routing.2.2.0\lib\netstandard2.0\Microsoft.AspNetCore.Routing.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.Routing.Abstractions, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNetCore.Routing.Abstractions.2.2.0\lib\netstandard2.0\Microsoft.AspNetCore.Routing.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.WebUtilities, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNetCore.WebUtilities.2.2.0\lib\netstandard2.0\Microsoft.AspNetCore.WebUtilities.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.1.1.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.DotNet.PlatformAbstractions, Version=2.1.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.DotNet.PlatformAbstractions.2.1.0\lib\net45\Microsoft.DotNet.PlatformAbstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Configuration.Abstractions, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Configuration.Abstractions.2.2.0\lib\netstandard2.0\Microsoft.Extensions.Configuration.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyInjection, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.2.2.0\lib\net461\Microsoft.Extensions.DependencyInjection.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.Abstractions.2.2.0\lib\netstandard2.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyModel, Version=2.1.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.DependencyModel.2.1.0\lib\net451\Microsoft.Extensions.DependencyModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.FileProviders.Abstractions, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.FileProviders.Abstractions.2.2.0\lib\netstandard2.0\Microsoft.Extensions.FileProviders.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Hosting.Abstractions, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Hosting.Abstractions.2.2.0\lib\netstandard2.0\Microsoft.Extensions.Hosting.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Logging.Abstractions, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Logging.Abstractions.2.2.0\lib\netstandard2.0\Microsoft.Extensions.Logging.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.ObjectPool, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.ObjectPool.2.2.0\lib\netstandard2.0\Microsoft.Extensions.ObjectPool.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Options, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Options.2.2.0\lib\netstandard2.0\Microsoft.Extensions.Options.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Primitives, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Primitives.2.2.0\lib\netstandard2.0\Microsoft.Extensions.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.JsonWebTokens, Version=6.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.JsonWebTokens.6.8.0\lib\net461\Microsoft.IdentityModel.JsonWebTokens.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Logging, Version=6.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Logging.6.8.0\lib\net461\Microsoft.IdentityModel.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Tokens, Version=6.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Tokens.6.8.0\lib\net461\Microsoft.IdentityModel.Tokens.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Net.Http.Headers, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Net.Http.Headers.2.2.0\lib\netstandard2.0\Microsoft.Net.Http.Headers.dll</HintPath>
+    </Reference>
+    <Reference Include="MvcSiteMapProvider, Version=4.6.26.0, Culture=neutral, PublicKeyToken=1923abe4657913cc, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvcSiteMapProvider.MVC5.Core.4.6.26\lib\net45\MvcSiteMapProvider.dll</HintPath>
+    </Reference>
+    <Reference Include="MvcSiteMapProvider.WebActivator, Version=4.6.26.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvcSiteMapProvider.MVC5.4.6.26\lib\net45\MvcSiteMapProvider.WebActivator.dll</HintPath>
+    </Reference>
     <Reference Include="MySql.Data, Version=8.0.23.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <HintPath>..\packages\MySql.Data.8.0.23\lib\net452\MySql.Data.dll</HintPath>
     </Reference>
     <Reference Include="Renci.SshNet, Version=2020.0.0.0, Culture=neutral, PublicKeyToken=1cee9f8bde3db106, processorArchitecture=MSIL">
       <HintPath>..\packages\SSH.NET.2020.0.0\lib\net40\Renci.SshNet.dll</HintPath>
     </Reference>
+    <Reference Include="SendGrid, Version=9.22.0.0, Culture=neutral, PublicKeyToken=4f047e93159395ca, processorArchitecture=MSIL">
+      <HintPath>..\packages\SendGrid.9.22.0\lib\net452\SendGrid.dll</HintPath>
+    </Reference>
+    <Reference Include="StarkbankEcdsa, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\starkbank-ecdsa.1.2.0\lib\net452\StarkbankEcdsa.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
     </Reference>
     <Reference Include="System.ComponentModel" />
+    <Reference Include="System.ComponentModel.Annotations, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ComponentModel.Annotations.4.5.0\lib\net461\System.ComponentModel.Annotations.dll</HintPath>
+    </Reference>
     <Reference Include="System.Configuration.Install" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Diagnostics.DiagnosticSource, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.4.5.0\lib\net46\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    </Reference>
     <Reference Include="System.Drawing" />
+    <Reference Include="System.IdentityModel.Tokens.Jwt, Version=6.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IdentityModel.Tokens.Jwt.6.8.0\lib\net461\System.IdentityModel.Tokens.Jwt.dll</HintPath>
+    </Reference>
     <Reference Include="System.Management" />
     <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
@@ -105,6 +222,11 @@
     </Reference>
     <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.6.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.7.1\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.InteropServices.RuntimeInformation, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.InteropServices.RuntimeInformation.4.0.0\lib\net45\System.Runtime.InteropServices.RuntimeInformation.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
@@ -183,6 +305,9 @@
     </Reference>
     <Reference Include="Ubiety.Dns.Core, Version=2.2.1.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <HintPath>..\packages\MySql.Data.8.0.23\lib\net452\Ubiety.Dns.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="WebActivatorEx, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebActivatorEx.2.0.1\lib\net40\WebActivatorEx.dll</HintPath>
     </Reference>
     <Reference Include="WebGrease">
       <Private>True</Private>
@@ -303,6 +428,70 @@
     <Compile Include="Migrations\202103081145267_payment-eshi.Designer.cs">
       <DependentUpon>202103081145267_payment-eshi.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202103111112498_Manager.cs" />
+    <Compile Include="Migrations\202103111112498_Manager.Designer.cs">
+      <DependentUpon>202103111112498_Manager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103111115298_Manageradd.cs" />
+    <Compile Include="Migrations\202103111115298_Manageradd.Designer.cs">
+      <DependentUpon>202103111115298_Manageradd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103151219329_LineLogin.cs" />
+    <Compile Include="Migrations\202103151219329_LineLogin.Designer.cs">
+      <DependentUpon>202103151219329_LineLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103151225390_LineLogin1.cs" />
+    <Compile Include="Migrations\202103151225390_LineLogin1.Designer.cs">
+      <DependentUpon>202103151225390_LineLogin1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103170612386_removeIsFavFromProductAddColumnAtExhiAndMember.cs" />
+    <Compile Include="Migrations\202103170612386_removeIsFavFromProductAddColumnAtExhiAndMember.Designer.cs">
+      <DependentUpon>202103170612386_removeIsFavFromProductAddColumnAtExhiAndMember.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103170617505_birthdayNullable.cs" />
+    <Compile Include="Migrations\202103170617505_birthdayNullable.Designer.cs">
+      <DependentUpon>202103170617505_birthdayNullable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103170623031_birthdayNullable-02.cs" />
+    <Compile Include="Migrations\202103170623031_birthdayNullable-02.Designer.cs">
+      <DependentUpon>202103170623031_birthdayNullable-02.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103170623543_birthdayNullable-03.cs" />
+    <Compile Include="Migrations\202103170623543_birthdayNullable-03.Designer.cs">
+      <DependentUpon>202103170623543_birthdayNullable-03.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103170728295_booltobit.cs" />
+    <Compile Include="Migrations\202103170728295_booltobit.Designer.cs">
+      <DependentUpon>202103170728295_booltobit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103170845301_ConvertEmptyStringToNullFalse.cs" />
+    <Compile Include="Migrations\202103170845301_ConvertEmptyStringToNullFalse.Designer.cs">
+      <DependentUpon>202103170845301_ConvertEmptyStringToNullFalse.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103190741509_FixManagerTableType.cs" />
+    <Compile Include="Migrations\202103190741509_FixManagerTableType.Designer.cs">
+      <DependentUpon>202103190741509_FixManagerTableType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103221041354_managerIdAuto.cs" />
+    <Compile Include="Migrations\202103221041354_managerIdAuto.Designer.cs">
+      <DependentUpon>202103221041354_managerIdAuto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103221130462_deleteManager.cs" />
+    <Compile Include="Migrations\202103221130462_deleteManager.Designer.cs">
+      <DependentUpon>202103221130462_deleteManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103221132588_addManager.cs" />
+    <Compile Include="Migrations\202103221132588_addManager.Designer.cs">
+      <DependentUpon>202103221132588_addManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103221134491_isCanceledInExhi.cs" />
+    <Compile Include="Migrations\202103221134491_isCanceledInExhi.Designer.cs">
+      <DependentUpon>202103221134491_isCanceledInExhi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103221138152_addDbSet.cs" />
+    <Compile Include="Migrations\202103221138152_addDbSet.Designer.cs">
+      <DependentUpon>202103221138152_addDbSet.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\EntityModel\AspNetRole.cs" />
@@ -316,6 +505,7 @@
     <Compile Include="Models\EntityModel\ExhibitionOrder.cs" />
     <Compile Include="Models\EntityModel\Favorite.cs" />
     <Compile Include="Models\EntityModel\Invoice.cs" />
+    <Compile Include="Models\EntityModel\Manager.cs" />
     <Compile Include="Models\ResultModel.cs" />
     <Compile Include="Repository\DbContext\LibreriaDataModel.cs" />
     <Compile Include="Models\EntityModel\member.cs" />
@@ -333,6 +523,7 @@
     <Compile Include="Repository\LibreriaRepository.cs" />
     <Compile Include="Service\CategoryService.cs" />
     <Compile Include="Service\ExhibitionService.cs" />
+    <Compile Include="Service\LineLoginService.cs" />
     <Compile Include="Service\MemberLoginService.cs" />
     <Compile Include="Service\FavoriteService.cs" />
     <Compile Include="Service\MemberRegisterPageService.cs" />
@@ -346,6 +537,9 @@
     <Compile Include="ViewModels\apibase\ApiResult.cs" />
     <Compile Include="ViewModels\CategoryViewModel.cs" />
     <Compile Include="ViewModels\FavoriteViewModel.cs" />
+    <Compile Include="ViewModels\LineLoginTokenViewModel.cs" />
+    <Compile Include="ViewModels\LineLoginViewModel.cs" />
+    <Compile Include="ViewModels\LineProfileViewModel.cs" />
     <Compile Include="ViewModels\MemberLoginViewModel.cs" />
     <Compile Include="ViewModels\MemberViewModel.cs" />
     <Compile Include="ViewModels\OrderDetailViewModel.cs" />
@@ -354,6 +548,8 @@
     <Compile Include="ViewModels\PasswordViewModel.cs" />
     <Compile Include="ViewModels\ProductViewModel.cs" />
     <Compile Include="ViewModels\ReCaptchaViewModel.cs" />
+    <Compile Include="ViewModels\RentalOrderViewModel.cs" />
+    <Compile Include="ViewModels\ResetPasswordViewModel.cs" />
     <Compile Include="ViewModels\ShoppingCartViewModel.cs" />
     <Compile Include="ViewModels\RentalConfirmViewModel.cs" />
   </ItemGroup>
@@ -380,6 +576,7 @@
     <Content Include="Asset\Css\MemberCenter\sub_cancel.css" />
     <Content Include="Asset\Css\MemberCenter\sub_info.css" />
     <Content Include="Asset\Css\Passward\Passward.css" />
+    <Content Include="Asset\Css\Pay\PayReturnDetail.css" />
     <Content Include="Asset\Css\Product\ProductCategory.css" />
     <Content Include="Asset\Css\Product\ProductDetail.css" />
     <Content Include="Asset\Css\Product\product_index.css" />
@@ -389,6 +586,7 @@
     <Content Include="Asset\Css\Rental\Rental_Confirm.css" />
     <Content Include="Asset\Css\Rental\Rental_index.css" />
     <Content Include="Asset\Css\ShoppingCart\CartMsgPartial.css" />
+    <Content Include="Asset\Css\ShoppingCart\FavMsgPartial.css" />
     <Content Include="Asset\Css\ShoppingCart\Normalize.css" />
     <Content Include="Asset\Css\ShoppingCart\OrderDetail.css" />
     <Content Include="Asset\Css\ShoppingCart\ShoppingCart.css" />
@@ -431,6 +629,7 @@
     <Content Include="Asset\Image\MemberCenter\1.jpg" />
     <Content Include="Asset\Image\Logo-grey.png" />
     <Content Include="Asset\Image\member-card.png" />
+    <Content Include="Asset\Image\MemberLogin\btn_login_base.png" />
     <Content Include="Asset\Image\Rental\20-Seated_Update.jpg" />
     <Content Include="Asset\Image\Rental\area.svg" />
     <Content Include="Asset\Image\Rental\check.svg" />
@@ -466,6 +665,7 @@
     <Content Include="Asset\Js\Rental\Rental_index.js" />
     <Content Include="Asset\Js\ShoppingCart\OrderDetail.js" />
     <Content Include="Asset\Js\Home-Index\slick.min.js" />
+    <Content Include="Asset\Js\SucessOrFalseMsg.js" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-reboot.css" />
@@ -484,6 +684,8 @@
     <Content Include="Content\solid.min.css" />
     <Content Include="Content\svg-with-js.css" />
     <Content Include="Content\svg-with-js.min.css" />
+    <Content Include="Content\toastr.css" />
+    <Content Include="Content\toastr.min.css" />
     <Content Include="Content\v4-shims.css" />
     <Content Include="Content\v4-shims.min.css" />
     <Content Include="favicon.ico" />
@@ -526,6 +728,16 @@
     <Content Include="Content\bootstrap-reboot.css.map" />
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
+    <Content Include="Scripts\isRockFx.js" />
+    <Content Include="Scripts\toastr.js" />
+    <Content Include="Scripts\toastr.min.js" />
+    <Content Include="_Sample.html" />
+    <Content Include="Content\toastr.scss" />
+    <Content Include="Content\toastr.less" />
+    <Content Include="Mvc.sitemap" />
+    <None Include="MvcSiteMapSchema.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Properties\PublishProfiles\WebLibreria - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\WebLibreria - ReadOnly - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\WebLibreria - Web Deploy.pubxml" />
@@ -718,16 +930,27 @@
     <Content Include="Views\Order\PayOrder.cshtml" />
     <Content Include="Views\Product\CartMsgPartial.cshtml" />
     <Content Include="Views\Home\Exception.cshtml" />
-    <Content Include="Views\Order\PayReturnResult.cshtml" />
-    <Content Include="Views\Order\PayReturnDetail.cshtml" />
     <Content Include="Views\MemberCenter\CartMsgPartial.cshtml" />
     <Content Include="Views\Order\CartMsgPartial.cshtml" />
     <Content Include="Views\MemberCenter\PasswordPartial.cshtml" />
     <Content Include="Views\Rental\CartMsgPartial.cshtml" />
-    <Content Include="Views\Order\PayReturnResult.cshtml" />
-    <Content Include="Views\Order\PayReturnDetail.cshtml" />
     <Content Include="Views\Rental\PayOrder.cshtml" />
     <Content Include="Views\Shared\_FooterPartial.cshtml" />
+    <Content Include="Views\Product\FavMsgPartial.cshtml" />
+    <Content Include="Views\MemberLogin\ResetEmail.cshtml" />
+    <Content Include="Views\MemberLogin\ResetPassword.cshtml" />
+    <Content Include="Views\Order\PayReturnDetail.cshtml" />
+    <Content Include="Views\Rental\PayOrder.cshtml" />
+    <Content Include="Views\Shared\SuccessOrFail.cshtml" />
+    <Content Include="Views\Rental\PayReturnDetail.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\SiteMapTitleHelperModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\SiteMapPathHelperModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\SiteMapNodeModelList.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\SiteMapNodeModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\SiteMapHelperModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\MetaRobotsHelperModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\MenuHelperModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\CanonicalHelperModel.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Code\" />
@@ -766,6 +989,54 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202103081145267_payment-eshi.resx">
       <DependentUpon>202103081145267_payment-eshi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103111112498_Manager.resx">
+      <DependentUpon>202103111112498_Manager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103111115298_Manageradd.resx">
+      <DependentUpon>202103111115298_Manageradd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103151219329_LineLogin.resx">
+      <DependentUpon>202103151219329_LineLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103151225390_LineLogin1.resx">
+      <DependentUpon>202103151225390_LineLogin1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103170612386_removeIsFavFromProductAddColumnAtExhiAndMember.resx">
+      <DependentUpon>202103170612386_removeIsFavFromProductAddColumnAtExhiAndMember.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103170617505_birthdayNullable.resx">
+      <DependentUpon>202103170617505_birthdayNullable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103170623031_birthdayNullable-02.resx">
+      <DependentUpon>202103170623031_birthdayNullable-02.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103170623543_birthdayNullable-03.resx">
+      <DependentUpon>202103170623543_birthdayNullable-03.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103170728295_booltobit.resx">
+      <DependentUpon>202103170728295_booltobit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103170845301_ConvertEmptyStringToNullFalse.resx">
+      <DependentUpon>202103170845301_ConvertEmptyStringToNullFalse.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103190741509_FixManagerTableType.resx">
+      <DependentUpon>202103190741509_FixManagerTableType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103221041354_managerIdAuto.resx">
+      <DependentUpon>202103221041354_managerIdAuto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103221130462_deleteManager.resx">
+      <DependentUpon>202103221130462_deleteManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103221132588_addManager.resx">
+      <DependentUpon>202103221132588_addManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103221134491_isCanceledInExhi.resx">
+      <DependentUpon>202103221134491_isCanceledInExhi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103221138152_addDbSet.resx">
+      <DependentUpon>202103221138152_addDbSet.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

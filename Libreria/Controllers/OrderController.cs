@@ -7,6 +7,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using ECPay.Payment.Integration;
+using Libreria.Filters;
 
 namespace Libreria.Controllers
 {
@@ -193,6 +194,7 @@ namespace Libreria.Controllers
             return PayOrder(orderVM);
         }
 
+        [CustomAuthenticationFilter]
         public ActionResult PayOrder(OrderViewModel orderVM)
         {
             var result = _orderService.ECPay(orderVM);
@@ -215,6 +217,7 @@ namespace Libreria.Controllers
 
 
  
+            ViewData["OrderNum"] = form["MerchantTradeNo"];
             return View();
         }
 

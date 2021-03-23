@@ -8,6 +8,9 @@ using System.Web.Routing;
 
 namespace Libreria.Filters
 { 
+    /// <summary>
+    /// 會員授權
+    /// </summary>
     public class CustomAuthorizeAttribute : AuthorizeAttribute
     {
         private readonly string[] allowedroles;
@@ -41,14 +44,17 @@ namespace Libreria.Filters
                 }
             return authorize; 
         }
-
+        /// <summary>
+        /// 未授權頁面
+        /// </summary>
+        /// <param name="filterContext"></param>
         protected override void HandleUnauthorizedRequest(AuthorizationContext filterContext)
         {
             filterContext.Result = new RedirectToRouteResult(
                 new RouteValueDictionary
                 {
                     {"controller","Home"},
-                    {"action","UnAuthorized"  }
+                    {"action","UnAuthorized" }
                 }
 
              );
