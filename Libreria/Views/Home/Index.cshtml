@@ -114,7 +114,8 @@
                                         </div>
                                         <p>
                                             @item.Name<br>
-                                            <span class="unitprice">@String.Format("{0:N0}", item.UnitPrice)</span>
+                                            <span class="unitprice" style="text-decoration: line-through;">@String.Format("{0:N0}", item.UnitPrice)</span>
+                                            <span class="unitprice" style="color:red;">@item.SpecialPrice</span>
                                         </p>
                                     </div>
                                 </div>
