@@ -36,6 +36,8 @@ body {
 
 .First-sight .First-sight-text{
 width: 100%;
+
+
     }
 
     .First-sight .First-sight-text p {
@@ -195,9 +197,8 @@ input:checked+.tp {
 #content2,
 #content3 {
     margin: 0 0 20px;
-
     height: 100%;
-    border: 1px solid #fbd284;
+/*  border: 1px solid #fbd284;*/
     border-radius: 3px;
 }
 
@@ -245,7 +246,6 @@ p {
 
 .link-block-pic {
     position: relative;
-
     box-sizing: border-box;
     background-color: black;
     margin: 10px;
@@ -274,6 +274,12 @@ p {
     color: #fff;
     text-align: center;
     font-size: 30px;
+    border: 4px solid white;
+    width: 70px;
+    height: 70px;
+    margin: 0 auto;
+    padding-top: 15px;
+    border-radius: 50%;
 }
 
 .link-text {
@@ -282,9 +288,12 @@ p {
     top: 60%;
     left: 30%;
     right: 30%;
-    border: #fff 1px solid;
+    /*  border: #fff 1px solid;*/
     text-align: center;
-    font-size: 22px;
+    font-size: 30px;
+    font-family: 'Noto Serif TC', serif;
+    font-weight: 600;
+    letter-spacing: 2px;
 }
 .seller-block{
     margin:auto;
