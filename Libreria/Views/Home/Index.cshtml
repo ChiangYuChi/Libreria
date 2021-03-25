@@ -14,12 +14,12 @@
     <div class="First-sight-text">
         <p>There is no friend so faithful as a good book</p>
         <div class="local-scroll bounce">
-            <a href="#"><i class="fa fa-chevron-down"></i></a>
+            <a href="#tabbox"><i class="fa fa-chevron-down"></i></a>
         </div>
     </div>
 </div>
 
-<div class="tabbox">
+<div class="tabbox" >
     <input checked id="tab1" name="tabs" type="radio" />
     <label class="tp" for="tab1">暢銷書籍</label>
 
@@ -48,7 +48,19 @@
                                     </div>
                                     <p>
                                         @item.Name<br>
-                                        <span class="unitprice">@item.UnitPrice</span>
+                                        @{ if (item.IsSpecial == true)
+                                            {
+                                                <span class="unitprice" style="text-decoration: line-through;">@String.Format("{0:N0}", item.UnitPrice)</span>
+
+                                                <span class="unitprice" style="color:red;" >@String.Format("{0:N0}", item.SpecialPrice)</span>
+
+                                            }
+                                            else
+                                            {
+                                                <span class="unitprice">@String.Format("{0:N0}", item.UnitPrice)</span>
+
+                                            }
+                                        }
                                     </p>
                                 </div>
                             </div>
@@ -81,7 +93,19 @@
                                         </div>
                                         <p>
                                             @item.Name<br>
-                                            <span class="unitprice">@item.UnitPrice</span>
+                                            @{ if (item.IsSpecial == true)
+                                                {
+                                                    <span class="unitprice" style="text-decoration: line-through;">@String.Format("{0:N0}", item.UnitPrice)</span>
+
+                                                    <span class="unitprice" style="color:red;">@String.Format("{0:N0}", item.SpecialPrice)</span>
+
+                                                }
+                                                else
+                                                {
+                                                    <span class="unitprice">@String.Format("{0:N0}", item.UnitPrice)</span>
+
+                                                }
+                                            }
                                         </p>
                                     </div>
                                 </div>
@@ -104,47 +128,24 @@
                         <h4><span>每日</span>特價</h4>
                     </div>*@
                     <div class="specialseller-block seller-block row col-sm-12">
-                        <a class="col-sm-12 col-md-6 col-lg-4 col-lg-3" href="">
-                            <div class="specialseller-item seller-item">
+                        @foreach (var item in ViewBag.GetByIsSpecial)
+                        {
+                            <a class="col-sm-12 col-md-6 col-lg-4 col-lg-3" href="@Url.Action("ProductDetail", "Product", new { id = item.Id })">
+                                <div class="bestseller-item seller-item">
+                                    <div class="bestseller-text seller-text">
+                                        <div class="bestseller-pic seller-pic">
+                                            <img src="@item.MainUrl">
+                                        </div>
+                                        <p>
+                                            @item.Name<br>
+                                            <span class="unitprice" style="text-decoration: line-through;">@String.Format("{0:N0}", item.UnitPrice)</span>
+                                            <span class="unitprice" style="color:red;">@item.SpecialPrice</span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </a>
+                        }
 
-                                <div class="specialseller-text seller-text">
-                                    <div class="specialseller-pic seller-pic">
-                                        <img src="https://picsum.photos/300/300/?random=1">
-                                    </div>
-                                    <p>
-                                        書名<br>
-                                        <span class="unitprice">$300</span><span class="sale"> $200</span>
-                                    </p>
-                                </div>
-                            </div>
-                        </a>
-                        <a class="col-sm-12 col-md-6 col-lg-4 col-lg-3" href="">
-                            <div class="specialseller-item seller-item">
-                                <div class="specialseller-text seller-text">
-                                    <div class="specialseller-pic seller-pic">
-                                        <img src="https://picsum.photos/300/300/?random=2">
-                                    </div>
-                                    <p>
-                                        書名<br>
-                                        <span class="unitprice">$300</span><span class="sale"> $200</span>
-                                    </p>
-                                </div>
-                            </div>
-                        </a>
-                        <a class="col-sm-12 col-md-6 col-lg-4 col-lg-3" href="">
-                            <div class="specialseller-item seller-item">
-                                <div class="specialseller-text seller-text">
-                                    <div class="specialseller-pic seller-pic">
-                                        <img src="https://picsum.photos/300/300/?random=3">
-                                    </div>
-                                    <p>
-                                        書名<br>
-                                        <span class="unitprice">$300</span><span class="sale"> $200</span>
-                                    </p>
-                                </div>
-                            </div>
-                        </a>
-                        
                     </div>
                     <div class="gotobestseller">
                         <a href="/Product/Index" class="m-auto">
@@ -189,10 +190,10 @@
             <div class="Product-pic link-block-pic">
                 <a href="/Product/Index">
                     <img src="~/Asset/Image/Home/Product.jpeg" />
-                    <i class="fas fa-store link-icon"></i>
                     <div class="Product-text link-text">
                         商品專區
                     </div>
+                    <i class="fas fa-store link-icon"></i>
                 </a>
             </div>
         </div>
@@ -200,10 +201,10 @@
             <div class="exhibition-pic link-block-pic">
                 <a href="/Exhibition/Index">
                     <img src="~/Asset/Image/Home/Libreria-SCA-8287_Iwan-Baan_Web.jpg" />
-                    <i class="fas fa-book link-icon"></i>
                     <div class="exhibition-text link-text">
                         展覽資訊
                     </div>
+                    <i class="fas fa-book link-icon"></i>
                 </a>
             </div>
         </div>
@@ -211,10 +212,10 @@
             <div class="place-pic link-block-pic">
                 <a href="/Rental/Index">
                     <img src="~/Asset/Image/Home/Libreria-SCA-8716_credit-Iwan-Baan_Web.jpg" />
-                    <i class="far fa-building link-icon"></i>
                     <div class="place-text link-text">
                         場地出租
                     </div>
+                    <i class="far fa-building link-icon"></i>
                 </a>
             </div>
         </div>
@@ -222,10 +223,10 @@
             <div class="member-pic link-block-pic">
                 <a href="/MemberCenter/MemberLogin">
                     <img src="~/Asset/Image/Home/Libreria-SCA-8599-credit-Iwan-Baan-scaled.jpg" />
-                    <i class="fas fa-male link-icon"></i>
                     <div class="member-text link-text">
                         會員專區
                     </div>
+                    <i class="fas fa-male link-icon"></i>
                 </a>
             </div>
         </div>

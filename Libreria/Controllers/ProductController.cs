@@ -17,7 +17,7 @@ namespace Libreria.Controllers
         private readonly FavoriteService _favoriteService;
         private readonly ShoppingService _shoppingService;
 
-
+       
 
         public ProductController()
         {
@@ -34,11 +34,35 @@ namespace Libreria.Controllers
             return View();   
         }
 
+        public ActionResult FindCategory(string CategoryName)
+        {
+         
+            if (string.IsNullOrEmpty(CategoryName))
+            {
+                return Content("請提供分類名稱");
+            }
+                var allProduct = _productService.GetAll();
+                List<ProductViewModel> booksByCategory = (from p in allProduct
+                                   where p.CategoryName== CategoryName
+                                   select p).ToList();
+            if (booksByCategory.Count == 0)
+            {
+                return Content("找不到此類型的車");
+            }
+            return View(booksByCategory);
+         }
 
 
+        public ActionResult Find(string CategoryName)
+        {
+            var allProduct = _productService.GetAll();
+            var ProductInCategory = (from p in allProduct
+                                     where p.CategoryName == CategoryName
+                                     select p).ToList();
+            return View(ProductInCategory);
+        }
 
-
-        public ActionResult ProductCategory(int? CategoryId, int? Order,int NowPage=1)
+        public ActionResult ProductCategory(int? CategoryId, int? Order, int NowPage = 1)
         {
             string CategoryName = "";
             if (CategoryId == 1)
@@ -56,11 +80,12 @@ namespace Libreria.Controllers
             else if (CategoryId == 4)
             {
                 CategoryName = "電腦";
-            }else if (CategoryId == 5)
+            }
+            else if (CategoryId == 5)
             {
                 CategoryName = "自然科普";
             }
-            else if (CategoryId ==6)
+            else if (CategoryId == 6)
             {
                 CategoryName = "文學小說";
             }
@@ -78,11 +103,11 @@ namespace Libreria.Controllers
 
             if (CategoryId != null)
             {
-                
+
                 result = _productService.GetByCategory(Convert.ToInt32(CategoryId));
 
                 ViewBag.CategoryId = CategoryId;
-              
+
 
 
             }
@@ -111,7 +136,7 @@ namespace Libreria.Controllers
             result = result.Skip((NowPage - 1) * perPageAmount).Take(perPageAmount).ToList();
             ViewBag.NowPage = NowPage;
             ViewBag.TotalPage = totalPage;
-         
+
             return View(result);
 
         }

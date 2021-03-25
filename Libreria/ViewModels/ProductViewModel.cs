@@ -21,6 +21,9 @@ namespace Libreria.ViewModels
         public bool isFav { get; set; }
         public List<string> PreviewUrls { get; set; }
         public int Count { get; set; }
+        public int SpecialPrice { get; set; }
+
+        public bool IsSpecial { get; set; }
 
     }
 }

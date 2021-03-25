@@ -7,6 +7,8 @@
 @section topCSS{
     @*Passward CSS*@
     <link href="~/Asset/Css/Passward/Passward.css" rel="stylesheet" />
+
+    <link href="~/Asset/Css/ShoppingCart/CartMsgPartial.css" rel="stylesheet" />
 }
 
 
@@ -38,6 +40,9 @@
         </div>
     </div>
 </div>
+@Html.Partial("ResetMsgPartial")
+
+
 
 @section EndJs{
     <script>
@@ -47,10 +52,29 @@
             $.ajax({
                 type: "POST",
                 url: "/MemberLogin/SendResetEmail",
-                data: { "Email" : email },
+                data: { "Email": email },
                 dataType: "text",
-                success: function () {
-                    alert("发出成功");
+                success: function (response) {
+
+                    if (response == "成功发出!") {
+                        document.querySelector(".fa-check-circle").style.display = "block";
+                        document.querySelector(".fa-times-circle").style.display = "none";
+                    }
+                    else {
+                        document.getElementById("CartMsgAlertText").innerText = response;
+                        document.querySelector(".fa-check-circle").style.display = "none";
+                        document.querySelector(".fa-times-circle").style.display = "block";
+                    }
+
+                    document.querySelector(".CartMsg-wrap").setAttribute("style", "display:flex");
+
+                    var time = window.setTimeout((() => {
+                        document.querySelector(".CartMsg-wrap").setAttribute("style", "display:none");
+                        document.getElementById("CartMsgAlertText").innerText = "成功发出!";
+                        document.querySelector(".fa-check-circle").style.display = "block";
+                        document.querySelector(".fa-times-circle").style.display = "none";
+                    }), 800)
+
                 }
             });
         }

@@ -19,7 +19,8 @@
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
-    <Use64BitIISExpress>true</Use64BitIISExpress>
+    <Use64BitIISExpress>
+    </Use64BitIISExpress>
     <IISExpressSSLPort>44330</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
@@ -492,6 +493,14 @@
     <Compile Include="Migrations\202103221138152_addDbSet.Designer.cs">
       <DependentUpon>202103221138152_addDbSet.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202103230714061_specialprice.cs" />
+    <Compile Include="Migrations\202103230714061_specialprice.Designer.cs">
+      <DependentUpon>202103230714061_specialprice.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103230736037_specialprice1.cs" />
+    <Compile Include="Migrations\202103230736037_specialprice1.Designer.cs">
+      <DependentUpon>202103230736037_specialprice1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\EntityModel\AspNetRole.cs" />
@@ -549,6 +558,7 @@
     <Compile Include="ViewModels\ProductViewModel.cs" />
     <Compile Include="ViewModels\ReCaptchaViewModel.cs" />
     <Compile Include="ViewModels\RentalOrderViewModel.cs" />
+    <Compile Include="ViewModels\ResetPasswordViewModel.cs" />
     <Compile Include="ViewModels\ShoppingCartViewModel.cs" />
     <Compile Include="ViewModels\RentalConfirmViewModel.cs" />
   </ItemGroup>
@@ -950,6 +960,9 @@
     <Content Include="Views\Shared\DisplayTemplates\MetaRobotsHelperModel.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\MenuHelperModel.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\CanonicalHelperModel.cshtml" />
+    <Content Include="Views\Product\FindCategory.cshtml" />
+    <Content Include="Views\Product\Find.cshtml" />
+    <Content Include="Views\MemberLogin\ResetMsgPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Code\" />
@@ -1036,6 +1049,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202103221138152_addDbSet.resx">
       <DependentUpon>202103221138152_addDbSet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103230714061_specialprice.resx">
+      <DependentUpon>202103230714061_specialprice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103230736037_specialprice1.resx">
+      <DependentUpon>202103230736037_specialprice1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
