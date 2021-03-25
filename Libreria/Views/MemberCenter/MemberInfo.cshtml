@@ -1,5 +1,5 @@
 ﻿@model Libreria.ViewModels.MemberViewModel
- 
+
 
 @section topCSS{
     @*MemberInfo CSS*@
@@ -41,21 +41,36 @@
                 {
                     @Html.AntiForgeryToken()
                     @Html.ValidationSummary(false, "", new { @class = "text-danger" })
-
-
                     @Html.HiddenFor(model => model.memberPassword, new { @class = "form-control", @Value = item.memberPassword })
 
                     <div class="col-12">
-                        <div class="form-group row">
-                            @Html.LabelFor(model => model.memberName, htmlAttributes: new { @class = "form-subtitle col-3 col-xl-1 col-lg-2 text-right text-nowrap" })
-                            <div class="form-content col-xl-4 col-lg-5 col-9">
-                                <p class="card-number">
-                                    @Html.HiddenFor(model => model.memberName, new { @class = "form-control", @Value = item.memberName })
-
-                                    @Html.DisplayFor(modelItem => item.memberName)
-                                </p>
+                        @if (Session["ChangeMemberName"]=="true")
+                        {<div class="form-group row">
+                                @Html.LabelFor(model => model.memberName, htmlAttributes: new { @class = "form-subtitle col-3 col-xl-1 col-lg-2 text-right text-nowrap" })
+                                <div class="form-content col-xl-4 col-lg-5 col-9">
+                                    <p class="card-number">
+                                        @Html.ValidationMessage("memberName", new { @class = "text-danger" })
+                                        @Html.TextBoxFor(model => model.memberName, new { @class = "form-control", @Value = item.memberName })
+                                    </p>
+                                </div>
                             </div>
-                        </div>
+                        }
+                        else
+                        {
+                            <div class="form-group row">
+                                @Html.LabelFor(model => model.memberName, htmlAttributes: new { @class = "form-subtitle col-3 col-xl-1 col-lg-2 text-right text-nowrap" })
+                                <div class="form-content col-xl-4 col-lg-5 col-9">
+                                    <p class="card-number">
+                                        @Html.HiddenFor(model => model.memberName, new { @class = "form-control", @Value = item.memberName })
+
+                                        @Html.DisplayFor(modelItem => item.memberName)
+                                    </p>
+                                </div>
+                            </div>
+                        };
+
+
+
                     </div>
                     <div class="col-12">
                         <div class="form-group row">
@@ -195,29 +210,29 @@
             {
                 @Html.AntiForgeryToken()
 
-                
-                    @Html.Partial("PasswordPartial")
 
-                    <div class="col-12 mt-2 d-flex justify-content-center">
-                        <button><a href="" class="cancel">取消</a></button>
-                        <button type="submit" class="confirm">確認</button>
-                    </div>
-                
+                @Html.Partial("PasswordPartial")
+
+                <div class="col-12 mt-2 d-flex justify-content-center">
+                    <button><a href="" class="cancel">取消</a></button>
+                    <button type="submit" class="confirm">確認</button>
+                </div>
+
                 @Html.ValidationSummary(false, "", new { @class = "text-danger" })
 
             }
         </div>
-                
-            
-        
-    </div>
- </div>
 
-        @section endJs{
-            @*OrderDetail JS*@
-            <script src="~/Asset/Js/ShoppingCart/OrderDetail.js"></script>
-            <script src="~/Asset/Js/Order/OrderDetail.js" crossorigin="anonymous"></script>
-            <script>
+
+
+    </div>
+</div>
+
+@section endJs{
+    @*OrderDetail JS*@
+    <script src="~/Asset/Js/ShoppingCart/OrderDetail.js"></script>
+    <script src="~/Asset/Js/Order/OrderDetail.js" crossorigin="anonymous"></script>
+    <script>
             //update data
             @*$("form").submit(function (event) {
                 event.preventDefault();
@@ -230,77 +245,77 @@
                     contentType: false,
                     });
             })*@
-            </script>
+    </script>
 
 
-               
-            <script>
-                    window.onload = () => {
-                        requestAreaJson();
-                        document.querySelector("#Region").addEventListener("change", findTown);
-                        findRadioButtonChecked();
-                    }
-                    //縣市DropDownList生成
-                    const url = "https://raw.githubusercontent.com/eric861129/BuildSchoolLab/main/TwArea.json";
-                    let areaArray = [];
-                    let _area;
-                    let item;
-                    let Town = document.getElementById("Town");
 
-                    let townArray = [];
-                    let CountiesAttractionArray = [];
-                    let texNode;
-                    let CountiesLat;
-                    let CountiesLng;
-             
+    <script>
+        window.onload = () => {
+            requestAreaJson();
+            document.querySelector("#Region").addEventListener("change", findTown);
+            findRadioButtonChecked();
+        }
+        //縣市DropDownList生成
+        const url = "https://raw.githubusercontent.com/eric861129/BuildSchoolLab/main/TwArea.json";
+        let areaArray = [];
+        let _area;
+        let item;
+        let Town = document.getElementById("Town");
+
+        let townArray = [];
+        let CountiesAttractionArray = [];
+        let texNode;
+        let CountiesLat;
+        let CountiesLng;
 
 
-                    function requestAreaJson() {
-                        let xhr = new XMLHttpRequest();
-                        xhr.onload = function () {
-                            areaArray = JSON.parse(this.response);
-                        }
-                        xhr.open("GET", url);
-                        xhr.send();
-                    }
-                    function findTown() {
-                        //Town.innerHTML = '<option selected>選取鄉政市區</option>';
 
-                        _area = document.querySelector("#Region").value;
-                        document.querySelector("#Town").disabled = null;
-                        areaArray.forEach(x => {
-                            if (x.Counties == _area) {
-                                townArray = x.township;
-                                CountiesLat = x.lat;
-                                CountiesLng = x.lng;
-                                Town.innerHTML = "";
-                                townArray.forEach(item => {
-                                    let newOption = document.createElement('option');
-                                    texNode = document.createTextNode(item);
-                                    newOption.appendChild(texNode);
-                                    Town.appendChild(newOption);
-                                });
-                            }
-                        });
-                    }
-                //Radio Button checked
-                function findRadioButtonChecked() {
-                    var witchChecked = document.getElementsByClassName("Gender");
-                    var isTrueOrFalse = document.getElementById("True");
-
-                    for (var i = 0; i < witchChecked.length; i++) {
-                        if (witchChecked[i].value == isTrueOrFalse.value) {
-
-                            witchChecked[i].setAttribute("checked", "")
-                            break;
-                        }
-                    }
-                }
-               
-               
-                    
-
-                   
-</script>
-
+        function requestAreaJson() {
+            let xhr = new XMLHttpRequest();
+            xhr.onload = function () {
+                areaArray = JSON.parse(this.response);
             }
+            xhr.open("GET", url);
+            xhr.send();
+        }
+        function findTown() {
+            //Town.innerHTML = '<option selected>選取鄉政市區</option>';
+
+            _area = document.querySelector("#Region").value;
+            document.querySelector("#Town").disabled = null;
+            areaArray.forEach(x => {
+                if (x.Counties == _area) {
+                    townArray = x.township;
+                    CountiesLat = x.lat;
+                    CountiesLng = x.lng;
+                    Town.innerHTML = "";
+                    townArray.forEach(item => {
+                        let newOption = document.createElement('option');
+                        texNode = document.createTextNode(item);
+                        newOption.appendChild(texNode);
+                        Town.appendChild(newOption);
+                    });
+                }
+            });
+        }
+        //Radio Button checked
+        function findRadioButtonChecked() {
+            var witchChecked = document.getElementsByClassName("Gender");
+            var isTrueOrFalse = document.getElementById("True");
+
+            for (var i = 0; i < witchChecked.length; i++) {
+                if (witchChecked[i].value == isTrueOrFalse.value) {
+
+                    witchChecked[i].setAttribute("checked", "")
+                    break;
+                }
+            }
+        }
+
+
+
+
+
+    </script>
+
+}
