@@ -80,7 +80,7 @@ namespace Libreria.Controllers
         [HttpPost]
         public ActionResult ChangePassward(PasswordViewModel model)
         {
-            var result = _memberService.ChangePassword(model, ModelState.IsValid);
+            var result = _memberService.ChangePassword(model);
             if (result.IsSuccessful)
             {
                 TempData["Success"] = "修改成功";
