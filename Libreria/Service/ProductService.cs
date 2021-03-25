@@ -355,7 +355,7 @@ namespace Libreria.Service
         public List<ProductViewModel> PromoteEditor()
         {
             var products = (from p in _DbRepository.GetAll<Product>()
-                                          .OrderByDescending(p => p.CategoryId == 5)
+                                          .OrderByDescending(p => p.CategoryId == 3)
                                           .OrderBy(p => p.UnitPrice)
                                           .Take(4)
                             join v in _DbRepository.GetAll<Preview>()
