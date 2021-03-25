@@ -111,7 +111,7 @@ namespace Libreria.Service
         {
             var result = new OperationResult();
             var member = _DbRepository.GetAll<member>().Where(x => x.Email == email).FirstOrDefault();
-            
+
             if (member != null)
             {
                 ForgotPasswordEmail(member, callbackurl);
@@ -165,27 +165,28 @@ namespace Libreria.Service
             return result;
         }
 
-        public OperationResult ChangePassword(PasswordViewModel model,bool isValid)
+        public OperationResult ChangePassword(PasswordViewModel model)
         {
             var result = new OperationResult();
-            if (isValid)
-            {
-                var original = Utility.GetSha512(model.OriginalPassword);
-                var member = _DbRepository.GetAll<member>().Where(m => m.memberPassword == original).FirstOrDefault();
-                member.memberPassword = Utility.GetSha512(model.NewPassword);
 
-                try
-                {
-                    _DbRepository.Update<member>(member);
-                }
-                catch (Exception ex)
-                {
-                    result.IsSuccessful = false;
-                    ex.ToString();
-                }
+            var original = Utility.GetSha512(model.OriginalPassword);
+            var member = _DbRepository.GetAll<member>().Where(m => m.memberPassword == original).FirstOrDefault();
+            member.memberPassword = Utility.GetSha512(model.NewPassword);
+
+            try
+            {
+                _DbRepository.Update<member>(member);
+                result.IsSuccessful = true;
+
             }
+            catch (Exception ex)
+            {
+                result.IsSuccessful = false;
+                ex.ToString();
+            }
+
             return result;
-                        
+
         }
 
 
