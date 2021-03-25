@@ -356,11 +356,11 @@ namespace Libreria.Service
         {
             var products = (from p in _DbRepository.GetAll<Product>()
                                           .OrderByDescending(p => p.CategoryId == 3)
-                                          .OrderBy(p => p.UnitPrice)
+                                          .OrderBy(p => p.CategoryId)
                                           .Take(4)
                             join v in _DbRepository.GetAll<Preview>()
                             on p.ProductId equals v.ProductId
-                            where v.Sort == 0
+                            where v.Sort == 0   
                             select new ProductViewModel()
                             {
                                 Id = p.ProductId,
