@@ -34,23 +34,7 @@ namespace Libreria.Controllers
             return View();   
         }
 
-        public ActionResult FindCategory(string CategoryName)
-        {
-         
-            if (string.IsNullOrEmpty(CategoryName))
-            {
-                return Content("請提供分類名稱");
-            }
-                var allProduct = _productService.GetAll();
-                List<ProductViewModel> booksByCategory = (from p in allProduct
-                                   where p.CategoryName== CategoryName
-                                   select p).ToList();
-            if (booksByCategory.Count == 0)
-            {
-                return Content("找不到此類型的車");
-            }
-            return View(booksByCategory);
-         }
+        
 
 
         public ActionResult Find(int CategoryId)
@@ -62,8 +46,16 @@ namespace Libreria.Controllers
             return View(ProductInCategory);
         }
 
-        public ActionResult ProductCategory(int? CategoryId, int? Order, int NowPage = 1)
+        public ActionResult ProductOrder(int CategoryId, int Order, int NowPage = 1)
         {
+            var allProduct = _productService.GetAll();
+            var ProductInCategory = (from p in allProduct
+                                     where p.CategoryId == CategoryId
+                                     select p).ToList();
+
+
+
+
             string CategoryName = "";
             if (CategoryId == 1)
             {
@@ -96,48 +88,135 @@ namespace Libreria.Controllers
 
 
 
-            SiteMaps.Current.CurrentNode.Title = CategoryName;
+            //SiteMaps.Current.CurrentNode.Title = CategoryName;
             List<ProductViewModel> result;
             ViewBag.shoppincart = _shoppingService.GetAnonymousAll();
             ViewBag.shoppingCart = _shoppingService.GetAll();
 
-            if (CategoryId != null)
-            {
+            //if (CategoryId != null)
+            //{
 
-                result = _productService.GetByCategory(Convert.ToInt32(CategoryId));
+            //    result = _productService.GetByCategory(Convert.ToInt32(CategoryId));
 
-                ViewBag.CategoryId = CategoryId;
+            //    ViewBag.CategoryId = CategoryId;
 
 
 
-            }
-            else
-            {
-                result = _productService.GetAll();
-            }
+            //}
+            //else
+            //{
+            //    result = _productService.GetAll();
+            //}
 
             if (Order == 1)
             {
-                result = result.OrderBy(x => x.UnitPrice).ToList();
+                ProductInCategory = ProductInCategory.OrderBy(x => x.UnitPrice).ToList();
             }
             else if (Order == 2)
             {
-                result = result.OrderBy(x => x.CreateTime).ToList();
+                ProductInCategory = ProductInCategory.OrderBy(x => x.CreateTime).ToList();
             }
             ViewBag.Order = Order;
 
             //商品總數
-            int totalAmount = result.Count;
+            int totalAmount = ProductInCategory.Count;
             ViewBag.TotalAmount = totalAmount;
 
             //分頁
             int perPageAmount = 8;
             int totalPage = (int)Math.Ceiling((double)totalAmount / perPageAmount);
-            result = result.Skip((NowPage - 1) * perPageAmount).Take(perPageAmount).ToList();
+            ProductInCategory = ProductInCategory.Skip((NowPage - 1) * perPageAmount).Take(perPageAmount).ToList();
             ViewBag.NowPage = NowPage;
             ViewBag.TotalPage = totalPage;
 
-            return View(result);
+            return View(ProductInCategory);
+
+        }
+
+        public ActionResult ProductCategory(int CategoryId, int NowPage = 1)
+        {
+            var allProduct = _productService.GetAll();
+            var ProductInCategory = (from p in allProduct
+                                     where p.CategoryId == CategoryId
+                                     select p).ToList();
+
+
+
+
+            string CategoryName = "";
+            if (CategoryId == 1)
+            {
+                CategoryName = "人文社科";
+            }
+            else if (CategoryId == 2)
+            {
+                CategoryName = "旅遊";
+            }
+            else if (CategoryId == 3)
+            {
+                CategoryName = "童書";
+            }
+            else if (CategoryId == 4)
+            {
+                CategoryName = "電腦";
+            }
+            else if (CategoryId == 5)
+            {
+                CategoryName = "自然科普";
+            }
+            else if (CategoryId == 6)
+            {
+                CategoryName = "文學小說";
+            }
+            else if (CategoryId == 7)
+            {
+                CategoryName = "商業";
+            }
+
+
+
+            //SiteMaps.Current.CurrentNode.Title = CategoryName;
+            List<ProductViewModel> result;
+            ViewBag.shoppincart = _shoppingService.GetAnonymousAll();
+            ViewBag.shoppingCart = _shoppingService.GetAll();
+
+            //if (CategoryId != null)
+            //{
+
+            //    result = _productService.GetByCategory(Convert.ToInt32(CategoryId));
+
+            //    ViewBag.CategoryId = CategoryId;
+
+
+
+            //}
+            //else
+            //{
+            //    result = _productService.GetAll();
+            //}
+
+            //if (Order == 1)
+            //{
+            //    ProductInCategory = ProductInCategory.OrderBy(x => x.UnitPrice).ToList();
+            //}
+            //else if (Order == 2)
+            //{
+            //    ProductInCategory = ProductInCategory.OrderBy(x => x.CreateTime).ToList();
+            //}
+            //ViewBag.Order = Order;
+
+            //商品總數
+            int totalAmount = ProductInCategory.Count;
+            ViewBag.TotalAmount = totalAmount;
+
+            //分頁
+            int perPageAmount = 8;
+            int totalPage = (int)Math.Ceiling((double)totalAmount / perPageAmount);
+            ProductInCategory = ProductInCategory.Skip((NowPage - 1) * perPageAmount).Take(perPageAmount).ToList();
+            ViewBag.NowPage = NowPage;
+            ViewBag.TotalPage = totalPage;
+
+            return View(ProductInCategory);
 
         }
 
