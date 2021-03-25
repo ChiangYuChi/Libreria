@@ -85,6 +85,7 @@ namespace Libreria.Controllers
             Session["MemberName"] = string.Empty;
             Session["MemberPassword"] = string.Empty;
             Session["MemberID"] = null;
+            Session["ChangeMemberName"] = string.Empty;
             return RedirectToAction("Index", "Home");
         }
         public ActionResult ResetEmail()
@@ -134,7 +135,7 @@ namespace Libreria.Controllers
         {
             string response_type = "code";
             string client_id = "1655754480";
-            string redirect_uri = HttpUtility.UrlEncode("https://localhost:44330/MemberLogin/Callback");
+            string redirect_uri = HttpUtility.UrlEncode("https://weblibreria.azurewebsites.net/MemberLogin/Callback");
             string state = "statePassword";
             string LineLoginUrl = string.Format("https://access.line.me/oauth2/v2.1/authorize?response_type={0}&client_id={1}&redirect_uri={2}&state={3}&scope=openid%20profile%20email&nonce=09876xyz",
                 response_type,
@@ -161,7 +162,7 @@ namespace Libreria.Controllers
                     string ApiUrl_Token = "https://api.line.me/oauth2/v2.1/token";
                     nvc.Add("grant_type", "authorization_code");
                     nvc.Add("code", code);
-                    nvc.Add("redirect_uri", "https://localhost:44330/MemberLogin/Callback");
+                    nvc.Add("redirect_uri", "https://weblibreria.azurewebsites.net/MemberLogin/Callback");
                     nvc.Add("client_id", "1655754480");
                     nvc.Add("client_secret", "01688ad326564fb2a0b8004c7c7fc94c");
                     string JsonStr = Encoding.UTF8.GetString(wc.UploadValues(ApiUrl_Token, "POST", nvc));
