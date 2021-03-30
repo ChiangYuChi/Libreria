@@ -68,7 +68,6 @@ namespace Libreria.Models.EntityModel
 
         public string LineUserID { get; set; }
 
-        [NotMapped]
         public bool? Change { get; set; }   
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
