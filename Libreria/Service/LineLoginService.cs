@@ -120,16 +120,15 @@ namespace Libreria.Service
         public OperationResult IsExistLineMember(LineLoginViewModel memberLineID)
         {
             var result = new OperationResult();
-            member member = new member();
-            var checkMemberLineUserID = _libreriaRepository.GetAll<member>().Where(m => member.LineUserID == memberLineID.LineUserID)
+            var checkMemberLineUserID = _libreriaRepository.GetAll<member>().Where(m =>m.LineUserID == memberLineID.LineUserID)
                                         .FirstOrDefault();
             if (checkMemberLineUserID != null)
             {
-                result.IsSuccessful = true;
+                result.IsSuccessful = false;
             }
             else
             {
-                result.IsSuccessful = false;
+                result.IsSuccessful = true;
             }
             return result;
 
