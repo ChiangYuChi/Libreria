@@ -130,11 +130,13 @@ namespace Libreria.Service
                               CategoryName = c.Name,
                               Supplier = s.Name,
                               Count = p.Inventory,
-                              SpecialPrice = 0,
+                              SpecialPrice = (int)p.SpecialPrice,
+                              IsSpecial = p.isSpecial
 
-                              PublishDate = p.PublishDate,
+
                           }).FirstOrDefault();
-
+            
+            
             var PreviewList = _DbRepository.GetAll<Preview>()
                 .Where(x => x.ProductId == id)
                 .OrderBy(x => x.Sort)
@@ -181,8 +183,14 @@ namespace Libreria.Service
                               MainUrl = v.ImgUrl,
                               CategoryName = c.Name,
                               Count = p.Inventory,
+                              SpecialPrice = (int)p.SpecialPrice,
+
+                              IsSpecial = p.isSpecial
+
+
                           }).ToList();
-          
+            
+
             var MemberId = Convert.ToInt32(System.Web.HttpContext.Current.Session["MemberID"]);
 
             if (MemberId == 0)
@@ -252,18 +260,17 @@ namespace Libreria.Service
                                 Name = p.ProductName,
                                 UnitPrice = p.UnitPrice,
                                 CategoryId = p.CategoryId,
+
                                 Author = p.Author,
                                 CreateTime = p.CreateTime,
                                 Introduction = p.Introduction,
                                 MainUrl = v.ImgUrl,
                                 Count = p.Inventory,
-                                SpecialPrice = 0,
+                                SpecialPrice = (int)p.SpecialPrice,
+
                                 IsSpecial = p.isSpecial
                             }).ToList();
-            foreach (var item in products)
-            {
-                item.SpecialPrice = (int)(Decimal.ToDouble(item.UnitPrice) * 0.8);
-            }
+            
             var result = products.ToList();
             return result;
 
@@ -293,14 +300,12 @@ namespace Libreria.Service
                                 Introduction = p.Introduction,
                                 MainUrl = v.ImgUrl,
                                 Count = p.Inventory,
-                                SpecialPrice = 0,
+                                SpecialPrice = (int)p.SpecialPrice,
+
                                 IsSpecial = p.isSpecial
 
                             }).ToList();
-            foreach (var item in products)
-            {
-                item.SpecialPrice = (int)(Decimal.ToDouble(item.UnitPrice) * 0.8);
-            }
+            
             var result = products.ToList();
             return result;
 
@@ -330,15 +335,13 @@ namespace Libreria.Service
                                 Introduction = p.Introduction,
                                 MainUrl = v.ImgUrl,
                                 Count = p.Inventory,
-                                SpecialPrice = 0,
+                                SpecialPrice = (int)p.SpecialPrice,
+
                                 IsSpecial = p.isSpecial
 
 
                             }).ToList();
-            foreach (var item in products)
-            {
-                item.SpecialPrice = (int)(Decimal.ToDouble(item.UnitPrice) * 0.8);
-            }
+           
             var result = products.ToList();
             return result;
 
@@ -380,13 +383,11 @@ namespace Libreria.Service
                                 Introduction = p.Introduction,
                                 MainUrl = v.ImgUrl,
                                 Count = p.Inventory,
-                                SpecialPrice = 0
+                                SpecialPrice = (int)p.SpecialPrice,
+
                             }).ToList();
 
-            foreach (var item in products)
-            {
-                item.SpecialPrice = (int)(Decimal.ToDouble(item.UnitPrice) * 0.8);
-            }
+            
 
             var result = products.ToList();
             return result;
@@ -395,12 +396,12 @@ namespace Libreria.Service
         public List<ProductViewModel> PromoteEditor()
         {
             var products = (from p in _DbRepository.GetAll<Product>()
-                                          .OrderByDescending(p => p.CategoryId == 5)
-                                          .OrderBy(p => p.UnitPrice)
+                                          .OrderByDescending(p => p.CategoryId == 3)
+                                          .OrderBy(p => p.CategoryId)
                                           .Take(4)
                             join v in _DbRepository.GetAll<Preview>()
                             on p.ProductId equals v.ProductId
-                            where v.Sort == 0
+                            where v.Sort == 0   
                             select new ProductViewModel()
                             {
                                 Id = p.ProductId,
@@ -412,12 +413,11 @@ namespace Libreria.Service
                                 Introduction = p.Introduction,
                                 MainUrl = v.ImgUrl,
                                 Count = p.Inventory,
-                                IsSpecial = p.isSpecial
+                                IsSpecial = p.isSpecial,
+                              SpecialPrice = (int)p.SpecialPrice,
+
                             }).ToList();
-            foreach (var item in products)
-            {
-                item.SpecialPrice = (int)(Decimal.ToDouble(item.UnitPrice) * 0.8);
-            }
+            
             var result = products.ToList();
             return result;
         }
@@ -465,13 +465,11 @@ namespace Libreria.Service
                                 Introduction = p.Introduction,
                                 MainUrl = v.ImgUrl,
                                 Count = p.Inventory,
-                                SpecialPrice = 0
+                                SpecialPrice = (int)p.SpecialPrice,
+
                             }).ToList();
             
-            foreach(var item in products)
-            {
-                item.SpecialPrice = (int)(Decimal.ToDouble(item.UnitPrice)* 0.8 ); 
-            }
+            
 
             var result = products.ToList();
             return result;

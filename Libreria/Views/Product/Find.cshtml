@@ -1,0 +1,12 @@
+﻿@model List<ProductViewModel>
+@{
+    ViewBag.Title = "Find";
+}
+
+<h2>Find</h2>
+
+@foreach(var item in Model)
+            {
+                @item.Author
+            }
+
