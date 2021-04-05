@@ -12,13 +12,23 @@ namespace Libreria
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
-            routes.MapRoute(
+           
+          routes.MapRoute(
               name: "FindCategory",
               url: "Product/Category/{CategoryId}",
               defaults: new { controller = "Product", action = "ProductCategory", CategoryId = UrlParameter.Optional }
           );
 
-         routes.MapRoute(
+          routes.MapRoute(
+               name: "FindPage",
+               url: "Product/Category/{CategoryId}/{Page}",
+               defaults: new { controller = "Product", action = "ProductCategory", CategoryId ="CategoryId",Page= UrlParameter.Optional }
+           );
+
+
+
+
+            routes.MapRoute(
              name: "FindOrder",
              url: "Product/Order/{Order}",
              defaults: new { controller = "Product", action= "ProductOrder",Order = UrlParameter.Optional }
