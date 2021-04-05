@@ -19,8 +19,7 @@
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
-    <Use64BitIISExpress>
-    </Use64BitIISExpress>
+    <Use64BitIISExpress>true</Use64BitIISExpress>
     <IISExpressSSLPort>44330</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
@@ -501,6 +500,10 @@
     <Compile Include="Migrations\202103230736037_specialprice1.Designer.cs">
       <DependentUpon>202103230736037_specialprice1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202103300542539_exAddfixIsDeletedMemberChange.cs" />
+    <Compile Include="Migrations\202103300542539_exAddfixIsDeletedMemberChange.Designer.cs">
+      <DependentUpon>202103300542539_exAddfixIsDeletedMemberChange.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\EntityModel\AspNetRole.cs" />
@@ -961,6 +964,7 @@
     <Content Include="Views\Shared\DisplayTemplates\MenuHelperModel.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\CanonicalHelperModel.cshtml" />
     <Content Include="Views\Product\Find.cshtml" />
+    <Content Include="Views\MemberLogin\ResetMsgPartial.cshtml" />
     <Content Include="Views\Product\ProductOrder.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -1054,6 +1058,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202103230736037_specialprice1.resx">
       <DependentUpon>202103230736037_specialprice1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103300542539_exAddfixIsDeletedMemberChange.resx">
+      <DependentUpon>202103300542539_exAddfixIsDeletedMemberChange.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

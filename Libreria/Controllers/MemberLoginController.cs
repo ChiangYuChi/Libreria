@@ -85,6 +85,7 @@ namespace Libreria.Controllers
             Session["MemberName"] = string.Empty;
             Session["MemberPassword"] = string.Empty;
             Session["MemberID"] = null;
+            Session["ChangeMemberName"] = string.Empty;
             return RedirectToAction("Index", "Home");
         }
         public ActionResult ResetEmail()

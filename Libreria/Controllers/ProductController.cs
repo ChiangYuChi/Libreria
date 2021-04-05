@@ -31,7 +31,7 @@ namespace Libreria.Controllers
 
         public ActionResult Index()
         {
-            return View();   
+            return View();
         }
 
         
@@ -204,6 +204,12 @@ namespace Libreria.Controllers
             //    ProductInCategory = ProductInCategory.OrderBy(x => x.CreateTime).ToList();
             //}
             //ViewBag.Order = Order;
+
+            //搜尋
+            result = result.Where(product => product.Name.Contains(search)).ToList();
+
+
+
 
             //商品總數
             int totalAmount = ProductInCategory.Count;

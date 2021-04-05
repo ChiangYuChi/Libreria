@@ -20,9 +20,9 @@
     int CityIndex;
     int RegionIndex;
 
-    string MemberCity="";
-    string MemberRegion="";
-    string MemberAddress="";
+    string MemberCity = "";
+    string MemberRegion = "";
+    string MemberAddress = "";
 
     if (MemberVM.Address != null)
     {
@@ -44,7 +44,7 @@
 
         //地址
         if (RegionIndex >= 0) { MemberAddress = MemberVM.Address.Substring(RegionIndex + 1); }
-        else if(CityIndex >= 0) { MemberAddress = MemberVM.Address.Substring(CityIndex + 1); }
+        else if (CityIndex >= 0) { MemberAddress = MemberVM.Address.Substring(CityIndex + 1); }
         else { MemberAddress = MemberVM.Address; }
 
 
@@ -135,22 +135,22 @@
                 </div>
                 <div class="ask-star"><span class="starcolor">*</span>為必填 <br /></div>
                 @*<div class="delivery_option_fee">
-            <p>超商取貨未滿350元，酌收訂單處理費50元</p>
-        </div>*@
+                        <p>超商取貨未滿350元，酌收訂單處理費50元</p>
+                    </div>*@
                 <div class="delivery_option_body">
                     @*<label class="col-md-3 delivery_option_7-11 delivery_options click_options" id="options for="7Eleven">
-                <span class="col-md-1 circle" value="0">
-                    <input type="radio" name="DeliveryMethod" id="7Eleven" value="7Eleven">
-                </span>
-                <span id="option_txt" class="col-md-10">台灣7-ELEVEN取貨</span>
-            </label>*@
+                            <span class="col-md-1 circle" value="0">
+                                <input type="radio" name="DeliveryMethod" id="7Eleven" value="7Eleven">
+                            </span>
+                            <span id="option_txt" class="col-md-10">台灣7-ELEVEN取貨</span>
+                        </label>*@
 
                     @*<label class="col-md-3 delivery_option_OK delivery_options click_options" id="options2" for="FamilyOKLairfu">
-                <span class="col-md-1 circle" value="0">
-                    <input type="radio" name="DeliveryMethod" id="FamilyOKLairfu" value="FamilyOKLairfu">
-                </span>
-                <span id="option_txt" class="col-md-11">台灣全家/OK/萊爾富 取貨</span>
-            </label>*@
+                            <span class="col-md-1 circle" value="0">
+                                <input type="radio" name="DeliveryMethod" id="FamilyOKLairfu" value="FamilyOKLairfu">
+                            </span>
+                            <span id="option_txt" class="col-md-11">台灣全家/OK/萊爾富 取貨</span>
+                        </label>*@
                     <label class="col-md-3 delivery_option_delivery delivery_options click_options" id="options3" for="homeDelivery">
                         <span class="col-md-1 circle" value="0">
                             <input type="radio" name="DeliveryMethod" id="homeDelivery" value="homeDelivery" required>
@@ -215,14 +215,16 @@
                                 <option value="連江縣">連江縣</option> <!--22-->
                                 @if (MemberCity != "")
                                 {
-                                    <option value=@MemberCity selected>@MemberCity</option> <!--最後一項-->
+                                    <option value=@MemberCity selected>@MemberCity</option>
+                                    <!--最後一項-->
                                 }
                             </select>
                             <select name="SubscriberAddressRegionSelect" id="subscriber_option_district Town" required>
                                 <option value="">請選擇</option>
                                 @if (MemberRegion != "")
                                 {
-                                    <option value=@MemberRegion selected>@MemberRegion</option> <!--最後一項-->
+                                    <option value=@MemberRegion selected>@MemberRegion</option>
+                                    <!--最後一項-->
                                 }
                             </select>
                         </div>
@@ -318,14 +320,14 @@
                             </span>
                             <span id="option_txt" class="col-md-11 col-md-11">取貨付款</span>
                         </label>
-                       
+
                         <label class="col-md-3 payment_options_cradit payment_optionss click_options2" id="options7" for="creditCard">
                             <span class="col-md-1 circle" value="0">
                                 <input type="radio" name="PaymentMethod" id="creditCard" value="3">
                             </span>
                             <span id="option_txt" class="col-md-11">信用卡一次付清</span>
                         </label>
-                       
+
                     </div>
                 </div>
             </div>
@@ -370,7 +372,7 @@
                         <h2>商品資訊</h2>
                     </div>
                     <div class="cart_details_Discount  cart_details_none">
-                        <p>優惠價</p>
+                        <p>價格</p>
                     </div>
                     <div class="cart_details_quantity cart_details_none">
                         <p>數量</p>
@@ -389,13 +391,34 @@
                             <div class="cart_details_txt">
                                 <p>@shoppingCartVM.ProductName</p>
                             </div>
-                            <div class="cart_details_price">
-                                <p>@((int)shoppingCartVM.Price)</p>
-                            </div>
+                            @{ if (shoppingCartVM.IsSpecial == true)
+                                {
+                                    <div class="cart_details_price">
+                                        <p>@((int)shoppingCartVM.SpecialPrice)</p>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="cart_details_price">
+                                        <p>@((int)shoppingCartVM.Price)</p>
+                                    </div>
+                                }
+                            }
+
                         </div>
                         <div class="cart_detail_quantity">
                             <p>@shoppingCartVM.Count</p>
-                            <span>@((int)shoppingCartVM.Price*shoppingCartVM.Count)</span>
+                            @{ if (shoppingCartVM.IsSpecial == true)
+                                {
+                                    <span>@((int)shoppingCartVM.SpecialPrice * shoppingCartVM.Count)</span>
+
+                                }
+                                else
+                                {
+                                    <span>@((int)shoppingCartVM.Price*shoppingCartVM.Count)</span>
+
+                                }
+                            }
                         </div>
                     </div>
                 }
@@ -406,25 +429,31 @@
             <div class="commodity_discount">
                 <div class="commodity_discount_txt">
                     <p>商品小計</p>
-                    @{int PriceSum = 0;}
-                    @foreach (var shoppingCartVM in Model)
-                    {
-                        PriceSum += (int)shoppingCartVM.Price * shoppingCartVM.Count;
+                    @{int PriceSum = 0;
+                        int OrPrice = 0;
+                        int discountPrice = 0;
+                        foreach (var shoppingCartVM in Model)
+                        {
+                            OrPrice += (int)shoppingCartVM.Price * shoppingCartVM.Count;
+                            if (shoppingCartVM.IsSpecial == true)
+                            {
+                                PriceSum += (int)shoppingCartVM.SpecialPrice * shoppingCartVM.Count;
+
+                            }
+                            else
+                            {
+                                PriceSum += (int)shoppingCartVM.Price * shoppingCartVM.Count;
+
+                            }
+                        }
+                        discountPrice = OrPrice - PriceSum;
                     }
-                    <span>@PriceSum</span>
+                    
+                    <span>@OrPrice</span>
                     <span>-</span>
-                    <p>優惠活動</p>
-                    <span>0</span>
-                    <span>-</span>
-                    <p>優惠券</p>
-                    <span>0</span>
-                    <span>+</span>
-                </div>
-                <div class="commodity_discount_txt commodity_discount_txt2">
-                    <p>訂單處理費</p>
-                    <span>
-                        0
-                    </span>
+                    <p>折扣</p>
+                    <span>@discountPrice</span>
+                    <p>=</p>
                 </div>
             </div>
             <!-- 商品總計 -->

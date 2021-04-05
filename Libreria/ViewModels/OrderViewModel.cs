@@ -140,5 +140,10 @@ namespace Libreria.ViewModels
         /// 訂單總金額
         /// </summary>
         public decimal OrderPrice { get; set; }
+
+        /// <summary>
+        /// 特價
+        /// </summary>
+        public decimal SpecialPrice { get; set; }
     }
 }

@@ -59,26 +59,34 @@
                                     @foreach (var item in Model)
                                     {
 
-                                        <li class="book-list">
-                                            <a class="cbp-vm-image" href="@Url.Action("ProductDetail", "Product", new { id = item.Id }, null)"><img src="@item.MainUrl"></a>
-                                            <h3 class="cbp-vm-title">  @Html.ActionLink(@item.Name, "ProductDetail", "Product", new { id = item.Id }, null)</h3>
-                                            <div class="cbp-vm-price">NT$ <span>@(String.Format("{0:N0}",item.UnitPrice))</span></div>
-                                            <div class="cbp-vm-details">
-                                                @item.Author
-                                            </div>
-                                            <button class="cbp-vm-icon cbp-vm-add js-add-product" onclick="AddCart(@item.Id)">加入購物車</button>
-                                            <a id="wish" class="wish-list " onclick="AddFavorite(@item.Id)">
-                                                @{if (item.isFav == true)
-                                                    {
-                                                        <i class="fas fa-heart"></i>
-                                                    }
-                                                    else
-                                                    {
-                                                        <i class="far fa-heart"></i>
-                                                    }
+                                    <li class="book-list ">
+                                        <a class="cbp-vm-image" href="@Url.Action("ProductDetail", "Product", new { id = item.Id }, null)"><img src="@item.MainUrl"></a>
+                                        <h3 class="cbp-vm-title">  @Html.ActionLink(@item.Name, "ProductDetail", "Product", new { id = item.Id }, null)</h3>
+                                        @{ if (item.IsSpecial == true)
+                                            {
+                                                <div class="cbp-vm-price " style="color:red;">特價 NT$ <span>@(String.Format("{0:N0}",item.SpecialPrice))</span></div>
+                                            }
+                                            else
+                                            {
+                                                <div class="cbp-vm-price">NT$ <span>@(String.Format("{0:N0}",item.UnitPrice))</span></div>
+                                            }
+                                        }
+                                        <div class="cbp-vm-details">
+                                            @item.Author
+                                        </div>
+                                        <button class="cbp-vm-icon cbp-vm-add js-add-product" onclick="AddCart(@item.Id)">加入購物車</button>
+                                        <a id="wish" class="wish-list " onclick="AddFavorite(@item.Id)">
+                                            @{if (item.isFav == true)
+                                                {
+                                                    <i class="fas fa-heart"></i>
                                                 }
-                                            </a>
-                                        </li>
+                                                else
+                                                {
+                                                    <i class="far fa-heart"></i>
+                                                }
+                                            }
+                                        </a>
+                                    </li>
 
                                     }
                                 </ul>
@@ -146,7 +154,7 @@
     </a>
 </div>
 
-<aside class="cart js-cart">
+<aside class="cart js-cart" style="z-index:1000;">
     <div class="cart__header">
         <h1 class="cart__title">購物車</h1>
         <p class="cart__text">
@@ -166,7 +174,17 @@
                         <img src="@item.PicUrl" alt="" id="bookImg" style="height:280px;" />
                     </div>
                     <div class="col-3" style="align-self:flex-end;text-align:end;">
-                        <p class="price" id="price">@item.Price</p>
+                        @{ if (item.IsSpecial == true)
+                            {
+                                <p class="price" id="price">@item.SpecialPrice</p>
+
+                            }
+                            else
+                            {
+                                <p class="price" id="price">@item.Price</p>
+
+                            }
+                        }
                         <p>
                             @*<button onclick="DeleteCart(@item.ProductId)"class="js-remove-product" title="Delete product">删除商品</button>*@
                             <a class="js-remove-product" id="delete" href="#" title="Delete product" onclick="DeleteCart(@item.ProductId)">
@@ -186,7 +204,17 @@
                         <img src="@item.PicUrl" alt="" id="bookImg" style="height:280px;" />
                     </div>
                     <div class="col-3" style="align-self:flex-end;text-align:end;">
-                        <p class="price" id="price">@item.Price</p>
+                        @{ if (item.IsSpecial == true)
+                            {
+                                <p class="price" id="price">@item.SpecialPrice</p>
+
+                            }
+                            else
+                            {
+                                <p class="price" id="price">@item.Price</p>
+
+                            }
+                        }
                         <p>
                             @*<button onclick="DeleteCart(@item.ProductId)"class="js-remove-product" title="Delete product">删除商品</button>*@
                             <a class="js-remove-product" id="delete" href="#" title="Delete product" onclick="DeleteCart(@item.ProductId)">
@@ -258,13 +286,25 @@
                     let cartblock = document.querySelector(".js-cart-products");
                     let cart;
                     cartList.forEach(item => {
-                        cart = productCart.content.cloneNode(true);
-                        cart.querySelector("#bookname").innerHTML = item.ProductName;
-                        cart.querySelector("#bookImg").src = item.PicUrl;
-                        cart.querySelector("#price").innerHTML = item.Price;
-                        cart.querySelector("#delete").setAttribute("onclick", `DeleteCart(${item.ProductId})`);
+                        if (item.IsSpecial == true) {
+                            cart = productCart.content.cloneNode(true);
+                            cart.querySelector("#bookname").innerHTML = item.ProductName;
+                            cart.querySelector("#bookImg").src = item.PicUrl;
+                            cart.querySelector("#price").innerHTML = item.SpecialPrice;
+                            cart.querySelector("#delete").setAttribute("onclick", `DeleteCart(${item.ProductId})`);
 
-                        cartblock.appendChild(cart);
+                            cartblock.appendChild(cart);
+                        }
+                        else {
+                            cart = productCart.content.cloneNode(true);
+                            cart.querySelector("#bookname").innerHTML = item.ProductName;
+                            cart.querySelector("#bookImg").src = item.PicUrl;
+                            cart.querySelector("#price").innerHTML = item.Price;
+                            cart.querySelector("#delete").setAttribute("onclick", `DeleteCart(${item.ProductId})`);
+
+                            cartblock.appendChild(cart);
+                        }
+                        
                     })
                 }
             });

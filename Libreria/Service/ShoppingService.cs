@@ -37,13 +37,11 @@ namespace Libreria.Service
                               Price = p.UnitPrice,
                               PicUrl = v.ImgUrl,
                               IsSpecial = p.isSpecial,
-                                SpecialPrice = 0
+                              SpecialPrice = (int)p.SpecialPrice,
+
 
                           }).ToList();
-            foreach (var item in result)
-            {
-                item.SpecialPrice = (int)(Decimal.ToDouble(item.Price) * 0.8);
-            }
+            
             return result;
         }
         /// <summary>
@@ -79,14 +77,11 @@ namespace Libreria.Service
                                   Price = p.UnitPrice,
                                   PicUrl = v.ImgUrl,
                                   IsSpecial = p.isSpecial,
+                                  SpecialPrice = (int)p.SpecialPrice,
 
-                                  SpecialPrice = 0
 
                               }).ToList();
-                foreach (var item in result)
-                {
-                    item.SpecialPrice = (int)(Decimal.ToDouble(item.Price) * 0.8);
-                }
+                
                 return result;
             }
         }
