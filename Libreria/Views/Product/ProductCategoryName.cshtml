@@ -49,7 +49,7 @@
                                 <div class="sort-box">
                                     <span col-lg-1>排序</span>
                                     <button class="col-lg-2 sort-btn-price sort-btn" data-type="price">
-                                        @Html.ActionLink("價格排序低到高", "ProductCategory", new { CategoryId = ViewBag.CategoryId, Order = 1 })
+                                        @Html.ActionLink("價格排序低到高", "ProductOrder", new { CategoryId = ViewBag.CategoryId, Order = 1 })
                                     </button>
                                     <button class="col-lg-2 sort-btn">@Html.ActionLink("上市日期排序", "ProductCategory", new { CategoryId = ViewBag.CategoryId, Order = 2 })</button>
                                 </div>
@@ -114,7 +114,7 @@
                                     @for (int i = Math.Max(nowPage - pageDisplay, 2); i <= nowPage + pageDisplay && i <= totalPage - 1; i++)
                                     {
                                         <li>
-                                            @Html.ActionLink("" + i, "ProductCategory", new { CategoryId = ViewBag.CategoryId, Order = ViewBag.Order, NowPage = i })
+                                            @Html.ActionLink("" + i, "ProductCategoryName", new { CategoryId = ViewBag.CategoryId, Order = ViewBag.Order, NowPage = i })
                                         </li>
                                     }
                                     @if (nowPage <= totalPage - pageDisplay - 2)
@@ -126,11 +126,11 @@
                                     @if (totalPage > 1)
                                     {
                                         <li>
-                                            @Html.ActionLink("" + totalPage, "ProductCategory", new { CategoryId = ViewBag.CategoryId, Order = ViewBag.Order, NowPage = totalPage })
+                                            @Html.ActionLink("" + totalPage, "ProductCategoryName", new { CategoryId = ViewBag.CategoryId, Order = ViewBag.Order, NowPage = totalPage })
                                         </li>
                                     }
                                     <li>
-                                        @Html.ActionLink("》", "ProductCategory", new { CategoryId = ViewBag.CategoryId, Order = ViewBag.Order, NowPage = Math.Min(nowPage + 1, totalPage) })
+                                        @Html.ActionLink("》", "ProductCategoryName", new { CategoryId = ViewBag.CategoryId, Order = ViewBag.Order, NowPage = Math.Min(nowPage + 1, totalPage) })
                                     </li>
                                 </ul>
 

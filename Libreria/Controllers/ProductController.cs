@@ -35,19 +35,18 @@ namespace Libreria.Controllers
         }
 
         
-        public ActionResult ProductCategory(int CategoryId, int NowPage = 1)
+        public ActionResult ProductCategory(int CategoryId, int? Order, int NowPage = 1)
         {
+            
             var allProduct = _productService.GetAll();
             var ProductInCategory = (from p in allProduct
                                      where p.CategoryId == CategoryId
                                      select p).ToList();
 
-            List<ProductViewModel> result;
+           
             ViewBag.shoppincart = _shoppingService.GetAnonymousAll();
             ViewBag.shoppingCart = _shoppingService.GetAll();
 
-           
-            
             int totalAmount = ProductInCategory.Count;
             ViewBag.TotalAmount = totalAmount;
 
@@ -57,6 +56,36 @@ namespace Libreria.Controllers
             ProductInCategory = ProductInCategory.Skip((NowPage - 1) * perPageAmount).Take(perPageAmount).ToList();
             ViewBag.NowPage = NowPage;
             ViewBag.TotalPage = totalPage;
+            ViewBag.CategoryId = CategoryId;
+            ViewBag.Order = Order;
+
+            return View(ProductInCategory);
+
+        }
+
+        public ActionResult ProductCategoryName(string CategoryName, int? Order, int NowPage = 1)
+        {
+
+            var allProduct = _productService.GetAll();
+            var ProductInCategory = (from p in allProduct
+                                     where p.CategoryName == CategoryName
+                                     select p).ToList();
+
+
+            ViewBag.shoppincart = _shoppingService.GetAnonymousAll();
+            ViewBag.shoppingCart = _shoppingService.GetAll();
+
+            int totalAmount = ProductInCategory.Count;
+            ViewBag.TotalAmount = totalAmount;
+
+            //分頁
+            int perPageAmount = 8;
+            int totalPage = (int)Math.Ceiling((double)totalAmount / perPageAmount);
+            ProductInCategory = ProductInCategory.Skip((NowPage - 1) * perPageAmount).Take(perPageAmount).ToList();
+            ViewBag.NowPage = NowPage;
+            ViewBag.TotalPage = totalPage;
+            ViewBag.CategoryName = CategoryName;
+            ViewBag.Order = Order;
 
             return View(ProductInCategory);
 

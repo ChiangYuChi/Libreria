@@ -966,6 +966,7 @@
     <Content Include="Views\Shared\DisplayTemplates\CanonicalHelperModel.cshtml" />
     <Content Include="Views\MemberLogin\ResetMsgPartial.cshtml" />
     <Content Include="Views\Product\ProductOrder.cshtml" />
+    <Content Include="Views\Product\ProductCategoryName.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Code\" />
