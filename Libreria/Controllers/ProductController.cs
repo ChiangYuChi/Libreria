@@ -35,17 +35,6 @@ namespace Libreria.Controllers
         }
 
         
-
-
-        public ActionResult Find(int CategoryId)
-        {
-            var allProduct = _productService.GetAll();
-            var ProductInCategory = (from p in allProduct
-                                     where p.CategoryId==CategoryId
-                                     select p).ToList();
-            return View(ProductInCategory);
-        }
-
         public ActionResult ProductOrder(int CategoryId, int Order, int NowPage = 1)
         {
             var allProduct = _productService.GetAll();
@@ -140,9 +129,6 @@ namespace Libreria.Controllers
                                      where p.CategoryId == CategoryId
                                      select p).ToList();
 
-
-
-
             string CategoryName = "";
             if (CategoryId == 1)
             {
@@ -206,10 +192,7 @@ namespace Libreria.Controllers
             //ViewBag.Order = Order;
 
             //搜尋
-            result = result.Where(product => product.Name.Contains(search)).ToList();
-
-
-
+            //result = result.Where(product => product.Name.Contains(search)).ToList();
 
             //商品總數
             int totalAmount = ProductInCategory.Count;

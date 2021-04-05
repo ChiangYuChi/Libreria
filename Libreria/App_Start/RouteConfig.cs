@@ -18,20 +18,11 @@ namespace Libreria
               defaults: new { controller = "Product", action = "ProductCategory", CategoryId = UrlParameter.Optional }
           );
 
-            routes.MapRoute(
+         routes.MapRoute(
              name: "FindOrder",
              url: "Product/Order/{Order}",
              defaults: new { controller = "Product", action= "ProductOrder",Order = UrlParameter.Optional }
          );
-
-
-
-            //   routes.MapRoute(
-            //    name: "FindCategoryOrder",
-            //    url: "Product/Product/{Order}",
-            //    defaults: new { controller = "Product", action = "ProductCategory", Order = UrlParameter.Optional }
-            //);
-
 
 
             routes.MapRoute(
