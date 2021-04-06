@@ -60,7 +60,8 @@ namespace Libreria.Service
                         StartDate = model.StartDate,
                         EndDate = model.EndDate,
                         Price = ((model.EndDate - model.StartDate).Days + 1) * 1500,
-                        ExCustomerId = exhibitionCustomer.ExCustomerId
+                        ExCustomerId = exhibitionCustomer.ExCustomerId,
+                        isCanceled = true
                     };
                     _DbRepository.Create(exhibitionOrder);
 

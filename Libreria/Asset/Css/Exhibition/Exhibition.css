@@ -96,15 +96,16 @@ p {
 }
 
 .card-title {
-    font-size: 1.7rem;
+    font-size: 1.4rem;
     overflow: hidden;
+    font-weight:900;
     text-overflow: ellipsis;
     display: -webkit-box;
     -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
 }
 
-.card-body p{
+.card-body h3+p {
     text-align: center;
 }
 .card-text {
@@ -113,6 +114,7 @@ p {
     display: -webkit-box;
     -webkit-line-clamp: 5;
     -webkit-box-orient: vertical;
+    text-align:justify;
 }
 
 hr{
@@ -125,6 +127,7 @@ hr{
     width: 100%;
     font-size: 40px;
     padding: 20px;
+    font-family: 'Noto Serif TC', serif;
 }
 
 .ex-path ul {
@@ -133,8 +136,9 @@ hr{
 }
 
 .ex-path a {
-    color: black;
+    color: #b0b0b0;
     text-decoration: none;
+    font-size:14px;
 }
 
 .ex-path li:hover a {
@@ -146,7 +150,9 @@ hr{
     font-family: "Font Awesome 5 Free";
     font-weight: 900;
     content: '\f054';
-    padding: 0 5px;
+    padding: 15px;
+    font-size: 10px;
+    color: #b0b0b0;
 }
 
 .main-Exhibition{
@@ -172,8 +178,5 @@ hr{
 
 .intro{
     margin-bottom:20px;
-}
-
-@media screen and (max-width:){
-
+    text-align:justify;
 }
