@@ -70,30 +70,30 @@
     padding-bottom: 15px;
 }
 
-    .space__content--path ul {
-        display: flex;
-        padding:0;
-    }
+.space__content--path ul {
+    display: flex;
+    padding:0;
+}
 
-    .space__content--path a {
-        color: #b0b0b0;
-        text-decoration: none;
-        font-size: 14px;
-    }
+.space__content--path a {
+    color: #b0b0b0;
+    text-decoration: none;
+    font-size: 14px;
+}
 
-    .space__content--path li:hover a {
-        color: rgba(138, 105, 38, 1);
-        transition: .5s;
-    }
+.space__content--path li:hover a {
+    color: rgba(138, 105, 38, 1);
+    transition: .5s;
+}
 
-    .space__content--path li + li::before {
-        font-family: "Font Awesome 5 Free";
-        font-weight: 900;
-        content: '\f054';
-        padding: 15px;
-        font-size: 10px;
-        color: #b0b0b0;
-    }
+.space__content--path li + li::before {
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    content: '\f054';
+    padding: 15px;
+    font-size: 10px;
+    color: #b0b0b0;
+}
 
 .spaceLease .place-info--item {
     display: flex;
@@ -111,14 +111,14 @@
     padding-bottom: 10px;
 }
 
-    .spaceLease .service--item li {
-        padding-bottom: 10px;
-    }
+.spaceLease .service--item li {
+    padding-bottom: 10px;
+}
 
-        .spaceLease .service--item li::before {
-            content: url('../../Image/Rental/check.svg');
-            padding-right: 10px;
-        }
+.spaceLease .service--item li::before {
+    content: url('../../Image/Rental/check.svg');
+    padding-right: 10px;
+}
 
 .spaceLease .service--modal .btn {
     border-radius: 20px;
@@ -130,21 +130,21 @@
     border-color: black;
 }
 
-    .spaceLease .service--modal .btn-primary:hover {
-        background-color: rgba(138, 105, 38, 1);
-        border-color: rgba(138, 105, 38, 1);
-        color: white;
-    }
+.spaceLease .service--modal .btn-primary:hover {
+    background-color: rgba(138, 105, 38, 1);
+    border-color: rgba(138, 105, 38, 1);
+    color: white;
+}
 
-    .spaceLease .service--modal .btn-primary:focus {
-        box-shadow: none;
-    }
+.spaceLease .service--modal .btn-primary:focus {
+    box-shadow: none;
+}
 
-    .spaceLease .service--modal .btn-primary:active:hover {
-        background-color: rgb(119, 90, 31);
-        border-color: rgb(119, 90, 31);
-        box-shadow: 0 0 0 0.2rem rgba(119, 90, 31, 0.5) !important;
-    }
+.spaceLease .service--modal .btn-primary:active:hover {
+    background-color: rgb(119, 90, 31);
+    border-color: rgb(119, 90, 31);
+    box-shadow: 0 0 0 0.2rem rgba(119, 90, 31, 0.5) !important;
+}
 
 .spaceLease .modal-dialog-scrollable {
     display: block;
@@ -153,9 +153,9 @@
     padding: 20px;
 }
 
-    .spaceLease .modal-dialog-scrollable li {
-        padding-bottom: 10px;
-    }
+.spaceLease .modal-dialog-scrollable li {
+    padding-bottom: 10px;
+}
 
 .spaceLease .modal-header {
     border-bottom: none;
@@ -166,10 +166,10 @@
     padding-bottom: 10px;
 }
 
-    .provided-device li + li::before {
-        content: url('../../Image/Rental/check.svg');
-        padding-right: 10px;
-    }
+.provided-device li + li::before {
+    content: url('../../Image/Rental/check.svg');
+    padding-right: 10px;
+}
 
 .not-provided-device {
     padding-top: 20px;
@@ -180,9 +180,9 @@
     justify-content: space-between;
 }
 
-    .space__ratio--item + .space__ratio--item {
-        padding-top: 10px;
-    }
+.space__ratio--item + .space__ratio--item {
+    padding-top: 10px;
+}
 
 .ratio__bar {
     display: flex;
@@ -197,20 +197,20 @@
     border-radius: 20px;
 }
 
-    .ratio__bar--progress span {
-        display: block;
-        background-color: rgba(138, 105, 38, 1);
-        height: 10px;
-        border-radius: 20px;
-    }
+.ratio__bar--progress span {
+    display: block;
+    background-color: rgba(138, 105, 38, 1);
+    height: 10px;
+    border-radius: 20px;
+}
 
-    .ratio__bar--progress .exhibition {
-        width: 78%;
-    }
+.ratio__bar--progress .exhibition {
+    width: 78%;
+}
 
-    .ratio__bar--progress .meeting {
-        width: 20%;
-    }
+.ratio__bar--progress .meeting {
+    width: 20%;
+}
 
 .calendar__title {
     display: flex;
@@ -219,31 +219,31 @@
     padding-bottom: 15px;
 }
 
-    .calendar__title button {
-        width: 30px;
-        height: 30px;
-        padding: 0;
-        border: none;
-        border-radius: 50%;
-        background-color: white;
-        position: relative;
-    }
+.calendar__title button {
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+    background-color: white;
+    position: relative;
+}
 
-    .calendar__title .back:hover {
-        left: -3px;
-        transition: .5s;
-        cursor: pointer;
-    }
+.calendar__title .back:hover {
+    left: -3px;
+    transition: .5s;
+    cursor: pointer;
+}
 
-    .calendar__title .next:hover {
-        right: -3px;
-        transition: .5s;
-        cursor: pointer;
-    }
+.calendar__title .next:hover {
+    right: -3px;
+    transition: .5s;
+    cursor: pointer;
+}
 
-    .calendar__title p {
-        font-size: 20px;
-    }
+.calendar__title p {
+    font-size: 20px;
+}
 
 .space__calendar--item {
     margin: auto;
@@ -450,8 +450,6 @@
     text-align: center;
     color: white;
 }
-
-
 
 
 @media screen and (min-width:768px) {
