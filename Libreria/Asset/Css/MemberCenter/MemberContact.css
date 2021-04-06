@@ -41,7 +41,7 @@ p {
 }
 
 .customer-service-block {
-    font-size: 20px;
+    font-size: 24px;
     font-weight: bold;
 }
 
@@ -54,24 +54,22 @@ p {
 }
 
 .title-block {
-    font-size: 20px;
+    font-size: 22px;
     font-weight: bold;
 }
 
 .information .title {
     font-weight: bold;
+    font-size: 20px;
 }
 
 .information .context {
     color: #9b9b9b;
+    font-size:14px;
 }
 
 .information .blocks {
     margin-left: 15px;
-}
-
-.information .title {
-    font-size: 18px;
 }
 
 .service-phone-context .context {
@@ -139,6 +137,7 @@ p {
 }
 
 .contact-block .txt {
+    font-size: 14px;
     margin-bottom: 10px;
 }
 
@@ -280,4 +279,12 @@ p {
 .contact-block div:not(.telephone) input[type=text],
 .contact-block textarea {
     min-width: 65%;
+}
+
+.file-discription{
+    font-size: 14px;
+}
+
+.contact-container {
+    margin-left: 30px;
 }
