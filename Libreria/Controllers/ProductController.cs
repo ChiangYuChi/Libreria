@@ -49,7 +49,30 @@ namespace Libreria.Controllers
 
             int totalAmount = ProductInCategory.Count;
             ViewBag.TotalAmount = totalAmount;
+            if (CategoryId != null)
+            {
 
+                ProductInCategory = _productService.GetByCategory(Convert.ToInt32(CategoryId));
+
+                ViewBag.CategoryId = CategoryId;
+
+
+
+            }
+            else
+            {
+                ProductInCategory = _productService.GetAll();
+            }
+
+            if (Order == 1)
+            {
+                ProductInCategory = ProductInCategory.OrderBy(x => x.UnitPrice).ToList();
+            }
+            else if (Order == 2)
+            {
+                ProductInCategory = ProductInCategory.OrderBy(x => x.CreateTime).ToList();
+            }
+            ViewBag.Order = Order;
             //分頁
             int perPageAmount = 8;
             int totalPage = (int)Math.Ceiling((double)totalAmount / perPageAmount);
@@ -77,6 +100,7 @@ namespace Libreria.Controllers
 
             int totalAmount = ProductInCategory.Count;
             ViewBag.TotalAmount = totalAmount;
+           
 
             //分頁
             int perPageAmount = 8;
