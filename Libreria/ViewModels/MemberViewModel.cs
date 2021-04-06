@@ -87,12 +87,11 @@ namespace Libreria.ViewModels
         /// <summary>
         /// 生日
         /// </summary>
-        [Required]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         [Display(Name = "生日")]
 
-        public DateTime birthday { get; set; }
+        public DateTime? birthday { get; set; }
         /// <summary>
         /// 性別
         /// </summary>
