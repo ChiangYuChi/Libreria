@@ -44,7 +44,7 @@
                     @Html.HiddenFor(model => model.memberPassword, new { @class = "form-control", @Value = item.memberPassword })
 
                     <div class="col-12">
-                        @if (Session["ChangeMemberName"].ToString()=="true")
+                        @*@if (Session["ChangeMemberName"].ToString()=="true")
                         {<div class="form-group row">
                                 @Html.LabelFor(model => model.memberName, htmlAttributes: new { @class = "form-subtitle col-3 col-xl-1 col-lg-2 text-right text-nowrap" })
                                 <div class="form-content col-xl-4 col-lg-5 col-9">
@@ -56,7 +56,7 @@
                             </div>
                         }
                         else
-                        {
+                        {*@
                             <div class="form-group row">
                                 @Html.LabelFor(model => model.memberName, htmlAttributes: new { @class = "form-subtitle col-3 col-xl-1 col-lg-2 text-right text-nowrap" })
                                 <div class="form-content col-xl-4 col-lg-5 col-9">
@@ -67,7 +67,7 @@
                                     </p>
                                 </div>
                             </div>
-                        };
+                        @*};*@
 
 
 

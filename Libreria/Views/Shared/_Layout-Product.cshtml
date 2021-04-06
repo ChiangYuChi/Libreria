@@ -4,8 +4,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - 我的 ASP.NET 應用程式</title>
-    <link href="~/Asset/Css/Layout/Nav_bar.css" rel="stylesheet" />
+    <title>Libreria</title>
     <link href="~/Asset/Css/Layout/Nav_bar.css" rel="stylesheet" />
     <link href="~/Asset/Css/Layout/Footer.css" rel="stylesheet" />
 
@@ -36,9 +35,9 @@
 </head>
 <body class="p-0">
     <div class="search_form collapse" id="search_from">
-        <form class="form-inline">
+        <form class="form-inline" action="~/Product/ProductCategory">
             <div class="input-group w-100">
-                <input type="search" placeholder="輸入您想搜尋的" class="form-control">
+                <input type="search" name="search" action="~/Product/ProductCategory" placeholder="輸入您想搜尋的" class="form-control">
                 <class class="input-group-append">
                     <button type="submit" class="btn btn-outline-secondary"><i class="fas fa-search"></i></button>
                     <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split"

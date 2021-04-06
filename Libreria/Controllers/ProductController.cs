@@ -31,7 +31,7 @@ namespace Libreria.Controllers
 
         public ActionResult Index()
         {
-            return View();   
+            return View();
         }
 
         public ActionResult FindCategory(string CategoryName)
@@ -62,7 +62,7 @@ namespace Libreria.Controllers
             return View(ProductInCategory);
         }
 
-        public ActionResult ProductCategory(int? CategoryId, int? Order, int NowPage = 1)
+        public ActionResult ProductCategory(int? CategoryId, int? Order, int NowPage = 1, string search="")
         {
             string CategoryName = "";
             if (CategoryId == 1)
@@ -126,6 +126,12 @@ namespace Libreria.Controllers
             }
             ViewBag.Order = Order;
 
+            //搜尋
+            result = result.Where(product => product.Name.Contains(search)).ToList();
+
+
+
+
             //商品總數
             int totalAmount = result.Count;
             ViewBag.TotalAmount = totalAmount;
@@ -138,7 +144,6 @@ namespace Libreria.Controllers
             ViewBag.TotalPage = totalPage;
 
             return View(result);
-
         }
 
         public ActionResult ProductDetail(int id)

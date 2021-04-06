@@ -19,6 +19,47 @@ namespace Libreria.Service
             _DbRepository = new LibreriaRepository();
         }
 
+
+
+
+        public OperationResult Edit(ProductViewModel productVM)
+        {
+            OperationResult result = new OperationResult();
+            try
+            {
+                Product product = _DbRepository.GetAll<Product>().FirstOrDefault(inDbProduct => inDbProduct.ProductId == productVM.Id);
+
+                product.ProductId = productVM.Id;
+                product.ProductName = productVM.Name;
+                product.UnitPrice = productVM.UnitPrice;
+                //product.ISBN = _DbRepository.GetAll<Product>().FirstOrDefault(inDbProduct => productVM.Id == inDbProduct.ProductId).ISBN;
+                //product.SupplierId = _DbRepository.GetAll<Product>().FirstOrDefault(inDbProduct => productVM.Id == inDbProduct.ProductId).SupplierId;
+                product.Author = productVM.Author;
+                product.TotalSales = product.TotalSales + product.Inventory - productVM.Count;
+                product.Inventory = productVM.Count;
+                product.CategoryId = productVM.CategoryId;
+                product.PublishDate = productVM.PublishDate;
+                //product.Sort = _DbRepository.GetAll<Product>().FirstOrDefault(inDbProduct => productVM.Id == inDbProduct.ProductId).Sort;
+                product.CreateTime = productVM.CreateTime;
+                product.UpdateTime = DateTime.Now;
+                product.Introduction = productVM.Introduction;
+                //product.isSpecial = _DbRepository.GetAll<Product>().FirstOrDefault(inDbProduct => productVM.Id == inDbProduct.ProductId).isSpecial;
+
+                _DbRepository.Update(product);
+
+                result.IsSuccessful = true;
+            }
+            catch(Exception ex)
+            {
+                result.IsSuccessful = false;
+                result.exception = ex;
+            }
+
+            return result;
+        }
+
+
+
         public List<ProductViewModel> GetAll()
         {
             var result = (from p in _DbRepository.GetAll<Product>()
