@@ -4,6 +4,7 @@ using Libreria.Repository;
 using Libreria.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Web;
 
@@ -54,7 +55,7 @@ namespace Libreria.Service
                 }
 
             }
-            catch (Exception ex)
+            catch (DbEntityValidationException ex)
             {
                 ex.ToString();
                 result.IsSuccessful = false;
