@@ -65,7 +65,7 @@
                                 else
                                 {*@
                             <div class="form-group row">
-                                @Html.LabelFor(model => model.memberName, htmlAttributes: new { @class = "form-subtitle col-3 col-xl-1 col-lg-2 text-right ml-5 text-nowrap" })
+                                @Html.LabelFor(model => model.memberName, htmlAttributes: new { @class = "form-subtitle col-3 col-xl-1 col-lg-2 text-right ml-5 mr-5 text-nowrap" })
                                 <div class="form-content col-xl-4 col-lg-5 col-9">
                                     <p class="card-number">
                                         @Html.HiddenFor(model => model.memberName, new { @class = "form-control", @Value = item.memberName })
@@ -81,7 +81,7 @@
                         </div>
                         <div class="col-12">
                             <div class="form-group row">
-                                @Html.LabelFor(model => model.memberUserName, htmlAttributes: new { @class = "form-subtitle col-3 col-xl-1 col-lg-2 text-right ml-5 text-nowrap" })
+                                @Html.LabelFor(model => model.memberUserName, htmlAttributes: new { @class = "form-subtitle col-3 col-xl-1 col-lg-2 text-right ml-5 mr-5 text-nowrap" })
                                 <div class="form-content col-xl-4 col-lg-5 col-9">
                                     <p class="name">
                                         @Html.ValidationMessage("memberUserName", new { @class = "text-danger" })
@@ -92,18 +92,18 @@
                         </div>
                         <div class="col-12">
                             <div class="form-group row">
-                                @Html.LabelFor(model => model.birthday, htmlAttributes: new { @class = "form-subtitle col-3 col-xl-1 col-lg-2 text-right ml-5 text-nowrap" })
+                                @Html.LabelFor(model => model.birthday, htmlAttributes: new { @class = "form-subtitle col-3 col-xl-1 col-lg-2 text-right ml-5 mr-5 text-nowrap" })
                                 <div class="form-content col-xl-4 col-lg-5 col-9">
                                     <p class="birthday">
                                         @Html.ValidationMessageFor(model => model.birthday, "", new { @class = "text-danger" })
-                                        @Html.TextBoxFor(model => model.birthday, "{0:yyyy-MM-dd}", new { @class = "form-control", @Value = item.birthday.ToString("yyyy-MM-dd"), Type = "date" })
+                                        @Html.TextBoxFor(model => model.birthday, "{0:yyyy-MM-dd}", new { @class = "form-control", @Value = item.birthday.GetValueOrDefault().ToString("yyyy-MM-dd"), Type = "date" })
                                     </p>
                                 </div>
                             </div>
                         </div>
                         <div class="col-12">
                             <div class="form-group row">
-                                @Html.LabelFor(model => model.IDnumber, htmlAttributes: new { @class = "form-subtitle col-3 col-xl-1 col-lg-2 ml-5 text-right text-nowrap" })
+                                @Html.LabelFor(model => model.IDnumber, htmlAttributes: new { @class = "form-subtitle col-3 col-xl-1 col-lg-2 ml-5 mr-5 text-right text-nowrap" })
                                 <div class="form-content col-xl-4 col-lg-5 col-9">
                                     <p class="Id-number">
                                         @Html.ValidationMessageFor(model => model.IDnumber, "", new { @class = "text-danger" })
@@ -114,7 +114,7 @@
                         </div>
                         <div class="col-12">
                             <div class="form-group row">
-                                @Html.LabelFor(model => model.Gender, htmlAttributes: new { @class = "form-subtitle col-3 col-xl-1 col-lg-2 ml-5 text-right text-nowrap" })
+                                @Html.LabelFor(model => model.Gender, htmlAttributes: new { @class = "form-subtitle col-3 col-xl-1 col-lg-2 ml-5 mr-5 text-right text-nowrap" })
 
                                 <div class="form-content col-xl-4 col-lg-5 col-9">
                                     <div class="gender">
@@ -128,7 +128,7 @@
                         </div>
                         <div class="col-12">
                             <div class="form-group row">
-                                @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "form-subtitle col-3 col-xl-1 col-lg-2 ml-5 text-right text-nowrap" })
+                                @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "form-subtitle col-3 col-xl-1 col-lg-2 ml-5 mr-5 text-right text-nowrap" })
                                 <div class="form-content col-xl-4 col-lg-5 col-9">
                                     @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
                                     @Html.TextBoxFor(model => model.Email, new { @class = "form-control", @Value = item.Email })
@@ -137,7 +137,7 @@
                         </div>
                         <div class="col-12">
                             <div class="form-group row">
-                                @Html.LabelFor(model => model.MobileNumber, htmlAttributes: new { @class = "form-subtitle col-3 col-xl-1 col-lg-2 ml-5 text-right text-nowrap" })
+                                @Html.LabelFor(model => model.MobileNumber, htmlAttributes: new { @class = "form-subtitle col-3 col-xl-1 col-lg-2 ml-5 mr-5 text-right text-nowrap" })
                                 <div class="form-content col-xl-4 col-lg-5 col-9">
                                     <p class="mobilephone-number">
                                         <div name="mobilephone-area" id="mobilephone-area">
@@ -150,7 +150,7 @@
                         </div>
                         <div class="col-12">
                             <div class="form-group row">
-                                @Html.LabelFor(model => model.HomeNumber, htmlAttributes: new { @class = "form-subtitle col-3 col-xl-1 col-lg-2 ml-5 text-right text-nowrap" })
+                                @Html.LabelFor(model => model.HomeNumber, htmlAttributes: new { @class = "form-subtitle col-3 col-xl-1 col-lg-2 ml-5 mr-5 text-right text-nowrap" })
                                 <div class="form-content col-xl-4 col-lg-5 col-9 ">
                                     <p class="Homenumber-number">
                                         <div class="form-row">
@@ -163,8 +163,8 @@
                         </div>
                         <div class="col-12">
                             <div class="form-group row">
-                                @Html.LabelFor(model => model.Address, htmlAttributes: new { @class = "form-subtitle col-3 col-xl-1 col-lg-2 ml-5 text-right text-nowrap" })
-                                <div class="recipient_profile_address form-content col-xl-9 col-lg-9 col-9 ">
+                                @Html.LabelFor(model => model.Address, htmlAttributes: new { @class = "form-subtitle col-3 col-xl-1 col-lg-2 ml-5 mr-5 text-right text-nowrap" })
+                                <div class="recipient_profile_address form-content col-xl-8 col-lg-8 col-8 ">
                                     <div class="form-row">
                                         @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
                                         @Html.DropDownListFor(model => model.City, new List<SelectListItem>{
@@ -199,7 +199,7 @@
                                     </div>
                                 </div><div class="col-12">
                                     <div class="form-group row">
-                                        <div class="form-subtitle col-3 col-xl-1 col-lg-2 text-right text-nowrap"></div>
+                                        <div class="form-subtitle col-3 col-xl-1 col-lg-2 mr-5 text-right text-nowrap"></div>
                                         <div class="form-content col-xl-4 col-lg-5 col-9 ml-5">
                                             <p class="address-detail">
                                                 <div class="form-row">
