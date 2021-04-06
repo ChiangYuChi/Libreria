@@ -101,28 +101,32 @@ namespace Libreria.Controllers
             List<OrderViewModel> result = new List<OrderViewModel>();
             if (Inquire == "history")
             {
+                //歷史訂單
                 result = _orderService.GetBymemberId(UserMemberId);
             }
             else if (Inquire == "oneMonth")
             {
+                //一個月內訂單
                 result = _orderService.GetBymemberId(UserMemberId, TimeSpan.FromDays(30));
             }
             else if (Inquire == "sixMonths")
             {
+                //六個月內訂單
                 result = _orderService.GetBymemberId(UserMemberId, TimeSpan.FromDays(30 * 6));
             }
             else if (Inquire == "notShipped")
             {
-                // 未完成
+                //未出貨
                 result = _orderService.GetByProgress(UserMemberId, "準備出貨中");
             }
             else if (Inquire == "return")
             {
-                //未完成
+                //退換貨訂單
                 result = new List<OrderViewModel>();
             }
             else if (Inquire == "transactionId")
             {
+                //訂單編號查詢
                 result = _orderService.GetByOrderId(TransactionId);
             }
             else

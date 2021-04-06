@@ -1,4 +1,6 @@
-﻿body {
+﻿@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&family=Noto+Serif+TC:wght@500;600&display=swap');
+
+body {
     font-family: 'Montserrat', sans-serif;
     font-family: 'Open Sans', sans-serif;
     font-size: 16px;
@@ -21,7 +23,12 @@
 .contact-service {
     font-size: 30px;
     font-weight: bold;
+    
 }
+
+    .contact-service p {
+        font-family: 'Noto Serif TC', serif;
+    }
 
 .block {
     margin: 20px;
@@ -63,6 +70,10 @@ p {
 
 .information .blocks {
     margin-left: 15px;
+}
+
+.information .title {
+    font-size: 18px;
 }
 
 .service-phone-context .context {
@@ -263,4 +274,12 @@ p {
 
 .Answer-block summary {
     margin-bottom: 20px;
+}
+
+
+
+
+.contact-block div:not(.telephone) input[type=text],
+.contact-block textarea {
+    min-width: 65%;
 }
