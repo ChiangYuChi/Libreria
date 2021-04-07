@@ -35,9 +35,13 @@ namespace Libreria.Service
                               ProductName = p.ProductName,
                               Count = s.Count,
                               Price = p.UnitPrice,
-                              PicUrl = v.ImgUrl
-                          }).ToList();
+                              PicUrl = v.ImgUrl,
+                              IsSpecial = p.isSpecial,
+                              SpecialPrice = (int)p.SpecialPrice,
 
+
+                          }).ToList();
+            
             return result;
         }
         /// <summary>
@@ -71,9 +75,13 @@ namespace Libreria.Service
                                   ProductName = p.ProductName,
                                   Count = s.Count,
                                   Price = p.UnitPrice,
-                                  PicUrl = v.ImgUrl
-                              }).ToList();
+                                  PicUrl = v.ImgUrl,
+                                  IsSpecial = p.isSpecial,
+                                  SpecialPrice = (int)p.SpecialPrice,
 
+
+                              }).ToList();
+                
                 return result;
             }
         }

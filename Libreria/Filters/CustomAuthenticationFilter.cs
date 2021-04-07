@@ -12,20 +12,19 @@ namespace Libreria.Filters
     /// <summary>
     /// 會員驗證
     /// </summary>
-    public class CustomAuthenticationFilter:ActionFilterAttribute, IAuthenticationFilter
+    public class CustomAuthenticationFilter : ActionFilterAttribute, IAuthenticationFilter
     {
         public void OnAuthentication(AuthenticationContext filterContext)
         {
-            if (string.IsNullOrEmpty(Convert.ToString(filterContext.HttpContext.Session["MemberName"])))
+            if (string.IsNullOrEmpty(Convert.ToString(filterContext.HttpContext.Session["MemberID"])))
             {
                 filterContext.Result = new HttpUnauthorizedResult();
             }
-            //
-            //else if (string.IsNullOrEmpty())
+
         }
         public void OnAuthenticationChallenge(AuthenticationChallengeContext filterContext)
         {
-            if(filterContext.Result == null || filterContext.Result is HttpUnauthorizedResult)
+            if (filterContext.Result == null || filterContext.Result is HttpUnauthorizedResult)
             {
                 filterContext.Result = new RedirectToRouteResult(
                     new RouteValueDictionary
@@ -34,10 +33,6 @@ namespace Libreria.Filters
                         {"action","Index"}
                     }
                     );
-                
-                //string controllerName = filterContext.RouteData.Values["controller"].ToString();
-                //string actionName = filterContext.RouteData.Values["action"].ToString();
-                //var a = HttpContext.Current.Session["MemberID"]; 測試用
             }
 
         }

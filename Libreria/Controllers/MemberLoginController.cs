@@ -17,15 +17,18 @@ using System.Collections.Specialized;
 namespace Libreria.Controllers
 {
     public class MemberLoginController : Controller
-    {     
-        public readonly MemberLoginService _memberLoginService;
-        public readonly ShoppingService _shoppingService;
-        public readonly MemberService _memberService;
+    {
+        private readonly MemberLoginService _memberLoginService;
+        private readonly ShoppingService _shoppingService;
+        private readonly MemberService _memberService;
+        private readonly LineLoginService _lineLoginService;
         public MemberLoginController()
         {
             _memberLoginService = new MemberLoginService();
             _shoppingService = new ShoppingService();
             _memberService = new MemberService();
+            _lineLoginService = new LineLoginService();
+
         }
         // GET: MemberLogin
         [HttpGet]
@@ -39,7 +42,8 @@ namespace Libreria.Controllers
                 ViewBag.memberPassword = memberLogin["MemberPassword"];
             }
 
-            return View();
+            MemberLoginViewModel result = new MemberLoginViewModel();
+            return View(result);
         }
         
         [HttpPost]
@@ -81,6 +85,7 @@ namespace Libreria.Controllers
             Session["MemberName"] = string.Empty;
             Session["MemberPassword"] = string.Empty;
             Session["MemberID"] = null;
+            Session["ChangeMemberName"] = string.Empty;
             return RedirectToAction("Index", "Home");
         }
         public ActionResult ResetEmail()
@@ -91,7 +96,7 @@ namespace Libreria.Controllers
         [HttpPost]
         public string SendResetEmail(string Email)
         {
-            var callbackUrl = Url.Action("ResetPassword", "MemberLogin");
+            var callbackUrl = Url.Action("ResetPassword", "MemberLogin", new {}, protocol:Request.Url.Scheme);
             var result = _memberService.SendEmail(Email, callbackUrl);
 
             if (result.IsSuccessful)
@@ -111,9 +116,9 @@ namespace Libreria.Controllers
         }
 
         [HttpPost]
-        public string ConfirmResetPassword(string username, string password)
+        public string ConfirmResetPassword(ResetPasswordViewModel resetVM)
         {
-            var result = _memberService.UpdatePassword(username, password);
+            var result = _memberService.UpdatePassword(resetVM.username, resetVM.password);
 
             if (result.IsSuccessful)
             {
@@ -130,7 +135,8 @@ namespace Libreria.Controllers
         {
             string response_type = "code";
             string client_id = "1655754480";
-            string redirect_uri = HttpUtility.UrlEncode("https://localhost:44330/MemberLogin/Callback");
+            //string redirect_uri = HttpUtility.UrlEncode("https://localhost:44330/MemberLogin/Callback");
+            string redirect_uri = HttpUtility.UrlEncode("https://weblibreria.azurewebsites.net/MemberLogin/Callback");
             string state = "statePassword";
             string LineLoginUrl = string.Format("https://access.line.me/oauth2/v2.1/authorize?response_type={0}&client_id={1}&redirect_uri={2}&state={3}&scope=openid%20profile%20email&nonce=09876xyz",
                 response_type,
@@ -157,7 +163,8 @@ namespace Libreria.Controllers
                     string ApiUrl_Token = "https://api.line.me/oauth2/v2.1/token";
                     nvc.Add("grant_type", "authorization_code");
                     nvc.Add("code", code);
-                    nvc.Add("redirect_uri", "https://localhost:44330/MemberLogin/Callback");
+                    //nvc.Add("redirect_uri", "https://localhost:44330/MemberLogin/Callback");
+                    nvc.Add("redirect_uri", "https://weblibreria.azurewebsites.net/MemberLogin/Callback");
                     nvc.Add("client_id", "1655754480");
                     nvc.Add("client_secret", "01688ad326564fb2a0b8004c7c7fc94c");
                     string JsonStr = Encoding.UTF8.GetString(wc.UploadValues(ApiUrl_Token, "POST", nvc));
@@ -174,11 +181,36 @@ namespace Libreria.Controllers
                         user.email = jst.Payload["email"].ToString();
                     }
 
-                    return RedirectToAction("MemberLogin", "MemberCenter");
+                    //將Token解析回的使用者訊息做出一個LineLoginViewModel
+                    LineLoginViewModel model = new LineLoginViewModel()
+                    {
+                        LineUserID = user.userId,
+                        diaplayName = user.displayName,
+                        Email = user.email
+                    };
+
+                    var result = _lineLoginService.CreateOrLoginLineMember(model, ModelState.IsValid);
+                    if (ModelState.IsValid)
+                    {
+                        if (result.IsSuccessful==true)
+                        {
+                            _shoppingService.CombineCarts();
+                            return RedirectToAction("MemberLogin", "MemberCenter");
+                        }
+                        else
+                        {
+                            ModelState.AddModelError("", "帳號或密碼輸入錯誤");
+                            return View(model);
+                        }
+                    }
+                    else
+                    {
+                        return View(model);
+                    }
                 }
                 catch (Exception ex)
                 {
-                    string msg = ex.Message;
+                    ex.ToString();
                     throw;
                 }
             }

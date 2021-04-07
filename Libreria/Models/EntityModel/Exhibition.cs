@@ -37,5 +37,7 @@ namespace Libreria.Models.EntityModel
         public string ExName { get; set; }
 
         public bool ReviewState { get; set; }
+
+        public bool isDeleted { get; set; }
     }
 }

@@ -43,6 +43,8 @@ namespace Libreria.Service
                         HttpContext.Current.Session["MemberName"] = member.memberName;
                         HttpContext.Current.Session["MemberPassword"] = member.memberPassword;
                         HttpContext.Current.Session["MemberID"] = member.memberId;
+                        HttpContext.Current.Session["memberUserName"] = member.memberUserName;
+                        HttpContext.Current.Session["ChangeMemberName"] = member.Change;
 
                         HttpCookie cookie = new HttpCookie("MemberLogin");
                         if (model.Remember == true)
@@ -58,10 +60,7 @@ namespace Libreria.Service
                         {
                             cookie.Expires = DateTime.Now.AddDays(-1);
                             HttpContext.Current.Response.Cookies.Add(cookie);
-                        }
-                        
-                        //var CookiesessionID = HttpContext.Request.Cookies["SesssionID"];
-
+                        }                        
                      
                         return member;
                     }

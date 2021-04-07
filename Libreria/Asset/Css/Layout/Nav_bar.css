@@ -1,5 +1,11 @@
-
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;600&display=swap');
 body {
+    font-family: "Open Sans", sans-serif;
+    font-family: "Montserrat", sans-serif;
+    background-color: #fff;
+    padding: 0px;
+    box-sizing: border-box;
 }
 
 ul {
@@ -14,7 +20,7 @@ ul {
     top: 55%;
     left: 50%;
     transform: translateX(-75px);
-    z-index:2;
+    
 }
 
     #brand img {
@@ -30,7 +36,17 @@ ul {
     padding: 30px 0px;
 }
 
+#nav {
+    /*position: fixed;*/
+    width: 100%;
+    z-index: 999;
+}
+
+
+
+
 /* navbar主視覺色彩 */
+
 #nav-iconlist,
 #nav {
     background-color: #2a2c27;
@@ -41,7 +57,7 @@ ul {
 }
 
 .nav-item i {
-    color: #7e8186;
+    color: white;
 }
 
 .nav {
@@ -52,7 +68,110 @@ ul {
 #navbarToggler .nav-item {
     padding: 20px;
     text-align: center;
+   
 }
+
+    #navbarToggler .nav-item a:hover {
+        background-color: white;
+       color: #2a2c27;
+    }
+
+    #navbarToggler .nav-item a,
+    #nav-iconlist .nav-link .fas {
+        color: white;
+        font-size: 17px;
+    }
+
+    #navbarToggler .nav-item a {
+        font-family: 'Noto Sans TC', sans-serif;
+        font-weight: 500;
+       
+    }
+
+
+.local-scroll {
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    /**/
+    position: absolute;
+    left: 50%;
+    margin-right: 18px;
+    padding-top: 30px;
+    margin: 0 auto;
+    
+}
+
+    .local-scroll a {
+        width: 45px;
+        height: 45px;
+        border-radius:50%;
+        background-color: rgba(255,255,255,0.3);
+        display: block;
+        
+    }
+
+        .local-scroll a i {
+            font-size: 18px;
+            display: block;
+            color: #fff;
+            position: relative;
+            top: 16px
+        }
+
+.bounce {
+    -webkit-animation: bounce 1800ms infinite ease-out;
+    animation: bounce 1800ms infinite ease-out;
+}
+
+@-webkit-keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        -webkit-transform: translateY(0);
+        transform: translateX(0);
+    }
+
+    40% {
+        -webkit-transform: translateY(-15px);
+        transform: translateY(-15px);
+    }
+
+    60% {
+        -webkit-transform: translateY(-10px);
+        transform: translateY(-10px);
+    }
+}
+
+@-moz-keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+
+    40% {
+        transform: translateY(-15px);
+    }
+
+    60% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        -ms-transform: translateY(0);
+        transform: translateY(0);
+    }
+
+    40% {
+        -ms-transform: translateY(-15px);
+        transform: translateY(-15px);
+    }
+
+    60% {
+        -ms-transform: translateY(-10px);
+        transform: translateY(-10px);
+    }
+}
+
 /* 收合顯示矯正 */
 .collapse.show + #brand, .collapsing + #brand, .collapse.show + #search-button, .collapsing + #search-button, .collapsing ~ #nav-iconbox, .collapse.show ~ #nav-iconbox {
     display: none;

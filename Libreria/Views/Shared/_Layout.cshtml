@@ -4,7 +4,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - 我的 ASP.NET 應用程式</title>
+    <title>Libreria</title>
     <link href="~/Asset/Css/Layout/Nav_bar.css" rel="stylesheet" />
     <link href="~/Asset/Css/Layout/Footer.css" rel="stylesheet" />
    
@@ -18,9 +18,9 @@
 </head>
 <body class="p-0">
     <div class="search_form collapse" id="search_from">
-        <form class="form-inline">
+        <form class="form-inline" action="~/Product/ProductCategory">
             <div class="input-group w-100">
-                <input type="search" placeholder="輸入您想搜尋的" class="form-control">
+                <input type="search" name="search" placeholder="輸入您想搜尋的" class="form-control">
                 <class class="input-group-append">
                     <button type="submit" class="btn btn-outline-secondary"><i class="fas fa-search"></i></button>
                     <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split"
@@ -74,7 +74,7 @@
                                 </a>
                             </li>
                             <li class="nav-item" id="search-button">
-                                <button class="btn btn-outline-warning my-2 my-sm-0" type="button"
+                                <button class="btn  my-2 my-sm-0" type="button"
                                         data-toggle="collapse" data-target="#search_from">
                                     <i class="fas fa-search"></i>
                                 </button>
@@ -103,7 +103,7 @@
                     </a>
                 </li>
                 <li class="nav-item" id="search-button">
-                    <button class="btn btn-outline-warning  my-2 my-sm-0" type="button" data-toggle="collapse"
+                    <button class="btn  my-2 my-sm-0" type="button" data-toggle="collapse"
                             data-target="#search_from">
                         <i class="fas fa-search"></i>
                     </button>
@@ -116,49 +116,7 @@
 
 
     </div>
-    @*<section class="footer ">
-            <div class="container-fluid col-11">
-                <div class="row d-flex pt-5 ">
-                    <div class="col-sm-12 col-md-2 order-sm-2 footer-company">
-                        <div class="row d-flex flex-column">
-                            <h5>Company</h5>
-                            <a href="#">About</a>
-                            <a href="#">Blog</a>
-                            <a href="#">Contact Us</a>
-                        </div>
 
-                    </div>
-                    <div class="col-sm-12 col-md-2  order-sm-3 footer-account ">
-                        <div class="row d-flex flex-column">
-                            <h5>Account</h5>
-                            <a href="#">Payment</a>
-                            <a href="#">Subscriptions</a>
-                        </div>
-                    </div>
-                    <div class="col-sm-12 col-md-2  order-sm-4 footer-help ">
-                        <div class="row d-flex flex-column">
-                            <h5>Help</h5>
-                            <a href="#">Support</a>
-                        </div>
-
-                    </div>
-                    <div class="d-none d-md-block col-sm-6 col-md-6 order-sm-1 order-md-4 footer-logo pt-3 pb-3 px-0">
-                        <div class="pic"><img src="~/Asset/Image/smlogo_v2.png" alt=""></div>
-                    </div>
-
-                    <div class="col-sm-12 order-sm-5 footer-phone">
-                        <p>
-                            <span><i class="fas fa-phone-square-alt"></i>02-26343434</span><span>
-                                <i class="fas fa-phone-square-alt"></i>liberia@gmail.com
-                            </span> <span>
-                                <i class="fab fa-facebook-f"></i><i class="fab fa-twitter"></i><i class="fab fa-instagram"></i>
-                            </span>
-                        </p>
-
-                    </div>
-                </div>
-            </div>
-        </section>*@
     @Html.Partial("_FooterPartial")
     <script>
 

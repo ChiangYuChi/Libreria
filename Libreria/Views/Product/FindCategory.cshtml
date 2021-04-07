@@ -1,0 +1,17 @@
+﻿@model List<ProductViewModel>
+
+@{
+    ViewBag.Title = "CategoryId";
+    var CategoryId = "";
+}
+
+<ul data-role="listview" data-inset="true" data-theme="a" data-divider-theme="b">
+    @foreach (var item in Model)
+    {
+        
+
+        //呼叫Partial View部分檢視,以顯示每筆車的資料
+        @Html.Partial("ProductPartial", item)
+    }
+</ul>
+

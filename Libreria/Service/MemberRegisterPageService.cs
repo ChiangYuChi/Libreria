@@ -4,6 +4,7 @@ using Libreria.Repository;
 using Libreria.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Web;
 
@@ -20,7 +21,7 @@ namespace Libreria.Service
         public OperationResult CreateMember(MemberViewModel model, bool IsValid)
         {
             var result = new OperationResult();
-            member member = null;
+            member member = new member();
             if (IsValid)
             {
                 member = new member
@@ -54,7 +55,7 @@ namespace Libreria.Service
                 }
 
             }
-            catch (Exception ex)
+            catch (DbEntityValidationException ex)
             {
                 ex.ToString();
                 result.IsSuccessful = false;
@@ -64,8 +65,7 @@ namespace Libreria.Service
         public OperationResult IsExistMember(member membername)
         {
             var result = new OperationResult();
-            member member = new member();
-            var checkMembername = _libreriaRepository.GetAll<member>().Where(m => member.memberName == membername.memberName)
+            var checkMembername = _libreriaRepository.GetAll<member>().Where(m => m.memberName == membername.memberName)
                                         .FirstOrDefault();
             if (membername != checkMembername)
             {

@@ -174,6 +174,12 @@
     <Reference Include="Microsoft.Net.Http.Headers, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Net.Http.Headers.2.2.0\lib\netstandard2.0\Microsoft.Net.Http.Headers.dll</HintPath>
     </Reference>
+    <Reference Include="MvcSiteMapProvider, Version=4.6.26.0, Culture=neutral, PublicKeyToken=1923abe4657913cc, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvcSiteMapProvider.MVC5.Core.4.6.26\lib\net45\MvcSiteMapProvider.dll</HintPath>
+    </Reference>
+    <Reference Include="MvcSiteMapProvider.WebActivator, Version=4.6.26.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvcSiteMapProvider.MVC5.4.6.26\lib\net45\MvcSiteMapProvider.WebActivator.dll</HintPath>
+    </Reference>
     <Reference Include="MySql.Data, Version=8.0.23.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <HintPath>..\packages\MySql.Data.8.0.23\lib\net452\MySql.Data.dll</HintPath>
     </Reference>
@@ -299,6 +305,9 @@
     </Reference>
     <Reference Include="Ubiety.Dns.Core, Version=2.2.1.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <HintPath>..\packages\MySql.Data.8.0.23\lib\net452\Ubiety.Dns.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="WebActivatorEx, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebActivatorEx.2.0.1\lib\net40\WebActivatorEx.dll</HintPath>
     </Reference>
     <Reference Include="WebGrease">
       <Private>True</Private>
@@ -435,6 +444,66 @@
     <Compile Include="Migrations\202103151225390_LineLogin1.Designer.cs">
       <DependentUpon>202103151225390_LineLogin1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202103170612386_removeIsFavFromProductAddColumnAtExhiAndMember.cs" />
+    <Compile Include="Migrations\202103170612386_removeIsFavFromProductAddColumnAtExhiAndMember.Designer.cs">
+      <DependentUpon>202103170612386_removeIsFavFromProductAddColumnAtExhiAndMember.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103170617505_birthdayNullable.cs" />
+    <Compile Include="Migrations\202103170617505_birthdayNullable.Designer.cs">
+      <DependentUpon>202103170617505_birthdayNullable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103170623031_birthdayNullable-02.cs" />
+    <Compile Include="Migrations\202103170623031_birthdayNullable-02.Designer.cs">
+      <DependentUpon>202103170623031_birthdayNullable-02.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103170623543_birthdayNullable-03.cs" />
+    <Compile Include="Migrations\202103170623543_birthdayNullable-03.Designer.cs">
+      <DependentUpon>202103170623543_birthdayNullable-03.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103170728295_booltobit.cs" />
+    <Compile Include="Migrations\202103170728295_booltobit.Designer.cs">
+      <DependentUpon>202103170728295_booltobit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103170845301_ConvertEmptyStringToNullFalse.cs" />
+    <Compile Include="Migrations\202103170845301_ConvertEmptyStringToNullFalse.Designer.cs">
+      <DependentUpon>202103170845301_ConvertEmptyStringToNullFalse.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103190741509_FixManagerTableType.cs" />
+    <Compile Include="Migrations\202103190741509_FixManagerTableType.Designer.cs">
+      <DependentUpon>202103190741509_FixManagerTableType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103221041354_managerIdAuto.cs" />
+    <Compile Include="Migrations\202103221041354_managerIdAuto.Designer.cs">
+      <DependentUpon>202103221041354_managerIdAuto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103221130462_deleteManager.cs" />
+    <Compile Include="Migrations\202103221130462_deleteManager.Designer.cs">
+      <DependentUpon>202103221130462_deleteManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103221132588_addManager.cs" />
+    <Compile Include="Migrations\202103221132588_addManager.Designer.cs">
+      <DependentUpon>202103221132588_addManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103221134491_isCanceledInExhi.cs" />
+    <Compile Include="Migrations\202103221134491_isCanceledInExhi.Designer.cs">
+      <DependentUpon>202103221134491_isCanceledInExhi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103221138152_addDbSet.cs" />
+    <Compile Include="Migrations\202103221138152_addDbSet.Designer.cs">
+      <DependentUpon>202103221138152_addDbSet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103230714061_specialprice.cs" />
+    <Compile Include="Migrations\202103230714061_specialprice.Designer.cs">
+      <DependentUpon>202103230714061_specialprice.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103230736037_specialprice1.cs" />
+    <Compile Include="Migrations\202103230736037_specialprice1.Designer.cs">
+      <DependentUpon>202103230736037_specialprice1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103300542539_exAddfixIsDeletedMemberChange.cs" />
+    <Compile Include="Migrations\202103300542539_exAddfixIsDeletedMemberChange.Designer.cs">
+      <DependentUpon>202103300542539_exAddfixIsDeletedMemberChange.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\EntityModel\AspNetRole.cs" />
@@ -481,6 +550,7 @@
     <Compile Include="ViewModels\CategoryViewModel.cs" />
     <Compile Include="ViewModels\FavoriteViewModel.cs" />
     <Compile Include="ViewModels\LineLoginTokenViewModel.cs" />
+    <Compile Include="ViewModels\LineLoginViewModel.cs" />
     <Compile Include="ViewModels\LineProfileViewModel.cs" />
     <Compile Include="ViewModels\MemberLoginViewModel.cs" />
     <Compile Include="ViewModels\MemberViewModel.cs" />
@@ -491,6 +561,7 @@
     <Compile Include="ViewModels\ProductViewModel.cs" />
     <Compile Include="ViewModels\ReCaptchaViewModel.cs" />
     <Compile Include="ViewModels\RentalOrderViewModel.cs" />
+    <Compile Include="ViewModels\ResetPasswordViewModel.cs" />
     <Compile Include="ViewModels\ShoppingCartViewModel.cs" />
     <Compile Include="ViewModels\RentalConfirmViewModel.cs" />
   </ItemGroup>
@@ -675,6 +746,10 @@
     <Content Include="_Sample.html" />
     <Content Include="Content\toastr.scss" />
     <Content Include="Content\toastr.less" />
+    <Content Include="Mvc.sitemap" />
+    <None Include="MvcSiteMapSchema.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Properties\PublishProfiles\WebLibreria - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\WebLibreria - ReadOnly - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\WebLibreria - Web Deploy.pubxml" />
@@ -880,6 +955,17 @@
     <Content Include="Views\Rental\PayOrder.cshtml" />
     <Content Include="Views\Shared\SuccessOrFail.cshtml" />
     <Content Include="Views\Rental\PayReturnDetail.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\SiteMapTitleHelperModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\SiteMapPathHelperModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\SiteMapNodeModelList.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\SiteMapNodeModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\SiteMapHelperModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\MetaRobotsHelperModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\MenuHelperModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\CanonicalHelperModel.cshtml" />
+    <Content Include="Views\Product\FindCategory.cshtml" />
+    <Content Include="Views\Product\Find.cshtml" />
+    <Content Include="Views\MemberLogin\ResetMsgPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Code\" />
@@ -930,6 +1016,51 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202103151225390_LineLogin1.resx">
       <DependentUpon>202103151225390_LineLogin1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103170612386_removeIsFavFromProductAddColumnAtExhiAndMember.resx">
+      <DependentUpon>202103170612386_removeIsFavFromProductAddColumnAtExhiAndMember.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103170617505_birthdayNullable.resx">
+      <DependentUpon>202103170617505_birthdayNullable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103170623031_birthdayNullable-02.resx">
+      <DependentUpon>202103170623031_birthdayNullable-02.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103170623543_birthdayNullable-03.resx">
+      <DependentUpon>202103170623543_birthdayNullable-03.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103170728295_booltobit.resx">
+      <DependentUpon>202103170728295_booltobit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103170845301_ConvertEmptyStringToNullFalse.resx">
+      <DependentUpon>202103170845301_ConvertEmptyStringToNullFalse.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103190741509_FixManagerTableType.resx">
+      <DependentUpon>202103190741509_FixManagerTableType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103221041354_managerIdAuto.resx">
+      <DependentUpon>202103221041354_managerIdAuto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103221130462_deleteManager.resx">
+      <DependentUpon>202103221130462_deleteManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103221132588_addManager.resx">
+      <DependentUpon>202103221132588_addManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103221134491_isCanceledInExhi.resx">
+      <DependentUpon>202103221134491_isCanceledInExhi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103221138152_addDbSet.resx">
+      <DependentUpon>202103221138152_addDbSet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103230714061_specialprice.resx">
+      <DependentUpon>202103230714061_specialprice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103230736037_specialprice1.resx">
+      <DependentUpon>202103230736037_specialprice1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103300542539_exAddfixIsDeletedMemberChange.resx">
+      <DependentUpon>202103300542539_exAddfixIsDeletedMemberChange.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

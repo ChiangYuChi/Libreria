@@ -17,6 +17,9 @@ namespace Libreria.Models.EntityModel
 
         public int Quantity { get; set; }
 
+        [Column(TypeName = "money")]
+        public decimal SpecialPrice { get; set; }
+
         public virtual Order Order { get; set; }
 
         public virtual Product Product { get; set; }

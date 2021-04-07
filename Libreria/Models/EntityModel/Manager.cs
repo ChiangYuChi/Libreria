@@ -10,19 +10,22 @@ namespace Libreria.Models.EntityModel
     [Table("Manager")]
     public class Manager
     {
-        public string ManagerId { get; set; }
+        [Key]
+        public int ManagerId { get; set; }
+
+        [Required]
+        [StringLength(50)]
+        public string ManagerName { get; set; }
+
+        [Required]
+        [StringLength(50)]
+        public string ManagerPassword { get; set; }
 
         [StringLength(50)]
         public string ManagerUsername { get; set; }
 
-        [StringLength(50)]
-        public string ManagerPassword { get; set; }
         public string ManagerPhoto { get; set; }
 
-        [StringLength(50)]
-        public string ManagerName { get; set; }
-
-        [StringLength(50)]
-        public string JobTitle { get; set; }
+        public int ManagerRoleId { get; set; }
     }
 }

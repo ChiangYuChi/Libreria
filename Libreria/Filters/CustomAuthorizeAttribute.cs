@@ -39,7 +39,6 @@ namespace Libreria.Filters
                     {
                         if (role == memberRole.RoleName) return true;
                     }
-                    //HttpCookie cookie = httpContext.Request.Cookies[SessionStateAttribute.GetCustomAttribute.OnAuthorization];
                     
                 }
             return authorize; 

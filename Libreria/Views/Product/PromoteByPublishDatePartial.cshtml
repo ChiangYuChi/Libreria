@@ -17,7 +17,19 @@
 
     <div class="promotion-discount">
         <div class="title"> @Html.ActionLink(@item.Name, "ProductDetail", "Product", new { id = item.Id, style = "text-decoration:none;" }, null)</div>
-        <p><span>NT$</span>@(String.Format("{0:N0}",item.UnitPrice))</p>
+        @{ if (item.IsSpecial == true)
+            {
+                <p style="text-decoration: line-through;"><span>NT$</span>@(String.Format("{0:N0}",item.UnitPrice))</p>
+                <p style="color:red;"><span>NT$</span>@(String.Format("{0:N0}",item.SpecialPrice))</p>
+
+
+            }
+            else
+            {
+                <p><span>NT$</span>@(String.Format("{0:N0}",item.UnitPrice))</p>
+
+            }
+        }
     </div>
 
 

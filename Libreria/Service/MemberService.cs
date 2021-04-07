@@ -9,6 +9,7 @@ using System.Web;
 using System.Threading.Tasks;
 using SendGrid;
 using SendGrid.Helpers.Mail;
+using System.Web.Configuration;
 
 namespace Libreria.Service
 {
@@ -34,9 +35,9 @@ namespace Libreria.Service
                     Email = member.Email,
                     memberName = member.memberName,
                     memberPassword = member.memberPassword,
-                    birthday = member.birthday,
                     Gender = member.Gender,
                     IDnumber = member.IDnumber,
+                    birthday=member.birthday,
                 }
             ).ToList();
 
@@ -64,9 +65,10 @@ namespace Libreria.Service
                     Email = member.Email,
                     memberName = member.memberName,
                     memberPassword = member.memberPassword,
-                    birthday = member.birthday,
                     Gender = member.Gender,
                     IDnumber = member.IDnumber,
+                    birthday = member.birthday
+
                 }
             ).ToList();
 
@@ -82,9 +84,7 @@ namespace Libreria.Service
         public OperationResult UpdateMember(MemberViewModel model)
         {
             var result = new OperationResult();
-#pragma warning disable CS0219 // 已指派變數 'updateMember'，但是從未使用過它的值
-            member updateMember = null;
-#pragma warning restore CS0219 // 已指派變數 'updateMember'，但是從未使用過它的值
+
             var originalMember = _DbRepository.GetAll<member>().Where(m => m.memberName == model.memberName).FirstOrDefault();
             originalMember.memberUserName = model.memberUserName;
             originalMember.birthday = model.birthday;
@@ -114,10 +114,10 @@ namespace Libreria.Service
         {
             var result = new OperationResult();
             var member = _DbRepository.GetAll<member>().Where(x => x.Email == email).FirstOrDefault();
-            
+
             if (member != null)
             {
-                ForgotPasswordEmail(member, callbackurl).Wait();
+                ForgotPasswordEmail(member, callbackurl);
                 result.IsSuccessful = true;
             }
             else
@@ -128,9 +128,9 @@ namespace Libreria.Service
             return result;
         }
 
-        public async Task ForgotPasswordEmail(member member, string callbackurl)
+        public void ForgotPasswordEmail(member member, string callbackurl)
         {
-            var apikey = "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";
+            var apikey = WebConfigurationManager.AppSettings["EmailApiKey"];
             var client = new SendGridClient(apikey);
             var from = new EmailAddress("dezhengl@uci.edu", "Libreria");
             var to = new EmailAddress(member.Email, member.memberName);
@@ -138,13 +138,13 @@ namespace Libreria.Service
             var plainTextContent = "";
             var htmlContent = "<p>请点击链接来重置您的密码" + "<a href = '" + callbackurl + "'>重置密码</a></p>";
             var msg = MailHelper.CreateSingleEmail(from, to, subject, plainTextContent, htmlContent);
-            var response = await client.SendEmailAsync(msg);
+            client.SendEmailAsync(msg);
         }
 
         public OperationResult UpdatePassword(string username, string password)
         {
             var result = new OperationResult();
-            var member = _DbRepository.GetAll<member>().Where(x => x.memberUserName == username).FirstOrDefault();
+            var member = _DbRepository.GetAll<member>().Where(x => x.memberName == username).FirstOrDefault();
 
             try
             {
@@ -168,27 +168,28 @@ namespace Libreria.Service
             return result;
         }
 
-        public OperationResult ChangePassword(PasswordViewModel model,bool isValid)
+        public OperationResult ChangePassword(PasswordViewModel model)
         {
             var result = new OperationResult();
-            if (isValid)
-            {
-                var original = Utility.GetSha512(model.OriginalPassword);
-                var member = _DbRepository.GetAll<member>().Where(m => m.memberPassword == original).FirstOrDefault();
-                member.memberPassword = Utility.GetSha512(model.NewPassword);
 
-                try
-                {
-                    _DbRepository.Update<member>(member);
-                }
-                catch (Exception ex)
-                {
-                    result.IsSuccessful = false;
-                    ex.ToString();
-                }
+            var original = Utility.GetSha512(model.OriginalPassword);
+            var member = _DbRepository.GetAll<member>().Where(m => m.memberPassword == original).FirstOrDefault();
+            member.memberPassword = Utility.GetSha512(model.NewPassword);
+
+            try
+            {
+                _DbRepository.Update<member>(member);
+                result.IsSuccessful = true;
+
             }
+            catch (Exception ex)
+            {
+                result.IsSuccessful = false;
+                ex.ToString();
+            }
+
             return result;
-                        
+
         }
 
 

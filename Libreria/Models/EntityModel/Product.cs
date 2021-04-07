@@ -27,6 +27,9 @@ namespace Libreria.Models.EntityModel
         [Column(TypeName = "money")]
         public decimal UnitPrice { get; set; }
 
+        [Column(TypeName = "money")]
+        public decimal SpecialPrice { get; set; }
+
         [Required]
         [StringLength(50)]
         public string ISBN { get; set; }
@@ -53,8 +56,6 @@ namespace Libreria.Models.EntityModel
         public string Introduction { get; set; }
 
         public int? TotalSales { get; set; }
-
-        public bool isFav { get; set; }
 
         public bool isSpecial { get; set; }
 

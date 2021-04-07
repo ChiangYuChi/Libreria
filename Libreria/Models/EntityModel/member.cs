@@ -19,26 +19,30 @@ namespace Libreria.Models.EntityModel
 
         public int memberId { get; set; }
 
-        [Required]
+        //[DisplayFormat(ConvertEmptyStringToNull = false)]
         [StringLength(50)]
+        [Required(AllowEmptyStrings = true)]
         public string memberName { get; set; }
 
-        [Required]
         [StringLength(50)]
+        [Required(AllowEmptyStrings = true)]
         public string MobileNumber { get; set; }
 
         [StringLength(50)]
         public string HomeNumber { get; set; }
 
+        [StringLength(10)]
         public string City { get; set; }
 
+        [StringLength(10)]
         public string Region { get; set; }
-        [Required]
+
         [StringLength(100)]
         public string Address { get; set; }
 
         [Required]
         [StringLength(50)]
+        [DisplayFormat(ConvertEmptyStringToNull = false)]
         public string Email { get; set; }
 
         [Required]
@@ -50,7 +54,8 @@ namespace Libreria.Models.EntityModel
         public string memberPassword { get; set; }
 
         [Column(TypeName = "date")]
-        public DateTime birthday { get; set; }
+        public DateTime? birthday { get; set; }
+        //public Nullable<DateTime> birthday { get; set; }
 
         public int Gender { get; set; }
 
@@ -58,6 +63,8 @@ namespace Libreria.Models.EntityModel
         public string IDnumber { get; set; }
 
         public int? RoleId { get; set; }
+
+        [StringLength(512)]
 
         public string LineUserID { get; set; }
 
