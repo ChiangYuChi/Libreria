@@ -202,14 +202,26 @@ em {
 
 .content__title cite {
     font-weight: 800;
+    font-style: normal;
+}
+
+.content__title h3 {
+    color: rgba(138, 105, 38, 1);
 }
 
 .content__list table {
     width: 100%;
 }
 
+.content__list th {
+    padding-right: 5px;
+    padding-left: 5px;
+}
+
 .content__list td {
     line-height: 40px;
+    padding-right: 5px;
+    padding-left: 5px;
 }
 
 .content__list tbody td:nth-child(1) {
