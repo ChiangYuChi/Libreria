@@ -107,7 +107,6 @@ namespace Libreria.Service
                         item.isFav = false;
                     }
                 }
-
                 return result;
             }
         }
