@@ -326,7 +326,12 @@ p {
 
     .Midfield .Midfield-title h3 {
         font-family: 'Noto Serif TC', serif;
-        text-align:left
+        text-align:left;
+        padding-top: 20px;
+        font-size: 36px;
+        width: 80%;
+        
+        margin-left: 140px;
     }
    
 /* .tabbox{
