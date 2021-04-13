@@ -13,7 +13,7 @@ p {
 }
 
 .section-block {
-    padding: 15px 10px 0;
+    padding: 0;
 }
 
 .path ul {
@@ -34,7 +34,7 @@ p {
 }
 
 .path li + li::before {
-    content: '/';
+    /*content: '/';*/
     padding-right: 5px;
     color: black;
 }
@@ -414,4 +414,30 @@ em {
     .desktop-display {
         display: table-cell;
     }
+}
+
+.path ul{
+    padding: 0;
+}
+
+.remarks__title em{
+    font-style: normal;
+}
+
+.min-Pagination {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.content__title {
+    font-style: normal;
+}
+
+.path a, .path i {
+    color: #b0b0b0;
+}
+
+.path i {
+    padding: 0 15px;
+    margin-top: 3px;
 }

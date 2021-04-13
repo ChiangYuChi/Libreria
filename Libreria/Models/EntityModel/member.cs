@@ -54,8 +54,8 @@ namespace Libreria.Models.EntityModel
         public string memberPassword { get; set; }
 
         [Column(TypeName = "date")]
-        //public DateTime? birthday { get; set; }
-        public Nullable<DateTime> birthday { get; set; }
+        public DateTime? birthday { get; set; }
+        //public Nullable<DateTime> birthday { get; set; }
 
         public int Gender { get; set; }
 
