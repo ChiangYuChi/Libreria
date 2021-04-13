@@ -2,6 +2,8 @@
     padding: 20px 0;
 }*/
 
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+TC&display=swap');
+
 a{
    text-decoration:none;
 }
@@ -145,7 +147,10 @@ a{
         width: 100%;
         border-bottom: 1px solid black;
         padding-bottom: 10px;
-        font-size: 18px;
+        font-size: 22px;
+        font-family: 'Noto Serif TC', serif;
+        font-weight:bold;
+        letter-spacing:2px;
     }
 
     .main .new-product .pic {

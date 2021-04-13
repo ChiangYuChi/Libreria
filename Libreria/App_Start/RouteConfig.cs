@@ -17,8 +17,8 @@ namespace Libreria
          // Procudt/FindCagegory/1
           routes.MapRoute(
               name: "FindCategory",
-              url: "Product/FindCategory/{CategoryId}",
-              defaults: new { controller = "Product", action = "ProductCategory", CategoryId = UrlParameter.Optional }
+              url: "Product/FindCategory/{CategoryId}/{Order}",
+              defaults: new { controller = "Product", action = "ProductCategory", CategoryId = UrlParameter.Optional,Order = UrlParameter.Optional}
           );
           //依據產品中文類別搜尋
           //Product/FindName/旅遊

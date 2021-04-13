@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+TC&display=swap');
 ul {
     list-style: none;
 }
@@ -313,14 +314,20 @@ p {
     background-color: #f1f1ee;
     margin: auto;
 }
-.Midfield-block h3{
-    width: 100%;
-}
+    .Midfield-block h3 {
+        width: 100%;
+        
+    }
 
 .Midfield {
     overflow: visible;
 
 }
+
+    .Midfield .Midfield-title h3 {
+        font-family: 'Noto Serif TC', serif;
+        text-align:left
+    }
    
 /* .tabbox{
             height: 100vh;
