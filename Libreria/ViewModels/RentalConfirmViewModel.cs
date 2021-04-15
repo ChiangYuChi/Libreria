@@ -37,7 +37,7 @@ namespace Libreria.ViewModels
         /// <summary>
         /// 客戶姓名
         /// </summary>
-        [Required]
+        [Required(ErrorMessage = "姓名請勿空白!")]
         [Display(Name = "姓名")]
         [StringLength(50, ErrorMessage ="最多輸入50個字")]
         //[RegularExpression(@"^[A-Za-z]+$[\D]{2,6}", ErrorMessage = "不能輸入數字")]
@@ -46,7 +46,7 @@ namespace Libreria.ViewModels
         /// <summary>
         /// 客戶電話
         /// </summary>
-        [Required]
+        [Required(ErrorMessage = "連絡電話請勿空白!")]
         [Display(Name = "連絡電話")]
         [DataType(DataType.PhoneNumber)]
         [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$", ErrorMessage = "請輸入正確電話格式，例:0923463864")]
@@ -57,7 +57,7 @@ namespace Libreria.ViewModels
         /// <summary>
         /// 客戶Email
         /// </summary>
-        [Required]
+        [Required(ErrorMessage = "電子郵件請勿空白!")]
         [Display(Name = "電子郵件")]
         [DataType(DataType.EmailAddress, ErrorMessage = "請輸入正確電子郵件格式，例:abc@gmail.com")]
         [EmailAddress(ErrorMessage = "請輸入正確電子郵件格式，例:abc@gmail.com")]
@@ -66,7 +66,7 @@ namespace Libreria.ViewModels
         /// <summary>
         /// 展覽簡介
         /// </summary>
-        [Required]
+        [Required(ErrorMessage = "展覽簡介請勿空白!")]
         [Display(Name = "展覽簡介")]
         [StringLength(500, ErrorMessage = "最多輸入500個字")]
         public string ExhibitionIntro { get; set; }
@@ -74,7 +74,7 @@ namespace Libreria.ViewModels
         /// <summary>
         /// 主辦單位
         /// </summary>
-        [Required]
+        [Required(ErrorMessage = "主辦單位請勿空白!")]
         [Display(Name = "主辦單位")]
         [StringLength(50, ErrorMessage = "最多輸入50個字")]
         public string MasterUnit { get; set; }
@@ -83,7 +83,7 @@ namespace Libreria.ViewModels
         /// <summary>
         /// 展覽門票
         /// </summary>
-        [Required]
+        [Required(ErrorMessage = "票價請勿空白!")]
         [Display(Name = "票價")]
         [RegularExpression(@"^[0-9]*$", ErrorMessage = "請輸入數字(不能包含特殊符號)")]
         public string ExhibitionPrice { get; set; }
@@ -91,7 +91,7 @@ namespace Libreria.ViewModels
         /// <summary>
         /// 展覽圖片
         /// </summary>
-        [Required]
+        [Required(ErrorMessage = "請上傳圖片!")]
         [Display(Name = "上傳圖片")]
         [AllowExtensions(Extensions = "jpg,jpeg,gif,png,bmp", ErrorMessage = "這不是圖片檔格式!")]
         public HttpPostedFileBase ExPhoto { get; set; }
@@ -99,7 +99,7 @@ namespace Libreria.ViewModels
         /// <summary>
         /// 展覽名稱
         /// </summary>
-        [Required]
+        [Required(ErrorMessage = "展覽名稱請勿空白!")]
         [Display(Name = "展覽名稱")]
         [StringLength(50, ErrorMessage = "最多輸入50個字")]
         public string ExName { get; set; }
