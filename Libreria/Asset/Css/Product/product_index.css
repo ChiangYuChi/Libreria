@@ -1,10 +1,7 @@
-﻿/*@import <link rel="preconnect" href="https://fonts.gstatic.com"> <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital@1&display=swap" rel="stylesheet"> .main .product-breadcrumb {
-    padding: 20px 0;
-}*/
+﻿
 
-a{
-   text-decoration:none;
-}
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500&display=swap'); 
 
 .product-index {
     padding-top: 35px;
@@ -54,14 +51,14 @@ a{
 }
 
     .main .main-promotion-topic h4 {
-        font-size: 19px;
+        font-size: 20px;
         text-align: center;
         margin-top: 15px;
+        font-weight: 500;
+        font-family: 'Noto Sans TC', sans-serif;
     }
 
-        .main .main-promotion-topic h4 span {
-            color: #8a6926;
-        }
+        
 
     .main .main-promotion-topic .promotion-discount {
         color: #aa3744;
@@ -145,7 +142,11 @@ a{
         width: 100%;
         border-bottom: 1px solid black;
         padding-bottom: 10px;
-        font-size: 18px;
+        font-size: 22px;
+        font-family: 'Noto Serif TC', serif;
+        font-weight:600;
+        letter-spacing:4px;
+
     }
 
     .main .new-product .pic {
