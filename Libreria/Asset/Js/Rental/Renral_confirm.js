@@ -1,10 +1,10 @@
-﻿// Example starter JavaScript for disabling form submissions if there are invalid fields
+﻿//檢視表單是否存在無效字段
 (function () {
     'use strict';
     window.addEventListener('load', function () {
-        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        // 提取要驗證的所有表單
         let forms = document.getElementsByClassName('needs-validation');
-        // Loop over them and prevent submission
+
         let validation = Array.prototype.filter.call(forms, function (form) {
             form.addEventListener('submit', function (event) {
                 if (form.checkValidity() === false) {

@@ -49,5 +49,15 @@ namespace Libreria.ViewModels
         /// 主辦單位
         /// </summary>
         public string MasterUnit { get; set; }
+
+        /// <summary>
+        /// 客戶驗證
+        /// </summary>
+        public bool CustomerVerify { get; set; }
+
+        /// <summary>
+        /// 是否取消
+        /// </summary>
+        public bool IsCanceled { get; set; }
     }
 }

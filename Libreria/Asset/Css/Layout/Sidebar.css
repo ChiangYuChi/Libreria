@@ -35,6 +35,8 @@
 .button-group h2{
 font-size:18px;
 padding: 10px 0;
+
+
 }
 
 
@@ -42,9 +44,11 @@ padding: 10px 0;
     padding: 5px 20px;
 }
 
-#productPage 
+#productPage
 .button-group h2 {
-    font-size: 18px;
+    font-size: 22px;
+    font-weight: bold;
+    letter-spacing: 5px;
 }
 #productPage .item-group a {
     display: inline-block;
@@ -215,8 +219,16 @@ padding: 10px 0;
     text-decoration: none;
 
         font-size: 16px;
+        letter-spacing: 3px;
+        font-weight:bold;
     }
-    #productPage .search__item--path{
+
+    #productPage .class__list--xl a:hover{
+        background-color:black;
+        color:white;
+    }
+
+    #productPage .search__item--path {
         margin-left: 10px;
     }
     #productPage .search__item--sort{
