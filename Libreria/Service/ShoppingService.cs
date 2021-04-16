@@ -252,11 +252,9 @@ namespace Libreria.Service
         public void CombineCarts()
         {
             var MemberId = Convert.ToInt32(HttpContext.Current.Session["MemberID"]);
-
             if (HttpContext.Current.Session["ShoppingCart"] != null)
             {
                 List<ShoppingCart> cartitems = (List<ShoppingCart>)HttpContext.Current.Session["ShoppingCart"];
-
                 foreach (var item in cartitems)
                 {
                     if (_DbRepository.GetAll<ShoppingCart>().Where(x => x.memberId == MemberId && x.ProductId == item.ProductId).FirstOrDefault() == null)
@@ -265,7 +263,6 @@ namespace Libreria.Service
                         _DbRepository.Create<ShoppingCart>(entity);
                     }
                 }
-
                 HttpContext.Current.Session["ShoppingCart"] = null;
             }
         }
