@@ -59,7 +59,6 @@ namespace Libreria.Service
         }
 
 
-
         public List<ProductViewModel> GetAll()
         {
             var result = (from p in _DbRepository.GetAll<Product>()
@@ -107,7 +106,6 @@ namespace Libreria.Service
                         item.isFav = false;
                     }
                 }
-
                 return result;
             }
         }

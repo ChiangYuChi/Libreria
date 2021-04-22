@@ -1,6 +1,10 @@
 ﻿body {
     background-color: #eee;
+    font-family: 'Montserrat', sans-serif;
+    font-family: 'Noto Sans TC', sans-serif;
+    font-family: 'Noto Serif TC', serif;
 }
+
 
 .LOGO {
     margin-left: 20px;
@@ -131,13 +135,17 @@ h2 {
 
 .recipient_profile_name {
     display: flex;
-    margin: 10px 0px 20px 61px;
+    margin: 15px 0px 20px 61px;
 }
 
 
 .recipient_profile_phone {
     display: flex;
     margin: 0px 0px 20px 30px;
+    width: 100%;
+}
+.recipient_profile_name_input{
+    width: 100%;
 }
 
 .recipient_profile_homePhone {
@@ -156,7 +164,8 @@ h2 {
 }
 
 .recipient_profile_name p {
-    margin: 7px 10px 0px 0px;
+    margin: 7px 5px 0px 0px;
+    width: 50px;
 }
 
 .recipient_profile_phone p {
@@ -350,6 +359,7 @@ span {
 
 #option_txt {
     width: 91.6666%;
+    margin-top: 10px;
 }
 
 .payment_optionss span {
@@ -427,6 +437,21 @@ input {
     height: 40px;
 }
 
+.subscriber_profile input{
+    width: 100%;
+}
+
+.recipient_profile_body input{
+    width: 100%;
+}
+
+.subscriber_profile input{
+    font-family: none;
+}
+
+.recipient_profile_body {
+    font-family: none;
+}
 
 @media screen and (max-width: 767px) {
     .commodity {
@@ -453,6 +478,9 @@ input {
 
 
 @media screen and (min-width: 768px) {
+    input {
+        max-width: 500px;
+    }
 
     .delivery_options_storePickup label {
         padding-right: 70px;
@@ -534,6 +562,10 @@ input {
         display: flex;
     }
 
+    input {
+        max-width: 700px;
+    }
+
     .cart_details_txt {
         width: 300px;
     }
@@ -596,6 +628,10 @@ input {
 }
 
 @media screen and (min-width: 1200px) {
+
+    input {
+        max-width: 800px;
+    }
     .commodity_total {
         padding: 0px 0px 0px 340px;
     }

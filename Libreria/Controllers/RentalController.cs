@@ -40,7 +40,9 @@ namespace Libreria.Controllers
                 await _rentalService.ConfirmBooling(model);
                 var result = _rentalService.ECPay(model);
                 TempData["RentalPayOrderResult"] = result;
-                return RedirectToAction("PayOrder");
+                
+                return RedirectToAction("PayOrder","Rental");
+                
             }
             else
             {
@@ -61,6 +63,8 @@ namespace Libreria.Controllers
             List<RentalConfirmViewModel> orderVMList = _rentalService.GetByOrderId(orderId);
             RentalConfirmViewModel orderVM = orderVMList.FirstOrDefault();
             _rentalService.SetState(orderVM, RtnCode);
+
+            ViewData["OrderNum"] = form["MerchantTradeNo"];
             return View();
         }
 

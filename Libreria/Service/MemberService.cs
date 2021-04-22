@@ -37,6 +37,7 @@ namespace Libreria.Service
                     memberPassword = member.memberPassword,
                     Gender = member.Gender,
                     IDnumber = member.IDnumber,
+                    birthday=member.birthday,
                 }
             ).ToList();
 
@@ -66,6 +67,8 @@ namespace Libreria.Service
                     memberPassword = member.memberPassword,
                     Gender = member.Gender,
                     IDnumber = member.IDnumber,
+                    birthday = member.birthday
+
                 }
             ).ToList();
 

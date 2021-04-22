@@ -21,19 +21,26 @@ namespace Libreria.Service
         }
        public List<ExhibitionVIewModel> GetAll()
         {
-            return _dBRepository.GetAll<Exhibition>().Select(x => new ExhibitionVIewModel()
-            {
-                ExHibitionIntro=x.ExhibitionIntro,
-                ExhibitionID=x.ExhibitionID,
-                ExName=x.ExName,
-                ExhibitionStartTime=x.ExhibitionStartTime,
-                ExhibitionEndTime=x.ExhibitionEndTime,
-                EditModifyDate=x.EditModifyDate,
-                ExhibitionPrice=x.ExhibitionPrice,
-                ExPhoto=x.ExPhoto,
-                ExCustomerId=x.ExCustomerId,
-                MasterUnit=x.MasterUnit
-            }).ToList();
+            var result = (from e in _dBRepository.GetAll<Exhibition>()
+                          join o in _dBRepository.GetAll<ExhibitionOrder>()
+                          on e.ExCustomerId equals o.ExCustomerId
+                          select new ExhibitionVIewModel()
+                          {
+                              ExHibitionIntro = e.ExhibitionIntro,
+                              ExhibitionID = e.ExhibitionID,
+                              ExName = e.ExName,
+                              ExhibitionStartTime = e.ExhibitionStartTime,
+                              ExhibitionEndTime = e.ExhibitionEndTime,
+                              EditModifyDate = e.EditModifyDate,
+                              ExhibitionPrice = e.ExhibitionPrice,
+                              ExPhoto = e.ExPhoto,
+                              ExCustomerId = e.ExCustomerId,
+                              MasterUnit = e.MasterUnit,
+                              CustomerVerify = o.customerVerify,
+                              IsCanceled = o.isCanceled
+                          }).ToList();
+
+            return result;
         }
         /// <summary>
         /// 取得 依照目前日期所判定正在舉辦之展覽，以展覽結束時間來做判斷，若目前沒有則會視即將舉辦展覽，若也沒有即將舉辦的展覽會是過往展覽第一筆。
@@ -54,7 +61,7 @@ namespace Libreria.Service
             }
         }
         /// <summary>
-        /// 取得即將舉辦之展覽資料
+        /// 取得過往展覽之展覽資料，依新至舊排列
         /// </summary>
         /// <returns>
         /// 回傳為集合
@@ -70,7 +77,7 @@ namespace Libreria.Service
             return result;
         }
         /// <summary>
-        /// 取得過往展覽之展覽資料，依新至舊排列
+        /// 取得即將舉辦之展覽資料
         /// </summary>
         /// <returns>
         /// 回傳為集合
@@ -79,7 +86,7 @@ namespace Libreria.Service
         {
             var GetEx = GetAll();
             
-            var result = GetEx.Where(x => x.ExhibitionStartTime > Nowdate)
+            var result = GetEx.Where(x => x.ExhibitionStartTime > Nowdate && x.CustomerVerify == true && x.IsCanceled == false)
                         .OrderBy(x => x.ExhibitionStartTime)
                         .ToList();
 

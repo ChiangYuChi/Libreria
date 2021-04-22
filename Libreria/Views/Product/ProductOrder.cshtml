@@ -1,0 +1,428 @@
+﻿@model List<ProductViewModel>
+
+
+@section topCss{
+    <link href="~/Asset/Css/Product/ProductCategory.css" rel="stylesheet" />
+    <link href="~/Asset/Css/PartialView/category-sidenav.css" rel="stylesheet" />
+    <link href="~/Asset/Css/Product/ShopCartIconPartial.css" rel="stylesheet" />
+    <link href="~/Asset/Css/ShoppingCart/CartMsgPartial.css" rel="stylesheet" />
+    <link href="~/Asset/Css/ShoppingCart/FavMsgPartial.css" rel="stylesheet" />
+}
+@section topJs{
+    <script src="https://kit.fontawesome.com/b4e5145ad1.js" crossorigin="anonymous"></script>
+}
+
+
+<div class="container-fluid col-12" style="padding-top: 80px;">
+    <section class="product-index">
+        <div class="main ">
+
+            <div class="container-fluid">
+                <div class="product-breadcrumb">
+
+                    @Html.MvcSiteMap().SiteMapPath()
+
+
+                </div>
+                <div class="row">
+
+                    <div class="main-result col-lg-12 flex-wrap">
+
+
+                        <div class="render-section">
+
+                            <div id="cbp-vm" class="cbp-vm-switcher cbp-vm-view-grid">
+                                <div class="cbp-vm-options d-flex">
+                                    <div class="search-result-status ">
+                                        <div class="search-result-num d-flex">
+
+                                            <div>共有<span class="search-result-total">@ViewBag.TotalAmount</span>筆商品</div>
+                                        </div>
+                                    </div>
+                                    <a href="#" class="cbp-vm-icon cbp-vm-grid cbp-vm-selected"
+                                       data-view="cbp-vm-view-grid"><i class="fas fa-th"></i></a>
+                                    <a href="#" class="cbp-vm-icon cbp-vm-list" data-view="cbp-vm-view-list">
+                                        <i class="fas fa-list"></i>
+                                    </a>
+
+                                </div>
+                                <div class="sort-box">
+                                    <span col-lg-1>排序</span>
+                                    <button class="col-lg-2 sort-btn-price sort-btn" data-type="price">
+                                        @Html.ActionLink("價格排序低到高", "ProductOrder", new { CategoryId = ViewBag.CategoryId, Order = 1 })
+                                    </button>
+                                    <button class="col-lg-2 sort-btn">@Html.ActionLink("上市日期排序", "ProductCategory", new { CategoryId = ViewBag.CategoryId, Order = 2 })</button>
+                                </div>
+                                <ul class="book-block">
+
+
+                                    @foreach (var item in Model)
+                                    {
+
+                                        <li class="book-list">
+                                            <a class="cbp-vm-image" href="@Url.Action("ProductDetail", "Product", new { id = item.Id }, null)"><img src="@item.MainUrl"></a>
+                                            <h3 class="cbp-vm-title">  @Html.ActionLink(@item.Name, "ProductDetail", "Product", new { id = item.Id }, null)</h3>
+                                            <div class="cbp-vm-price">NT$ <span>@(String.Format("{0:N0}",item.UnitPrice))</span></div>
+                                            <div class="cbp-vm-details">
+                                                @item.Author
+                                            </div>
+                                            <button class="cbp-vm-icon cbp-vm-add js-add-product" onclick="AddCart(@item.Id)">加入購物車</button>
+                                            <a id="wish" class="wish-list " onclick="AddFavorite(@item.Id)">
+                                                @{if (item.isFav == true)
+                                                    {
+                                                        <i class="fas fa-heart"></i>
+                                                    }
+                                                    else
+                                                    {
+                                                        <i class="far fa-heart"></i>
+                                                    }
+                                                }
+                                            </a>
+                                        </li>
+
+                                    }
+                                </ul>
+
+                                <!--分頁-->
+                                <ul class="page-block">
+                                    @{
+                                        int totalPage = ViewBag.TotalPage;
+                                        int nowPage = ViewBag.NowPage;
+                                        int pageDisplay = 3;
+                                    }
+                                    <li>
+                                        @Html.ActionLink("《", "ProductCategory", new { CategoryId = ViewBag.CategoryId, Order = ViewBag.Order, NowPage = Math.Max(nowPage - 1, 1) })
+                                    </li>
+                                    <li>
+                                        @Html.ActionLink("1", "ProductCategory", new { CategoryId = ViewBag.CategoryId, Order = ViewBag.Order, NowPage = 1 })
+                                    </li>
+                                    @if (nowPage >= pageDisplay + 2)
+                                    {
+                                        <li>
+                                            ...
+                                        </li>
+                                    }
+
+                                    @for (int i = Math.Max(nowPage - pageDisplay, 2); i <= nowPage + pageDisplay && i <= totalPage - 1; i++)
+                                    {
+                                        <li>
+                                            @Html.ActionLink("" + i, "ProductCategory", new { CategoryId = ViewBag.CategoryId, Order = ViewBag.Order, NowPage = i })
+                                        </li>
+                                    }
+                                    @if (nowPage <= totalPage - pageDisplay - 2)
+                                    {
+                                        <li>
+                                            ...
+                                        </li>
+                                    }
+                                    @if (totalPage > 1)
+                                    {
+                                        <li>
+                                            @Html.ActionLink("" + totalPage, "ProductCategory", new { CategoryId = ViewBag.CategoryId, Order = ViewBag.Order, NowPage = totalPage })
+                                        </li>
+                                    }
+                                    <li>
+                                        @Html.ActionLink("》", "ProductCategory", new { CategoryId = ViewBag.CategoryId, Order = ViewBag.Order, NowPage = Math.Min(nowPage + 1, totalPage) })
+                                    </li>
+                                </ul>
+
+
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                </div>
+
+
+            </div>
+        </div>
+    </section>
+</div>
+<div class="shop-icon">
+    <a class=" js-toggle-cart" href="#" title="View cart" onclick="GetCartPro()">
+        <i class="fas fa-shopping-cart shop-cartid-icon"></i>
+    </a>
+</div>
+
+<aside class="cart js-cart">
+    <div class="cart__header">
+        <h1 class="cart__title">購物車</h1>
+        <p class="cart__text">
+            <a class="cart-button button--light js-toggle-cart" href="#" title="Close cart">
+                關閉購物車
+            </a>
+        </p>
+    </div>
+
+    <div class="cart__products js-cart-products">
+        @foreach (var item in ViewBag.shoppincart)
+        {
+            <div class="cart__product js-cart-product-template ">
+                <article class="js-cart-product row">
+                    <h4 class="col-12" id="bookname" style="font-size:20px;">@item.ProductName</h4>
+                    <div class="col-9">
+                        <img src="@item.PicUrl" alt="" id="bookImg" style="height:280px;" />
+                    </div>
+                    <div class="col-3" style="align-self:flex-end;text-align:end;">
+                        <p class="price" id="price">@item.Price</p>
+                        <p>
+                            @*<button onclick="DeleteCart(@item.ProductId)"class="js-remove-product" title="Delete product">删除商品</button>*@
+                            <a class="js-remove-product" id="delete" href="#" title="Delete product" onclick="DeleteCart(@item.ProductId)">
+                                刪除商品
+                            </a>
+                        </p>
+                    </div>
+                </article>
+            </div>
+        }
+        @foreach (var item in ViewBag.shoppinCart)
+        {
+            <div class="cart__product js-cart-product-template ">
+                <article class="js-cart-product row">
+                    <h4 class="col-12" id="bookname" style="font-size:20px;">@item.ProductName</h4>
+                    <div class="col-9">
+                        <img src="@item.PicUrl" alt="" id="bookImg" style="height:280px;" />
+                    </div>
+                    <div class="col-3" style="align-self:flex-end;text-align:end;">
+                        <p class="price" id="price">@item.Price</p>
+                        <p>
+                            @*<button onclick="DeleteCart(@item.ProductId)"class="js-remove-product" title="Delete product">删除商品</button>*@
+                            <a class="js-remove-product" id="delete" href="#" title="Delete product" onclick="DeleteCart(@item.ProductId)">
+                                刪除商品
+                            </a>
+                        </p>
+                    </div>
+                </article>
+            </div>
+        }
+
+
+    </div>
+    <template id="cart-pro">
+
+        <div class="cart__product js-cart-product-template ">
+            <article class="js-cart-product row">
+                <h4 class="col-12" id="bookname" style="font-size:20px;"></h4>
+                <div class="col-9">
+                    <img src="" alt="" id="bookImg" style="height:280px;" />
+                </div>
+                <div class="col-3" style="align-self:flex-end;text-align:end;">
+                    <p class="price" id="price"></p>
+                    <p>
+                        @*<button onclick=""  id="delete" class="js-remove-product" title="Delete product">删除商品</button>*@
+
+                        <a class="js-remove-product" id="delete" href="#" title="Delete product" onclick="">
+                            刪除商品
+                        </a>
+                    </p>
+                </div>
+            </article>
+        </div>
+
+    </template>
+
+
+    <div class="cart__footer">
+        <p class="cart__text">
+            <a class="cart-button" href="/Order/Index" title="Buy products">
+                購買
+            </a>
+        </p>
+    </div>
+</aside>
+
+<div class="lightbox js-lightbox js-toggle-cart"></div>
+@Html.Action("CartMsgPartial")
+@Html.Action("FavMsgPartial")
+
+
+@section EndJs{
+    <script src="~/Asset/Js/Product/ProductCategory.js"></script>
+
+    <script>
+        jsonObj = [];
+        item = {};
+        let _cartblock = document.querySelector(".cart__products");
+
+        function GetCartPro() {
+            $(".cart__products").html("");
+            $.ajax({
+                type: "POST",
+                url: "/Product/GetToCartPartial",
+                dataType: "json",
+                success: function (cartList) {
+                    console.log(cartList);
+                    let productCart = document.querySelector("#cart-pro");
+                    let cartblock = document.querySelector(".js-cart-products");
+                    let cart;
+                    cartList.forEach(item => {
+                        cart = productCart.content.cloneNode(true);
+                        cart.querySelector("#bookname").innerHTML = item.ProductName;
+                        cart.querySelector("#bookImg").src = item.PicUrl;
+                        cart.querySelector("#price").innerHTML = item.Price;
+                        cart.querySelector("#delete").setAttribute("onclick", `DeleteCart(${item.ProductId})`);
+
+                        cartblock.appendChild(cart);
+                    })
+                }
+            });
+        }
+        function AddCart(id) {
+            let productId = id;
+            $.ajax({
+                type: "POST",
+                url: "/Order/AddToCart",
+                data: { Id: productId },
+                dataType: "text",
+                success: function (response) {
+                    addProduct(response);
+
+                    $("#MyCart").text("購物車(" + response + ")");
+                    $(".cart__products").html("");
+                    $.ajax({
+                        type: "POST",
+                        url: "/Product/GetToCartPartial",
+                        dataType: "json",
+                        success: function (cartList) {
+                            console.log(cartList);
+                            let productCart = document.querySelector("#cart-pro");
+                            let cartblock = document.querySelector(".js-cart-products");
+                            let cart;
+                            cartList.forEach(item => {
+                                cart = productCart.content.cloneNode(true);
+                                cart.querySelector("#bookname").innerHTML = item.ProductName;
+                                cart.querySelector("#bookImg").src = item.PicUrl;
+                                cart.querySelector("#price").innerHTML = item.Price;
+                                cart.querySelector("#delete").setAttribute("onclick", `DeleteCart(${item.ProductId})`);
+
+                                cartblock.appendChild(cart);
+                            })
+                        }
+                    });
+                }
+            });
+
+        }
+
+        let wish = document.querySelectorAll("#wish");
+        wish.forEach((x) => {
+            x.addEventListener("click", function () {
+                x.innerHTML = "<i class='fas fa-heart'></i>";
+            })
+        });
+
+        function AddFavorite(id) {
+            let favId = id;
+
+            $.ajax({
+                    type: "Post",
+                    url: "/Order/Redirect",
+                    success: function (result) {
+                        if (result == 1) {
+                            $.ajax({
+                                type: "POST",
+                                url: "/MemberCenter/AddToFavorite",
+                                data: { Id: favId },
+                                dataType: "text",
+                                success: function (response) {
+                                    document.querySelector(".FavMsg-wrap").setAttribute("style", "display:flex")
+                                    var time = window.setTimeout((() => document.querySelector(".FavMsg-wrap").setAttribute("style", "display:none")), 800)
+                                }
+                            });
+                        }
+                        else {
+                            window.location.href = "@Url.Action("Index", "MemberLogin")";
+                        }
+                    }
+            });
+
+        }
+
+
+        var cartOpen = false;
+        var numberOfProducts = 0;
+
+
+        $('body').on('click', '.js-toggle-cart', toggleCart);
+        //$('body').on('click', '.js-add-product', addProduct);
+        $('body').on('click', '.js-remove-product', removeProduct);
+        $('body').on('click', '.open', closeCart);
+
+        function toggleCart(e) {
+            e.preventDefault();
+
+            if (cartOpen) {
+                closeCart();
+                return;
+            }
+            openCart();
+
+        }
+
+        function openCart() {
+            $('body').addClass('open');
+            cartOpen = true;
+            document.querySelector(".lightbox").setAttribute("style", "width:100%")
+
+        }
+
+        function closeCart() {
+            cartOpen = false;
+            $('body').removeClass('open');
+            document.querySelector(".lightbox").setAttribute("style", "width:0%")
+
+        }
+
+        function addProduct(response) {
+            //e.preventDefault();
+            if (response == "商品加入成功！") {
+                numberOfProducts++;
+                //document.getElementById("CartMsgAlertText").innerText = response;
+                document.querySelector(".fa-check-circle").style.display = "block";
+                document.querySelector(".fa-times-circle").style.display = "none";
+            }
+            else {
+                document.getElementById("CartMsgAlertText").innerText = response;
+                document.querySelector(".fa-check-circle").style.display = "none";
+                document.querySelector(".fa-times-circle").style.display = "block";
+            }
+            document.querySelector(".CartMsg-wrap").setAttribute("style", "display:flex");
+
+            /*openCart();*/
+
+            var time = window.setTimeout((() => {
+                document.querySelector(".CartMsg-wrap").setAttribute("style", "display:none");
+                document.getElementById("CartMsgAlertText").innerText = "商品加入成功！";
+                document.querySelector(".fa-check-circle").style.display = "block";
+                document.querySelector(".fa-times-circle").style.display = "none";
+            }), 800)
+
+        }
+
+        function removeProduct(e) {
+            e.preventDefault();
+            numberOfProducts--;
+            $(this).closest('.js-cart-product').hide(250);
+            if (numberOfProducts == 0) {
+                $('.js-cart-empty').removeClass('hide');
+            }
+        }
+    </script>
+    <script>
+        $(document).ready(function () {
+            $('#class').click(function () {
+                $('.class__list').slideToggle('slow');
+            });
+
+            $('.class__list li').click(function () {
+                $('.class__list').slideToggle('hled');
+            });
+        });
+
+    </script>
+
+
+
+}

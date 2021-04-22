@@ -4,6 +4,9 @@
     background-color: #eee;
 }
 
+.mb-5{
+    margin-bottom: 0px !important;
+}
 .body-content {
     background-color: #eee;
 }
